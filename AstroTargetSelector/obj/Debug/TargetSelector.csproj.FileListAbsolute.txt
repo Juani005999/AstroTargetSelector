@@ -1,0 +1,31 @@
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelector.exe.config
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelector.exe
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelector.pdb
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.csproj.AssemblyReference.cache
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.Properties.Resources.resources
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.csproj.GenerateResource.cache
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.csproj.CoreCompileInputs.cache
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.exe
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.pdb
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelectorBusiness.dll
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\ApplicationTools.dll
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelectorBusiness.pdb
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\ApplicationTools.pdb
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.csproj.CopyComplete
+C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\obj\Debug\TargetSelector.MainFenetre.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\TargetSelector.exe.config
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\TargetSelector.exe
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\TargetSelector.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\ApplicationTools.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\TargetSelectorBusiness.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\ApplicationTools.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\bin\Debug\TargetSelectorBusiness.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.csproj.AssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.csproj.SuggestedBindingRedirects.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.MainFenetre.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.Properties.Resources.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.csproj.GenerateResource.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.csproj.CoreCompileInputs.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.csproj.CopyComplete
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.exe
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\TargetSelector\obj\Debug\TargetSelector.pdb

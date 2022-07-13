@@ -47,16 +47,11 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
-    <Reference Include="UTIL_DYNAMICLTNVLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d17c0156d46b35c4, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
-    <Reference Include="UTIL_DYNAMICXMLLib, Version=1.0.0.0, Culture=neutral, PublicKeyToken=d17c0156d46b35c4, processorArchitecture=MSIL">
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppToolFactory.cs" />
     <Compile Include="ClassesBweb\BwebConvert.cs" />
+    <Compile Include="Classes\AppContext.cs" />
     <Compile Include="Classes\AppExtensions.cs" />
     <Compile Include="Classes\AppToolLog.cs" />
     <Compile Include="Communs\ListViewColumnSorter.cs" />

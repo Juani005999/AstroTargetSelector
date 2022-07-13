@@ -1,9 +1,0 @@
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\bin\Debug\TargetSelectorBusiness.dll
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\bin\Debug\TargetSelectorBusiness.pdb
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\obj\Debug\TargetSelectorBusiness.csproj.AssemblyReference.cache
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\obj\Debug\TargetSelectorBusiness.csproj.CoreCompileInputs.cache
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\obj\Debug\TargetSelectorBusiness.dll
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\obj\Debug\TargetSelectorBusiness.pdb
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\bin\Debug\ApplicationTools.dll
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\bin\Debug\ApplicationTools.pdb
-C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelectorBusiness\obj\Debug\TargetSelectorBusiness.csproj.CopyComplete

@@ -30,12 +30,27 @@ namespace ApplicationTools
         /// <returns>Objet Log</returns>
         public AppToolLog GetLog()
         {
+            // Création et initialisation de l'objet de log s'il n'existe pas
             if (log == null)
             {
                 log = new AppToolLog(this);
-                log.Initialise(System.Windows.Forms.Application.ProductName, System.Windows.Forms.Application.StartupPath);
             }
             return log;
+        }
+
+        /// <summary>
+        /// Retourne l'objet <see cref="AppContext"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet AppContext</returns>
+        public AppContext GetAppContext()
+        {
+            // Création et initialisation de l'objet AppContext s'il n'existe pas
+            if (appContext == null)
+            {
+                appContext = new AppContext(this);
+            }
+            return appContext;
         }
 
         #endregion
@@ -46,6 +61,11 @@ namespace ApplicationTools
         /// Objet <see cref="AppToolLog"/>
         /// </summary>
         private AppToolLog log = null;
+
+        /// <summary>
+        /// Objet <see cref="AppContext"/>
+        /// </summary>
+        private AppContext appContext = null;
 
         #endregion
     }

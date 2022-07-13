@@ -14,3 +14,10 @@ C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\obj\Debug
 C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\obj\Debug\ApplicationTools.dll
 C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\obj\Debug\ApplicationTools.pdb
 C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\obj\Debug\ApplicationTools.csproj.AssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.csproj.AssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.csproj.ResolveComReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.csproj.CoreCompileInputs.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Debug\ApplicationTools.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Debug\ApplicationTools.pdb

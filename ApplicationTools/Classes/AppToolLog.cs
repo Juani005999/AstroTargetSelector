@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.IO;
-
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 
 namespace ApplicationTools
 {
@@ -20,9 +17,24 @@ namespace ApplicationTools
         /// </summary>
         public enum TypeLog
         {
+            /// <summary>
+            /// Trace de type Infos
+            /// </summary>
             Infos,
+
+            /// <summary>
+            /// Trace de type Warning
+            /// </summary>
             Warning,
+
+            /// <summary>
+            /// Trace de type Error
+            /// </summary>
             Error,
+
+            /// <summary>
+            /// Trace de type Fatal
+            /// </summary>
             Fatal
         }
 
@@ -37,7 +49,7 @@ namespace ApplicationTools
         {
             get
             {
-                return logFilePath + "\\" + logFileName;
+                return toolFactory.GetAppContext().StartupPath + "\\" + toolFactory.GetAppContext().LogFileName;
             }
         }
 
@@ -51,6 +63,9 @@ namespace ApplicationTools
         internal AppToolLog(AppToolFactory toolFactory)
         {
             this.toolFactory = toolFactory;
+
+            // Initialisation de l'objet de log
+            Initialise();
         }
 
         #endregion
@@ -60,35 +75,28 @@ namespace ApplicationTools
         /// <summary>
         /// Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
         /// </summary>
-        /// <param name="productName">Nom de l'application</param>
-        /// <param name="logFilePath">Chemin d'accès au fichier de log</param>
-        public void Initialise(string productName,
-                                string logFilePath)
+        public void Initialise()
         {
             try
             {
                 // Chrono
-                DateTime debutInitialisation = DateTime.Now;
-                
-                this.callerProductName = productName;
-                this.logFilePath = logFilePath;
-                this.logFileName = "apptooltrace.csv";
+                Stopwatch debutInitialisation = new Stopwatch();
+                debutInitialisation.Start();
 
                 // Ouverture du fichier de log pour écraser le contenu ancien
-                StreamWriter fichierLog = new System.IO.StreamWriter(FullPathName);
+                StreamWriter fichierLog = new StreamWriter(FullPathName);
                 fichierLog.Close();
 
                 // Initialisation du fichier de log
                 InitialiseFichierLog();
 
                 // Trace du Nom de l'application appelante et du répertoire de démarrage (fichier de log)
-                LogInfos($"Initialisation de l'objet de log", "AppToolLog", debutInitialisation.GetElapsed());
-                LogInfos($"ProductName : {productName}", "AppToolLog", debutInitialisation.GetElapsed());
-                LogInfos($"StartupPath : {logFilePath}", "AppToolLog", debutInitialisation.GetElapsed());
+                LogInfos($"Initialisation de l'objet de log", GetType().Name, debutInitialisation.ElapsedMilliseconds);
+                LogInfos($"Log FullPathName : {FullPathName}", GetType().Name);
             }
             catch (Exception err)
             {
-                Console.WriteLine("Une erreur est survenue dans l'objet de log : " + err.Message);
+                Console.WriteLine("Une erreur est survenue lors de l'initialisation l'objet de log : " + err.Message);
             }
         }
 
@@ -179,15 +187,13 @@ namespace ApplicationTools
         {
             try
             {
-                if (string.IsNullOrEmpty(logFileName))
-                    return;
-
                 // Trace en console
-                Console.WriteLine(callerProductName + " (" + typeLog.ToString() + ") : " + message);
+                Console.WriteLine(toolFactory.GetAppContext().ProductName + " (" + typeLog.ToString() + ") : " + message);
 
                 // Trace dans le fichier de log
-                DateTime debutFonction = DateTime.Now;
-                string chaineFinale = callerProductName;
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+                string chaineFinale = toolFactory.GetAppContext().ProductName;
                 chaineFinale += ";" + callerWindowName;
 
                 chaineFinale += ";" + callerMemberName;
@@ -204,10 +210,10 @@ namespace ApplicationTools
                 chaineFinale += ";" + message;
 
                 // Ouverture du fichier de log et écriture de la trace
-                StreamWriter fichierLog = new System.IO.StreamWriter(FullPathName, true);
+                StreamWriter fichierLog = new StreamWriter(FullPathName, true);
                 fichierLog.WriteLine(chaineFinale);
                 fichierLog.Close();
-                Console.WriteLine("Trace dans Fichier de log en " + (DateTime.Now - debutFonction).gete + " ms");
+                Console.WriteLine("Trace dans Fichier de log en " + debutFonction.ElapsedMilliseconds + " ms");
             }
             catch (Exception err)
             {
@@ -222,10 +228,7 @@ namespace ApplicationTools
         {
             try
             {
-                if (string.IsNullOrEmpty(logFileName))
-                    return;
-                
-                // Création de la chaine
+                // Création de la chaine (en-tête du tableau du fichier de log)
                 string chaineFinale = "Produit";
                 chaineFinale += ";Objet";
                 chaineFinale += ";Fonction";
@@ -237,7 +240,7 @@ namespace ApplicationTools
                 chaineFinale += ";Durée";
                 chaineFinale += ";Message";
 
-                StreamWriter fichierLog = new System.IO.StreamWriter(logFileName, true);
+                StreamWriter fichierLog = new StreamWriter(FullPathName, true);
                 fichierLog.WriteLine(chaineFinale);
                 fichierLog.Close();
             }
@@ -255,21 +258,6 @@ namespace ApplicationTools
         /// Instance de la ToolFactory en cours
         /// </summary>
         private readonly AppToolFactory toolFactory = null;
-
-        /// <summary>
-        /// Path du fichier de log
-        /// </summary>
-        private string logFilePath = string.Empty;
-
-        /// <summary>
-        /// Nom du fichier de log
-        /// </summary>
-        private string logFileName = string.Empty;
-
-        /// <summary>
-        /// Nom de l'application appelante
-        /// </summary>
-        private string callerProductName = string.Empty;
 
         /// <summary>
         /// Nom de la page appelante
