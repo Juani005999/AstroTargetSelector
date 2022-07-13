@@ -1,0 +1,10 @@
+Produit;Objet;Fonction;Fichier source;Ligne;Type;Date;Heure;Durée;Message
+TargetSelector;AppToolLog;Initialise;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\Classes\AppToolLog.cs;85;INFOS;28/06/2022;11:20:47.7536;2;Initialisation de l'objet de log
+TargetSelector;AppToolLog;Initialise;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\Classes\AppToolLog.cs;86;INFOS;28/06/2022;11:20:47.7536;3;ProductName : TargetSelector
+TargetSelector;AppToolLog;Initialise;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\ApplicationTools\Classes\AppToolLog.cs;87;INFOS;28/06/2022;11:20:47.7546;4;StartupPath : C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;42;INFOS;28/06/2022;11:20:47.7556;;Fonction InitialisationFormulaire DEBUT
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;43;INFOS;28/06/2022;11:20:47.7566;;Application : C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug\TargetSelector.exe
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;44;INFOS;28/06/2022;11:20:47.7576;;Version : 1.0.0.0
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;45;INFOS;28/06/2022;11:20:47.7916;;Répertoire UserAppDataPath : C:\Users\VIVOJE\AppData\Roaming\TargetSelector\TargetSelector\1.0.0.0
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;46;INFOS;28/06/2022;11:20:47.7926;;Répertoire StartupPath : C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\bin\Debug
+TargetSelector;MainFenetre;InitialisationFormulaire;C:\Users\VIVOJE\Documents\Visual Studio 2019\Projects\TargetSelector\MainFenetre.cs;49;INFOS;28/06/2022;11:20:47.7936;47;Fonction InitialisationFormulaire FIN
