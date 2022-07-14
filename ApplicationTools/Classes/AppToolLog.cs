@@ -91,8 +91,16 @@ namespace ApplicationTools
                 InitialiseFichierLog();
 
                 // Trace du Nom de l'application appelante et du répertoire de démarrage (fichier de log)
-                LogInfos($"Initialisation de l'objet de log", GetType().Name, debutInitialisation.ElapsedMilliseconds);
-                LogInfos($"Log FullPathName : {FullPathName}", GetType().Name);
+                Log(TypeLog.Infos,
+                    $"Initialisation de l'objet de log",
+                    debutInitialisation.ElapsedMilliseconds,
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                    GetType().Name);
+                Log(TypeLog.Infos,
+                    $"Log FullPathName : {FullPathName}",
+                    null,
+                    System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
+                    GetType().Name);
             }
             catch (Exception err)
             {
@@ -101,89 +109,18 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Trace de type Info
-        /// </summary>
-        /// <param name="message"></param>
-        public void LogInfos(string message,
-                        string windowName = "",
-                        double? millisecond = null,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string sourceFilePath = "",
-                        [CallerLineNumber] int sourceLineNumber = 0)
-        {
-            callerWindowName = windowName;
-            callerMemberName = memberName;
-            callerFilePath = sourceFilePath;
-            callerLineNumber = sourceLineNumber;
-            
-            log(TypeLog.Infos, message, millisecond);
-        }
-
-        /// <summary>
-        /// Trace de type Warning
-        /// </summary>
-        /// <param name="message"></param>
-        public void LogWarning(string message,
-                        string windowName = "",
-                        double? millisecond = null,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string sourceFilePath = "",
-                        [CallerLineNumber] int sourceLineNumber = 0)
-        {
-            callerWindowName = windowName;
-            callerMemberName = memberName;
-            callerFilePath = sourceFilePath;
-            callerLineNumber = sourceLineNumber;
-
-            log(TypeLog.Warning, message, millisecond);
-        }
-
-        /// <summary>
-        /// Trace de type Erreur
-        /// </summary>
-        /// <param name="message"></param>
-        public void LogError(string message,
-                        string windowName = "",
-                        double? millisecond = null,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string sourceFilePath = "",
-                        [CallerLineNumber] int sourceLineNumber = 0)
-        {
-            callerWindowName = windowName;
-            callerMemberName = memberName;
-            callerFilePath = sourceFilePath;
-            callerLineNumber = sourceLineNumber;
-            
-            log(TypeLog.Error, message, millisecond);
-        }
-
-        /// <summary>
-        /// Trace de type Erreur
-        /// </summary>
-        /// <param name="err">Erreur</param>
-        public void LogError(Exception err,
-                        string windowName = "",
-                        double? millisecond = null,
-                        [CallerMemberName] string memberName = "",
-                        [CallerFilePath] string sourceFilePath = "",
-                        [CallerLineNumber] int sourceLineNumber = 0)
-        {
-            callerWindowName = windowName;
-            callerMemberName = memberName;
-            callerFilePath = sourceFilePath;
-            callerLineNumber = sourceLineNumber;
-            
-            log(TypeLog.Error, err.Message, millisecond);
-        }
-
-        /// <summary>
         /// Trace en console et dans le fichier de log
         /// </summary>
         /// <param name="typeLog"></param>
         /// <param name="message"></param>
-        private void log(TypeLog typeLog,
+        public void Log(TypeLog typeLog,
                         string message,
-                        double? millisecond = null)
+                        double? millisecond = null,
+                        string callerModuleName = "",
+                        string callerClassName = "",
+                        [CallerMemberName] string callerMemberName = "",
+                        [CallerFilePath] string callerFilePath = "",
+                        [CallerLineNumber] int callerLineNumber = 0)
         {
             try
             {
@@ -194,7 +131,8 @@ namespace ApplicationTools
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
                 string chaineFinale = toolFactory.GetAppContext().ProductName;
-                chaineFinale += ";" + callerWindowName;
+                chaineFinale += ";" + callerModuleName;
+                chaineFinale += ";" + callerClassName;
 
                 chaineFinale += ";" + callerMemberName;
                 chaineFinale += ";" + callerFilePath;
@@ -230,6 +168,7 @@ namespace ApplicationTools
             {
                 // Création de la chaine (en-tête du tableau du fichier de log)
                 string chaineFinale = "Produit";
+                chaineFinale += ";Module";
                 chaineFinale += ";Objet";
                 chaineFinale += ";Fonction";
                 chaineFinale += ";Fichier source";
@@ -258,26 +197,6 @@ namespace ApplicationTools
         /// Instance de la ToolFactory en cours
         /// </summary>
         private readonly AppToolFactory toolFactory = null;
-
-        /// <summary>
-        /// Nom de la page appelante
-        /// </summary>
-        private string callerWindowName = string.Empty;
-
-        /// <summary>
-        /// Nom de la méthode appelante
-        /// </summary>
-        private string callerMemberName = string.Empty;
-
-        /// <summary>
-        /// Nom du fichier de la fonction appelante
-        /// </summary>
-        private string callerFilePath = string.Empty;
-
-        /// <summary>
-        /// Numéro de ligne de l'appelant
-        /// </summary>
-        private int callerLineNumber = 0;
 
         #endregion
     }

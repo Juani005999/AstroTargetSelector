@@ -1,12 +1,13 @@
-﻿using ApplicationTools;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
+using ApplicationTools;
+using AstroTargetSelectorBusiness;
 
-namespace AstroTargetSelectorBusiness
+namespace AstroTargetSelector
 {
     /// <summary>
-    /// Fabrique d'objets Business (métier) et Logic (applicatif)
+    /// Fabrique d'objets globale de l'application
     /// </summary>
-    public class AppObjFactory : AppToolFactory
+    internal class AppFactory : AppObjFactory
     {
         #region Propriétés
         #endregion
@@ -16,7 +17,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public AppObjFactory()
+        public AppFactory()
         {
         }
 

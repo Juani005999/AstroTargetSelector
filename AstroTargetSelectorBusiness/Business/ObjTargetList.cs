@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ApplicationTools;
+using System.Collections.Generic;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -71,6 +72,7 @@ namespace AstroTargetSelectorBusiness
                 listeObjTarget.Clear();
 
                 // Lecture du fichier de configuration
+                factory.Log($"Fichier de configuration contenant la liste des objets céleste : {ConfigurationFile}", GetType().Name);
             }
         }
 
