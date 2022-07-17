@@ -29,7 +29,6 @@ namespace AstroTargetSelector
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvrirLeFichierDeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -41,12 +40,17 @@ namespace AstroTargetSelector
             this.statusStripGlobal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDateObs = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNomTarget = new System.Windows.Forms.ToolStripStatusLabel();
-            this.listViewTarget = new System.Windows.Forms.ListView();
-            this.toolBarPrincipale = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.splitContainerGlobal = new System.Windows.Forms.SplitContainer();
+            this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
+            this.listView1 = new System.Windows.Forms.ListView();
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
-            this.toolBarPrincipale.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
+            this.splitContainerGlobal.Panel2.SuspendLayout();
+            this.splitContainerGlobal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).BeginInit();
+            this.splitContainerSecondaire.Panel1.SuspendLayout();
+            this.splitContainerSecondaire.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStripGlobal
@@ -59,7 +63,7 @@ namespace AstroTargetSelector
             this.menuStripGlobal.Location = new System.Drawing.Point(0, 0);
             this.menuStripGlobal.Name = "menuStripGlobal";
             this.menuStripGlobal.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStripGlobal.Size = new System.Drawing.Size(711, 28);
+            this.menuStripGlobal.Size = new System.Drawing.Size(1135, 28);
             this.menuStripGlobal.TabIndex = 0;
             this.menuStripGlobal.Text = "menuStripGlobal";
             // 
@@ -69,7 +73,7 @@ namespace AstroTargetSelector
             this.ouvrirLeFichierDeLogToolStripMenuItem,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
-            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(66, 24);
+            this.fichierToolStripMenuItem.Size = new System.Drawing.Size(66, 26);
             this.fichierToolStripMenuItem.Text = "&Fichier";
             // 
             // ouvrirLeFichierDeLogToolStripMenuItem
@@ -91,7 +95,7 @@ namespace AstroTargetSelector
             this.outilsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.optionsToolStripMenuItem});
             this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
-            this.outilsToolStripMenuItem.Size = new System.Drawing.Size(61, 24);
+            this.outilsToolStripMenuItem.Size = new System.Drawing.Size(61, 26);
             this.outilsToolStripMenuItem.Text = "&Outils";
             // 
             // optionsToolStripMenuItem
@@ -105,7 +109,7 @@ namespace AstroTargetSelector
             this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aProposToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(30, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(30, 26);
             this.toolStripMenuItem1.Text = "&?";
             // 
             // aProposToolStripMenuItem
@@ -120,10 +124,10 @@ namespace AstroTargetSelector
             this.statusStripGlobal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelDateObs,
             this.toolStripStatusLabelNomTarget});
-            this.statusStripGlobal.Location = new System.Drawing.Point(0, 334);
+            this.statusStripGlobal.Location = new System.Drawing.Point(0, 660);
             this.statusStripGlobal.Name = "statusStripGlobal";
             this.statusStripGlobal.Padding = new System.Windows.Forms.Padding(1, 0, 12, 0);
-            this.statusStripGlobal.Size = new System.Drawing.Size(711, 26);
+            this.statusStripGlobal.Size = new System.Drawing.Size(1135, 26);
             this.statusStripGlobal.TabIndex = 1;
             this.statusStripGlobal.Text = "statusStripGlobal";
             // 
@@ -139,50 +143,60 @@ namespace AstroTargetSelector
             this.toolStripStatusLabelNomTarget.Size = new System.Drawing.Size(160, 20);
             this.toolStripStatusLabelNomTarget.Text = "Nom objet sélectionné";
             // 
-            // listViewTarget
+            // splitContainerGlobal
             // 
-            this.listViewTarget.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.splitContainerGlobal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.listViewTarget.FullRowSelect = true;
-            this.listViewTarget.HideSelection = false;
-            this.listViewTarget.Location = new System.Drawing.Point(12, 58);
-            this.listViewTarget.MultiSelect = false;
-            this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(687, 273);
-            this.listViewTarget.TabIndex = 2;
-            this.listViewTarget.UseCompatibleStateImageBehavior = false;
-            this.listViewTarget.View = System.Windows.Forms.View.Details;
+            this.splitContainerGlobal.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
+            this.splitContainerGlobal.IsSplitterFixed = true;
+            this.splitContainerGlobal.Location = new System.Drawing.Point(12, 33);
+            this.splitContainerGlobal.Name = "splitContainerGlobal";
+            this.splitContainerGlobal.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
-            // toolBarPrincipale
+            // splitContainerGlobal.Panel2
             // 
-            this.toolBarPrincipale.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolBarPrincipale.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.toolBarPrincipale.Location = new System.Drawing.Point(0, 28);
-            this.toolBarPrincipale.Name = "toolBarPrincipale";
-            this.toolBarPrincipale.Size = new System.Drawing.Size(711, 47);
-            this.toolBarPrincipale.TabIndex = 3;
-            this.toolBarPrincipale.Text = "toolStrip1";
+            this.splitContainerGlobal.Panel2.Controls.Add(this.splitContainerSecondaire);
+            this.splitContainerGlobal.Size = new System.Drawing.Size(1111, 624);
+            this.splitContainerGlobal.SplitterDistance = 80;
+            this.splitContainerGlobal.TabIndex = 0;
             // 
-            // toolStripButton1
+            // splitContainerSecondaire
             // 
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(123, 44);
-            this.toolStripButton1.Text = "toolStripButton1";
-            this.toolStripButton1.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.toolStripButton1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageAboveText;
+            this.splitContainerSecondaire.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainerSecondaire.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
+            this.splitContainerSecondaire.IsSplitterFixed = true;
+            this.splitContainerSecondaire.Location = new System.Drawing.Point(0, 0);
+            this.splitContainerSecondaire.Name = "splitContainerSecondaire";
+            this.splitContainerSecondaire.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainerSecondaire.Panel1
+            // 
+            this.splitContainerSecondaire.Panel1.Controls.Add(this.listView1);
+            this.splitContainerSecondaire.Size = new System.Drawing.Size(1111, 540);
+            this.splitContainerSecondaire.SplitterDistance = 236;
+            this.splitContainerSecondaire.TabIndex = 0;
+            // 
+            // listView1
+            // 
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.FullRowSelect = true;
+            this.listView1.GridLines = true;
+            this.listView1.HideSelection = false;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.MultiSelect = false;
+            this.listView1.Name = "listView1";
+            this.listView1.Size = new System.Drawing.Size(1111, 236);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
             // 
             // MainFenetre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(711, 360);
-            this.Controls.Add(this.toolBarPrincipale);
-            this.Controls.Add(this.listViewTarget);
+            this.ClientSize = new System.Drawing.Size(1135, 686);
+            this.Controls.Add(this.splitContainerGlobal);
             this.Controls.Add(this.statusStripGlobal);
             this.Controls.Add(this.menuStripGlobal);
             this.MainMenuStrip = this.menuStripGlobal;
@@ -193,8 +207,12 @@ namespace AstroTargetSelector
             this.menuStripGlobal.PerformLayout();
             this.statusStripGlobal.ResumeLayout(false);
             this.statusStripGlobal.PerformLayout();
-            this.toolBarPrincipale.ResumeLayout(false);
-            this.toolBarPrincipale.PerformLayout();
+            this.splitContainerGlobal.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).EndInit();
+            this.splitContainerGlobal.ResumeLayout(false);
+            this.splitContainerSecondaire.Panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).EndInit();
+            this.splitContainerSecondaire.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,8 +231,8 @@ namespace AstroTargetSelector
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelDateObs;
         private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabelNomTarget;
         private System.Windows.Forms.ToolStripMenuItem ouvrirLeFichierDeLogToolStripMenuItem;
-        private System.Windows.Forms.ListView listViewTarget;
-        private System.Windows.Forms.ToolStrip toolBarPrincipale;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.SplitContainer splitContainerGlobal;
+        private System.Windows.Forms.SplitContainer splitContainerSecondaire;
+        private System.Windows.Forms.ListView listView1;
     }
 }
