@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AstroTargetSelectorBusiness</name>
+    </assembly>
+    <members>
+        <member name="T:AstroTargetSelectorBusiness.AppObjFactory">
+            <summary>
+            Fabrique d'objets Business (métier) et Logic (applicatif)
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppTarget">
+            <summary>
+            Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
+            <summary>
+            Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.AppTarget">
+            <summary>
+            Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.Targets">
+            <summary>
+            Liste des Targets
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.toolFactory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.targets">
+            <summary>
+            Liste des Targets
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjTarget">
+            <summary>
+            Objet représentant un objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Nom">
+            <summary>
+            Nom de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Type">
+            <summary>
+            Type de l'objet céleste (amas globulaire, nébuleuse planétaire, galaxie spirale, ...)
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Description">
+            <summary>
+            Description de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.RA">
+            <summary>
+            RA : Acsension droite de l'objet céleste
+            <para>Valeur exprimée en "degrés horaires" décimal</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.DEC">
+            <summary>
+            DEC : Déclinaison de l'objet céleste
+            <para>Valeur exprimée en "degrés" décimal</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Magnitude">
+            <summary>
+            Magnitude de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.GrandeurWidth">
+            <summary>
+            Grandeur : Largeur de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.GrandeurHeight">
+            <summary>
+            Grandeur : Hauteur de l'objet céleste
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.toolFactory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjTargetList">
+            <summary>
+            Objet représentant une liste d'objet <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTargetList.ListeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTargetList.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.ObjTargetList.ListeObjTarget"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTargetList.TargetListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjTargetList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjTargetList.ChargementListe">
+            <summary>
+            Permet le chargement de la liste des objets céleste depuis le fichier de configuration
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.listeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.targetListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des objets céleste
+            </summary>
+        </member>
+    </members>
+</doc>

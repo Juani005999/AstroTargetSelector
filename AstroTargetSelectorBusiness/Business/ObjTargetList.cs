@@ -1,19 +1,22 @@
 ﻿using ApplicationTools;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.IO;
 
 namespace AstroTargetSelectorBusiness
 {
     /// <summary>
     /// Objet représentant une liste d'objet <see cref="ObjTarget"/>
     /// </summary>
-    class ObjTargetList
+    public class ObjTargetList
     {
         #region Propriétés
 
         /// <summary>
         /// Liste d'objets <see cref="ObjTarget"/>
         /// </summary>
-        private List<ObjTarget> ListeObjTarget
+        public List<ObjTarget> ListeObjTarget
         {
             get
             {
@@ -31,16 +34,16 @@ namespace AstroTargetSelectorBusiness
         /// Force le rechargement de la liste depuis le fichier de configuration
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
         /// </summary>
-        bool ForceUpdateListe { get; set; }
+        public bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        string ConfigurationFile
+        public string TargetListeFullPathFile
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + configurationFileName;
+                return factory.GetAppContext().UserAppDataPath + "\\" + targetListeFileName;
             }
         }
 
@@ -66,13 +69,60 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         private void ChargementListe()
         {
-            if (ForceUpdateListe)
+            try
             {
-                // Clear de la liste actuelle
-                listeObjTarget.Clear();
+                if (ForceUpdateListe)
+                {
+                    // Trace et Chrono
+                    factory.GetLog().Log($"Rechargement de la liste des targets depuis le fichier de configuration", GetType().Name);
+                    Stopwatch debutFonction = new Stopwatch();
+                    debutFonction.Start();
 
-                // Lecture du fichier de configuration
-                factory.Log($"Fichier de configuration contenant la liste des objets céleste : {ConfigurationFile}", GetType().Name);
+                    // On flush le flag de rechargement forcé
+                    ForceUpdateListe = false;
+
+                    // Clear de la liste actuelle
+                    listeObjTarget.Clear();
+
+                    // TODO : Si le fichier de configuration n'existe pas sur le poste, on le télécharge ?
+
+                    // Lecture du fichier de configuration et ajout dans la liste
+                    factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste : {TargetListeFullPathFile}", GetType().Name);
+                    if (File.Exists(TargetListeFullPathFile))
+                    {
+                        using (var reader = new StreamReader(TargetListeFullPathFile))
+                        {
+                            // On passe la ligne d'en-tête
+                            var lineTitre = reader.ReadLine();
+                            while (!reader.EndOfStream)
+                            {
+                                var line = reader.ReadLine();
+                                var values = line.Split('\t');
+                                listeObjTarget.Add(new ObjTarget(factory)
+                                {
+                                    Nom = values[0],
+                                    Type = values[1],
+                                    Description = values[2],
+                                    RA = Convert.ToDecimal(values[3]),
+                                    DEC = Convert.ToDecimal(values[4]),
+                                    Magnitude = Convert.ToDecimal(values[5]),
+                                    GrandeurWidth = Convert.ToDecimal(values[6]),
+                                    GrandeurHeight = Convert.ToDecimal(values[7])
+                                });
+                            }
+                        }
+                    }
+                    else
+                        factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, AppToolLog.TypeLog.Warning);
+
+                    // Trace
+                    factory.GetLog().Log($"Chargement de {ListeObjTarget.Count} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                }
+            }
+            catch(Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
             }
         }
 
@@ -93,7 +143,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Nom du fichier de configuration contenant la liste des objets céleste
         /// </summary>
-        private const string configurationFileName = "TargetListe.csv";
+        private const string targetListeFileName = "TargetListe.csv";
 
         #endregion
     }

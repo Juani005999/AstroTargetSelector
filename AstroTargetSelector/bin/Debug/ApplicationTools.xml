@@ -1,0 +1,511 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ApplicationTools</name>
+    </assembly>
+    <members>
+        <member name="T:ApplicationTools.AppToolFactory">
+            <summary>
+            Fabrique d'objets
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetLog">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppToolLog"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet Log</returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppContext">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.log">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppToolLog"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appContext">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.BwebConvert">
+            <summary>
+            Classe centralisant l'ensemble des méthodes de conversion de l'application.
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Convertit un dictionnaire de chaînes en une chaîne au format query-string.
+            Exemple : cle1=val1&amp;cle2=val2&amp;cle3=val3...
+            </summary>
+            <remarks>
+            <para>
+            La chaîne retournée ne contient pas le point d'interrogation initial.
+            Par ailleurs, chaque valeur du dictionnaire y est URL-encodée par <see cref="M:System.Web.HttpUtility.UrlEncode(System.String)"/>.
+            </para>
+            <para>Au vu du format de sortie, les caractères '=' et '&amp;' sont interdits dans les clés.
+            La méthode génère une exception si une clé contient l'un de ces deux caractères.</para>
+            </remarks>
+            <param name="d">Dictionnaire de chaîne</param>
+            <returns>Chaîne au format Query-string</returns>
+            <seealso cref="T:System.Collections.Generic.Dictionary`2"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryFromQueryString(System.String)">
+            <summary>
+            Charge un dictionnaire de chaînes à partir d'une chaîne au format query-string.
+            </summary>
+            <remarks>
+            Cette méthode retourne un dictionnaire de données construit à partir d'une chaîne crée
+            préalablement par la méthode <see cref="M:ApplicationTools.BwebConvert.DictionaryToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})"/>.
+            </remarks>
+            <param name="s">Chaîne au format Query-string</param>
+            <returns>Dictionnaire de chaînes</returns>
+            <exception cref="T:System.ArgumentException"/>
+            <seealso cref="M:ApplicationTools.BwebConvert.DictionaryToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryToJson(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Convertit un dictionnaire de chaînes en une chaîne au format JSON.
+            Exemple : {"cle1":"val1", "cle2":"val2", ...}
+            </summary>
+            <remarks>
+            Les caractères double-quote présent dans les valeurs sont echappés.
+            </remarks>
+            <param name="d">Dictionnaire de chaînes</param>
+            <returns>Chaîne au format JSON.</returns>
+            <seealso cref="T:System.Collections.Generic.Dictionary`2"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryToEncodedString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Convertit un dictionnaire de chaînes en une chaîne encodée en Base64-modifié.
+            </summary>
+            <remarks>
+            Cette méthode convertit un dictionnaire de données en une chaîne encodée en Base64-modifié.
+            <para>
+            Cette conversion s'effectue en 2 étapes :
+            <list type="bullet">
+            <item><description>le dictionnaire est transformé en query string par <see cref="M:ApplicationTools.BwebConvert.DictionaryToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})"/></description></item>
+            <item><description>le flux est encodé en Base64-modifié par <see cref="M:System.Web.HttpServerUtility.UrlTokenEncode(System.Byte[])"/></description></item>
+            </list>
+            </para>
+            <para>
+            La méthode <see cref="M:System.Web.HttpServerUtility.UrlTokenEncode(System.Byte[])"/> ne réalise pas un encodage strict en Base64, mais correspond 
+            à une version spécifique qui modifie certains caractères, afin de pouvoir transiter sans problème dans les URLs.
+            </para>
+            </remarks>
+            <param name="d">Dictionnaire de chaînes</param>
+            <returns>Chaîne encodée en Base64-modifié.</returns>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryFromEncodedString(System.String)">
+            <summary>
+            Charge un dictionnaire de chaînes à partir d'une chaîne encodée en Base64-modifié.
+            </summary>
+            <remarks>
+            Cette méthode retourne un dictionnaire de données construit à partir d'une chaîne encodée crée
+            préalablement par la méthode <see cref="M:ApplicationTools.BwebConvert.DictionaryToEncodedString(System.Collections.Generic.Dictionary{System.String,System.String})"/>.
+            </remarks>
+            <param name="s">Chaîne encodée en Base64 (modifié).</param>
+            <returns>Dictionnaire de chaînes</returns>
+            <exception cref="T:System.ArgumentException"/>
+            <seealso cref="M:ApplicationTools.BwebConvert.DictionaryToEncodedString(System.Collections.Generic.Dictionary{System.String,System.String})"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryToEncryptedString(System.Collections.Generic.Dictionary{System.String,System.String})">
+            <summary>
+            Convertit un dictionnaire de chaînes en une chaîne cryptée puis encodée en Base64-modifié.
+            </summary>
+            <remarks>
+            Cette méthode convertit un dictionnaire de données en une chaîne cryptée puis encodée en Base64-modifié.
+            <para>
+            Cette conversion s'effectue en 3 étapes :
+            <list type="bullet">
+            <item><description>le dictionnaire est transformé en query string par <see cref="M:ApplicationTools.BwebConvert.DictionaryToQueryString(System.Collections.Generic.Dictionary{System.String,System.String})"/></description></item>
+            <item><description>le flux est encrypté par <see cref="M:ApplicationTools.BwebConvert.Encrypt(System.Byte[])"/></description></item>
+            <item><description>le flux est encodé en Base64-modifié par <see cref="M:System.Web.HttpServerUtility.UrlTokenEncode(System.Byte[])"/></description></item>
+            </list>
+            </para>
+            <para>Le décryptage devra être effectué par la méthode <see cref="M:ApplicationTools.BwebConvert.DictionaryFromEncryptedString(System.String)"/>.</para>
+            </remarks>
+            <param name="d">Dictionnaire de chaînes</param>
+            <returns>Chaîne encodée en Base64-modifié.</returns>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.DictionaryFromEncryptedString(System.String)">
+            <summary>
+            Charge un dictionnaire de chaînes à partir d'une chaîne encryptée.
+            </summary>
+            <remarks>
+            Cette méthode retourne un dictionnaire de données construit à partir d'une chaîne encryptée crée
+            préalablement par la méthode <see cref="M:ApplicationTools.BwebConvert.DictionaryToEncryptedString(System.Collections.Generic.Dictionary{System.String,System.String})"/>.
+            </remarks>
+            <param name="s">Chaîne encryptée</param>
+            <returns>Dictionnaire de chaînes</returns>
+            <exception cref="T:System.ArgumentException"/>
+            <seealso cref="M:ApplicationTools.BwebConvert.DictionaryToEncryptedString(System.Collections.Generic.Dictionary{System.String,System.String})"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.Serialise(System.Object)">
+            <summary>
+            Sérialisation binaire d'un objet.
+            </summary>
+            <remarks>
+            La méthode se base sur l'objet <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> pour réaliser la sérialisation.
+            Si l'objet passé en paramètre n'est pas sérialisable, la méthode génère une <see cref="T:System.Runtime.Serialization.SerializationException"/>.
+            </remarks>
+            <param name="o">Objet à sérialiser</param>
+            <returns>Tableau d'octets contenant l'objet sérialisé</returns>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.Deserialise(System.Byte[])">
+            <summary>
+            Déserialisation binaire d'un objet.
+            </summary>
+            <remarks>
+            La méthode se base sur l'objet <see cref="T:System.Runtime.Serialization.Formatters.Binary.BinaryFormatter"/> pour réaliser la désérialisation.
+            Si la désérialisation échoue, la méthode génère une <see cref="T:System.Runtime.Serialization.SerializationException"/>.
+            </remarks>
+            <param name="b">Tableau d'octets contenant l'objet sérialisé</param>
+            <returns>Objet désérialisé</returns>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.Encrypt(System.Byte[])">
+            <summary>
+            Encryptage d'un flux d'octet.
+            </summary>
+            <remarks>
+            Cette méthode réalise un encryptage symétrique un flux d'octet en AES.
+            <para>Le cryptage est effectué par un objet de type <see cref="T:System.Security.Cryptography.AesManaged"/>.</para>
+            <para>La clé de cryptage est retournée par la méthode <see cref="M:ApplicationTools.BwebConvert.GetAesKey"/>.</para>
+            <para>Le décryptage doit être effectué par la méthode <see cref="M:ApplicationTools.BwebConvert.Decrypt(System.Byte[])"/>.</para>
+            </remarks>
+            <param name="buffer">Données à crypter</param>
+            <returns>Données cryptées</returns>
+            <seealso cref="T:System.Security.Cryptography.AesManaged"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.Decrypt(System.Byte[])">
+            <summary>
+            Décryptage d'un flux d'octet.
+            </summary>
+            <remarks>
+            Cette méthode réalise un décryptage symétrique un flux d'octet en AES.
+            <para>Le décryptage est effectué par un objet de type <see cref="T:System.Security.Cryptography.AesManaged"/>.</para>
+            <para>La clé de cryptage est retournée par la méthode <see cref="M:ApplicationTools.BwebConvert.GetAesKey"/>.</para>
+            <para>Le cryptage a été effectué préalablement par la méthode <see cref="M:ApplicationTools.BwebConvert.Encrypt(System.Byte[])"/>.</para>
+            </remarks>
+            <param name="buffer">Données à décrypter</param>
+            <returns>Données décryptées</returns>
+            <seealso cref="T:System.Security.Cryptography.AesManaged"/>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.GetAesKey">
+            <summary>
+            Retourne la clé de cryptage utilisée par les méthodes <see cref="M:ApplicationTools.BwebConvert.Encrypt(System.Byte[])"/> et <see cref="M:ApplicationTools.BwebConvert.Decrypt(System.Byte[])"/>.
+            </summary>
+            <returns>Clé de cryptage</returns>
+        </member>
+        <member name="M:ApplicationTools.BwebConvert.GetAesIV">
+            <summary>
+            Retourne le vecteur d'initialisation utilisé par les méthodes <see cref="M:ApplicationTools.BwebConvert.Encrypt(System.Byte[])"/> et <see cref="M:ApplicationTools.BwebConvert.Decrypt(System.Byte[])"/>.
+            </summary>
+            <returns>Vecteur d'initialisation</returns>
+        </member>
+        <member name="T:ApplicationTools.AppContext">
+            <summary>
+            Objet permettant d'accéder au contexte d'éxecution de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ProductName">
+            <summary>
+            ProductName de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ProductVersion">
+            <summary>
+            ProductVersion de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ExecutablePath">
+            <summary>
+            ExecutablePath (Path + Nom du fichier executable) de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.StartupPath">
+            <summary>
+            StartupPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.UserAppDataPath">
+            <summary>
+            UserAppDataPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.LogFileName">
+            <summary>
+            Nom du fichier de log de l'application en cours
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppContext.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppContext.toolFactory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.TimeSpanExtensionMethods">
+            <summary>
+            Classe d'extension dédiée au TimeSpan
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.TimeSpanExtensionMethods.ToReadableString(System.TimeSpan)">
+            <summary>
+            Renvoi le TimeSpan sous la forme d'une chaîne formatée
+            </summary>
+            <param name="span"></param>
+            <returns>Chaîne formatée</returns>
+        </member>
+        <member name="T:ApplicationTools.DateTimeExtensionMethods">
+            <summary>
+            Classe d'extension dédiée au DateTime
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.DateTimeExtensionMethods.GetElapsed(System.DateTime)">
+            <summary>
+            Retourne le temps écoulé depuis <paramref name="d"/> en millisecondes.
+            </summary>
+            <remarks>
+            La valeur est retournée sous la forme d'un Int32 par commodité.
+            Une précision supplémentaire n'est pas nécessaire dans notre contexte.
+            </remarks>
+            <param name="d">DateTime de référence</param>
+            <returns>Temps écoulé en millisecondes.</returns>
+        </member>
+        <member name="T:ApplicationTools.XmlNodeExtensionMethods">
+            <summary>
+            Classe d'extension dédiée au XmlNode
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.XmlNodeExtensionMethods.GetNodeValueOrEmpty(System.Xml.XmlNode,System.String)">
+            <summary>
+            Retourne la valeur (propriété <see cref="P:System.Xml.XmlNode.InnerText"/>) contenue dans le premier sous-noeud du noeud courant correspondant au chemin XPATH fourni.
+            Si aucun noeud ne correspond, une chaîne vide est retournée.
+            </summary>
+            <param name="node">Noeud sur lequel il faut faire la recherche</param>
+            <param name="xpath">Chemin XPATH du noeud recherché</param>
+            <returns>Valeur du sous-noeud ou chaine vide</returns>
+        </member>
+        <member name="M:ApplicationTools.XmlNodeExtensionMethods.GetAttributeValueOrEmpty(System.Xml.XmlNode,System.String)">
+            <summary>
+            Retourne la valeur de l'attribut du noeud fourni.
+            </summary>
+            <param name="node">Noeud sur lequel il faut faire la recherche</param>
+            <param name="attributeName">Nom de l'attribut</param>
+            <returns>Valeur de l'attribut ou chaine vide</returns>
+        </member>
+        <member name="T:ApplicationTools.AppToolLog">
+            <summary>
+            Objet Log
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.AppToolLog.TypeLog">
+            <summary>
+            Type de trace
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolLog.TypeLog.Infos">
+            <summary>
+            Trace de type Infos
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolLog.TypeLog.Warning">
+            <summary>
+            Trace de type Warning
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolLog.TypeLog.Error">
+            <summary>
+            Trace de type Error
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolLog.TypeLog.Fatal">
+            <summary>
+            Trace de type Fatal
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppToolLog.FullPathName">
+            <summary>
+            Path complet et Nom du fichier de log
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppToolLog.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppToolLog.Initialise">
+            <summary>
+            Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppToolLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.AppToolLog.TypeLog,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Trace en console et dans le fichier de log
+            </summary>
+            <param name="message">Trace</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="millisecond">Durée en ms</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppToolLog.TypeLog"/></param>
+            <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="M:ApplicationTools.AppToolLog.LogException(System.Exception,System.String,ApplicationTools.AppToolLog.TypeLog,System.String,System.String,System.Int32)">
+            <summary>
+            Trace une Exception en console et dans le fichier de log
+            </summary>
+            <param name="ex">Exception</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppToolLog.TypeLog"/></param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="M:ApplicationTools.AppToolLog.InitialiseFichierLog">
+            <summary>
+            Permet la création des entêtes de colonnes dans le fichier de log
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolLog.toolFactory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.ListViewColumnSorter">
+            <summary>
+            This class is an implementation of the 'IComparer' interface.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListViewColumnSorter.SortColumn">
+            <summary>
+            Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListViewColumnSorter.Order">
+            <summary>
+            Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ListViewColumnSorter.#ctor">
+            <summary>
+            Class constructor.  Initializes various elements
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ListViewColumnSorter.Compare(System.Object,System.Object)">
+            <summary>
+            This method is inherited from the IComparer interface.  It compares the two objects passed using a case insensitive comparison.
+            </summary>
+            <param name="x">First object to be compared</param>
+            <param name="y">Second object to be compared</param>
+            <returns>The result of the comparison. "0" if equal, negative if 'x' is less than 'y' and positive if 'x' is greater than 'y'</returns>
+        </member>
+        <member name="F:ApplicationTools.ListViewColumnSorter.ColumnToSort">
+            <summary>
+            Specifies the column to be sorted
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.ListViewColumnSorter.OrderOfSort">
+            <summary>
+            Specifies the order in which to sort (i.e. 'Ascending').
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.ListViewColumnSorter.ObjectCompare">
+            <summary>
+            Case insensitive comparer object
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.ListViewExtensions">
+            <summary>
+            Classe d'extensions pour ListView
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.ComboBoxItems">
+            <summary>
+            Objet Collection d'éléments <see cref="T:ApplicationTools.ComboBoxItem"/>
+            </summary>
+            <example>
+                ComboBoxItems comboBoxItems = new ComboboxItems();
+                ComboBoxItem itemTous = comboBoxItems.NewItem("Tous", "-1");
+                comboBoxItems.Rows.Add(itemTous);
+                ListeTypeProjet.DisplayMember = "Text";
+                ListeTypeProjet.ValueMember = "Value";
+                ListeTypeProjet.DataSource = comboBoxItems;
+            </example>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.#ctor">
+            <summary>
+            Constructeur de base
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.NewItem">
+            <summary>
+            Méthode permettant la création d'un nouvel élément à la collection
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.NewItem(System.String,System.String)">
+            <summary>
+            Méthode permettant la création d'un nouvel élément à la collection
+            </summary>
+            <param name="text">Texte</param>
+            <param name="value">Valeur</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.GetRowType">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.NewRowFromBuilder(System.Data.DataRowBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.ComboBoxItem">
+            <summary>
+            Objet Elément de liste de ComboBox <see cref="T:ApplicationTools.ComboBoxItems"/>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItem.#ctor(System.Data.DataRowBuilder)">
+            <summary>
+            Constructeur de base
+            </summary>
+            <param name="builder"></param>
+        </member>
+        <member name="P:ApplicationTools.ComboBoxItem.Text">
+            <summary>
+            Texte de l'élément de liste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ComboBoxItem.Value">
+            <summary>
+            Valeur de l'élément de liste
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItem.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

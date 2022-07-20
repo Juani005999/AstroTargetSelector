@@ -91,16 +91,8 @@ namespace ApplicationTools
                 InitialiseFichierLog();
 
                 // Trace du Nom de l'application appelante et du répertoire de démarrage (fichier de log)
-                Log(TypeLog.Infos,
-                    $"Initialisation de l'objet de log",
-                    debutInitialisation.ElapsedMilliseconds,
-                    System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
-                    GetType().Name);
-                Log(TypeLog.Infos,
-                    $"Log FullPathName : {FullPathName}",
-                    null,
-                    System.Reflection.Assembly.GetExecutingAssembly().GetName().Name,
-                    GetType().Name);
+                Log($"Initialisation de l'objet de log", GetType().Name);
+                Log($"Log FullPathName : {FullPathName}", GetType().Name);
             }
             catch (Exception err)
             {
@@ -111,13 +103,19 @@ namespace ApplicationTools
         /// <summary>
         /// Trace en console et dans le fichier de log
         /// </summary>
-        /// <param name="typeLog"></param>
-        /// <param name="message"></param>
-        public void Log(TypeLog typeLog,
-                        string message,
-                        double? millisecond = null,
-                        string callerModuleName = "",
+        /// <param name="message">Trace</param>
+        /// <param name="callerClassName">Classe appelante</param>
+        /// <param name="millisecond">Durée en ms</param>
+        /// <param name="typeLog">Type de trace <see cref="TypeLog"/></param>
+        /// <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
+        /// <param name="callerMemberName">Fonction appelante</param>
+        /// <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+        /// <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        public void Log(string message,
                         string callerClassName = "",
+                        double? millisecond = null,
+                        TypeLog typeLog = TypeLog.Infos,
+                        string callerModuleName = "",
                         [CallerMemberName] string callerMemberName = "",
                         [CallerFilePath] string callerFilePath = "",
                         [CallerLineNumber] int callerLineNumber = 0)
@@ -131,7 +129,8 @@ namespace ApplicationTools
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
                 string chaineFinale = toolFactory.GetAppContext().ProductName;
-                chaineFinale += ";" + callerModuleName;
+                chaineFinale += ";";
+                chaineFinale += string.IsNullOrEmpty(callerModuleName) ? System.Reflection.Assembly.GetCallingAssembly().GetName().Name : callerModuleName;
                 chaineFinale += ";" + callerClassName;
 
                 chaineFinale += ";" + callerMemberName;
@@ -152,6 +151,33 @@ namespace ApplicationTools
                 fichierLog.WriteLine(chaineFinale);
                 fichierLog.Close();
                 Console.WriteLine("Trace dans Fichier de log en " + debutFonction.ElapsedMilliseconds + " ms");
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine("Une erreur est survenue dans l'objet de log : " + err.Message);
+            }
+        }
+
+        /// <summary>
+        /// Trace une Exception en console et dans le fichier de log
+        /// </summary>
+        /// <param name="ex">Exception</param>
+        /// <param name="callerClassName">Classe appelante</param>
+        /// <param name="typeLog">Type de trace <see cref="TypeLog"/></param>
+        /// <param name="callerMemberName">Fonction appelante</param>
+        /// <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+        /// <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        public void LogException(Exception ex,
+                        string callerClassName = "",
+                        TypeLog typeLog = TypeLog.Error,
+                        [CallerMemberName] string callerMemberName = "",
+                        [CallerFilePath] string callerFilePath = "",
+                        [CallerLineNumber] int callerLineNumber = 0)
+        {
+            try
+            {
+                // Appel de la fonction de base
+                Log(ex.Message, callerClassName, null, typeLog, System.Reflection.Assembly.GetCallingAssembly().GetName().Name, callerMemberName, callerFilePath, callerLineNumber);
             }
             catch (Exception err)
             {

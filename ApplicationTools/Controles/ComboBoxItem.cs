@@ -66,11 +66,20 @@ namespace ApplicationTools
 
         #region Méthode protected
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         protected override Type GetRowType()
         {
             return typeof(ComboBoxItem);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="builder"></param>
+        /// <returns></returns>
         protected override DataRow NewRowFromBuilder(DataRowBuilder builder)
         {
             return new ComboBoxItem(builder);
@@ -133,6 +142,10 @@ namespace ApplicationTools
 
         #region Méthode Override
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return Text;

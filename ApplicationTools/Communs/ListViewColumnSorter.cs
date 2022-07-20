@@ -7,6 +7,8 @@ using System.Windows.Forms;
 
 namespace ApplicationTools
 {
+#pragma warning disable
+
     /// <summary>
     /// This class is an implementation of the 'IComparer' interface.
     /// </summary>
@@ -238,4 +240,5 @@ namespace ApplicationTools
             }
         }
     }
+#pragma warning enable
 }

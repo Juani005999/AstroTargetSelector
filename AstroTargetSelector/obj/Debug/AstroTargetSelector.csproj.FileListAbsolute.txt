@@ -30,3 +30,6 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.exe
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.MainFenetre.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelector.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\ApplicationTools.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelectorBusiness.xml

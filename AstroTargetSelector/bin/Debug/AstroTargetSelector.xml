@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AstroTargetSelector</name>
+    </assembly>
+    <members>
+        <member name="T:AstroTargetSelector.MainFenetre">
+            <summary>
+            Fenêtre principale de l'application
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationFormulaire">
+            <summary>
+            Initialisation du Formulaire principal
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationListeTarget">
+            <summary>
+            Permet l'initialisation de la liste des Targets
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.RechargeListeTarget">
+            <summary>
+             Permet la mise à jour de la liste avec la collection Targets
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.factory">
+            <summary>
+            Instance de la fabrique d'objets
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.OnLoad(System.EventArgs)">
+            <summary>
+            Evénement de chargement de la fenêtre
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelector.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.UneErreurEstSurvenue">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue :.
+            </summary>
+        </member>
+    </members>
+</doc>

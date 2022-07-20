@@ -5,7 +5,7 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant un objet céleste
     /// </summary>
-    class ObjTarget
+    public class ObjTarget
     {
         #region Propriétés
 
@@ -20,14 +20,36 @@ namespace AstroTargetSelectorBusiness
         public string Type { get; set; }
 
         /// <summary>
-        /// RA : Acsension droite de l'objet céleste
+        /// Description de l'objet céleste
         /// </summary>
-        public DateTime RA { get; set; }
+        public string Description { get; set; }
+
+        /// <summary>
+        /// RA : Acsension droite de l'objet céleste
+        /// <para>Valeur exprimée en "degrés horaires" décimal</para>
+        /// </summary>
+        public decimal RA { get; set; }
 
         /// <summary>
         /// DEC : Déclinaison de l'objet céleste
+        /// <para>Valeur exprimée en "degrés" décimal</para>
         /// </summary>
-        public double DEC { get; set; }
+        public decimal DEC { get; set; }
+
+        /// <summary>
+        /// Magnitude de l'objet céleste
+        /// </summary>
+        public decimal Magnitude { get; set; }
+
+        /// <summary>
+        /// Grandeur : Largeur de l'objet céleste
+        /// </summary>
+        public decimal GrandeurWidth { get; set; }
+
+        /// <summary>
+        /// Grandeur : Hauteur de l'objet céleste
+        /// </summary>
+        public decimal GrandeurHeight { get; set; }
 
         #endregion
 
