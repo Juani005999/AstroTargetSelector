@@ -46,5 +46,29 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["LongitudeObs"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string NomCapteur {
+            get {
+                return ((string)(this["NomCapteur"]));
+            }
+            set {
+                this["NomCapteur"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LargeurCapteur {
+            get {
+                return ((string)(this["LargeurCapteur"]));
+            }
+            set {
+                this["LargeurCapteur"] = value;
+            }
+        }
     }
 }

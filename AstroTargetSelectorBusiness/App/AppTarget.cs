@@ -1,8 +1,8 @@
-﻿using AstroTargetSelectorBusiness.Properties;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using AstroTargetSelectorBusiness.Properties;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -82,7 +82,7 @@ namespace AstroTargetSelectorBusiness
         {
             if (string.IsNullOrEmpty(nomTarget))
                 return null;
-            return Targets.ListeObjTarget.Where(t => t.Nom == nomTarget).ToList()[0];
+            return Targets.ListeObjTarget.Where(t => t.Nom == nomTarget).FirstOrDefault();
         }
 
         #endregion

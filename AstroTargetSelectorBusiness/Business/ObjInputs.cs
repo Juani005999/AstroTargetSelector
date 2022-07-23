@@ -23,9 +23,9 @@ namespace AstroTargetSelectorBusiness
         public Coordinates LieuObservation { get; set; }
 
         /// <summary>
-        /// Largeur du capteur
+        /// Capteur
         /// </summary>
-        public decimal LargeurCapteur { get; set; }
+        public ObjCapteur Capteur { get; set; }
 
         /// <summary>
         /// Bougé max.
@@ -76,6 +76,24 @@ namespace AstroTargetSelectorBusiness
             LieuObservation = factory.GetCoordinates(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
                                                     Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
             factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
+
+            // Capteur : On charge depuis les settings. Si non présent, on positionne IMX533 / 4096px
+            if (string.IsNullOrEmpty(Settings.Default.NomCapteur) || string.IsNullOrEmpty(Settings.Default.LargeurCapteur))
+            {
+                Settings.Default.NomCapteur = "IMX533";
+                Settings.Default.LargeurCapteur = "4096";
+                Settings.Default.Save();
+                factory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
+            }
+            Capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
+                                                   Convert.ToDecimal(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
+            factory.GetLog().Log($"Capteur : {Capteur.Nom} / {Capteur.Largeur.ToString(CultureInfo.InvariantCulture)} px", GetType().Name);
+
+            // Zones à exclure
+
+            // Bougé max
+            BougeMax = 1;
+
         }
 
         #endregion

@@ -26,6 +26,12 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppCapteur">
+            <summary>
+            Renvoi l'objet applicatif permettant d'accéder à la collection des Capteurs
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
             <summary>
             Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -34,6 +40,46 @@
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appInputs">
             <summary>
             Objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appCapteur">
+            <summary>
+            Objet applicatif permettant d'accéder à la collection des Capteurs
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.AppCapteur">
+            <summary>
+            Objet applicatif permettant d'accéder à la collection des Capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppCapteur.Capteurs">
+            <summary>
+            Liste des Capteurs
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppCapteur.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppCapteur.GetCapteur(System.String,System.Decimal)">
+            <summary>
+            Renvoi le capteur <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/> correspondant au nom passé en paramètre
+            <para>Si le capteur n'est pas présent dans la liste, il est crée et ajouté dans la liste des capteurs</para>
+            </summary>
+            <param name="nomCapteur">Nom du Capteur recherché</param>
+            <param name="largeurCapteur">Largeur en pixel du Capteur</param>
+            <returns><see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>. Null si nomCapteur est vide ou si largeurCapteur est égal à 0.</returns>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppCapteur.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppCapteur.capteurs">
+            <summary>
+            Liste des Capteurs
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.AppInputs">
@@ -51,6 +97,12 @@
             <summary>
             Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
             <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.CapteurFormatedString">
+            <summary>
+            Renvoi le capteur sous la forme d'une chaîne de caractères formatée (Nom - Largeur px)
+            <para>XXXX px</para>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.AppInputs.ToolTipInfosTexte">
@@ -120,6 +172,77 @@
             Liste distinctes des différents type d'objet céleste
             </summary>
         </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjCapteur">
+            <summary>
+            Objet représentant un capteur
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteur.Nom">
+            <summary>
+            Nom du Capteur
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteur.Largeur">
+            <summary>
+            Largeur en pixel
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteur.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjCapteur.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjCapteurList">
+            <summary>
+            Objet représentant une liste d'objet <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.ListeObjCapteur">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.ObjCapteurList.ListeObjCapteur"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.CapteurListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteurList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteurList.ChargementListe">
+            <summary>
+            Permet le chargement de la liste des objets céleste depuis le fichier de configuration
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.listeObjCapteur">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.capteurListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des capteurs
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.ObjInputs">
             <summary>
             Objet représentant toutes les données nécessaires à l'application des règles applicatives
@@ -135,9 +258,9 @@
             Coordonnées (Longitude et Latitude) du lieu d'observation
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LargeurCapteur">
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.Capteur">
             <summary>
-            Largeur du capteur
+            Capteur
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.BougeMax">
@@ -212,7 +335,7 @@
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjTarget.toolFactory">
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.factory">
             <summary>
             Instance de la fabrique d'objet métier
             </summary>

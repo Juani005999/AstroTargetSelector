@@ -58,9 +58,9 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjTarget(AppObjFactory toolFactory)
+        internal ObjTarget(AppObjFactory factory)
         {
-            this.toolFactory = toolFactory;
+            this.factory = factory;
         }
 
         #endregion
@@ -70,7 +70,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory toolFactory = null;
+        private readonly AppObjFactory factory = null;
 
         #endregion
     }

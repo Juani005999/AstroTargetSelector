@@ -7,44 +7,44 @@ using ApplicationTools;
 namespace AstroTargetSelectorBusiness
 {
     /// <summary>
-    /// Objet représentant une liste d'objet <see cref="ObjTarget"/>
+    /// Objet représentant une liste d'objet <see cref="ObjCapteur"/>
     /// </summary>
-    public class ObjTargetList
+    public class ObjCapteurList
     {
         #region Propriétés
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjTarget"/>
+        /// Liste d'objets <see cref="ObjCapteur"/>
         /// </summary>
-        public List<ObjTarget> ListeObjTarget
+        public List<ObjCapteur> ListeObjCapteur
         {
             get
             {
-                if (listeObjTarget == null)
+                if (listeObjCapteur == null)
                 {
-                    listeObjTarget = new List<ObjTarget>();
+                    listeObjCapteur = new List<ObjCapteur>();
                     ForceUpdateListe = true;
                 }
                 if (ForceUpdateListe)
                     ChargementListe();
-                return listeObjTarget;
+                return listeObjCapteur;
             }
         }
 
         /// <summary>
         /// Force le rechargement de la liste depuis le fichier de configuration
-        /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
+        /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjCapteur"/></para>
         /// </summary>
         public bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        public string TargetListeFullPathFile
+        public string CapteurListeFullPathFile
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + targetListeFileName;
+                return factory.GetAppContext().UserAppDataPath + "\\" + capteurListeFileName;
             }
         }
 
@@ -55,7 +55,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjTargetList(AppObjFactory factory)
+        internal ObjCapteurList(AppObjFactory factory)
         {
             this.factory = factory;
             ForceUpdateListe = false;
@@ -73,7 +73,7 @@ namespace AstroTargetSelectorBusiness
             try
             {
                 // Trace et Chrono
-                factory.GetLog().Log($"Rechargement de la liste des targets depuis le fichier de configuration", GetType().Name);
+                factory.GetLog().Log($"Rechargement de la liste des capteurs depuis le fichier de configuration", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
@@ -81,15 +81,15 @@ namespace AstroTargetSelectorBusiness
                 ForceUpdateListe = false;
 
                 // Clear de la liste actuelle
-                listeObjTarget.Clear();
+                listeObjCapteur.Clear();
 
                 // TODO : Si le fichier de configuration n'existe pas sur le poste, on le télécharge ?
 
                 // Lecture du fichier de configuration et ajout dans la liste
-                factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste : {TargetListeFullPathFile}", GetType().Name);
-                if (File.Exists(TargetListeFullPathFile))
+                factory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs : {CapteurListeFullPathFile}", GetType().Name);
+                if (File.Exists(CapteurListeFullPathFile))
                 {
-                    using (var reader = new StreamReader(TargetListeFullPathFile))
+                    using (var reader = new StreamReader(CapteurListeFullPathFile))
                     {
                         // On passe la ligne d'en-tête
                         var lineTitre = reader.ReadLine();
@@ -97,25 +97,19 @@ namespace AstroTargetSelectorBusiness
                         {
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
-                            listeObjTarget.Add(new ObjTarget(factory)
+                            listeObjCapteur.Add(new ObjCapteur(factory)
                             {
                                 Nom = values[0],
-                                Type = values[1],
-                                Description = values[2],
-                                RA = Convert.ToDecimal(values[3]),
-                                DEC = Convert.ToDecimal(values[4]),
-                                Magnitude = Convert.ToDecimal(values[5]),
-                                GrandeurWidth = Convert.ToDecimal(values[6]),
-                                GrandeurHeight = Convert.ToDecimal(values[7])
+                                Largeur = Convert.ToDecimal(values[1])
                             });
                         }
                     }
                 }
                 else
-                    factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, AppLog.TypeLog.Warning);
+                    factory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs manquant. Aucun capteur chargé", GetType().Name, null, AppLog.TypeLog.Warning);
 
                 // Trace
-                factory.GetLog().Log($"Chargement de {listeObjTarget.Count} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                factory.GetLog().Log($"Chargement de {listeObjCapteur.Count} capteurs en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
             catch (Exception err)
             {
@@ -134,14 +128,14 @@ namespace AstroTargetSelectorBusiness
         private readonly AppObjFactory factory = null;
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjTarget"/>
+        /// Liste d'objets <see cref="ObjCapteur"/>
         /// </summary>
-        private List<ObjTarget> listeObjTarget = null;
+        private List<ObjCapteur> listeObjCapteur = null;
 
         /// <summary>
-        /// Nom du fichier de configuration contenant la liste des objets céleste
+        /// Nom du fichier de configuration contenant la liste des capteurs
         /// </summary>
-        private const string targetListeFileName = "TargetListe.csv";
+        private const string capteurListeFileName = "CapteurListe.csv";
 
         #endregion
     }
