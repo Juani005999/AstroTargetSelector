@@ -39,6 +39,11 @@
             Permet le chargement des Inputs
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.UpdateViewPanelInfo">
+            <summary>
+            Mise à jour du panneau d'informations de l'objet céleste en cours
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
             Instance de la fabrique d'objets

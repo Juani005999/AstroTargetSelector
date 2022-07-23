@@ -71,6 +71,22 @@ namespace AstroTargetSelectorBusiness
 
         #endregion
 
+        #region Méthodes
+
+        /// <summary>
+        /// Renvoi l'Objet céleste <see cref="ObjTarget>"/> correspondant au nom passé en paralètre
+        /// </summary>
+        /// <param name="nomTarget">Nom de la target recherchée</param>
+        /// <returns>null si non trouvé ou si nomTarget est vide. <see cref="ObjTarget"/></returns>
+        public ObjTarget GetTarget(string nomTarget)
+        {
+            if (string.IsNullOrEmpty(nomTarget))
+                return null;
+            return Targets.ListeObjTarget.Where(t => t.Nom == nomTarget).ToList()[0];
+        }
+
+        #endregion
+
         #region Champs
 
         /// <summary>

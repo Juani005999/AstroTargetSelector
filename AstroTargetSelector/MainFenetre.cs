@@ -119,6 +119,7 @@ namespace AstroTargetSelector
                 // Trace
                 factory.GetLog().Log("Chargement de la liste des targets", GetType().Name);
 
+                // Clear de la liste et parcours de la liste des Targets pour ajout
                 listViewTarget.Items.Clear();
                 foreach (ObjTarget target in factory.GetAppTarget().Targets.ListeObjTarget)
                 {
@@ -198,9 +199,33 @@ namespace AstroTargetSelector
             toolTipInfoParametre.SetToolTip(labelInputsPlusInfos, factory.GetAppInputs().ToolTipInfosTexte);
         }
 
+        /// <summary>
+        /// Mise à jour du panneau d'informations de l'objet céleste en cours
+        /// </summary>
         private void UpdateViewPanelInfo()
         {
-            splitContainerSecondaire.Panel2Collapsed = listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0;
+            // Trace et Chrono
+            factory.GetLog().Log($"Rechargement du Panneau d'informations sur l'objet céleste sélectionné", GetType().Name);
+            Stopwatch debutFonction = new Stopwatch();
+            debutFonction.Start();
+            
+            // On masque le panneau si aucun élément sélectionné dans la liste
+            if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
+                splitContainerSecondaire.Panel2Collapsed = true;
+            else
+            {
+                splitContainerSecondaire.Panel2Collapsed = false;
+
+                // Affichage des informations de l'objet céleste
+                ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[2].Text);
+                if (target != null)
+                {
+                    textBoxInfoPanelNom.Text = target.Nom;
+
+                    // Trace
+                    factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom}  en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                }
+            }
         }
 
         #endregion

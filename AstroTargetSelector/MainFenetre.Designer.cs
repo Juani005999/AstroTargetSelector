@@ -30,18 +30,18 @@ namespace AstroTargetSelector
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint10 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.833333333336D, 52D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint11 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.84375D, 55D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint12 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.854166666664D, 65D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint13 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.864583333336D, 72D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint14 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.875D, 71D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint15 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.885416666664D, 68D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint16 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.895833333336D, 67D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint17 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.90625D, 65D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint18 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.916666666664D, 62D);
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.833333333336D, 52D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.84375D, 55D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.854166666664D, 65D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.864583333336D, 72D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint5 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.875D, 71D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint6 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.885416666664D, 68D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint7 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.895833333336D, 67D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint8 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.90625D, 65D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint9 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(44762.916666666664D, 62D);
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ouvrirLeFichierDeLogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -85,7 +85,7 @@ namespace AstroTargetSelector
             this.label15 = new System.Windows.Forms.Label();
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelNom = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
@@ -457,7 +457,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label15);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.textBox3);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label14);
-            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBox2);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelNom);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label11);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
@@ -582,13 +582,13 @@ namespace AstroTargetSelector
             this.label14.Text = "Type";
             this.label14.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBox2
+            // textBoxInfoPanelNom
             // 
-            this.textBox2.Location = new System.Drawing.Point(88, 20);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ReadOnly = true;
-            this.textBox2.Size = new System.Drawing.Size(171, 20);
-            this.textBox2.TabIndex = 10;
+            this.textBoxInfoPanelNom.Location = new System.Drawing.Point(88, 20);
+            this.textBoxInfoPanelNom.Name = "textBoxInfoPanelNom";
+            this.textBoxInfoPanelNom.ReadOnly = true;
+            this.textBoxInfoPanelNom.Size = new System.Drawing.Size(171, 20);
+            this.textBoxInfoPanelNom.TabIndex = 10;
             // 
             // label11
             // 
@@ -614,41 +614,41 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea2.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.chartSliceListe.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chartSliceListe.Legends.Add(legend1);
             this.chartSliceListe.Location = new System.Drawing.Point(2, 51);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
-            series2.ChartArea = "ChartArea1";
-            series2.CustomProperties = "LabelStyle=Bottom, DrawingStyle=LightToDark";
-            series2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
-            series2.IsValueShownAsLabel = true;
-            series2.IsVisibleInLegend = false;
-            series2.Legend = "Legend1";
-            series2.LegendText = "Test Légende";
-            series2.Name = "SeriesTest";
-            dataPoint10.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataPoint11.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
-            dataPoint12.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataPoint13.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataPoint14.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataPoint15.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataPoint16.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataPoint17.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            dataPoint18.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
-            series2.Points.Add(dataPoint10);
-            series2.Points.Add(dataPoint11);
-            series2.Points.Add(dataPoint12);
-            series2.Points.Add(dataPoint13);
-            series2.Points.Add(dataPoint14);
-            series2.Points.Add(dataPoint15);
-            series2.Points.Add(dataPoint16);
-            series2.Points.Add(dataPoint17);
-            series2.Points.Add(dataPoint18);
-            series2.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
-            this.chartSliceListe.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.CustomProperties = "LabelStyle=Bottom, DrawingStyle=LightToDark";
+            series1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8F, System.Drawing.FontStyle.Bold);
+            series1.IsValueShownAsLabel = true;
+            series1.IsVisibleInLegend = false;
+            series1.Legend = "Legend1";
+            series1.LegendText = "Test Légende";
+            series1.Name = "SeriesTest";
+            dataPoint1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataPoint2.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
+            dataPoint3.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataPoint4.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataPoint5.Color = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataPoint6.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataPoint7.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataPoint8.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            dataPoint9.Color = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(192)))), ((int)(((byte)(128)))));
+            series1.Points.Add(dataPoint1);
+            series1.Points.Add(dataPoint2);
+            series1.Points.Add(dataPoint3);
+            series1.Points.Add(dataPoint4);
+            series1.Points.Add(dataPoint5);
+            series1.Points.Add(dataPoint6);
+            series1.Points.Add(dataPoint7);
+            series1.Points.Add(dataPoint8);
+            series1.Points.Add(dataPoint9);
+            series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Time;
+            this.chartSliceListe.Series.Add(series1);
             this.chartSliceListe.Size = new System.Drawing.Size(668, 188);
             this.chartSliceListe.TabIndex = 0;
             this.chartSliceListe.Text = "chart1";
@@ -760,7 +760,7 @@ namespace AstroTargetSelector
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBoxInfoPanelNom;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label16;

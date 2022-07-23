@@ -98,6 +98,13 @@
             Constructeur par défaut
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTarget.GetTarget(System.String)">
+            <summary>
+            Renvoi l'Objet céleste <see cref="!:ObjTarget>"/> correspondant au nom passé en paralètre
+            </summary>
+            <param name="nomTarget">Nom de la target recherchée</param>
+            <returns>null si non trouvé ou si nomTarget est vide. <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/></returns>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.factory">
             <summary>
             Instance de la fabrique d'objet métier
