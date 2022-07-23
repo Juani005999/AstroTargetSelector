@@ -47,6 +47,12 @@
             <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.LieuObservation">
+            <summary>
+            Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
+            <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -98,14 +104,9 @@
             Date et Heure de l'observation
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LatitudeLieu">
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LieuObservation">
             <summary>
-            Latitude du lieu d'observation
-            </summary>
-        </member>
-        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LongitudeLieu">
-            <summary>
-            Latitude du lieu d'observation
+            Coordonnées (Longitude et Latitude) du lieu d'observation
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.LargeurCapteur">
@@ -123,7 +124,12 @@
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.toolFactory">
+        <member name="M:AstroTargetSelectorBusiness.ObjInputs.SetDefaultValue">
+            <summary>
+            Positionne les valeurs par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.factory">
             <summary>
             Instance de la fabrique d'objet métier
             </summary>

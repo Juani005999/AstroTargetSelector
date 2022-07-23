@@ -67,7 +67,7 @@ namespace AstroTargetSelector
             this.label9 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.lblLongitude = new System.Windows.Forms.Label();
+            this.lblLieuObservation = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -228,7 +228,7 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.Panel1.Controls.Add(this.label9);
             this.splitContainerGlobal.Panel1.Controls.Add(this.label6);
             this.splitContainerGlobal.Panel1.Controls.Add(this.label3);
-            this.splitContainerGlobal.Panel1.Controls.Add(this.lblLongitude);
+            this.splitContainerGlobal.Panel1.Controls.Add(this.lblLieuObservation);
             this.splitContainerGlobal.Panel1.Controls.Add(this.label4);
             // 
             // splitContainerGlobal.Panel2
@@ -317,9 +317,9 @@ namespace AstroTargetSelector
             this.label12.Location = new System.Drawing.Point(642, 24);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(45, 13);
+            this.label12.Size = new System.Drawing.Size(140, 13);
             this.label12.TabIndex = 16;
-            this.label12.Text = "A définir";
+            this.label12.Text = "En cours de développement";
             // 
             // label13
             // 
@@ -336,9 +336,9 @@ namespace AstroTargetSelector
             this.label10.Location = new System.Drawing.Point(633, 5);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(89, 13);
+            this.label10.Size = new System.Drawing.Size(140, 13);
             this.label10.TabIndex = 14;
-            this.label10.Text = "Synscan ASCOM";
+            this.label10.Text = "En cours de développement";
             // 
             // label9
             // 
@@ -374,15 +374,14 @@ namespace AstroTargetSelector
             this.label3.TabIndex = 7;
             this.label3.Text = "Paramètres de l\'observation";
             // 
-            // lblLongitude
+            // lblLieuObservation
             // 
-            this.lblLongitude.AutoSize = true;
-            this.lblLongitude.Location = new System.Drawing.Point(382, 24);
-            this.lblLongitude.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.lblLongitude.Name = "lblLongitude";
-            this.lblLongitude.Size = new System.Drawing.Size(125, 13);
-            this.lblLongitude.TabIndex = 6;
-            this.lblLongitude.Text = "48°21\'35\" N - 7°07\'57\" E";
+            this.lblLieuObservation.AutoSize = true;
+            this.lblLieuObservation.Location = new System.Drawing.Point(382, 24);
+            this.lblLieuObservation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.lblLieuObservation.Name = "lblLieuObservation";
+            this.lblLieuObservation.Size = new System.Drawing.Size(0, 13);
+            this.lblLieuObservation.TabIndex = 6;
             // 
             // label4
             // 
@@ -742,7 +741,7 @@ namespace AstroTargetSelector
         private System.Windows.Forms.DateTimePicker dateTimePickerDateObservation;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ToolTip toolTipInfoParametre;
-        private System.Windows.Forms.Label lblLongitude;
+        private System.Windows.Forms.Label lblLieuObservation;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label12;

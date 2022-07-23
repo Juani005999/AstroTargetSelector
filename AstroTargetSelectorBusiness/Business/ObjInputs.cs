@@ -1,4 +1,5 @@
 ﻿using System;
+using ApplicationTools;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -15,14 +16,9 @@ namespace AstroTargetSelectorBusiness
         public DateTime DateHeureObservation { get; set; }
 
         /// <summary>
-        /// Latitude du lieu d'observation
+        /// Coordonnées (Longitude et Latitude) du lieu d'observation
         /// </summary>
-        public decimal LatitudeLieu { get; set; }
-
-        /// <summary>
-        /// Latitude du lieu d'observation
-        /// </summary>
-        public decimal LongitudeLieu { get; set; }
+        public Coordinates LieuObservation { get; set; }
 
         /// <summary>
         /// Largeur du capteur
@@ -41,9 +37,32 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjInputs(AppObjFactory toolFactory)
+        internal ObjInputs(AppObjFactory factory)
         {
-            this.toolFactory = toolFactory;
+            this.factory = factory;
+
+            // Positionnement des valeurs par défaut
+            SetDefaultValue();
+        }
+
+        #endregion
+
+        #region Méthodes
+
+        /// <summary>
+        /// Positionne les valeurs par défaut
+        /// </summary>
+        private void SetDefaultValue()
+        {
+            // Trace
+            factory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
+            
+            // Date et heure de l'obs. : date/heure du jour et précédent quart d'heure
+            DateHeureObservation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                DateTime.Now.Hour, DateTime.Now.Minute - (DateTime.Now.Minute % 15), 0);
+            factory.GetLog().Log($"Date Observation : {DateHeureObservation}", GetType().Name);
+
+            LieuObservation = factory.GetCoordinates(Convert.ToDecimal(48.2512), Convert.ToDecimal(7.7));
         }
 
         #endregion
@@ -53,7 +72,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory toolFactory = null;
+        private readonly AppObjFactory factory = null;
 
         #endregion
     }

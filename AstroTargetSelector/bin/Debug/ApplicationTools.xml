@@ -16,7 +16,7 @@
         </member>
         <member name="M:ApplicationTools.AppToolFactory.GetLog">
             <summary>
-            Retourne l'objet <see cref="T:ApplicationTools.AppToolLog"/>
+            Retourne l'objet <see cref="T:ApplicationTools.AppLog"/>
             </summary>
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet Log</returns>
@@ -28,9 +28,23 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Decimal)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+            <returns>Objet Coordinate</returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
-            Objet <see cref="T:ApplicationTools.AppToolLog"/>
+            Objet <see cref="T:ApplicationTools.AppLog"/>
             </summary>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.appContext">
@@ -308,81 +322,81 @@
             <param name="attributeName">Nom de l'attribut</param>
             <returns>Valeur de l'attribut ou chaine vide</returns>
         </member>
-        <member name="T:ApplicationTools.AppToolLog">
+        <member name="T:ApplicationTools.AppLog">
             <summary>
             Objet Log
             </summary>
         </member>
-        <member name="T:ApplicationTools.AppToolLog.TypeLog">
+        <member name="T:ApplicationTools.AppLog.TypeLog">
             <summary>
             Type de trace
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.TypeLog.Infos">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Infos">
             <summary>
             Trace de type Infos
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.TypeLog.Warning">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Warning">
             <summary>
             Trace de type Warning
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.TypeLog.Error">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Error">
             <summary>
             Trace de type Error
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.TypeLog.Fatal">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Fatal">
             <summary>
             Trace de type Fatal
             </summary>
         </member>
-        <member name="P:ApplicationTools.AppToolLog.FullPathName">
+        <member name="P:ApplicationTools.AppLog.FullPathName">
             <summary>
             Path complet et Nom du fichier de log
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.AppLog.#ctor(ApplicationTools.AppToolFactory)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.Initialise">
+        <member name="M:ApplicationTools.AppLog.Initialise">
             <summary>
             Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.AppToolLog.TypeLog,System.String,System.String,System.String,System.Int32)">
+        <member name="M:ApplicationTools.AppLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.AppLog.TypeLog,System.String,System.String,System.String,System.Int32)">
             <summary>
             Trace en console et dans le fichier de log
             </summary>
             <param name="message">Trace</param>
             <param name="callerClassName">Classe appelante</param>
             <param name="millisecond">Durée en ms</param>
-            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppToolLog.TypeLog"/></param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
             <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
             <param name="callerMemberName">Fonction appelante</param>
             <param name="callerFilePath">Fichier contenant la fonction appelante</param>
             <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.LogException(System.Exception,System.String,ApplicationTools.AppToolLog.TypeLog,System.String,System.String,System.Int32)">
+        <member name="M:ApplicationTools.AppLog.LogException(System.Exception,System.String,ApplicationTools.AppLog.TypeLog,System.String,System.String,System.Int32)">
             <summary>
             Trace une Exception en console et dans le fichier de log
             </summary>
             <param name="ex">Exception</param>
             <param name="callerClassName">Classe appelante</param>
-            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppToolLog.TypeLog"/></param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
             <param name="callerMemberName">Fonction appelante</param>
             <param name="callerFilePath">Fichier contenant la fonction appelante</param>
             <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.InitialiseFichierLog">
+        <member name="M:ApplicationTools.AppLog.InitialiseFichierLog">
             <summary>
             Permet la création des entêtes de colonnes dans le fichier de log
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.toolFactory">
+        <member name="F:ApplicationTools.AppLog.toolFactory">
             <summary>
             Instance de la ToolFactory en cours
             </summary>
@@ -506,6 +520,101 @@
             
             </summary>
             <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.CoordinatesPosition">
+            <summary>
+            Position N/S/E/O de la coordonnée de localisation
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.N">
+            <summary>
+            Nord
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.E">
+            <summary>
+            Est
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.S">
+            <summary>
+            Sud
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.O">
+            <summary>
+            Ouest
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.Coordinate">
+            <summary>
+            Donnée de type Coordonnée de localisation : XX° XX' XX" [N/S/E/O]
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Degrees">
+            <summary>
+            Valeur du champ '°' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Minutes">
+            <summary>
+            Valeur du champ ''' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Seconds">
+            <summary>
+            Valeur du champ '"' de la coordonnée
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="coordonnee"></param>
+        </member>
+        <member name="F:ApplicationTools.Coordinate.coordonnee">
+            <summary>
+            Valeur de la coordonnée
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.Coordinates">
+            <summary>
+            Donnée de type Coordonnées complète de localisation : Longitude + Latitude
+            <para>La longitude et la latitude sont de type <see cref="T:ApplicationTools.Coordinate"/></para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.Latitude">
+            <summary>
+            Renvoi la Latitude sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.Longitude">
+            <summary>
+            Renvoi la Longitude sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.LocalisationComplete">
+            <summary>
+            Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
+            <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.Coordinates.#ctor(System.Decimal,System.Decimal)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.longitude">
+            <summary>
+            Longitude du Lieu
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.latitude">
+            <summary>
+            Latitude du Lieu
+            </summary>
         </member>
     </members>
 </doc>

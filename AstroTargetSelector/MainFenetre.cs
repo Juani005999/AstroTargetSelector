@@ -51,8 +51,12 @@ namespace AstroTargetSelector
                 factory.GetLog().Log($"Répertoire UserAppDataPath : {factory.GetAppContext().UserAppDataPath}", GetType().Name);
                 factory.GetLog().Log($"Répertoire StartupPath : {factory.GetAppContext().StartupPath}", GetType().Name);
 
-                // Initialisation de la ListeView
+                // Chargement des Inputs
+                LoadInputs();
+
+                // Initialisation et rechargement de la ListeView
                 InitialisationListeTarget();
+                RechargeListeTarget();
 
                 // Trace
                 factory.GetLog().Log("Fonction InitialisationFormulaire FIN", GetType().Name, debutInitialisation.ElapsedMilliseconds);
@@ -147,6 +151,16 @@ namespace AstroTargetSelector
             listViewTarget.FullRowSelect = true;
         }
 
+        private void LoadInputs()
+        {
+            // Date et Heure de l'observation
+            dateTimePickerDateObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
+            dateTimePickerHeureObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
+
+            // Libellé Coordonnées de l'observation
+            lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
+        }
+
         private void UpdateViewPanelInfo()
         {
             splitContainerSecondaire.Panel2Collapsed = listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0;
@@ -175,9 +189,6 @@ namespace AstroTargetSelector
 
             // Initilisation du Formulaire
             InitialisationFormulaire();
-
-            // Rechargement de la liste des Targets
-            RechargeListeTarget();
 
             splitContainerSecondaire.Panel2Collapsed = true;
             //chartSliceListe.Series[0].IsValueShownAsLabel = true;

@@ -23,6 +23,18 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
+        /// <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+        /// </summary>
+        public string LieuObservation
+        {
+            get
+            {
+                return Inputs.LieuObservation.LocalisationComplete;
+            }
+        }
+
         #endregion
 
         #region Constructeur

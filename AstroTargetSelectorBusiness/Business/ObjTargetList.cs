@@ -113,7 +113,7 @@ namespace AstroTargetSelectorBusiness
                         }
                     }
                     else
-                        factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, AppToolLog.TypeLog.Warning);
+                        factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, AppLog.TypeLog.Warning);
 
                     // Trace
                     factory.GetLog().Log($"Chargement de {ListeObjTarget.Count} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);

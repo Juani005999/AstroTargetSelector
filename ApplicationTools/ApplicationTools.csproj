@@ -51,15 +51,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppToolFactory.cs" />
-    <Compile Include="ClassesBweb\BwebConvert.cs" />
-    <Compile Include="Classes\AppContext.cs" />
-    <Compile Include="Classes\AppExtensions.cs" />
-    <Compile Include="Classes\AppToolLog.cs" />
-    <Compile Include="Communs\ListViewColumnSorter.cs" />
-    <Compile Include="Controles\ComboBoxItem.cs">
+    <Compile Include="Objets Techniques\BwebConvert.cs" />
+    <Compile Include="Objets Techniques\AppContext.cs" />
+    <Compile Include="Objets Techniques\AppExtensions.cs" />
+    <Compile Include="Objets Techniques\AppLog.cs" />
+    <Compile Include="Controles et IHM\ListViewColumnSorter.cs" />
+    <Compile Include="Controles et IHM\ComboBoxItem.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Types\Coordinate.cs" />
+    <Compile Include="Types\Coordinates.cs" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="stdole">
