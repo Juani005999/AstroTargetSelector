@@ -110,6 +110,22 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
+        /// Permet le chargement des Inputs
+        /// </summary>
+        private void LoadInputs()
+        {
+            // Date et Heure de l'observation
+            dateTimePickerDateObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
+            dateTimePickerHeureObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
+
+            // Libellé Coordonnées de l'observation
+            lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
+
+            // ToolTip Paramètres de l'observation
+            toolTipInfoParametre.SetToolTip(labelInputsPlusInfos, factory.GetAppInputs().ToolTipInfosTexte);
+        }
+
+        /// <summary>
         ///  Permet la mise à jour de la liste avec la collection Targets
         /// </summary>
         private void RechargeListeTarget()
@@ -184,47 +200,43 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
-        /// Permet le chargement des Inputs
-        /// </summary>
-        private void LoadInputs()
-        {
-            // Date et Heure de l'observation
-            dateTimePickerDateObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
-            dateTimePickerHeureObservation.Value = factory.GetAppInputs().Inputs.DateHeureObservation;
-
-            // Libellé Coordonnées de l'observation
-            lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
-
-            // ToolTip
-            toolTipInfoParametre.SetToolTip(labelInputsPlusInfos, factory.GetAppInputs().ToolTipInfosTexte);
-        }
-
-        /// <summary>
         /// Mise à jour du panneau d'informations de l'objet céleste en cours
         /// </summary>
         private void UpdateViewPanelInfo()
         {
-            // Trace et Chrono
-            factory.GetLog().Log($"Rechargement du Panneau d'informations sur l'objet céleste sélectionné", GetType().Name);
-            Stopwatch debutFonction = new Stopwatch();
-            debutFonction.Start();
-            
-            // On masque le panneau si aucun élément sélectionné dans la liste
-            if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
-                splitContainerSecondaire.Panel2Collapsed = true;
-            else
+            try
             {
-                splitContainerSecondaire.Panel2Collapsed = false;
+                // Trace et Chrono
+                factory.GetLog().Log($"Rechargement du Panneau d'informations sur l'objet céleste sélectionné", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
 
-                // Affichage des informations de l'objet céleste
-                ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[2].Text);
-                if (target != null)
+                // On masque le panneau si aucun élément sélectionné dans la liste
+                if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
+                    splitContainerSecondaire.Panel2Collapsed = true;
+                else
                 {
-                    textBoxInfoPanelNom.Text = target.Nom;
+                    splitContainerSecondaire.Panel2Collapsed = false;
 
-                    // Trace
-                    factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom}  en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                    // Affichage des informations de l'objet céleste
+                    ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[2].Text);
+                    if (target != null)
+                    {
+                        textBoxInfoPanelNom.Text = target.Nom;
+
+                        // Trace
+                        factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom}  en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                    }
                 }
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
             }
         }
 
@@ -258,11 +270,6 @@ namespace AstroTargetSelector
 
             // Update du Panel Info
             UpdateViewPanelInfo();
-
-            //// Par défaut, la panneau
-            //splitContainerSecondaire.Panel2Collapsed = true;
-            ////chartSliceListe.Series[0].IsValueShownAsLabel = true;
-            ////chartSliceListe.Series[0].IsVisibleInLegend = false;
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)

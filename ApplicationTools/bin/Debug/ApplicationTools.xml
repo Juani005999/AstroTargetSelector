@@ -28,12 +28,6 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
-        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Decimal)">
-            <summary>
-            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
-            </summary>
-            <returns>Objet Coordinate</returns>
-        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -567,6 +561,21 @@
             Ouest
             </summary>
         </member>
+        <member name="T:ApplicationTools.CoordinatesType">
+            <summary>
+            Type Longitude/Latitude pour les <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Longitude">
+            <summary>
+            Longitude
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Latitude">
+            <summary>
+            Latitude
+            </summary>
+        </member>
         <member name="T:ApplicationTools.Coordinate">
             <summary>
             Donnée de type Coordonnée de localisation : XX° XX' XX" [N/S/E/O]
@@ -587,15 +596,26 @@
             Valeur du champ '"' de la coordonnée
             </summary>
         </member>
-        <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal)">
+        <member name="P:ApplicationTools.Coordinate.FormatedString">
+            <summary>
+            Coordonnée sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal,ApplicationTools.CoordinatesType)">
             <summary>
             Constructeur par défaut
             </summary>
             <param name="coordonnee"></param>
+            <param name="coordinatesType"></param>
         </member>
         <member name="F:ApplicationTools.Coordinate.coordonnee">
             <summary>
             Valeur de la coordonnée
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinate.coordinatesType">
+            <summary>
+            Type Longitude/Latitude
             </summary>
         </member>
         <member name="T:ApplicationTools.Coordinates">

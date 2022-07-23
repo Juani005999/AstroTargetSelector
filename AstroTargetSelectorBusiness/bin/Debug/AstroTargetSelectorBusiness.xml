@@ -100,10 +100,10 @@
         </member>
         <member name="M:AstroTargetSelectorBusiness.AppTarget.GetTarget(System.String)">
             <summary>
-            Renvoi l'Objet céleste <see cref="!:ObjTarget>"/> correspondant au nom passé en paralètre
+            Renvoi l'Objet céleste <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/> correspondant au nom passé en paramètre
             </summary>
             <param name="nomTarget">Nom de la target recherchée</param>
-            <returns>null si non trouvé ou si nomTarget est vide. <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/></returns>
+            <returns><see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>. Null si non trouvé ou si nomTarget est vide.</returns>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.factory">
             <summary>

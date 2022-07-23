@@ -24,6 +24,11 @@
             Permet l'initialisation de la liste des Targets
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.LoadInputs">
+            <summary>
+            Permet le chargement des Inputs
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.RechargeListeTarget">
             <summary>
              Permet la mise à jour de la liste avec la collection Targets
@@ -32,11 +37,6 @@
         <member name="M:AstroTargetSelector.MainFenetre.RechargeListeFiltreType">
             <summary>
             Permet le rechargement de la liste des filtres sur type en fonction du contenu de la liste des targets
-            </summary>
-        </member>
-        <member name="M:AstroTargetSelector.MainFenetre.LoadInputs">
-            <summary>
-            Permet le chargement des Inputs
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.UpdateViewPanelInfo">

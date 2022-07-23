@@ -55,16 +55,6 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne un nouvel objet de type <see cref="Coordinate"/>
-        /// </summary>
-        /// <returns>Objet Coordinate</returns>
-        public Coordinate GetCoordinate(decimal coordonnee)
-        {
-            // Création d'un nouvel objet de type Coordinate
-            return new Coordinate(coordonnee);
-        }
-
-        /// <summary>
         /// Retourne un nouvel objet de type <see cref="Coordinates"/>
         /// </summary>
         /// <param name="latitude"></param>

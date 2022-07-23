@@ -17,9 +17,8 @@ namespace ApplicationTools
         {
             get
             {
-                Coordinate coordonnee = new Coordinate(latitude);
-                var direction = latitude < 0 ? CoordinatesPosition.S : CoordinatesPosition.N;
-                return coordonnee.Degrees + "° " + coordonnee.Minutes + "' " + string.Format("{0:0.00}", coordonnee.Seconds) + "\" " + direction.ToString();
+                Coordinate coordonnee = new Coordinate(latitude, CoordinatesType.Latitude);
+                return coordonnee.FormatedString;
             }
         }
 
@@ -30,9 +29,8 @@ namespace ApplicationTools
         {
             get
             {
-                Coordinate coordonnee = new Coordinate(longitude);
-                var direction = longitude < 0 ? CoordinatesPosition.O : CoordinatesPosition.E;
-                return coordonnee.Degrees + "° " + coordonnee.Minutes + "' " + string.Format("{0:0.00}", coordonnee.Seconds) + "\" " + direction.ToString();
+                Coordinate coordonnee = new Coordinate(longitude, CoordinatesType.Longitude);
+                return coordonnee.FormatedString;
             }
         }
 

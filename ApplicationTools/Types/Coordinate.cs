@@ -29,6 +29,22 @@ namespace ApplicationTools
     }
 
     /// <summary>
+    /// Type Longitude/Latitude pour les <see cref="Coordinate"/>
+    /// </summary>
+    public enum CoordinatesType
+    {
+        /// <summary>
+        /// Longitude
+        /// </summary>
+        Longitude,
+
+        /// <summary>
+        /// Latitude
+        /// </summary>
+        Latitude
+    }
+
+    /// <summary>
     /// Donnée de type Coordonnée de localisation : XX° XX' XX" [N/S/E/O]
     /// </summary>
     public class Coordinate
@@ -68,6 +84,21 @@ namespace ApplicationTools
             }
         }
 
+        /// <summary>
+        /// Coordonnée sous la forme d'une chaîne de caractère formatée
+        /// </summary>
+        public string FormatedString
+        {
+            get
+            {
+                // On positionne la direction en fonction du Type (Longitude/Latitude) et de la valeur de la coordonnée
+                var direction = coordinatesType == CoordinatesType.Latitude ?
+                                    coordonnee < 0 ? CoordinatesPosition.S : CoordinatesPosition.N
+                                    : coordonnee < 0 ? CoordinatesPosition.O : CoordinatesPosition.E;
+                return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + direction.ToString();
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -76,10 +107,12 @@ namespace ApplicationTools
         /// Constructeur par défaut
         /// </summary>
         /// <param name="coordonnee"></param>
-        internal Coordinate(decimal coordonnee)
+        /// <param name="coordinatesType"></param>
+        internal Coordinate(decimal coordonnee, CoordinatesType coordinatesType)
         {
             // Valorisation du champ interne
             this.coordonnee = coordonnee;
+            this.coordinatesType = coordinatesType;
         }
 
         #endregion
@@ -90,6 +123,11 @@ namespace ApplicationTools
         /// Valeur de la coordonnée
         /// </summary>
         private decimal coordonnee = 0;
+
+        /// <summary>
+        /// Type Longitude/Latitude
+        /// </summary>
+        private CoordinatesType coordinatesType = CoordinatesType.Longitude;
 
         #endregion
     }
