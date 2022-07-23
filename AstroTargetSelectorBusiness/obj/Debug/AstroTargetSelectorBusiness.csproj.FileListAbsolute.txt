@@ -18,3 +18,4 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\AstroTargetSelectorBusiness.xml
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\ApplicationTools.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\AstroTargetSelectorBusiness.dll.config

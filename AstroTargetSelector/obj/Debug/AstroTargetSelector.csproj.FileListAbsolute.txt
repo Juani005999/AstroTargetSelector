@@ -33,3 +33,4 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelector.xml
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\ApplicationTools.xml
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelectorBusiness.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelectorBusiness.dll.config

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using ApplicationTools;
+using AstroTargetSelectorBusiness.Properties;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -54,15 +56,34 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         private void SetDefaultValue()
         {
-            // Trace
-            factory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
-            
-            // Date et heure de l'obs. : date/heure du jour et précédent quart d'heure
-            DateHeureObservation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
-                DateTime.Now.Hour, DateTime.Now.Minute - (DateTime.Now.Minute % 15), 0);
-            factory.GetLog().Log($"Date Observation : {DateHeureObservation}", GetType().Name);
+            try
+            {
+                // Trace
+                factory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
 
-            LieuObservation = factory.GetCoordinates(Convert.ToDecimal(48.2512), Convert.ToDecimal(7.7));
+                // Date et heure de l'obs. : date/heure du jour et précédent quart d'heure
+                DateHeureObservation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
+                    DateTime.Now.Hour, DateTime.Now.Minute - (DateTime.Now.Minute % 15), 0);
+                factory.GetLog().Log($"Date d'Observation : {DateHeureObservation}", GetType().Name);
+
+                // Lieu de l'obs. : On charge depuis les settings. Si non présent, on positionne sur Paris 0 / 0
+                // TODO : Si non présent en settings, on récupère la position GPS du poste en cours ?
+                if (string.IsNullOrEmpty(Settings.Default.LatitudeObs) || string.IsNullOrEmpty(Settings.Default.LongitudeObs))
+                {
+                    Settings.Default.LatitudeObs = "48.2512";
+                    Settings.Default.LongitudeObs = "7.7";
+                    Settings.Default.Save();
+                    factory.GetLog().Log($"Localisation non présente dans les Settings. Positionnement de Paris par défaut", GetType().Name);
+               }
+                LieuObservation = factory.GetCoordinates(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+                                                        Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+                factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
+            }
+            catch(Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+            }
         }
 
         #endregion
