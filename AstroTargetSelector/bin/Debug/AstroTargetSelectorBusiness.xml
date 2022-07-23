@@ -20,9 +20,46 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppInputs">
+            <summary>
+            Renvoi l'objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
             <summary>
             Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appInputs">
+            <summary>
+            Objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.AppInputs">
+            <summary>
+            Objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.Inputs">
+            <summary>
+            Objet métier contenant les données nécessaires à l'application des règles applicatives
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppInputs.toolFactory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppInputs.inputs">
+            <summary>
+            Objets métier contenant les données en entrée
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.AppTarget">
@@ -49,6 +86,46 @@
         <member name="F:AstroTargetSelectorBusiness.AppTarget.targets">
             <summary>
             Liste des Targets
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjInputs">
+            <summary>
+            Objet représentant toutes les données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.DateHeureObservation">
+            <summary>
+            Date et Heure de l'observation
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LatitudeLieu">
+            <summary>
+            Latitude du lieu d'observation
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LongitudeLieu">
+            <summary>
+            Latitude du lieu d'observation
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.LargeurCapteur">
+            <summary>
+            Largeur du capteur
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.BougeMax">
+            <summary>
+            Bougé max.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.toolFactory">
+            <summary>
+            Instance de la fabrique d'objet métier
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTarget">

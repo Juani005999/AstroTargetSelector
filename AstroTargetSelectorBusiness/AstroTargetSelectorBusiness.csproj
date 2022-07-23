@@ -45,7 +45,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppObjFactory.cs" />
+    <Compile Include="App\AppInputs.cs" />
     <Compile Include="App\AppTarget.cs" />
+    <Compile Include="Business\ObjInputs.cs" />
     <Compile Include="Business\ObjTarget.cs" />
     <Compile Include="Business\ObjTargetList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
