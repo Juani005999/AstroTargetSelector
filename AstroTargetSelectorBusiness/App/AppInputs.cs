@@ -35,6 +35,30 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Renvoi le tes=xte à afficher dans l'info-bulle d'infos complémentaires sur les champs Inputs
+        /// <para>Lieu de l'observation</para>
+        /// <para>Capteur</para>
+        /// <para>Zones exclues</para>
+        /// <para>Bougé max.</para>
+        /// </summary>
+        public string ToolTipInfosTexte
+        {
+            get
+            {
+                string toolTipRetour = $"Lieu : {LieuObservation}";
+                toolTipRetour += Environment.NewLine;
+                toolTipRetour += $"Capteur : ";
+
+                //Lieu: 48°21'35" N - 7°07'57" E
+                //Capteur: IMX492 - Largeur : 2055px
+                //Zones exclues du ciel: NO - N - NE
+                //Décalé max. : 1px
+
+                return toolTipRetour;
+            }
+        }
+
         #endregion
 
         #region Constructeur

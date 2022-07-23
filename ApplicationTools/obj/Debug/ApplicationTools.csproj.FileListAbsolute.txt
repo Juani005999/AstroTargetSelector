@@ -22,3 +22,5 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\Application
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Debug\ApplicationTools.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Debug\ApplicationTools.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Debug\ApplicationTools.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.Properties.Resources.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Debug\ApplicationTools.csproj.GenerateResource.cache

@@ -53,6 +53,15 @@
             <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.ToolTipInfosTexte">
+            <summary>
+            Renvoi le tes=xte à afficher dans l'info-bulle d'infos complémentaires sur les champs Inputs
+            <para>Lieu de l'observation</para>
+            <para>Capteur</para>
+            <para>Zones exclues</para>
+            <para>Bougé max.</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -79,12 +88,17 @@
             <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.ListeType">
+            <summary>
+            Renvoi la liste distinctes des différents type d'objet céleste
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.AppTarget.toolFactory">
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.factory">
             <summary>
             Instance de la fabrique d'objet métier
             </summary>
@@ -92,6 +106,11 @@
         <member name="F:AstroTargetSelectorBusiness.AppTarget.targets">
             <summary>
             Liste des Targets
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.listeType">
+            <summary>
+            Liste distinctes des différents type d'objet céleste
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjInputs">
@@ -235,6 +254,27 @@
         <member name="F:AstroTargetSelectorBusiness.ObjTargetList.targetListeFileName">
             <summary>
             Nom du fichier de configuration contenant la liste des objets céleste
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.Tous">
+            <summary>
+              Recherche une chaîne localisée semblable à Tous.
             </summary>
         </member>
     </members>

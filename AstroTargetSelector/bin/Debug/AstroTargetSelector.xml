@@ -29,6 +29,16 @@
              Permet la mise à jour de la liste avec la collection Targets
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.RechargeListeFiltreType">
+            <summary>
+            Permet le rechargement de la liste des filtres sur type en fonction du contenu de la liste des targets
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.LoadInputs">
+            <summary>
+            Permet le chargement des Inputs
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
             Instance de la fabrique d'objets
@@ -76,11 +86,6 @@
             <summary>
               Remplace la propriété CurrentUICulture du thread actuel pour toutes
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
-            </summary>
-        </member>
-        <member name="P:AstroTargetSelector.Properties.Resources.UneErreurEstSurvenue">
-            <summary>
-              Recherche une chaîne localisée semblable à Une erreur est survenue :.
             </summary>
         </member>
     </members>

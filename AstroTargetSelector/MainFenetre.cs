@@ -3,7 +3,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using AstroTargetSelector.Properties;
 using AstroTargetSelectorBusiness;
-using ApplicationTools;
 
 namespace AstroTargetSelector
 {
@@ -54,9 +53,8 @@ namespace AstroTargetSelector
                 // Chargement des Inputs
                 LoadInputs();
 
-                // Initialisation et rechargement de la ListeView
+                // Initialisation de la ListeView
                 InitialisationListeTarget();
-                RechargeListeTarget();
 
                 // Trace
                 factory.GetLog().Log("Fonction InitialisationFormulaire FIN", GetType().Name, debutInitialisation.ElapsedMilliseconds);
@@ -65,7 +63,7 @@ namespace AstroTargetSelector
             {
                 // Trace de l'erreur et information à l'utilisateur
                 factory.GetLog().LogException(err, GetType().Name);
-                MessageBox.Show(Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);
@@ -79,48 +77,36 @@ namespace AstroTargetSelector
         /// </summary>
         private void InitialisationListeTarget()
         {
-            try
-            {
-                // Type de vue
-                listViewTarget.View = View.Details;
+            // Type de vue
+            listViewTarget.View = View.Details;
 
-                // Adjout des colonnes
-                listViewTarget.Columns.Add("Rank", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Scoring", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Nom", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Type", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Description", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("RA", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("DEC", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Magnitude", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Largeur", -2, HorizontalAlignment.Left);
-                listViewTarget.Columns.Add("Hauteur", -2, HorizontalAlignment.Left);
+            // Adjout des colonnes
+            listViewTarget.Columns.Add("Rank", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Scoring", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Nom", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Type", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Description", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("RA", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("DEC", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Magnitude", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Largeur", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Hauteur", -2, HorizontalAlignment.Left);
 
-                //// Filtre par défaut
-                //if (!string.IsNullOrEmpty(Properties.Settings.Default.SortColumn)
-                //    && !string.IsNullOrEmpty(Properties.Settings.Default.SortOrder))
-                //{
-                //    lvwColumnSorter.SortColumn = int.Parse(Properties.Settings.Default.SortColumn);
-                //    if (Properties.Settings.Default.SortOrder == "Descending")
-                //        lvwColumnSorter.Order = SortOrder.Descending;
-                //    else
-                //        lvwColumnSorter.Order = SortOrder.Ascending;
-                //    listViewMain.SetSortIcon(lvwColumnSorter.SortColumn, lvwColumnSorter.Order);
-                //    listViewMain.Sort();
-                //}
+            //// Filtre par défaut
+            //if (!string.IsNullOrEmpty(Properties.Settings.Default.SortColumn)
+            //    && !string.IsNullOrEmpty(Properties.Settings.Default.SortOrder))
+            //{
+            //    lvwColumnSorter.SortColumn = int.Parse(Properties.Settings.Default.SortColumn);
+            //    if (Properties.Settings.Default.SortOrder == "Descending")
+            //        lvwColumnSorter.Order = SortOrder.Descending;
+            //    else
+            //        lvwColumnSorter.Order = SortOrder.Ascending;
+            //    listViewMain.SetSortIcon(lvwColumnSorter.SortColumn, lvwColumnSorter.Order);
+            //    listViewMain.Sort();
+            //}
 
-                // Trace
-                factory.GetLog().Log("Initialisation de la liste des Targets OK", GetType().Name);
-            }
-            catch (Exception err)
-            {
-                // Trace de l'erreur et information à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name);
-                MessageBox.Show(Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
-                                , Application.ProductName
-                                , MessageBoxButtons.OK
-                                , MessageBoxIcon.Error);
-            }
+            // Trace
+            factory.GetLog().Log("Initialisation de la liste des Targets OK", GetType().Name);
         }
 
         /// <summary>
@@ -128,13 +114,15 @@ namespace AstroTargetSelector
         /// </summary>
         private void RechargeListeTarget()
         {
-            // Trace
-            factory.GetLog().Log("Chargement de la liste des targets", GetType().Name);
-
-            listViewTarget.Items.Clear();
-            foreach(ObjTarget target in factory.GetAppTarget().Targets.ListeObjTarget)
+            try
             {
-                listViewTarget.Items.Add(new ListViewItem(new[] { "1",
+                // Trace
+                factory.GetLog().Log("Chargement de la liste des targets", GetType().Name);
+
+                listViewTarget.Items.Clear();
+                foreach (ObjTarget target in factory.GetAppTarget().Targets.ListeObjTarget)
+                {
+                    listViewTarget.Items.Add(new ListViewItem(new[] { "1",
                                                 "2",
                                                 target.Nom,
                                                 target.Type,
@@ -144,13 +132,59 @@ namespace AstroTargetSelector
                                                 target.Magnitude.ToString(),
                                                 target.GrandeurWidth.ToString(),
                                                 target.GrandeurHeight.ToString()}));
-            }
+                }
 
-            // AutoFit des colonnes
-            listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
-            listViewTarget.FullRowSelect = true;
+                // AutoFit des colonnes
+                listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
+                listViewTarget.FullRowSelect = true;
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
         }
 
+        /// <summary>
+        /// Permet le rechargement de la liste des filtres sur type en fonction du contenu de la liste des targets
+        /// </summary>
+        private void RechargeListeFiltreType()
+        {
+            try
+            {
+                // Trace
+                factory.GetLog().Log("Chargement de la liste des filtres sur Type", GetType().Name);
+
+                // CLear de la liste
+                comboBoxFiltreType.Items.Clear();
+
+                // Rechargement depuis la liste chargée
+                foreach (string typeEnCours in factory.GetAppTarget().ListeType)
+                {
+                    comboBoxFiltreType.Items.Add(typeEnCours);
+                }
+
+                // Positionnement de "Tous" par défaut
+                comboBoxFiltreType.SelectedIndex = 0;
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Permet le chargement des Inputs
+        /// </summary>
         private void LoadInputs()
         {
             // Date et Heure de l'observation
@@ -159,6 +193,9 @@ namespace AstroTargetSelector
 
             // Libellé Coordonnées de l'observation
             lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
+
+            // ToolTip
+            toolTipInfoParametre.SetToolTip(labelInputsPlusInfos, factory.GetAppInputs().ToolTipInfosTexte);
         }
 
         private void UpdateViewPanelInfo()
@@ -190,9 +227,17 @@ namespace AstroTargetSelector
             // Initilisation du Formulaire
             InitialisationFormulaire();
 
-            splitContainerSecondaire.Panel2Collapsed = true;
-            //chartSliceListe.Series[0].IsValueShownAsLabel = true;
-            //chartSliceListe.Series[0].IsVisibleInLegend = false;
+            // Rechargement de la ListeView et de la liste des filtres sur Type
+            RechargeListeTarget();
+            RechargeListeFiltreType();
+
+            // Update du Panel Info
+            UpdateViewPanelInfo();
+
+            //// Par défaut, la panneau
+            //splitContainerSecondaire.Panel2Collapsed = true;
+            ////chartSliceListe.Series[0].IsValueShownAsLabel = true;
+            ////chartSliceListe.Series[0].IsVisibleInLegend = false;
         }
 
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
