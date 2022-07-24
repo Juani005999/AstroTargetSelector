@@ -268,6 +268,12 @@
             Bougé max.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.NombreSlice">
+            <summary>
+            Nombre d'intervalle de temps (1/4 d'heure) pour le calcul des temps de pose
+            <para>par défaut 8</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -283,9 +289,74 @@
             Instance de la fabrique d'objet métier
             </summary>
         </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjSliceTarget">
+            <summary>
+            Objet représentant un intervalle de temps de calcul pour un objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.DateHeure">
+            <summary>
+            Date et Heure de l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalcule">
+            <summary>
+            Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalculeFormatedString">
+            <summary>
+            Temps de pose calculé pour l'intervalle sous la forme d'une chaîne de caractère formaté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.CouleurPointGraphique">
+            <summary>
+            Couleur du point dans le graphique
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.parentTarget">
+            <summary>
+            Objet céleste parent de l'objet Slice
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTarget">
             <summary>
             Objet représentant un objet céleste
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.MinTempsPoseRank5">
+            <summary>
+            Temps de pose minimum pour avoir le Rank niveau 5
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.MinTempsPoseRank4">
+            <summary>
+            Temps de pose minimum pour avoir le Rank niveau 4
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.MinTempsPoseRank3">
+            <summary>
+            Temps de pose minimum pour avoir le Rank niveau 3
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.MinTempsPoseRank2">
+            <summary>
+            Temps de pose minimum pour avoir le Rank niveau 2
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.MinTempsPoseRank1">
+            <summary>
+            Temps de pose minimum pour avoir le Rank niveau 1
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.Nom">
@@ -330,6 +401,23 @@
             Grandeur : Hauteur de l'objet céleste
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Scoring">
+            <summary>
+            Renvoi le Scoring calculé pour la Target
+            <para>Moyenne des <see cref="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Rank">
+            <summary>
+            Renvoi le Rank calculé pour la Target
+            <para>Barême basé sur le <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Scoring"/></para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -338,6 +426,11 @@
         <member name="F:AstroTargetSelectorBusiness.ObjTarget.factory">
             <summary>
             Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTargetList">

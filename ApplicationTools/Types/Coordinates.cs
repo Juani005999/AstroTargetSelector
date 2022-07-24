@@ -23,6 +23,17 @@ namespace ApplicationTools
         }
 
         /// <summary>
+        /// Renvoi la Latitude sous la forme d'un decimal
+        /// </summary>
+        public decimal LatitudeValue
+        {
+            get
+            {
+                return latitude;
+            }
+        }
+
+        /// <summary>
         /// Renvoi la Longitude sous la forme d'une chaîne de caractère formatée
         /// </summary>
         public string Longitude
@@ -31,6 +42,17 @@ namespace ApplicationTools
             {
                 Coordinate coordonnee = new Coordinate(longitude, CoordinatesType.Longitude);
                 return coordonnee.FormatedString;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi la Longitude sous la forme d'un decimal
+        /// </summary>
+        public decimal LongitudeValue
+        {
+            get
+            {
+                return longitude;
             }
         }
 

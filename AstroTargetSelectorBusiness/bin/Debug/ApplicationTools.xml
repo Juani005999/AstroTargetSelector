@@ -629,9 +629,19 @@
             Renvoi la Latitude sous la forme d'une chaîne de caractère formatée
             </summary>
         </member>
+        <member name="P:ApplicationTools.Coordinates.LatitudeValue">
+            <summary>
+            Renvoi la Latitude sous la forme d'un decimal
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Coordinates.Longitude">
             <summary>
             Renvoi la Longitude sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.LongitudeValue">
+            <summary>
+            Renvoi la Longitude sous la forme d'un decimal
             </summary>
         </member>
         <member name="P:ApplicationTools.Coordinates.LocalisationComplete">

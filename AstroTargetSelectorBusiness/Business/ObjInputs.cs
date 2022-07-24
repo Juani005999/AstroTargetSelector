@@ -32,6 +32,12 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         public decimal BougeMax { get; set; }
 
+        /// <summary>
+        /// Nombre d'intervalle de temps (1/4 d'heure) pour le calcul des temps de pose
+        /// <para>par défaut 8</para>
+        /// </summary>
+        public int NombreSlice { get; set; }
+
         #endregion
 
         #region Constructeur
@@ -81,12 +87,12 @@ namespace AstroTargetSelectorBusiness
             if (string.IsNullOrEmpty(Settings.Default.NomCapteur) || string.IsNullOrEmpty(Settings.Default.LargeurCapteur))
             {
                 Settings.Default.NomCapteur = "IMX533";
-                Settings.Default.LargeurCapteur = "4096";
+                Settings.Default.LargeurCapteur = "5200";
                 Settings.Default.Save();
                 factory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
             }
             Capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
-                                                   Convert.ToDecimal(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
+                                                   Convert.ToDecimal("5200", CultureInfo.InvariantCulture));
             factory.GetLog().Log($"Capteur : {Capteur.Nom} / {Capteur.Largeur.ToString(CultureInfo.InvariantCulture)} px", GetType().Name);
 
             // Zones à exclure
@@ -94,6 +100,8 @@ namespace AstroTargetSelectorBusiness
             // Bougé max
             BougeMax = 1;
 
+            // Nombre de SLices
+            NombreSlice = 12;
         }
 
         #endregion

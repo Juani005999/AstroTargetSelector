@@ -651,7 +651,7 @@ namespace AstroTargetSelector
             this.chartSliceListe.Series.Add(series1);
             this.chartSliceListe.Size = new System.Drawing.Size(668, 188);
             this.chartSliceListe.TabIndex = 0;
-            this.chartSliceListe.Text = "chart1";
+            this.chartSliceListe.Text = "Intervalles de temps de pose";
             // 
             // toolTipInfoParametre
             // 

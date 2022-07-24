@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Diagnostics;
+using System.Windows.Forms.DataVisualization.Charting;
 using AstroTargetSelector.Properties;
 using AstroTargetSelectorBusiness;
+using System.Drawing;
 
 namespace AstroTargetSelector
 {
@@ -132,15 +134,17 @@ namespace AstroTargetSelector
         {
             try
             {
-                // Trace
+                // Trace et Chrono
                 factory.GetLog().Log("Chargement de la liste des targets", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
 
                 // Clear de la liste et parcours de la liste des Targets pour ajout
                 listViewTarget.Items.Clear();
                 foreach (ObjTarget target in factory.GetAppTarget().Targets.ListeObjTarget)
                 {
-                    listViewTarget.Items.Add(new ListViewItem(new[] { "1",
-                                                "2",
+                    listViewTarget.Items.Add(new ListViewItem(new[] { target.Rank.ToString(),
+                                                target.Scoring.ToString(),
                                                 target.Nom,
                                                 target.Type,
                                                 target.Description,
@@ -154,6 +158,9 @@ namespace AstroTargetSelector
                 // AutoFit des colonnes
                 listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 listViewTarget.FullRowSelect = true;
+
+                // Trace
+                factory.GetLog().Log($"Chargement de la liste des {listViewTarget.Items.Count} targets effectué en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
             catch (Exception err)
             {
@@ -220,13 +227,39 @@ namespace AstroTargetSelector
 
                     // Affichage des informations de l'objet céleste
                     ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[2].Text);
-                    if (target != null)
+                    if (target != null && !string.IsNullOrEmpty(target.Nom))
                     {
+                        // Infos sur l'objet
                         textBoxInfoPanelNom.Text = target.Nom;
 
+                        // Graphique
+                        chartSliceListe.Series.Clear();
+                        chartSliceListe.Series.Add(target.Nom);
+                        chartSliceListe.Series[target.Nom].ChartType = SeriesChartType.Column;
+                        chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
+                        chartSliceListe.Series[target.Nom].CustomProperties = "LabelStyle=Bottom, DrawingStyle=LightToDark";
+                        chartSliceListe.Series[target.Nom].IsVisibleInLegend = false;
+                        foreach (ObjSliceTarget slice in target.Slices)
+                        {
+                            chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
+                            {
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { Convert.ToDouble(slice.TempsPoseCalcule) },
+                                Color = slice.CouleurPointGraphique,
+                                IsValueShownAsLabel = true,
+                                LabelFormat = "0 s"
+                            });
+                        }
+                        chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+                        chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
+                        chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                        chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+
                         // Trace
-                        factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom}  en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                        factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
                     }
+                    else
+                        splitContainerSecondaire.Panel2Collapsed = true;
                 }
             }
             catch (Exception err)
