@@ -5,6 +5,7 @@ using System.Windows.Forms.DataVisualization.Charting;
 using AstroTargetSelector.Properties;
 using AstroTargetSelectorBusiness;
 using System.Drawing;
+using System.Globalization;
 
 namespace AstroTargetSelector
 {
@@ -231,6 +232,13 @@ namespace AstroTargetSelector
                     {
                         // Infos sur l'objet
                         textBoxInfoPanelNom.Text = target.Nom;
+                        textBoxInfoPanelType.Text = target.Type;
+                        textBoxInfoPanelDescription.Text = target.Description;
+                        textBoxInfoPanelLongueur.Text = target.GrandeurWidth.ToString();
+                        textBoxInfoPanelHauteur.Text = target.GrandeurHeight.ToString();
+                        textBoxInfoPanelMagnitude.Text = target.Magnitude.ToString();
+                        textBoxInfoPanelRA.Text = target.RA.ToString();
+                        textBoxInfoPanelDEC.Text = target.DEC.ToString();
 
                         // Graphique
                         chartSliceListe.Series.Clear();
@@ -254,6 +262,7 @@ namespace AstroTargetSelector
                         chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
                         chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
                         chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+                        chartSliceListe.ChartAreas[0].RecalculateAxesScale();
 
                         // Trace
                         factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -319,6 +328,19 @@ namespace AstroTargetSelector
 
         private void listViewTarget_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
+            UpdateViewPanelInfo();
+        }
+
+        private void dateTimePickerHeureObservation_ValueChanged(object sender, EventArgs e)
+        {
+            factory.GetAppInputs().Inputs.DateHeureObservation = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                                                factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                                                factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                                                                                dateTimePickerHeureObservation.Value.Hour,
+                                                                                dateTimePickerHeureObservation.Value.Minute,
+                                                                                0);
+            RechargeListeTarget();
+            RechargeListeFiltreType();
             UpdateViewPanelInfo();
         }
     }

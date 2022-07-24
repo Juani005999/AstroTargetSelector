@@ -79,8 +79,10 @@ namespace AstroTargetSelectorBusiness
                 Settings.Default.Save();
                 factory.GetLog().Log($"Localisation non présente dans les Settings. Positionnement de Paris par défaut", GetType().Name);
             }
-            LieuObservation = factory.GetCoordinates(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
-                                                    Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+            //LieuObservation = factory.GetCoordinates(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+            //                                        Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+            LieuObservation = factory.GetCoordinates(Convert.ToDecimal(49.3667, CultureInfo.InvariantCulture),
+                                                    Convert.ToDecimal(6.05, CultureInfo.InvariantCulture));
             factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
 
             // Capteur : On charge depuis les settings. Si non présent, on positionne IMX533 / 4096px

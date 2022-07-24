@@ -23,9 +23,10 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 // Calcul pour Julien
-                int heureCorrige = DateHeure.Hour - 1;
+                double heureCorrige = DateHeure.Hour - 1;
                 if (TimeZoneInfo.Local.IsDaylightSavingTime(DateHeure))
                     heureCorrige -= 1;
+                heureCorrige += ((double)DateHeure.Minute / 60);
                 int moisCorrige = DateHeure.Month;
                 if (moisCorrige < 3)
                     moisCorrige += 12;
@@ -51,12 +52,12 @@ namespace AstroTargetSelectorBusiness
                                                     + (1.3915817 * Math.Pow(greenwitchT, 2))
                                                     - (0.00000044 * Math.Pow(greenwitchT, 3))
                                                     - (0.000029956 * Math.Pow(greenwitchT, 4))
-                                                    - (0.0000000368 * Math.Pow(greenwitchT, 5))) / 60 / (60 * Math.PI) / 180);
+                                                    - (0.0000000368 * Math.Pow(greenwitchT, 5))) / 60 / 60 * Math.PI / 180);
                 double greenwitchTSCorrige = greenwitchTS % (2 * Math.PI);
 
                 // Temps Sideral Local
-                double LST = ((greenwitchTSCorrige + Math.Sin((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue))) % (2 * Math.PI))
-                            - (Math.Sin((Math.PI / 180) * Convert.ToDouble(parentTarget.RA)) * 15);
+                double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue))) % (2 * Math.PI))
+                            - (((Math.PI / 180) * Convert.ToDouble(parentTarget.RA)) * 15);
                 double H = LST < 0 ? LST + (2 * Math.PI) : LST > Math.PI ? LST - (2 * Math.PI) : LST;
 
                 // Sin/Cos
@@ -72,8 +73,8 @@ namespace AstroTargetSelectorBusiness
                 double hauteur = Math.Floor(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180));
 
                 // Azimut
-                double azimutCorrigee = Math.Atan2((cosH * sinLatitude) - (cosLatitude * tanDec), sinH) - Math.PI;
-                double azimut = Math.Floor((azimutCorrigee + (2 * Math.PI)) / Math.PI / 180);
+                double azimutCorrigee = Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI;
+                double azimut = Math.Floor((azimutCorrigee + (2 * Math.PI)) / (Math.PI / 180));
                 double cosAzimut = Math.Cos((Math.PI / 180) * azimut);
 
                 decimal tempsPoseCalcule = Math.Abs(230
