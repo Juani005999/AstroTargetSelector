@@ -30,11 +30,13 @@ namespace AstroTargetSelector
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripGlobal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDateObs = new System.Windows.Forms.ToolStripStatusLabel();
@@ -67,23 +69,24 @@ namespace AstroTargetSelector
             this.label4 = new System.Windows.Forms.Label();
             this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
             this.listViewTarget = new System.Windows.Forms.ListView();
+            this.imageListRank = new System.Windows.Forms.ImageList(this.components);
+            this.textBoxInfoPanelMagnitude = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelLongueur = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelHauteur = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.textBoxInfoPanelRA = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelDEC = new System.Windows.Forms.TextBox();
             this.label27 = new System.Windows.Forms.Label();
             this.label26 = new System.Windows.Forms.Label();
             this.comboBoxTotalTimeSlice = new System.Windows.Forms.ComboBox();
             this.label25 = new System.Windows.Forms.Label();
             this.comboBoxMinuteIntervalle = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.textBoxInfoPanelDEC = new System.Windows.Forms.TextBox();
-            this.label21 = new System.Windows.Forms.Label();
-            this.textBoxInfoPanelRA = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.textBoxInfoPanelMagnitude = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.textBoxInfoPanelHauteur = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
-            this.textBoxInfoPanelLongueur = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.textBoxInfoPanelDescription = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
@@ -94,8 +97,6 @@ namespace AstroTargetSelector
             this.label8 = new System.Windows.Forms.Label();
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTipInfoParametre = new System.Windows.Forms.ToolTip(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettraÀJourLaListeDescapteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -103,7 +104,6 @@ namespace AstroTargetSelector
             this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesTélescopesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.imageListRank = new System.Windows.Forms.ImageList(this.components);
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
@@ -144,6 +144,11 @@ namespace AstroTargetSelector
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "&Fichier";
             // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(275, 6);
+            // 
             // outilsToolStripMenuItem
             // 
             this.outilsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -153,6 +158,11 @@ namespace AstroTargetSelector
             this.outilsToolStripMenuItem.Name = "outilsToolStripMenuItem";
             this.outilsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.outilsToolStripMenuItem.Text = "&Outils";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(266, 6);
             // 
             // toolStripMenuItem1
             // 
@@ -528,7 +538,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 162;
+            this.splitContainerSecondaire.SplitterDistance = 163;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -541,13 +551,128 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 162);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 163);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
             this.listViewTarget.View = System.Windows.Forms.View.Details;
             this.listViewTarget.ColumnClick += new System.Windows.Forms.ColumnClickEventHandler(this.listViewTarget_ColumnClick);
             this.listViewTarget.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.listViewTarget_ItemSelectionChanged);
+            // 
+            // imageListRank
+            // 
+            this.imageListRank.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListRank.ImageStream")));
+            this.imageListRank.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageListRank.Images.SetKeyName(0, "1");
+            this.imageListRank.Images.SetKeyName(1, "2");
+            this.imageListRank.Images.SetKeyName(2, "3");
+            this.imageListRank.Images.SetKeyName(3, "4");
+            this.imageListRank.Images.SetKeyName(4, "5");
+            // 
+            // textBoxInfoPanelMagnitude
+            // 
+            this.textBoxInfoPanelMagnitude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelMagnitude.Location = new System.Drawing.Point(835, 124);
+            this.textBoxInfoPanelMagnitude.Name = "textBoxInfoPanelMagnitude";
+            this.textBoxInfoPanelMagnitude.ReadOnly = true;
+            this.textBoxInfoPanelMagnitude.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelMagnitude.TabIndex = 22;
+            // 
+            // textBoxInfoPanelLongueur
+            // 
+            this.textBoxInfoPanelLongueur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelLongueur.Location = new System.Drawing.Point(835, 150);
+            this.textBoxInfoPanelLongueur.Name = "textBoxInfoPanelLongueur";
+            this.textBoxInfoPanelLongueur.ReadOnly = true;
+            this.textBoxInfoPanelLongueur.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelLongueur.TabIndex = 17;
+            // 
+            // textBoxInfoPanelHauteur
+            // 
+            this.textBoxInfoPanelHauteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelHauteur.Location = new System.Drawing.Point(835, 176);
+            this.textBoxInfoPanelHauteur.Name = "textBoxInfoPanelHauteur";
+            this.textBoxInfoPanelHauteur.ReadOnly = true;
+            this.textBoxInfoPanelHauteur.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelHauteur.TabIndex = 19;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(762, 179);
+            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(68, 13);
+            this.label18.TabIndex = 18;
+            this.label18.Text = "Grandeur (H)";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label17
+            // 
+            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(764, 153);
+            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(66, 13);
+            this.label17.TabIndex = 16;
+            this.label17.Text = "Grandeur (L)";
+            this.label17.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label20
+            // 
+            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(773, 127);
+            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(57, 13);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Magnitude";
+            this.label20.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label21
+            // 
+            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(801, 101);
+            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(29, 13);
+            this.label21.TabIndex = 25;
+            this.label21.Text = "DEC";
+            this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // label6
+            // 
+            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(808, 75);
+            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(22, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "RA";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxInfoPanelRA
+            // 
+            this.textBoxInfoPanelRA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelRA.Location = new System.Drawing.Point(835, 72);
+            this.textBoxInfoPanelRA.Name = "textBoxInfoPanelRA";
+            this.textBoxInfoPanelRA.ReadOnly = true;
+            this.textBoxInfoPanelRA.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelRA.TabIndex = 24;
+            // 
+            // textBoxInfoPanelDEC
+            // 
+            this.textBoxInfoPanelDEC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelDEC.Location = new System.Drawing.Point(835, 98);
+            this.textBoxInfoPanelDEC.Name = "textBoxInfoPanelDEC";
+            this.textBoxInfoPanelDEC.ReadOnly = true;
+            this.textBoxInfoPanelDEC.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelDEC.TabIndex = 26;
             // 
             // label27
             // 
@@ -609,69 +734,6 @@ namespace AstroTargetSelector
             this.label24.Text = "Durée d\'un intervalle";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // textBoxInfoPanelDEC
-            // 
-            this.textBoxInfoPanelDEC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelDEC.Location = new System.Drawing.Point(835, 98);
-            this.textBoxInfoPanelDEC.Name = "textBoxInfoPanelDEC";
-            this.textBoxInfoPanelDEC.ReadOnly = true;
-            this.textBoxInfoPanelDEC.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelDEC.TabIndex = 26;
-            // 
-            // label21
-            // 
-            this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(801, 101);
-            this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(29, 13);
-            this.label21.TabIndex = 25;
-            this.label21.Text = "DEC";
-            this.label21.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxInfoPanelRA
-            // 
-            this.textBoxInfoPanelRA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelRA.Location = new System.Drawing.Point(835, 72);
-            this.textBoxInfoPanelRA.Name = "textBoxInfoPanelRA";
-            this.textBoxInfoPanelRA.ReadOnly = true;
-            this.textBoxInfoPanelRA.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelRA.TabIndex = 24;
-            // 
-            // label6
-            // 
-            this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(808, 75);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(22, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "RA";
-            this.label6.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxInfoPanelMagnitude
-            // 
-            this.textBoxInfoPanelMagnitude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelMagnitude.Location = new System.Drawing.Point(835, 124);
-            this.textBoxInfoPanelMagnitude.Name = "textBoxInfoPanelMagnitude";
-            this.textBoxInfoPanelMagnitude.ReadOnly = true;
-            this.textBoxInfoPanelMagnitude.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelMagnitude.TabIndex = 22;
-            // 
-            // label20
-            // 
-            this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(773, 127);
-            this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(57, 13);
-            this.label20.TabIndex = 21;
-            this.label20.Text = "Magnitude";
-            this.label20.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
             // button2
             // 
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -684,48 +746,6 @@ namespace AstroTargetSelector
             this.button2.TabIndex = 20;
             this.button2.Text = "Pointer";
             this.button2.UseVisualStyleBackColor = true;
-            // 
-            // textBoxInfoPanelHauteur
-            // 
-            this.textBoxInfoPanelHauteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelHauteur.Location = new System.Drawing.Point(835, 176);
-            this.textBoxInfoPanelHauteur.Name = "textBoxInfoPanelHauteur";
-            this.textBoxInfoPanelHauteur.ReadOnly = true;
-            this.textBoxInfoPanelHauteur.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelHauteur.TabIndex = 19;
-            // 
-            // label18
-            // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(762, 179);
-            this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(68, 13);
-            this.label18.TabIndex = 18;
-            this.label18.Text = "Grandeur (H)";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // textBoxInfoPanelLongueur
-            // 
-            this.textBoxInfoPanelLongueur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelLongueur.Location = new System.Drawing.Point(835, 150);
-            this.textBoxInfoPanelLongueur.Name = "textBoxInfoPanelLongueur";
-            this.textBoxInfoPanelLongueur.ReadOnly = true;
-            this.textBoxInfoPanelLongueur.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelLongueur.TabIndex = 17;
-            // 
-            // label17
-            // 
-            this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(764, 153);
-            this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(66, 13);
-            this.label17.TabIndex = 16;
-            this.label17.Text = "Grandeur (L)";
-            this.label17.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label16
             // 
@@ -744,7 +764,7 @@ namespace AstroTargetSelector
             this.textBoxInfoPanelDescription.Location = new System.Drawing.Point(569, 20);
             this.textBoxInfoPanelDescription.Name = "textBoxInfoPanelDescription";
             this.textBoxInfoPanelDescription.ReadOnly = true;
-            this.textBoxInfoPanelDescription.Size = new System.Drawing.Size(382, 20);
+            this.textBoxInfoPanelDescription.Size = new System.Drawing.Size(385, 20);
             this.textBoxInfoPanelDescription.TabIndex = 14;
             // 
             // label15
@@ -821,16 +841,6 @@ namespace AstroTargetSelector
             this.toolTipInfoParametre.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoParametre.ToolTipTitle = "Paramètres de l\'observation";
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(266, 6);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(283, 6);
-            // 
             // pictureBoxIconInfoToolTip
             // 
             this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
@@ -846,14 +856,14 @@ namespace AstroTargetSelector
             // 
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Name = "mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem";
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Text = "Mettre à jour la liste des &objets célestes";
             // 
             // mettraÀJourLaListeDescapteursToolStripMenuItem
             // 
             this.mettraÀJourLaListeDescapteursToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
             this.mettraÀJourLaListeDescapteursToolStripMenuItem.Name = "mettraÀJourLaListeDescapteursToolStripMenuItem";
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.mettraÀJourLaListeDescapteursToolStripMenuItem.Text = "Mettra à jour la liste des &capteurs";
             // 
             // quitterToolStripMenuItem
@@ -861,7 +871,7 @@ namespace AstroTargetSelector
             this.quitterToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Exit;
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.quitterToolStripMenuItem.Text = "&Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -873,6 +883,7 @@ namespace AstroTargetSelector
             this.optionsToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
             this.optionsToolStripMenuItem.Text = "&Paramètres de l\'observation";
             this.optionsToolStripMenuItem.ToolTipText = "Ouvre la boîte de dialogue des options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // gestionDesTélescopesToolStripMenuItem
             // 
@@ -887,19 +898,9 @@ namespace AstroTargetSelector
             this.aProposToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Help;
             this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
             this.aProposToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(188, 30);
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
             this.aProposToolStripMenuItem.Text = "&A propos";
             this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
-            // 
-            // imageListRank
-            // 
-            this.imageListRank.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageListRank.ImageStream")));
-            this.imageListRank.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageListRank.Images.SetKeyName(0, "1");
-            this.imageListRank.Images.SetKeyName(1, "2");
-            this.imageListRank.Images.SetKeyName(2, "3");
-            this.imageListRank.Images.SetKeyName(3, "4");
-            this.imageListRank.Images.SetKeyName(4, "5");
             // 
             // MainFenetre
             // 

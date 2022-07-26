@@ -624,6 +624,27 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Ouvre la boîte de dialogue des Paramètres de l'observation
+        /// </summary>
+        public void OpenParametres()
+        {
+            try
+            {
+                dlgParametres dialogParametres = new dlgParametres(factory);
+                dialogParametres.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Champs
@@ -806,6 +827,11 @@ namespace AstroTargetSelector
         private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenAPropos();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenParametres();
         }
     }
 }

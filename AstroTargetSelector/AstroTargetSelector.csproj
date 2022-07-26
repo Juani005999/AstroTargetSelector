@@ -56,6 +56,12 @@
     <Compile Include="dlgAPropos.Designer.cs">
       <DependentUpon>dlgAPropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgParametres.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgParametres.Designer.cs">
+      <DependentUpon>dlgParametres.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFenetre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="dlgAPropos.resx">
       <DependentUpon>dlgAPropos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgParametres.resx">
+      <DependentUpon>dlgParametres.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFenetre.resx">
       <DependentUpon>MainFenetre.cs</DependentUpon>

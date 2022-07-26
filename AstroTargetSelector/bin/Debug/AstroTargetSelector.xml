@@ -65,6 +65,54 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="T:AstroTargetSelector.dlgParametres">
+            <summary>
+            Boîte de Dialogue "Paramètres de l'observation"
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.InitCombos">
+            <summary>
+            Initialisations des Combos
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgParametres.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgParametres.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.MainFenetre">
             <summary>
             Fenêtre principale de l'application
@@ -170,6 +218,11 @@
         <member name="M:AstroTargetSelector.MainFenetre.OpenAPropos">
             <summary>
             Ouvre la boîte de dialogue A propos
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.OpenParametres">
+            <summary>
+            Ouvre la boîte de dialogue des Paramètres de l'observation
             </summary>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
