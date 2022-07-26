@@ -23,7 +23,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Index de la colonne Nom dans la liste View
         /// </summary>
-        private const int IndexColonneNom = 2;
+        private const int IndexColonneNom = 1;
 
         #endregion
 
@@ -273,7 +273,6 @@ namespace AstroTargetSelector
             listViewTarget.View = View.Details;
 
             // Adjout des colonnes
-            listViewTarget.Columns.Add(Resources.Rank, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Scoring, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Nom, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Type, -2, HorizontalAlignment.Left);
@@ -340,7 +339,7 @@ namespace AstroTargetSelector
                 listViewTarget.Items.Clear();
                 foreach (ObjTarget target in factory.GetAppTarget().ListeObjTarget)
                 {
-                    listViewTarget.Items.Add(new ListViewItem(new[] { target.Rank.ToString(),
+                    ListViewItem item = listViewTarget.Items.Add(new ListViewItem(new[] {
                                                 target.Scoring.ToString(),
                                                 target.Nom,
                                                 target.Type,
@@ -350,6 +349,9 @@ namespace AstroTargetSelector
                                                 target.Magnitude.ToString("0.00"),
                                                 target.GrandeurWidth.FormatedString,
                                                 target.GrandeurHeight.FormatedString}));
+
+                    // Image en fonction du Statut
+                    item.ImageKey = target.Rank.ToString();
                 }
 
                 // AutoFit des colonnes
@@ -393,6 +395,9 @@ namespace AstroTargetSelector
         {
             try
             {
+                // Trace
+                factory.GetLog().Log($"Tri de la liste sur l'index de colonne : {indexColonne}", GetType().Name);
+
                 // Stop le rafraichissement afin d'accélérer le remplissage
                 listViewTarget.BeginUpdate();
 
@@ -598,6 +603,27 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Ouvre la boîte de dialogue A propos
+        /// </summary>
+        public void OpenAPropos()
+        {
+            try
+            {
+                dlgAPropos dialogAPropos = new dlgAPropos(factory);
+                dialogAPropos.ShowDialog();
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Champs
@@ -640,17 +666,12 @@ namespace AstroTargetSelector
             UpdateViewPanelInfo();
         }
 
+        #endregion
+
         private void quitterToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
-
-        private void ouvrirLeFichierDeLogToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Process.Start(factory.GetLog().FullPathName);
-        }
-
-        #endregion
 
         private void listViewTarget_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
@@ -679,6 +700,7 @@ namespace AstroTargetSelector
             // Actualisation du texte de la Status Bar
             SetDefaultStatusText();
         }
+        
         private void dateTimePickerHeureObservation_ValueChanged(object sender, EventArgs e)
         {
             // Trace
@@ -772,9 +794,6 @@ namespace AstroTargetSelector
 
         private void listViewTarget_ColumnClick(object sender, ColumnClickEventArgs e)
         {
-            // Trace
-            factory.GetLog().Log($"Tri de la liste sur l'index de colonne : {e.Column}", GetType().Name);
-
             TriListTargets(e.Column);
         }
 
@@ -782,6 +801,11 @@ namespace AstroTargetSelector
         {
             // Sauvegarde du WindowState dans les Settings
             WindowMaximized = WindowState == FormWindowState.Maximized;
+        }
+
+        private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenAPropos();
         }
     }
 }

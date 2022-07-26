@@ -4,6 +4,67 @@
         <name>AstroTargetSelector</name>
     </assembly>
     <members>
+        <member name="T:AstroTargetSelector.dlgAPropos">
+            <summary>
+            Boîte de Dialogue "A Propos"
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyTitle">
+            <summary>
+            Titre de l'Assembly
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyVersion">
+            <summary>
+            Version
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyDescription">
+            <summary>
+            Description
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyProduct">
+            <summary>
+            Produit
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyCopyright">
+            <summary>
+            Copyright
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgAPropos.AssemblyCompany">
+            <summary>
+            Company
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgAPropos.OpenLogFile">
+            <summary>
+            Ouvre le fichier de Log
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgAPropos.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgAPropos.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgAPropos.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgAPropos.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.MainFenetre">
             <summary>
             Fenêtre principale de l'application
@@ -104,6 +165,11 @@
         <member name="M:AstroTargetSelector.MainFenetre.SetDefaultStatusText">
             <summary>
             Positionne le texte par défaut dans la Status Bar
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.OpenAPropos">
+            <summary>
+            Ouvre la boîte de dialogue A propos
             </summary>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
