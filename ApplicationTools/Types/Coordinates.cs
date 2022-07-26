@@ -17,8 +17,7 @@ namespace ApplicationTools
         {
             get
             {
-                Coordinate coordonnee = new Coordinate(latitude, CoordinatesType.Latitude);
-                return coordonnee.FormatedString;
+                return coordinateLatitude.FormatedString;
             }
         }
 
@@ -40,8 +39,7 @@ namespace ApplicationTools
         {
             get
             {
-                Coordinate coordonnee = new Coordinate(longitude, CoordinatesType.Longitude);
-                return coordonnee.FormatedString;
+                return coordinateLongitude.FormatedString;
             }
         }
 
@@ -82,6 +80,23 @@ namespace ApplicationTools
             // Valorisation des champs interne
             this.latitude = latitude;
             this.longitude = longitude;
+            coordinateLatitude = new Coordinate(latitude, CoordinatesType.Latitude);
+            coordinateLongitude = new Coordinate(longitude, CoordinatesType.Longitude);
+        }
+
+        #endregion
+
+        #region Méthodes
+
+        /// <summary>
+        /// Permet de positionner de nouvelles coordonnées (Longitude/Latitude) pour l'objet en cours
+        /// </summary>
+        /// <param name="latitude"></param>
+        /// <param name="longitude"></param>
+        public void UpdateCoordonnees(decimal latitude, decimal longitude)
+        {
+            coordinateLatitude.UpdateCoordonnee(latitude);
+            coordinateLongitude.UpdateCoordonnee(longitude);
         }
 
         #endregion
@@ -97,6 +112,16 @@ namespace ApplicationTools
         /// Latitude du Lieu
         /// </summary>
         private decimal latitude = 0;
+
+        /// <summary>
+        /// Objet Longitude du Lieu <see cref="Coordinate"/>
+        /// </summary>
+        private Coordinate coordinateLongitude = null;
+
+        /// <summary>
+        /// Objet Latitude du Lieu <see cref="Coordinate"/>
+        /// </summary>
+        private Coordinate coordinateLatitude = null;
 
         #endregion
     }

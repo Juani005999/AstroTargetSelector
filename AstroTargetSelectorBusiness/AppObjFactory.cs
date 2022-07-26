@@ -1,5 +1,6 @@
-﻿using ApplicationTools;
-using System.Runtime.CompilerServices;
+﻿using System.Collections.Generic;
+using ApplicationTools;
+using AstroTargetSelectorResources;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -57,6 +58,82 @@ namespace AstroTargetSelectorBusiness
             return appCapteur;
         }
 
+        /// <summary>
+        /// Renvoi la liste des intervalles de minutes possible pour les Slices de Target
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        public Dictionary<string, string> GetListeMinuteIntervalle()
+        {
+            // Si la liste n'existe pas, on la créer
+            if (listeMinuteIntervalle == null)
+            {
+                listeMinuteIntervalle = new Dictionary<string, string>();
+                listeMinuteIntervalle.Add("5", "5");
+                listeMinuteIntervalle.Add("10", "10");
+                listeMinuteIntervalle.Add("15", "15");
+                listeMinuteIntervalle.Add("30", "30");
+            }
+            return listeMinuteIntervalle;
+        }
+
+        /// <summary>
+        /// Renvoi la liste des durées totales d'observation
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        public Dictionary<string, string> GetListeTotalTimeSlice()
+        {
+            // Si la liste n'existe pas, on la créer
+            if (listeTotalTimeSlice == null)
+            {
+                listeTotalTimeSlice = new Dictionary<string, string>();
+                listeTotalTimeSlice.Add("1", "1");
+                listeTotalTimeSlice.Add("2", "2");
+                listeTotalTimeSlice.Add("3", "3");
+            }
+            return listeTotalTimeSlice;
+        }
+
+        /// <summary>
+        /// Renvoi la liste des Filtres de Rank pour l'affichage dans la liste
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        public Dictionary<string, string> GetListeFiltreRank()
+        {
+            // Si la liste n'existe pas, on la créer
+            if (listeFiltreRank == null)
+            {
+                listeFiltreRank = new Dictionary<string, string>();
+                listeFiltreRank.Add(Resources.Tous, Resources.Tous);
+                listeFiltreRank.Add("1", "1");
+                listeFiltreRank.Add("2", "2");
+                listeFiltreRank.Add("3", "3");
+                listeFiltreRank.Add("4", "4");
+                listeFiltreRank.Add("5", "5");
+            }
+            return listeFiltreRank;
+        }
+
+        /// <summary>
+        /// Renvoi la liste des Filtres de Magnitude pour l'affichage dans la liste
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        public Dictionary<string, string> GetListeFiltreMagnitude()
+        {
+            // Si la liste n'existe pas, on la créer
+            if (listeFiltreMagnitude == null)
+            {
+                listeFiltreMagnitude = new Dictionary<string, string>();
+                listeFiltreMagnitude.Add(Resources.Tous, Resources.Tous);
+                listeFiltreMagnitude.Add("7", "7");
+                listeFiltreMagnitude.Add("8", "8");
+                listeFiltreMagnitude.Add("9", "9");
+                listeFiltreMagnitude.Add("10", "10");
+                listeFiltreMagnitude.Add("11", "11");
+                listeFiltreMagnitude.Add("12", "12");
+            }
+            return listeFiltreMagnitude;
+        }
+
         #endregion
 
         #region Champs
@@ -75,6 +152,26 @@ namespace AstroTargetSelectorBusiness
         /// Objet applicatif permettant d'accéder à la collection des Capteurs
         /// </summary>
         private AppCapteur appCapteur = null;
+
+        /// <summary>
+        /// Liste des intervalles de minutes possible pour les Slices de Target
+        /// </summary>
+        private Dictionary<string, string> listeMinuteIntervalle = null;
+
+        /// <summary>
+        /// Liste des durées totales d'observation
+        /// </summary>
+        private Dictionary<string, string> listeTotalTimeSlice = null;
+
+        /// <summary>
+        /// Liste des Filtres de Rank pour l'affichage dans la liste
+        /// </summary>
+        private Dictionary<string, string> listeFiltreRank = null;
+
+        /// <summary>
+        /// Liste des Filtres de Magnitude pour l'affichage dans la liste
+        /// </summary>
+        private Dictionary<string, string> listeFiltreMagnitude = null;
 
         #endregion
     }

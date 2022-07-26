@@ -117,7 +117,43 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DateDeLObservation" xml:space="preserve">
+    <value>Date de l'observation</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>DEC</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Hauteur" xml:space="preserve">
+    <value>Hauteur</value>
+  </data>
+  <data name="Largeur" xml:space="preserve">
+    <value>Largeur</value>
+  </data>
+  <data name="Magnitude" xml:space="preserve">
+    <value>Magnitude</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Nom</value>
+  </data>
+  <data name="ObjetSelectionne" xml:space="preserve">
+    <value>Objet sélectionné</value>
+  </data>
+  <data name="RA" xml:space="preserve">
+    <value>RA</value>
+  </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="Scoring" xml:space="preserve">
+    <value>Scoring</value>
+  </data>
   <data name="Tous" xml:space="preserve">
     <value>Tous</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
   </data>
 </root>

@@ -15,8 +15,10 @@ namespace AstroTargetSelectorBusiness
 
         /// <summary>
         /// Liste d'objets <see cref="ObjTarget"/>
+        /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
+        /// <para>Afin de forcer le rechargement de la liste depuis le fichier de configuration, il faut positionner la propriété <see cref="ForceUpdateListe"/> à true</para>
         /// </summary>
-        public List<ObjTarget> ListeObjTarget
+        internal List<ObjTarget> ListeObjTarget
         {
             get
             {
@@ -35,12 +37,12 @@ namespace AstroTargetSelectorBusiness
         /// Force le rechargement de la liste depuis le fichier de configuration
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
         /// </summary>
-        public bool ForceUpdateListe { get; set; }
+        internal bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        public string TargetListeFullPathFile
+        internal string TargetListeFullPathFile
         {
             get
             {
@@ -102,11 +104,11 @@ namespace AstroTargetSelectorBusiness
                                 Nom = values[0],
                                 Type = values[1],
                                 Description = values[2],
-                                RA = Convert.ToDecimal(values[3]),
-                                DEC = Convert.ToDecimal(values[4]),
+                                RA = factory.GetCoordinate(Convert.ToDecimal(values[3]), CoordinatesType.RA),
+                                DEC = factory.GetCoordinate(Convert.ToDecimal(values[4]), CoordinatesType.DEC),
                                 Magnitude = Convert.ToDecimal(values[5]),
-                                GrandeurWidth = Convert.ToDecimal(values[6]),
-                                GrandeurHeight = Convert.ToDecimal(values[7])
+                                GrandeurWidth = factory.GetCoordinate(Convert.ToDecimal(values[6]), CoordinatesType.Degree),
+                                GrandeurHeight = factory.GetCoordinate(Convert.ToDecimal(values[7]), CoordinatesType.Degree)
                             });
                         }
                     }

@@ -36,6 +36,14 @@
             <param name="longitude"></param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Decimal,ApplicationTools.CoordinatesType)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
             Objet <see cref="T:ApplicationTools.AppLog"/>
@@ -569,21 +577,53 @@
         <member name="F:ApplicationTools.CoordinatesType.Longitude">
             <summary>
             Longitude
+            <para>Format : XX° XX' XX.XX" [E/O]</para>
             </summary>
         </member>
         <member name="F:ApplicationTools.CoordinatesType.Latitude">
             <summary>
             Latitude
+            <para>Format : XX° XX' XX.XX" [N/S]</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.RA">
+            <summary>
+            RA (Ascension Droite)
+            <para>Format : XXh XXm XX.XXs</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.DEC">
+            <summary>
+            DEC (Déclinaison)
+            <para>Format : [+/-] XX° XX' XX.XX"</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Degree">
+            <summary>
+            Degré
+            <para>Format : [+/-] XX° XX' XX.XX"</para>
             </summary>
         </member>
         <member name="T:ApplicationTools.Coordinate">
             <summary>
-            Donnée de type Coordonnée de localisation : XX° XX' XX" [N/S/E/O]
+            Donnée de type Coordonnée de localisation : XX° XX' XX.XX" [N/S/E/O]
+            Donnée de type Coordonnée RA (Ascension Droite) : XXh XXm XX.XXs
+            Donnée de type Degré (DEC, Grandeur, Alt/Az, ...) : [+/-] XX° XX' XX.XX"
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Coordonnee">
+            <summary>
+            Valeur décimal de la coordonnée
             </summary>
         </member>
         <member name="P:ApplicationTools.Coordinate.Degrees">
             <summary>
             Valeur du champ '°' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Hours">
+            <summary>
+            Valeur du champ 'h' de la coordonnée de type RA
             </summary>
         </member>
         <member name="P:ApplicationTools.Coordinate.Minutes">
@@ -607,6 +647,12 @@
             </summary>
             <param name="coordonnee"></param>
             <param name="coordinatesType"></param>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.UpdateCoordonnee(System.Decimal)">
+            <summary>
+            Permet de positionner une nouvelle coordonnée pour l'objet en cours
+            </summary>
+            <param name="coordonnee"></param>
         </member>
         <member name="F:ApplicationTools.Coordinate.coordonnee">
             <summary>
@@ -657,6 +703,13 @@
             <param name="latitude"></param>
             <param name="longitude"></param>
         </member>
+        <member name="M:ApplicationTools.Coordinates.UpdateCoordonnees(System.Decimal,System.Decimal)">
+            <summary>
+            Permet de positionner de nouvelles coordonnées (Longitude/Latitude) pour l'objet en cours
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
         <member name="F:ApplicationTools.Coordinates.longitude">
             <summary>
             Longitude du Lieu
@@ -665,6 +718,16 @@
         <member name="F:ApplicationTools.Coordinates.latitude">
             <summary>
             Latitude du Lieu
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.coordinateLongitude">
+            <summary>
+            Objet Longitude du Lieu <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.coordinateLatitude">
+            <summary>
+            Objet Latitude du Lieu <see cref="T:ApplicationTools.Coordinate"/>
             </summary>
         </member>
     </members>

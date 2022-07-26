@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AstroTargetSelectorBusiness.Properties {
+namespace AstroTargetSelectorResources {
     using System;
     
     
@@ -22,7 +22,7 @@ namespace AstroTargetSelectorBusiness.Properties {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace AstroTargetSelectorBusiness.Properties {
         ///   Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("AstroTargetSelectorBusiness.Properties.Resources", typeof(Resources).Assembly);
@@ -51,7 +51,7 @@ namespace AstroTargetSelectorBusiness.Properties {
         ///   les recherches de ressources à l'aide de cette classe de ressource fortement typée.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -61,11 +61,119 @@ namespace AstroTargetSelectorBusiness.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date de l&apos;observation.
+        /// </summary>
+        public static string DateDeLObservation {
+            get {
+                return ResourceManager.GetString("DateDeLObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à DEC.
+        /// </summary>
+        public static string DEC {
+            get {
+                return ResourceManager.GetString("DEC", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Description.
+        /// </summary>
+        public static string Description {
+            get {
+                return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hauteur.
+        /// </summary>
+        public static string Hauteur {
+            get {
+                return ResourceManager.GetString("Hauteur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Largeur.
+        /// </summary>
+        public static string Largeur {
+            get {
+                return ResourceManager.GetString("Largeur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Magnitude.
+        /// </summary>
+        public static string Magnitude {
+            get {
+                return ResourceManager.GetString("Magnitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nom.
+        /// </summary>
+        public static string Nom {
+            get {
+                return ResourceManager.GetString("Nom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Objet sélectionné.
+        /// </summary>
+        public static string ObjetSelectionne {
+            get {
+                return ResourceManager.GetString("ObjetSelectionne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à RA.
+        /// </summary>
+        public static string RA {
+            get {
+                return ResourceManager.GetString("RA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rank.
+        /// </summary>
+        public static string Rank {
+            get {
+                return ResourceManager.GetString("Rank", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Scoring.
+        /// </summary>
+        public static string Scoring {
+            get {
+                return ResourceManager.GetString("Scoring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Tous.
         /// </summary>
-        internal static string Tous {
+        public static string Tous {
             get {
                 return ResourceManager.GetString("Tous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Type.
+        /// </summary>
+        public static string Type {
+            get {
+                return ResourceManager.GetString("Type", resourceCulture);
             }
         }
     }

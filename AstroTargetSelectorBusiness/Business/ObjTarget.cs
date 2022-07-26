@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using ApplicationTools;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -59,13 +60,13 @@ namespace AstroTargetSelectorBusiness
         /// RA : Acsension droite de l'objet céleste
         /// <para>Valeur exprimée en "degrés horaires" décimal</para>
         /// </summary>
-        public decimal RA { get; set; }
+        public Coordinate RA { get; set; }
 
         /// <summary>
         /// DEC : Déclinaison de l'objet céleste
         /// <para>Valeur exprimée en "degrés" décimal</para>
         /// </summary>
-        public decimal DEC { get; set; }
+        public Coordinate DEC { get; set; }
 
         /// <summary>
         /// Magnitude de l'objet céleste
@@ -75,12 +76,12 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Grandeur : Largeur de l'objet céleste
         /// </summary>
-        public decimal GrandeurWidth { get; set; }
+        public Coordinate GrandeurWidth { get; set; }
 
         /// <summary>
         /// Grandeur : Hauteur de l'objet céleste
         /// </summary>
-        public decimal GrandeurHeight { get; set; }
+        public Coordinate GrandeurHeight { get; set; }
 
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
@@ -98,7 +99,7 @@ namespace AstroTargetSelectorBusiness
                     // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
                     slices.Add(new ObjSliceTarget(factory, this)
                     {
-                        DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * 15)
+                        DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
                     });
                 }
                 return slices;
@@ -156,6 +157,12 @@ namespace AstroTargetSelectorBusiness
         internal ObjTarget(AppObjFactory factory)
         {
             this.factory = factory;
+
+            // Initialisation des objets
+            RA = factory.GetCoordinate(0, CoordinatesType.RA);
+            DEC = factory.GetCoordinate(0, CoordinatesType.DEC);
+            GrandeurWidth = factory.GetCoordinate(0, CoordinatesType.Degree);
+            GrandeurHeight = factory.GetCoordinate(0, CoordinatesType.Degree);
         }
 
         #endregion

@@ -16,13 +16,42 @@
         </member>
         <member name="M:ApplicationTools.AppToolFactory.GetLog">
             <summary>
-            Retourne l'objet <see cref="T:ApplicationTools.AppToolLog"/>
+            Retourne l'objet <see cref="T:ApplicationTools.AppLog"/>
             </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet Log</returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppContext">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Decimal,ApplicationTools.CoordinatesType)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
-            Objet <see cref="T:ApplicationTools.AppToolLog"/>
+            Objet <see cref="T:ApplicationTools.AppLog"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appContext">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppContext"/>
             </summary>
         </member>
         <member name="T:ApplicationTools.BwebConvert">
@@ -200,6 +229,51 @@
             </summary>
             <returns>Vecteur d'initialisation</returns>
         </member>
+        <member name="T:ApplicationTools.AppContext">
+            <summary>
+            Objet permettant d'accéder au contexte d'éxecution de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ProductName">
+            <summary>
+            ProductName de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ProductVersion">
+            <summary>
+            ProductVersion de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ExecutablePath">
+            <summary>
+            ExecutablePath (Path + Nom du fichier executable) de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.StartupPath">
+            <summary>
+            StartupPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.UserAppDataPath">
+            <summary>
+            UserAppDataPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.LogFileName">
+            <summary>
+            Nom du fichier de log de l'application en cours
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppContext.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppContext.toolFactory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
         <member name="T:ApplicationTools.TimeSpanExtensionMethods">
             <summary>
             Classe d'extension dédiée au TimeSpan
@@ -211,6 +285,22 @@
             </summary>
             <param name="span"></param>
             <returns>Chaîne formatée</returns>
+        </member>
+        <member name="T:ApplicationTools.DateTimeExtensionMethods">
+            <summary>
+            Classe d'extension dédiée au DateTime
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.DateTimeExtensionMethods.GetElapsed(System.DateTime)">
+            <summary>
+            Retourne le temps écoulé depuis <paramref name="d"/> en millisecondes.
+            </summary>
+            <remarks>
+            La valeur est retournée sous la forme d'un Int32 par commodité.
+            Une précision supplémentaire n'est pas nécessaire dans notre contexte.
+            </remarks>
+            <param name="d">DateTime de référence</param>
+            <returns>Temps écoulé en millisecondes.</returns>
         </member>
         <member name="T:ApplicationTools.XmlNodeExtensionMethods">
             <summary>
@@ -226,138 +316,106 @@
             <param name="xpath">Chemin XPATH du noeud recherché</param>
             <returns>Valeur du sous-noeud ou chaine vide</returns>
         </member>
-        <member name="T:ApplicationTools.BwebExtensions">
+        <member name="M:ApplicationTools.XmlNodeExtensionMethods.GetAttributeValueOrEmpty(System.Xml.XmlNode,System.String)">
             <summary>
-            Classe centralisant l'ensemble des méthodes d'extensions de l'application Bweb.
-            <para>A INTEGRER</para>
+            Retourne la valeur de l'attribut du noeud fourni.
             </summary>
+            <param name="node">Noeud sur lequel il faut faire la recherche</param>
+            <param name="attributeName">Nom de l'attribut</param>
+            <returns>Valeur de l'attribut ou chaine vide</returns>
         </member>
-        <member name="M:ApplicationTools.BwebExtensions.GetValueFromPathOrEmpty(UTIL_DYNAMICLTNVLib.DynamicLtnvArea,System.String)">
-            <summary>
-            Retourne la valeur du noeud correspondant au <paramref name="path">chemin</paramref>.
-            Si aucun noeud ne correspond au chemin, la méthode retourne une chaîne vide.
-            </summary>
-            <remarks>
-            Cette méthode appelle TestAndGetNodeFromPath(false).GetValue().
-            </remarks>
-            <param name="ltnv">LTNV sur lequel il faut faire la recherche</param>
-            <param name="path">Chemin du noeud recherché</param>
-            <returns>Valeur du noeud recherché ou chaine vide</returns>
-        </member>
-        <member name="M:ApplicationTools.BwebExtensions.AddOrUpdateValueToPath(UTIL_DYNAMICLTNVLib.DynamicLtnvArea,System.String,System.String)">
-            <summary>
-            Ajout ou mise à jour d'une valeur correspondant au <paramref name="path">chemin</paramref>.
-            Dans le cas de l'ajout, l'arborescence est construite si nécessaire.
-            </summary>
-            <param name="ltnv">LTNV sur lequel il faut faire l'opération</param>
-            <param name="path">Chemin du noeud à mettre à jour</param>
-            <param name="value">Valeur ajoutée</param>
-        </member>
-        <member name="T:ApplicationTools.AppToolLog">
+        <member name="T:ApplicationTools.AppLog">
             <summary>
             Objet Log
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="T:ApplicationTools.AppLog.TypeLog">
             <summary>
-            Constructeur par défaut
+            Type de trace
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.Initialise(System.Windows.Forms.Form,System.String)">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Infos">
             <summary>
-            Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
+            Trace de type Infos
             </summary>
-            <param name="currentForm"></param>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.LogInfos(System.String,System.String,System.String,System.Nullable{System.Double},System.String,System.String,System.Int32)">
-            <summary>
-            Trace de type Info
-            </summary>
-            <param name="message"></param>
-        </member>
-        <member name="M:ApplicationTools.AppToolLog.LogWarning(System.String,System.String,System.String,System.Nullable{System.Double},System.String,System.String,System.Int32)">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Warning">
             <summary>
             Trace de type Warning
             </summary>
-            <param name="message"></param>
         </member>
-        <member name="M:ApplicationTools.AppToolLog.LogError(System.String,System.String,System.String,System.Nullable{System.Double},System.String,System.String,System.Int32)">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Error">
             <summary>
-            Trace de type Erreur
-            </summary>
-            <param name="message"></param>
-        </member>
-        <member name="M:ApplicationTools.AppToolLog.LogError(System.Exception,System.String,System.String,System.Nullable{System.Double},System.String,System.String,System.Int32)">
-            <summary>
-            Trace de type Erreur
-            </summary>
-            <param name="err">Erreur</param>
-        </member>
-        <member name="M:ApplicationTools.AppToolLog.log(ApplicationTools.AppToolLog.TypeLog,System.String,System.String,System.String,System.Nullable{System.Double})">
-            <summary>
-            Trace en console et dans le fichier de log
-            </summary>
-            <param name="typeLog"></param>
-            <param name="message"></param>
-        </member>
-        <member name="M:ApplicationTools.AppToolLog.InitialiseFichierLog">
-            <summary>
-            Permet la création des entêtes de colonnes dans le fichier de log
+            Trace de type Error
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.toolFactory">
+        <member name="F:ApplicationTools.AppLog.TypeLog.Fatal">
             <summary>
-            Instance de la ToolFactory en cours
+            Trace de type Fatal
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppToolLog.currentForm">
-            <summary>
-            Fenêtre de l'application en cours
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppToolLog.logFilePath">
-            <summary>
-            Path du fichier de log
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppToolLog.logFileName">
-            <summary>
-            Nom du fichier de log
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppToolLog.callerMemberName">
-            <summary>
-            Nom de la méthode appelante
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppToolLog.callerFilePath">
-            <summary>
-            Nom du fichier de la fonction appelante
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppToolLog.callerLineNumber">
-            <summary>
-            Numéro de ligne de l'appelant
-            </summary>
-        </member>
-        <member name="P:ApplicationTools.AppToolLog.LogFileName">
-            <summary>
-            Nom du fichier de log
-            </summary>
-        </member>
-        <member name="P:ApplicationTools.AppToolLog.FullPathName">
+        <member name="P:ApplicationTools.AppLog.FullPathName">
             <summary>
             Path complet et Nom du fichier de log
             </summary>
         </member>
-        <member name="T:ApplicationTools.AppToolLog.TypeLog">
+        <member name="M:ApplicationTools.AppLog.#ctor(ApplicationTools.AppToolFactory)">
             <summary>
-            Type de trace
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppLog.Initialise">
+            <summary>
+            Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.AppLog.TypeLog,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Trace en console et dans le fichier de log
+            </summary>
+            <param name="message">Trace</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="millisecond">Durée en ms</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
+            <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="M:ApplicationTools.AppLog.LogException(System.Exception,System.String,ApplicationTools.AppLog.TypeLog,System.String,System.String,System.Int32)">
+            <summary>
+            Trace une Exception en console et dans le fichier de log
+            </summary>
+            <param name="ex">Exception</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="M:ApplicationTools.AppLog.InitialiseFichierLog">
+            <summary>
+            Permet la création des entêtes de colonnes dans le fichier de log
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppLog.toolFactory">
+            <summary>
+            Instance de la ToolFactory en cours
             </summary>
         </member>
         <member name="T:ApplicationTools.ListViewColumnSorter">
             <summary>
             This class is an implementation of the 'IComparer' interface.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListViewColumnSorter.SortColumn">
+            <summary>
+            Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListViewColumnSorter.Order">
+            <summary>
+            Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
             </summary>
         </member>
         <member name="M:ApplicationTools.ListViewColumnSorter.#ctor">
@@ -386,16 +444,6 @@
         <member name="F:ApplicationTools.ListViewColumnSorter.ObjectCompare">
             <summary>
             Case insensitive comparer object
-            </summary>
-        </member>
-        <member name="P:ApplicationTools.ListViewColumnSorter.SortColumn">
-            <summary>
-            Gets or sets the number of the column to which to apply the sorting operation (Defaults to '0').
-            </summary>
-        </member>
-        <member name="P:ApplicationTools.ListViewColumnSorter.Order">
-            <summary>
-            Gets or sets the order of sorting to apply (for example, 'Ascending' or 'Descending').
             </summary>
         </member>
         <member name="T:ApplicationTools.ListViewExtensions">
@@ -435,6 +483,19 @@
             <param name="value">Valeur</param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.ComboBoxItems.GetRowType">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItems.NewRowFromBuilder(System.Data.DataRowBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="builder"></param>
+            <returns></returns>
+        </member>
         <member name="T:ApplicationTools.ComboBoxItem">
             <summary>
             Objet Elément de liste de ComboBox <see cref="T:ApplicationTools.ComboBoxItems"/>
@@ -454,6 +515,219 @@
         <member name="P:ApplicationTools.ComboBoxItem.Value">
             <summary>
             Valeur de l'élément de liste
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ComboBoxItem.ToString">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.Properties.Resources">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenue">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue.
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.CoordinatesPosition">
+            <summary>
+            Position N/S/E/O de la coordonnée de localisation
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.N">
+            <summary>
+            Nord
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.E">
+            <summary>
+            Est
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.S">
+            <summary>
+            Sud
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesPosition.O">
+            <summary>
+            Ouest
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.CoordinatesType">
+            <summary>
+            Type Longitude/Latitude pour les <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Longitude">
+            <summary>
+            Longitude
+            <para>Format : XX° XX' XX.XX" [E/O]</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Latitude">
+            <summary>
+            Latitude
+            <para>Format : XX° XX' XX.XX" [N/S]</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.RA">
+            <summary>
+            RA (Ascension Droite)
+            <para>Format : XXh XXm XX.XXs</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.DEC">
+            <summary>
+            DEC (Déclinaison)
+            <para>Format : [+/-] XX° XX' XX.XX"</para>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesType.Degree">
+            <summary>
+            Degré
+            <para>Format : [+/-] XX° XX' XX.XX"</para>
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.Coordinate">
+            <summary>
+            Donnée de type Coordonnée de localisation : XX° XX' XX.XX" [N/S/E/O]
+            Donnée de type Coordonnée RA (Ascension Droite) : XXh XXm XX.XXs
+            Donnée de type Degré (DEC, Grandeur, Alt/Az, ...) : [+/-] XX° XX' XX.XX"
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Coordonnee">
+            <summary>
+            Valeur décimal de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Degrees">
+            <summary>
+            Valeur du champ '°' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Hours">
+            <summary>
+            Valeur du champ 'h' de la coordonnée de type RA
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Minutes">
+            <summary>
+            Valeur du champ ''' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.Seconds">
+            <summary>
+            Valeur du champ '"' de la coordonnée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.FormatedString">
+            <summary>
+            Coordonnée sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal,ApplicationTools.CoordinatesType)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="coordonnee"></param>
+            <param name="coordinatesType"></param>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.UpdateCoordonnee(System.Decimal)">
+            <summary>
+            Permet de positionner une nouvelle coordonnée pour l'objet en cours
+            </summary>
+            <param name="coordonnee"></param>
+        </member>
+        <member name="F:ApplicationTools.Coordinate.coordonnee">
+            <summary>
+            Valeur de la coordonnée
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinate.coordinatesType">
+            <summary>
+            Type Longitude/Latitude
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.Coordinates">
+            <summary>
+            Donnée de type Coordonnées complète de localisation : Longitude + Latitude
+            <para>La longitude et la latitude sont de type <see cref="T:ApplicationTools.Coordinate"/></para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.Latitude">
+            <summary>
+            Renvoi la Latitude sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.LatitudeValue">
+            <summary>
+            Renvoi la Latitude sous la forme d'un decimal
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.Longitude">
+            <summary>
+            Renvoi la Longitude sous la forme d'une chaîne de caractère formatée
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.LongitudeValue">
+            <summary>
+            Renvoi la Longitude sous la forme d'un decimal
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.LocalisationComplete">
+            <summary>
+            Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
+            <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.Coordinates.#ctor(System.Decimal,System.Decimal)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="M:ApplicationTools.Coordinates.UpdateCoordonnees(System.Decimal,System.Decimal)">
+            <summary>
+            Permet de positionner de nouvelles coordonnées (Longitude/Latitude) pour l'objet en cours
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.longitude">
+            <summary>
+            Longitude du Lieu
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.latitude">
+            <summary>
+            Latitude du Lieu
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.coordinateLongitude">
+            <summary>
+            Objet Longitude du Lieu <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.Coordinates.coordinateLatitude">
+            <summary>
+            Objet Latitude du Lieu <see cref="T:ApplicationTools.Coordinate"/>
             </summary>
         </member>
     </members>

@@ -32,6 +32,30 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetListeMinuteIntervalle">
+            <summary>
+            Renvoi la liste des intervalles de minutes possible pour les Slices de Target
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetListeTotalTimeSlice">
+            <summary>
+            Renvoi la liste des durées totales d'observation
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetListeFiltreRank">
+            <summary>
+            Renvoi la liste des Filtres de Rank pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetListeFiltreMagnitude">
+            <summary>
+            Renvoi la liste des Filtres de Magnitude pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
             <summary>
             Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -45,6 +69,26 @@
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appCapteur">
             <summary>
             Objet applicatif permettant d'accéder à la collection des Capteurs
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeMinuteIntervalle">
+            <summary>
+            Liste des intervalles de minutes possible pour les Slices de Target
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeTotalTimeSlice">
+            <summary>
+            Liste des durées totales d'observation
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeFiltreRank">
+            <summary>
+            Liste des Filtres de Rank pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeFiltreMagnitude">
+            <summary>
+            Liste des Filtres de Magnitude pour l'affichage dans la liste
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.AppCapteur">
@@ -119,7 +163,7 @@
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.AppInputs.toolFactory">
+        <member name="F:AstroTargetSelectorBusiness.AppInputs.factory">
             <summary>
             Instance de la fabrique d'objet métier
             </summary>
@@ -140,9 +184,40 @@
             <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.ListeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.AppTarget.ListeObjTarget"/></para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.AppTarget.ListeType">
             <summary>
             Renvoi la liste distinctes des différents type d'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.FiltreNomDescription">
+            <summary>
+            Filtre sur Nom ou Description pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.FiltreType">
+            <summary>
+            Filtre sur Type pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.FiltreRank">
+            <summary>
+            Filtre sur Rank pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.FiltreMagnitude">
+            <summary>
+            Filtre sur Magnitude pour l'affichage dans la liste
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
@@ -165,6 +240,11 @@
         <member name="F:AstroTargetSelectorBusiness.AppTarget.targets">
             <summary>
             Liste des Targets
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.listeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.listeType">
@@ -270,8 +350,21 @@
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.NombreSlice">
             <summary>
-            Nombre d'intervalle de temps (1/4 d'heure) pour le calcul des temps de pose
-            <para>par défaut 8</para>
+            Nombre d'intervalle de temps : (<see cref="P:AstroTargetSelectorBusiness.ObjInputs.TotalTimeSlice"/> * 60) / <see cref="P:AstroTargetSelectorBusiness.ObjInputs.MinuteIntervalSlice"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.MinuteIntervalSlice">
+            <summary>
+            Nombre de minutes d'un Intervalle pour le calcul des temps de pose
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 10</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.TotalTimeSlice">
+            <summary>
+            Durée totale de l'observation pour définir le nombre de slice en fonction de l'intervalle
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 2</para>
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
@@ -289,9 +382,24 @@
             Instance de la fabrique d'objet métier
             </summary>
         </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.lieuObservation">
+            <summary>
+            Coordonnées (Longitude et Latitude) du lieu d'observation
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.capteur">
+            <summary>
+            Capteur
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.ObjSliceTarget">
             <summary>
             Objet représentant un intervalle de temps de calcul pour un objet céleste
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalculeMax">
+            <summary>
+            Temps de pose maximum (si dépassement de capacité)
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.DateHeure">
@@ -441,6 +549,8 @@
         <member name="P:AstroTargetSelectorBusiness.ObjTargetList.ListeObjTarget">
             <summary>
             Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
+            <para>Afin de forcer le rechargement de la liste depuis le fichier de configuration, il faut positionner la propriété <see cref="P:AstroTargetSelectorBusiness.ObjTargetList.ForceUpdateListe"/> à true</para>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTargetList.ForceUpdateListe">
@@ -479,25 +589,85 @@
             Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
         </member>
-        <member name="T:AstroTargetSelectorBusiness.Properties.Resources">
+        <member name="T:AstroTargetSelectorResources.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.ResourceManager">
+        <member name="P:AstroTargetSelectorResources.Resources.ResourceManager">
             <summary>
               Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.Culture">
+        <member name="P:AstroTargetSelectorResources.Resources.Culture">
             <summary>
               Remplace la propriété CurrentUICulture du thread actuel pour toutes
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorBusiness.Properties.Resources.Tous">
+        <member name="P:AstroTargetSelectorResources.Resources.DateDeLObservation">
+            <summary>
+              Recherche une chaîne localisée semblable à Date de l&apos;observation.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.DEC">
+            <summary>
+              Recherche une chaîne localisée semblable à DEC.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Description">
+            <summary>
+              Recherche une chaîne localisée semblable à Description.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Hauteur">
+            <summary>
+              Recherche une chaîne localisée semblable à Hauteur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Largeur">
+            <summary>
+              Recherche une chaîne localisée semblable à Largeur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Magnitude">
+            <summary>
+              Recherche une chaîne localisée semblable à Magnitude.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Nom">
+            <summary>
+              Recherche une chaîne localisée semblable à Nom.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ObjetSelectionne">
+            <summary>
+              Recherche une chaîne localisée semblable à Objet sélectionné.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.RA">
+            <summary>
+              Recherche une chaîne localisée semblable à RA.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Rank">
+            <summary>
+              Recherche une chaîne localisée semblable à Rank.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Scoring">
+            <summary>
+              Recherche une chaîne localisée semblable à Scoring.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Tous">
             <summary>
               Recherche une chaîne localisée semblable à Tous.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Type">
+            <summary>
+              Recherche une chaîne localisée semblable à Type.
             </summary>
         </member>
     </members>

@@ -18,7 +18,7 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 if (inputs == null)
-                    inputs = new ObjInputs(toolFactory);
+                    inputs = new ObjInputs(factory);
                 return inputs;
             }
         }
@@ -58,9 +58,20 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
+                // Lieu
                 string toolTipRetour = $"Lieu : {LieuObservation}";
+
+                // Capteur
                 toolTipRetour += Environment.NewLine;
                 toolTipRetour += $"Capteur : {CapteurFormatedString}";
+
+                // Capteur
+                toolTipRetour += Environment.NewLine;
+                toolTipRetour += $"Zones exclues : E - SE";
+
+                // Capteur
+                toolTipRetour += Environment.NewLine;
+                toolTipRetour += $"Bougé max. : {Inputs.BougeMax} px";
 
                 //Lieu: 48°21'35" N - 7°07'57" E
                 //Capteur: IMX492 - Largeur : 2055px
@@ -78,9 +89,9 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppInputs(AppObjFactory toolFactory)
+        internal AppInputs(AppObjFactory factory)
         {
-            this.toolFactory = toolFactory;
+            this.factory = factory;
         }
 
         #endregion
@@ -90,7 +101,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory toolFactory = null;
+        private readonly AppObjFactory factory = null;
 
         /// <summary>
         /// Objets métier contenant les données en entrée

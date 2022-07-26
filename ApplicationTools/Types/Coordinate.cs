@@ -35,26 +35,70 @@ namespace ApplicationTools
     {
         /// <summary>
         /// Longitude
+        /// <para>Format : XX° XX' XX.XX" [E/O]</para>
         /// </summary>
         Longitude,
 
         /// <summary>
         /// Latitude
+        /// <para>Format : XX° XX' XX.XX" [N/S]</para>
         /// </summary>
-        Latitude
+        Latitude,
+
+        /// <summary>
+        /// RA (Ascension Droite)
+        /// <para>Format : XXh XXm XX.XXs</para>
+        /// </summary>
+        RA,
+
+        /// <summary>
+        /// DEC (Déclinaison)
+        /// <para>Format : [+/-] XX° XX' XX.XX"</para>
+        /// </summary>
+        DEC,
+
+        /// <summary>
+        /// Degré
+        /// <para>Format : [+/-] XX° XX' XX.XX"</para>
+        /// </summary>
+        Degree
     }
 
     /// <summary>
-    /// Donnée de type Coordonnée de localisation : XX° XX' XX" [N/S/E/O]
+    /// Donnée de type Coordonnée de localisation : XX° XX' XX.XX" [N/S/E/O]
+    /// Donnée de type Coordonnée RA (Ascension Droite) : XXh XXm XX.XXs
+    /// Donnée de type Degré (DEC, Grandeur, Alt/Az, ...) : [+/-] XX° XX' XX.XX"
     /// </summary>
     public class Coordinate
     {
         #region Propriétés
 
         /// <summary>
+        /// Valeur décimal de la coordonnée
+        /// </summary>
+        public decimal Coordonnee
+        {
+            get
+            {
+                return coordonnee;
+            }
+        }
+
+        /// <summary>
         /// Valeur du champ '°' de la coordonnée
         /// </summary>
         public decimal Degrees
+        {
+            get
+            {
+                return Math.Truncate(Math.Abs(coordonnee));
+            }
+        }
+
+        /// <summary>
+        /// Valeur du champ 'h' de la coordonnée de type RA
+        /// </summary>
+        public decimal Hours
         {
             get
             {
@@ -69,6 +113,12 @@ namespace ApplicationTools
         {
             get
             {
+                // Calcul spécifique pour les données de type RA
+                if (coordinatesType == CoordinatesType.RA)
+                    return Math.Truncate((Math.Abs(coordonnee) - Hours) * 60);
+                    //return Math.Truncate((coordonnee - (Hours * 15)) * 4);
+
+                // Retour pour le cas standard
                 return Math.Truncate((Math.Abs(coordonnee) - Degrees) * 60);
             }
         }
@@ -80,6 +130,11 @@ namespace ApplicationTools
         {
             get
             {
+                // Calcul spécifique pour les données de type RA
+                if (coordinatesType == CoordinatesType.RA)
+                    return (((Math.Abs(coordonnee) - Hours) * 60) - Minutes) * 60;
+                    //return (coordonnee - (Hours * 15) - (Minutes / 4)) * 240;
+
                 return (((Math.Abs(coordonnee) - Degrees) * 60) - Minutes) * 60;
             }
         }
@@ -91,11 +146,25 @@ namespace ApplicationTools
         {
             get
             {
-                // On positionne la direction en fonction du Type (Longitude/Latitude) et de la valeur de la coordonnée
-                var direction = coordinatesType == CoordinatesType.Latitude ?
-                                    coordonnee < 0 ? CoordinatesPosition.S : CoordinatesPosition.N
-                                    : coordonnee < 0 ? CoordinatesPosition.O : CoordinatesPosition.E;
-                return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + direction.ToString();
+                // Coordonnée de type Longitude / Latitude
+                if (coordinatesType == CoordinatesType.Latitude || coordinatesType == CoordinatesType.Longitude)
+                {
+                    // On positionne la direction en fonction du Type (Longitude/Latitude) et de la valeur de la coordonnée
+                    var direction = coordinatesType == CoordinatesType.Latitude ?
+                                        coordonnee < 0 ? CoordinatesPosition.S : CoordinatesPosition.N
+                                        : coordonnee < 0 ? CoordinatesPosition.O : CoordinatesPosition.E;
+                    return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + direction.ToString();
+                }
+
+                // Coordonnée de type RA
+                if (coordinatesType == CoordinatesType.RA)
+                {
+                    return Hours + "h " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" ";
+                }
+
+                // Par défaut, Coordonnée de type Degré
+                string signe = coordonnee > 0 ? "+" : "-";
+                return signe + Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" ";
             }
         }
 
@@ -115,6 +184,19 @@ namespace ApplicationTools
             this.coordinatesType = coordinatesType;
         }
 
+        #endregion
+
+        #region Méthodes
+        
+        /// <summary>
+        /// Permet de positionner une nouvelle coordonnée pour l'objet en cours
+        /// </summary>
+        /// <param name="coordonnee"></param>
+        public void UpdateCoordonnee(decimal coordonnee)
+        {
+            this.coordonnee = coordonnee;
+        }
+        
         #endregion
 
         #region Champs

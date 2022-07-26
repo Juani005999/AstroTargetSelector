@@ -99,7 +99,19 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Ressources\" />
+    <None Include="Ressources\Help.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\InfoToolTip.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Actualiser.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Telescope.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Exit.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

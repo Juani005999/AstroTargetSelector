@@ -66,6 +66,18 @@ namespace ApplicationTools
             return new Coordinates(latitude, longitude);
         }
 
+        /// <summary>
+        /// Retourne un nouvel objet de type <see cref="Coordinate"/>
+        /// </summary>
+        /// <param name="value"></param>
+        /// <param name="type"></param>
+        /// <returns></returns>
+        public Coordinate GetCoordinate(decimal value, CoordinatesType type)
+        {
+            // Création d'un nouvel objet de type Coordinates
+            return new Coordinate(value, type);
+        }
+
         #endregion
 
         #region Champs

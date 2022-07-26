@@ -9,6 +9,32 @@
             Fenêtre principale de l'application
             </summary>
         </member>
+        <member name="F:AstroTargetSelector.MainFenetre.IndexColonneNom">
+            <summary>
+            Index de la colonne Nom dans la liste View
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.SortColumn">
+            <summary>
+            Colonne de tri pour la liste des Targets
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.SortOrder">
+            <summary>
+            Ordre de tri pour la liste des Targets
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.WindowMaximized">
+            <summary>
+            Determine si la fenêtre principale est à l'état Maximisé
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.#ctor">
             <summary>
             Constructeur par défaut
@@ -17,6 +43,26 @@
         <member name="M:AstroTargetSelector.MainFenetre.InitialisationFormulaire">
             <summary>
             Initialisation du Formulaire principal
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationComboMinuteIntervalle">
+            <summary>
+            Permet l'initialisation de la Combo comboBoxMinuteIntervalle
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationComboTotalTimeSlice">
+            <summary>
+            Permet l'initialisation de la Combo comboBoxTotalTimeSlice
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationComboFiltreRank">
+            <summary>
+            Permet l'initialisation de la Combo comboBoxFiltreRank
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationComboFiltreMagnitude">
+            <summary>
+            Permet l'initialisation de la Combo comboBoxFiltreMagnitude
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.InitialisationListeTarget">
@@ -34,6 +80,12 @@
              Permet la mise à jour de la liste avec la collection Targets
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.TriListTargets(System.Int32)">
+            <summary>
+            Tri de la liste des Targets
+            </summary>
+            <param name="indexColonne">Index de la colonne à trier</param>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.RechargeListeFiltreType">
             <summary>
             Permet le rechargement de la liste des filtres sur type en fonction du contenu de la liste des targets
@@ -44,9 +96,29 @@
             Mise à jour du panneau d'informations de l'objet céleste en cours
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.UpdateListeAndPanel">
+            <summary>
+            Permet d'actualiser la liste et le panneau d'information
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.SetDefaultStatusText">
+            <summary>
+            Positionne le texte par défaut dans la Status Bar
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
             Instance de la fabrique d'objets
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.initialisationFormEnCours">
+            <summary>
+            Flag permettant de savoir si le formulaire est en cours d'initialisation afin de stopper la transmission des events de modification des contrôles
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.lvwColumnSorter">
+            <summary>
+            IComparer permettant le tri de la listview
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.OnLoad(System.EventArgs)">
@@ -91,6 +163,31 @@
             <summary>
               Remplace la propriété CurrentUICulture du thread actuel pour toutes
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Actualiser">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Exit">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Help">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.InfoToolTip">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Telescope">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
     </members>

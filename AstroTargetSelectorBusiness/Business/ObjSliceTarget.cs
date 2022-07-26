@@ -8,6 +8,15 @@ namespace AstroTargetSelectorBusiness
     /// </summary>
     public class ObjSliceTarget
     {
+        #region Constantes
+
+        /// <summary>
+        /// Temps de pose maximum (si dépassement de capacité)
+        /// </summary>
+        public const int TempsPoseCalculeMax = 500;
+
+        #endregion
+
         #region Propriétés
 
         /// <summary>
@@ -57,13 +66,13 @@ namespace AstroTargetSelectorBusiness
 
                 // Temps Sideral Local
                 double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue))) % (2 * Math.PI))
-                            - (((Math.PI / 180) * Convert.ToDouble(parentTarget.RA)) * 15);
+                            - (((Math.PI / 180) * Convert.ToDouble(parentTarget.RA.Coordonnee)) * 15);
                 double H = LST < 0 ? LST + (2 * Math.PI) : LST > Math.PI ? LST - (2 * Math.PI) : LST;
 
                 // Sin/Cos
-                double sinDec = Math.Sin((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC));
-                double cosDec = Math.Cos((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC));
-                double tanDec = Math.Tan((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC));
+                double sinDec = Math.Sin((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
+                double cosDec = Math.Cos((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
+                double tanDec = Math.Tan((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
                 double sinLatitude = Math.Sin((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
                 double cosLatitude = Math.Cos((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
                 double cosH = Math.Cos(H);
@@ -85,7 +94,7 @@ namespace AstroTargetSelectorBusiness
                                         * Convert.ToDecimal(cosLatitude)
                                         * Convert.ToDecimal(cosAzimut))
                                         * 60);
-                return tempsPoseCalcule;
+                return tempsPoseCalcule > TempsPoseCalculeMax ? TempsPoseCalculeMax : tempsPoseCalcule;
             }
         }
 
@@ -96,7 +105,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return TempsPoseCalcule.ToString() + " s";
+                return Math.Floor(TempsPoseCalcule).ToString() + "s";
             }
         }
 

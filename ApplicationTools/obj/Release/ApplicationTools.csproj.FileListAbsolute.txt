@@ -13,3 +13,13 @@ C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Relea
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Release\ApplicationTools.pdb
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\bin\Release\ApplicationTools.XML
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Release\ApplicationTools.csprojResolveAssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.XML
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.AssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.ResolveComReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.Properties.Resources.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.GenerateResource.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.CoreCompileInputs.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.pdb

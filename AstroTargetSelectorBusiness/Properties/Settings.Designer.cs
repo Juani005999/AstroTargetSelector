@@ -70,5 +70,29 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["LargeurCapteur"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MinuteIntervalSlice {
+            get {
+                return ((string)(this["MinuteIntervalSlice"]));
+            }
+            set {
+                this["MinuteIntervalSlice"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TotalTimeSlice {
+            get {
+                return ((string)(this["TotalTimeSlice"]));
+            }
+            set {
+                this["TotalTimeSlice"] = value;
+            }
+        }
     }
 }
