@@ -17,7 +17,7 @@ namespace ApplicationTools
         {
             get
             {
-                return coordinateLatitude.FormatedString;
+                return CoordonneeLatitude.FormatedString;
             }
         }
 
@@ -39,7 +39,7 @@ namespace ApplicationTools
         {
             get
             {
-                return coordinateLongitude.FormatedString;
+                return CoordonneeLongitude.FormatedString;
             }
         }
 
@@ -63,6 +63,30 @@ namespace ApplicationTools
             get
             {
                 return Latitude + " / " + Longitude;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi l'objet <see cref="Coordinate"/> correspondant à la Longitude
+        /// <para>Si le membre interne est nul, on renvoi un nouvel objet avec pour valeur 0</para>
+        /// </summary>
+        public Coordinate CoordonneeLongitude
+        {
+            get
+            {
+                return coordinateLongitude ?? new Coordinate(0, CoordinatesType.Longitude);
+            }
+        }
+
+        /// <summary>
+        /// Renvoi l'objet <see cref="Coordinate"/> correspondant à la Latitude
+        /// <para>Si le membre interne est nul, on renvoi un nouvel objet avec pour valeur 0</para>
+        /// </summary>
+        public Coordinate CoordonneeLatitude
+        {
+            get
+            {
+                return coordinateLatitude ?? new Coordinate(0, CoordinatesType.Latitude);
             }
         }
 
@@ -95,8 +119,58 @@ namespace ApplicationTools
         /// <param name="longitude"></param>
         public void UpdateCoordonnees(decimal latitude, decimal longitude)
         {
+            this.latitude = latitude;
+            this.longitude = longitude;
             coordinateLatitude.UpdateCoordonnee(latitude);
             coordinateLongitude.UpdateCoordonnee(longitude);
+        }
+
+        /// <summary>
+        /// Valide une saisie au format string
+        /// <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnees"/> doit être réalisé par l'appelant</para>
+        /// </summary>
+        /// <param name="degreeLongitude"></param>
+        /// <param name="minuteLongitude"></param>
+        /// <param name="secondeLongitude"></param>
+        /// <param name="directionLongitude"></param>
+        /// <param name="degreeLatitude"></param>
+        /// <param name="minuteLatitude"></param>
+        /// <param name="secondeLatitude"></param>
+        /// <param name="directionLatitude"></param>
+        /// <param name="coordonnees"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public static bool TryParse(string degreeLongitude, string minuteLongitude, string secondeLongitude, string directionLongitude,
+                                    string degreeLatitude, string minuteLatitude, string secondeLatitude, string directionLatitude,
+                                    ref Coordinates coordonnees,
+                                    AppToolFactory factory)
+        {
+            // On vérifie la validité du paramètre ref "coordonnees"
+            if (coordonnees == null)
+            {
+                factory.GetLog().Log($"Paramètre ref 'coordonnees' null", "Coordinates", null, AppLog.TypeLog.Fatal);
+                return false;
+            }
+
+            // On TryParse Longitude
+            Coordinate coordonneeLongitude = coordonnees.CoordonneeLongitude;
+            if (!Coordinate.TryParse(degreeLongitude, minuteLongitude, secondeLongitude, directionLongitude, ref coordonneeLongitude, factory))
+            {
+                factory.GetLog().Log($"TryParse pour l'objet Coordinate Longitude à renvoyer False", "Coordinates", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // On TryParse Latitude
+            Coordinate coordonneeLatitude = coordonnees.coordinateLatitude;
+            if (!Coordinate.TryParse(degreeLatitude, minuteLatitude, secondeLatitude, directionLatitude, ref coordonneeLatitude, factory))
+            {
+                factory.GetLog().Log($"TryParse pour l'objet Coordinate Latitude à renvoyer False", "Coordinates", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // Update de l'objet en entrée et retour
+            coordonnees.UpdateCoordonnees(coordonneeLatitude.Coordonnee, coordonneeLongitude.Coordonnee);
+            return true;
         }
 
         #endregion

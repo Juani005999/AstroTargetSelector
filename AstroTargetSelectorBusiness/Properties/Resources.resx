@@ -126,8 +126,23 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="FormatDuCapteurIncorrect" xml:space="preserve">
+    <value>Format du Capteur incorrect</value>
+  </data>
+  <data name="FormatDuChampBougeMaxIncorrect" xml:space="preserve">
+    <value>Format du champ "Bougé max." incorrect</value>
+  </data>
+  <data name="FormatDuLieuDObservationIncorrect" xml:space="preserve">
+    <value>Format du lieu d'observation incorrect</value>
+  </data>
   <data name="Hauteur" xml:space="preserve">
     <value>Hauteur</value>
+  </data>
+  <data name="InfoCapteur1" xml:space="preserve">
+    <value>Veuillez sélectionner votre capteur.</value>
+  </data>
+  <data name="InfoCapteur2" xml:space="preserve">
+    <value>Si votre capteur n'est pas présent dans la liste, vous pouvez saisir manuellement le nom et la largeur en pixel.</value>
   </data>
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>

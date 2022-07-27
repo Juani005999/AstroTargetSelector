@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using ApplicationTools;
@@ -20,6 +21,7 @@ namespace AstroTargetSelectorBusiness
 
         /// <summary>
         /// Coordonnées (Longitude et Latitude) du lieu d'observation
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
         /// </summary>
         public Coordinates LieuObservation
         {
@@ -42,18 +44,25 @@ namespace AstroTargetSelectorBusiness
                                                             Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
                     factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
                 }
-                //// S'il existe déjà, on l'actualise
-                //else
-                //{
-                //    lieuObservation.UpdateCoordonnees(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
-                //                                            Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
-                //}
+                // S'il existe déjà, on l'actualise
+                else
+                {
+                    lieuObservation.UpdateCoordonnees(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+                                                            Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+                }
                 return lieuObservation;
+            }
+            set
+            {
+                Settings.Default.LongitudeObs = value.LongitudeValue.ToString(CultureInfo.InvariantCulture);
+                Settings.Default.LatitudeObs = value.LatitudeValue.ToString(CultureInfo.InvariantCulture);
+                Settings.Default.Save();
             }
         }
 
         /// <summary>
         /// Capteur
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
         /// </summary>
         public ObjCapteur Capteur
         {
@@ -76,21 +85,46 @@ namespace AstroTargetSelectorBusiness
                     factory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
                 }
 
-                // Si le membre privé n'existe pas, on le créer
-                if (capteur == null)
-                {
-                    capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
-                                                           Convert.ToDecimal(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
-                    factory.GetLog().Log($"Capteur : {Capteur.Nom} / {Capteur.Largeur} px", GetType().Name);
-                }
+                // On récupère le capteur correspondant aux Settings, un nouveau capteur s'il n'existe pas déjà dans la liste des capteurs
+                capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
+                                                            Convert.ToDecimal(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
+
+                // Retour
                 return capteur;
+            }
+            set
+            {
+                Settings.Default.NomCapteur = value.Nom;
+                Settings.Default.LargeurCapteur = value.Largeur.ToString(CultureInfo.InvariantCulture);
+                Settings.Default.Save();
             }
         }
 
         /// <summary>
         /// Bougé max.
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 1</para>
         /// </summary>
-        public decimal BougeMax { get; set; }
+        public decimal BougeMax
+        {
+            get
+            {
+                //return 1;
+                if (string.IsNullOrEmpty(Settings.Default.BougeMax))
+                {
+                    Settings.Default.BougeMax = "1";
+                    Settings.Default.Save();
+                    factory.GetLog().Log($"BougeMax non présent dans les Settings. Positionnement de 1 par défaut", GetType().Name);
+                }
+                //return Convert.ToInt32(Settings.Default.BougeMax);
+                return Convert.ToDecimal(Settings.Default.BougeMax, CultureInfo.InvariantCulture);
+            }
+            set
+            {
+                Settings.Default.BougeMax = value.ToString(CultureInfo.InvariantCulture);
+                Settings.Default.Save();
+            }
+        }
 
         /// <summary>
         /// Nombre d'intervalle de temps : (<see cref="TotalTimeSlice"/> * 60) / <see cref="MinuteIntervalSlice"/>
@@ -154,6 +188,53 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Liste des zones exclues
+        /// </summary>
+        public List<CoordinatesDirection> ZonesExclues
+        {
+            get
+            {
+                // Si le membre privé n'existe pas, on le créer
+                if (zonesExclues == null)
+                {
+                    zonesExclues = new List<CoordinatesDirection>();
+                    factory.GetLog().Log($"Création liste ZonesExclues", GetType().Name);
+                }
+
+                // On vide la liste locale avant rechargement
+                zonesExclues.Clear();
+
+                // On charge depuis les settings
+                if (!string.IsNullOrEmpty(Settings.Default.ZonesExclues))
+                {
+                    // La Settings est sous la forme d'un tableau de chaîne avec '|' pour séparateur
+                    string [] tabZonesExclues = Settings.Default.ZonesExclues.Split('|');
+                    foreach(string zoneEnCours in tabZonesExclues)
+                    {
+                        // Après vérification de la validité de la zone, on l'ajoute au tableau des zones exclues
+                        CoordinatesDirection directionZone;
+                        if (Enum.TryParse(zoneEnCours, out directionZone))
+                                zonesExclues.Add(directionZone);
+                    }
+                }
+
+                // Retour
+                return zonesExclues;
+            }
+            set
+            {
+                string settingValue = string.Empty;
+                // On parcours la liste pour formatage de la chaîne
+                foreach(CoordinatesDirection direction in value)
+                {
+                    settingValue += direction.ToString() + "|";
+                }
+                Settings.Default.ZonesExclues = settingValue;
+                Settings.Default.Save();
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -181,16 +262,14 @@ namespace AstroTargetSelectorBusiness
             // Trace
             factory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
 
-            // Date et heure de l'obs. : date/heure du jour et précédent quart d'heure
+            // Date et heure de l'obs. : date/heure du jour et quart d'heure suivant
             DateHeureObservation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
                 DateTime.Now.Hour, DateTime.Now.Minute - (DateTime.Now.Minute % 15), 0);
+            DateHeureObservation = DateHeureObservation.AddMinutes(15);
             factory.GetLog().Log($"Date d'Observation : {DateHeureObservation}", GetType().Name);
-
-            // Zones à exclure
-
-            // Bougé max
-            BougeMax = 1;
         }
+
+
 
         #endregion
 
@@ -209,7 +288,12 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Capteur
         /// </summary>
-        public ObjCapteur capteur = null;
+        private ObjCapteur capteur = null;
+
+        /// <summary>
+        /// Liste des zones exclues
+        /// </summary>
+        private List<CoordinatesDirection> zonesExclues = null;
 
         #endregion
     }

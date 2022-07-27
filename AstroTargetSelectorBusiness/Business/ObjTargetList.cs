@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using ApplicationTools;
 
 namespace AstroTargetSelectorBusiness
@@ -22,14 +23,19 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
+                // Création du singleton si nécessaire
                 if (listeObjTarget == null)
                 {
                     listeObjTarget = new List<ObjTarget>();
                     ForceUpdateListe = true;
                 }
+                
+                // Rechargement depuis le fichier de configuration si nécessaire
                 if (ForceUpdateListe)
                     ChargementListe();
-                return listeObjTarget;
+
+                // On renvoi la liste filtrée les zones exclues
+                return listeObjTarget.Where(t => !t.EstExclu).ToList();
             }
         }
 
@@ -99,6 +105,18 @@ namespace AstroTargetSelectorBusiness
                         {
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
+                            //ObjTarget objEnCours = new ObjTarget(factory)
+                            //{
+                            //    Nom = values[0],
+                            //    Type = values[1],
+                            //    Description = values[2],
+                            //    RA = factory.GetCoordinate(Convert.ToDecimal(values[3]), CoordinatesType.RA),
+                            //    DEC = factory.GetCoordinate(Convert.ToDecimal(values[4]), CoordinatesType.DEC),
+                            //    Magnitude = Convert.ToDecimal(values[5]),
+                            //    GrandeurWidth = factory.GetCoordinate(Convert.ToDecimal(values[6]), CoordinatesType.Degree),
+                            //    GrandeurHeight = factory.GetCoordinate(Convert.ToDecimal(values[7]), CoordinatesType.Degree)
+                            //};
+
                             listeObjTarget.Add(new ObjTarget(factory)
                             {
                                 Nom = values[0],

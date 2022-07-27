@@ -91,6 +91,21 @@
             Initialisations des Combos
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.dlgParametres.ChargeFormulaire">
+            <summary>
+            Permet le chargement du formulaire depuis les données stockées
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.SaveSettings">
+            <summary>
+            Lance l'enregistrement des Settings saisis
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.UpdateLargeur">
+            <summary>
+            Met à jour le champ Largeur en fonction du Capteur sélectionné dans la liste
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.dlgParametres.factory">
             <summary>
             Instance de la fabrique d'objet métier

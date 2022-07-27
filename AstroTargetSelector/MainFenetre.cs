@@ -545,7 +545,7 @@ namespace AstroTargetSelector
 
                         // Titre graphique
                         chartSliceListe.Titles.Clear();
-                        chartSliceListe.Titles.Add($"Temps de pose (secondes) sans rotation de champs (bougé max. 1px)");
+                        chartSliceListe.Titles.Add($"Temps de pose (secondes) sans rotation de champs (bougé max. {factory.GetAppInputs().BougeMaxString})");
                         chartSliceListe.Titles[0].TextStyle = TextStyle.Shadow;
                         chartSliceListe.Titles[0].ShadowColor = Color.Gray;
 
@@ -574,6 +574,7 @@ namespace AstroTargetSelector
         {
             if (!initialisationFormEnCours)
             {
+                // rechargement Liste, panneau d'information
                 RechargeListeTarget();
                 UpdateViewPanelInfo();
 
@@ -632,7 +633,19 @@ namespace AstroTargetSelector
             try
             {
                 dlgParametres dialogParametres = new dlgParametres(factory);
-                dialogParametres.ShowDialog();
+                if (dialogParametres.ShowDialog() == DialogResult.OK)
+                {
+                    // Sur modification des paramètres, on actualise l'affichage
+                    // Tout d'abord, on force le rechargement de la liste des targets dans l'objet ObjTargetList afin de prendre en considération les zones à exclure
+                    factory.GetAppTarget().ForceUpdateListe = true;
+
+                    // Rechargement de la liste et du panneau d'information
+                    UpdateListeAndPanel();
+
+                    // On actualise les paramètres d'observation
+                    lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
+                    toolTipInfoParametre.SetToolTip(pictureBoxIconInfoToolTip, factory.GetAppInputs().ToolTipInfosTexte);
+                }
             }
             catch (Exception err)
             {
@@ -830,6 +843,11 @@ namespace AstroTargetSelector
         }
 
         private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenParametres();
+        }
+
+        private void btModifierParametre_Click(object sender, EventArgs e)
         {
             OpenParametres();
         }

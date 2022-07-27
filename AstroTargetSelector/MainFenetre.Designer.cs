@@ -31,7 +31,7 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
@@ -412,7 +412,7 @@ namespace AstroTargetSelector
             this.button1.Location = new System.Drawing.Point(557, 52);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(142, 26);
+            this.button1.Size = new System.Drawing.Size(119, 23);
             this.button1.TabIndex = 18;
             this.button1.Text = "Gérer les télescopes";
             this.button1.UseVisualStyleBackColor = true;
@@ -426,6 +426,7 @@ namespace AstroTargetSelector
             this.btModifierParametre.TabIndex = 17;
             this.btModifierParametre.Text = "Mofifier";
             this.btModifierParametre.UseVisualStyleBackColor = true;
+            this.btModifierParametre.Click += new System.EventHandler(this.btModifierParametre_Click);
             // 
             // label12
             // 
@@ -538,7 +539,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 163;
+            this.splitContainerSecondaire.SplitterDistance = 164;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -551,7 +552,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 163);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 164);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -742,7 +743,7 @@ namespace AstroTargetSelector
             this.button2.Location = new System.Drawing.Point(838, 205);
             this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 26);
+            this.button2.Size = new System.Drawing.Size(113, 23);
             this.button2.TabIndex = 20;
             this.button2.Text = "Pointer";
             this.button2.UseVisualStyleBackColor = true;
@@ -827,8 +828,8 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea1.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            chartArea3.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea3);
             this.chartSliceListe.Location = new System.Drawing.Point(5, 45);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
@@ -887,6 +888,7 @@ namespace AstroTargetSelector
             // 
             // gestionDesTélescopesToolStripMenuItem
             // 
+            this.gestionDesTélescopesToolStripMenuItem.Enabled = false;
             this.gestionDesTélescopesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Telescope;
             this.gestionDesTélescopesToolStripMenuItem.Name = "gestionDesTélescopesToolStripMenuItem";
             this.gestionDesTélescopesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));

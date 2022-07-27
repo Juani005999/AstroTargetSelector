@@ -94,5 +94,29 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["TotalTimeSlice"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BougeMax {
+            get {
+                return ((string)(this["BougeMax"]));
+            }
+            set {
+                this["BougeMax"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ZonesExclues {
+            get {
+                return ((string)(this["ZonesExclues"]));
+            }
+            set {
+                this["ZonesExclues"] = value;
+            }
+        }
     }
 }

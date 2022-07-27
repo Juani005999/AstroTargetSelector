@@ -83,8 +83,8 @@ namespace AstroTargetSelectorBusiness
 
                 // Azimut
                 double azimutCorrigee = Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI;
-                double azimut = Math.Floor((azimutCorrigee + (2 * Math.PI)) / (Math.PI / 180));
-                double cosAzimut = Math.Cos((Math.PI / 180) * azimut);
+                azimut = Math.Floor((azimutCorrigee + (2 * Math.PI)) / (Math.PI / 180));
+                double cosAzimut = Math.Cos((Math.PI / 180) * azimut.Value);
 
                 decimal tempsPoseCalcule = Math.Abs(230
                                         * (factory.GetAppInputs().Inputs.BougeMax
@@ -131,6 +131,21 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Azimut calculé du slice
+        /// </summary>
+        public double Azimut
+        {
+            get
+            {
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant
+                decimal tempsPose = 0;
+                if (!azimut.HasValue)
+                    tempsPose = TempsPoseCalcule;
+                return azimut.Value;
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -157,6 +172,11 @@ namespace AstroTargetSelectorBusiness
         /// Objet céleste parent de l'objet Slice
         /// </summary>
         private readonly ObjTarget parentTarget = null;
+
+        /// <summary>
+        /// Azimut calculé du slice
+        /// </summary>
+        private double? azimut = null;
 
         #endregion
     }

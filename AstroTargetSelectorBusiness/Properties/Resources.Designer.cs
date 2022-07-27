@@ -88,11 +88,56 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du Capteur incorrect.
+        /// </summary>
+        public static string FormatDuCapteurIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuCapteurIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ &quot;Bougé max.&quot; incorrect.
+        /// </summary>
+        public static string FormatDuChampBougeMaxIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampBougeMaxIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du lieu d&apos;observation incorrect.
+        /// </summary>
+        public static string FormatDuLieuDObservationIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuLieuDObservationIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Hauteur.
         /// </summary>
         public static string Hauteur {
             get {
                 return ResourceManager.GetString("Hauteur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Veuillez sélectionner votre capteur..
+        /// </summary>
+        public static string InfoCapteur1 {
+            get {
+                return ResourceManager.GetString("InfoCapteur1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Si votre capteur n&apos;est pas présent dans la liste, vous pouvez saisir manuellement le nom et la largeur en pixel..
+        /// </summary>
+        public static string InfoCapteur2 {
+            get {
+                return ResourceManager.GetString("InfoCapteur2", resourceCulture);
             }
         }
         

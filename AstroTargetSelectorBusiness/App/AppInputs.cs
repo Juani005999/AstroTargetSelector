@@ -1,4 +1,6 @@
-﻿using System;
+﻿using ApplicationTools;
+using System;
+using System.Linq;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -65,9 +67,22 @@ namespace AstroTargetSelectorBusiness
                 toolTipRetour += Environment.NewLine;
                 toolTipRetour += $"Capteur : {CapteurFormatedString}";
 
-                // Capteur
+                // Zones Exclues
                 toolTipRetour += Environment.NewLine;
-                toolTipRetour += $"Zones exclues : E - SE";
+                string zonesExclues = "Aucune";
+                if (Inputs.ZonesExclues.Count > 0)
+                {
+                    zonesExclues = string.Empty;
+                    CoordinatesDirection lastItem = Inputs.ZonesExclues.Last();
+                    foreach (CoordinatesDirection direction in Inputs.ZonesExclues)
+                    {
+                        zonesExclues += direction.ToString();
+                        // Si ce n'est pas le dernier élément de la liste, on ajoute la séparation
+                        if (direction != lastItem)
+                            zonesExclues += " - ";
+                    }
+                }
+                toolTipRetour += $"Zones exclues : {zonesExclues}";
 
                 // Capteur
                 toolTipRetour += Environment.NewLine;
@@ -79,6 +94,18 @@ namespace AstroTargetSelectorBusiness
                 //Décalé max. : 1px
 
                 return toolTipRetour;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi le bougé max. sous la forme d'une chaîne de caractères formatée (X px)
+        /// <para>X px</para>
+        /// </summary>
+        public string BougeMaxString
+        {
+            get
+            {
+                return Inputs.BougeMax.ToString() + " px";
             }
         }
 

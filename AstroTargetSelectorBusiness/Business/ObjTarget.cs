@@ -117,7 +117,14 @@ namespace AstroTargetSelectorBusiness
                 //factory.GetLog().Log($"Calcul du Scoring de l'objet {Nom}", GetType().Name);
 
                 // Moyenne des temps de pose des Slices
-                return Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());
+                decimal result = Slices.Select(t => t.TempsPoseCalcule).Average();
+
+                //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
+                //if (factory.GetAppInputs().Inputs.BougeMax != 0)
+                //    result /= factory.GetAppInputs().Inputs.BougeMax;
+
+                // Retour
+                return Math.Floor(result);
             }
         }
 
@@ -133,17 +140,92 @@ namespace AstroTargetSelectorBusiness
 
                 // Le Rank est basé sur le scoring
                 decimal scoring = Scoring;
+                decimal result;
                 if (scoring > MinTempsPoseRank5)
-                    return 5;
-                if (scoring > MinTempsPoseRank4)
-                    return 4;
-                if (scoring > MinTempsPoseRank3)
-                    return 3;
-                if (scoring > MinTempsPoseRank2)
-                    return 2;
-                if (scoring > MinTempsPoseRank1)
-                    return 1;
-                return 0;
+                    result = 5;
+                else if (scoring > MinTempsPoseRank4)
+                    result = 4;
+                else if (scoring > MinTempsPoseRank3)
+                    result = 3;
+                else if (scoring > MinTempsPoseRank2)
+                    result = 2;
+                else
+                    result = 1;
+
+                //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
+                //if (factory.GetAppInputs().Inputs.BougeMax != 0)
+                //    result /= factory.GetAppInputs().Inputs.BougeMax;
+
+                // Retour
+                return Math.Floor(result);
+            }
+        }
+
+        /// <summary>
+        /// Renvoi le Rank calculé pour la Target
+        /// <para>Barême basé sur le <see cref="Scoring"/></para>
+        /// </summary>
+        public double Azimut
+        {
+            get
+            {
+                // Renvoi la valeur d'Azimut du premier slice
+                return Slices[0].Azimut;
+            }
+        }
+
+        /// <summary>
+        /// Permet de savoir si un objet céleste fait partie d'une zone exclue du ciel
+        /// </summary>
+        public bool EstExclu
+        {
+            get
+            {
+                // Parcours des zones à exclure
+                foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
+                {
+                    switch(direction)
+                    {
+                        case CoordinatesDirection.N:
+                            if (Azimut > 337.5 || Azimut <= 22.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.NE:
+                            if (Azimut > 22.5 && Azimut <= 67.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.E:
+                            if (Azimut > 67.5 && Azimut <= 112.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.SE:
+                            if (Azimut > 112.5 && Azimut <= 157.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.S:
+                            if (Azimut > 157.5 && Azimut <= 202.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.SO:
+                            if (Azimut > 202.5 && Azimut <= 247.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.O:
+                            if (Azimut > 247.5 && Azimut <= 292.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.NO:
+                            if (Azimut > 292.5 && Azimut <= 337.5)
+                                return true;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                // Renvoi la valeur d'Azimut du premier slice
+                return false;
             }
         }
 

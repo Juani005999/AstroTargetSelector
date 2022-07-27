@@ -98,7 +98,7 @@ namespace AstroTargetSelectorBusiness
                 listeType.Add(Resources.Tous);
 
                 // On parcours la liste des targets groupée par Type
-                foreach (var group in Targets.ListeObjTarget.GroupBy(target => target.Type))
+                foreach (var group in Targets.ListeObjTarget.Where(t => !t.EstExclu).GroupBy(target => target.Type))
                 {
                     listeType.Add(group.Key);
                 }

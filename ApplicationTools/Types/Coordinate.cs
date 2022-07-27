@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Globalization;
 
 namespace ApplicationTools
 {
     /// <summary>
     /// Position N/S/E/O de la coordonnée de localisation
     /// </summary>
-    public enum CoordinatesPosition
+    public enum CoordinatesDirection
     {
         /// <summary>
         /// Nord
@@ -13,9 +14,19 @@ namespace ApplicationTools
         N,
 
         /// <summary>
+        /// Nord-Est
+        /// </summary>
+        NE,
+
+        /// <summary>
         /// Est
         /// </summary>
         E,
+
+        /// <summary>
+        /// Sud-Est
+        /// </summary>
+        SE,
 
         /// <summary>
         /// Sud
@@ -23,9 +34,19 @@ namespace ApplicationTools
         S,
 
         /// <summary>
+        /// Sud-Ouest
+        /// </summary>
+        SO,
+
+        /// <summary>
         /// Ouest
         /// </summary>
-        O
+        O,
+
+        /// <summary>
+        /// Nord-Ouest
+        /// </summary>
+        NO
     }
 
     /// <summary>
@@ -151,8 +172,8 @@ namespace ApplicationTools
                 {
                     // On positionne la direction en fonction du Type (Longitude/Latitude) et de la valeur de la coordonnée
                     var direction = coordinatesType == CoordinatesType.Latitude ?
-                                        coordonnee < 0 ? CoordinatesPosition.S : CoordinatesPosition.N
-                                        : coordonnee < 0 ? CoordinatesPosition.O : CoordinatesPosition.E;
+                                        coordonnee < 0 ? CoordinatesDirection.S : CoordinatesDirection.N
+                                        : coordonnee < 0 ? CoordinatesDirection.O : CoordinatesDirection.E;
                     return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + direction.ToString();
                 }
 
@@ -165,6 +186,30 @@ namespace ApplicationTools
                 // Par défaut, Coordonnée de type Degré
                 string signe = coordonnee > 0 ? "+" : "-";
                 return signe + Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" ";
+            }
+        }
+
+        /// <summary>
+        /// Renvoi la direction pour les données de type Longitude ou Latitude
+        /// </summary>
+        public string Direction
+        {
+            get
+            {
+                // Coordonnée de type Longitude
+                if (coordinatesType == CoordinatesType.Longitude)
+                {
+                    return coordonnee < 0 ? CoordinatesDirection.O.ToString() : CoordinatesDirection.E.ToString();
+                }
+
+                // Coordonnée de type LongitLatitudeude
+                if (coordinatesType == CoordinatesType.Latitude)
+                {
+                    return coordonnee < 0 ? CoordinatesDirection.S.ToString() : CoordinatesDirection.N.ToString();
+                }
+
+                // Pour les autres type, on renvoi une chaîne vide
+                return string.Empty;
             }
         }
 
@@ -196,7 +241,70 @@ namespace ApplicationTools
         {
             this.coordonnee = coordonnee;
         }
-        
+
+        /// <summary>
+        /// Valide une saisie au format string
+        /// <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnee"/> doit être réalisé par l'appelant</para>
+        /// </summary>
+        /// <param name="degree"></param>
+        /// <param name="minute"></param>
+        /// <param name="seconde"></param>
+        /// <param name="direction"></param>
+        /// <param name="coordonnee"></param>
+        /// <param name="factory"></param>
+        /// <returns></returns>
+        public static bool TryParse(string degree, string minute, string seconde, string direction, ref Coordinate coordonnee, AppToolFactory factory)
+        {
+            // On vérifie la validité du paramètre ref "coordonnees"
+            if (coordonnee == null)
+            {
+                factory.GetLog().Log($"Paramètre ref 'coordonnee' null", "Coordinate", null, AppLog.TypeLog.Fatal);
+                return false;
+            }
+
+            // Validation Degrés
+            decimal degreeDec;
+            if (string.IsNullOrEmpty(degree) || !decimal.TryParse(degree, NumberStyles.Number, CultureInfo.InvariantCulture, out degreeDec))
+            {
+                factory.GetLog().Log($"Mauvais format de degrés pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // Validation Minutes
+            decimal minuteDec;
+            if (string.IsNullOrEmpty(minute) || !decimal.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
+            {
+                factory.GetLog().Log($"Mauvais format de minutes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // Validation Secondes
+            decimal secondeDec;
+            if (string.IsNullOrEmpty(seconde) || !decimal.TryParse(seconde, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out secondeDec))
+            {
+                factory.GetLog().Log($"Mauvais format de secondes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // Validation Secondes
+            CoordinatesDirection directionDec;
+            if (string.IsNullOrEmpty(direction) || !Enum.TryParse(direction, out directionDec))
+            {
+                factory.GetLog().Log($"Mauvais format de direction pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                return false;
+            }
+
+            // Données valides, on valorise l'objet coordonnee
+            decimal valCoordonnee = degreeDec + (minuteDec / 60) + (secondeDec / 3600);
+            if (coordonnee.coordinatesType == CoordinatesType.Latitude && directionDec == CoordinatesDirection.S)
+                valCoordonnee *= -1;
+            else if (coordonnee.coordinatesType == CoordinatesType.Longitude && directionDec == CoordinatesDirection.O)
+                valCoordonnee *= -1;
+            coordonnee.UpdateCoordonnee(valCoordonnee);
+
+            return true;
+        }
+
         #endregion
 
         #region Champs

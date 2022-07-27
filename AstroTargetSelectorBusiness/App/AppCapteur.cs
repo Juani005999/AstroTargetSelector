@@ -54,6 +54,7 @@ namespace AstroTargetSelectorBusiness
         {
             if (string.IsNullOrEmpty(nomCapteur) || largeurCapteur == 0)
                 return null;
+            // Si le capteur n'existe pas, on le créer et on l'ajoute à la liste
             ObjCapteur objEnCours = Capteurs.ListeObjCapteur.Where(t => t.Nom == nomCapteur).FirstOrDefault();
             if (objEnCours == null)
             {
@@ -63,6 +64,11 @@ namespace AstroTargetSelectorBusiness
                     Largeur = largeurCapteur
                 };
                 Capteurs.ListeObjCapteur.Add(objEnCours);
+            }
+            else
+            {
+                // Si il existe déjà dans la liste, on met à jour sa largeur
+                objEnCours.Largeur = largeurCapteur;
             }
             return objEnCours;
         }
