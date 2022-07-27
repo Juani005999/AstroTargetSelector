@@ -129,6 +129,17 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         public string FiltreMagnitude { get; set; }
 
+        /// <summary>
+        /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des objets célestes
+        /// </summary>
+        public string TargetListeFullPathFile
+        {
+            get
+            {
+                return Targets.TargetListeFullPathFile;
+            }
+        }
+
         #endregion
 
         #region Constructeur

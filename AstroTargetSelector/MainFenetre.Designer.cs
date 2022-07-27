@@ -31,17 +31,24 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.gestionDesTélescopesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStripGlobal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDateObs = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNomTarget = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainerGlobal = new System.Windows.Forms.SplitContainer();
+            this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.labelSepInputsParams = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -97,26 +104,19 @@ namespace AstroTargetSelector
             this.label8 = new System.Windows.Forms.Label();
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTipInfoParametre = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.quitterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.gestionDesTélescopesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.aProposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
             this.splitContainerGlobal.Panel1.SuspendLayout();
             this.splitContainerGlobal.Panel2.SuspendLayout();
             this.splitContainerGlobal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).BeginInit();
             this.splitContainerSecondaire.Panel1.SuspendLayout();
             this.splitContainerSecondaire.Panel2.SuspendLayout();
             this.splitContainerSecondaire.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripGlobal
@@ -137,17 +137,41 @@ namespace AstroTargetSelector
             // 
             this.fichierToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem,
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem,
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem,
             this.toolStripSeparator2,
             this.quitterToolStripMenuItem});
             this.fichierToolStripMenuItem.Name = "fichierToolStripMenuItem";
             this.fichierToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.fichierToolStripMenuItem.Text = "&Fichier";
             // 
+            // mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem
+            // 
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Name = "mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem";
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Text = "Mettre à jour la liste des &objets célestes";
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Click += new System.EventHandler(this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem_Click);
+            // 
+            // mettreÀJourLaListeDescapteursToolStripMenuItem
+            // 
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Name = "mettreÀJourLaListeDescapteursToolStripMenuItem";
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Text = "Mettre à jour la liste des &capteurs";
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(275, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(283, 6);
+            // 
+            // quitterToolStripMenuItem
+            // 
+            this.quitterToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Exit;
+            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
+            this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.quitterToolStripMenuItem.Text = "&Quitter";
+            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
             // outilsToolStripMenuItem
             // 
@@ -159,10 +183,29 @@ namespace AstroTargetSelector
             this.outilsToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.outilsToolStripMenuItem.Text = "&Outils";
             // 
+            // optionsToolStripMenuItem
+            // 
+            this.optionsToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
+            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
+            this.optionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.optionsToolStripMenuItem.Text = "&Paramètres de l\'observation";
+            this.optionsToolStripMenuItem.ToolTipText = "Ouvre la boîte de dialogue des options";
+            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(266, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(258, 6);
+            // 
+            // gestionDesTélescopesToolStripMenuItem
+            // 
+            this.gestionDesTélescopesToolStripMenuItem.Enabled = false;
+            this.gestionDesTélescopesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Telescope;
+            this.gestionDesTélescopesToolStripMenuItem.Name = "gestionDesTélescopesToolStripMenuItem";
+            this.gestionDesTélescopesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
+            this.gestionDesTélescopesToolStripMenuItem.Size = new System.Drawing.Size(261, 22);
+            this.gestionDesTélescopesToolStripMenuItem.Text = "&Gérer des télescopes";
             // 
             // toolStripMenuItem1
             // 
@@ -171,6 +214,15 @@ namespace AstroTargetSelector
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
             this.toolStripMenuItem1.Size = new System.Drawing.Size(24, 20);
             this.toolStripMenuItem1.Text = "&?";
+            // 
+            // aProposToolStripMenuItem
+            // 
+            this.aProposToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Help;
+            this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
+            this.aProposToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
+            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
+            this.aProposToolStripMenuItem.Text = "&A propos";
+            this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // statusStripGlobal
             // 
@@ -238,6 +290,17 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.SplitterDistance = 140;
             this.splitContainerGlobal.SplitterWidth = 3;
             this.splitContainerGlobal.TabIndex = 0;
+            // 
+            // pictureBoxIconInfoToolTip
+            // 
+            this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxIconInfoToolTip.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
+            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(384, 50);
+            this.pictureBoxIconInfoToolTip.Name = "pictureBoxIconInfoToolTip";
+            this.pictureBoxIconInfoToolTip.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIconInfoToolTip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIconInfoToolTip.TabIndex = 23;
+            this.pictureBoxIconInfoToolTip.TabStop = false;
             // 
             // labelSepInputsParams
             // 
@@ -539,7 +602,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 164;
+            this.splitContainerSecondaire.SplitterDistance = 165;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -552,7 +615,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 164);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 165);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -828,8 +891,8 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea3.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea1);
             this.chartSliceListe.Location = new System.Drawing.Point(5, 45);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
@@ -841,68 +904,6 @@ namespace AstroTargetSelector
             // 
             this.toolTipInfoParametre.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoParametre.ToolTipTitle = "Paramètres de l\'observation";
-            // 
-            // pictureBoxIconInfoToolTip
-            // 
-            this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxIconInfoToolTip.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
-            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(384, 50);
-            this.pictureBoxIconInfoToolTip.Name = "pictureBoxIconInfoToolTip";
-            this.pictureBoxIconInfoToolTip.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxIconInfoToolTip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxIconInfoToolTip.TabIndex = 23;
-            this.pictureBoxIconInfoToolTip.TabStop = false;
-            // 
-            // mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem
-            // 
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Name = "mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem";
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Text = "Mettre à jour la liste des &objets célestes";
-            // 
-            // mettraÀJourLaListeDescapteursToolStripMenuItem
-            // 
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Name = "mettraÀJourLaListeDescapteursToolStripMenuItem";
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
-            this.mettraÀJourLaListeDescapteursToolStripMenuItem.Text = "Mettra à jour la liste des &capteurs";
-            // 
-            // quitterToolStripMenuItem
-            // 
-            this.quitterToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Exit;
-            this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
-            this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
-            this.quitterToolStripMenuItem.Text = "&Quitter";
-            this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
-            // 
-            // optionsToolStripMenuItem
-            // 
-            this.optionsToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
-            this.optionsToolStripMenuItem.Text = "&Paramètres de l\'observation";
-            this.optionsToolStripMenuItem.ToolTipText = "Ouvre la boîte de dialogue des options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
-            // 
-            // gestionDesTélescopesToolStripMenuItem
-            // 
-            this.gestionDesTélescopesToolStripMenuItem.Enabled = false;
-            this.gestionDesTélescopesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Telescope;
-            this.gestionDesTélescopesToolStripMenuItem.Name = "gestionDesTélescopesToolStripMenuItem";
-            this.gestionDesTélescopesToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.T)));
-            this.gestionDesTélescopesToolStripMenuItem.Size = new System.Drawing.Size(269, 30);
-            this.gestionDesTélescopesToolStripMenuItem.Text = "&Gérer des télescopes";
-            // 
-            // aProposToolStripMenuItem
-            // 
-            this.aProposToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Help;
-            this.aProposToolStripMenuItem.Name = "aProposToolStripMenuItem";
-            this.aProposToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.H)));
-            this.aProposToolStripMenuItem.Size = new System.Drawing.Size(165, 22);
-            this.aProposToolStripMenuItem.Text = "&A propos";
-            this.aProposToolStripMenuItem.Click += new System.EventHandler(this.aProposToolStripMenuItem_Click);
             // 
             // MainFenetre
             // 
@@ -928,6 +929,7 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).EndInit();
             this.splitContainerGlobal.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.splitContainerSecondaire.Panel1.ResumeLayout(false);
@@ -936,7 +938,6 @@ namespace AstroTargetSelector
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).EndInit();
             this.splitContainerSecondaire.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1013,7 +1014,7 @@ namespace AstroTargetSelector
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem gestionDesTélescopesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mettraÀJourLaListeDescapteursToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mettreÀJourLaListeDescapteursToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ImageList imageListRank;
     }

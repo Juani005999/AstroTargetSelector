@@ -230,6 +230,11 @@
             Positionne le texte par défaut dans la Status Bar
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.UpdateTargetFile">
+            <summary>
+            Lance le téléchargement et l'installation du fichier de configuration des objets célestes
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.OpenAPropos">
             <summary>
             Ouvre la boîte de dialogue A propos

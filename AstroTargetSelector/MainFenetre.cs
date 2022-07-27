@@ -7,6 +7,7 @@ using System.Drawing;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
 using ApplicationTools;
+using System.Net;
 
 namespace AstroTargetSelector
 {
@@ -600,7 +601,42 @@ namespace AstroTargetSelector
                 // Affichage des informations de l'objet céleste
                 ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                 if (target != null && !string.IsNullOrEmpty(target.Nom))
-                    toolStripStatusLabelNomTarget.Text = $"{Resources.ObjetSelectionne} : {target.Nom}";
+                    toolStripStatusLabelNomTarget.Text = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
+            }
+        }
+
+        /// <summary>
+        /// Lance le téléchargement et l'installation du fichier de configuration des objets célestes
+        /// </summary>
+        public void UpdateTargetFile()
+        {
+            try
+            {
+                //// Curseur Hourglass et Status Text
+                //Application.UseWaitCursor = true;
+
+                //// Lancement du téléchargement
+                //using (var client = new WebClient())
+                //{
+                //    string remoteURL = "https://via.placeholder.com/300.png";
+                //    //string localFile = factory.GetAppTarget().TargetListeFullPathFile;
+                //    string localFile = factory.GetAppContext().UserAppDataPath + "\\" + "test.csv";
+                //    client.DownloadFile(remoteURL, localFile);
+                //}
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Curseur par défaut
+                Application.UseWaitCursor = false;
             }
         }
 
@@ -850,6 +886,11 @@ namespace AstroTargetSelector
         private void btModifierParametre_Click(object sender, EventArgs e)
         {
             OpenParametres();
+        }
+
+        private void mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateTargetFile();
         }
     }
 }

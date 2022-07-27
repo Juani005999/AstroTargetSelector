@@ -226,6 +226,11 @@
             Filtre sur Magnitude pour l'affichage dans la liste
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.TargetListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des objets célestes
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
