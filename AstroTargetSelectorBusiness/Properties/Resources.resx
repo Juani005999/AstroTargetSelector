@@ -117,6 +117,15 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Annuler" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
+  <data name="Capteurs" xml:space="preserve">
+    <value>capteurs</value>
+  </data>
+  <data name="CetteOperationPeutPrendreQuelquesInstants" xml:space="preserve">
+    <value>Cette opération peut prendre quelques instants</value>
+  </data>
   <data name="DateDeLObservation" xml:space="preserve">
     <value>Date de l'observation</value>
   </data>
@@ -125,6 +134,9 @@
   </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
+  </data>
+  <data name="EffectueAvecSucces" xml:space="preserve">
+    <value>effectué avec succès</value>
   </data>
   <data name="FormatDuCapteurIncorrect" xml:space="preserve">
     <value>Format du Capteur incorrect</value>
@@ -150,8 +162,14 @@
   <data name="Magnitude" xml:space="preserve">
     <value>Magnitude</value>
   </data>
+  <data name="MiseAJourDuFichierDeConfigurationDes" xml:space="preserve">
+    <value>Mise à jour du fichier de configuration des</value>
+  </data>
   <data name="Nom" xml:space="preserve">
     <value>Nom</value>
+  </data>
+  <data name="ObjetsCelestes" xml:space="preserve">
+    <value>objets célestes</value>
   </data>
   <data name="ObjetSelectionne" xml:space="preserve">
     <value>Objet sélectionné</value>
@@ -165,10 +183,22 @@
   <data name="Scoring" xml:space="preserve">
     <value>Scoring</value>
   </data>
+  <data name="Suivant" xml:space="preserve">
+    <value>Suivant</value>
+  </data>
+  <data name="Terminer" xml:space="preserve">
+    <value>Terminer</value>
+  </data>
   <data name="Tous" xml:space="preserve">
     <value>Tous</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
+  </data>
+  <data name="UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent" xml:space="preserve">
+    <value>Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent</value>
+  </data>
+  <data name="VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes" xml:space="preserve">
+    <value>Vous aller télécharger et mettre à jour le fichier de configuration des</value>
   </data>
 </root>

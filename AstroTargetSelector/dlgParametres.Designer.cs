@@ -50,6 +50,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxCapteur = new System.Windows.Forms.GroupBox();
+            this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
             this.textBoxCapteurLargeur = new System.Windows.Forms.TextBox();
             this.comboBoxCapteur = new System.Windows.Forms.ComboBox();
@@ -68,12 +69,11 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxBougeMax = new System.Windows.Forms.TextBox();
             this.toolTipInfoCapteur = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.groupBoxLieuObservation.SuspendLayout();
             this.groupBoxCapteur.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.groupBoxZones.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.SuspendLayout();
             // 
             // btCancel
@@ -289,6 +289,17 @@
             this.groupBoxCapteur.TabStop = false;
             this.groupBoxCapteur.Text = "Capteur";
             // 
+            // pictureBoxIconInfoToolTip
+            // 
+            this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxIconInfoToolTip.Image = global::AstroTargetSelector.Properties.Resources.Help;
+            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(54, 12);
+            this.pictureBoxIconInfoToolTip.Name = "pictureBoxIconInfoToolTip";
+            this.pictureBoxIconInfoToolTip.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIconInfoToolTip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIconInfoToolTip.TabIndex = 24;
+            this.pictureBoxIconInfoToolTip.TabStop = false;
+            // 
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -489,17 +500,6 @@
             this.toolTipInfoCapteur.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoCapteur.ToolTipTitle = "Sélection du Capteur";
             // 
-            // pictureBoxIconInfoToolTip
-            // 
-            this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxIconInfoToolTip.Image = global::AstroTargetSelector.Properties.Resources.Help;
-            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(54, 12);
-            this.pictureBoxIconInfoToolTip.Name = "pictureBoxIconInfoToolTip";
-            this.pictureBoxIconInfoToolTip.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxIconInfoToolTip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxIconInfoToolTip.TabIndex = 24;
-            this.pictureBoxIconInfoToolTip.TabStop = false;
-            // 
             // dlgParametres
             // 
             this.AcceptButton = this.btOK;
@@ -518,6 +518,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "dlgParametres";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Paramètres de l\'observation";
             this.Load += new System.EventHandler(this.dlgParametres_Load);
@@ -525,11 +526,11 @@
             this.groupBoxLieuObservation.PerformLayout();
             this.groupBoxCapteur.ResumeLayout(false);
             this.groupBoxCapteur.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).EndInit();
             this.groupBoxZones.ResumeLayout(false);
             this.groupBoxZones.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).EndInit();
             this.ResumeLayout(false);
 
         }

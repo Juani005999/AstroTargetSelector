@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
+using System.Net;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
 using ApplicationTools;
-using System.Net;
 
 namespace AstroTargetSelector
 {
@@ -575,7 +575,7 @@ namespace AstroTargetSelector
         {
             if (!initialisationFormEnCours)
             {
-                // rechargement Liste, panneau d'information
+                // Rechargement Liste, Panneau d'information
                 RechargeListeTarget();
                 UpdateViewPanelInfo();
 
@@ -589,7 +589,10 @@ namespace AstroTargetSelector
         /// </summary>
         private void SetDefaultStatusText()
         {
+            // Status Text 1 : Date et Heure de l'observation
             toolStripStatusLabelDateObs.Text = $"{Resources.DateDeLObservation} : {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("d")} - {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("t")}";
+            
+            // Status Text 2 : Objet céleste sélectionné
             if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
             {
                 toolStripStatusLabelNomTarget.Visible = false;
@@ -612,17 +615,16 @@ namespace AstroTargetSelector
         {
             try
             {
-                //// Curseur Hourglass et Status Text
-                //Application.UseWaitCursor = true;
+                // Ouverture de la boîte de dialogue Update
+                dlgUpdate dialogUpdate = new dlgUpdate(factory, dlgUpdate.UpdateDialogMode.Target);
+                if (dialogUpdate.ShowDialog() == DialogResult.OK)
+                {
+                    // Tout d'abord, on force le rechargement de la liste des targets dans l'objet ObjTargetList afin de prendre en considération les zones à exclure
+                    factory.GetAppTarget().ForceUpdateListe = true;
 
-                //// Lancement du téléchargement
-                //using (var client = new WebClient())
-                //{
-                //    string remoteURL = "https://via.placeholder.com/300.png";
-                //    //string localFile = factory.GetAppTarget().TargetListeFullPathFile;
-                //    string localFile = factory.GetAppContext().UserAppDataPath + "\\" + "test.csv";
-                //    client.DownloadFile(remoteURL, localFile);
-                //}
+                    // Rechargement de la liste et du panneau d'information
+                    UpdateListeAndPanel();
+                }
             }
             catch (Exception err)
             {
@@ -633,10 +635,31 @@ namespace AstroTargetSelector
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);
             }
-            finally
+        }
+
+        /// <summary>
+        /// Lance le téléchargement et l'installation du fichier de configuration des capteurs
+        /// </summary>
+        public void UpdateCapteurFile()
+        {
+            try
             {
-                // Curseur par défaut
-                Application.UseWaitCursor = false;
+                // Ouverture de la boîte de dialogue Update. Pas besoin de rafraissement de la fenêtre sur modification de la liste des capteurs
+                dlgUpdate dialogUpdate = new dlgUpdate(factory, dlgUpdate.UpdateDialogMode.Capteur);
+                if (dialogUpdate.ShowDialog() == DialogResult.OK)
+                {
+                    // On force le rechargement de la liste des capteurs lors du prochain appel
+                    factory.GetAppCapteur().ForceUpdateListe = true;
+                }
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
             }
         }
 
@@ -647,6 +670,7 @@ namespace AstroTargetSelector
         {
             try
             {
+                // Ouverture de la boîte de dialogue APropos
                 dlgAPropos dialogAPropos = new dlgAPropos(factory);
                 dialogAPropos.ShowDialog();
             }
@@ -668,6 +692,7 @@ namespace AstroTargetSelector
         {
             try
             {
+                // Ouverture de la boîte de dialogue Paramètres
                 dlgParametres dialogParametres = new dlgParametres(factory);
                 if (dialogParametres.ShowDialog() == DialogResult.OK)
                 {
@@ -746,7 +771,8 @@ namespace AstroTargetSelector
         private void listViewTarget_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             // Update du panneau d'information de l'objet sélectionné
-            UpdateViewPanelInfo();
+            if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count > 0)
+                UpdateViewPanelInfo();
 
             // Update du texte de la Status Bar
             SetDefaultStatusText();
@@ -891,6 +917,11 @@ namespace AstroTargetSelector
         private void mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateTargetFile();
+        }
+
+        private void mettreÀJourLaListeDescapteursToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            UpdateCapteurFile();
         }
     }
 }

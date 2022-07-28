@@ -31,7 +31,7 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -148,7 +148,7 @@ namespace AstroTargetSelector
             // 
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Name = "mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem";
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Text = "Mettre à jour la liste des &objets célestes";
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Click += new System.EventHandler(this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem_Click);
             // 
@@ -158,18 +158,19 @@ namespace AstroTargetSelector
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Name = "mettreÀJourLaListeDescapteursToolStripMenuItem";
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Text = "Mettre à jour la liste des &capteurs";
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Click += new System.EventHandler(this.mettreÀJourLaListeDescapteursToolStripMenuItem_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(283, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(275, 6);
             // 
             // quitterToolStripMenuItem
             // 
             this.quitterToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Exit;
             this.quitterToolStripMenuItem.Name = "quitterToolStripMenuItem";
             this.quitterToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
-            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.quitterToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.quitterToolStripMenuItem.Text = "&Quitter";
             this.quitterToolStripMenuItem.Click += new System.EventHandler(this.quitterToolStripMenuItem_Click);
             // 
@@ -544,7 +545,7 @@ namespace AstroTargetSelector
             // lblLieuObservation
             // 
             this.lblLieuObservation.AutoSize = true;
-            this.lblLieuObservation.Location = new System.Drawing.Point(382, 31);
+            this.lblLieuObservation.Location = new System.Drawing.Point(379, 31);
             this.lblLieuObservation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLieuObservation.Name = "lblLieuObservation";
             this.lblLieuObservation.Size = new System.Drawing.Size(0, 13);
@@ -602,7 +603,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 165;
+            this.splitContainerSecondaire.SplitterDistance = 166;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -615,7 +616,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 165);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 166);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -891,8 +892,8 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea1.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            chartArea4.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea4);
             this.chartSliceListe.Location = new System.Drawing.Point(5, 45);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";

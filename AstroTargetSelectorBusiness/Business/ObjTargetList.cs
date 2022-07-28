@@ -52,7 +52,18 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + targetListeFileName;
+                return factory.GetAppContext().UserAppDataPath + "\\" + TargetListeFileName;
+            }
+        }
+
+        /// <summary>
+        /// Nom du fichier de configuration contenant la liste des objets céleste
+        /// </summary>
+        internal string TargetListeFileName
+        {
+            get
+            {
+                return targetListeFileName;
             }
         }
 

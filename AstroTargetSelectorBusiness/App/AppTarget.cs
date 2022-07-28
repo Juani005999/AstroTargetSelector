@@ -140,6 +140,17 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Nom du fichier de configuration contenant la liste des objets céleste
+        /// </summary>
+        public string TargetListeFileName
+        {
+            get
+            {
+                return Targets.TargetListeFileName;
+            }
+        }
+
         #endregion
 
         #region Constructeur

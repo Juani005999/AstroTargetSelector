@@ -61,6 +61,33 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Annuler.
+        /// </summary>
+        public static string Annuler {
+            get {
+                return ResourceManager.GetString("Annuler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à capteurs.
+        /// </summary>
+        public static string Capteurs {
+            get {
+                return ResourceManager.GetString("Capteurs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
+        /// </summary>
+        public static string CetteOperationPeutPrendreQuelquesInstants {
+            get {
+                return ResourceManager.GetString("CetteOperationPeutPrendreQuelquesInstants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date de l&apos;observation.
         /// </summary>
         public static string DateDeLObservation {
@@ -84,6 +111,15 @@ namespace AstroTargetSelectorResources {
         public static string Description {
             get {
                 return ResourceManager.GetString("Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à effectué avec succès.
+        /// </summary>
+        public static string EffectueAvecSucces {
+            get {
+                return ResourceManager.GetString("EffectueAvecSucces", resourceCulture);
             }
         }
         
@@ -160,11 +196,29 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mise à jour du fichier de configuration des.
+        /// </summary>
+        public static string MiseAJourDuFichierDeConfigurationDes {
+            get {
+                return ResourceManager.GetString("MiseAJourDuFichierDeConfigurationDes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nom.
         /// </summary>
         public static string Nom {
             get {
                 return ResourceManager.GetString("Nom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à objets célestes.
+        /// </summary>
+        public static string ObjetsCelestes {
+            get {
+                return ResourceManager.GetString("ObjetsCelestes", resourceCulture);
             }
         }
         
@@ -205,6 +259,24 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Suivant.
+        /// </summary>
+        public static string Suivant {
+            get {
+                return ResourceManager.GetString("Suivant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Terminer.
+        /// </summary>
+        public static string Terminer {
+            get {
+                return ResourceManager.GetString("Terminer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Tous.
         /// </summary>
         public static string Tous {
@@ -219,6 +291,24 @@ namespace AstroTargetSelectorResources {
         public static string Type {
             get {
                 return ResourceManager.GetString("Type", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent.
+        /// </summary>
+        public static string UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent {
+            get {
+                return ResourceManager.GetString("UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vous aller télécharger et mettre à jour le fichier de configuration des.
+        /// </summary>
+        public static string VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes {
+            get {
+                return ResourceManager.GetString("VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes", resourceCulture);
             }
         }
     }

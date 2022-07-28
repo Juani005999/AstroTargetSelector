@@ -115,7 +115,7 @@ namespace AstroTargetSelector
 
             // Capteur
             comboBoxCapteur.Items.Clear();
-            foreach(ObjCapteur capteur in factory.GetAppCapteur().Capteurs.ListeObjCapteur)
+            foreach(ObjCapteur capteur in factory.GetAppCapteur().ListeObjCapteur)
             {
                 comboBoxCapteur.Items.Add(capteur.Nom);
             }
@@ -244,7 +244,7 @@ namespace AstroTargetSelector
             // On recherche dans la liste des capteur
             if (!string.IsNullOrEmpty(comboBoxCapteur.Text))
             {
-                ObjCapteur objEnCours = factory.GetAppCapteur().Capteurs.ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
+                ObjCapteur objEnCours = factory.GetAppCapteur().ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
                 if (objEnCours != null)
                 {
                     textBoxCapteurLargeur.Text = objEnCours.Largeur.ToString(CultureInfo.InvariantCulture);

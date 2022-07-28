@@ -27,6 +27,49 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Liste d'objets <see cref="ObjCapteur"/>
+        /// </summary>
+        public List<ObjCapteur> ListeObjCapteur
+        {
+            get
+            {
+                Capteurs.ForceUpdateListe = ForceUpdateListe;
+
+                // Flush du flag permettant de forcer le rechargement de la liste depuis le fichier de configuration et renvoi de la liste
+                ForceUpdateListe = false;
+                return Capteurs.ListeObjCapteur;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des capteurs
+        /// </summary>
+        public string CapteurListeFullPathFile
+        {
+            get
+            {
+                return Capteurs.CapteurListeFullPathFile;
+            }
+        }
+
+        /// <summary>
+        /// Nom du fichier de configuration contenant la liste des capteurs
+        /// </summary>
+        public string CapteurListeFileName
+        {
+            get
+            {
+                return Capteurs.CapteurListeFileName;
+            }
+        }
+
+        /// <summary>
+        /// Force le rechargement de la liste depuis le fichier de configuration
+        /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjCapteur"/></para>
+        /// </summary>
+        public bool ForceUpdateListe { get; set; }
+
         #endregion
 
         #region Constructeur

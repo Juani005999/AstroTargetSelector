@@ -36,3 +36,4 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelectorBusiness.dll.config
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.dlgAPropos.resources
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.dlgParametres.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.dlgUpdate.resources

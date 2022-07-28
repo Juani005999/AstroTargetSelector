@@ -102,6 +102,27 @@
             <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppCapteur.ListeObjCapteur">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppCapteur.CapteurListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppCapteur.CapteurListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppCapteur.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.AppCapteur.ListeObjCapteur"/></para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppCapteur.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -231,6 +252,11 @@
             Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des objets célestes
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.TargetListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des objets céleste
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -318,6 +344,11 @@
         <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.CapteurListeFullPathFile">
             <summary>
             Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.CapteurListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des capteurs
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.ObjCapteurList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
@@ -621,6 +652,11 @@
             Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTargetList.TargetListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des objets céleste
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjTargetList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -662,6 +698,21 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Annuler">
+            <summary>
+              Recherche une chaîne localisée semblable à Annuler.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Capteurs">
+            <summary>
+              Recherche une chaîne localisée semblable à capteurs.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.CetteOperationPeutPrendreQuelquesInstants">
+            <summary>
+              Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.DateDeLObservation">
             <summary>
               Recherche une chaîne localisée semblable à Date de l&apos;observation.
@@ -675,6 +726,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Description">
             <summary>
               Recherche une chaîne localisée semblable à Description.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.EffectueAvecSucces">
+            <summary>
+              Recherche une chaîne localisée semblable à effectué avec succès.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuCapteurIncorrect">
@@ -717,9 +773,19 @@
               Recherche une chaîne localisée semblable à Magnitude.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.MiseAJourDuFichierDeConfigurationDes">
+            <summary>
+              Recherche une chaîne localisée semblable à Mise à jour du fichier de configuration des.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Nom">
             <summary>
               Recherche une chaîne localisée semblable à Nom.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ObjetsCelestes">
+            <summary>
+              Recherche une chaîne localisée semblable à objets célestes.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.ObjetSelectionne">
@@ -742,6 +808,16 @@
               Recherche une chaîne localisée semblable à Scoring.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Suivant">
+            <summary>
+              Recherche une chaîne localisée semblable à Suivant.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Terminer">
+            <summary>
+              Recherche une chaîne localisée semblable à Terminer.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Tous">
             <summary>
               Recherche une chaîne localisée semblable à Tous.
@@ -750,6 +826,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Type">
             <summary>
               Recherche une chaîne localisée semblable à Type.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes">
+            <summary>
+              Recherche une chaîne localisée semblable à Vous aller télécharger et mettre à jour le fichier de configuration des.
             </summary>
         </member>
     </members>

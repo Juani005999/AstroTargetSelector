@@ -62,6 +62,12 @@
     <Compile Include="dlgParametres.Designer.cs">
       <DependentUpon>dlgParametres.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgUpdate.Designer.cs">
+      <DependentUpon>dlgUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainFenetre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgParametres.resx">
       <DependentUpon>dlgParametres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgUpdate.resx">
+      <DependentUpon>dlgUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainFenetre.resx">
       <DependentUpon>MainFenetre.cs</DependentUpon>
@@ -130,6 +139,15 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Ressources\Exit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\UpdateFile.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Warning.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

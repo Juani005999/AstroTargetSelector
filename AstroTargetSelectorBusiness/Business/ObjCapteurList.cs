@@ -16,7 +16,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste d'objets <see cref="ObjCapteur"/>
         /// </summary>
-        public List<ObjCapteur> ListeObjCapteur
+        internal List<ObjCapteur> ListeObjCapteur
         {
             get
             {
@@ -35,16 +35,27 @@ namespace AstroTargetSelectorBusiness
         /// Force le rechargement de la liste depuis le fichier de configuration
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjCapteur"/></para>
         /// </summary>
-        public bool ForceUpdateListe { get; set; }
+        internal bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        public string CapteurListeFullPathFile
+        internal string CapteurListeFullPathFile
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + capteurListeFileName;
+                return factory.GetAppContext().UserAppDataPath + "\\" + CapteurListeFileName;
+            }
+        }
+
+        /// <summary>
+        /// Nom du fichier de configuration contenant la liste des capteurs
+        /// </summary>
+        internal string CapteurListeFileName
+        {
+            get
+            {
+                return capteurListeFileName;
             }
         }
 

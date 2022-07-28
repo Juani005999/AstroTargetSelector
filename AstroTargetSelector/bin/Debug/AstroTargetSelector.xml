@@ -128,6 +128,100 @@
             the contents of this method with the code editor.
             </summary>
         </member>
+        <member name="T:AstroTargetSelector.dlgUpdate">
+            <summary>
+            Boîte de Dialogue "Téléchargement et Update d'un fichier de configuration"
+            <para>Cette boîte de dialogue s'ouvre de 2 modes différents : <see cref="T:AstroTargetSelector.dlgUpdate.UpdateDialogMode"/></para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.urlFichierTarget">
+            <summary>
+            Url complète du fichier remote de configuration des objets célestes
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.urlFichierCapteur">
+            <summary>
+            Url complète du fichier remote de configuration des capteurs
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelector.dlgUpdate.UpdateDialogMode">
+            <summary>
+            Mode d'ouverture de la boîte de dialogue dlgUpdate
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.UpdateDialogMode.Target">
+            <summary>
+            Liste des objets célestes
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.UpdateDialogMode.Capteur">
+            <summary>
+            Liste des Capteurs
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelector.dlgUpdate.UpdateDialogMode)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.LoadFirstStep">
+            <summary>
+            Charge le formulaire afin d'afficher les éléments de la première étape du processus
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.LoadLastStepSuccess">
+            <summary>
+            Charge le formulaire afin d'afficher les éléments de la dernière étape du processus sur succès du traitement
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.LoadLastStepError(System.String)">
+            <summary>
+            Charge le formulaire afin d'afficher les éléments de la dernière étape du processus sur erreur du traitement
+            </summary>
+            <param name="message">Message d'erreur à afficher</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.TelechargeEtUpdate">
+            <summary>
+            Lance le téléchargement et l'update du fichier de configuration
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.dialogMode">
+            <summary>
+            Mode d'ouverture de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.MainFenetre">
             <summary>
             Fenêtre principale de l'application
@@ -235,6 +329,11 @@
             Lance le téléchargement et l'installation du fichier de configuration des objets célestes
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.UpdateCapteurFile">
+            <summary>
+            Lance le téléchargement et l'installation du fichier de configuration des capteurs
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.OpenAPropos">
             <summary>
             Ouvre la boîte de dialogue A propos
@@ -309,6 +408,11 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Delete">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Exit">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -325,6 +429,16 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Telescope">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.UpdateFile">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.Warning">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
