@@ -31,7 +31,7 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -47,7 +47,9 @@ namespace AstroTargetSelector
             this.statusStripGlobal = new System.Windows.Forms.StatusStrip();
             this.toolStripStatusLabelDateObs = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusLabelNomTarget = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusActionEnCours = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainerGlobal = new System.Windows.Forms.SplitContainer();
+            this.buttonStartCalcul = new System.Windows.Forms.Button();
             this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.labelSepInputsParams = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
@@ -74,12 +76,22 @@ namespace AstroTargetSelector
             this.label3 = new System.Windows.Forms.Label();
             this.lblLieuObservation = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
             this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
             this.listViewTarget = new System.Windows.Forms.ListView();
             this.imageListRank = new System.Windows.Forms.ImageList(this.components);
-            this.textBoxInfoPanelMagnitude = new System.Windows.Forms.TextBox();
-            this.textBoxInfoPanelLongueur = new System.Windows.Forms.TextBox();
+            this.pictureBoxRank5 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank4 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank1 = new System.Windows.Forms.PictureBox();
+            this.label29 = new System.Windows.Forms.Label();
             this.textBoxInfoPanelHauteur = new System.Windows.Forms.TextBox();
+            this.label28 = new System.Windows.Forms.Label();
+            this.textBoxInfoPanelAzimut = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelMagnitude = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelGrandeurL = new System.Windows.Forms.TextBox();
+            this.textBoxInfoPanelGrandeurH = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
@@ -93,8 +105,6 @@ namespace AstroTargetSelector
             this.label25 = new System.Windows.Forms.Label();
             this.comboBoxMinuteIntervalle = new System.Windows.Forms.ComboBox();
             this.label24 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.label16 = new System.Windows.Forms.Label();
             this.textBoxInfoPanelDescription = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
             this.textBoxInfoPanelType = new System.Windows.Forms.TextBox();
@@ -104,6 +114,7 @@ namespace AstroTargetSelector
             this.label8 = new System.Windows.Forms.Label();
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTipInfoParametre = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipInfoActualisation = new System.Windows.Forms.ToolTip(this.components);
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
@@ -116,6 +127,11 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel1.SuspendLayout();
             this.splitContainerSecondaire.Panel2.SuspendLayout();
             this.splitContainerSecondaire.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).BeginInit();
             this.SuspendLayout();
             // 
@@ -146,7 +162,7 @@ namespace AstroTargetSelector
             // 
             // mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem
             // 
-            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
+            this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.UpdateFile;
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Name = "mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem";
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem.Text = "Mettre à jour la liste des &objets célestes";
@@ -154,9 +170,9 @@ namespace AstroTargetSelector
             // 
             // mettreÀJourLaListeDescapteursToolStripMenuItem
             // 
-            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.UpdateFile;
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Name = "mettreÀJourLaListeDescapteursToolStripMenuItem";
-            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(286, 30);
+            this.mettreÀJourLaListeDescapteursToolStripMenuItem.Size = new System.Drawing.Size(278, 22);
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Text = "Mettre à jour la liste des &capteurs";
             this.mettreÀJourLaListeDescapteursToolStripMenuItem.Click += new System.EventHandler(this.mettreÀJourLaListeDescapteursToolStripMenuItem_Click);
             // 
@@ -230,7 +246,8 @@ namespace AstroTargetSelector
             this.statusStripGlobal.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStripGlobal.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolStripStatusLabelDateObs,
-            this.toolStripStatusLabelNomTarget});
+            this.toolStripStatusLabelNomTarget,
+            this.toolStripStatusActionEnCours});
             this.statusStripGlobal.Location = new System.Drawing.Point(0, 571);
             this.statusStripGlobal.Name = "statusStripGlobal";
             this.statusStripGlobal.Padding = new System.Windows.Forms.Padding(1, 0, 9, 0);
@@ -251,6 +268,11 @@ namespace AstroTargetSelector
             this.toolStripStatusLabelNomTarget.Name = "toolStripStatusLabelNomTarget";
             this.toolStripStatusLabelNomTarget.Size = new System.Drawing.Size(4, 17);
             // 
+            // toolStripStatusActionEnCours
+            // 
+            this.toolStripStatusActionEnCours.Name = "toolStripStatusActionEnCours";
+            this.toolStripStatusActionEnCours.Size = new System.Drawing.Size(0, 17);
+            // 
             // splitContainerGlobal
             // 
             this.splitContainerGlobal.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -265,6 +287,7 @@ namespace AstroTargetSelector
             // 
             // splitContainerGlobal.Panel1
             // 
+            this.splitContainerGlobal.Panel1.Controls.Add(this.buttonStartCalcul);
             this.splitContainerGlobal.Panel1.Controls.Add(this.pictureBoxIconInfoToolTip);
             this.splitContainerGlobal.Panel1.Controls.Add(this.labelSepInputsParams);
             this.splitContainerGlobal.Panel1.Controls.Add(this.label19);
@@ -283,6 +306,7 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.Panel1.Controls.Add(this.label3);
             this.splitContainerGlobal.Panel1.Controls.Add(this.lblLieuObservation);
             this.splitContainerGlobal.Panel1.Controls.Add(this.label4);
+            this.splitContainerGlobal.Panel1.Controls.Add(this.button2);
             // 
             // splitContainerGlobal.Panel2
             // 
@@ -292,11 +316,21 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.SplitterWidth = 3;
             this.splitContainerGlobal.TabIndex = 0;
             // 
+            // buttonStartCalcul
+            // 
+            this.buttonStartCalcul.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
+            this.buttonStartCalcul.Location = new System.Drawing.Point(187, 27);
+            this.buttonStartCalcul.Name = "buttonStartCalcul";
+            this.buttonStartCalcul.Size = new System.Drawing.Size(51, 46);
+            this.buttonStartCalcul.TabIndex = 24;
+            this.buttonStartCalcul.UseVisualStyleBackColor = true;
+            this.buttonStartCalcul.Click += new System.EventHandler(this.buttonStartCalcul_Click);
+            // 
             // pictureBoxIconInfoToolTip
             // 
             this.pictureBoxIconInfoToolTip.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.pictureBoxIconInfoToolTip.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
-            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(384, 50);
+            this.pictureBoxIconInfoToolTip.Location = new System.Drawing.Point(439, 50);
             this.pictureBoxIconInfoToolTip.Name = "pictureBoxIconInfoToolTip";
             this.pictureBoxIconInfoToolTip.Size = new System.Drawing.Size(32, 32);
             this.pictureBoxIconInfoToolTip.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
@@ -306,10 +340,11 @@ namespace AstroTargetSelector
             // labelSepInputsParams
             // 
             this.labelSepInputsParams.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSepInputsParams.Location = new System.Drawing.Point(545, 0);
+            this.labelSepInputsParams.Location = new System.Drawing.Point(600, 0);
             this.labelSepInputsParams.Name = "labelSepInputsParams";
             this.labelSepInputsParams.Size = new System.Drawing.Size(1, 80);
             this.labelSepInputsParams.TabIndex = 22;
+            this.labelSepInputsParams.Visible = false;
             // 
             // label19
             // 
@@ -334,7 +369,7 @@ namespace AstroTargetSelector
             // labelSepInputDate
             // 
             this.labelSepInputDate.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSepInputDate.Location = new System.Drawing.Point(195, 0);
+            this.labelSepInputDate.Location = new System.Drawing.Point(250, 0);
             this.labelSepInputDate.Name = "labelSepInputDate";
             this.labelSepInputDate.Size = new System.Drawing.Size(1, 80);
             this.labelSepInputDate.TabIndex = 20;
@@ -473,20 +508,21 @@ namespace AstroTargetSelector
             // 
             this.button1.AutoSize = true;
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(557, 52);
+            this.button1.Location = new System.Drawing.Point(612, 47);
             this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 23);
+            this.button1.Size = new System.Drawing.Size(142, 26);
             this.button1.TabIndex = 18;
             this.button1.Text = "Gérer les télescopes";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             // 
             // btModifierParametre
             // 
-            this.btModifierParametre.Location = new System.Drawing.Point(208, 52);
+            this.btModifierParametre.Location = new System.Drawing.Point(263, 47);
             this.btModifierParametre.Margin = new System.Windows.Forms.Padding(2);
             this.btModifierParametre.Name = "btModifierParametre";
-            this.btModifierParametre.Size = new System.Drawing.Size(56, 23);
+            this.btModifierParametre.Size = new System.Drawing.Size(56, 26);
             this.btModifierParametre.TabIndex = 17;
             this.btModifierParametre.Text = "Mofifier";
             this.btModifierParametre.UseVisualStyleBackColor = true;
@@ -495,48 +531,52 @@ namespace AstroTargetSelector
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(642, 31);
+            this.label12.Location = new System.Drawing.Point(697, 31);
             this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(140, 13);
             this.label12.TabIndex = 16;
             this.label12.Text = "En cours de développement";
+            this.label12.Visible = false;
             // 
             // label13
             // 
-            this.label13.Location = new System.Drawing.Point(556, 31);
+            this.label13.Location = new System.Drawing.Point(611, 31);
             this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(84, 19);
             this.label13.TabIndex = 15;
             this.label13.Text = "Position (Alt/Az)";
+            this.label13.Visible = false;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(633, 5);
+            this.label10.Location = new System.Drawing.Point(688, 5);
             this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(140, 13);
             this.label10.TabIndex = 14;
             this.label10.Text = "En cours de développement";
+            this.label10.Visible = false;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(554, 5);
+            this.label9.Location = new System.Drawing.Point(609, 5);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(74, 13);
             this.label9.TabIndex = 12;
             this.label9.Text = "Télescope :";
             this.toolTipInfoParametre.SetToolTip(this.label9, "Vous pouvez modifier ces paramètres dans les options");
+            this.label9.Visible = false;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(205, 5);
+            this.label3.Location = new System.Drawing.Point(260, 5);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(164, 13);
             this.label3.TabIndex = 7;
@@ -545,7 +585,7 @@ namespace AstroTargetSelector
             // lblLieuObservation
             // 
             this.lblLieuObservation.AutoSize = true;
-            this.lblLieuObservation.Location = new System.Drawing.Point(379, 31);
+            this.lblLieuObservation.Location = new System.Drawing.Point(434, 31);
             this.lblLieuObservation.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblLieuObservation.Name = "lblLieuObservation";
             this.lblLieuObservation.Size = new System.Drawing.Size(0, 13);
@@ -553,12 +593,26 @@ namespace AstroTargetSelector
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(206, 31);
+            this.label4.Location = new System.Drawing.Point(261, 31);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(173, 19);
             this.label4.TabIndex = 5;
             this.label4.Text = "Lieu de l\'observation (Lat. - Long.)";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.AutoSize = true;
+            this.button2.Enabled = false;
+            this.button2.Location = new System.Drawing.Point(809, 47);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(113, 26);
+            this.button2.TabIndex = 20;
+            this.button2.Text = "Pointer";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Visible = false;
             // 
             // splitContainerSecondaire
             // 
@@ -576,9 +630,18 @@ namespace AstroTargetSelector
             // 
             // splitContainerSecondaire.Panel2
             // 
-            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelMagnitude);
-            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelLongueur);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank5);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank4);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank3);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank2);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank1);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.label29);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelHauteur);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.label28);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelAzimut);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelMagnitude);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelGrandeurL);
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelGrandeurH);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label18);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label17);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label20);
@@ -592,8 +655,6 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label25);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.comboBoxMinuteIntervalle);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label24);
-            this.splitContainerSecondaire.Panel2.Controls.Add(this.button2);
-            this.splitContainerSecondaire.Panel2.Controls.Add(this.label16);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelDescription);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label15);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.textBoxInfoPanelType);
@@ -603,7 +664,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 166;
+            this.splitContainerSecondaire.SplitterDistance = 147;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -616,7 +677,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 166);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 147);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -634,38 +695,130 @@ namespace AstroTargetSelector
             this.imageListRank.Images.SetKeyName(3, "4");
             this.imageListRank.Images.SetKeyName(4, "5");
             // 
+            // pictureBoxRank5
+            // 
+            this.pictureBoxRank5.Image = global::AstroTargetSelector.Properties.Resources._5;
+            this.pictureBoxRank5.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxRank5.Name = "pictureBoxRank5";
+            this.pictureBoxRank5.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank5.TabIndex = 41;
+            this.pictureBoxRank5.TabStop = false;
+            // 
+            // pictureBoxRank4
+            // 
+            this.pictureBoxRank4.Image = global::AstroTargetSelector.Properties.Resources._4;
+            this.pictureBoxRank4.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxRank4.Name = "pictureBoxRank4";
+            this.pictureBoxRank4.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank4.TabIndex = 40;
+            this.pictureBoxRank4.TabStop = false;
+            // 
+            // pictureBoxRank3
+            // 
+            this.pictureBoxRank3.Image = global::AstroTargetSelector.Properties.Resources._3;
+            this.pictureBoxRank3.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxRank3.Name = "pictureBoxRank3";
+            this.pictureBoxRank3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank3.TabIndex = 39;
+            this.pictureBoxRank3.TabStop = false;
+            // 
+            // pictureBoxRank2
+            // 
+            this.pictureBoxRank2.Image = global::AstroTargetSelector.Properties.Resources._2;
+            this.pictureBoxRank2.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxRank2.Name = "pictureBoxRank2";
+            this.pictureBoxRank2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank2.TabIndex = 38;
+            this.pictureBoxRank2.TabStop = false;
+            // 
+            // pictureBoxRank1
+            // 
+            this.pictureBoxRank1.Image = global::AstroTargetSelector.Properties.Resources._1;
+            this.pictureBoxRank1.Location = new System.Drawing.Point(13, 20);
+            this.pictureBoxRank1.Name = "pictureBoxRank1";
+            this.pictureBoxRank1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank1.TabIndex = 37;
+            this.pictureBoxRank1.TabStop = false;
+            // 
+            // label29
+            // 
+            this.label29.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label29.AutoSize = true;
+            this.label29.Location = new System.Drawing.Point(785, 127);
+            this.label29.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label29.Name = "label29";
+            this.label29.Size = new System.Drawing.Size(45, 13);
+            this.label29.TabIndex = 35;
+            this.label29.Text = "Hauteur";
+            this.label29.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxInfoPanelHauteur
+            // 
+            this.textBoxInfoPanelHauteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelHauteur.Location = new System.Drawing.Point(835, 124);
+            this.textBoxInfoPanelHauteur.Name = "textBoxInfoPanelHauteur";
+            this.textBoxInfoPanelHauteur.ReadOnly = true;
+            this.textBoxInfoPanelHauteur.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelHauteur.TabIndex = 36;
+            // 
+            // label28
+            // 
+            this.label28.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label28.AutoSize = true;
+            this.label28.Location = new System.Drawing.Point(792, 101);
+            this.label28.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label28.Name = "label28";
+            this.label28.Size = new System.Drawing.Size(38, 13);
+            this.label28.TabIndex = 33;
+            this.label28.Text = "Azimut";
+            this.label28.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxInfoPanelAzimut
+            // 
+            this.textBoxInfoPanelAzimut.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelAzimut.Location = new System.Drawing.Point(835, 98);
+            this.textBoxInfoPanelAzimut.Name = "textBoxInfoPanelAzimut";
+            this.textBoxInfoPanelAzimut.ReadOnly = true;
+            this.textBoxInfoPanelAzimut.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelAzimut.TabIndex = 34;
+            // 
             // textBoxInfoPanelMagnitude
             // 
             this.textBoxInfoPanelMagnitude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelMagnitude.Location = new System.Drawing.Point(835, 124);
+            this.textBoxInfoPanelMagnitude.Location = new System.Drawing.Point(835, 150);
             this.textBoxInfoPanelMagnitude.Name = "textBoxInfoPanelMagnitude";
             this.textBoxInfoPanelMagnitude.ReadOnly = true;
             this.textBoxInfoPanelMagnitude.Size = new System.Drawing.Size(119, 20);
             this.textBoxInfoPanelMagnitude.TabIndex = 22;
             // 
-            // textBoxInfoPanelLongueur
+            // textBoxInfoPanelGrandeurL
             // 
-            this.textBoxInfoPanelLongueur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelLongueur.Location = new System.Drawing.Point(835, 150);
-            this.textBoxInfoPanelLongueur.Name = "textBoxInfoPanelLongueur";
-            this.textBoxInfoPanelLongueur.ReadOnly = true;
-            this.textBoxInfoPanelLongueur.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelLongueur.TabIndex = 17;
+            this.textBoxInfoPanelGrandeurL.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelGrandeurL.Location = new System.Drawing.Point(835, 176);
+            this.textBoxInfoPanelGrandeurL.Name = "textBoxInfoPanelGrandeurL";
+            this.textBoxInfoPanelGrandeurL.ReadOnly = true;
+            this.textBoxInfoPanelGrandeurL.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelGrandeurL.TabIndex = 17;
             // 
-            // textBoxInfoPanelHauteur
+            // textBoxInfoPanelGrandeurH
             // 
-            this.textBoxInfoPanelHauteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelHauteur.Location = new System.Drawing.Point(835, 176);
-            this.textBoxInfoPanelHauteur.Name = "textBoxInfoPanelHauteur";
-            this.textBoxInfoPanelHauteur.ReadOnly = true;
-            this.textBoxInfoPanelHauteur.Size = new System.Drawing.Size(119, 20);
-            this.textBoxInfoPanelHauteur.TabIndex = 19;
+            this.textBoxInfoPanelGrandeurH.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxInfoPanelGrandeurH.Location = new System.Drawing.Point(835, 202);
+            this.textBoxInfoPanelGrandeurH.Name = "textBoxInfoPanelGrandeurH";
+            this.textBoxInfoPanelGrandeurH.ReadOnly = true;
+            this.textBoxInfoPanelGrandeurH.Size = new System.Drawing.Size(119, 20);
+            this.textBoxInfoPanelGrandeurH.TabIndex = 19;
             // 
             // label18
             // 
             this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(762, 179);
+            this.label18.Location = new System.Drawing.Point(762, 205);
             this.label18.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(68, 13);
@@ -677,7 +830,7 @@ namespace AstroTargetSelector
             // 
             this.label17.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(764, 153);
+            this.label17.Location = new System.Drawing.Point(764, 179);
             this.label17.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(66, 13);
@@ -689,7 +842,7 @@ namespace AstroTargetSelector
             // 
             this.label20.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(773, 127);
+            this.label20.Location = new System.Drawing.Point(773, 153);
             this.label20.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(57, 13);
@@ -701,7 +854,7 @@ namespace AstroTargetSelector
             // 
             this.label21.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(801, 101);
+            this.label21.Location = new System.Drawing.Point(801, 75);
             this.label21.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(29, 13);
@@ -713,7 +866,7 @@ namespace AstroTargetSelector
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(808, 75);
+            this.label6.Location = new System.Drawing.Point(808, 49);
             this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(22, 13);
@@ -724,7 +877,7 @@ namespace AstroTargetSelector
             // textBoxInfoPanelRA
             // 
             this.textBoxInfoPanelRA.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelRA.Location = new System.Drawing.Point(835, 72);
+            this.textBoxInfoPanelRA.Location = new System.Drawing.Point(835, 46);
             this.textBoxInfoPanelRA.Name = "textBoxInfoPanelRA";
             this.textBoxInfoPanelRA.ReadOnly = true;
             this.textBoxInfoPanelRA.Size = new System.Drawing.Size(119, 20);
@@ -733,7 +886,7 @@ namespace AstroTargetSelector
             // textBoxInfoPanelDEC
             // 
             this.textBoxInfoPanelDEC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxInfoPanelDEC.Location = new System.Drawing.Point(835, 98);
+            this.textBoxInfoPanelDEC.Location = new System.Drawing.Point(835, 72);
             this.textBoxInfoPanelDEC.Name = "textBoxInfoPanelDEC";
             this.textBoxInfoPanelDEC.ReadOnly = true;
             this.textBoxInfoPanelDEC.Size = new System.Drawing.Size(119, 20);
@@ -742,7 +895,7 @@ namespace AstroTargetSelector
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(486, 212);
+            this.label27.Location = new System.Drawing.Point(486, 231);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(45, 13);
@@ -752,7 +905,7 @@ namespace AstroTargetSelector
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(224, 212);
+            this.label26.Location = new System.Drawing.Point(224, 231);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(43, 13);
@@ -763,7 +916,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxTotalTimeSlice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTotalTimeSlice.FormattingEnabled = true;
-            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(425, 209);
+            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(425, 228);
             this.comboBoxTotalTimeSlice.Name = "comboBoxTotalTimeSlice";
             this.comboBoxTotalTimeSlice.Size = new System.Drawing.Size(56, 21);
             this.comboBoxTotalTimeSlice.TabIndex = 30;
@@ -771,7 +924,7 @@ namespace AstroTargetSelector
             // 
             // label25
             // 
-            this.label25.Location = new System.Drawing.Point(319, 212);
+            this.label25.Location = new System.Drawing.Point(319, 231);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(101, 19);
@@ -783,7 +936,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxMinuteIntervalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMinuteIntervalle.FormattingEnabled = true;
-            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(163, 209);
+            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(163, 228);
             this.comboBoxMinuteIntervalle.Name = "comboBoxMinuteIntervalle";
             this.comboBoxMinuteIntervalle.Size = new System.Drawing.Size(56, 21);
             this.comboBoxMinuteIntervalle.TabIndex = 28;
@@ -791,36 +944,13 @@ namespace AstroTargetSelector
             // 
             // label24
             // 
-            this.label24.Location = new System.Drawing.Point(10, 212);
+            this.label24.Location = new System.Drawing.Point(10, 231);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(148, 19);
             this.label24.TabIndex = 27;
             this.label24.Text = "Durée d\'un intervalle";
             this.label24.TextAlign = System.Drawing.ContentAlignment.TopRight;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.AutoSize = true;
-            this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(838, 205);
-            this.button2.Margin = new System.Windows.Forms.Padding(2);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(113, 23);
-            this.button2.TabIndex = 20;
-            this.button2.Text = "Pointer";
-            this.button2.UseVisualStyleBackColor = true;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(3, 23);
-            this.label16.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(33, 13);
-            this.label16.TabIndex = 15;
-            this.label16.Text = "Rank";
             // 
             // textBoxInfoPanelDescription
             // 
@@ -892,12 +1022,12 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea4.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea4);
-            this.chartSliceListe.Location = new System.Drawing.Point(5, 45);
+            chartArea1.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            this.chartSliceListe.Location = new System.Drawing.Point(5, 48);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
-            this.chartSliceListe.Size = new System.Drawing.Size(754, 169);
+            this.chartSliceListe.Size = new System.Drawing.Size(754, 181);
             this.chartSliceListe.TabIndex = 0;
             this.chartSliceListe.Text = "Intervalles de temps de pose";
             // 
@@ -908,6 +1038,7 @@ namespace AstroTargetSelector
             // 
             // MainFenetre
             // 
+            this.AcceptButton = this.buttonStartCalcul;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(972, 593);
@@ -917,7 +1048,7 @@ namespace AstroTargetSelector
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripGlobal;
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.MinimumSize = new System.Drawing.Size(866, 593);
+            this.MinimumSize = new System.Drawing.Size(866, 591);
             this.Name = "MainFenetre";
             this.Text = "AstroTargetSelector";
             this.ClientSizeChanged += new System.EventHandler(this.MainFenetre_ClientSizeChanged);
@@ -938,6 +1069,11 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).EndInit();
             this.splitContainerSecondaire.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -986,11 +1122,10 @@ namespace AstroTargetSelector
         private System.Windows.Forms.TextBox textBoxInfoPanelNom;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBoxInfoPanelHauteur;
+        private System.Windows.Forms.TextBox textBoxInfoPanelGrandeurH;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.TextBox textBoxInfoPanelLongueur;
+        private System.Windows.Forms.TextBox textBoxInfoPanelGrandeurL;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label labelSepInputDate;
         private System.Windows.Forms.Label label19;
@@ -1018,5 +1153,17 @@ namespace AstroTargetSelector
         private System.Windows.Forms.ToolStripMenuItem mettreÀJourLaListeDescapteursToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ImageList imageListRank;
+        private System.Windows.Forms.Label label28;
+        private System.Windows.Forms.TextBox textBoxInfoPanelAzimut;
+        private System.Windows.Forms.Label label29;
+        private System.Windows.Forms.TextBox textBoxInfoPanelHauteur;
+        private System.Windows.Forms.PictureBox pictureBoxRank1;
+        private System.Windows.Forms.PictureBox pictureBoxRank2;
+        private System.Windows.Forms.PictureBox pictureBoxRank3;
+        private System.Windows.Forms.PictureBox pictureBoxRank4;
+        private System.Windows.Forms.PictureBox pictureBoxRank5;
+        private System.Windows.Forms.Button buttonStartCalcul;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusActionEnCours;
+        private System.Windows.Forms.ToolTip toolTipInfoActualisation;
     }
 }

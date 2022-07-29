@@ -61,11 +61,56 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ....
+        /// </summary>
+        public static string ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions {
+            get {
+                return ResourceManager.GetString("ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Annuler.
         /// </summary>
         public static string Annuler {
             get {
                 return ResourceManager.GetString("Annuler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aucune.
+        /// </summary>
+        public static string Aucune {
+            get {
+                return ResourceManager.GetString("Aucune", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Azimut.
+        /// </summary>
+        public static string Azimut {
+            get {
+                return ResourceManager.GetString("Azimut", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Bougé max..
+        /// </summary>
+        public static string BougeMax {
+            get {
+                return ResourceManager.GetString("BougeMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Capteur.
+        /// </summary>
+        public static string Capteur {
+            get {
+                return ResourceManager.GetString("Capteur", resourceCulture);
             }
         }
         
@@ -106,6 +151,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à DEC (J2000).
+        /// </summary>
+        public static string DECJ2000 {
+            get {
+                return ResourceManager.GetString("DECJ2000", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Description.
         /// </summary>
         public static string Description {
@@ -142,6 +196,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ &quot;Hauteur minimum&quot; incorrect.
+        /// </summary>
+        public static string FormatDuChampHauteurMinIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampHauteurMinIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Format du lieu d&apos;observation incorrect.
         /// </summary>
         public static string FormatDuLieuDObservationIncorrect {
@@ -151,11 +214,38 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Grandeur (H).
+        /// </summary>
+        public static string GrandeurH {
+            get {
+                return ResourceManager.GetString("GrandeurH", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Grandeur (L).
+        /// </summary>
+        public static string GrandeurL {
+            get {
+                return ResourceManager.GetString("GrandeurL", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Hauteur.
         /// </summary>
         public static string Hauteur {
             get {
                 return ResourceManager.GetString("Hauteur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hauteur min..
+        /// </summary>
+        public static string HauteurMin {
+            get {
+                return ResourceManager.GetString("HauteurMin", resourceCulture);
             }
         }
         
@@ -183,6 +273,15 @@ namespace AstroTargetSelectorResources {
         public static string Largeur {
             get {
                 return ResourceManager.GetString("Largeur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lieu.
+        /// </summary>
+        public static string Lieu {
+            get {
+                return ResourceManager.GetString("Lieu", resourceCulture);
             }
         }
         
@@ -237,6 +336,15 @@ namespace AstroTargetSelectorResources {
         public static string RA {
             get {
                 return ResourceManager.GetString("RA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à RA (J2000).
+        /// </summary>
+        public static string RAJ2000 {
+            get {
+                return ResourceManager.GetString("RAJ2000", resourceCulture);
             }
         }
         
@@ -309,6 +417,15 @@ namespace AstroTargetSelectorResources {
         public static string VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes {
             get {
                 return ResourceManager.GetString("VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Zones exclues.
+        /// </summary>
+        public static string ZonesExclues {
+            get {
+                return ResourceManager.GetString("ZonesExclues", resourceCulture);
             }
         }
     }

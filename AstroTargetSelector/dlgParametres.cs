@@ -89,8 +89,9 @@ namespace AstroTargetSelector
             ckSO.Checked = false;
             ckO.Checked = false;
             ckNO.Checked = false;
-            // Bouge Max
+            // Divers
             textBoxBougeMax.Text = string.Empty;
+            textBoxHauteurMin.Text = String.Empty;
 
             InitCombos();
         }
@@ -156,8 +157,9 @@ namespace AstroTargetSelector
             ckO.Checked = factory.GetAppInputs().Inputs.ZonesExclues.Where(z => z.ToString().Equals(CoordinatesDirection.O.ToString())).ToList().Count > 0;
             ckNO.Checked = factory.GetAppInputs().Inputs.ZonesExclues.Where(z => z.ToString().Equals(CoordinatesDirection.NO.ToString())).ToList().Count > 0;
 
-            // Bougé max
+            // Divers
             textBoxBougeMax.Text = factory.GetAppInputs().Inputs.BougeMax.ToString(CultureInfo.InvariantCulture);
+            textBoxHauteurMin.Text = factory.GetAppInputs().Inputs.HauteurMin.ToString(CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -217,6 +219,15 @@ namespace AstroTargetSelector
                     factory.GetAppInputs().Inputs.BougeMax = bougeMax;
                 else
                     throw new Exception(Resources.FormatDuChampBougeMaxIncorrect);
+
+                // Hauteur min. : On vérifie le format et la plage de validité
+                decimal hauteurMin;
+                if (decimal.TryParse(textBoxHauteurMin.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out hauteurMin)
+                    && hauteurMin > 0
+                    && hauteurMin < 80)
+                    factory.GetAppInputs().Inputs.HauteurMin = hauteurMin;
+                else
+                    throw new Exception(Resources.FormatDuChampHauteurMinIncorrect);
 
                 // Trace
                 factory.GetLog().Log($"Enregistrement des Settings effectué avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);

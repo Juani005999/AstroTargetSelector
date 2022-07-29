@@ -32,10 +32,12 @@
             this.btOK = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
             this.mainLabel = new System.Windows.Forms.Label();
-            this.pictureBoxActionIconError = new System.Windows.Forms.PictureBox();
+            this.pictureBoxActionIconSuccess = new System.Windows.Forms.PictureBox();
             this.pictureBoxActionIconInfo = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconError)).BeginInit();
+            this.pictureBoxActionIconError = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconSuccess)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconInfo)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconError)).BeginInit();
             this.SuspendLayout();
             // 
             // btOK
@@ -70,15 +72,15 @@
             this.mainLabel.TabIndex = 8;
             this.mainLabel.Text = "mainLabel";
             // 
-            // pictureBoxActionIconError
+            // pictureBoxActionIconSuccess
             // 
-            this.pictureBoxActionIconError.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxActionIconError.Location = new System.Drawing.Point(13, 13);
-            this.pictureBoxActionIconError.Name = "pictureBoxActionIconError";
-            this.pictureBoxActionIconError.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxActionIconError.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxActionIconError.TabIndex = 10;
-            this.pictureBoxActionIconError.TabStop = false;
+            this.pictureBoxActionIconSuccess.Image = global::AstroTargetSelector.Properties.Resources.TaskValidated;
+            this.pictureBoxActionIconSuccess.Location = new System.Drawing.Point(13, 13);
+            this.pictureBoxActionIconSuccess.Name = "pictureBoxActionIconSuccess";
+            this.pictureBoxActionIconSuccess.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxActionIconSuccess.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxActionIconSuccess.TabIndex = 11;
+            this.pictureBoxActionIconSuccess.TabStop = false;
             // 
             // pictureBoxActionIconInfo
             // 
@@ -89,6 +91,16 @@
             this.pictureBoxActionIconInfo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
             this.pictureBoxActionIconInfo.TabIndex = 9;
             this.pictureBoxActionIconInfo.TabStop = false;
+            // 
+            // pictureBoxActionIconError
+            // 
+            this.pictureBoxActionIconError.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxActionIconError.Location = new System.Drawing.Point(13, 13);
+            this.pictureBoxActionIconError.Name = "pictureBoxActionIconError";
+            this.pictureBoxActionIconError.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxActionIconError.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxActionIconError.TabIndex = 10;
+            this.pictureBoxActionIconError.TabStop = false;
             // 
             // dlgUpdate
             // 
@@ -103,6 +115,7 @@
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.btCancel);
             this.Controls.Add(this.pictureBoxActionIconError);
+            this.Controls.Add(this.pictureBoxActionIconSuccess);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -112,8 +125,9 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Mise à jour des fichiers de configuration";
             this.Load += new System.EventHandler(this.dlgUpdate_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconError)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconSuccess)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconInfo)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxActionIconError)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -126,5 +140,6 @@
         private System.Windows.Forms.Label mainLabel;
         private System.Windows.Forms.PictureBox pictureBoxActionIconInfo;
         private System.Windows.Forms.PictureBox pictureBoxActionIconError;
+        private System.Windows.Forms.PictureBox pictureBoxActionIconSuccess;
     }
 }

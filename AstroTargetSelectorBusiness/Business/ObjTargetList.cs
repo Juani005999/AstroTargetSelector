@@ -34,7 +34,14 @@ namespace AstroTargetSelectorBusiness
                 if (ForceUpdateListe)
                     ChargementListe();
 
-                // On renvoi la liste filtrée les zones exclues
+                // Rechargement des Slices si nécessaire
+                if (ForceUpdateSlices)
+                {
+                    listeObjTarget.ForEach(t => t.ForceUpdateSlices = true);
+                }
+                ForceUpdateSlices = false;
+
+                // On renvoi la liste filtrée les objets exclus pour prise en compte dans les filtre (Type)
                 return listeObjTarget.Where(t => !t.EstExclu).ToList();
             }
         }
@@ -44,6 +51,11 @@ namespace AstroTargetSelectorBusiness
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
         /// </summary>
         internal bool ForceUpdateListe { get; set; }
+
+        /// <summary>
+        /// Permet de forcer le rechargement des Slices
+        /// </summary>
+        internal bool ForceUpdateSlices { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
@@ -116,17 +128,6 @@ namespace AstroTargetSelectorBusiness
                         {
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
-                            //ObjTarget objEnCours = new ObjTarget(factory)
-                            //{
-                            //    Nom = values[0],
-                            //    Type = values[1],
-                            //    Description = values[2],
-                            //    RA = factory.GetCoordinate(Convert.ToDecimal(values[3]), CoordinatesType.RA),
-                            //    DEC = factory.GetCoordinate(Convert.ToDecimal(values[4]), CoordinatesType.DEC),
-                            //    Magnitude = Convert.ToDecimal(values[5]),
-                            //    GrandeurWidth = factory.GetCoordinate(Convert.ToDecimal(values[6]), CoordinatesType.Degree),
-                            //    GrandeurHeight = factory.GetCoordinate(Convert.ToDecimal(values[7]), CoordinatesType.Degree)
-                            //};
 
                             listeObjTarget.Add(new ObjTarget(factory)
                             {

@@ -117,8 +117,23 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions" xml:space="preserve">
+    <value>Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ...</value>
+  </data>
   <data name="Annuler" xml:space="preserve">
     <value>Annuler</value>
+  </data>
+  <data name="Aucune" xml:space="preserve">
+    <value>Aucune</value>
+  </data>
+  <data name="Azimut" xml:space="preserve">
+    <value>Azimut</value>
+  </data>
+  <data name="BougeMax" xml:space="preserve">
+    <value>Bougé max.</value>
+  </data>
+  <data name="Capteur" xml:space="preserve">
+    <value>Capteur</value>
   </data>
   <data name="Capteurs" xml:space="preserve">
     <value>capteurs</value>
@@ -132,6 +147,9 @@
   <data name="DEC" xml:space="preserve">
     <value>DEC</value>
   </data>
+  <data name="DECJ2000" xml:space="preserve">
+    <value>DEC (J2000)</value>
+  </data>
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
@@ -144,11 +162,23 @@
   <data name="FormatDuChampBougeMaxIncorrect" xml:space="preserve">
     <value>Format du champ "Bougé max." incorrect</value>
   </data>
+  <data name="FormatDuChampHauteurMinIncorrect" xml:space="preserve">
+    <value>Format du champ "Hauteur minimum" incorrect</value>
+  </data>
   <data name="FormatDuLieuDObservationIncorrect" xml:space="preserve">
     <value>Format du lieu d'observation incorrect</value>
   </data>
+  <data name="GrandeurH" xml:space="preserve">
+    <value>Grandeur (H)</value>
+  </data>
+  <data name="GrandeurL" xml:space="preserve">
+    <value>Grandeur (L)</value>
+  </data>
   <data name="Hauteur" xml:space="preserve">
     <value>Hauteur</value>
+  </data>
+  <data name="HauteurMin" xml:space="preserve">
+    <value>Hauteur min.</value>
   </data>
   <data name="InfoCapteur1" xml:space="preserve">
     <value>Veuillez sélectionner votre capteur.</value>
@@ -158,6 +188,9 @@
   </data>
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>
+  </data>
+  <data name="Lieu" xml:space="preserve">
+    <value>Lieu</value>
   </data>
   <data name="Magnitude" xml:space="preserve">
     <value>Magnitude</value>
@@ -176,6 +209,9 @@
   </data>
   <data name="RA" xml:space="preserve">
     <value>RA</value>
+  </data>
+  <data name="RAJ2000" xml:space="preserve">
+    <value>RA (J2000)</value>
   </data>
   <data name="Rank" xml:space="preserve">
     <value>Rank</value>
@@ -200,5 +236,8 @@
   </data>
   <data name="VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes" xml:space="preserve">
     <value>Vous aller télécharger et mettre à jour le fichier de configuration des</value>
+  </data>
+  <data name="ZonesExclues" xml:space="preserve">
+    <value>Zones exclues</value>
   </data>
 </root>

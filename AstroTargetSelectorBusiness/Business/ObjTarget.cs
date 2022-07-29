@@ -84,24 +84,32 @@ namespace AstroTargetSelectorBusiness
         public Coordinate GrandeurHeight { get; set; }
 
         /// <summary>
+        /// Permet de forcer le rechargement des Slices
+        /// </summary>
+        internal bool ForceUpdateSlices { get; set; }
+
+        /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
         /// </summary>
         public List<ObjSliceTarget> Slices
         {
             get
             {
-                //factory.GetLog().Log($"Chargement de la liste des Slices de l'objet {Nom}", GetType().Name);
-
-                // Clear de la liste des Slices
-                slices.Clear();
-                for (int i = 0; i < factory.GetAppInputs().Inputs.NombreSlice; i++)
+                // On recharge les slices uniquement si nécessaire
+                if (slices.Count == 0 || ForceUpdateSlices)
                 {
-                    // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                    slices.Add(new ObjSliceTarget(factory, this)
+                    // Clear de la liste des Slices
+                    slices.Clear();
+                    for (int i = 0; i < factory.GetAppInputs().Inputs.NombreSlice; i++)
                     {
-                        DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
-                    });
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        slices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
+                        });
+                    }
                 }
+                ForceUpdateSlices = false;
                 return slices;
             }
         }
@@ -114,17 +122,16 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                //factory.GetLog().Log($"Calcul du Scoring de l'objet {Nom}", GetType().Name);
-
                 // Moyenne des temps de pose des Slices
-                decimal result = Slices.Select(t => t.TempsPoseCalcule).Average();
+                if (!scoring.HasValue || ForceUpdateSlices)
+                    scoring = Slices.Select(t => t.TempsPoseCalcule).Average();
 
                 //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
                 //if (factory.GetAppInputs().Inputs.BougeMax != 0)
                 //    result /= factory.GetAppInputs().Inputs.BougeMax;
 
                 // Retour
-                return Math.Floor(result);
+                return Math.Floor(scoring.Value);
             }
         }
 
@@ -136,18 +143,15 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                //factory.GetLog().Log($"Calcul du Rank de l'objet {Nom}", GetType().Name);
-
                 // Le Rank est basé sur le scoring
-                decimal scoring = Scoring;
                 decimal result;
-                if (scoring > MinTempsPoseRank5)
+                if (Scoring > MinTempsPoseRank5)
                     result = 5;
-                else if (scoring > MinTempsPoseRank4)
+                else if (Scoring > MinTempsPoseRank4)
                     result = 4;
-                else if (scoring > MinTempsPoseRank3)
+                else if (Scoring > MinTempsPoseRank3)
                     result = 3;
-                else if (scoring > MinTempsPoseRank2)
+                else if (Scoring > MinTempsPoseRank2)
                     result = 2;
                 else
                     result = 1;
@@ -162,10 +166,11 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le Rank calculé pour la Target
-        /// <para>Barême basé sur le <see cref="Scoring"/></para>
+        /// Renvoi l'Azimut calculé pour la Target
+        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
+        /// <para>Renvoi l'Azimut du premier <see cref="Slices"/> de la période d'observation</para>
         /// </summary>
-        public double Azimut
+        public Coordinate Azimut
         {
             get
             {
@@ -175,7 +180,65 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Permet de savoir si un objet céleste fait partie d'une zone exclue du ciel
+        /// Renvoi la Hauteur calculé pour la Target
+        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
+        /// <para>Renvoi la Hauteur du premier <see cref="Slices"/> de la période d'observation</para>
+        /// </summary>
+        public Coordinate Hauteur
+        {
+            get
+            {
+                // Renvoi la valeur de la Hauteur du premier slice
+                return Slices[0].Hauteur;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi l'Azimut Corrigee calculé pour la Target
+        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
+        /// <para>Renvoi l'Azimut Corrigee du premier <see cref="Slices"/> de la période d'observation</para>
+        /// </summary>
+        public Coordinate AzimutCorrigee
+        {
+            get
+            {
+                // Renvoi la valeur d'Azimut du premier slice
+                return Slices[0].AzimutCorrigee;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi l'Azimut Precise calculé pour la Target
+        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
+        /// <para>Renvoi l'Azimut Precise du premier <see cref="Slices"/> de la période d'observation</para>
+        /// </summary>
+        public Coordinate AzimutPrecise
+        {
+            get
+            {
+                // Renvoi la valeur d'Azimut du premier slice
+                return Slices[0].AzimutPrecise;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi la Hauteur Precise calculé pour la Target
+        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
+        /// <para>Renvoi la Hauteur Precise du premier <see cref="Slices"/> de la période d'observation</para>
+        /// </summary>
+        public Coordinate HauteurPrecise
+        {
+            get
+            {
+                // Renvoi la valeur de la Hauteur du premier slice
+                return Slices[0].HauteurPrecise;
+            }
+        }
+
+        /// <summary>
+        /// Permet de savoir si un objet céleste est exclu de la liste
+        /// <para>Fait partie d'une zone exclue du ciel</para>
+        /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
         /// </summary>
         public bool EstExclu
         {
@@ -184,38 +247,39 @@ namespace AstroTargetSelectorBusiness
                 // Parcours des zones à exclure
                 foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
                 {
+                    double coordonne = Convert.ToDouble(Azimut.Coordonnee);
                     switch(direction)
                     {
                         case CoordinatesDirection.N:
-                            if (Azimut > 337.5 || Azimut <= 22.5)
+                            if (coordonne > 337.5 || coordonne <= 22.5)
                                 return true;
                             break;
                         case CoordinatesDirection.NE:
-                            if (Azimut > 22.5 && Azimut <= 67.5)
+                            if (coordonne > 22.5 && coordonne <= 67.5)
                                 return true;
                             break;
                         case CoordinatesDirection.E:
-                            if (Azimut > 67.5 && Azimut <= 112.5)
+                            if (coordonne > 67.5 && coordonne <= 112.5)
                                 return true;
                             break;
                         case CoordinatesDirection.SE:
-                            if (Azimut > 112.5 && Azimut <= 157.5)
+                            if (coordonne > 112.5 && coordonne <= 157.5)
                                 return true;
                             break;
                         case CoordinatesDirection.S:
-                            if (Azimut > 157.5 && Azimut <= 202.5)
+                            if (coordonne > 157.5 && coordonne <= 202.5)
                                 return true;
                             break;
                         case CoordinatesDirection.SO:
-                            if (Azimut > 202.5 && Azimut <= 247.5)
+                            if (coordonne > 202.5 && coordonne <= 247.5)
                                 return true;
                             break;
                         case CoordinatesDirection.O:
-                            if (Azimut > 247.5 && Azimut <= 292.5)
+                            if (coordonne > 247.5 && coordonne <= 292.5)
                                 return true;
                             break;
                         case CoordinatesDirection.NO:
-                            if (Azimut > 292.5 && Azimut <= 337.5)
+                            if (coordonne > 292.5 && coordonne <= 337.5)
                                 return true;
                             break;
 
@@ -224,7 +288,11 @@ namespace AstroTargetSelectorBusiness
                     }
                 }
 
-                // Renvoi la valeur d'Azimut du premier slice
+                // Vérif sur la Hauteur apparente du premier Slice
+                if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
+                    return true;
+
+                // Objet non exclu de la liste
                 return false;
             }
         }
@@ -259,7 +327,13 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
         /// </summary>
-        public List<ObjSliceTarget> slices = new List<ObjSliceTarget>();
+        private List<ObjSliceTarget> slices = new List<ObjSliceTarget>();
+
+        /// <summary>
+        /// Singleton pour optimisation du Scoring
+        /// <para>Moyenne des <see cref="ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
+        /// </summary>
+        private decimal? scoring = null;
 
         #endregion
     }

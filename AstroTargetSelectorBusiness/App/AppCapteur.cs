@@ -17,7 +17,7 @@ namespace AstroTargetSelectorBusiness
         /// Liste des Capteurs
         /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
         /// </summary>
-        public ObjCapteurList Capteurs
+        internal ObjCapteurList Capteurs
         {
             get
             {

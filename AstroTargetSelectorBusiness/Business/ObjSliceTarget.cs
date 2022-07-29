@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationTools;
+using System;
 using System.Drawing;
 
 namespace AstroTargetSelectorBusiness
@@ -31,70 +32,76 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Calcul pour Julien
-                double heureCorrige = DateHeure.Hour - 1;
-                if (TimeZoneInfo.Local.IsDaylightSavingTime(DateHeure))
-                    heureCorrige -= 1;
-                heureCorrige += ((double)DateHeure.Minute / 60);
-                int moisCorrige = DateHeure.Month;
-                if (moisCorrige < 3)
-                    moisCorrige += 12;
-                int anneeCorrige = DateHeure.Year;
-                if (moisCorrige < 3)
-                    anneeCorrige -= 1;
-                double A = Math.Floor((double)(anneeCorrige / 100));
-                double B = 2 - A + Math.Floor((double)(A / 4));
-                double C = Math.Floor((double)(365.25 * anneeCorrige));
-                double D = Math.Floor((double)(30.6001 * (moisCorrige + 1)));
-                double JJ = B + C + D + DateHeure.Day + ((double)heureCorrige / 24) + 1720994.5;
+                if (!tempsPoseCalcule.HasValue)
+                {
+                    // Calcul pour Julien
+                    double heureCorrige = DateHeure.Hour - 1;
+                    if (TimeZoneInfo.Local.IsDaylightSavingTime(DateHeure))
+                        heureCorrige -= 1;
+                    heureCorrige += ((double)DateHeure.Minute / 60);
+                    int moisCorrige = DateHeure.Month;
+                    if (moisCorrige < 3)
+                        moisCorrige += 12;
+                    int anneeCorrige = DateHeure.Year;
+                    if (moisCorrige < 3)
+                        anneeCorrige -= 1;
+                    double A = Math.Floor((double)(anneeCorrige / 100));
+                    double B = 2 - A + Math.Floor((double)(A / 4));
+                    double C = Math.Floor((double)(365.25 * anneeCorrige));
+                    double D = Math.Floor((double)(30.6001 * (moisCorrige + 1)));
+                    double JJ = B + C + D + DateHeure.Day + ((double)heureCorrige / 24) + 1720994.5;
 
-                // Angle rotation de la Terre
-                double rotT = JJ - 2451545;
-                double rotF = rotT - Math.Floor(rotT);
-                double rotThetaIntermediaire = 2 * Math.PI * (rotF + 0.779057273264 + (0.00273781191135448 * rotT));
-                double rotTheta = rotThetaIntermediaire % (2 * Math.PI);
+                    // Angle rotation de la Terre
+                    double rotT = JJ - 2451545;
+                    double rotF = rotT - Math.Floor(rotT);
+                    double rotThetaIntermediaire = 2 * Math.PI * (rotF + 0.779057273264 + (0.00273781191135448 * rotT));
+                    double rotTheta = rotThetaIntermediaire % (2 * Math.PI);
 
-                // Temps Sideral GreenWitch
-                double greenwitchT = (JJ - 2451545) / 36525;
-                double greenwitchTS = rotTheta + ((0.014506
-                                                    + (4612.156534 * greenwitchT)
-                                                    + (1.3915817 * Math.Pow(greenwitchT, 2))
-                                                    - (0.00000044 * Math.Pow(greenwitchT, 3))
-                                                    - (0.000029956 * Math.Pow(greenwitchT, 4))
-                                                    - (0.0000000368 * Math.Pow(greenwitchT, 5))) / 60 / 60 * Math.PI / 180);
-                double greenwitchTSCorrige = greenwitchTS % (2 * Math.PI);
+                    // Temps Sideral GreenWitch
+                    double greenwitchT = (JJ - 2451545) / 36525;
+                    double greenwitchTS = rotTheta + ((0.014506
+                                                        + (4612.156534 * greenwitchT)
+                                                        + (1.3915817 * Math.Pow(greenwitchT, 2))
+                                                        - (0.00000044 * Math.Pow(greenwitchT, 3))
+                                                        - (0.000029956 * Math.Pow(greenwitchT, 4))
+                                                        - (0.0000000368 * Math.Pow(greenwitchT, 5))) / 60 / 60 * Math.PI / 180);
+                    double greenwitchTSCorrige = greenwitchTS % (2 * Math.PI);
 
-                // Temps Sideral Local
-                double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue))) % (2 * Math.PI))
-                            - (((Math.PI / 180) * Convert.ToDouble(parentTarget.RA.Coordonnee)) * 15);
-                double H = LST < 0 ? LST + (2 * Math.PI) : LST > Math.PI ? LST - (2 * Math.PI) : LST;
+                    // Temps Sideral Local
+                    double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue))) % (2 * Math.PI))
+                                - (((Math.PI / 180) * Convert.ToDouble(parentTarget.RA.Coordonnee)) * 15);
+                    double H = LST < 0 ? LST + (2 * Math.PI) : LST > Math.PI ? LST - (2 * Math.PI) : LST;
 
-                // Sin/Cos
-                double sinDec = Math.Sin((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
-                double cosDec = Math.Cos((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
-                double tanDec = Math.Tan((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
-                double sinLatitude = Math.Sin((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
-                double cosLatitude = Math.Cos((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
-                double cosH = Math.Cos(H);
-                double sinH = Math.Sin(H);
+                    // Sin/Cos
+                    double sinDec = Math.Sin((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
+                    double cosDec = Math.Cos((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
+                    double tanDec = Math.Tan((Math.PI / 180) * Convert.ToDouble(parentTarget.DEC.Coordonnee));
+                    double sinLatitude = Math.Sin((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
+                    double cosLatitude = Math.Cos((Math.PI / 180) * Convert.ToDouble(factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue));
+                    double cosH = Math.Cos(H);
+                    double sinH = Math.Sin(H);
 
-                // Hauteur
-                double hauteur = Math.Floor(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180));
+                    // Hauteur
+                    hauteurPrecise = factory.GetCoordinate(Convert.ToDecimal(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180)), CoordinatesType.Degree);
+                    hauteur = factory.GetCoordinate(Convert.ToDecimal(Math.Floor(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180))), CoordinatesType.Degree);
 
-                // Azimut
-                double azimutCorrigee = Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI;
-                azimut = Math.Floor((azimutCorrigee + (2 * Math.PI)) / (Math.PI / 180));
-                double cosAzimut = Math.Cos((Math.PI / 180) * azimut.Value);
+                    // Azimut
+                    azimutCorrigee = factory.GetCoordinate(Convert.ToDecimal(Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI), CoordinatesType.Degree);
+                    azimutPrecise = factory.GetCoordinate(Convert.ToDecimal((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180)), CoordinatesType.Degree);
+                    azimut = factory.GetCoordinate(Convert.ToDecimal(Math.Floor((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180))), CoordinatesType.Degree);
+                    double cosAzimut = Math.Cos((Math.PI / 180) * Convert.ToDouble(azimut.Coordonnee));
 
-                decimal tempsPoseCalcule = Math.Abs(230
-                                        * (factory.GetAppInputs().Inputs.BougeMax
-                                        * Convert.ToDecimal(Math.Cos((Math.PI / 180) * hauteur)))
-                                        / (Convert.ToDecimal(0.5)
-                                        * factory.GetAppInputs().Inputs.Capteur.Largeur
-                                        * Convert.ToDecimal(cosLatitude)
-                                        * Convert.ToDecimal(cosAzimut))
-                                        * 60);
-                return tempsPoseCalcule > TempsPoseCalculeMax ? TempsPoseCalculeMax : tempsPoseCalcule;
+                    tempsPoseCalcule = Math.Abs(230
+                                            * (factory.GetAppInputs().Inputs.BougeMax
+                                            * Convert.ToDecimal(Math.Cos((Math.PI / 180) * Convert.ToDouble(hauteur.Coordonnee))))
+                                            / (Convert.ToDecimal(0.5)
+                                            * factory.GetAppInputs().Inputs.Capteur.Largeur
+                                            * Convert.ToDecimal(cosLatitude)
+                                            * Convert.ToDecimal(cosAzimut))
+                                            * 60);
+                }
+
+                return tempsPoseCalcule.Value > TempsPoseCalculeMax ? TempsPoseCalculeMax : tempsPoseCalcule.Value;
             }
         }
 
@@ -134,15 +141,75 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Azimut calculé du slice
         /// </summary>
-        public double Azimut
+        public Coordinate Azimut
         {
             get
             {
-                // Si le membre local n'a pas de valeur, on force le recalcul en appelant
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant la propriété TempsPoseCalcule
                 decimal tempsPose = 0;
-                if (!azimut.HasValue)
+                if (azimut == null)
                     tempsPose = TempsPoseCalcule;
-                return azimut.Value;
+                return azimut;
+            }
+        }
+
+        /// <summary>
+        /// Hauteur calculé du slice
+        /// </summary>
+        public Coordinate Hauteur
+        {
+            get
+            {
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant la propriété TempsPoseCalcule
+                decimal tempsPose = 0;
+                if (hauteur == null)
+                    tempsPose = TempsPoseCalcule;
+                return hauteur;
+            }
+        }
+
+        /// <summary>
+        /// Azimut Precise calculé du slice
+        /// </summary>
+        public Coordinate AzimutPrecise
+        {
+            get
+            {
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant la propriété TempsPoseCalcule
+                decimal tempsPose = 0;
+                if (azimutPrecise == null)
+                    tempsPose = TempsPoseCalcule;
+                return azimutPrecise;
+            }
+        }
+
+        /// <summary>
+        /// Azimut Corrigee calculé du slice
+        /// </summary>
+        public Coordinate AzimutCorrigee
+        {
+            get
+            {
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant la propriété TempsPoseCalcule
+                decimal tempsPose = 0;
+                if (azimutCorrigee == null)
+                    tempsPose = TempsPoseCalcule;
+                return azimutCorrigee;
+            }
+        }
+
+        /// <summary>
+        /// Hauteur Precise calculé du slice
+        /// </summary>
+        public Coordinate HauteurPrecise
+        {
+            get
+            {
+                // Si le membre local n'a pas de valeur, on force le recalcul en appelant la propriété TempsPoseCalcule
+                decimal tempsPose = 0;
+                if (hauteurPrecise == null)
+                    tempsPose = TempsPoseCalcule;
+                return hauteurPrecise;
             }
         }
 
@@ -176,7 +243,32 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Azimut calculé du slice
         /// </summary>
-        private double? azimut = null;
+        private Coordinate azimut = null;
+
+        /// <summary>
+        /// Azimut calculé du slice
+        /// </summary>
+        private Coordinate azimutPrecise = null;
+
+        /// <summary>
+        /// Azimut corrigée calculé du slice
+        /// </summary>
+        private Coordinate azimutCorrigee = null;
+
+        /// <summary>
+        /// Hauteur calculée du slice
+        /// </summary>
+        private Coordinate hauteur = null;
+
+        /// <summary>
+        /// Hauteur corrigée Precise du slice
+        /// </summary>
+        private Coordinate hauteurPrecise = null;
+
+        /// <summary>
+        /// Temps de pose calculé pour l'intervalle
+        /// </summary>
+        private decimal? tempsPoseCalcule = null;
 
         #endregion
     }

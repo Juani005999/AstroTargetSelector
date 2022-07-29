@@ -34,19 +34,16 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Trace et Chrono
-                //factory.GetLog().Log($"Rechargement de la liste des Targets depuis l'objet Métier", GetType().Name);
-                Stopwatch debutFonction = new Stopwatch();
-                debutFonction.Start();
-
-                // On force le rechargement de la liste si nécessaire
+                // On force le rechargement de la liste et/ou des Slices si nécessaire
                 Targets.ForceUpdateListe = ForceUpdateListe;
+                Targets.ForceUpdateSlices = ForceUpdateSlices;
 
                 // Appel à la liste chargée depuis l'objet métier
                 listeObjTarget = Targets.ListeObjTarget.ToList();
 
                 // Flush du flag permettant de forcer le rechargement de la liste depuis le fichier de configuration
                 ForceUpdateListe = false;
+                ForceUpdateSlices = false;
 
                 // Filtre sur Nom / Description
                 if (!string.IsNullOrEmpty(FiltreNomDescription))
@@ -65,10 +62,7 @@ namespace AstroTargetSelectorBusiness
                 if (!string.IsNullOrEmpty(FiltreMagnitude) && FiltreMagnitude != Resources.Tous)
                     listeObjTarget = listeObjTarget.Where(t => t.Magnitude <= Convert.ToDecimal(FiltreMagnitude)).ToList();
 
-                // TODO : Tri
-
-                // Trace et retour
-                //factory.GetLog().Log($"Chargement de {listeObjTarget.Count - 1} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                // Retour
                 return listeObjTarget;
             }
         }
@@ -80,17 +74,17 @@ namespace AstroTargetSelectorBusiness
         public bool ForceUpdateListe { get; set; }
 
         /// <summary>
+        /// Permet de forcer le rechargement des Slices
+        /// </summary>
+        public bool ForceUpdateSlices { get; set; }
+
+        /// <summary>
         /// Renvoi la liste distinctes des différents type d'objet céleste
         /// </summary>
         public List<string> ListeType
         {
             get
             {
-                // Trace et Chrono
-                //factory.GetLog().Log($"Rechargement de la liste des Type de targets depuis l'objet Métier", GetType().Name);
-                Stopwatch debutFonction = new Stopwatch();
-                debutFonction.Start();
-
                 // Clear de la liste en cours
                 listeType.Clear();
 
@@ -98,13 +92,12 @@ namespace AstroTargetSelectorBusiness
                 listeType.Add(Resources.Tous);
 
                 // On parcours la liste des targets groupée par Type
-                foreach (var group in Targets.ListeObjTarget.Where(t => !t.EstExclu).GroupBy(target => target.Type))
+                foreach (var group in Targets.ListeObjTarget.GroupBy(target => target.Type))
                 {
                     listeType.Add(group.Key);
                 }
 
-                // Trace et retour
-                //factory.GetLog().Log($"Chargement de {listeType.Count - 1} type en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                // Retour
                 return listeType;
             }
         }

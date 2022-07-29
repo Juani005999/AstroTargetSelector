@@ -1,4 +1,5 @@
 ﻿using ApplicationTools;
+using AstroTargetSelectorResources;
 using System;
 using System.Linq;
 
@@ -61,15 +62,15 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 // Lieu
-                string toolTipRetour = $"Lieu : {LieuObservation}";
+                string toolTipRetour = $"{Resources.Lieu} : {LieuObservation}";
 
                 // Capteur
                 toolTipRetour += Environment.NewLine;
-                toolTipRetour += $"Capteur : {CapteurFormatedString}";
+                toolTipRetour += $"{Resources.Capteur} : {CapteurFormatedString}";
 
                 // Zones Exclues
                 toolTipRetour += Environment.NewLine;
-                string zonesExclues = "Aucune";
+                string zonesExclues = Resources.Aucune;
                 if (Inputs.ZonesExclues.Count > 0)
                 {
                     zonesExclues = string.Empty;
@@ -82,16 +83,15 @@ namespace AstroTargetSelectorBusiness
                             zonesExclues += " - ";
                     }
                 }
-                toolTipRetour += $"Zones exclues : {zonesExclues}";
+                toolTipRetour += $"{Resources.ZonesExclues} : {zonesExclues}";
 
-                // Capteur
+                // Hauteur min
                 toolTipRetour += Environment.NewLine;
-                toolTipRetour += $"Bougé max. : {Inputs.BougeMax} px";
+                toolTipRetour += $"{Resources.HauteurMin} : {Inputs.HauteurMin} °";
 
-                //Lieu: 48°21'35" N - 7°07'57" E
-                //Capteur: IMX492 - Largeur : 2055px
-                //Zones exclues du ciel: NO - N - NE
-                //Décalé max. : 1px
+                // Bougé Max
+                toolTipRetour += Environment.NewLine;
+                toolTipRetour += $"{Resources.BougeMax} : {Inputs.BougeMax} px";
 
                 return toolTipRetour;
             }

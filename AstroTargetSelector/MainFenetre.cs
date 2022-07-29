@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
-using System.Net;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
 using ApplicationTools;
@@ -136,8 +135,9 @@ namespace AstroTargetSelector
                 // Chargement des Inputs
                 LoadInputs();
 
-                // Text par défaut de la Status Bar
+                // Text par défaut de la Status Bar et ToolTip Actualisation
                 SetDefaultStatusText();
+                toolTipInfoActualisation.SetToolTip(buttonStartCalcul, Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions);
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
@@ -147,6 +147,9 @@ namespace AstroTargetSelector
                 InitialisationComboTotalTimeSlice();
                 InitialisationComboFiltreRank();
                 InitialisationComboFiltreMagnitude();
+
+                // On Précharge la liste des objets célestes depuis le fichier de configuration en rechargeant la combo des filtres
+                RechargeListeFiltreType();
 
                 // Trace
                 factory.GetLog().Log("Fonction InitialisationFormulaire FIN", GetType().Name, debutInitialisation.ElapsedMilliseconds);
@@ -280,9 +283,11 @@ namespace AstroTargetSelector
             listViewTarget.Columns.Add(Resources.Description, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.RA, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.DEC, -2, HorizontalAlignment.Left);
-            listViewTarget.Columns.Add(Resources.Magnitude, -2, HorizontalAlignment.Left);
-            listViewTarget.Columns.Add(Resources.Largeur, -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add(Resources.Azimut, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Hauteur, -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add(Resources.Magnitude, -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add(Resources.GrandeurL, -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add(Resources.GrandeurH, -2, HorizontalAlignment.Left);
 
             // Tri par défaut
             if (!string.IsNullOrEmpty(SortColumn) && !string.IsNullOrEmpty(SortOrder))
@@ -295,6 +300,9 @@ namespace AstroTargetSelector
                 listViewTarget.SetSortIcon(lvwColumnSorter.SortColumn, lvwColumnSorter.Order);
                 listViewTarget.Sort();
             }
+
+            // AutoFit des colonnes
+            listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
 
             // Trace
             factory.GetLog().Log("Initialisation de la liste des Targets OK", GetType().Name);
@@ -328,16 +336,22 @@ namespace AstroTargetSelector
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
+                // Positionnement du Curseur et Status Action text
+                Cursor = Cursors.WaitCursor;
+                SetActionStatusText(Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions);
+                actualisationEnCours = true;
+
                 // Stop le rafraichissement afin d'accélérer le remplissage
                 listViewTarget.BeginUpdate();
 
                 // On récupère la target sélectionnée pour la resélectionnée après actialisation de la liste
                 string selectedTarget = string.Empty;
                 if (listViewTarget.SelectedItems.Count > 0)
-                    selectedTarget = listViewTarget.SelectedItems[0].SubItems[2].Text;
+                    selectedTarget = listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text;
 
                 // Clear de la liste et parcours de la liste des Targets pour ajout
                 listViewTarget.Items.Clear();
+
                 foreach (ObjTarget target in factory.GetAppTarget().ListeObjTarget)
                 {
                     ListViewItem item = listViewTarget.Items.Add(new ListViewItem(new[] {
@@ -347,27 +361,21 @@ namespace AstroTargetSelector
                                                 target.Description,
                                                 target.RA.FormatedString,
                                                 target.DEC.FormatedString,
+                                                target.AzimutPrecise.FormatedString,
+                                                target.HauteurPrecise.FormatedString,
                                                 target.Magnitude.ToString("0.00"),
                                                 target.GrandeurWidth.FormatedString,
                                                 target.GrandeurHeight.FormatedString}));
 
                     // Image en fonction du Statut
                     item.ImageKey = target.Rank.ToString();
+                    if (!string.IsNullOrEmpty(selectedTarget) && selectedTarget == target.Nom)
+                        item.Selected = true;
                 }
 
                 // AutoFit des colonnes
                 listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 listViewTarget.FullRowSelect = true;
-
-                // Si une target était sélectionnée, on la repositionne
-                if (!string.IsNullOrEmpty(selectedTarget))
-                {
-                    ListViewItem itemTrouve = listViewTarget.FindItemWithText(selectedTarget);
-                    if (itemTrouve != null)
-                    {
-                        listViewTarget.Items[itemTrouve.Index].Selected = true;
-                    }
-                }
 
                 // Trace
                 factory.GetLog().Log($"Chargement de la liste des {listViewTarget.Items.Count} targets effectué en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -385,6 +393,11 @@ namespace AstroTargetSelector
             {
                 // Réactive la liste
                 listViewTarget.EndUpdate();
+                actualisationEnCours = false;
+                // Texte de la Status
+                SetDefaultStatusText();
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
             }
         }
 
@@ -504,11 +517,20 @@ namespace AstroTargetSelector
                         textBoxInfoPanelNom.Text = target.Nom;
                         textBoxInfoPanelType.Text = target.Type;
                         textBoxInfoPanelDescription.Text = target.Description;
-                        textBoxInfoPanelLongueur.Text = target.GrandeurWidth.FormatedString;
-                        textBoxInfoPanelHauteur.Text = target.GrandeurHeight.FormatedString;
+                        textBoxInfoPanelGrandeurL.Text = target.GrandeurWidth.FormatedString;
+                        textBoxInfoPanelGrandeurH.Text = target.GrandeurHeight.FormatedString;
                         textBoxInfoPanelMagnitude.Text = target.Magnitude.ToString("0.00");
                         textBoxInfoPanelRA.Text = target.RA.FormatedString;
                         textBoxInfoPanelDEC.Text = target.DEC.FormatedString;
+                        textBoxInfoPanelAzimut.Text = target.AzimutPrecise.FormatedString;
+                        textBoxInfoPanelHauteur.Text = target.HauteurPrecise.FormatedString;
+
+                        // PictureBox Rank
+                        pictureBoxRank1.Visible = target.Rank == 1 || target.Rank == 0;
+                        pictureBoxRank2.Visible = target.Rank == 2;
+                        pictureBoxRank3.Visible = target.Rank == 3;
+                        pictureBoxRank4.Visible = target.Rank == 4;
+                        pictureBoxRank5.Visible = target.Rank == 5;
 
                         // Graphique
                         chartSliceListe.Series.Clear();
@@ -573,7 +595,8 @@ namespace AstroTargetSelector
         /// </summary>
         private void UpdateListeAndPanel()
         {
-            if (!initialisationFormEnCours)
+            // On ne lance pas l'actualisation lors de l'initialisation du Formulaire ou pendant le déroulement de celle-ci
+            if (!initialisationFormEnCours && !actualisationEnCours)
             {
                 // Rechargement Liste, Panneau d'information
                 RechargeListeTarget();
@@ -606,6 +629,28 @@ namespace AstroTargetSelector
                 if (target != null && !string.IsNullOrEmpty(target.Nom))
                     toolStripStatusLabelNomTarget.Text = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
             }
+
+            // Trace
+            factory.GetLog().Log($"Status Action Set Default Action Text", GetType().Name);
+
+            // Status Text 3 : Action en cours
+            toolStripStatusActionEnCours.Text = string.Empty;
+        }
+
+        /// <summary>
+        /// Positionne le texte de la Status Bar pour la zone "Action en cours"
+        /// </summary>
+        /// <param name="action"></param>
+        private void SetActionStatusText(string action)
+        {
+            // Trace
+            factory.GetLog().Log($"Status Action Set Text : {action}", GetType().Name);
+
+            // On positionne le texte de la Status
+            toolStripStatusActionEnCours.Text = action;
+
+            // On force l'affichage du texte avant le lancement du traitement à suivre
+            Application.DoEvents();
         }
 
         /// <summary>
@@ -623,7 +668,8 @@ namespace AstroTargetSelector
                     factory.GetAppTarget().ForceUpdateListe = true;
 
                     // Rechargement de la liste et du panneau d'information
-                    UpdateListeAndPanel();
+                    RechargeListeFiltreType();
+                    //UpdateListeAndPanel();
                 }
             }
             catch (Exception err)
@@ -701,7 +747,8 @@ namespace AstroTargetSelector
                     factory.GetAppTarget().ForceUpdateListe = true;
 
                     // Rechargement de la liste et du panneau d'information
-                    UpdateListeAndPanel();
+                    RechargeListeFiltreType();
+                    //UpdateListeAndPanel();
 
                     // On actualise les paramètres d'observation
                     lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
@@ -734,6 +781,11 @@ namespace AstroTargetSelector
         private bool initialisationFormEnCours = false;
 
         /// <summary>
+        /// Flag permettant de savoir si l'actualisation de la Liste est en cours afin de stopper la transmission des events de modification des contrôles
+        /// </summary>
+        private bool actualisationEnCours = false;
+
+        /// <summary>
         /// IComparer permettant le tri de la listview
         /// </summary>
         private ListViewColumnSorter lvwColumnSorter = null;
@@ -753,9 +805,9 @@ namespace AstroTargetSelector
             // Initilisation du Formulaire
             InitialisationFormulaire();
 
-            // Rechargement de la ListeView et de la liste des filtres sur Type
-            RechargeListeTarget();
-            RechargeListeFiltreType();
+            //// Rechargement de la ListeView et de la liste des filtres sur Type
+            //RechargeListeTarget();
+            //RechargeListeFiltreType();
 
             // Update du Panel Info
             UpdateViewPanelInfo();
@@ -771,11 +823,14 @@ namespace AstroTargetSelector
         private void listViewTarget_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             // Update du panneau d'information de l'objet sélectionné
-            if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count > 0)
+            if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count > 0
+                && !actualisationEnCours)
+            {
                 UpdateViewPanelInfo();
 
-            // Update du texte de la Status Bar
-            SetDefaultStatusText();
+                // Update du texte de la Status Bar
+                SetDefaultStatusText();
+            }
         }
 
         private void dateTimePickerDateObservation_ValueChanged(object sender, EventArgs e)
@@ -790,11 +845,6 @@ namespace AstroTargetSelector
                                                                                 factory.GetAppInputs().Inputs.DateHeureObservation.Hour,
                                                                                 factory.GetAppInputs().Inputs.DateHeureObservation.Minute,
                                                                                 0);
-            // Actualisation de la liste et du panneau d'information
-            UpdateListeAndPanel();
-
-            // Actualisation du texte de la Status Bar
-            SetDefaultStatusText();
         }
         
         private void dateTimePickerHeureObservation_ValueChanged(object sender, EventArgs e)
@@ -809,11 +859,6 @@ namespace AstroTargetSelector
                                                                                 dateTimePickerHeureObservation.Value.Hour,
                                                                                 dateTimePickerHeureObservation.Value.Minute,
                                                                                 0);
-            // Actualisation de la liste et du panneau d'information
-            UpdateListeAndPanel();
-
-            // Actualisation du texte de la Status Bar
-            SetDefaultStatusText();
         }
 
         private void comboBoxMinuteIntervalle_SelectedIndexChanged(object sender, EventArgs e)
@@ -823,6 +868,9 @@ namespace AstroTargetSelector
 
             // Actualisation de l'input
             factory.GetAppInputs().Inputs.MinuteIntervalSlice = Convert.ToInt32(comboBoxMinuteIntervalle.Text);
+
+            // On Force le rechargement des Slices au prochain appel
+            factory.GetAppTarget().ForceUpdateSlices = true;
 
             // Actualisation de la liste et du panneau d'information
             UpdateListeAndPanel();
@@ -835,6 +883,9 @@ namespace AstroTargetSelector
 
             // Actualisation de l'input
             factory.GetAppInputs().Inputs.TotalTimeSlice = Convert.ToInt32(comboBoxTotalTimeSlice.Text);
+
+            // On Force le rechargement des Slices au prochain appel
+            factory.GetAppTarget().ForceUpdateSlices = true;
 
             // Actualisation de la liste et du panneau d'information
             UpdateListeAndPanel();
@@ -922,6 +973,15 @@ namespace AstroTargetSelector
         private void mettreÀJourLaListeDescapteursToolStripMenuItem_Click(object sender, EventArgs e)
         {
             UpdateCapteurFile();
+        }
+
+        private void buttonStartCalcul_Click(object sender, EventArgs e)
+        {
+            // On Force le rechargement des Slices au prochain appel
+            factory.GetAppTarget().ForceUpdateSlices = true;
+
+            // Actualisation de la liste et du panneau d'information
+            UpdateListeAndPanel();
         }
     }
 }

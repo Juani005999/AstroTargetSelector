@@ -118,5 +118,17 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["ZonesExclues"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string HauteurMin {
+            get {
+                return ((string)(this["HauteurMin"]));
+            }
+            set {
+                this["HauteurMin"] = value;
+            }
+        }
     }
 }

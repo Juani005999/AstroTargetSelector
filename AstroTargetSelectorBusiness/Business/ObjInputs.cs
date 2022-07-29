@@ -31,8 +31,8 @@ namespace AstroTargetSelectorBusiness
                 // TODO : Si non présent en settings, on récupère la position GPS du poste en cours ?
                 if (string.IsNullOrEmpty(Settings.Default.LatitudeObs) || string.IsNullOrEmpty(Settings.Default.LongitudeObs))
                 {
-                    Settings.Default.LatitudeObs = "48.2512";
-                    Settings.Default.LongitudeObs = "7.7";
+                    Settings.Default.LatitudeObs = "48.858611";
+                    Settings.Default.LongitudeObs = "2.294166";
                     Settings.Default.Save();
                     factory.GetLog().Log($"Localisation non présente dans les Settings. Positionnement de Paris par défaut", GetType().Name);
                 }
@@ -79,7 +79,7 @@ namespace AstroTargetSelectorBusiness
                     else
                     {
                         Settings.Default.NomCapteur = "IMX585";
-                        Settings.Default.LargeurCapteur = "3096";
+                        Settings.Default.LargeurCapteur = "1936";
                     }
                     Settings.Default.Save();
                     factory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
@@ -122,6 +122,31 @@ namespace AstroTargetSelectorBusiness
             set
             {
                 Settings.Default.BougeMax = value.ToString(CultureInfo.InvariantCulture);
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Hauteur minimale
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+        /// </summary>
+        public decimal HauteurMin
+        {
+            get
+            {
+                //return 1;
+                if (string.IsNullOrEmpty(Settings.Default.HauteurMin))
+                {
+                    Settings.Default.HauteurMin = "25";
+                    Settings.Default.Save();
+                    factory.GetLog().Log($"HauteurMin non présent dans les Settings. Positionnement de 25 par défaut", GetType().Name);
+                }
+                return Convert.ToDecimal(Settings.Default.HauteurMin, CultureInfo.InvariantCulture);
+            }
+            set
+            {
+                Settings.Default.HauteurMin = value.ToString(CultureInfo.InvariantCulture);
                 Settings.Default.Save();
             }
         }

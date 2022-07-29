@@ -65,6 +65,9 @@
             this.ckNE = new System.Windows.Forms.CheckBox();
             this.ckN = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBoxHauteurMin = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxBougeMax = new System.Windows.Forms.TextBox();
@@ -80,7 +83,7 @@
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancel.Location = new System.Drawing.Point(346, 270);
+            this.btCancel.Location = new System.Drawing.Point(346, 299);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 5;
@@ -90,7 +93,7 @@
             // btOK
             // 
             this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btOK.Location = new System.Drawing.Point(265, 270);
+            this.btOK.Location = new System.Drawing.Point(265, 299);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(75, 23);
             this.btOK.TabIndex = 4;
@@ -303,7 +306,7 @@
             // label13
             // 
             this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.Location = new System.Drawing.Point(100, 24);
+            this.label13.Location = new System.Drawing.Point(100, 22);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(52, 17);
             this.label13.TabIndex = 14;
@@ -313,7 +316,7 @@
             // textBoxCapteurLargeur
             // 
             this.textBoxCapteurLargeur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxCapteurLargeur.Location = new System.Drawing.Point(333, 21);
+            this.textBoxCapteurLargeur.Location = new System.Drawing.Point(333, 19);
             this.textBoxCapteurLargeur.Name = "textBoxCapteurLargeur";
             this.textBoxCapteurLargeur.Size = new System.Drawing.Size(69, 20);
             this.textBoxCapteurLargeur.TabIndex = 10;
@@ -322,7 +325,7 @@
             // 
             this.comboBoxCapteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxCapteur.FormattingEnabled = true;
-            this.comboBoxCapteur.Location = new System.Drawing.Point(158, 21);
+            this.comboBoxCapteur.Location = new System.Drawing.Point(158, 19);
             this.comboBoxCapteur.Name = "comboBoxCapteur";
             this.comboBoxCapteur.Size = new System.Drawing.Size(100, 21);
             this.comboBoxCapteur.TabIndex = 9;
@@ -331,7 +334,7 @@
             // label12
             // 
             this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.Location = new System.Drawing.Point(227, 24);
+            this.label12.Location = new System.Drawing.Point(227, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 17);
             this.label12.TabIndex = 13;
@@ -457,21 +460,52 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.label10);
+            this.groupBox1.Controls.Add(this.textBoxHauteurMin);
             this.groupBox1.Controls.Add(this.label14);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.textBoxBougeMax);
             this.groupBox1.Location = new System.Drawing.Point(13, 216);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(408, 47);
+            this.groupBox1.Size = new System.Drawing.Size(408, 72);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Divers";
+            // 
+            // label9
+            // 
+            this.label9.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(197, 22);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(11, 13);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "°";
+            // 
+            // label10
+            // 
+            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label10.Location = new System.Drawing.Point(6, 22);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(146, 21);
+            this.label10.TabIndex = 14;
+            this.label10.Text = "Hauteur apparente minimum";
+            this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxHauteurMin
+            // 
+            this.textBoxHauteurMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxHauteurMin.Location = new System.Drawing.Point(158, 19);
+            this.textBoxHauteurMin.Name = "textBoxHauteurMin";
+            this.textBoxHauteurMin.Size = new System.Drawing.Size(33, 20);
+            this.textBoxHauteurMin.TabIndex = 0;
             // 
             // label14
             // 
             this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(197, 24);
+            this.label14.Location = new System.Drawing.Point(197, 48);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(18, 13);
             this.label14.TabIndex = 12;
@@ -480,7 +514,7 @@
             // label11
             // 
             this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.Location = new System.Drawing.Point(29, 24);
+            this.label11.Location = new System.Drawing.Point(29, 48);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(123, 17);
             this.label11.TabIndex = 11;
@@ -490,10 +524,10 @@
             // textBoxBougeMax
             // 
             this.textBoxBougeMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBoxBougeMax.Location = new System.Drawing.Point(158, 21);
+            this.textBoxBougeMax.Location = new System.Drawing.Point(158, 45);
             this.textBoxBougeMax.Name = "textBoxBougeMax";
             this.textBoxBougeMax.Size = new System.Drawing.Size(33, 20);
-            this.textBoxBougeMax.TabIndex = 0;
+            this.textBoxBougeMax.TabIndex = 1;
             // 
             // toolTipInfoCapteur
             // 
@@ -506,7 +540,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btCancel;
-            this.ClientSize = new System.Drawing.Size(433, 305);
+            this.ClientSize = new System.Drawing.Size(433, 334);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxZones);
             this.Controls.Add(this.groupBoxCapteur);
@@ -576,5 +610,8 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBoxIconInfoToolTip;
         private System.Windows.Forms.ToolTip toolTipInfoCapteur;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox textBoxHauteurMin;
     }
 }

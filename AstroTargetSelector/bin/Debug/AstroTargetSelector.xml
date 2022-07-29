@@ -144,6 +144,11 @@
             Url complète du fichier remote de configuration des capteurs
             </summary>
         </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.temporaryFileName">
+            <summary>
+            Nom du fichier temporaire servant au téléchargement et à l'update
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.dlgUpdate.UpdateDialogMode">
             <summary>
             Mode d'ouverture de la boîte de dialogue dlgUpdate
@@ -324,6 +329,12 @@
             Positionne le texte par défaut dans la Status Bar
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.SetActionStatusText(System.String)">
+            <summary>
+            Positionne le texte de la Status Bar pour la zone "Action en cours"
+            </summary>
+            <param name="action"></param>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.UpdateTargetFile">
             <summary>
             Lance le téléchargement et l'installation du fichier de configuration des objets célestes
@@ -352,6 +363,11 @@
         <member name="F:AstroTargetSelector.MainFenetre.initialisationFormEnCours">
             <summary>
             Flag permettant de savoir si le formulaire est en cours d'initialisation afin de stopper la transmission des events de modification des contrôles
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.actualisationEnCours">
+            <summary>
+            Flag permettant de savoir si l'actualisation de la Liste est en cours afin de stopper la transmission des events de modification des contrôles
             </summary>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.lvwColumnSorter">
@@ -403,6 +419,31 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources._1">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources._2">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources._3">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources._4">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources._5">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Actualiser">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -424,6 +465,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.InfoToolTip">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.TaskValidated">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

@@ -19,12 +19,17 @@ namespace AstroTargetSelector
         /// <summary>
         /// Url complète du fichier remote de configuration des objets célestes
         /// </summary>
-        private string urlFichierTarget = "C:\\Users\\miste\\Documents\\DepotGitHub\\Juani005999\\AstroTargetSelector\\TargetListe.csv";
+        private const string urlFichierTarget = "https://eb0bded5-efee-42c8-82b1-b71cbbd7b26c.usrfiles.com/ugd/eb0bde_9b9481f8da78478b8e71194be11d625a.csv";
 
         /// <summary>
         /// Url complète du fichier remote de configuration des capteurs
         /// </summary>
-        private string urlFichierCapteur = "C:\\Users\\miste\\Documents\\DepotGitHub\\Juani005999\\AstroTargetSelector\\CapteurListe.csv";
+        private const string urlFichierCapteur = "https://eb0bded5-efee-42c8-82b1-b71cbbd7b26c.usrfiles.com/ugd/eb0bde_08e0dfeff36c495db6d3f51cb5ab1fd4.csv";
+
+        /// <summary>
+        /// Nom du fichier temporaire servant au téléchargement et à l'update
+        /// </summary>
+        private string temporaryFileName = "downloaded.csv";
 
         #endregion
 
@@ -58,10 +63,6 @@ namespace AstroTargetSelector
             InitializeComponent();
             this.factory = factory;
             this.dialogMode = dialogMode;
-
-            // TODO : Positionner en const les valeur des RemotURL
-            urlFichierTarget = factory.GetAppContext().StartupPath + "\\" + factory.GetAppTarget().TargetListeFileName;
-            urlFichierCapteur = factory.GetAppContext().StartupPath + "\\" + factory.GetAppCapteur().CapteurListeFileName;
 
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue en mode {dialogMode}", GetType().Name);
@@ -106,6 +107,7 @@ namespace AstroTargetSelector
             mainLabel.Text = string.Empty;
             pictureBoxActionIconInfo.Visible = false;
             pictureBoxActionIconError.Visible = false;
+            pictureBoxActionIconSuccess.Visible = false;
             btOK.Visible = false;
             btCancel.Visible = false;
         }
@@ -125,6 +127,7 @@ namespace AstroTargetSelector
             // Icones
             pictureBoxActionIconInfo.Visible = true;
             pictureBoxActionIconError.Visible = false;
+            pictureBoxActionIconSuccess.Visible = false;
 
             // Boutons
             btOK.Text = Resources.Suivant;
@@ -142,12 +145,13 @@ namespace AstroTargetSelector
             factory.GetLog().Log($"LoadLastStepSuccess en mode {dialogMode}", GetType().Name);
 
             // Texte principal
-            string nomModeUpdate = dialogMode == UpdateDialogMode.Capteur ? "capteurs" : "objets célestes";
+            string nomModeUpdate = dialogMode == UpdateDialogMode.Capteur ? Resources.Capteurs : Resources.ObjetsCelestes;
             mainLabel.Text = $"{Resources.MiseAJourDuFichierDeConfigurationDes} {nomModeUpdate} {Resources.EffectueAvecSucces}.";
 
             // Icones
-            pictureBoxActionIconInfo.Visible = true;
+            pictureBoxActionIconInfo.Visible = false;
             pictureBoxActionIconError.Visible = false;
+            pictureBoxActionIconSuccess.Visible = true;
 
             // Boutons
             btOK.Visible = false;
@@ -171,6 +175,7 @@ namespace AstroTargetSelector
             // Icones
             pictureBoxActionIconInfo.Visible = false;
             pictureBoxActionIconError.Visible = true;
+            pictureBoxActionIconSuccess.Visible = false;
 
             // Boutons
             btOK.Visible = false;
@@ -206,7 +211,7 @@ namespace AstroTargetSelector
                     string localDestFile = dialogMode == UpdateDialogMode.Capteur
                                                 ? factory.GetAppCapteur().CapteurListeFullPathFile
                                                 : factory.GetAppTarget().TargetListeFullPathFile;
-                    string localTemporaryFile = factory.GetAppContext().UserAppDataPath + "\\" + "test.csv";
+                    string localTemporaryFile = factory.GetAppContext().UserAppDataPath + "\\" + temporaryFileName;
                     client.DownloadFile(urlRemote, localTemporaryFile);
 
                     // Si le fichier téléchargé n'existe pas, on throw une exception

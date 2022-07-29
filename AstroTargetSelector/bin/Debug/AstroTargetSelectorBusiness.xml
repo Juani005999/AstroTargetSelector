@@ -222,6 +222,11 @@
             <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.AppTarget.ListeObjTarget"/></para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTarget.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.AppTarget.ListeType">
             <summary>
             Renvoi la liste distinctes des différents type d'objet céleste
@@ -405,6 +410,13 @@
             <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 1</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.HauteurMin">
+            <summary>
+            Hauteur minimale
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.NombreSlice">
             <summary>
             Nombre d'intervalle de temps : (<see cref="P:AstroTargetSelectorBusiness.ObjInputs.TotalTimeSlice"/> * 60) / <see cref="P:AstroTargetSelectorBusiness.ObjInputs.MinuteIntervalSlice"/>
@@ -494,6 +506,26 @@
             Azimut calculé du slice
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.Hauteur">
+            <summary>
+            Hauteur calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.AzimutPrecise">
+            <summary>
+            Azimut Precise calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.AzimutCorrigee">
+            <summary>
+            Azimut Corrigee calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.HauteurPrecise">
+            <summary>
+            Hauteur Precise calculé du slice
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
             <summary>
             Constructeur par défaut
@@ -512,6 +544,31 @@
         <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.azimut">
             <summary>
             Azimut calculé du slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.azimutPrecise">
+            <summary>
+            Azimut calculé du slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.azimutCorrigee">
+            <summary>
+            Azimut corrigée calculé du slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.hauteur">
+            <summary>
+            Hauteur calculée du slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.hauteurPrecise">
+            <summary>
+            Hauteur corrigée Precise du slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.tempsPoseCalcule">
+            <summary>
+            Temps de pose calculé pour l'intervalle
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTarget">
@@ -586,6 +643,11 @@
             Grandeur : Hauteur de l'objet céleste
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.Slices">
             <summary>
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
@@ -605,13 +667,44 @@
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.Azimut">
             <summary>
-            Renvoi le Rank calculé pour la Target
-            <para>Barême basé sur le <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Scoring"/></para>
+            Renvoi l'Azimut calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut du premier <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Hauteur">
+            <summary>
+            Renvoi la Hauteur calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/></para>
+            <para>Renvoi la Hauteur du premier <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.AzimutCorrigee">
+            <summary>
+            Renvoi l'Azimut Corrigee calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Corrigee du premier <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.AzimutPrecise">
+            <summary>
+            Renvoi l'Azimut Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Precise du premier <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.HauteurPrecise">
+            <summary>
+            Renvoi la Hauteur Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/></para>
+            <para>Renvoi la Hauteur Precise du premier <see cref="P:AstroTargetSelectorBusiness.ObjTarget.Slices"/> de la période d'observation</para>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.EstExclu">
             <summary>
-            Permet de savoir si un objet céleste fait partie d'une zone exclue du ciel
+            Permet de savoir si un objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
@@ -627,6 +720,12 @@
         <member name="F:AstroTargetSelectorBusiness.ObjTarget.slices">
             <summary>
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.scoring">
+            <summary>
+            Singleton pour optimisation du Scoring
+            <para>Moyenne des <see cref="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTargetList">
@@ -645,6 +744,11 @@
             <summary>
             Force le rechargement de la liste depuis le fichier de configuration
             <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.ObjTargetList.ListeObjTarget"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTargetList.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTargetList.TargetListeFullPathFile">
@@ -698,9 +802,34 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions">
+            <summary>
+              Recherche une chaîne localisée semblable à Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ....
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Annuler">
             <summary>
               Recherche une chaîne localisée semblable à Annuler.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Aucune">
+            <summary>
+              Recherche une chaîne localisée semblable à Aucune.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Azimut">
+            <summary>
+              Recherche une chaîne localisée semblable à Azimut.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.BougeMax">
+            <summary>
+              Recherche une chaîne localisée semblable à Bougé max..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Capteur">
+            <summary>
+              Recherche une chaîne localisée semblable à Capteur.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Capteurs">
@@ -723,6 +852,11 @@
               Recherche une chaîne localisée semblable à DEC.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.DECJ2000">
+            <summary>
+              Recherche une chaîne localisée semblable à DEC (J2000).
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Description">
             <summary>
               Recherche une chaîne localisée semblable à Description.
@@ -743,14 +877,34 @@
               Recherche une chaîne localisée semblable à Format du champ &quot;Bougé max.&quot; incorrect.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampHauteurMinIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format du champ &quot;Hauteur minimum&quot; incorrect.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuLieuDObservationIncorrect">
             <summary>
               Recherche une chaîne localisée semblable à Format du lieu d&apos;observation incorrect.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.GrandeurH">
+            <summary>
+              Recherche une chaîne localisée semblable à Grandeur (H).
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.GrandeurL">
+            <summary>
+              Recherche une chaîne localisée semblable à Grandeur (L).
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Hauteur">
             <summary>
               Recherche une chaîne localisée semblable à Hauteur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.HauteurMin">
+            <summary>
+              Recherche une chaîne localisée semblable à Hauteur min..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.InfoCapteur1">
@@ -766,6 +920,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Largeur">
             <summary>
               Recherche une chaîne localisée semblable à Largeur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Lieu">
+            <summary>
+              Recherche une chaîne localisée semblable à Lieu.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Magnitude">
@@ -796,6 +955,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.RA">
             <summary>
               Recherche une chaîne localisée semblable à RA.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.RAJ2000">
+            <summary>
+              Recherche une chaîne localisée semblable à RA (J2000).
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Rank">
@@ -836,6 +1000,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes">
             <summary>
               Recherche une chaîne localisée semblable à Vous aller télécharger et mettre à jour le fichier de configuration des.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ZonesExclues">
+            <summary>
+              Recherche une chaîne localisée semblable à Zones exclues.
             </summary>
         </member>
     </members>

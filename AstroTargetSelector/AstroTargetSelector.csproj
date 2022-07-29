@@ -149,5 +149,23 @@
   <ItemGroup>
     <None Include="Ressources\Warning.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\1.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\3.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\4.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\5.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\TaskValidated.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
