@@ -78,7 +78,7 @@ namespace AstroTargetSelectorBusiness
                     }
                     else
                     {
-                        Settings.Default.NomCapteur = "IMX585";
+                        Settings.Default.NomCapteur = "IMX290";
                         Settings.Default.LargeurCapteur = "1936";
                     }
                     Settings.Default.Save();
