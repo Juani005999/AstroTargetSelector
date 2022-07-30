@@ -39,7 +39,7 @@ namespace AstroTargetSelectorBusiness
                 Targets.ForceUpdateSlices = ForceUpdateSlices;
 
                 // Appel à la liste chargée depuis l'objet métier
-                listeObjTarget = Targets.ListeObjTarget.ToList();
+                listeObjTarget = Targets.ListeObjTarget.Where(t => !t.EstExclu).ToList();
 
                 // Flush du flag permettant de forcer le rechargement de la liste depuis le fichier de configuration
                 ForceUpdateListe = false;

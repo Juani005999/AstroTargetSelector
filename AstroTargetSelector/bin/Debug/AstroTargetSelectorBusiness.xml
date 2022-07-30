@@ -722,12 +722,6 @@
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjTarget.scoring">
-            <summary>
-            Singleton pour optimisation du Scoring
-            <para>Moyenne des <see cref="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
-            </summary>
-        </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTargetList">
             <summary>
             Objet représentant une liste d'objet <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>

@@ -42,7 +42,7 @@ namespace AstroTargetSelectorBusiness
                 ForceUpdateSlices = false;
 
                 // On renvoi la liste filtrée les objets exclus pour prise en compte dans les filtre (Type)
-                return listeObjTarget.Where(t => !t.EstExclu).ToList();
+                return listeObjTarget;
             }
         }
 

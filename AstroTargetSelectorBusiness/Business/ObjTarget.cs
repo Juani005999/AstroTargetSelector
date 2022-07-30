@@ -122,16 +122,12 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Moyenne des temps de pose des Slices
-                if (!scoring.HasValue || ForceUpdateSlices)
-                    scoring = Slices.Select(t => t.TempsPoseCalcule).Average();
-
                 //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
                 //if (factory.GetAppInputs().Inputs.BougeMax != 0)
                 //    result /= factory.GetAppInputs().Inputs.BougeMax;
 
                 // Retour
-                return Math.Floor(scoring.Value);
+                return Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());
             }
         }
 
@@ -328,12 +324,6 @@ namespace AstroTargetSelectorBusiness
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
         /// </summary>
         private List<ObjSliceTarget> slices = new List<ObjSliceTarget>();
-
-        /// <summary>
-        /// Singleton pour optimisation du Scoring
-        /// <para>Moyenne des <see cref="ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
-        /// </summary>
-        private decimal? scoring = null;
 
         #endregion
     }

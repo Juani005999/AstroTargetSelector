@@ -123,16 +123,15 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                decimal tempsPose = TempsPoseCalcule;
-                if (tempsPose >= ObjTarget.MinTempsPoseRank5)
+                if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank5)
                     return Color.FromArgb(0, 192, 0);
-                if (tempsPose >= ObjTarget.MinTempsPoseRank4)
+                if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank4)
                     return Color.FromArgb(128, 255, 128);
-                if (tempsPose >= ObjTarget.MinTempsPoseRank3)
+                if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank3)
                     return Color.FromArgb(255, 255, 128);
-                if (tempsPose >= ObjTarget.MinTempsPoseRank2)
+                if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank2)
                     return Color.FromArgb(255, 192, 128);
-                if (tempsPose >= ObjTarget.MinTempsPoseRank1)
+                if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank1)
                     return Color.FromArgb(255, 128, 0);
                 return Color.Red;
             }

@@ -134,19 +134,49 @@
             <para>Cette boîte de dialogue s'ouvre de 2 modes différents : <see cref="T:AstroTargetSelector.dlgUpdate.UpdateDialogMode"/></para>
             </summary>
         </member>
-        <member name="F:AstroTargetSelector.dlgUpdate.urlFichierTarget">
+        <member name="F:AstroTargetSelector.dlgUpdate.ftpHost">
             <summary>
-            Url complète du fichier remote de configuration des objets célestes
+            Nom du Serveur FTP de téléchargement des fichiers de configuration
             </summary>
         </member>
-        <member name="F:AstroTargetSelector.dlgUpdate.urlFichierCapteur">
+        <member name="F:AstroTargetSelector.dlgUpdate.ftpCredentialLogin">
             <summary>
-            Url complète du fichier remote de configuration des capteurs
+            Identifiant de connexion au serveur FTP
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.ftpCredentialPwd">
+            <summary>
+            Mot de passe de connexion au serveur FTP
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgUpdate.ftpDirectory">
+            <summary>
+            Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgUpdate.ftpFullPathFile">
+            <summary>
+            Url complète du fichier remote de configuration des objets célestes / Capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgUpdate.localFileName">
+            <summary>
+            Nom du fichier local pour l'update
             </summary>
         </member>
         <member name="F:AstroTargetSelector.dlgUpdate.temporaryFileName">
             <summary>
             Nom du fichier temporaire servant au téléchargement et à l'update
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgUpdate.temporaryFullPathFile">
+            <summary>
+            Path et nom du fichier temporaire de téléchargement
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgUpdate.destFullPathFile">
+            <summary>
+            Path et nom du fichier de destination du téléchargement
             </summary>
         </member>
         <member name="T:AstroTargetSelector.dlgUpdate.UpdateDialogMode">

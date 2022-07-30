@@ -15,7 +15,7 @@
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\miste\Desktop\AstroTargetSelector Publish\0011\</PublishUrl>
+    <PublishUrl>C:\Users\miste\Desktop\AstroTargetSelector Publish\0012\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,7 +28,7 @@
     <ProductName>AstroTargetSelector</ProductName>
     <PublisherName>AstrAuDobson</PublisherName>
     <SuiteName>AstroTargetSelector</SuiteName>
-    <ApplicationRevision>2</ApplicationRevision>
+    <ApplicationRevision>3</ApplicationRevision>
     <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
@@ -68,6 +68,12 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Ressources\Telescope.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -133,6 +139,7 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include=".gitignore" />
+    <None Include="AstroTargetSelector.pfx" />
     <None Include="AstroTargetSelector_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

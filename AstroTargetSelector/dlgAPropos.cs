@@ -123,7 +123,7 @@ namespace AstroTargetSelector
             this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.labelContributors.Text = $"Contributeurs : Xavier Schildknecht / Jean-Luc VIVO";
+            this.labelContributors.Text = $"Contributeurs : Xavier SCHILDKNECHT / Jean-Luc VIVO";
             this.textBoxDescription.Text = AssemblyDescription;
 
             // Trace

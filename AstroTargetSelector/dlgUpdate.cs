@@ -17,19 +17,77 @@ namespace AstroTargetSelector
         #region Constantes
 
         /// <summary>
-        /// Url complète du fichier remote de configuration des objets célestes
+        /// Nom du Serveur FTP de téléchargement des fichiers de configuration
         /// </summary>
-        private const string urlFichierTarget = "https://eb0bded5-efee-42c8-82b1-b71cbbd7b26c.usrfiles.com/ugd/eb0bde_9b9481f8da78478b8e71194be11d625a.csv";
+        private const string ftpHost = "ftp.byethost16.com";
 
         /// <summary>
-        /// Url complète du fichier remote de configuration des capteurs
+        /// Identifiant de connexion au serveur FTP
         /// </summary>
-        private const string urlFichierCapteur = "https://eb0bded5-efee-42c8-82b1-b71cbbd7b26c.usrfiles.com/ugd/eb0bde_08e0dfeff36c495db6d3f51cb5ab1fd4.csv";
+        private const string ftpCredentialLogin = "b16_32278376";
+
+        /// <summary>
+        /// Mot de passe de connexion au serveur FTP
+        /// </summary>
+        private const string ftpCredentialPwd = "AstroTargetSelector";
+
+        /// <summary>
+        /// Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration
+        /// </summary>
+        private const string ftpDirectory = "htdocs/AstroTargetSelector_config";
+
+        /// <summary>
+        /// Url complète du fichier remote de configuration des objets célestes / Capteurs
+        /// </summary>
+        private string ftpFullPathFile
+        {
+            get
+            {
+                return $"ftp://{ftpHost}/{ftpDirectory}/{localFileName}";
+            }
+        }
+
+        /// <summary>
+        /// Nom du fichier local pour l'update
+        /// </summary>
+        private string localFileName
+        {
+            get
+            {
+                return dialogMode == UpdateDialogMode.Capteur
+                                                ? factory.GetAppCapteur().CapteurListeFileName
+                                                : factory.GetAppTarget().TargetListeFileName;
+            }
+        }
 
         /// <summary>
         /// Nom du fichier temporaire servant au téléchargement et à l'update
         /// </summary>
         private string temporaryFileName = "downloaded.csv";
+
+        /// <summary>
+        /// Path et nom du fichier temporaire de téléchargement
+        /// </summary>
+        private string temporaryFullPathFile
+        {
+            get
+            {
+                return $"{factory.GetAppContext().UserAppDataPath}/{temporaryFileName}";
+            }
+        }
+
+        /// <summary>
+        /// Path et nom du fichier de destination du téléchargement
+        /// </summary>
+        private string destFullPathFile
+        {
+            get
+            {
+                return dialogMode == UpdateDialogMode.Capteur
+                                            ? factory.GetAppCapteur().CapteurListeFullPathFile
+                                            : factory.GetAppTarget().TargetListeFullPathFile;
+            }
+        }
 
         #endregion
 
@@ -92,8 +150,6 @@ namespace AstroTargetSelector
                 LoadLastStepError(err.Message);
             }
         }
-
-        #endregion
 
         /// <summary>
         /// Flush le formulaire
@@ -200,32 +256,31 @@ namespace AstroTargetSelector
                 debutFonction.Start();
 
                 // Lancement du téléchargement
-                using (var client = new WebClient())
+                using (WebClient request = new WebClient())
                 {
-                    // Fichier distant
-                    string urlRemote = dialogMode == UpdateDialogMode.Capteur ? urlFichierCapteur : urlFichierTarget;
-
                     // Trace
-                    factory.GetLog().Log($"Téléchargement du fichier {urlRemote}", GetType().Name);
+                    factory.GetLog().Log($"Téléchargement du fichier {ftpFullPathFile}", GetType().Name);
 
-                    string localDestFile = dialogMode == UpdateDialogMode.Capteur
-                                                ? factory.GetAppCapteur().CapteurListeFullPathFile
-                                                : factory.GetAppTarget().TargetListeFullPathFile;
-                    string localTemporaryFile = factory.GetAppContext().UserAppDataPath + "\\" + temporaryFileName;
-                    client.DownloadFile(urlRemote, localTemporaryFile);
+                    request.Credentials = new NetworkCredential(ftpCredentialLogin, ftpCredentialPwd);
+                    byte[] fileData = request.DownloadData(ftpFullPathFile);
+                    using (FileStream file = File.Create(temporaryFullPathFile))
+                    {
+                        file.Write(fileData, 0, fileData.Length);
+                        file.Close();
+                    }
 
                     // Si le fichier téléchargé n'existe pas, on throw une exception
-                    if (!File.Exists(localTemporaryFile))
+                    if (!File.Exists(temporaryFullPathFile))
                         throw new Exception($"{Resources.UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent}");
 
                     // Trace
-                    factory.GetLog().Log($"Remplacement du fichier {localDestFile} par {localTemporaryFile}", GetType().Name);
+                    factory.GetLog().Log($"Remplacement du fichier {destFullPathFile} par {temporaryFullPathFile}", GetType().Name);
 
                     // On remplace le fichier de configuration par le fichier temporaire téléchargé
-                    File.Copy(localTemporaryFile, localDestFile, true);
+                    File.Copy(temporaryFullPathFile, destFullPathFile, true);
 
                     // On supprime le fichier temporaire
-                    File.Delete(localTemporaryFile);
+                    File.Delete(temporaryFullPathFile);
                 }
 
                 // Affichage de la boîte de dialogue en mode Succès
@@ -246,6 +301,8 @@ namespace AstroTargetSelector
                 Cursor.Current = Cursors.Default;
             }
         }
+
+        #endregion
 
         #region Champs
 
