@@ -4,9 +4,12 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
+using System.Net;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
 using ApplicationTools;
+using System.IO;
+using System.Reflection;
 
 namespace AstroTargetSelector
 {
@@ -80,6 +83,39 @@ namespace AstroTargetSelector
             {
                 Properties.Settings.Default.WindowState = value ? "Maximized" : "NormalState";
                 Properties.Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Url complète du fichier remote des versions de l'application
+        /// </summary>
+        public string ftpNewVersionFullPathFile
+        {
+            get
+            {
+                return $"ftp://{dlgUpdate.ftpHost}/{dlgUpdate.ftpDirectory}/{newVersionFileName}";
+            }
+        }
+
+        /// <summary>
+        /// Nomdu fichier remote des versions de l'application
+        /// </summary>
+        public string newVersionFileName
+        {
+            get
+            {
+                return $"Version.csv";
+            }
+        }
+
+        /// <summary>
+        /// Path et nom du fichier de destination du téléchargement du fichier des versions
+        /// </summary>
+        private string newVersionFullPathFile
+        {
+            get
+            {
+                return $"{factory.GetAppContext().UserAppDataPath}/{newVersionFileName}";
             }
         }
 
@@ -766,6 +802,92 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Vérifie si une nouvelle version de l'application est disponible
+        /// </summary>
+        /// <param name="version"></param>
+        /// <param name="nom"></param>
+        /// <param name="description"></param>
+        /// <param name="url"></param>
+        /// <returns>True si une nouvelle version est dispo</returns>
+        public bool CheckIfNouvelleVersion(ref string version, ref string nom, ref string description, ref string url)
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la vérification de la présence d'une nouvelle version de l'application", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Positionnement du Curseur
+                Cursor = Cursors.WaitCursor;
+                SetActionStatusText($"Vérification de la présence d'une nouvelle version de l'application");
+
+                //Sleep(1000);
+
+                // Lancement du téléchargement
+                using (WebClient request = new WebClient())
+                {
+                    // Trace
+                    factory.GetLog().Log($"Téléchargement du fichier {ftpNewVersionFullPathFile}", GetType().Name);
+
+                    // Téléchargement du fichier
+                    request.Credentials = new NetworkCredential(dlgUpdate.ftpCredentialLogin, dlgUpdate.ftpCredentialPwd);
+                    byte[] fileData = request.DownloadData(ftpNewVersionFullPathFile);
+                    using (FileStream file = File.Create(newVersionFullPathFile))
+                    {
+                        file.Write(fileData, 0, fileData.Length);
+                        file.Close();
+                    }
+
+                    // Trace
+                    factory.GetLog().Log($"Téléchargement du fichier effectué en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+
+                    // On vérifie la présence du fichier téléchargé
+                    if (File.Exists(newVersionFullPathFile))
+                    {
+                        using (var reader = new StreamReader(newVersionFullPathFile))
+                        {
+                            // On passe la ligne d'en-tête
+                            var lineTitre = reader.ReadLine();
+                            // On lit la ligne Version en cours
+                            var line = reader.ReadLine();
+                            var values = line.Split('\t');
+                            version = values[0];
+                            nom = values[1];
+                            description = values[2];
+                            url = values[3];
+                            // On vérifie la version par rapport à la courante
+                            Version nouvelleVersionDispo = new Version(version);
+                            if (nouvelleVersionDispo > Assembly.GetExecutingAssembly().GetName().Version)
+                            {
+                                // Une version plus récente est dispo, on affiche la boîte de dialogue
+                                factory.GetLog().Log($"Nouvelle version disponible : {nouvelleVersionDispo}", GetType().Name);
+                                return true;
+                            }
+                            else
+                            {
+                                factory.GetLog().Log($"Pas de nouvelle version disponible : {Assembly.GetExecutingAssembly().GetName().Version} / {nouvelleVersionDispo}", GetType().Name);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Warning);
+            }
+            finally
+            {
+                // Texte de la Status
+                SetDefaultStatusText();
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
+            }
+            return false;
+        }
+
         #endregion
 
         #region Champs
@@ -811,6 +933,21 @@ namespace AstroTargetSelector
 
             // Update du Panel Info
             UpdateViewPanelInfo();
+
+            // On force un update de l'affichage
+            Show();
+
+            // Vérification de la présence d'une nouvelle version
+            string version = string.Empty;
+            string nom = string.Empty;
+            string description = string.Empty;
+            string url = string.Empty;
+            if (CheckIfNouvelleVersion(ref version, ref nom, ref description, ref url) && !string.IsNullOrEmpty(description))
+            {
+                // On affiche la boîte de dialogue informat d'une nouvelle version disponible
+                dlgNewVersion dialogNewVersion = new dlgNewVersion(factory, version, nom, description, url);
+                dialogNewVersion.ShowDialog();
+            }
         }
 
         #endregion

@@ -19,22 +19,22 @@ namespace AstroTargetSelector
         /// <summary>
         /// Nom du Serveur FTP de téléchargement des fichiers de configuration
         /// </summary>
-        private const string ftpHost = "ftp.byethost16.com";
+        public const string ftpHost = "ftp.byethost16.com";
 
         /// <summary>
         /// Identifiant de connexion au serveur FTP
         /// </summary>
-        private const string ftpCredentialLogin = "b16_32278376";
+        public const string ftpCredentialLogin = "b16_32278376";
 
         /// <summary>
         /// Mot de passe de connexion au serveur FTP
         /// </summary>
-        private const string ftpCredentialPwd = "AstroTargetSelector";
+        public const string ftpCredentialPwd = "AstroTargetSelector";
 
         /// <summary>
         /// Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration
         /// </summary>
-        private const string ftpDirectory = "htdocs/AstroTargetSelector_config";
+        public const string ftpDirectory = "htdocs/AstroTargetSelector_config";
 
         /// <summary>
         /// Url complète du fichier remote de configuration des objets célestes / Capteurs
@@ -261,6 +261,7 @@ namespace AstroTargetSelector
                     // Trace
                     factory.GetLog().Log($"Téléchargement du fichier {ftpFullPathFile}", GetType().Name);
 
+                    // Téléchargement du fichier
                     request.Credentials = new NetworkCredential(ftpCredentialLogin, ftpCredentialPwd);
                     byte[] fileData = request.DownloadData(ftpFullPathFile);
                     using (FileStream file = File.Create(temporaryFullPathFile))

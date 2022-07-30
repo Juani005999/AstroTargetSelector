@@ -122,6 +122,12 @@ namespace ApplicationTools
         {
             try
             {
+                // On récupère le nom de fichier sans le Path
+                string callerFileName = callerFilePath;
+                string[] directories = callerFilePath.Split('\\');
+                if (directories.Length > 0)
+                    callerFileName = directories[directories.Length - 1];
+
                 // Trace en console
                 Console.WriteLine(toolFactory.GetAppContext().ProductName + " (" + typeLog.ToString() + ") : " + message);
 
@@ -134,7 +140,7 @@ namespace ApplicationTools
                 chaineFinale += ";" + callerClassName;
 
                 chaineFinale += ";" + callerMemberName;
-                chaineFinale += ";" + callerFilePath;
+                chaineFinale += ";" + callerFileName;
                 chaineFinale += ";" + callerLineNumber;
                 
                 chaineFinale += ";" + typeLog.ToString().ToUpper();

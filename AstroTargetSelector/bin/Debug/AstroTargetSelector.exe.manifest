@@ -50,19 +50,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>f+vWt628qqAiYsNDb1yqK1M+89U5EOXMmxyvUkml9bQ=</dsig:DigestValue>
+        <dsig:DigestValue>klHXYPuJR/AMBAa1kf4d2S6Ee/pQ0ShPGoDnEPY208Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="154536">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="189352">
       <assemblyIdentity name="AstroTargetSelector" version="0.0.1.4" publicKeyToken="6321CF3B97D74C6F" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>LLT81bJBK8tMdC5jhPAFXK2aOMehGNzdEiLYmxt1uw8=</dsig:DigestValue>
+        <dsig:DigestValue>T+5GRVUrbyBkSf4sQlFP8/x4RtZ3wbtDIfibVUyWWLU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

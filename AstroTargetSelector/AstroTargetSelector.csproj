@@ -96,6 +96,12 @@
     <Compile Include="dlgAPropos.Designer.cs">
       <DependentUpon>dlgAPropos.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgNewVersion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgNewVersion.Designer.cs">
+      <DependentUpon>dlgNewVersion.cs</DependentUpon>
+    </Compile>
     <Compile Include="dlgParametres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -118,6 +124,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="dlgAPropos.resx">
       <DependentUpon>dlgAPropos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgNewVersion.resx">
+      <DependentUpon>dlgNewVersion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dlgParametres.resx">
       <DependentUpon>dlgParametres.cs</DependentUpon>

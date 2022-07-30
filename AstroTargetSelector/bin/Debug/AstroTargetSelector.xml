@@ -65,6 +65,52 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="T:AstroTargetSelector.dlgNewVersion">
+            <summary>
+            Boîte de Dialogue "Nouvelle version disponible"
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgNewVersion.AssemblyTitle">
+            <summary>
+            Nom de l'Assembly
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgNewVersion.#ctor(AstroTargetSelectorBusiness.AppObjFactory,System.String,System.String,System.String,System.String)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+            <param name="version"></param>
+            <param name="nom"></param>
+            <param name="description"></param>
+            <param name="url"></param>
+        </member>
+        <member name="F:AstroTargetSelector.dlgNewVersion.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgNewVersion.url">
+            <summary>
+            URL de la mise à jour
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgNewVersion.components">
+            <summary>
+            Variable nécessaire au concepteur.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgNewVersion.Dispose(System.Boolean)">
+            <summary>
+            Nettoyage des ressources utilisées.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgNewVersion.InitializeComponent">
+            <summary>
+            Méthode requise pour la prise en charge du concepteur - ne modifiez pas
+            le contenu de cette méthode avec l'éditeur de code.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.dlgParametres">
             <summary>
             Boîte de Dialogue "Paramètres de l'observation"
@@ -288,6 +334,21 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.MainFenetre.ftpNewVersionFullPathFile">
+            <summary>
+            Url complète du fichier remote des versions de l'application
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.newVersionFileName">
+            <summary>
+            Nomdu fichier remote des versions de l'application
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.newVersionFullPathFile">
+            <summary>
+            Path et nom du fichier de destination du téléchargement du fichier des versions
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.#ctor">
             <summary>
             Constructeur par défaut
@@ -384,6 +445,16 @@
             <summary>
             Ouvre la boîte de dialogue des Paramètres de l'observation
             </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.CheckIfNouvelleVersion(System.String@,System.String@,System.String@,System.String@)">
+            <summary>
+            Vérifie si une nouvelle version de l'application est disponible
+            </summary>
+            <param name="version"></param>
+            <param name="nom"></param>
+            <param name="description"></param>
+            <param name="url"></param>
+            <returns>True si une nouvelle version est dispo</returns>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>

@@ -11,7 +11,7 @@ namespace AstroTargetSelector
     /// </summary>
     partial class dlgAPropos : Form
     {
-        #region Propriété
+        #region Propriétés
 
         /// <summary>
         /// Titre de l'Assembly
