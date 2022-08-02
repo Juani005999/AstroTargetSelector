@@ -1,0 +1,2 @@
+Version	Nom	Description	Url
+0.0.1.4	AstroTargetSelector ALPHA – A NE PAS DIFFUSER	Releases note :\n\n- Correction de quelques bugs mineurs\n- Implémentation du serveur FTP de téléchargement des fichiers de configuration\n- Vérification de la présence de mise à jour au démarrage de l’application\n- Modification du champ FichierSource dans les logs	https://github.com/Juani005999/AstroTargetSelector_Config/blob/a3e768d02859eb448abbe63a7fb45b13676663b0/AstroTargetSelector_0.0.1.2_A-NE-PAS-DIFFUSER.zip

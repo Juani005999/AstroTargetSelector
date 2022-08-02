@@ -49,7 +49,7 @@ namespace ApplicationTools
         {
             get
             {
-                return toolFactory.GetAppContext().StartupPath + "\\" + toolFactory.GetAppContext().LogFileName;
+                return toolFactory.GetAppContext().UserAppDataPath + "\\" + toolFactory.GetAppContext().LogFileName;
             }
         }
 

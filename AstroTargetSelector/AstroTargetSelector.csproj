@@ -15,7 +15,7 @@
     <DoNotCopyLocalIfInGac>true</DoNotCopyLocalIfInGac>
     <TargetFrameworkProfile />
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <PublishUrl>C:\Users\miste\Desktop\AstroTargetSelector Publish\0012\</PublishUrl>
+    <PublishUrl>C:\Users\miste\Desktop\AstroTargetSelector Publish\0015\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
     <UpdateEnabled>false</UpdateEnabled>
@@ -28,8 +28,8 @@
     <ProductName>AstroTargetSelector</ProductName>
     <PublisherName>AstrAuDobson</PublisherName>
     <SuiteName>AstroTargetSelector</SuiteName>
-    <ApplicationRevision>3</ApplicationRevision>
-    <ApplicationVersion>0.0.1.%2a</ApplicationVersion>
+    <ApplicationRevision>5</ApplicationRevision>
+    <ApplicationVersion>0.0.1.5</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -58,7 +58,8 @@
     <ManifestCertificateThumbprint>21E35BF8DD61D30FCD81D474D5B9768520D4A3A6</ManifestCertificateThumbprint>
   </PropertyGroup>
   <PropertyGroup>
-    <ManifestKeyFile>AstroTargetSelector_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestKeyFile>
+    </ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
     <GenerateManifests>true</GenerateManifests>

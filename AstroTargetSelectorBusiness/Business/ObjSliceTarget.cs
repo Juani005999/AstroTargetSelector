@@ -14,7 +14,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Temps de pose maximum (si dépassement de capacité)
         /// </summary>
-        public const int TempsPoseCalculeMax = 500;
+        public const int TempsPoseCalculeMax = 300;
 
         #endregion
 

@@ -9,6 +9,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AstroTargetSelectorBusiness
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationTools", "..\ApplicationTools\ApplicationTools.csproj", "{79F9AD98-A61C-4F01-91B4-6281955F5EC4}"
 EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "AstroTargetSelectorSetup", "..\AstroTargetSelectorSetup\AstroTargetSelectorSetup.vdproj", "{72618638-0545-4266-87D0-C933DDD29540}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0E490AF6-0286-405A-A428-29D81C83F883} = {0E490AF6-0286-405A-A428-29D81C83F883}
+		{2C7A028A-AB2A-42AD-91B2-5FB62F63907B} = {2C7A028A-AB2A-42AD-91B2-5FB62F63907B}
+		{79F9AD98-A61C-4F01-91B4-6281955F5EC4} = {79F9AD98-A61C-4F01-91B4-6281955F5EC4}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +34,8 @@ Global
 		{79F9AD98-A61C-4F01-91B4-6281955F5EC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79F9AD98-A61C-4F01-91B4-6281955F5EC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79F9AD98-A61C-4F01-91B4-6281955F5EC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72618638-0545-4266-87D0-C933DDD29540}.Debug|Any CPU.ActiveCfg = Debug
+		{72618638-0545-4266-87D0-C933DDD29540}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

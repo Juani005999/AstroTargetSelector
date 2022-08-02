@@ -544,29 +544,49 @@
               Recherche une chaîne localisée semblable à Une erreur est survenue.
             </summary>
         </member>
-        <member name="T:ApplicationTools.CoordinatesPosition">
+        <member name="T:ApplicationTools.CoordinatesDirection">
             <summary>
             Position N/S/E/O de la coordonnée de localisation
             </summary>
         </member>
-        <member name="F:ApplicationTools.CoordinatesPosition.N">
+        <member name="F:ApplicationTools.CoordinatesDirection.N">
             <summary>
             Nord
             </summary>
         </member>
-        <member name="F:ApplicationTools.CoordinatesPosition.E">
+        <member name="F:ApplicationTools.CoordinatesDirection.NE">
+            <summary>
+            Nord-Est
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesDirection.E">
             <summary>
             Est
             </summary>
         </member>
-        <member name="F:ApplicationTools.CoordinatesPosition.S">
+        <member name="F:ApplicationTools.CoordinatesDirection.SE">
+            <summary>
+            Sud-Est
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesDirection.S">
             <summary>
             Sud
             </summary>
         </member>
-        <member name="F:ApplicationTools.CoordinatesPosition.O">
+        <member name="F:ApplicationTools.CoordinatesDirection.SO">
+            <summary>
+            Sud-Ouest
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesDirection.O">
             <summary>
             Ouest
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.CoordinatesDirection.NO">
+            <summary>
+            Nord-Ouest
             </summary>
         </member>
         <member name="T:ApplicationTools.CoordinatesType">
@@ -641,6 +661,11 @@
             Coordonnée sous la forme d'une chaîne de caractère formatée
             </summary>
         </member>
+        <member name="P:ApplicationTools.Coordinate.Direction">
+            <summary>
+            Renvoi la direction pour les données de type Longitude ou Latitude
+            </summary>
+        </member>
         <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal,ApplicationTools.CoordinatesType)">
             <summary>
             Constructeur par défaut
@@ -653,6 +678,19 @@
             Permet de positionner une nouvelle coordonnée pour l'objet en cours
             </summary>
             <param name="coordonnee"></param>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.TryParse(System.String,System.String,System.String,System.String,ApplicationTools.Coordinate@,ApplicationTools.AppToolFactory)">
+            <summary>
+            Valide une saisie au format string
+            <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnee"/> doit être réalisé par l'appelant</para>
+            </summary>
+            <param name="degree"></param>
+            <param name="minute"></param>
+            <param name="seconde"></param>
+            <param name="direction"></param>
+            <param name="coordonnee"></param>
+            <param name="factory"></param>
+            <returns></returns>
         </member>
         <member name="F:ApplicationTools.Coordinate.coordonnee">
             <summary>
@@ -696,6 +734,18 @@
             <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
             </summary>
         </member>
+        <member name="P:ApplicationTools.Coordinates.CoordonneeLongitude">
+            <summary>
+            Renvoi l'objet <see cref="T:ApplicationTools.Coordinate"/> correspondant à la Longitude
+            <para>Si le membre interne est nul, on renvoi un nouvel objet avec pour valeur 0</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinates.CoordonneeLatitude">
+            <summary>
+            Renvoi l'objet <see cref="T:ApplicationTools.Coordinate"/> correspondant à la Latitude
+            <para>Si le membre interne est nul, on renvoi un nouvel objet avec pour valeur 0</para>
+            </summary>
+        </member>
         <member name="M:ApplicationTools.Coordinates.#ctor(System.Decimal,System.Decimal)">
             <summary>
             Constructeur par défaut
@@ -709,6 +759,23 @@
             </summary>
             <param name="latitude"></param>
             <param name="longitude"></param>
+        </member>
+        <member name="M:ApplicationTools.Coordinates.TryParse(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ApplicationTools.Coordinates@,ApplicationTools.AppToolFactory)">
+            <summary>
+            Valide une saisie au format string
+            <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnees"/> doit être réalisé par l'appelant</para>
+            </summary>
+            <param name="degreeLongitude"></param>
+            <param name="minuteLongitude"></param>
+            <param name="secondeLongitude"></param>
+            <param name="directionLongitude"></param>
+            <param name="degreeLatitude"></param>
+            <param name="minuteLatitude"></param>
+            <param name="secondeLatitude"></param>
+            <param name="directionLatitude"></param>
+            <param name="coordonnees"></param>
+            <param name="factory"></param>
+            <returns></returns>
         </member>
         <member name="F:ApplicationTools.Coordinates.longitude">
             <summary>
