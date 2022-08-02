@@ -240,56 +240,9 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Parcours des zones à exclure
-                foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
-                {
-                    double coordonne = Convert.ToDouble(Azimut.Coordonnee);
-                    switch(direction)
-                    {
-                        case CoordinatesDirection.N:
-                            if (coordonne > 337.5 || coordonne <= 22.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.NE:
-                            if (coordonne > 22.5 && coordonne <= 67.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.E:
-                            if (coordonne > 67.5 && coordonne <= 112.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.SE:
-                            if (coordonne > 112.5 && coordonne <= 157.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.S:
-                            if (coordonne > 157.5 && coordonne <= 202.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.SO:
-                            if (coordonne > 202.5 && coordonne <= 247.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.O:
-                            if (coordonne > 247.5 && coordonne <= 292.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.NO:
-                            if (coordonne > 292.5 && coordonne <= 337.5)
-                                return true;
-                            break;
-
-                        default:
-                            break;
-                    }
-                }
-
-                // Vérif sur la Hauteur apparente du premier Slice
-                if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
-                    return true;
-
-                // Objet non exclu de la liste
-                return false;
+                // Renvoi false si au moins 1 slice n'est pas exclu
+                //return Slices[0].EstExclu;
+                return !(Slices.Where(t => !t.EstExclu).Count() > 0);
             }
         }
 

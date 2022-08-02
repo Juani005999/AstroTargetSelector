@@ -1,0 +1,2 @@
+Version	Nom	Description	Url
+0.0.3.0	AstroTargetSelector ALPHA – A NE PAS DIFFUSER	Désolé Xavier, j’ai fait des modifications structurantes sur l’installeur, donc pour cette fois il est TOUJOURS NECESSAIRE DE DESINSTALLER LA VERSION PRECEDENTE AVANT D’INSTALLER CELLE-CI;)\n\nReleases note :\n\n- Modification de l’installeur : installation des fichiers de données au niveau utilisateur\n- Correction de la sauvegarde de l’état maximisé de la fenêtre	https://github.com/AstrAuDobson/Astro-Target-Selector/blob/main/ALPHA/AstroTargetSelector_ALPHA_0030.msi

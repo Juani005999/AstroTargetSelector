@@ -87,6 +87,26 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
+        /// Determine si la série Hauteur est visible
+        /// <para>Get : Récupère la valeur stockée en Settings</para>
+        /// <para>Set : Positionne la valeur stockée en Settings</para>
+        /// </summary>
+        public bool SerieHauteurVisible
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SerieHauteurVisible))
+                    return true;
+                return Properties.Settings.Default.SerieHauteurVisible == "1";
+            }
+            set
+            {
+                Properties.Settings.Default.SerieHauteurVisible = value ? "1" : "0";
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
         /// Url complète du fichier remote des versions de l'application
         /// </summary>
         public string ftpNewVersionFullPathFile
@@ -128,6 +148,9 @@ namespace AstroTargetSelector
         /// </summary>
         public MainFenetre()
         {
+            // Positionnement du flag d'initialisation
+            initialisationFormEnCours = true;
+
             InitializeComponent();
 
             // Création d'une instance du ListView column sorter et assignation à la liste
@@ -161,28 +184,31 @@ namespace AstroTargetSelector
                 factory.GetLog().Log($"Répertoire UserAppDataPath : {factory.GetAppContext().UserAppDataPath}", GetType().Name);
                 factory.GetLog().Log($"Répertoire StartupPath : {factory.GetAppContext().StartupPath}", GetType().Name);
 
-                // Positionnement du flag d'initialisation
-                initialisationFormEnCours = true;
-
                 // Repositionne l'état de la fenêtre principale sur la valeur positionnée en settings
+                factory.GetLog().Log($"Valeur du Settings WindowMaximized : {WindowMaximized}", GetType().Name);
                 if (WindowMaximized)
+                {
+                    factory.GetLog().Log($"Miximisation de la fenêtre.", GetType().Name); 
                     WindowState = FormWindowState.Maximized;
+                }
 
                 // Chargement des Inputs
                 LoadInputs();
 
-                // Text par défaut de la Status Bar et ToolTip Actualisation
+                // Text par défaut de la Status Bar et ToolTip
                 SetDefaultStatusText();
                 toolTipInfoActualisation.SetToolTip(buttonStartCalcul, Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions);
+                toolTipInfoTarget.SetToolTip(pictureBoxInfoTarget, "Les intervalles qui apparaissent en gris signifient que l'objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum");
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
 
-                // Initialisation des Combos
+                // Initialisation des Combos et CheckBox
                 InitialisationComboMinuteIntervalle();
                 InitialisationComboTotalTimeSlice();
                 InitialisationComboFiltreRank();
                 InitialisationComboFiltreMagnitude();
+                checkBoxHauteur.Checked = SerieHauteurVisible;
 
                 // On Précharge la liste des objets célestes depuis le fichier de configuration en rechargeant la combo des filtres
                 RechargeListeFiltreType();
@@ -570,6 +596,8 @@ namespace AstroTargetSelector
 
                         // Graphique
                         chartSliceListe.Series.Clear();
+
+                        // Série Slices - TempsPoseCalcule
                         chartSliceListe.Series.Add(target.Nom);
                         chartSliceListe.Series[target.Nom].ChartType = SeriesChartType.Column;
                         chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
@@ -586,7 +614,8 @@ namespace AstroTargetSelector
                             {
                                 XValue = slice.DateHeure.ToOADate(),
                                 YValues = new double[] { tempsPoseCalcule },
-                                Color = slice.CouleurPointGraphique,
+                                Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
+                                BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
                                 IsValueShownAsLabel = true,
                                 LabelFormat = "0s",
                                 Font = font,
@@ -594,13 +623,58 @@ namespace AstroTargetSelector
                                 LabelToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s"
                             });
                         }
-                        
+
+                        // Série Slices - Hauteur
+                        if (SerieHauteurVisible)
+                        {
+                            Series serieHauteur = chartSliceListe.Series.Add(target.Nom + "H");
+                            serieHauteur.ChartType = SeriesChartType.Spline;
+                            serieHauteur.XValueType = ChartValueType.DateTime;
+                            serieHauteur.BorderWidth = 2;
+                            //serieHauteur.CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
+                            serieHauteur.IsVisibleInLegend = false;
+                            foreach (ObjSliceTarget slice in target.Slices)
+                            {
+                                // On positionne une police spécifique pour les Labels des Points
+                                Font font = new System.Drawing.Font("Tahoma", 8, FontStyle.Italic);
+                                // On stocke la valeur du TempsPoseCalcule afin de n'effectuer le calcul qu'une seule fois
+                                double hauteur = Convert.ToDouble(slice.Hauteur.Coordonnee);
+                                // On ajoute le point à la série
+                                serieHauteur.Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { hauteur },
+                                    Color = slice.CouleurHauteur,
+                                    IsValueShownAsLabel = true,
+                                    LabelFormat = "0°",
+                                    Font = font
+                                    //Font = font,
+                                    //ToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s",
+                                    //LabelToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s"
+                                });
+                            }
+                            serieHauteur.YAxisType = AxisType.Secondary;
+                        }
+
                         // ChartArea
                         chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
                         chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
                         chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
                         chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+                        chartSliceListe.ChartAreas[0].AxisY.Title = "Temps de pose";
                         chartSliceListe.ChartAreas[0].RecalculateAxesScale();
+
+                        if (SerieHauteurVisible)
+                        {
+                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                            chartSliceListe.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+                            chartSliceListe.ChartAreas[0].AxisY2.MajorGrid.Enabled = false;
+                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                            chartSliceListe.ChartAreas[0].AxisY2.IsStartedFromZero = chartSliceListe.ChartAreas[0].AxisY.IsStartedFromZero;
+                            chartSliceListe.ChartAreas[0].AxisY2.Title = "Hauteur";
+                        }
+                        else
+                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
 
                         // Titre graphique
                         chartSliceListe.Titles.Clear();
@@ -936,6 +1010,7 @@ namespace AstroTargetSelector
 
             // On force un update de l'affichage
             Show();
+            Application.DoEvents();
 
             // Vérification de la présence d'une nouvelle version
             string version = string.Empty;
@@ -944,7 +1019,7 @@ namespace AstroTargetSelector
             string url = string.Empty;
             if (CheckIfNouvelleVersion(ref version, ref nom, ref description, ref url) && !string.IsNullOrEmpty(description))
             {
-                // On affiche la boîte de dialogue informat d'une nouvelle version disponible
+                // On affiche la boîte de dialogue informant d'une nouvelle version disponible
                 dlgNewVersion dialogNewVersion = new dlgNewVersion(factory, version, nom, description, url);
                 dialogNewVersion.ShowDialog();
             }
@@ -1084,7 +1159,8 @@ namespace AstroTargetSelector
         private void MainFenetre_ClientSizeChanged(object sender, EventArgs e)
         {
             // Sauvegarde du WindowState dans les Settings
-            WindowMaximized = WindowState == FormWindowState.Maximized;
+            if (!initialisationFormEnCours)
+                WindowMaximized = WindowState == FormWindowState.Maximized;
         }
 
         private void aProposToolStripMenuItem_Click(object sender, EventArgs e)
@@ -1116,6 +1192,21 @@ namespace AstroTargetSelector
         {
             // On Force le rechargement des Slices au prochain appel
             factory.GetAppTarget().ForceUpdateSlices = true;
+
+            // Actualisation de la liste et du panneau d'information
+            UpdateListeAndPanel();
+        }
+
+        private void checkBoxHauteur_CheckedChanged(object sender, EventArgs e)
+        {
+            // Trace
+            factory.GetLog().Log($"Modification de la visibilité de la série Hauteur : {checkBoxHauteur.Checked}", GetType().Name);
+
+            // Actualisation de l'input
+            SerieHauteurVisible = checkBoxHauteur.Checked;
+
+            //// On Force le rechargement des Slices au prochain appel
+            //factory.GetAppTarget().ForceUpdateSlices = true;
 
             // Actualisation de la liste et du panneau d'information
             UpdateListeAndPanel();

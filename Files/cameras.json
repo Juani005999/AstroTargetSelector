@@ -1,0 +1,603 @@
+{
+    "--":{
+        "Taille pixels": "",
+        "Largeur capteur": "",
+        "Hauteur capteur": "",
+        "couleur": ""
+    }, 
+    "ZWO ASI120MC-S":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1280,
+        "Hauteur capteur": 960,
+        "couleur": "Couleur"
+    },
+    "ZWO ASI120MM":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1280,
+        "Hauteur capteur": 960,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI120MM-Mini":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1280,
+        "Hauteur capteur": 960,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI1600MM":{
+        "Taille pixels": 3.8,
+        "Largeur capteur": 4656,
+        "Hauteur capteur": 3520,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI174MM-Mini":{
+        "Taille pixels": 5.86,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1216,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI174MM":{
+        "Taille pixels": 5.86,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1216,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI178MM":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2080,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI178MC":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2080,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI183MC":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 5496,
+        "Hauteur capteur": 3672,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI183MM":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 5496,
+        "Hauteur capteur": 3672,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI224MC":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1304,
+        "Hauteur capteur": 976,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI290MM-Mini":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1096,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI290MM":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1096,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI294MC":{
+        "Taille pixels": 4.63,
+        "Largeur capteur": 4144,
+        "Hauteur capteur": 2822,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI294MM":{
+        "Taille pixels": 4.63,
+        "Largeur capteur": 4144,
+        "Hauteur capteur": 2822,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI385MC":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1096,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI432MM":{
+        "Taille pixels": 9,
+        "Largeur capteur": 1608,
+        "Hauteur capteur": 1104,
+        "couleur": "Monochrome"
+    },  
+    "ZWO ASI462MC": {
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1096,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI482MC":{
+        "Taille pixels": 5.8,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI485MC": {
+        "Taille pixels": 2.9,
+        "Largeur capteur": 3840,
+        "Hauteur capteur": 2160,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI533MC-PRO":{
+        "Taille pixels": 3.76,
+        "Largeur capteur": 3008,
+        "Hauteur capteur": 3008,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI585MC":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 3840,
+        "Hauteur capteur": 2160,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI662MC":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI678MC":{
+        "Taille pixels": 2,
+        "Largeur capteur": 3840,
+        "Hauteur capteur": 2160,
+        "couleur": "Couleur"
+    },  
+    "ZWO ASI185MC": {
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1944,
+        "Hauteur capteur": 1224,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Mars-C":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1944,
+        "Hauteur capteur": 1096,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Mars-M":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1944,
+        "Hauteur capteur": 1096,
+        "couleur": "Monochrome"
+    },  
+    "Pl-O Mars-C II":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1100,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Neptune-C":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2078,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Neptune-M":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2078,
+        "couleur": "MoNochrome"
+    },  
+    "Pl-O Neptune-C II":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 2712,
+        "Hauteur capteur": 1538,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Uranus-C":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 3856,
+        "Hauteur capteur": 2180,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Saturn-C SQR":{
+        "Taille pixels": 3.76,
+        "Largeur capteur": 3008,
+        "Hauteur capteur": 3008,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Saturn-M SQR":{
+        "Taille pixels": 3.76,
+        "Largeur capteur": 3008,
+        "Hauteur capteur": 3008,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Apollo-C":{
+        "Taille pixels": 5.86,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1216,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Apollo-M":{
+        "Taille pixels": 5.86,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1216,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Apollo-M MINI":{
+        "Taille pixels": 4.5,
+        "Largeur capteur": 1944,
+        "Hauteur capteur": 1472,
+        "couleur": "Monochrome"
+    },  
+    "Pl-O Apollo-M MAX":{
+        "Taille pixels": 9,
+        "Largeur capteur": 1608,
+        "Hauteur capteur": 1104,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Ceres-C":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1304,
+        "Hauteur capteur": 976,
+        "couleur": "Couleur"
+    },  
+    "Pl-O Ceres-M":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1284,
+        "Hauteur capteur": 964,
+        "couleur": "Monochrome"
+    },  
+    "Pl-O Sedna-M":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2078,
+        "couleur": "Monochrome"
+    },  
+    "Pl-O Xena-M":{
+        "Taille pixels": 5.86,
+        "Largeur capteur": 1936,
+        "Hauteur capteur": 1216,
+        "couleur": "Monochrome"
+    },  
+    "QHY-5-II-M":{
+        "Taille pixels": 5.2,
+        "Largeur capteur": 1280,
+        "Hauteur capteur": 1224,
+        "couleur": "Monochrome"
+    },  
+    "QHY-5-III-174M":{
+        "Taille pixels": 2.4,
+        "Largeur capteur": 3096,
+        "Hauteur capteur": 2080,
+        "couleur": "Monochrome"
+    },  
+    "QHY-5-III-462C":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "QHY-21":{
+        "Taille pixels": 4.54,
+        "Largeur capteur": 1940,
+        "Hauteur capteur": 1460,
+        "couleur": "Monochrome"
+    },  
+    "QHY-22":{
+        "Taille pixels": 4.54,
+        "Largeur capteur": 2758,
+        "Hauteur capteur": 2208,
+        "couleur": "Monochrome"
+    },  
+    "QHY-23":{
+        "Taille pixels": 3.69,
+        "Largeur capteur": 3388,
+        "Hauteur capteur": 2712,
+        "couleur": "Monochrome"
+    },  
+    "QHY-247C":{
+        "Taille pixels": 3.91,
+        "Largeur capteur": 6024,
+        "Hauteur capteur": 4024,
+        "couleur": "Couleur"
+    },  
+    "QHY-268C":{
+        "Taille pixels": 3.76,
+        "Largeur capteur": 6248,
+        "Hauteur capteur": 4276,
+        "couleur": "Couleur"
+    },  
+    "QHY-268M":{
+        "Taille pixels": 3.76,
+        "Largeur capteur": 6280,
+        "Hauteur capteur": 4210,
+        "couleur": "Monochrome"
+    },  
+    "QHY-5-III-224C":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1280,
+        "Hauteur capteur": 960,
+        "couleur": "Couleur"
+    },  
+    "QHY-5-III-290M":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Monochrome"
+    },  
+    "QHY-5-III-290C":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "Svbony SV105":{
+        "Taille pixels": 3,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "Svbony SV205":{
+        "Taille pixels": 1.4,
+        "Largeur capteur": 3264,
+        "Hauteur capteur": 2448,
+        "couleur": "Couleur"
+    },  
+    "SVbony SV305":{
+        "Taille pixels": 2.9,
+        "Largeur capteur": 1920,
+        "Hauteur capteur": 1080,
+        "couleur": "Couleur"
+    },  
+    "ATIK GP-M":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1296,
+        "Hauteur capteur": 964,
+        "couleur": "Monochrome"
+    },  
+    "ATIK GP-C":{
+        "Taille pixels": 3.75,
+        "Largeur capteur": 1296,
+        "Hauteur capteur": 964,
+        "couleur": "Couleur"
+    },
+    "ATIK HORIZON":{
+        "Taille pixels": 3.8,
+        "Largeur capteur": 4644,
+        "Hauteur capteur": 3506,
+        "couleur": "Monochrome"
+    },
+    "ATIK INFINITY":{
+        "Taille pixels": 6.45,
+        "Largeur capteur": 1392,
+        "Hauteur capteur": 1040,
+        "couleur": "Couleur"
+    },
+    "ATIK TITAN-C":{
+        "Taille pixels": 7.4,
+        "Largeur capteur": 659,
+        "Hauteur capteur": 494,
+        "couleur": "Couleur"
+    },
+    "ATIK TITAN-M":{
+        "Taille pixels": 7.4,
+        "Largeur capteur": 659,
+        "Hauteur capteur": 494,
+        "couleur": "Monochrome"
+    },
+    "CELESTRON NIGHTSCAPE":{
+        "Taille pixels": 4.75,
+        "Largeur capteur": 3760,
+        "Hauteur capteur": 2840,
+        "couleur": "Couleur"
+    },
+    "CELESTRON NEXTIMAGE 10C":{
+        "Taille pixels": 1.67,
+        "Largeur capteur": 3856,
+        "Hauteur capteur": 2764,
+        "couleur": "Couleur"
+    },
+    "CELESTRON NEXTIMAGE 5C":{
+        "Taille pixels": 2.2,
+        "Largeur capteur": 2592,
+        "Hauteur capteur": 1944,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 1000D":{
+        "Taille pixels": 5.71,
+        "Largeur capteur": 3888,
+        "Hauteur capteur": 2591,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 100D":{
+        "Taille pixels": 4.3,
+        "Largeur capteur": 5196,
+        "Hauteur capteur": 3464,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 1100D":{
+        "Taille pixels": 5.18,
+        "Largeur capteur": 4272,
+        "Hauteur capteur": 2848,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 1200D":{
+        "Taille pixels": 4.3,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 20D":{
+        "Taille pixels": 6.4,
+        "Largeur capteur": 3520,
+        "Hauteur capteur": 2344,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 30D":{
+        "Taille pixels": 6.42,
+        "Largeur capteur": 3504,
+        "Hauteur capteur": 2336,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 40D":{
+        "Taille pixels": 5.7,
+        "Largeur capteur": 3888,
+        "Hauteur capteur": 2592,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 450D":{
+        "Taille pixels": 5.1,
+        "Largeur capteur": 4272,
+        "Hauteur capteur": 2848,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 500D":{
+        "Taille pixels": 4.68,
+        "Largeur capteur": 4752,
+        "Hauteur capteur": 3168,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 50D":{
+        "Taille pixels": 4.7,
+        "Largeur capteur": 4752,
+        "Hauteur capteur": 3168,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 550D":{
+        "Taille pixels": 4.3,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 600D":{
+        "Taille pixels": 4.29,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 60DA":{
+        "Taille pixels": 4.3,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 6D":{
+        "Taille pixels": 6.54,
+        "Largeur capteur": 5472,
+        "Hauteur capteur": 3648,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 700D":{
+        "Taille pixels": 4.3,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 70D":{
+        "Taille pixels": 4.1,
+        "Largeur capteur": 5472,
+        "Hauteur capteur": 3648,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 750D":{
+        "Taille pixels": 3.70,
+        "Largeur capteur": 6024,
+        "Hauteur capteur": 4022,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 7D MarkII":{
+        "Taille pixels": 4.1,
+        "Largeur capteur": 5472,
+        "Hauteur capteur": 3648,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 7D":{
+        "Taille pixels": 4.7,
+        "Largeur capteur": 5184,
+        "Hauteur capteur": 3456,
+        "couleur": "Couleur"
+    },
+    "CANON EOS 80D":{
+        "Taille pixels": 3.7,
+        "Largeur capteur": 6000,
+        "Hauteur capteur": 4000,
+        "couleur": "Couleur"
+    },
+    "SONY A7S":{
+        "Taille pixels": 8.4,
+        "Largeur capteur": 4240,
+        "Hauteur capteur": 2832,
+        "couleur": "Couleur"
+    },
+    "SONY A7 III":{
+        "Taille pixels": 5.91,
+        "Largeur capteur": 6000,
+        "Hauteur capteur": 4000,
+        "couleur": "Couleur"
+    },
+    "SONY A7R III":{
+        "Taille pixels": 4.5,
+        "Largeur capteur": 7952,
+        "Hauteur capteur": 5304,
+        "couleur": "Couleur"
+    },
+    "NIKON D300S":{
+        "Taille pixels": 5.5,
+        "Largeur capteur": 4288,
+        "Hauteur capteur": 2848,
+        "couleur": "Couleur"
+    },
+    "NIKON D3300":{
+        "Taille pixels": 3.9,
+        "Largeur capteur": 6000,
+        "Hauteur capteur": 4000,
+        "couleur": "Couleur"
+    },
+    "NIKON D500":{
+        "Taille pixels": 4.2,
+        "Largeur capteur": 5568,
+        "Hauteur capteur": 3712,
+        "couleur": "Couleur"
+    },
+    "NIKON D5100":{
+        "Taille pixels": 4.78,
+        "Largeur capteur": 4928,
+        "Hauteur capteur": 3264,
+        "couleur": "Couleur"
+    },
+    "NIKON D5300":{
+        "Taille pixels": 3.92,
+        "Largeur capteur": 6000,
+        "Hauteur capteur": 4000,
+        "couleur": "Couleur"
+    },
+    "NIKON D5500":{
+        "Taille pixels": 3.89,
+        "Largeur capteur": 6000,
+        "Hauteur capteur": 4000,
+        "couleur": "Couleur"
+    },
+    "NIKON D7000":{
+        "Taille pixels": 4.7,
+        "Largeur capteur": 4991,
+        "Hauteur capteur": 3280,
+        "couleur": "Couleur"
+    },
+    "NIKON D7500":{
+        "Taille pixels": 4.2,
+        "Largeur capteur": 5568,
+        "Hauteur capteur": 3712,
+        "couleur": "Couleur"
+    },
+    "NIKON D800":{
+        "Taille pixels": 4.88,
+        "Largeur capteur": 7360,
+        "Hauteur capteur": 4912,
+        "couleur": "Couleur"
+    },
+    "NIKON D810A":{
+        "Taille pixels": 4.88,
+        "Largeur capteur": 7360,
+        "Hauteur capteur": 4912,
+        "couleur": "Couleur"
+    }
+
+}

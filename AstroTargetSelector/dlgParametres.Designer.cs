@@ -324,6 +324,7 @@
             // comboBoxCapteur
             // 
             this.comboBoxCapteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBoxCapteur.DropDownWidth = 200;
             this.comboBoxCapteur.FormattingEnabled = true;
             this.comboBoxCapteur.Location = new System.Drawing.Point(158, 19);
             this.comboBoxCapteur.Name = "comboBoxCapteur";

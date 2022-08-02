@@ -58,5 +58,17 @@ namespace AstroTargetSelector.Properties {
                 this["WindowState"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string SerieHauteurVisible {
+            get {
+                return ((string)(this["SerieHauteurVisible"]));
+            }
+            set {
+                this["SerieHauteurVisible"] = value;
+            }
+        }
     }
 }

@@ -138,6 +138,20 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
+        /// Couleur du point dans le graphique
+        /// <para>Vert si au dessus de la hauteur min, sinon rouge</para>
+        /// </summary>
+        public Color CouleurHauteur
+        {
+            get
+            {
+                if (Hauteur.Coordonnee >= factory.GetAppInputs().Inputs.HauteurMin)
+                    return Color.FromArgb(0, 192, 0);
+                return Color.Red;
+            }
+        }
+
+        /// <summary>
         /// Azimut calculé du slice
         /// </summary>
         public Coordinate Azimut
@@ -209,6 +223,68 @@ namespace AstroTargetSelectorBusiness
                 if (hauteurPrecise == null)
                     tempsPose = TempsPoseCalcule;
                 return hauteurPrecise;
+            }
+        }
+
+        /// <summary>
+        /// Permet de savoir si le slice de l'objet céleste est exclu de la liste
+        /// <para>Fait partie d'une zone exclue du ciel</para>
+        /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+        /// </summary>
+        public bool EstExclu
+        {
+            get
+            {
+                // Parcours des zones à exclure
+                foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
+                {
+                    double coordonne = Convert.ToDouble(Azimut.Coordonnee);
+                    switch (direction)
+                    {
+                        case CoordinatesDirection.N:
+                            if (coordonne > 337.5 || coordonne <= 22.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.NE:
+                            if (coordonne > 22.5 && coordonne <= 67.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.E:
+                            if (coordonne > 67.5 && coordonne <= 112.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.SE:
+                            if (coordonne > 112.5 && coordonne <= 157.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.S:
+                            if (coordonne > 157.5 && coordonne <= 202.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.SO:
+                            if (coordonne > 202.5 && coordonne <= 247.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.O:
+                            if (coordonne > 247.5 && coordonne <= 292.5)
+                                return true;
+                            break;
+                        case CoordinatesDirection.NO:
+                            if (coordonne > 292.5 && coordonne <= 337.5)
+                                return true;
+                            break;
+
+                        default:
+                            break;
+                    }
+                }
+
+                // Vérif sur la Hauteur apparente du premier Slice
+                if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
+                    return true;
+
+                // Objet non exclu de la liste
+                return false;
             }
         }
 

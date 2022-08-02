@@ -87,8 +87,8 @@ namespace AstroTargetSelector
                 // On ouvre URL.
                 System.Diagnostics.Process.Start(url);
 
-                // On ferme la boîte de dialogue
-                Close();
+                // On quitte l'application afin de na pas perturber la mise à jour
+                Application.Exit();
             }
         }
     }

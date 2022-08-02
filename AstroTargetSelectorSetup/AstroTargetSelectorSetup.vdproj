@@ -255,7 +255,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=0.0.2.8, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=0.0.3.3, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_68119A56FCC92DF267E2614D1216BB8A"
@@ -380,7 +380,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:0.0.2.8"
+                                    "Name" = "8:0.0.3.3"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -444,15 +444,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{0112BE41-2635-4C16-B108-A1DAD4A0B7E4}"
-        "PackageCode" = "8:{A777501B-340A-4E79-BDB1-CE9498C4ECAB}"
+        "ProductCode" = "8:{8FDCC626-CA40-4F67-84DF-73133D635BBE}"
+        "PackageCode" = "8:{D64CF73C-E1F4-4DCE-96CA-9BDFD2CE9016}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:TRUE"
-        "ProductVersion" = "8:0.0.28"
+        "InstallAllUsers" = "11:FALSE"
+        "ProductVersion" = "8:0.0.32"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -676,7 +676,7 @@
                             "ContextData" = "8:1;True=1;False=0"
                             "Attributes" = "3:0"
                             "Setting" = "3:0"
-                            "Value" = "3:1"
+                            "Value" = "3:0"
                             "DefaultValue" = "3:1"
                             "UsePlugInResources" = "11:TRUE"
                             }
@@ -870,8 +870,8 @@
                             "Type" = "3:15"
                             "ContextData" = "8:"
                             "Attributes" = "3:0"
-                            "Setting" = "3:1"
-                            "Value" = "8:#1258"
+                            "Setting" = "3:2"
+                            "Value" = "8:Merci d'avoir installé AstroTargetSelector :) Enjoy ;)"
                             "DefaultValue" = "8:#1258"
                             "UsePlugInResources" = "11:TRUE"
                             }
