@@ -57,6 +57,11 @@ namespace AstroTargetSelectorBusiness
         public string Description { get; set; }
 
         /// <summary>
+        /// Constellation de l'objet céleste
+        /// </summary>
+        public string Constellation { get; set; }
+
+        /// <summary>
         /// RA : Acsension droite de l'objet céleste
         /// <para>Valeur exprimée en "degrés horaires" décimal</para>
         /// </summary>
@@ -125,6 +130,13 @@ namespace AstroTargetSelectorBusiness
                 //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
                 //if (factory.GetAppInputs().Inputs.BougeMax != 0)
                 //    result /= factory.GetAppInputs().Inputs.BougeMax;
+
+                //// Si on a au moins 1 Slice non Exclu
+                //if (Slices.Where(t => !t.EstExclu).Count() > 0)
+                //{
+                //    return Math.Floor(Slices.Where(t => !t.EstExclu).Select(t => t.TempsPoseCalcule).Average());
+                //}
+                //return 0;
 
                 // Retour
                 return Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());

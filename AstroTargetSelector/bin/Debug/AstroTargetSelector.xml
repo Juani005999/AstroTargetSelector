@@ -334,6 +334,13 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.MainFenetre.SerieHauteurVisible">
+            <summary>
+            Determine si la série Hauteur est visible
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.MainFenetre.ftpNewVersionFullPathFile">
             <summary>
             Url complète du fichier remote des versions de l'application

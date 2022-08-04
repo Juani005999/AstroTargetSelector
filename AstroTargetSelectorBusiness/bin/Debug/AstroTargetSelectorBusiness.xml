@@ -501,6 +501,12 @@
             Couleur du point dans le graphique
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.CouleurHauteur">
+            <summary>
+            Couleur du point dans le graphique
+            <para>Vert si au dessus de la hauteur min, sinon rouge</para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.Azimut">
             <summary>
             Azimut calculé du slice
@@ -524,6 +530,13 @@
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.HauteurPrecise">
             <summary>
             Hauteur Precise calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.EstExclu">
+            <summary>
+            Permet de savoir si le slice de l'objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
@@ -614,6 +627,11 @@
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.Description">
             <summary>
             Description de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.Constellation">
+            <summary>
+            Constellation de l'objet céleste
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjTarget.RA">

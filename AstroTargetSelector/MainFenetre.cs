@@ -343,6 +343,7 @@ namespace AstroTargetSelector
             listViewTarget.Columns.Add(Resources.Nom, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Type, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Description, -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add("Constellation", -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.RA, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.DEC, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Azimut, -2, HorizontalAlignment.Left);
@@ -421,6 +422,7 @@ namespace AstroTargetSelector
                                                 target.Nom,
                                                 target.Type,
                                                 target.Description,
+                                                target.Constellation,
                                                 target.RA.FormatedString,
                                                 target.DEC.FormatedString,
                                                 target.AzimutPrecise.FormatedString,

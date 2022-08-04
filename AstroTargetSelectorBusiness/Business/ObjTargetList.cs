@@ -134,6 +134,7 @@ namespace AstroTargetSelectorBusiness
                                 Nom = values[0],
                                 Type = values[1],
                                 Description = values[2],
+                                Constellation = values[8],
                                 RA = factory.GetCoordinate(Convert.ToDecimal(values[3]), CoordinatesType.RA),
                                 DEC = factory.GetCoordinate(Convert.ToDecimal(values[4]), CoordinatesType.DEC),
                                 Magnitude = Convert.ToDecimal(values[5]),
