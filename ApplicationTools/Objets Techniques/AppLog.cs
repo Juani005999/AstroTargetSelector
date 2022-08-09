@@ -175,7 +175,7 @@ namespace ApplicationTools
         /// <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
         public void LogException(Exception ex,
                         string callerClassName = "",
-                        TypeLog typeLog = TypeLog.Error,
+                        TypeLog typeLog = TypeLog.Fatal,
                         [CallerMemberName] string callerMemberName = "",
                         [CallerFilePath] string callerFilePath = "",
                         [CallerLineNumber] int callerLineNumber = 0)
@@ -183,7 +183,10 @@ namespace ApplicationTools
             try
             {
                 // Appel de la fonction de base
-                Log(ex.Message, callerClassName, null, typeLog, System.Reflection.Assembly.GetCallingAssembly().GetName().Name, callerMemberName, callerFilePath, callerLineNumber);
+                // On ajoute la pile d'appel au message
+                string stackTrace = string.IsNullOrEmpty(ex.StackTrace) ? string.Empty : ";" + ex.StackTrace.Replace(";", " ").Replace("\t", " ").Replace("\r", " ").Replace("\n", " ");
+                string message = ex.Message + stackTrace;
+                Log(message, callerClassName, null, typeLog, System.Reflection.Assembly.GetCallingAssembly().GetName().Name, callerMemberName, callerFilePath, callerLineNumber);
             }
             catch (Exception err)
             {

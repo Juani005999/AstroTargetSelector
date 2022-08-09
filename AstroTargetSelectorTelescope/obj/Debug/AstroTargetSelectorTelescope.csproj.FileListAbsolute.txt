@@ -1,0 +1,6 @@
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\bin\Debug\AstroTargetSelectorTelescope.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\bin\Debug\AstroTargetSelectorTelescope.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\obj\Debug\AstroTargetSelectorTelescope.csproj.AssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\obj\Debug\AstroTargetSelectorTelescope.csproj.CoreCompileInputs.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\obj\Debug\AstroTargetSelectorTelescope.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorTelescope\obj\Debug\AstroTargetSelectorTelescope.pdb

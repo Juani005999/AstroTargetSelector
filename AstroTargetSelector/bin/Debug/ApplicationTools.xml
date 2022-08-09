@@ -28,6 +28,13 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppStellarium">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppStellarium"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -44,6 +51,14 @@
             <param name="type"></param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.IsProgramInstalled(System.String,System.String@)">
+            <summary>
+            Permet de savoir si un programme est installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="stellariumFileName"></param>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
             Objet <see cref="T:ApplicationTools.AppLog"/>
@@ -52,6 +67,95 @@
         <member name="F:ApplicationTools.AppToolFactory.appContext">
             <summary>
             Objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appStellarium">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppStellarium"/>
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.AppStellarium">
+            <summary>
+            Objet de communication avec le logiciel Stellarium
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.StellariumDisplayName">
+            <summary>
+            DisplayName de Stellarium dans la Registry
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.StellariumStartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application Stellarium
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.StellariumSleepForRemmoteControlStart">
+            <summary>
+            Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.StellariumFovLevelAfterFocus">
+            <summary>
+            Niveau de Fov positionné après la sélection
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.IsStellariumInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.IsStellariumRunning">
+            <summary>
+            Permet de savoir si le programme Stellarium est en cours d'exécution sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.Host">
+            <summary>
+            Serveur Stellarium
+            <para>par défaut localhost</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.Port">
+            <summary>
+            Port du Serveur Stellarium
+            <para>par défaut 8090</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppStellarium.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppStellarium.FocusTo(System.String)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans Stellarium
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.factory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.isStellariumInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.stellariumFileName">
+            <summary>
+            Nom de fichier de Stellarium sur le poste
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.isRunning">
+            <summary>
+            Flag permettant de savoir si une action est en cours
             </summary>
         </member>
         <member name="T:ApplicationTools.BwebConvert">
@@ -523,6 +627,30 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:ApplicationTools.RegistryUtils">
+            <summary>
+            Boîte à outil de gestion de la Registry
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.IsProgramInstalled(System.String,System.String@,ApplicationTools.AppToolFactory)">
+            <summary>
+            Permet de savoir si un programme est installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="programFileName">Nom complet du fichier exécutable</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.IsProgramInKey(Microsoft.Win32.RegistryKey,System.String,System.String@,ApplicationTools.AppToolFactory)">
+            <summary>
+            Permet de savoir si un programme est présent dans les sou-clés (uninstall) de la clé root
+            </summary>
+            <param name="key"></param>
+            <param name="programDisplayName"></param>
+            <param name="programFileName"></param>
+            <param name="factory"></param>
+            <returns></returns>
+        </member>
         <member name="T:ApplicationTools.Properties.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
@@ -539,9 +667,39 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.LeLogicielStellariumNAPasEteTrouve">
+            <summary>
+              Recherche une chaîne localisée semblable à Le logiciel Stellarium n&apos;a pas été trouvé..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.Stellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Stellarium.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.StellariumNEstPasInstalleSurCePoste">
+            <summary>
+              Recherche une chaîne localisée semblable à Stellarium n&apos;est pas installé sur ce poste..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneAutreActionEstActuellementEnCours">
+            <summary>
+              Recherche une chaîne localisée semblable à Une autre action est actuellement en cours..
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenue">
             <summary>
               Recherche une chaîne localisée semblable à Une erreur est survenue.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;envoi de la commande au plugin de commande à distance..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;ouverture du logiciel..
             </summary>
         </member>
         <member name="T:ApplicationTools.CoordinatesDirection">

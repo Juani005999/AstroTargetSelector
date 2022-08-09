@@ -356,6 +356,21 @@
             Path et nom du fichier de destination du téléchargement du fichier des versions
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.MainFenetre.StatusLabelDateObs">
+            <summary>
+            Positionne en asynchrone le texte de la Status Date d'Observation
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.StatusLabelNomTarget">
+            <summary>
+            Positionne en asynchrone le texte de la Status Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.MainFenetre.StatusLabelAction">
+            <summary>
+            Positionne en asynchrone le texte de la Status Action
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.#ctor">
             <summary>
             Constructeur par défaut
@@ -462,6 +477,18 @@
             <param name="description"></param>
             <param name="url"></param>
             <returns>True si une nouvelle version est dispo</returns>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.StellariumFocusTo">
+            <summary>
+            Lance la commande de sélection dans Stellarium pour l'objet sélectionné
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.backgroundWorkerStellarium_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Traitement asynchrone de la commande de sélection dans Stellarium
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
@@ -573,6 +600,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.InfoToolTip">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.stellarium">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

@@ -61,11 +61,65 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le logiciel Stellarium n&apos;a pas été trouvé..
+        /// </summary>
+        public static string LeLogicielStellariumNAPasEteTrouve {
+            get {
+                return ResourceManager.GetString("LeLogicielStellariumNAPasEteTrouve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Stellarium.
+        /// </summary>
+        public static string Stellarium {
+            get {
+                return ResourceManager.GetString("Stellarium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Stellarium n&apos;est pas installé sur ce poste..
+        /// </summary>
+        public static string StellariumNEstPasInstalleSurCePoste {
+            get {
+                return ResourceManager.GetString("StellariumNEstPasInstalleSurCePoste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une autre action est actuellement en cours..
+        /// </summary>
+        public static string UneAutreActionEstActuellementEnCours {
+            get {
+                return ResourceManager.GetString("UneAutreActionEstActuellementEnCours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Une erreur est survenue.
         /// </summary>
         public static string UneErreurEstSurvenue {
             get {
                 return ResourceManager.GetString("UneErreurEstSurvenue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;envoi de la commande au plugin de commande à distance..
+        /// </summary>
+        public static string UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance {
+            get {
+                return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;ouverture du logiciel..
+        /// </summary>
+        public static string UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel {
+            get {
+                return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel", resourceCulture);
             }
         }
     }

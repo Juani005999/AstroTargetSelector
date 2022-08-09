@@ -28,6 +28,13 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppStellarium">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppStellarium"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -44,6 +51,13 @@
             <param name="type"></param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.IsProgramInstalled(System.String)">
+            <summary>
+            Permet de savoir si un programme est installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
             Objet <see cref="T:ApplicationTools.AppLog"/>
@@ -52,6 +66,41 @@
         <member name="F:ApplicationTools.AppToolFactory.appContext">
             <summary>
             Objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appStellarium">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppStellarium"/>
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.AppStellarium">
+            <summary>
+            Objet de communication avec le logiciel Stellarium
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.StellariumDisplayName">
+            <summary>
+            DisplayName de Stedllarium dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.IsStellariumInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppStellarium.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.toolFactory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.isStellariumInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
             </summary>
         </member>
         <member name="T:ApplicationTools.BwebConvert">
@@ -521,6 +570,19 @@
             <summary>
             
             </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.RegistryUtils">
+            <summary>
+            Boîte à outil de gestion de la Registry
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.IsProgramInstalled(System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Permet de savoir si un programme est installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
             <returns></returns>
         </member>
         <member name="T:ApplicationTools.Properties.Resources">

@@ -42,3 +42,4 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.exe
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Debug\AstroTargetSelector.dlgNewVersion.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\ApplicationTools.dll.config

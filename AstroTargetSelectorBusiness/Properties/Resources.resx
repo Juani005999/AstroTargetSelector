@@ -141,6 +141,9 @@
   <data name="CetteOperationPeutPrendreQuelquesInstants" xml:space="preserve">
     <value>Cette opération peut prendre quelques instants</value>
   </data>
+  <data name="Constellation" xml:space="preserve">
+    <value>Constellation</value>
+  </data>
   <data name="DateDeLObservation" xml:space="preserve">
     <value>Date de l'observation</value>
   </data>
@@ -155,6 +158,12 @@
   </data>
   <data name="EffectueAvecSucces" xml:space="preserve">
     <value>effectué avec succès</value>
+  </data>
+  <data name="EnvoiDeLaCommandeAuPluginDeControleADistance" xml:space="preserve">
+    <value>envoi de la commande au plugin de contrôle à distance...</value>
+  </data>
+  <data name="FormatDesChampsPourLePluginStellariumIncorrect" xml:space="preserve">
+    <value>Format des champs pour le plugin Stellarium incorrect.</value>
   </data>
   <data name="FormatDuCapteurIncorrect" xml:space="preserve">
     <value>Format du Capteur incorrect</value>
@@ -189,6 +198,9 @@
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>
   </data>
+  <data name="LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090" xml:space="preserve">
+    <value>La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut '8090'.</value>
+  </data>
   <data name="Lieu" xml:space="preserve">
     <value>Lieu</value>
   </data>
@@ -207,6 +219,12 @@
   <data name="ObjetSelectionne" xml:space="preserve">
     <value>Objet sélectionné</value>
   </data>
+  <data name="PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium" xml:space="preserve">
+    <value>Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium.</value>
+  </data>
+  <data name="PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost" xml:space="preserve">
+    <value>Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut 'localhost'.</value>
+  </data>
   <data name="RA" xml:space="preserve">
     <value>RA</value>
   </data>
@@ -221,6 +239,12 @@
   </data>
   <data name="Suivant" xml:space="preserve">
     <value>Suivant</value>
+  </data>
+  <data name="TempsDePose" xml:space="preserve">
+    <value>Temps de pose</value>
+  </data>
+  <data name="TempsDePoseSecondesSansRotationDeChamps" xml:space="preserve">
+    <value>Temps de pose (secondes) sans rotation de champs</value>
   </data>
   <data name="Terminer" xml:space="preserve">
     <value>Terminer</value>

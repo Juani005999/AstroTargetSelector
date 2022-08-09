@@ -133,6 +133,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Constellation.
+        /// </summary>
+        public static string Constellation {
+            get {
+                return ResourceManager.GetString("Constellation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date de l&apos;observation.
         /// </summary>
         public static string DateDeLObservation {
@@ -174,6 +183,24 @@ namespace AstroTargetSelectorResources {
         public static string EffectueAvecSucces {
             get {
                 return ResourceManager.GetString("EffectueAvecSucces", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à envoi de la commande au plugin de contrôle à distance....
+        /// </summary>
+        public static string EnvoiDeLaCommandeAuPluginDeControleADistance {
+            get {
+                return ResourceManager.GetString("EnvoiDeLaCommandeAuPluginDeControleADistance", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect..
+        /// </summary>
+        public static string FormatDesChampsPourLePluginStellariumIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDesChampsPourLePluginStellariumIncorrect", resourceCulture);
             }
         }
         
@@ -277,6 +304,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut &apos;8090&apos;..
+        /// </summary>
+        public static string LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090 {
+            get {
+                return ResourceManager.GetString("LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Lieu.
         /// </summary>
         public static string Lieu {
@@ -331,6 +367,26 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium..
+        /// </summary>
+        public static string PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium {
+            get {
+                return ResourceManager.GetString("PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDe" +
+                        "Stellarium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut &apos;localhost&apos;..
+        /// </summary>
+        public static string PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost {
+            get {
+                return ResourceManager.GetString("PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhos" +
+                        "t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à RA.
         /// </summary>
         public static string RA {
@@ -372,6 +428,24 @@ namespace AstroTargetSelectorResources {
         public static string Suivant {
             get {
                 return ResourceManager.GetString("Suivant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Temps de pose.
+        /// </summary>
+        public static string TempsDePose {
+            get {
+                return ResourceManager.GetString("TempsDePose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Temps de pose (secondes) sans rotation de champs.
+        /// </summary>
+        public static string TempsDePoseSecondesSansRotationDeChamps {
+            get {
+                return ResourceManager.GetString("TempsDePoseSecondesSansRotationDeChamps", resourceCulture);
             }
         }
         

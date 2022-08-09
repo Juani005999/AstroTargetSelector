@@ -31,7 +31,7 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -80,6 +80,9 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
             this.listViewTarget = new System.Windows.Forms.ListView();
             this.imageListRank = new System.Windows.Forms.ImageList(this.components);
+            this.buttonStellarium = new System.Windows.Forms.Button();
+            this.pictureBoxInfoTarget = new System.Windows.Forms.PictureBox();
+            this.checkBoxHauteur = new System.Windows.Forms.CheckBox();
             this.pictureBoxRank5 = new System.Windows.Forms.PictureBox();
             this.pictureBoxRank4 = new System.Windows.Forms.PictureBox();
             this.pictureBoxRank3 = new System.Windows.Forms.PictureBox();
@@ -115,9 +118,9 @@ namespace AstroTargetSelector
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTipInfoParametre = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfoActualisation = new System.Windows.Forms.ToolTip(this.components);
-            this.checkBoxHauteur = new System.Windows.Forms.CheckBox();
-            this.pictureBoxInfoTarget = new System.Windows.Forms.PictureBox();
             this.toolTipInfoTarget = new System.Windows.Forms.ToolTip(this.components);
+            this.backgroundWorkerStellarium = new System.ComponentModel.BackgroundWorker();
+            this.toolTipStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
@@ -130,13 +133,13 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel1.SuspendLayout();
             this.splitContainerSecondaire.Panel2.SuspendLayout();
             this.splitContainerSecondaire.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoTarget)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoTarget)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStripGlobal
@@ -287,7 +290,7 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainerGlobal.IsSplitterFixed = true;
             this.splitContainerGlobal.Location = new System.Drawing.Point(9, 27);
-            this.splitContainerGlobal.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainerGlobal.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainerGlobal.Name = "splitContainerGlobal";
             this.splitContainerGlobal.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -325,9 +328,9 @@ namespace AstroTargetSelector
             // buttonStartCalcul
             // 
             this.buttonStartCalcul.Image = global::AstroTargetSelector.Properties.Resources.Actualiser;
-            this.buttonStartCalcul.Location = new System.Drawing.Point(187, 27);
+            this.buttonStartCalcul.Location = new System.Drawing.Point(187, 25);
             this.buttonStartCalcul.Name = "buttonStartCalcul";
-            this.buttonStartCalcul.Size = new System.Drawing.Size(51, 46);
+            this.buttonStartCalcul.Size = new System.Drawing.Size(51, 50);
             this.buttonStartCalcul.TabIndex = 24;
             this.buttonStartCalcul.UseVisualStyleBackColor = true;
             this.buttonStartCalcul.Click += new System.EventHandler(this.buttonStartCalcul_Click);
@@ -395,7 +398,7 @@ namespace AstroTargetSelector
             this.dateTimePickerHeureObservation.CustomFormat = "HH:mm tt";
             this.dateTimePickerHeureObservation.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePickerHeureObservation.Location = new System.Drawing.Point(86, 53);
-            this.dateTimePickerHeureObservation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerHeureObservation.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerHeureObservation.Name = "dateTimePickerHeureObservation";
             this.dateTimePickerHeureObservation.ShowUpDown = true;
             this.dateTimePickerHeureObservation.Size = new System.Drawing.Size(96, 20);
@@ -466,7 +469,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxFiltreType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxFiltreType.FormattingEnabled = true;
-            this.comboBoxFiltreType.Location = new System.Drawing.Point(309, 19);
+            this.comboBoxFiltreType.Location = new System.Drawing.Point(308, 19);
             this.comboBoxFiltreType.Name = "comboBoxFiltreType";
             this.comboBoxFiltreType.Size = new System.Drawing.Size(180, 21);
             this.comboBoxFiltreType.TabIndex = 6;
@@ -474,7 +477,7 @@ namespace AstroTargetSelector
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(261, 22);
+            this.label7.Location = new System.Drawing.Point(260, 22);
             this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(43, 19);
@@ -486,7 +489,7 @@ namespace AstroTargetSelector
             // 
             this.textBoxFiltreNomDescription.Location = new System.Drawing.Point(82, 19);
             this.textBoxFiltreNomDescription.Name = "textBoxFiltreNomDescription";
-            this.textBoxFiltreNomDescription.Size = new System.Drawing.Size(171, 20);
+            this.textBoxFiltreNomDescription.Size = new System.Drawing.Size(165, 20);
             this.textBoxFiltreNomDescription.TabIndex = 4;
             this.textBoxFiltreNomDescription.TextChanged += new System.EventHandler(this.textBoxFiltreNomDescription_TextChanged);
             // 
@@ -504,7 +507,7 @@ namespace AstroTargetSelector
             // 
             this.dateTimePickerDateObservation.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePickerDateObservation.Location = new System.Drawing.Point(86, 27);
-            this.dateTimePickerDateObservation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePickerDateObservation.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePickerDateObservation.Name = "dateTimePickerDateObservation";
             this.dateTimePickerDateObservation.Size = new System.Drawing.Size(96, 20);
             this.dateTimePickerDateObservation.TabIndex = 0;
@@ -514,8 +517,8 @@ namespace AstroTargetSelector
             // 
             this.button1.AutoSize = true;
             this.button1.Enabled = false;
-            this.button1.Location = new System.Drawing.Point(612, 47);
-            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button1.Location = new System.Drawing.Point(612, 49);
+            this.button1.Margin = new System.Windows.Forms.Padding(2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(142, 26);
             this.button1.TabIndex = 18;
@@ -525,12 +528,12 @@ namespace AstroTargetSelector
             // 
             // btModifierParametre
             // 
-            this.btModifierParametre.Location = new System.Drawing.Point(263, 47);
-            this.btModifierParametre.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.btModifierParametre.Location = new System.Drawing.Point(263, 49);
+            this.btModifierParametre.Margin = new System.Windows.Forms.Padding(2);
             this.btModifierParametre.Name = "btModifierParametre";
             this.btModifierParametre.Size = new System.Drawing.Size(56, 26);
             this.btModifierParametre.TabIndex = 17;
-            this.btModifierParametre.Text = "Mofifier";
+            this.btModifierParametre.Text = "Modifier";
             this.btModifierParametre.UseVisualStyleBackColor = true;
             this.btModifierParametre.Click += new System.EventHandler(this.btModifierParametre_Click);
             // 
@@ -611,8 +614,8 @@ namespace AstroTargetSelector
             this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.AutoSize = true;
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(809, 47);
-            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button2.Location = new System.Drawing.Point(809, 49);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(113, 26);
             this.button2.TabIndex = 20;
@@ -626,7 +629,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.FixedPanel = System.Windows.Forms.FixedPanel.Panel2;
             this.splitContainerSecondaire.IsSplitterFixed = true;
             this.splitContainerSecondaire.Location = new System.Drawing.Point(0, 0);
-            this.splitContainerSecondaire.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainerSecondaire.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainerSecondaire.Name = "splitContainerSecondaire";
             this.splitContainerSecondaire.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -636,6 +639,7 @@ namespace AstroTargetSelector
             // 
             // splitContainerSecondaire.Panel2
             // 
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.buttonStellarium);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxInfoTarget);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.checkBoxHauteur);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank5);
@@ -672,7 +676,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 148;
+            this.splitContainerSecondaire.SplitterDistance = 152;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -682,10 +686,10 @@ namespace AstroTargetSelector
             this.listViewTarget.FullRowSelect = true;
             this.listViewTarget.HideSelection = false;
             this.listViewTarget.Location = new System.Drawing.Point(0, 0);
-            this.listViewTarget.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 148);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 152);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -702,6 +706,37 @@ namespace AstroTargetSelector
             this.imageListRank.Images.SetKeyName(2, "3");
             this.imageListRank.Images.SetKeyName(3, "4");
             this.imageListRank.Images.SetKeyName(4, "5");
+            // 
+            // buttonStellarium
+            // 
+            this.buttonStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
+            this.buttonStellarium.Location = new System.Drawing.Point(13, 213);
+            this.buttonStellarium.Name = "buttonStellarium";
+            this.buttonStellarium.Size = new System.Drawing.Size(32, 32);
+            this.buttonStellarium.TabIndex = 44;
+            this.buttonStellarium.UseVisualStyleBackColor = true;
+            this.buttonStellarium.Click += new System.EventHandler(this.buttonStellarium_Click);
+            // 
+            // pictureBoxInfoTarget
+            // 
+            this.pictureBoxInfoTarget.Image = global::AstroTargetSelector.Properties.Resources.Help;
+            this.pictureBoxInfoTarget.Location = new System.Drawing.Point(13, 59);
+            this.pictureBoxInfoTarget.Name = "pictureBoxInfoTarget";
+            this.pictureBoxInfoTarget.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxInfoTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxInfoTarget.TabIndex = 43;
+            this.pictureBoxInfoTarget.TabStop = false;
+            // 
+            // checkBoxHauteur
+            // 
+            this.checkBoxHauteur.AutoSize = true;
+            this.checkBoxHauteur.Location = new System.Drawing.Point(589, 225);
+            this.checkBoxHauteur.Name = "checkBoxHauteur";
+            this.checkBoxHauteur.Size = new System.Drawing.Size(157, 17);
+            this.checkBoxHauteur.TabIndex = 42;
+            this.checkBoxHauteur.Text = "Afficher la hauteur de l\'objet";
+            this.checkBoxHauteur.UseVisualStyleBackColor = true;
+            this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
             // 
             // pictureBoxRank5
             // 
@@ -903,7 +938,7 @@ namespace AstroTargetSelector
             // label27
             // 
             this.label27.AutoSize = true;
-            this.label27.Location = new System.Drawing.Point(483, 228);
+            this.label27.Location = new System.Drawing.Point(503, 226);
             this.label27.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label27.Name = "label27";
             this.label27.Size = new System.Drawing.Size(45, 13);
@@ -913,7 +948,7 @@ namespace AstroTargetSelector
             // label26
             // 
             this.label26.AutoSize = true;
-            this.label26.Location = new System.Drawing.Point(221, 228);
+            this.label26.Location = new System.Drawing.Point(261, 226);
             this.label26.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(43, 13);
@@ -924,7 +959,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxTotalTimeSlice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTotalTimeSlice.FormattingEnabled = true;
-            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(422, 225);
+            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(442, 223);
             this.comboBoxTotalTimeSlice.Name = "comboBoxTotalTimeSlice";
             this.comboBoxTotalTimeSlice.Size = new System.Drawing.Size(56, 21);
             this.comboBoxTotalTimeSlice.TabIndex = 30;
@@ -932,7 +967,7 @@ namespace AstroTargetSelector
             // 
             // label25
             // 
-            this.label25.Location = new System.Drawing.Point(316, 228);
+            this.label25.Location = new System.Drawing.Point(336, 226);
             this.label25.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label25.Name = "label25";
             this.label25.Size = new System.Drawing.Size(101, 19);
@@ -944,7 +979,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxMinuteIntervalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMinuteIntervalle.FormattingEnabled = true;
-            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(160, 225);
+            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(200, 223);
             this.comboBoxMinuteIntervalle.Name = "comboBoxMinuteIntervalle";
             this.comboBoxMinuteIntervalle.Size = new System.Drawing.Size(56, 21);
             this.comboBoxMinuteIntervalle.TabIndex = 28;
@@ -952,7 +987,7 @@ namespace AstroTargetSelector
             // 
             // label24
             // 
-            this.label24.Location = new System.Drawing.Point(7, 228);
+            this.label24.Location = new System.Drawing.Point(47, 226);
             this.label24.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(148, 19);
@@ -1030,13 +1065,15 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea3.Name = "ChartArea1";
-            this.chartSliceListe.ChartAreas.Add(chartArea3);
+            chartArea1.Name = "ChartArea1";
+            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            this.chartSliceListe.Enabled = false;
             this.chartSliceListe.Location = new System.Drawing.Point(5, 48);
-            this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
             this.chartSliceListe.Size = new System.Drawing.Size(754, 181);
             this.chartSliceListe.TabIndex = 0;
+            this.chartSliceListe.TabStop = false;
             this.chartSliceListe.Text = "Intervalles de temps de pose";
             // 
             // toolTipInfoParametre
@@ -1044,26 +1081,9 @@ namespace AstroTargetSelector
             this.toolTipInfoParametre.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoParametre.ToolTipTitle = "Paramètres de l\'observation";
             // 
-            // checkBoxHauteur
+            // backgroundWorkerStellarium
             // 
-            this.checkBoxHauteur.AutoSize = true;
-            this.checkBoxHauteur.Location = new System.Drawing.Point(569, 227);
-            this.checkBoxHauteur.Name = "checkBoxHauteur";
-            this.checkBoxHauteur.Size = new System.Drawing.Size(157, 17);
-            this.checkBoxHauteur.TabIndex = 42;
-            this.checkBoxHauteur.Text = "Afficher la hauteur de l\'objet";
-            this.checkBoxHauteur.UseVisualStyleBackColor = true;
-            this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
-            // 
-            // pictureBoxInfoTarget
-            // 
-            this.pictureBoxInfoTarget.Image = global::AstroTargetSelector.Properties.Resources.Help;
-            this.pictureBoxInfoTarget.Location = new System.Drawing.Point(13, 59);
-            this.pictureBoxInfoTarget.Name = "pictureBoxInfoTarget";
-            this.pictureBoxInfoTarget.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxInfoTarget.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxInfoTarget.TabIndex = 43;
-            this.pictureBoxInfoTarget.TabStop = false;
+            this.backgroundWorkerStellarium.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerStellarium_DoWork);
             // 
             // MainFenetre
             // 
@@ -1076,7 +1096,7 @@ namespace AstroTargetSelector
             this.Controls.Add(this.menuStripGlobal);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStripGlobal;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MinimumSize = new System.Drawing.Size(866, 590);
             this.Name = "MainFenetre";
             this.Text = "AstroTargetSelector";
@@ -1098,13 +1118,13 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerSecondaire)).EndInit();
             this.splitContainerSecondaire.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoTarget)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.chartSliceListe)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfoTarget)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1198,5 +1218,8 @@ namespace AstroTargetSelector
         private System.Windows.Forms.CheckBox checkBoxHauteur;
         private System.Windows.Forms.PictureBox pictureBoxInfoTarget;
         private System.Windows.Forms.ToolTip toolTipInfoTarget;
+        private System.Windows.Forms.Button buttonStellarium;
+        private System.ComponentModel.BackgroundWorker backgroundWorkerStellarium;
+        private System.Windows.Forms.ToolTip toolTipStellarium;
     }
 }

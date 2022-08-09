@@ -117,7 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="LeLogicielStellariumNAPasEteTrouve" xml:space="preserve">
+    <value>Le logiciel Stellarium n'a pas été trouvé.</value>
+  </data>
+  <data name="Stellarium" xml:space="preserve">
+    <value>Stellarium</value>
+  </data>
+  <data name="StellariumNEstPasInstalleSurCePoste" xml:space="preserve">
+    <value>Stellarium n'est pas installé sur ce poste.</value>
+  </data>
+  <data name="UneAutreActionEstActuellementEnCours" xml:space="preserve">
+    <value>Une autre action est actuellement en cours.</value>
+  </data>
   <data name="UneErreurEstSurvenue" xml:space="preserve">
     <value>Une erreur est survenue</value>
+  </data>
+  <data name="UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'envoi de la commande au plugin de commande à distance.</value>
+  </data>
+  <data name="UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'ouverture du logiciel.</value>
   </data>
 </root>

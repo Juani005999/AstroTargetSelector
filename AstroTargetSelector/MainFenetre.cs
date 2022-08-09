@@ -5,11 +5,11 @@ using System.Diagnostics;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
 using System.Net;
-using AstroTargetSelectorBusiness;
-using AstroTargetSelectorResources;
-using ApplicationTools;
 using System.IO;
 using System.Reflection;
+using ApplicationTools;
+using AstroTargetSelectorBusiness;
+using AstroTargetSelectorResources;
 
 namespace AstroTargetSelector
 {
@@ -138,6 +138,59 @@ namespace AstroTargetSelector
                 return $"{factory.GetAppContext().UserAppDataPath}/{newVersionFileName}";
             }
         }
+        
+        /// <summary>
+        /// Positionne en asynchrone le texte de la Status Date d'Observation
+        /// </summary>
+        private string StatusLabelDateObs
+        {
+            set
+            {
+                //if (InvokeRequired)
+                {
+                    BeginInvoke(new Action(() => toolStripStatusLabelDateObs.Text = value), null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Positionne en asynchrone le texte de la Status Target
+        /// </summary>
+        private string StatusLabelNomTarget
+        {
+            set
+            {
+                //if (InvokeRequired)
+                {
+                    BeginInvoke(new Action(() => {
+                        if (string.IsNullOrEmpty(value))
+                        {
+                            toolStripStatusLabelNomTarget.Visible = false;
+                            toolStripStatusLabelNomTarget.Text = string.Empty;
+                        }
+                        else
+                        {
+                            toolStripStatusLabelNomTarget.Visible = true;
+                            toolStripStatusLabelNomTarget.Text = value;
+                        }
+                    }), null);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Positionne en asynchrone le texte de la Status Action
+        /// </summary>
+        private string StatusLabelAction
+        {
+            set
+            {
+                //if (InvokeRequired)
+                {
+                    BeginInvoke(new Action(() => toolStripStatusActionEnCours.Text = value), null);
+                }
+            }
+        }
 
         #endregion
 
@@ -195,10 +248,14 @@ namespace AstroTargetSelector
                 // Chargement des Inputs
                 LoadInputs();
 
+                // Bouton Stellarium masqué si le Logiciel n'est pas installé
+                buttonStellarium.Visible = factory.GetAppStellarium().IsStellariumInstalled;
+
                 // Text par défaut de la Status Bar et ToolTip
                 SetDefaultStatusText();
                 toolTipInfoActualisation.SetToolTip(buttonStartCalcul, Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions);
                 toolTipInfoTarget.SetToolTip(pictureBoxInfoTarget, "Les intervalles qui apparaissent en gris signifient que l'objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum");
+                toolTipStellarium.SetToolTip(buttonStellarium, "Afficher l'objet céleste dans Stellarium");
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
@@ -343,7 +400,7 @@ namespace AstroTargetSelector
             listViewTarget.Columns.Add(Resources.Nom, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Type, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Description, -2, HorizontalAlignment.Left);
-            listViewTarget.Columns.Add("Constellation", -2, HorizontalAlignment.Left);
+            listViewTarget.Columns.Add(Resources.Constellation, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.RA, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.DEC, -2, HorizontalAlignment.Left);
             listViewTarget.Columns.Add(Resources.Azimut, -2, HorizontalAlignment.Left);
@@ -663,7 +720,7 @@ namespace AstroTargetSelector
                         chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
                         chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
                         chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-                        chartSliceListe.ChartAreas[0].AxisY.Title = "Temps de pose";
+                        chartSliceListe.ChartAreas[0].AxisY.Title = Resources.TempsDePose;
                         chartSliceListe.ChartAreas[0].RecalculateAxesScale();
 
                         if (SerieHauteurVisible)
@@ -673,14 +730,14 @@ namespace AstroTargetSelector
                             chartSliceListe.ChartAreas[0].AxisY2.MajorGrid.Enabled = false;
                             chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
                             chartSliceListe.ChartAreas[0].AxisY2.IsStartedFromZero = chartSliceListe.ChartAreas[0].AxisY.IsStartedFromZero;
-                            chartSliceListe.ChartAreas[0].AxisY2.Title = "Hauteur";
+                            chartSliceListe.ChartAreas[0].AxisY2.Title = Resources.Hauteur;
                         }
                         else
                             chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
 
                         // Titre graphique
                         chartSliceListe.Titles.Clear();
-                        chartSliceListe.Titles.Add($"Temps de pose (secondes) sans rotation de champs (bougé max. {factory.GetAppInputs().BougeMaxString})");
+                        chartSliceListe.Titles.Add($"{Resources.TempsDePoseSecondesSansRotationDeChamps} ({Resources.BougeMax} {factory.GetAppInputs().BougeMaxString})");
                         chartSliceListe.Titles[0].TextStyle = TextStyle.Shadow;
                         chartSliceListe.Titles[0].ShadowColor = Color.Gray;
 
@@ -725,28 +782,26 @@ namespace AstroTargetSelector
         private void SetDefaultStatusText()
         {
             // Status Text 1 : Date et Heure de l'observation
-            toolStripStatusLabelDateObs.Text = $"{Resources.DateDeLObservation} : {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("d")} - {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("t")}";
+            StatusLabelDateObs = $"{Resources.DateDeLObservation} : {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("d")} - {factory.GetAppInputs().Inputs.DateHeureObservation.ToString("t")}";
             
             // Status Text 2 : Objet céleste sélectionné
-            if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
+            StatusLabelNomTarget = string.Empty;
+            BeginInvoke(new Action(() =>
             {
-                toolStripStatusLabelNomTarget.Visible = false;
-                toolStripStatusLabelNomTarget.Text = string.Empty;
-            }
-            else
-            {
-                toolStripStatusLabelNomTarget.Visible = true;
-                // Affichage des informations de l'objet céleste
-                ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
-                if (target != null && !string.IsNullOrEmpty(target.Nom))
-                    toolStripStatusLabelNomTarget.Text = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
-            }
-
-            // Trace
-            factory.GetLog().Log($"Status Action Set Default Action Text", GetType().Name);
+                if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count == 1)
+                {
+                    // Affichage des informations de l'objet céleste
+                    ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                    if (target != null && !string.IsNullOrEmpty(target.Nom))
+                        StatusLabelNomTarget = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
+                }
+            }), null);
 
             // Status Text 3 : Action en cours
-            toolStripStatusActionEnCours.Text = string.Empty;
+            StatusLabelAction = string.Empty;
+
+            // Trace
+            factory.GetLog().Log($"Status Set Default Text", GetType().Name);
         }
 
         /// <summary>
@@ -756,10 +811,10 @@ namespace AstroTargetSelector
         private void SetActionStatusText(string action)
         {
             // Trace
-            factory.GetLog().Log($"Status Action Set Text : {action}", GetType().Name);
+            factory.GetLog().Log($"Status Set Action Text : {action}", GetType().Name);
 
             // On positionne le texte de la Status
-            toolStripStatusActionEnCours.Text = action;
+            StatusLabelAction = action;
 
             // On force l'affichage du texte avant le lancement du traitement à suivre
             Application.DoEvents();
@@ -962,6 +1017,98 @@ namespace AstroTargetSelector
                 Cursor = Cursors.Default;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Lance la commande de sélection dans Stellarium pour l'objet sélectionné
+        /// </summary>
+        public void StellariumFocusTo()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande FocusTo de Stellarium", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
+                buttonStellarium.Enabled = false;
+
+                // Si un objet est sélectionné dans la liste, on lance la tâche de fond
+                if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count == 1)
+                {
+                    // On récupère l'objet sélectionné et on lance la commande pour Stellarium
+                    ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                    if (target != null)
+                    {
+                        // Lancement de la tâche de fond si aucune autre action en cours de traitement
+                        if (!backgroundWorkerStellarium.IsBusy)
+                            backgroundWorkerStellarium.RunWorkerAsync(target.Nom);
+                    }
+                }
+
+                // Trace
+                factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Traitement asynchrone de la commande de sélection dans Stellarium
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorkerStellarium_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Exécution asynchrone de la commande FocusTo de Stellarium", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Status Text
+                SetActionStatusText($"{ApplicationTools.Properties.Resources.Stellarium} : {Resources.EnvoiDeLaCommandeAuPluginDeControleADistance}");
+
+                // Récup du nom de l'objet passé en paramètre du Thread
+                string nomTarget = (string)e.Argument;
+                if (!string.IsNullOrEmpty(nomTarget))
+                {
+                    // On lance la commande
+                    factory.GetAppStellarium().FocusTo(nomTarget);
+
+                    // Trace
+                    factory.GetLog().Log($"Exécution de la commande FocusTo de Stellarium pour l'objet {nomTarget} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                }
+                else
+                {
+                    // Trace
+                    factory.GetLog().Log($"Aucun objet sélectionné", GetType().Name, null, AppLog.TypeLog.Warning);
+                }
+
+                // On flush le texte de la Status Text
+                SetDefaultStatusText();
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+                // On positionne le message d'erreur retour dans la Status Text
+                SetActionStatusText($"{ApplicationTools.Properties.Resources.Stellarium} : {err.Message}");
+            }
+            finally
+            {
+                // Dans tous les cas, on remet le bouton Stellarium Enable
+                BeginInvoke(new Action(() => buttonStellarium.Enabled = true), null);
+            }
         }
 
         #endregion
@@ -1212,6 +1359,10 @@ namespace AstroTargetSelector
 
             // Actualisation de la liste et du panneau d'information
             UpdateListeAndPanel();
+        }
+        private void buttonStellarium_Click(object sender, EventArgs e)
+        {
+            StellariumFocusTo();
         }
     }
 }

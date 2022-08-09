@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppToolFactory.cs" />
+    <Compile Include="Objets Techniques\AppStellarium.cs" />
     <Compile Include="Objets Techniques\BwebConvert.cs" />
     <Compile Include="Objets Techniques\AppContext.cs" />
     <Compile Include="Objets Techniques\AppExtensions.cs" />
@@ -65,11 +66,17 @@
     <Compile Include="Controles et IHM\ComboBoxItem.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Objets Techniques\RegistryUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
     <Compile Include="Types\Coordinate.cs" />
     <Compile Include="Types\Coordinates.cs" />
@@ -92,7 +99,12 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="AstroTargetSelector_TemporaryKey.pfx" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

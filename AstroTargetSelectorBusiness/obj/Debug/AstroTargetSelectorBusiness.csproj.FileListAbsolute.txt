@@ -21,3 +21,4 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.csproj.CopyComplete
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\ApplicationTools.dll.config

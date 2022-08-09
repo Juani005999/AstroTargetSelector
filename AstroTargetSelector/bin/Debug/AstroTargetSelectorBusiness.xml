@@ -854,6 +854,11 @@
               Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Constellation">
+            <summary>
+              Recherche une chaîne localisée semblable à Constellation.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.DateDeLObservation">
             <summary>
               Recherche une chaîne localisée semblable à Date de l&apos;observation.
@@ -877,6 +882,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.EffectueAvecSucces">
             <summary>
               Recherche une chaîne localisée semblable à effectué avec succès.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.EnvoiDeLaCommandeAuPluginDeControleADistance">
+            <summary>
+              Recherche une chaîne localisée semblable à envoi de la commande au plugin de contrôle à distance....
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDesChampsPourLePluginStellariumIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuCapteurIncorrect">
@@ -934,6 +949,11 @@
               Recherche une chaîne localisée semblable à Largeur.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090">
+            <summary>
+              Recherche une chaîne localisée semblable à La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut &apos;8090&apos;..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Lieu">
             <summary>
               Recherche une chaîne localisée semblable à Lieu.
@@ -964,6 +984,16 @@
               Recherche une chaîne localisée semblable à Objet sélectionné.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost">
+            <summary>
+              Recherche une chaîne localisée semblable à Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut &apos;localhost&apos;..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.RA">
             <summary>
               Recherche une chaîne localisée semblable à RA.
@@ -987,6 +1017,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Suivant">
             <summary>
               Recherche une chaîne localisée semblable à Suivant.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePose">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseSecondesSansRotationDeChamps">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose (secondes) sans rotation de champs.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Terminer">

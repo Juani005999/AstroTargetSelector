@@ -92,6 +92,9 @@ namespace AstroTargetSelector
             // Divers
             textBoxBougeMax.Text = string.Empty;
             textBoxHauteurMin.Text = String.Empty;
+            // Stellarium
+            textBoxHostStellarium.Text = string.Empty;
+            textBoxPortStellarium.Text = String.Empty;
 
             InitCombos();
         }
@@ -160,6 +163,17 @@ namespace AstroTargetSelector
             // Divers
             textBoxBougeMax.Text = factory.GetAppInputs().Inputs.BougeMax.ToString(CultureInfo.InvariantCulture);
             textBoxHauteurMin.Text = factory.GetAppInputs().Inputs.HauteurMin.ToString(CultureInfo.InvariantCulture);
+
+            // Stellarium
+            groupBoxStellarium.Enabled = factory.GetAppStellarium().IsStellariumInstalled;
+            textBoxHostStellarium.Text = factory.GetAppStellarium().Host;
+            textBoxPortStellarium.Text = factory.GetAppStellarium().Port;
+            toolTipInfoStellarium.SetToolTip(pictureBoxIconInfoStellarium, 
+                    Resources.PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium
+                    + Environment.NewLine 
+                    + Resources.PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost
+                    + Environment.NewLine
+                    + Resources.LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090);
         }
 
         /// <summary>
@@ -228,6 +242,12 @@ namespace AstroTargetSelector
                     factory.GetAppInputs().Inputs.HauteurMin = hauteurMin;
                 else
                     throw new Exception(Resources.FormatDuChampHauteurMinIncorrect);
+
+                // Stellarium. : On vérifie si les champs ne sont pas vide
+                if (string.IsNullOrEmpty(textBoxHostStellarium.Text) || string.IsNullOrEmpty(textBoxPortStellarium.Text))
+                    throw new Exception(Resources.FormatDesChampsPourLePluginStellariumIncorrect);
+                factory.GetAppStellarium().Host = textBoxHostStellarium.Text;
+                factory.GetAppStellarium().Port = textBoxPortStellarium.Text;
 
                 // Trace
                 factory.GetLog().Log($"Enregistrement des Settings effectué avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);

@@ -72,31 +72,40 @@
             this.label11 = new System.Windows.Forms.Label();
             this.textBoxBougeMax = new System.Windows.Forms.TextBox();
             this.toolTipInfoCapteur = new System.Windows.Forms.ToolTip(this.components);
+            this.groupBoxStellarium = new System.Windows.Forms.GroupBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.textBoxHostStellarium = new System.Windows.Forms.TextBox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.textBoxPortStellarium = new System.Windows.Forms.TextBox();
+            this.pictureBoxIconInfoStellarium = new System.Windows.Forms.PictureBox();
+            this.toolTipInfoStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxLieuObservation.SuspendLayout();
             this.groupBoxCapteur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.groupBoxZones.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBoxStellarium.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoStellarium)).BeginInit();
             this.SuspendLayout();
             // 
             // btCancel
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancel.Location = new System.Drawing.Point(346, 299);
+            this.btCancel.Location = new System.Drawing.Point(346, 376);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
-            this.btCancel.TabIndex = 5;
+            this.btCancel.TabIndex = 6;
             this.btCancel.Text = "Annuler";
             this.btCancel.UseVisualStyleBackColor = true;
             // 
             // btOK
             // 
             this.btOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btOK.Location = new System.Drawing.Point(265, 299);
+            this.btOK.Location = new System.Drawing.Point(265, 376);
             this.btOK.Name = "btOK";
             this.btOK.Size = new System.Drawing.Size(75, 23);
-            this.btOK.TabIndex = 4;
+            this.btOK.TabIndex = 5;
             this.btOK.Text = "OK";
             this.btOK.UseVisualStyleBackColor = true;
             this.btOK.Click += new System.EventHandler(this.btOK_Click);
@@ -535,13 +544,82 @@
             this.toolTipInfoCapteur.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoCapteur.ToolTipTitle = "Sélection du Capteur";
             // 
+            // groupBoxStellarium
+            // 
+            this.groupBoxStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBoxStellarium.Controls.Add(this.pictureBoxIconInfoStellarium);
+            this.groupBoxStellarium.Controls.Add(this.label16);
+            this.groupBoxStellarium.Controls.Add(this.textBoxHostStellarium);
+            this.groupBoxStellarium.Controls.Add(this.label18);
+            this.groupBoxStellarium.Controls.Add(this.textBoxPortStellarium);
+            this.groupBoxStellarium.Location = new System.Drawing.Point(13, 294);
+            this.groupBoxStellarium.Name = "groupBoxStellarium";
+            this.groupBoxStellarium.Size = new System.Drawing.Size(408, 72);
+            this.groupBoxStellarium.TabIndex = 4;
+            this.groupBoxStellarium.TabStop = false;
+            this.groupBoxStellarium.Text = "Paramètres du plugin de contrôle à distance de Stellarium";
+            // 
+            // label16
+            // 
+            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label16.Location = new System.Drawing.Point(6, 22);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(146, 21);
+            this.label16.TabIndex = 14;
+            this.label16.Text = "Serveur";
+            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxHostStellarium
+            // 
+            this.textBoxHostStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxHostStellarium.Location = new System.Drawing.Point(158, 19);
+            this.textBoxHostStellarium.Name = "textBoxHostStellarium";
+            this.textBoxHostStellarium.Size = new System.Drawing.Size(100, 20);
+            this.textBoxHostStellarium.TabIndex = 0;
+            // 
+            // label18
+            // 
+            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.label18.Location = new System.Drawing.Point(29, 48);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(123, 17);
+            this.label18.TabIndex = 11;
+            this.label18.Text = "Port";
+            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            // 
+            // textBoxPortStellarium
+            // 
+            this.textBoxPortStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBoxPortStellarium.Location = new System.Drawing.Point(158, 45);
+            this.textBoxPortStellarium.Name = "textBoxPortStellarium";
+            this.textBoxPortStellarium.Size = new System.Drawing.Size(100, 20);
+            this.textBoxPortStellarium.TabIndex = 1;
+            // 
+            // pictureBoxIconInfoStellarium
+            // 
+            this.pictureBoxIconInfoStellarium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxIconInfoStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
+            this.pictureBoxIconInfoStellarium.Location = new System.Drawing.Point(54, 26);
+            this.pictureBoxIconInfoStellarium.Name = "pictureBoxIconInfoStellarium";
+            this.pictureBoxIconInfoStellarium.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIconInfoStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIconInfoStellarium.TabIndex = 25;
+            this.pictureBoxIconInfoStellarium.TabStop = false;
+            // 
+            // toolTipInfoStellarium
+            // 
+            this.toolTipInfoStellarium.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            this.toolTipInfoStellarium.ToolTipTitle = "Plugin de contrôle à distance";
+            // 
             // dlgParametres
             // 
             this.AcceptButton = this.btOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btCancel;
-            this.ClientSize = new System.Drawing.Size(433, 334);
+            this.ClientSize = new System.Drawing.Size(433, 411);
+            this.Controls.Add(this.groupBoxStellarium);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBoxZones);
             this.Controls.Add(this.groupBoxCapteur);
@@ -555,7 +633,7 @@
             this.Name = "dlgParametres";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Paramètres de l\'observation";
+            this.Text = "Paramètres";
             this.Load += new System.EventHandler(this.dlgParametres_Load);
             this.groupBoxLieuObservation.ResumeLayout(false);
             this.groupBoxLieuObservation.PerformLayout();
@@ -566,6 +644,9 @@
             this.groupBoxZones.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBoxStellarium.ResumeLayout(false);
+            this.groupBoxStellarium.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoStellarium)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -614,5 +695,12 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxHauteurMin;
+        private System.Windows.Forms.GroupBox groupBoxStellarium;
+        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.TextBox textBoxHostStellarium;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.TextBox textBoxPortStellarium;
+        private System.Windows.Forms.PictureBox pictureBoxIconInfoStellarium;
+        private System.Windows.Forms.ToolTip toolTipInfoStellarium;
     }
 }

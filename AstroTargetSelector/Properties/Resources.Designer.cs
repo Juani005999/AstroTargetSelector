@@ -163,6 +163,16 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap stellarium {
+            get {
+                object obj = ResourceManager.GetObject("stellarium", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap TaskValidated {
             get {
                 object obj = ResourceManager.GetObject("TaskValidated", resourceCulture);
