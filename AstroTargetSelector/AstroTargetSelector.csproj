@@ -234,5 +234,8 @@
   <ItemGroup>
     <None Include="Ressources\stellarium.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\cartesduciel.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

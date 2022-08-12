@@ -437,10 +437,12 @@
             Permet d'actualiser la liste et le panneau d'information
             </summary>
         </member>
-        <member name="M:AstroTargetSelector.MainFenetre.SetDefaultStatusText">
+        <member name="M:AstroTargetSelector.MainFenetre.SetDefaultStatusText(System.Boolean,System.Boolean)">
             <summary>
             Positionne le texte par défaut dans la Status Bar
             </summary>
+            <param name="forceNoActionStellarium">Force le flush de la zone Action sur fin de tâche Stellarium</param>
+            <param name="forceNoActionCartesDuCiel">Force le flush de la zone Action sur fin de tâche Cartes Du Ciel</param>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.SetActionStatusText(System.String)">
             <summary>
@@ -486,6 +488,18 @@
         <member name="M:AstroTargetSelector.MainFenetre.backgroundWorkerStellarium_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
             <summary>
             Traitement asynchrone de la commande de sélection dans Stellarium
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.CartesDuCielFocusTo">
+            <summary>
+            Lance la commande de sélection dans Cartes du Ciel pour l'objet sélectionné
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.backgroundWorkerCartesDuCiel_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Traitement asynchrone de la commande de sélection dans Cartes du Ciel
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
@@ -580,6 +594,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Actualiser">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.cartesduciel">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

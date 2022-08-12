@@ -85,21 +85,37 @@ namespace ApplicationTools
             listviewY = (ListViewItem)y;
 
             // Compare the two items
-            // Si c'est de l'integer
             int intX = 0;
             int intY = 0;
+            decimal decimalX = 0;
+            decimal decimalY = 0;
             DateTime dateX = DateTime.Now;
             DateTime dateY = DateTime.Now;
+            Coordinate nouveauLieuX = new Coordinate(0, CoordinatesType.Degree);
+            Coordinate nouveauLieuY = new Coordinate(0, CoordinatesType.Degree);
+            // Si c'est du int
             if (int.TryParse(listviewX.SubItems[ColumnToSort].Text, out intX)
                 && int.TryParse(listviewY.SubItems[ColumnToSort].Text, out intY))
             {
                 compareResult = ObjectCompare.Compare(intX, intY);
+            }
+            // Si c'est du decimal
+            if (decimal.TryParse(listviewX.SubItems[ColumnToSort].Text, out decimalX)
+                && decimal.TryParse(listviewY.SubItems[ColumnToSort].Text, out decimalY))
+            {
+                compareResult = ObjectCompare.Compare(decimalX, decimalY);
             }
             // Si c'est du DateTime
             else if (DateTime.TryParse(listviewX.SubItems[ColumnToSort].Text, out dateX)
                 && DateTime.TryParse(listviewY.SubItems[ColumnToSort].Text, out dateY))
             {
                 compareResult = ObjectCompare.Compare(dateX, dateY);
+            }
+            // Si c'est du Coordinate
+            else if (Coordinate.TryParseFromFormatedString(listviewX.SubItems[ColumnToSort].Text, ref nouveauLieuX)
+                && Coordinate.TryParseFromFormatedString(listviewY.SubItems[ColumnToSort].Text, ref nouveauLieuY))
+            {
+                compareResult = ObjectCompare.Compare(nouveauLieuX.Coordonnee, nouveauLieuY.Coordonnee);
             }
             // Sinon, du texte
             else

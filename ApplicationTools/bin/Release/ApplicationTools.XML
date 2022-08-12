@@ -35,6 +35,13 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppCartesDuCiel">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -49,13 +56,6 @@
             </summary>
             <param name="value"></param>
             <param name="type"></param>
-            <returns></returns>
-        </member>
-        <member name="M:ApplicationTools.AppToolFactory.IsProgramInstalled(System.String)">
-            <summary>
-            Permet de savoir si un programme est installé sur le poste local
-            </summary>
-            <param name="programDisplayName">Champ DisplayName dans la registry</param>
             <returns></returns>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
@@ -73,19 +73,224 @@
             Objet <see cref="T:ApplicationTools.AppStellarium"/>
             </summary>
         </member>
+        <member name="F:ApplicationTools.AppToolFactory.appCartesDuCiel">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.AppCartesDuCiel">
+            <summary>
+            Objet de communication avec le logiciel Cartes du Ciel
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppCartesDuCiel.HKCUPath">
+            <summary>
+            Chemin de la clé Cartes du Ciel pour Current User dans la Registry
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppCartesDuCiel.HKCUKey">
+            <summary>
+            Clé Cartes du Ciel pour Current User dans la Registry
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppCartesDuCiel.CartesDuCielFovLevelAfterFocus">
+            <summary>
+            Niveau de Fov positionné après la sélection
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppCartesDuCiel.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppCartesDuCiel.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppCartesDuCiel.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppCartesDuCiel.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppCartesDuCiel.Host">
+            <summary>
+            Serveur Cartes du Ciel
+            <para>par défaut 127.0.0.1</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppCartesDuCiel.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppCartesDuCiel.FocusTo(System.String,System.DateTime)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans Cartes du Ciel
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Cartes du Ciel</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppCartesDuCiel.factory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppCartesDuCiel.isRunning">
+            <summary>
+            Flag permettant de savoir si une action est en cours
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.WarningException">
+            <summary>
+            Exception de type Warning
+            <para>Permet d'afficher un message de type Warning à l'utilisateur</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.WarningException.#ctor(System.String)">
+            <summary>
+            Constructeur de base
+            </summary>
+            <param name="message">Message utlisateur</param>
+        </member>
+        <member name="T:ApplicationTools.AppProgramme">
+            <summary>
+            Objet représentant un logiciel
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.IsInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme est installé sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.IsRunning">
+            <summary>
+            Permet de savoir si le programme est en cours d'exécution sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.FileVersion">
+            <summary>
+            Version du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.InstallLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.ExecutableFile">
+            <summary>
+            Fichier exécutable du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppProgramme.#ctor(ApplicationTools.AppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.factory">
+            <summary>
+            Instance de la ToolFactory en cours
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.isInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme est installé sur le poste
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.fileVersion">
+            <summary>
+            Version du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.installLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.executableFile">
+            <summary>
+            Fichier exécutable du Logiciel sur le poste
+            </summary>
+        </member>
         <member name="T:ApplicationTools.AppStellarium">
             <summary>
             Objet de communication avec le logiciel Stellarium
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppStellarium.StellariumDisplayName">
+        <member name="F:ApplicationTools.AppStellarium.StellariumSleepForRemmoteControlStart">
             <summary>
-            DisplayName de Stedllarium dans la Registry
+            Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
             </summary>
         </member>
-        <member name="P:ApplicationTools.AppStellarium.IsStellariumInstalled">
+        <member name="F:ApplicationTools.AppStellarium.StellariumFovLevelAfterFocus">
             <summary>
-            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+            Niveau de Fov positionné après la sélection
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.Host">
+            <summary>
+            Serveur Stellarium
+            <para>par défaut localhost</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppStellarium.Port">
+            <summary>
+            Port du Serveur Stellarium
+            <para>par défaut 8090</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
         <member name="M:ApplicationTools.AppStellarium.#ctor(ApplicationTools.AppToolFactory)">
@@ -93,14 +298,22 @@
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppStellarium.toolFactory">
+        <member name="M:ApplicationTools.AppStellarium.FocusTo(System.String)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans Stellarium
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppStellarium.factory">
             <summary>
             Instance de la ToolFactory en cours
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppStellarium.isStellariumInstalled">
+        <member name="F:ApplicationTools.AppStellarium.isRunning">
             <summary>
-            Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+            Flag permettant de savoir si une action est en cours
             </summary>
         </member>
         <member name="T:ApplicationTools.BwebConvert">
@@ -585,6 +798,48 @@
             <param name="factory">Instance de la fabrique d'objet technique en cours</param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetDisplayVersion(System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Renvoi le champ DisplayVersion d'un programme installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetInstallLocation(System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Renvoi le champ InstallLocation d'un programme installé sur le poste local
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetCurrentUserValue(System.String,System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Renvoi la valeur d'une clé dans la clé root HKEY_CURRENT_USER
+            </summary>
+            <param name="keyPath">Chemin de la clé dans la registry</param>
+            <param name="keyName">Nom de la clé dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramKey(System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Renvoi la sous-clé uninstall d'un programme
+            </summary>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramInRootKey(Microsoft.Win32.RegistryKey,System.String,ApplicationTools.AppToolFactory)">
+            <summary>
+            Renvoi la sous-clé uninstall d'un programme pour la clé root spécifiée
+            </summary>
+            <param name="rootKey"></param>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <returns></returns>
+        </member>
         <member name="T:ApplicationTools.Properties.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
@@ -601,9 +856,69 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.CartesDuCiel">
+            <summary>
+              Recherche une chaîne localisée semblable à Cartes du Ciel.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Fonctionnalité non disponible pour la version 0.22.X de Stellarium.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint">
+            <summary>
+              Recherche une chaîne localisée semblable à Impossible de créer de nouvelle carte. Nombre max. atteint ?.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.LeLogicielNAPasEteTrouve">
+            <summary>
+              Recherche une chaîne localisée semblable à Le logiciel n&apos;a pas été trouvé..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.LeLogicielNEstPasInstalleSurCePoste">
+            <summary>
+              Recherche une chaîne localisée semblable à Le logiciel n&apos;est pas installé sur ce poste..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.LeServeurNEstPasActive">
+            <summary>
+              Recherche une chaîne localisée semblable à Le serveur n&apos;est pas activé..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ObjetCelesteNonTrouve">
+            <summary>
+              Recherche une chaîne localisée semblable à Objet céleste non trouvé..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.Stellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Stellarium.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneAutreActionEstActuellementEnCours">
+            <summary>
+              Recherche une chaîne localisée semblable à Une autre action est actuellement en cours..
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenue">
             <summary>
               Recherche une chaîne localisée semblable à Une erreur est survenue.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;envoi de la commande..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel">
+            <summary>
+              Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;ouverture du logiciel..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration">
+            <summary>
+              Recherche une chaîne localisée semblable à Veuillez démarrer le logiciel au moins une fois afin de terminer sa configuration..
             </summary>
         </member>
         <member name="T:ApplicationTools.CoordinatesDirection">
@@ -752,6 +1067,15 @@
             <param name="direction"></param>
             <param name="coordonnee"></param>
             <param name="factory"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.TryParseFromFormatedString(System.String,ApplicationTools.Coordinate@)">
+            <summary>
+            Valide une saisie au format string
+            <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnee"/> doit être réalisé par l'appelant</para>
+            </summary>
+            <param name="inputCoordonee"></param>
+            <param name="coordonnee"></param>
             <returns></returns>
         </member>
         <member name="F:ApplicationTools.Coordinate.coordonnee">

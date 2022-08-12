@@ -118,7 +118,10 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions" xml:space="preserve">
-    <value>Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ...</value>
+    <value>Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ...</value>
+  </data>
+  <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
+    <value>Afficher l'objet céleste dans Stellarium.</value>
   </data>
   <data name="Annuler" xml:space="preserve">
     <value>Annuler</value>
@@ -159,11 +162,11 @@
   <data name="EffectueAvecSucces" xml:space="preserve">
     <value>effectué avec succès</value>
   </data>
-  <data name="EnvoiDeLaCommandeAuPluginDeControleADistance" xml:space="preserve">
-    <value>envoi de la commande au plugin de contrôle à distance...</value>
+  <data name="EnvoiDeLaCommande" xml:space="preserve">
+    <value>Envoi de la commande...</value>
   </data>
   <data name="FormatDesChampsPourLePluginStellariumIncorrect" xml:space="preserve">
-    <value>Format des champs pour le plugin Stellarium incorrect.</value>
+    <value>Format des champs pour le plugin Stellarium incorrect</value>
   </data>
   <data name="FormatDuCapteurIncorrect" xml:space="preserve">
     <value>Format du Capteur incorrect</value>
@@ -173,6 +176,9 @@
   </data>
   <data name="FormatDuChampHauteurMinIncorrect" xml:space="preserve">
     <value>Format du champ "Hauteur minimum" incorrect</value>
+  </data>
+  <data name="FormatDuChampServeurPourCartesDuCielIncorrect" xml:space="preserve">
+    <value>Format du champ Serveur pour Cartes du Ciel incorrect</value>
   </data>
   <data name="FormatDuLieuDObservationIncorrect" xml:space="preserve">
     <value>Format du lieu d'observation incorrect</value>
@@ -201,6 +207,9 @@
   <data name="LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090" xml:space="preserve">
     <value>La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut '8090'.</value>
   </data>
+  <data name="LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum" xml:space="preserve">
+    <value>Les intervalles qui apparaissent en gris signifient que l'objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum.</value>
+  </data>
   <data name="Lieu" xml:space="preserve">
     <value>Lieu</value>
   </data>
@@ -222,8 +231,14 @@
   <data name="PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium" xml:space="preserve">
     <value>Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium.</value>
   </data>
+  <data name="PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001" xml:space="preserve">
+    <value>Pour exécuter Cartes du Ciel directement sur cet ordinateur, laissez la valeur par défaut '127.0.0.1'.</value>
+  </data>
   <data name="PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost" xml:space="preserve">
     <value>Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut 'localhost'.</value>
+  </data>
+  <data name="PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur" xml:space="preserve">
+    <value>Pour vous connecter à Cartes du Ciel sur un serveur, spécifiez ici l'adresse IP du serveur.</value>
   </data>
   <data name="RA" xml:space="preserve">
     <value>RA</value>

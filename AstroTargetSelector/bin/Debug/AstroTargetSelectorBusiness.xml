@@ -816,7 +816,12 @@
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions">
             <summary>
-              Recherche une chaîne localisée semblable à Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ....
+              Recherche une chaîne localisée semblable à Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ....
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansStellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Stellarium..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Annuler">
@@ -884,14 +889,14 @@
               Recherche une chaîne localisée semblable à effectué avec succès.
             </summary>
         </member>
-        <member name="P:AstroTargetSelectorResources.Resources.EnvoiDeLaCommandeAuPluginDeControleADistance">
+        <member name="P:AstroTargetSelectorResources.Resources.EnvoiDeLaCommande">
             <summary>
-              Recherche une chaîne localisée semblable à envoi de la commande au plugin de contrôle à distance....
+              Recherche une chaîne localisée semblable à Envoi de la commande....
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDesChampsPourLePluginStellariumIncorrect">
             <summary>
-              Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect..
+              Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuCapteurIncorrect">
@@ -907,6 +912,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampHauteurMinIncorrect">
             <summary>
               Recherche une chaîne localisée semblable à Format du champ &quot;Hauteur minimum&quot; incorrect.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampServeurPourCartesDuCielIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format du champ Serveur pour Cartes du Ciel incorrect.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuLieuDObservationIncorrect">
@@ -954,6 +964,11 @@
               Recherche une chaîne localisée semblable à La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut &apos;8090&apos;..
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum">
+            <summary>
+              Recherche une chaîne localisée semblable à Les intervalles qui apparaissent en gris signifient que l&apos;objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Lieu">
             <summary>
               Recherche une chaîne localisée semblable à Lieu.
@@ -989,9 +1004,19 @@
               Recherche une chaîne localisée semblable à Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium..
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001">
+            <summary>
+              Recherche une chaîne localisée semblable à Pour exécuter Cartes du Ciel directement sur cet ordinateur, laissez la valeur par défaut &apos;127.0.0.1&apos;..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost">
             <summary>
               Recherche une chaîne localisée semblable à Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut &apos;localhost&apos;..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur">
+            <summary>
+              Recherche une chaîne localisée semblable à Pour vous connecter à Cartes du Ciel sur un serveur, spécifiez ici l&apos;adresse IP du serveur..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.RA">

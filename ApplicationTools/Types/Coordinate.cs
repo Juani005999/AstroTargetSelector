@@ -286,7 +286,7 @@ namespace ApplicationTools
                 return false;
             }
 
-            // Validation Secondes
+            // Validation Direction
             CoordinatesDirection directionDec;
             if (string.IsNullOrEmpty(direction) || !Enum.TryParse(direction, out directionDec))
             {
@@ -299,6 +299,73 @@ namespace ApplicationTools
             if (coordonnee.coordinatesType == CoordinatesType.Latitude && directionDec == CoordinatesDirection.S)
                 valCoordonnee *= -1;
             else if (coordonnee.coordinatesType == CoordinatesType.Longitude && directionDec == CoordinatesDirection.O)
+                valCoordonnee *= -1;
+            coordonnee.UpdateCoordonnee(valCoordonnee);
+
+            return true;
+        }
+
+        /// <summary>
+        /// Valide une saisie au format string
+        /// <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnee"/> doit être réalisé par l'appelant</para>
+        /// </summary>
+        /// <param name="inputCoordonee"></param>
+        /// <param name="coordonnee"></param>
+        /// <returns></returns>
+        public static bool TryParseFromFormatedString(string inputCoordonee, ref Coordinate coordonnee)
+        {
+            // On vérifie la validité du paramètre ref "coordonnees"
+            if (coordonnee == null)
+                return false;
+
+            // Validation string inputCoordonee
+            if (string.IsNullOrEmpty(inputCoordonee))
+                return false;
+
+            // Validation Degree ou Heure
+            decimal hourDec;
+            int indexSepHour = 0;
+            if (inputCoordonee.IndexOf("h") != -1 || inputCoordonee.IndexOf("°") != -1)
+            {
+                indexSepHour = inputCoordonee.IndexOf("h");
+                if (indexSepHour == -1)
+                    indexSepHour = inputCoordonee.IndexOf("°");
+                string hour = inputCoordonee.Substring(0, indexSepHour);
+                if (string.IsNullOrEmpty(hour) || !decimal.TryParse(hour, NumberStyles.Number, CultureInfo.InvariantCulture, out hourDec))
+                    return false;
+            }
+            else
+                return false;
+
+            // Validation Minutes
+            decimal minuteDec;
+            int indexSepMinute = 0;
+            if (inputCoordonee.IndexOf("'") != -1)
+            {
+                indexSepMinute = inputCoordonee.IndexOf("'");
+                string minute = inputCoordonee.Substring(indexSepHour + 1, indexSepMinute - (indexSepHour + 1));
+                if (string.IsNullOrEmpty(minute) || !decimal.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
+                    return false;
+            }
+            else
+                return false;
+
+            // Validation Secondes
+            decimal secondeDec;
+            int indexSepSeconde = 0;
+            if (inputCoordonee.IndexOf("\"") != -1)
+            {
+                indexSepSeconde = inputCoordonee.IndexOf("\"");
+                string seconde = inputCoordonee.Substring(indexSepMinute + 1, indexSepSeconde - (indexSepMinute + 1));
+                if (string.IsNullOrEmpty(seconde) || !decimal.TryParse(seconde, out secondeDec))
+                    return false;
+            }
+            else
+                return false;
+
+            // Données valides, on valorise l'objet coordonnee
+            decimal valCoordonnee = Math.Abs(hourDec) + (minuteDec / 60) + (secondeDec / 3600);
+            if (hourDec < 0)
                 valCoordonnee *= -1;
             coordonnee.UpdateCoordonnee(valCoordonnee);
 

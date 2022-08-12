@@ -46,5 +46,17 @@ namespace ApplicationTools.Properties {
                 this["PortStellarium"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string HostCartesDuCiel {
+            get {
+                return ((string)(this["HostCartesDuCiel"]));
+            }
+            set {
+                this["HostCartesDuCiel"] = value;
+            }
+        }
     }
 }

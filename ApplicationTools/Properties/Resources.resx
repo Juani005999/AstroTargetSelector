@@ -117,14 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="LeLogicielStellariumNAPasEteTrouve" xml:space="preserve">
-    <value>Le logiciel Stellarium n'a pas été trouvé.</value>
+  <data name="CartesDuCiel" xml:space="preserve">
+    <value>Cartes du Ciel</value>
+  </data>
+  <data name="FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium" xml:space="preserve">
+    <value>Fonctionnalité non disponible pour la version 0.22.X de Stellarium</value>
+  </data>
+  <data name="ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint" xml:space="preserve">
+    <value>Impossible de créer de nouvelle carte. Nombre max. atteint ?</value>
+  </data>
+  <data name="LeLogicielNAPasEteTrouve" xml:space="preserve">
+    <value>Le logiciel n'a pas été trouvé.</value>
+  </data>
+  <data name="LeLogicielNEstPasInstalleSurCePoste" xml:space="preserve">
+    <value>Le logiciel n'est pas installé sur ce poste.</value>
+  </data>
+  <data name="LeServeurNEstPasActive" xml:space="preserve">
+    <value>Le serveur n'est pas activé.</value>
+  </data>
+  <data name="ObjetCelesteNonTrouve" xml:space="preserve">
+    <value>Objet céleste non trouvé.</value>
   </data>
   <data name="Stellarium" xml:space="preserve">
     <value>Stellarium</value>
-  </data>
-  <data name="StellariumNEstPasInstalleSurCePoste" xml:space="preserve">
-    <value>Stellarium n'est pas installé sur ce poste.</value>
   </data>
   <data name="UneAutreActionEstActuellementEnCours" xml:space="preserve">
     <value>Une autre action est actuellement en cours.</value>
@@ -132,10 +147,13 @@
   <data name="UneErreurEstSurvenue" xml:space="preserve">
     <value>Une erreur est survenue</value>
   </data>
-  <data name="UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance" xml:space="preserve">
-    <value>Une erreur est survenue lors de l'envoi de la commande au plugin de commande à distance.</value>
+  <data name="UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande" xml:space="preserve">
+    <value>Une erreur est survenue lors de l'envoi de la commande.</value>
   </data>
   <data name="UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel" xml:space="preserve">
     <value>Une erreur est survenue lors de l'ouverture du logiciel.</value>
+  </data>
+  <data name="VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration" xml:space="preserve">
+    <value>Veuillez démarrer le logiciel au moins une fois afin de terminer sa configuration.</value>
   </data>
 </root>

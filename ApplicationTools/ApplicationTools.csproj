@@ -57,6 +57,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppToolFactory.cs" />
+    <Compile Include="Objets Techniques\AppCartesDuCiel.cs" />
+    <Compile Include="Objets Techniques\AppException.cs" />
+    <Compile Include="Objets Techniques\AppProgramme.cs" />
     <Compile Include="Objets Techniques\AppStellarium.cs" />
     <Compile Include="Objets Techniques\BwebConvert.cs" />
     <Compile Include="Objets Techniques\AppContext.cs" />

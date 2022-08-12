@@ -61,11 +61,65 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Le logiciel Stellarium n&apos;a pas été trouvé..
+        ///   Recherche une chaîne localisée semblable à Cartes du Ciel.
         /// </summary>
-        public static string LeLogicielStellariumNAPasEteTrouve {
+        public static string CartesDuCiel {
             get {
-                return ResourceManager.GetString("LeLogicielStellariumNAPasEteTrouve", resourceCulture);
+                return ResourceManager.GetString("CartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fonctionnalité non disponible pour la version 0.22.X de Stellarium.
+        /// </summary>
+        public static string FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium {
+            get {
+                return ResourceManager.GetString("FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Impossible de créer de nouvelle carte. Nombre max. atteint ?.
+        /// </summary>
+        public static string ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint {
+            get {
+                return ResourceManager.GetString("ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le logiciel n&apos;a pas été trouvé..
+        /// </summary>
+        public static string LeLogicielNAPasEteTrouve {
+            get {
+                return ResourceManager.GetString("LeLogicielNAPasEteTrouve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le logiciel n&apos;est pas installé sur ce poste..
+        /// </summary>
+        public static string LeLogicielNEstPasInstalleSurCePoste {
+            get {
+                return ResourceManager.GetString("LeLogicielNEstPasInstalleSurCePoste", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Le serveur n&apos;est pas activé..
+        /// </summary>
+        public static string LeServeurNEstPasActive {
+            get {
+                return ResourceManager.GetString("LeServeurNEstPasActive", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Objet céleste non trouvé..
+        /// </summary>
+        public static string ObjetCelesteNonTrouve {
+            get {
+                return ResourceManager.GetString("ObjetCelesteNonTrouve", resourceCulture);
             }
         }
         
@@ -75,15 +129,6 @@ namespace ApplicationTools.Properties {
         public static string Stellarium {
             get {
                 return ResourceManager.GetString("Stellarium", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une chaîne localisée semblable à Stellarium n&apos;est pas installé sur ce poste..
-        /// </summary>
-        public static string StellariumNEstPasInstalleSurCePoste {
-            get {
-                return ResourceManager.GetString("StellariumNEstPasInstalleSurCePoste", resourceCulture);
             }
         }
         
@@ -106,11 +151,11 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;envoi de la commande au plugin de commande à distance..
+        ///   Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;envoi de la commande..
         /// </summary>
-        public static string UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance {
+        public static string UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande {
             get {
-                return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance", resourceCulture);
+                return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande", resourceCulture);
             }
         }
         
@@ -120,6 +165,15 @@ namespace ApplicationTools.Properties {
         public static string UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel {
             get {
                 return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Veuillez démarrer le logiciel au moins une fois afin de terminer sa configuration..
+        /// </summary>
+        public static string VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration {
+            get {
+                return ResourceManager.GetString("VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration", resourceCulture);
             }
         }
     }

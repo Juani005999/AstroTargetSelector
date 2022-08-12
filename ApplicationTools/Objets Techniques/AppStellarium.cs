@@ -10,19 +10,9 @@ namespace ApplicationTools
     /// <summary>
     /// Objet de communication avec le logiciel Stellarium
     /// </summary>
-    public class AppStellarium
+    public class AppStellarium : AppProgramme
     {
         #region Constantes
-
-        /// <summary>
-        /// DisplayName de Stellarium dans la Registry
-        /// </summary>
-        private const string StellariumDisplayName = "Stellarium";
-
-        /// <summary>
-        /// TimeOut (en s) pour le démarage de l'application Stellarium
-        /// </summary>
-        private const int StellariumStartTimeout = 20;
 
         /// <summary>
         /// Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
@@ -39,37 +29,46 @@ namespace ApplicationTools
         #region Propriétés
 
         /// <summary>
-        /// Singleton permettant de savoir si le programme Stellarium est installé sur le poste
+        /// DisplayName du Logiciel dans la Registry
         /// </summary>
-        public bool IsStellariumInstalled
+        public override string DisplayName
         {
             get
             {
-                if (!isStellariumInstalled.HasValue)
-                {
-                    // Trace et Chrono
-                    factory.GetLog().Log($"Vérification de l'installation du logiciel Stellarium sur le poste", GetType().Name);
-                    Stopwatch debutFonction = new Stopwatch();
-                    debutFonction.Start();
-
-                    // Lecture dans la Registry
-                    isStellariumInstalled = factory.IsProgramInstalled(StellariumDisplayName, out stellariumFileName);
-
-                    // Trace
-                    factory.GetLog().Log($"La vérification de l'installation a retourné {isStellariumInstalled} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
-                }
-                return isStellariumInstalled.Value;
+                return "Stellarium";
             }
         }
 
         /// <summary>
-        /// Permet de savoir si le programme Stellarium est en cours d'exécution sur le poste
+        /// TimeOut (en s) pour le démarage de l'application
         /// </summary>
-        public bool IsStellariumRunning
+        public override int StartTimeout
         {
             get
             {
-                return Process.GetProcessesByName(StellariumDisplayName).Length > 0;
+                return 20;
+            }
+        }
+
+        /// <summary>
+        /// Nom de fichier du Logiciel sur le poste
+        /// </summary>
+        public override string FileName
+        {
+            get
+            {
+                return "stellarium.exe";
+            }
+        }
+
+        /// <summary>
+        /// Nom du Processus d'exécution
+        /// </summary>
+        public override string ProcessName
+        {
+            get
+            {
+                return "stellarium";
             }
         }
 
@@ -129,6 +128,7 @@ namespace ApplicationTools
         /// Constructeur par défaut
         /// </summary>
         internal AppStellarium(AppToolFactory factory)
+            : base(factory)
         {
             this.factory = factory;
         }
@@ -145,6 +145,9 @@ namespace ApplicationTools
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
         public void FocusTo(string nomTarget)
         {
+            if (string.IsNullOrEmpty(nomTarget))
+                return;
+
             // VERROU DE SURETE : pas d'action si une autre action est en cours
             // On est pas censé arriver dans ce cas car géré par le thread appelant
             if (isRunning)
@@ -157,33 +160,38 @@ namespace ApplicationTools
                 isRunning = true;
 
                 // Trace et Chrono
-                factory.GetLog().Log($"Lancement de la commande Stellarium FocusTo", GetType().Name);
+                factory.GetLog().Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
                 // On vérifie si Stellarium est bien installé sur le poste
-                if (!IsStellariumInstalled)
-                    throw new Exception(Resources.StellariumNEstPasInstalleSurCePoste);
+                if (!IsInstalled)
+                    throw new Exception(Resources.LeLogicielNEstPasInstalleSurCePoste);
                 // On vérifie s'il n'y a pas eu un souci à la lecture du fichier exécutable Stellarium
-                if (string.IsNullOrEmpty(stellariumFileName))
-                    throw new Exception(Resources.LeLogicielStellariumNAPasEteTrouve);
-                factory.GetLog().Log($"Stellarium est bien installé sur le poste : {stellariumFileName}", GetType().Name);
+                if (string.IsNullOrEmpty(ExecutableFile))
+                    throw new Exception(Resources.LeLogicielNAPasEteTrouve);
+                factory.GetLog().Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
+
+                // Fonctionnalité disable sur la version 0.22.X de Stellarium
+                if (string.IsNullOrEmpty(FileVersion) || FileVersion.StartsWith("0.22"))
+                    throw new Exception(Resources.FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium);
+                factory.GetLog().Log($"{DisplayName} est installé en version : {FileVersion}", GetType().Name);
 
                 // On Try/Catch ce traitement afin de remonter une Exception avec un mesage utilisateur formaté
                 try
                 {
                     // On vérifie si Stellarium est bien en cours d'exécution
-                    if (!IsStellariumRunning)
+                    if (!IsRunning)
                     {
                         // Trace
-                        factory.GetLog().Log($"Stellarium n'est pas cours d'exécution. On démarre l'application {stellariumFileName}", GetType().Name);
+                        factory.GetLog().Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
 
                         // On démarre le process
-                        Process processStellarium = Process.Start(stellariumFileName);
+                        Process processStellarium = Process.Start(ExecutableFile, "--full-screen=no");
 
                         // On attend que Stellarium soit démarré
                         int timeOut = 0;
-                        while (string.IsNullOrEmpty(processStellarium.MainWindowTitle) && timeOut++ < StellariumStartTimeout)
+                        while (string.IsNullOrEmpty(processStellarium.MainWindowTitle) && timeOut++ < StartTimeout)
                         {
                             factory.GetLog().Log($"IsStellariumRunning false", GetType().Name);
                             Thread.Sleep(1000);
@@ -193,10 +201,10 @@ namespace ApplicationTools
 
                         // On attend 7s de plus le temps que le Remote Control démarre
                         Thread.Sleep(StellariumSleepForRemmoteControlStart);
-                        factory.GetLog().Log($"Démarrage de Stellarium effectué", GetType().Name);
+                        factory.GetLog().Log($"Démarrage de {DisplayName} effectué", GetType().Name);
                     }
                     else
-                        factory.GetLog().Log($"Stellarium est déjà en cours d'exécution", GetType().Name);
+                        factory.GetLog().Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
                 }
                 catch (Exception err)
                 {
@@ -216,32 +224,32 @@ namespace ApplicationTools
                         string paramFocus = $"target={nomTarget}&zoom=center";
                         string responseFocus = Encoding.ASCII.GetString(request.UploadData(new Uri(urlFocus), "POST", Encoding.UTF8.GetBytes(paramFocus)));
                         factory.GetLog().Log($"Retour http place le Focus : {responseFocus}");
-                        //if (string.IsNullOrEmpty(responseFocus) || responseFocus != "true")
-                        //    // On remonte l'Exception formatée
-                        //    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance);
+                        // Si le retour est différent de "true", on trace un WARNING
+                        if (string.IsNullOrEmpty(responseFocus) || responseFocus != "true")
+                            factory.GetLog().Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, AppLog.TypeLog.Warning);
 
                         // On place le fov
                         string urlFov = $"http://{Host}:{Port}/api/main/fov";
                         string paramFov = $"fov={StellariumFovLevelAfterFocus}";
                         string responseFov = Encoding.ASCII.GetString(request.UploadData(new Uri(urlFov), "POST", Encoding.UTF8.GetBytes(paramFov)));
                         factory.GetLog().Log($"Retour http place le Fov : {responseFov}");
-                        //if (string.IsNullOrEmpty(responseFov) || responseFov != "ok")
-                        //    // On remonte l'Exception formatée
-                        //    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance);
+                        // Si le retour est différent de "ok", on trace un WARNING
+                        if (string.IsNullOrEmpty(responseFov) || responseFov != "ok")
+                            factory.GetLog().Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, AppLog.TypeLog.Warning);
                     }
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
                     factory.GetLog().LogException(err, GetType().Name);
-                    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommandeAuPluginDeCommandeADistance, err);
+                    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, err);
                 }
 
                 // Repositionnement du flag d'action en cours
                 isRunning = false;
 
                 // Trace
-                factory.GetLog().Log($"Commande Stellarium FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
+                factory.GetLog().Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
             }
             catch (Exception ex)
             {
@@ -261,16 +269,6 @@ namespace ApplicationTools
         /// Instance de la ToolFactory en cours
         /// </summary>
         private readonly AppToolFactory factory = null;
-
-        /// <summary>
-        /// Singleton permettant de savoir si le programme Stellarium est installé sur le poste
-        /// </summary>
-        private bool? isStellariumInstalled = null;
-
-        /// <summary>
-        /// Nom de fichier de Stellarium sur le poste
-        /// </summary>
-        private string stellariumFileName = string.Empty;
 
         /// <summary>
         /// Flag permettant de savoir si une action est en cours

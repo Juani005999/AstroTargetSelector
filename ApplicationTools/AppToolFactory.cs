@@ -70,6 +70,21 @@ namespace ApplicationTools
         }
 
         /// <summary>
+        /// Retourne l'objet <see cref="AppCartesDuCiel"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet AppContext</returns>
+        public AppCartesDuCiel GetAppCartesDuCiel()
+        {
+            // Création et initialisation de l'objet AppStellarium s'il n'existe pas
+            if (appCartesDuCiel == null)
+            {
+                appCartesDuCiel = new AppCartesDuCiel(this);
+            }
+            return appCartesDuCiel;
+        }
+
+        /// <summary>
         /// Retourne un nouvel objet de type <see cref="Coordinates"/>
         /// </summary>
         /// <param name="latitude"></param>
@@ -93,18 +108,6 @@ namespace ApplicationTools
             return new Coordinate(value, type);
         }
 
-        /// <summary>
-        /// Permet de savoir si un programme est installé sur le poste local
-        /// </summary>
-        /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="stellariumFileName"></param>
-        /// <returns></returns>
-        public bool IsProgramInstalled(string programDisplayName, out string stellariumFileName)
-        {
-            // Création d'un nouvel objet de type Coordinates
-            return RegistryUtils.IsProgramInstalled(programDisplayName, out stellariumFileName, this);
-        }
-
         #endregion
 
         #region Champs
@@ -123,6 +126,11 @@ namespace ApplicationTools
         /// Objet <see cref="AppStellarium"/>
         /// </summary>
         private AppStellarium appStellarium = null;
+
+        /// <summary>
+        /// Objet <see cref="AppCartesDuCiel"/>
+        /// </summary>
+        private AppCartesDuCiel appCartesDuCiel = null;
 
         #endregion
     }

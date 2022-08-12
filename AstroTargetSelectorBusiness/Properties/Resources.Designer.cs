@@ -61,11 +61,20 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Actualisation de la liste des objets céleste et recalcul des Scoring, Rank et Positions ....
+        ///   Recherche une chaîne localisée semblable à Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ....
         /// </summary>
         public static string ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions {
             get {
                 return ResourceManager.GetString("ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Stellarium..
+        /// </summary>
+        public static string AfficherLObjetCelesteDansStellarium {
+            get {
+                return ResourceManager.GetString("AfficherLObjetCelesteDansStellarium", resourceCulture);
             }
         }
         
@@ -187,16 +196,16 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à envoi de la commande au plugin de contrôle à distance....
+        ///   Recherche une chaîne localisée semblable à Envoi de la commande....
         /// </summary>
-        public static string EnvoiDeLaCommandeAuPluginDeControleADistance {
+        public static string EnvoiDeLaCommande {
             get {
-                return ResourceManager.GetString("EnvoiDeLaCommandeAuPluginDeControleADistance", resourceCulture);
+                return ResourceManager.GetString("EnvoiDeLaCommande", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect..
+        ///   Recherche une chaîne localisée semblable à Format des champs pour le plugin Stellarium incorrect.
         /// </summary>
         public static string FormatDesChampsPourLePluginStellariumIncorrect {
             get {
@@ -228,6 +237,15 @@ namespace AstroTargetSelectorResources {
         public static string FormatDuChampHauteurMinIncorrect {
             get {
                 return ResourceManager.GetString("FormatDuChampHauteurMinIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ Serveur pour Cartes du Ciel incorrect.
+        /// </summary>
+        public static string FormatDuChampServeurPourCartesDuCielIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampServeurPourCartesDuCielIncorrect", resourceCulture);
             }
         }
         
@@ -313,6 +331,16 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Les intervalles qui apparaissent en gris signifient que l&apos;objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum..
+        /// </summary>
+        public static string LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum {
+            get {
+                return ResourceManager.GetString("LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDe" +
+                        "VotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Lieu.
         /// </summary>
         public static string Lieu {
@@ -377,12 +405,31 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pour exécuter Cartes du Ciel directement sur cet ordinateur, laissez la valeur par défaut &apos;127.0.0.1&apos;..
+        /// </summary>
+        public static string PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001 {
+            get {
+                return ResourceManager.GetString("PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001" +
+                        "", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Pour exécuter Stellarium directement sur cet ordinateur, laissez la valeur par défaut &apos;localhost&apos;..
         /// </summary>
         public static string PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost {
             get {
                 return ResourceManager.GetString("PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhos" +
                         "t", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Pour vous connecter à Cartes du Ciel sur un serveur, spécifiez ici l&apos;adresse IP du serveur..
+        /// </summary>
+        public static string PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur {
+            get {
+                return ResourceManager.GetString("PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur", resourceCulture);
             }
         }
         

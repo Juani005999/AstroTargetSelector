@@ -58,6 +58,7 @@ namespace AstroTargetSelector
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);
+                DialogResult = DialogResult.Cancel;
                 Close();
             }
         }
@@ -92,9 +93,10 @@ namespace AstroTargetSelector
             // Divers
             textBoxBougeMax.Text = string.Empty;
             textBoxHauteurMin.Text = String.Empty;
-            // Stellarium
+            // Stellarium & Cartes du Ciel
             textBoxHostStellarium.Text = string.Empty;
             textBoxPortStellarium.Text = String.Empty;
+            textBoxHostCartesDuCiel.Text = string.Empty;
 
             InitCombos();
         }
@@ -165,7 +167,9 @@ namespace AstroTargetSelector
             textBoxHauteurMin.Text = factory.GetAppInputs().Inputs.HauteurMin.ToString(CultureInfo.InvariantCulture);
 
             // Stellarium
-            groupBoxStellarium.Enabled = factory.GetAppStellarium().IsStellariumInstalled;
+            groupBoxStellarium.Enabled = factory.GetAppStellarium().IsInstalled || factory.GetAppCartesDuCiel().IsInstalled;
+            textBoxHostStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
+            textBoxPortStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
             textBoxHostStellarium.Text = factory.GetAppStellarium().Host;
             textBoxPortStellarium.Text = factory.GetAppStellarium().Port;
             toolTipInfoStellarium.SetToolTip(pictureBoxIconInfoStellarium, 
@@ -174,6 +178,14 @@ namespace AstroTargetSelector
                     + Resources.PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost
                     + Environment.NewLine
                     + Resources.LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090);
+
+            // Cartes du Ciel
+            textBoxHostCartesDuCiel.Enabled = factory.GetAppCartesDuCiel().IsInstalled;
+            textBoxHostCartesDuCiel.Text = factory.GetAppCartesDuCiel().Host;
+            toolTipInfoCartesDuCiel.SetToolTip(pictureBoxIconInfoCartesDuCiel,
+                    Resources.PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur
+                    + Environment.NewLine
+                    + Resources.PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001);
         }
 
         /// <summary>
@@ -188,22 +200,45 @@ namespace AstroTargetSelector
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
-                // On vérifie la validité du Lieu d'observation
+                // On vérifie d'abord la validité de tous les champs
+                // Lieu d'observation
                 Coordinates nouveauLieu = factory.GetCoordinates(0, 0);
                 if (!Coordinates.TryParse(textBoxLongitudeDegre.Text, textBoxLongitudeMinute.Text, textBoxLongitudeSeconde.Text, comboBoxLongitudeDirection.Text,
                                         textBoxLatitudeDegre.Text, textBoxLatitudeMinute.Text, textBoxLatitudeSeconde.Text, comboBoxLatitudeDirection.Text,
                                         ref nouveauLieu, factory))
-                    throw new Exception(Resources.FormatDuLieuDObservationIncorrect);
-                // Mise à jour des Settings applicatifs
-                factory.GetAppInputs().Inputs.LieuObservation = nouveauLieu;
-
+                    throw new WarningException(Resources.FormatDuLieuDObservationIncorrect);
                 // Capteur
                 ObjCapteur capteur;
                 if (!ObjCapteur.TryParse(comboBoxCapteur.Text, textBoxCapteurLargeur.Text, out capteur, factory))
-                    throw new Exception(Resources.FormatDuCapteurIncorrect);
-                // Mise à jour des Settings applicatifs
-                factory.GetAppInputs().Inputs.Capteur = capteur;
+                    throw new WarningException(Resources.FormatDuCapteurIncorrect);
+                // Bougé max.
+                decimal bougeMax;
+                if (!decimal.TryParse(textBoxBougeMax.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out bougeMax)
+                    || bougeMax <= 0
+                    || bougeMax > 5)
+                    throw new WarningException(Resources.FormatDuChampBougeMaxIncorrect);
+                // Hauteur min.
+                decimal hauteurMin;
+                if (!decimal.TryParse(textBoxHauteurMin.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out hauteurMin)
+                    || hauteurMin <= 0
+                    || hauteurMin > 80)
+                    throw new WarningException(Resources.FormatDuChampHauteurMinIncorrect);
+                // Stellarium.
+                if (string.IsNullOrEmpty(textBoxHostStellarium.Text) || string.IsNullOrEmpty(textBoxPortStellarium.Text))
+                    throw new WarningException(Resources.FormatDesChampsPourLePluginStellariumIncorrect);
+                // Cartes du Ciel.
+                if (string.IsNullOrEmpty(textBoxHostCartesDuCiel.Text))
+                    throw new WarningException(Resources.FormatDuChampServeurPourCartesDuCielIncorrect);
 
+
+                // Si tous les champs valide, mise à jour des Settings applicatifs
+                factory.GetAppInputs().Inputs.LieuObservation = nouveauLieu;
+                factory.GetAppInputs().Inputs.Capteur = capteur;
+                factory.GetAppInputs().Inputs.BougeMax = bougeMax;
+                factory.GetAppInputs().Inputs.HauteurMin = hauteurMin;
+                factory.GetAppStellarium().Host = textBoxHostStellarium.Text;
+                factory.GetAppStellarium().Port = textBoxPortStellarium.Text;
+                factory.GetAppCartesDuCiel().Host = textBoxHostCartesDuCiel.Text;
                 // Zones Exclues
                 List<CoordinatesDirection> zones = new List<CoordinatesDirection>();
                 if (ckN.Checked)
@@ -222,32 +257,7 @@ namespace AstroTargetSelector
                     zones.Add(CoordinatesDirection.O);
                 if (ckNO.Checked)
                     zones.Add(CoordinatesDirection.NO);
-                // Mise à jour des Settings applicatifs
                 factory.GetAppInputs().Inputs.ZonesExclues = zones;
-
-                // Bougé max. : On vérifie le format et la plage de validité
-                decimal bougeMax;
-                if (decimal.TryParse(textBoxBougeMax.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out bougeMax)
-                    && bougeMax > 0
-                    && bougeMax < 5)
-                    factory.GetAppInputs().Inputs.BougeMax = bougeMax;
-                else
-                    throw new Exception(Resources.FormatDuChampBougeMaxIncorrect);
-
-                // Hauteur min. : On vérifie le format et la plage de validité
-                decimal hauteurMin;
-                if (decimal.TryParse(textBoxHauteurMin.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out hauteurMin)
-                    && hauteurMin > 0
-                    && hauteurMin < 80)
-                    factory.GetAppInputs().Inputs.HauteurMin = hauteurMin;
-                else
-                    throw new Exception(Resources.FormatDuChampHauteurMinIncorrect);
-
-                // Stellarium. : On vérifie si les champs ne sont pas vide
-                if (string.IsNullOrEmpty(textBoxHostStellarium.Text) || string.IsNullOrEmpty(textBoxPortStellarium.Text))
-                    throw new Exception(Resources.FormatDesChampsPourLePluginStellariumIncorrect);
-                factory.GetAppStellarium().Host = textBoxHostStellarium.Text;
-                factory.GetAppStellarium().Port = textBoxPortStellarium.Text;
 
                 // Trace
                 factory.GetLog().Log($"Enregistrement des Settings effectué avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -256,10 +266,19 @@ namespace AstroTargetSelector
                 DialogResult = DialogResult.OK;
                 Close();
             }
+            catch (WarningException err)
+            {
+                // Trace de l'erreur et information Warning à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Warning);
+                MessageBox.Show(err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Warning);
+            }
             catch (Exception err)
             {
                 // Trace de l'erreur et information à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name);
+                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Fatal);
                 MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
@@ -272,14 +291,27 @@ namespace AstroTargetSelector
         /// </summary>
         private void UpdateLargeur()
         {
-            // On recherche dans la liste des capteur
-            if (!string.IsNullOrEmpty(comboBoxCapteur.Text))
+            try
             {
-                ObjCapteur objEnCours = factory.GetAppCapteur().ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
-                if (objEnCours != null)
+                // Trace
+                factory.GetLog().Log($"Update de la largeur sur nouveau Capteur", GetType().Name);
+
+                // On recherche dans la liste des capteur
+                if (!string.IsNullOrEmpty(comboBoxCapteur.Text))
                 {
-                    textBoxCapteurLargeur.Text = objEnCours.Largeur.ToString(CultureInfo.InvariantCulture);
+                    ObjCapteur objEnCours = factory.GetAppCapteur().ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
+                    if (objEnCours != null)
+                    {
+                        textBoxCapteurLargeur.Text = objEnCours.Largeur.ToString(CultureInfo.InvariantCulture);
+                        // Trace
+                        factory.GetLog().Log($"Update de la largeur [{textBoxCapteurLargeur.Text}] du Capteur {objEnCours.Nom}", GetType().Name);
+                    }
                 }
+            }
+            catch(Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Fatal);
             }
         }
 
