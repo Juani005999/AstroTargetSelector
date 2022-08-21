@@ -42,6 +42,13 @@ namespace AstroTargetSelector
         {
             get
             {
+                // Valeur par défaut
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SortColumn))
+                {
+                    Properties.Settings.Default.SortColumn = "0";
+                    Properties.Settings.Default.Save();
+                    factory.GetLog().Log($"SortColumn non présent dans les Settings. Positionnement de 0 par défaut", GetType().Name);
+                }
                 return Properties.Settings.Default.SortColumn;
             }
             set
@@ -60,6 +67,13 @@ namespace AstroTargetSelector
         {
             get
             {
+                // Valeur par défaut
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SortOrder))
+                {
+                    Properties.Settings.Default.SortOrder = "Descending";
+                    Properties.Settings.Default.Save();
+                    factory.GetLog().Log($"SortOrder non présent dans les Settings. Positionnement de Descending par défaut", GetType().Name);
+                }
                 return Properties.Settings.Default.SortOrder;
             }
             set
@@ -1039,7 +1053,7 @@ namespace AstroTargetSelector
                 using (WebClient request = new WebClient())
                 {
                     // Trace
-                    factory.GetLog().Log($"Téléchargement du fichier {ftpNewVersionFullPathFile}", GetType().Name);
+                    factory.GetLog().Log($"Téléchargement du fichier {newVersionFileName}", GetType().Name);
 
                     // Téléchargement du fichier
                     request.Credentials = new NetworkCredential(dlgUpdate.ftpCredentialLogin, dlgUpdate.ftpCredentialPwd);

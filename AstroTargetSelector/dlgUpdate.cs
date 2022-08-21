@@ -36,6 +36,10 @@ namespace AstroTargetSelector
         /// </summary>
         public const string ftpDirectory = "htdocs/AstroTargetSelector_config";
 
+        #endregion
+
+        #region Proproétés
+
         /// <summary>
         /// Url complète du fichier remote de configuration des objets célestes / Capteurs
         /// </summary>
@@ -259,7 +263,7 @@ namespace AstroTargetSelector
                 using (WebClient request = new WebClient())
                 {
                     // Trace
-                    factory.GetLog().Log($"Téléchargement du fichier {ftpFullPathFile}", GetType().Name);
+                    factory.GetLog().Log($"Téléchargement du fichier {localFileName}", GetType().Name);
 
                     // Téléchargement du fichier
                     request.Credentials = new NetworkCredential(ftpCredentialLogin, ftpCredentialPwd);

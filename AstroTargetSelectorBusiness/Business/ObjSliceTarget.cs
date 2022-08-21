@@ -230,7 +230,8 @@ namespace AstroTargetSelectorBusiness
             {
                 return $"{DateHeure.ToString("HH")}h{DateHeure.ToString("mm")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
-                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °";
+                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} °";
             }
         }
 
