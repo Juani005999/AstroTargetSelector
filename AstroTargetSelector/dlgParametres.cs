@@ -212,14 +212,14 @@ namespace AstroTargetSelector
                 if (!ObjCapteur.TryParse(comboBoxCapteur.Text, textBoxCapteurLargeur.Text, out capteur, factory))
                     throw new WarningException(Resources.FormatDuCapteurIncorrect);
                 // Bougé max.
-                decimal bougeMax;
-                if (!decimal.TryParse(textBoxBougeMax.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out bougeMax)
+                double bougeMax;
+                if (!double.TryParse(textBoxBougeMax.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out bougeMax)
                     || bougeMax <= 0
                     || bougeMax > 5)
                     throw new WarningException(Resources.FormatDuChampBougeMaxIncorrect);
                 // Hauteur min.
-                decimal hauteurMin;
-                if (!decimal.TryParse(textBoxHauteurMin.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out hauteurMin)
+                double hauteurMin;
+                if (!double.TryParse(textBoxHauteurMin.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out hauteurMin)
                     || hauteurMin <= 0
                     || hauteurMin > 80)
                     throw new WarningException(Resources.FormatDuChampHauteurMinIncorrect);

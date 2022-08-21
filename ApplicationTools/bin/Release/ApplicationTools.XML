@@ -42,7 +42,7 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
-        <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Decimal,System.Decimal)">
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Double,System.Double)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
             </summary>
@@ -50,7 +50,7 @@
             <param name="longitude"></param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Decimal,ApplicationTools.CoordinatesType)">
+        <member name="M:ApplicationTools.AppToolFactory.GetCoordinate(System.Double,ApplicationTools.CoordinatesType)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
             </summary>
@@ -1043,14 +1043,14 @@
             Renvoi la direction pour les données de type Longitude ou Latitude
             </summary>
         </member>
-        <member name="M:ApplicationTools.Coordinate.#ctor(System.Decimal,ApplicationTools.CoordinatesType)">
+        <member name="M:ApplicationTools.Coordinate.#ctor(System.Double,ApplicationTools.CoordinatesType)">
             <summary>
             Constructeur par défaut
             </summary>
             <param name="coordonnee"></param>
             <param name="coordinatesType"></param>
         </member>
-        <member name="M:ApplicationTools.Coordinate.UpdateCoordonnee(System.Decimal)">
+        <member name="M:ApplicationTools.Coordinate.UpdateCoordonnee(System.Double)">
             <summary>
             Permet de positionner une nouvelle coordonnée pour l'objet en cours
             </summary>
@@ -1132,14 +1132,14 @@
             <para>Si le membre interne est nul, on renvoi un nouvel objet avec pour valeur 0</para>
             </summary>
         </member>
-        <member name="M:ApplicationTools.Coordinates.#ctor(System.Decimal,System.Decimal)">
+        <member name="M:ApplicationTools.Coordinates.#ctor(System.Double,System.Double)">
             <summary>
             Constructeur par défaut
             </summary>
             <param name="latitude"></param>
             <param name="longitude"></param>
         </member>
-        <member name="M:ApplicationTools.Coordinates.UpdateCoordonnees(System.Decimal,System.Decimal)">
+        <member name="M:ApplicationTools.Coordinates.UpdateCoordonnees(System.Double,System.Double)">
             <summary>
             Permet de positionner de nouvelles coordonnées (Longitude/Latitude) pour l'objet en cours
             </summary>

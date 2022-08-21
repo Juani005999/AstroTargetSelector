@@ -134,6 +134,24 @@ namespace AstroTargetSelectorBusiness
             return listeFiltreMagnitude;
         }
 
+        /// <summary>
+        /// Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        public List<ObjInputs.ModeVisualisation> GetListeModeVisualisation()
+        {
+            // Si la liste n'existe pas, on la créer
+            if (listeModeVisualisation == null)
+            {
+                listeModeVisualisation = new List<ObjInputs.ModeVisualisation>();
+                listeModeVisualisation.Add(ObjInputs.ModeVisualisation.Horaire);
+                listeModeVisualisation.Add(ObjInputs.ModeVisualisation.Nuits);
+                listeModeVisualisation.Add(ObjInputs.ModeVisualisation.Mensuel);
+                listeModeVisualisation.Add(ObjInputs.ModeVisualisation.Annuel);
+            }
+            return listeModeVisualisation;
+        }
+
         #endregion
 
         #region Champs
@@ -172,6 +190,11 @@ namespace AstroTargetSelectorBusiness
         /// Liste des Filtres de Magnitude pour l'affichage dans la liste
         /// </summary>
         private Dictionary<string, string> listeFiltreMagnitude = null;
+
+        /// <summary>
+        /// Liste des Filtres de Modes de Visualisation pour l'affichage dans la liste
+        /// </summary>
+        private List<ObjInputs.ModeVisualisation> listeModeVisualisation = null;
 
         #endregion
     }

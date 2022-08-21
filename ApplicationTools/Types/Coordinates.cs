@@ -24,7 +24,7 @@ namespace ApplicationTools
         /// <summary>
         /// Renvoi la Latitude sous la forme d'un decimal
         /// </summary>
-        public decimal LatitudeValue
+        public double LatitudeValue
         {
             get
             {
@@ -46,7 +46,7 @@ namespace ApplicationTools
         /// <summary>
         /// Renvoi la Longitude sous la forme d'un decimal
         /// </summary>
-        public decimal LongitudeValue
+        public double LongitudeValue
         {
             get
             {
@@ -99,7 +99,7 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
-        internal Coordinates(decimal latitude, decimal longitude)
+        internal Coordinates(double latitude, double longitude)
         {
             // Valorisation des champs interne
             this.latitude = latitude;
@@ -117,7 +117,7 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
-        public void UpdateCoordonnees(decimal latitude, decimal longitude)
+        public void UpdateCoordonnees(double latitude, double longitude)
         {
             this.latitude = latitude;
             this.longitude = longitude;
@@ -180,12 +180,12 @@ namespace ApplicationTools
         /// <summary>
         /// Longitude du Lieu
         /// </summary>
-        private decimal longitude = 0;
+        private double longitude = 0;
 
         /// <summary>
         /// Latitude du Lieu
         /// </summary>
-        private decimal latitude = 0;
+        private double latitude = 0;
 
         /// <summary>
         /// Objet Longitude du Lieu <see cref="Coordinate"/>

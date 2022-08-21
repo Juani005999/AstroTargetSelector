@@ -218,13 +218,14 @@ namespace ApplicationTools
                             // Chrono spécifique pour requête
                             Stopwatch debutRequete = new Stopwatch();
                             debutRequete.Start();
-                            
+
+                            stream.ReadTimeout = 1000;
                             // Création carte.
                             factory.GetLog().Log($"Lancement requête : newchart {nomTarget.Replace(" ", "")}", GetType().Name);
                             Byte[] data = Encoding.ASCII.GetBytes($"newchart {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             string responseData = String.Empty;
                             int bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -240,7 +241,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"selectchart {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -256,7 +257,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"setdate {dateObs}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -269,7 +270,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"redraw\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -284,7 +285,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"search {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -299,7 +300,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"setfov 3\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
@@ -312,7 +313,7 @@ namespace ApplicationTools
                             data = Encoding.ASCII.GetBytes($"redraw\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
-                            data = new Byte[256];
+                            data = new Byte[2048];
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);

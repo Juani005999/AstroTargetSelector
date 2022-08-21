@@ -130,5 +130,17 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["HauteurMin"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string Visualisation {
+            get {
+                return ((string)(this["Visualisation"]));
+            }
+            set {
+                this["Visualisation"] = value;
+            }
+        }
     }
 }

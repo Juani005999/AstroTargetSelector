@@ -1,0 +1,97 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using AstroTargetSelectorResources;
+
+namespace AstroTargetSelectorBusiness
+{
+    /// <summary>
+    /// Objet représentant un intervalle mois regroupant 1 intervalle de temps de calcul pour un objet céleste (00h) par nuit
+    /// </summary>
+    public class ObjMonthlySliceTarget : ObjGroupSliceTarget, IChartSlice
+    {
+        #region Propriétés
+
+        /// <summary>
+        /// ToolTip du Slice à afficher dans le graphique
+        /// </summary>
+        public string ToolTip
+        {
+            get
+            {
+                return $"{DateHeure.ToString(CultureInfo.CurrentUICulture.DateTimeFormat.YearMonthPattern)}"
+                    + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
+                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °";
+            }
+        }
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// </summary>
+        public override List<IChartSlice> Slices
+        {
+            get
+            {
+                // On recharge les slices uniquement si nécessaire
+                if (slices.Count == 0)
+                {
+                    DateTime dateDebut = new DateTime(DateHeure.Year,
+                                                       DateHeure.Month,
+                                                       DateHeure.Day);
+
+                    // Clear de la liste des Slices
+                    slices.Clear();
+
+                    // On ajoute le slice du jour 1
+                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    {
+                        DateHeure = dateDebut
+                    });
+
+                    // On ajoute le slice du jour 10
+                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    {
+                        DateHeure = dateDebut.AddDays(10)
+                    });
+
+                    // On ajoute le slice du jour 20
+                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    {
+                        DateHeure = dateDebut.AddDays(20)
+                    });
+                }
+                return slices;
+            }
+        }
+
+        #endregion
+
+        #region Constructeur
+
+        /// <summary>
+        /// Constructeur par défaut
+        /// </summary>
+        internal ObjMonthlySliceTarget(AppObjFactory factory, ObjTarget parentTarget)
+            : base (factory, parentTarget)
+        {
+            this.factory = factory;
+            this.parentTarget = parentTarget;
+        }
+
+        #endregion
+
+        #region Champs
+
+        /// <summary>
+        /// Instance de la fabrique d'objet métier
+        /// </summary>
+        private readonly AppObjFactory factory = null;
+
+        /// <summary>
+        /// Objet céleste parent de l'objet Slice
+        /// </summary>
+        private readonly ObjTarget parentTarget = null;
+
+        #endregion
+    }
+}

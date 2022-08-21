@@ -57,11 +57,11 @@ namespace AstroTargetSelectorBusiness
 
                 // Filtre sur Rank
                 if (!string.IsNullOrEmpty(FiltreRank) && FiltreRank != Resources.Tous)
-                    listeObjTarget = listeObjTarget.Where(t => t.Rank >= Convert.ToDecimal(FiltreRank)).ToList();
+                    listeObjTarget = listeObjTarget.Where(t => t.Rank >= Convert.ToDouble(FiltreRank)).ToList();
 
                 // Filtre sur Magnitude
                 if (!string.IsNullOrEmpty(FiltreMagnitude) && FiltreMagnitude != Resources.Tous)
-                    listeObjTarget = listeObjTarget.Where(t => t.Magnitude <= Convert.ToDecimal(FiltreMagnitude)).ToList();
+                    listeObjTarget = listeObjTarget.Where(t => t.Magnitude <= Convert.ToDouble(FiltreMagnitude)).ToList();
 
                 // Retour
                 return listeObjTarget;

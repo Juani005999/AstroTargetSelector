@@ -401,6 +401,11 @@
             Permet l'initialisation de la Combo comboBoxFiltreMagnitude
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.InitialisationComboModeVisualisation">
+            <summary>
+            Permet l'initialisation de la Combo comboBoxVisualisation
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.InitialisationListeTarget">
             <summary>
             Permet l'initialisation de la liste des Targets

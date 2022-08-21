@@ -70,6 +70,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Cartes du Ciel.
+        /// </summary>
+        public static string AfficherLObjetCelesteDansCartesDuCiel {
+            get {
+                return ResourceManager.GetString("AfficherLObjetCelesteDansCartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Stellarium..
         /// </summary>
         public static string AfficherLObjetCelesteDansStellarium {
@@ -484,6 +493,15 @@ namespace AstroTargetSelectorResources {
         public static string TempsDePose {
             get {
                 return ResourceManager.GetString("TempsDePose", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Temps de pose max..
+        /// </summary>
+        public static string TempsDePoseMax {
+            get {
+                return ResourceManager.GetString("TempsDePoseMax", resourceCulture);
             }
         }
         

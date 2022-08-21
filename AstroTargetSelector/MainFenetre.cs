@@ -10,6 +10,7 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using System.Globalization;
 
 namespace AstroTargetSelector
 {
@@ -264,12 +265,13 @@ namespace AstroTargetSelector
                 toolTipInfoActualisation.SetToolTip(buttonStartCalcul, Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions + " (F5)");
                 toolTipInfoTarget.SetToolTip(pictureBoxInfoTarget, Resources.LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum);
                 toolTipStellarium.SetToolTip(buttonStellarium, Resources.AfficherLObjetCelesteDansStellarium);
-                toolTipCartesDuCiel.SetToolTip(buttonCartesDuCiel, $"Afficher l'objet céleste dans Cartes du Ciel");
+                toolTipCartesDuCiel.SetToolTip(buttonCartesDuCiel, Resources.AfficherLObjetCelesteDansCartesDuCiel);
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
 
                 // Initialisation des Combos et CheckBox
+                InitialisationComboModeVisualisation();
                 InitialisationComboMinuteIntervalle();
                 InitialisationComboTotalTimeSlice();
                 InitialisationComboFiltreRank();
@@ -397,6 +399,30 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
+        /// Permet l'initialisation de la Combo comboBoxVisualisation
+        /// </summary>
+        private void InitialisationComboModeVisualisation()
+        {
+            // Trace
+            factory.GetLog().Log("Chargement de la comboBoxVisualisation", GetType().Name);
+
+            // CLear de la liste
+            comboBoxVisualisation.Items.Clear();
+
+            // Rechargement depuis la liste chargée
+            foreach (ObjInputs.ModeVisualisation modeEnCours in factory.GetListeModeVisualisation())
+            {
+                comboBoxVisualisation.Items.Add(modeEnCours.ToString());
+            }
+
+            // Positionnement du Settings
+            comboBoxVisualisation.SelectedItem = factory.GetAppInputs().Inputs.Visualisation.ToString();
+
+            // Trace
+            factory.GetLog().Log($"Chargement de {comboBoxVisualisation.Items.Count} Mode de Visualisation et sélection de l'élément : {comboBoxVisualisation.SelectedItem}", GetType().Name);
+        }
+
+        /// <summary>
         /// Permet l'initialisation de la liste des Targets
         /// </summary>
         private void InitialisationListeTarget()
@@ -480,6 +506,7 @@ namespace AstroTargetSelector
 
                 // Clear de la liste et parcours de la liste des Targets pour ajout
                 listViewTarget.Items.Clear();
+                ListViewItem itemSelected = null;
 
                 foreach (ObjTarget target in factory.GetAppTarget().ListeObjTarget)
                 {
@@ -500,12 +527,17 @@ namespace AstroTargetSelector
                     // Image en fonction du Statut
                     item.ImageKey = target.Rank.ToString();
                     if (!string.IsNullOrEmpty(selectedTarget) && selectedTarget == target.Nom)
+                    {
                         item.Selected = true;
+                        itemSelected = item;
+                    }
                 }
 
-                // AutoFit des colonnes
+                // AutoFit des colonnes et affichage de l'élément sélectionné
                 listViewTarget.AutoResizeColumns(ColumnHeaderAutoResizeStyle.HeaderSize);
                 listViewTarget.FullRowSelect = true;
+                if (itemSelected != null)
+                    itemSelected.EnsureVisible();
 
                 // Trace
                 factory.GetLog().Log($"Chargement de la liste des {listViewTarget.Items.Count} targets effectué en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -665,30 +697,31 @@ namespace AstroTargetSelector
                         // Graphique
                         chartSliceListe.Series.Clear();
 
+                        // On récupère la série de Slices en cours en fonction du mode de visualisation
+                        List<IChartSlice> listeSerie = target.GetCurrentChartSlice(factory.GetAppInputs().Inputs.Visualisation);
+
                         // Série Slices - TempsPoseCalcule
                         chartSliceListe.Series.Add(target.Nom);
                         chartSliceListe.Series[target.Nom].ChartType = SeriesChartType.Column;
                         chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
                         chartSliceListe.Series[target.Nom].CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
                         chartSliceListe.Series[target.Nom].IsVisibleInLegend = false;
-                        foreach (ObjSliceTarget slice in target.Slices)
+                        foreach (IChartSlice slice in listeSerie)
                         {
                             // On positionne une police spécifique pour les Labels des Points
-                            Font font = new System.Drawing.Font("Tahoma", 8, FontStyle.Bold);
-                            // On stocke la valeur du TempsPoseCalcule afin de n'effectuer le calcul qu'une seule fois
-                            double tempsPoseCalcule = Convert.ToDouble(slice.TempsPoseCalcule);
+                            Font font = new Font("Tahoma", 8, FontStyle.Bold);
                             // On ajoute le point à la série
                             chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
                             {
                                 XValue = slice.DateHeure.ToOADate(),
-                                YValues = new double[] { tempsPoseCalcule },
+                                YValues = new double[] { slice.TempsPoseCalcule },
                                 Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
                                 BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
                                 IsValueShownAsLabel = true,
                                 LabelFormat = "0s",
                                 Font = font,
-                                ToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s",
-                                LabelToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s"
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
                             });
                         }
 
@@ -701,33 +734,55 @@ namespace AstroTargetSelector
                             serieHauteur.BorderWidth = 2;
                             //serieHauteur.CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
                             serieHauteur.IsVisibleInLegend = false;
-                            foreach (ObjSliceTarget slice in target.Slices)
+                            foreach (IChartSlice slice in listeSerie)
                             {
                                 // On positionne une police spécifique pour les Labels des Points
                                 Font font = new System.Drawing.Font("Tahoma", 8, FontStyle.Italic);
-                                // On stocke la valeur du TempsPoseCalcule afin de n'effectuer le calcul qu'une seule fois
-                                double hauteur = Convert.ToDouble(slice.Hauteur.Coordonnee);
                                 // On ajoute le point à la série
                                 serieHauteur.Points.Add(new DataPoint()
                                 {
                                     XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { hauteur },
+                                    YValues = new double[] { slice.Hauteur.Coordonnee },
                                     Color = slice.CouleurHauteur,
                                     IsValueShownAsLabel = true,
                                     LabelFormat = "0°",
-                                    Font = font
-                                    //Font = font,
-                                    //ToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s",
-                                    //LabelToolTip = $"{slice.DateHeure.ToString("HH")}h{slice.DateHeure.ToString("mm")} : {Math.Floor(tempsPoseCalcule)} s"
+                                    Font = font,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
                                 });
                             }
                             serieHauteur.YAxisType = AxisType.Secondary;
                         }
 
                         // ChartArea
-                        chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
-                        chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
-                        chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                        switch (factory.GetAppInputs().Inputs.Visualisation)
+                        {
+                            case ObjInputs.ModeVisualisation.Annuel:
+                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+                                chartSliceListe.ChartAreas[0].AxisX.Interval = 2;
+                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.YearMonthPattern;
+                                break;
+
+                            case ObjInputs.ModeVisualisation.Mensuel:
+                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+                                chartSliceListe.ChartAreas[0].AxisX.Interval = 5;
+                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+                                //chartSliceListe.ChartAreas[0].AxisX.LabelAutoFitStyle = 0;
+                                break;
+
+                            case ObjInputs.ModeVisualisation.Nuits:
+                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+                                chartSliceListe.ChartAreas[0].AxisX.Interval = 60;
+                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                                break;
+
+                            case ObjInputs.ModeVisualisation.Horaire:
+                            default:
+                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+                                chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
+                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                                break;
+                        }
                         chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
                         chartSliceListe.ChartAreas[0].AxisY.Title = Resources.TempsDePose;
                         chartSliceListe.ChartAreas[0].RecalculateAxesScale();
@@ -749,6 +804,14 @@ namespace AstroTargetSelector
                         chartSliceListe.Titles.Add($"{Resources.TempsDePoseSecondesSansRotationDeChamps} ({Resources.BougeMax} {factory.GetAppInputs().BougeMaxString})");
                         chartSliceListe.Titles[0].TextStyle = TextStyle.Shadow;
                         chartSliceListe.Titles[0].ShadowColor = Color.Gray;
+
+                        // On masque les controles d'intervalles si nécessaire
+                        comboBoxMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        labelMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        labelUniteMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        comboBoxTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        labelTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        labelUniteTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
 
                         // Trace
                         factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -1276,10 +1339,6 @@ namespace AstroTargetSelector
             // Initilisation du Formulaire
             InitialisationFormulaire();
 
-            //// Rechargement de la ListeView et de la liste des filtres sur Type
-            //RechargeListeTarget();
-            //RechargeListeFiltreType();
-
             // Update du Panel Info
             UpdateViewPanelInfo();
 
@@ -1298,6 +1357,11 @@ namespace AstroTargetSelector
                 dlgNewVersion dialogNewVersion = new dlgNewVersion(factory, version, nom, description, url);
                 dialogNewVersion.ShowDialog();
             }
+
+            //// Rechargement de la ListeView et de la liste des filtres sur Type
+            //RechargeListeTarget();
+            //RechargeListeFiltreType();
+            UpdateListeAndPanel();
         }
 
         #endregion
@@ -1484,9 +1548,10 @@ namespace AstroTargetSelector
             //factory.GetAppTarget().ForceUpdateSlices = true;
 
             // Actualisation de la liste et du panneau d'information
-            UpdateListeAndPanel();
+            //UpdateListeAndPanel();
+            UpdateViewPanelInfo();
         }
-        
+
         private void buttonStellarium_Click(object sender, EventArgs e)
         {
             // Lancement de la commande de sélection dans Stellarium
@@ -1506,6 +1571,19 @@ namespace AstroTargetSelector
         {
             // Lancement de la commande de sélection dans Cartes du Ciel
             CartesDuCielFocusTo();
+        }
+
+        private void comboBoxVisualisation_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Update de l'état par défaut de la dateTimePickerHeureObservation
+            dateTimePickerHeureObservation.Enabled = true;
+            ObjInputs.ModeVisualisation mode;
+            if (Enum.TryParse(comboBoxVisualisation.Text, out mode))
+            {
+                // On met à jour le Settings et l'état de la dateTimePickerHeureObservation
+                factory.GetAppInputs().Inputs.Visualisation = mode;
+                dateTimePickerHeureObservation.Enabled = mode == ObjInputs.ModeVisualisation.Horaire;
+            }
         }
     }
 }

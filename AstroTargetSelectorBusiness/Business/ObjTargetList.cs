@@ -136,11 +136,11 @@ namespace AstroTargetSelectorBusiness
                                 Type = values[1],
                                 Description = values[2],
                                 Constellation = values[8],
-                                RA = factory.GetCoordinate(Convert.ToDecimal(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
-                                DEC = factory.GetCoordinate(Convert.ToDecimal(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
-                                Magnitude = Convert.ToDecimal(values[5].Replace(',', '.'), CultureInfo.InvariantCulture),
-                                GrandeurWidth = factory.GetCoordinate(Convert.ToDecimal(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
-                                GrandeurHeight = factory.GetCoordinate(Convert.ToDecimal(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
+                                RA = factory.GetCoordinate(Convert.ToDouble(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
+                                DEC = factory.GetCoordinate(Convert.ToDouble(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
+                                Magnitude = Convert.ToDouble(values[5].Replace(',', '.'), CultureInfo.InvariantCulture),
+                                GrandeurWidth = factory.GetCoordinate(Convert.ToDouble(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
+                                GrandeurHeight = factory.GetCoordinate(Convert.ToDouble(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
                             });
                         }
                     }

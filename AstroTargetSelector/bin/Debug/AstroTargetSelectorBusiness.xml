@@ -56,6 +56,12 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetListeModeVisualisation">
+            <summary>
+            Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
             <summary>
             Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -89,6 +95,11 @@
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeFiltreMagnitude">
             <summary>
             Liste des Filtres de Magnitude pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeModeVisualisation">
+            <summary>
+            Liste des Filtres de Modes de Visualisation pour l'affichage dans la liste
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.AppCapteur">
@@ -128,7 +139,7 @@
             Constructeur par défaut
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.AppCapteur.GetCapteur(System.String,System.Decimal)">
+        <member name="M:AstroTargetSelectorBusiness.AppCapteur.GetCapteur(System.String,System.Double)">
             <summary>
             Renvoi le capteur <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/> correspondant au nom passé en paramètre
             <para>Si le capteur n'est pas présent dans la liste, il est crée et ajouté dans la liste des capteurs</para>
@@ -381,9 +392,157 @@
             Nom du fichier de configuration contenant la liste des capteurs
             </summary>
         </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjDailySliceTarget">
+            <summary>
+            Objet représentant un intervalle nuit regroupant 3 intervalles de temps de calcul pour un objet céleste (20h - 00h - 04h)
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjDailySliceTarget.ToolTip">
+            <summary>
+            ToolTip du Slice à afficher dans le graphique
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjDailySliceTarget.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjDailySliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjDailySliceTarget.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjDailySliceTarget.parentTarget">
+            <summary>
+            Objet céleste parent de l'objet Slice
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjGroupSliceTarget">
+            <summary>
+            Objet représentant un intervalle regroupant des intervalles <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.DateHeure">
+            <summary>
+            Date et Heure de l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.TempsPoseCalcule">
+            <summary>
+            Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.EstExclu">
+            <summary>
+            Permet de savoir si un objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.CouleurPointGraphique">
+            <summary>
+            Couleur du point dans le graphique
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Hauteur">
+            <summary>
+            Renvoi la Hauteur calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/></para>
+            <para>Renvoi la Hauteur du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.CouleurHauteur">
+            <summary>
+            Couleur du point dans le graphique
+            <para>Vert si au dessus de la hauteur min, sinon rouge</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Azimut">
+            <summary>
+            Renvoi l'Azimut calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/></para>
+            <para>Renvoi l'Azimut du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.AzimutCorrigee">
+            <summary>
+            Renvoi l'Azimut Corrigee calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Corrigee du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.AzimutPrecise">
+            <summary>
+            Renvoi l'Azimut Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Precise du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.HauteurPrecise">
+            <summary>
+            Renvoi la Hauteur Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/></para>
+            <para>Renvoi la Hauteur Precise du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjGroupSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.parentTarget">
+            <summary>
+            Objet céleste parent de l'objet Slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps du mois
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.ObjInputs">
             <summary>
             Objet représentant toutes les données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation">
+            <summary>
+            Mode de visualisation des données
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Horaire">
+            <summary>
+            Liste de Slice sur une tranche horaire
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Nuits">
+            <summary>
+            Liste de Slice sur une tranche horaire
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Mensuel">
+            <summary>
+            Liste de Slice sur les jours d'un mois
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Annuel">
+            <summary>
+            Liste de Slice sur les mois d'une année
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.DateHeureObservation">
@@ -441,6 +600,14 @@
             Liste des zones exclues
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.Visualisation">
+            <summary>
+            Mode de visualisation
+            <para></para>
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
@@ -469,6 +636,36 @@
         <member name="F:AstroTargetSelectorBusiness.ObjInputs.zonesExclues">
             <summary>
             Liste des zones exclues
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjMonthlySliceTarget">
+            <summary>
+            Objet représentant un intervalle mois regroupant 1 intervalle de temps de calcul pour un objet céleste (00h) par nuit
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.ToolTip">
+            <summary>
+            ToolTip du Slice à afficher dans le graphique
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.parentTarget">
+            <summary>
+            Objet céleste parent de l'objet Slice
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjSliceTarget">
@@ -539,9 +736,19 @@
             <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.ToolTip">
+            <summary>
+            ToolTip du Slice à afficher dans le graphique
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
             <summary>
             Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.ReCalcSlice">
+            <summary>
+            /Recalcul le Slice et mets à jour les membres
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.factory">
@@ -725,9 +932,45 @@
             <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.HourlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Horaire</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.DailySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Nuits</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.MonthlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Nuits</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjTarget.YearlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Annuel</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
             <summary>
             Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjTarget.GetCurrentChartSlice(AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation)">
+            <summary>
+            Renvoi la série d'intervalles pour le graphique en fonction du mode de visualisation
+            </summary>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjTarget.InitialiseMainSlices">
+            <summary>
+            Permet l'initialisation de la collection principale de slice en fonction du mode de visualisation
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjTarget.factory">
@@ -738,6 +981,30 @@
         <member name="F:AstroTargetSelectorBusiness.ObjTarget.slices">
             <summary>
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.hourlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Horaire</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.dailySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Nuits</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.monthlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Mensuel</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.yearlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Annuel</para>
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTargetList">
@@ -798,6 +1065,69 @@
             Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
         </member>
+        <member name="T:AstroTargetSelectorBusiness.IChartSlice">
+            <summary>
+            Interface permettant la représentation d'un intervalle dans le graphique
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.TempsPoseCalcule">
+            <summary>
+            Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.DateHeure">
+            <summary>
+            Date et Heure de l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.EstExclu">
+            <summary>
+            Permet de savoir si le slice de l'objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.CouleurPointGraphique">
+            <summary>
+            Couleur du point dans le graphique
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.Hauteur">
+            <summary>
+            Hauteur calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.CouleurHauteur">
+            <summary>
+            Couleur du point dans le graphique
+            <para>Vert si au dessus de la hauteur min, sinon rouge</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.Azimut">
+            <summary>
+            Renvoi l'Azimut calculé pour la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.AzimutCorrigee">
+            <summary>
+            Renvoi l'Azimut Corrigee calculé pour la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.AzimutPrecise">
+            <summary>
+            Renvoi l'Azimut Precise calculé pour la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.HauteurPrecise">
+            <summary>
+            Renvoi la Hauteur Precise calculé pour la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.ToolTip">
+            <summary>
+            ToolTip du Slice à afficher dans le graphique
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorResources.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
@@ -817,6 +1147,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions">
             <summary>
               Recherche une chaîne localisée semblable à Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ....
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansCartesDuCiel">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Cartes du Ciel.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansStellarium">
@@ -1047,6 +1382,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePose">
             <summary>
               Recherche une chaîne localisée semblable à Temps de pose.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseMax">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose max..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseSecondesSansRotationDeChamps">

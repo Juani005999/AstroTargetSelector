@@ -18,7 +18,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Largeur en pixel
         /// </summary>
-        public decimal Largeur { get; internal set; }
+        public double Largeur { get; internal set; }
 
         #endregion
 
@@ -61,8 +61,8 @@ namespace AstroTargetSelectorBusiness
             }
 
             // On TryParse largeur
-            decimal largeurDec;
-            if (string.IsNullOrEmpty(largeur) || !decimal.TryParse(largeur, out largeurDec))
+            double largeurDec;
+            if (string.IsNullOrEmpty(largeur) || !double.TryParse(largeur, out largeurDec))
             {
                 factory.GetLog().Log($"TryParse pour la largeur de l'objet Capteur à renvoyer False", "ObjCapteur", null, AppLog.TypeLog.Warning);
                 return false;

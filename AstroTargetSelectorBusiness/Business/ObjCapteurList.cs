@@ -111,7 +111,7 @@ namespace AstroTargetSelectorBusiness
                             listeObjCapteur.Add(new ObjCapteur(factory)
                             {
                                 Nom = values[0],
-                                Largeur = Convert.ToDecimal(values[1])
+                                Largeur = Convert.ToDouble(values[1])
                             });
                         }
                     }

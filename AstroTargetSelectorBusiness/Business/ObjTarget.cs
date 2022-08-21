@@ -76,7 +76,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Magnitude de l'objet céleste
         /// </summary>
-        public decimal Magnitude { get; set; }
+        public double Magnitude { get; set; }
 
         /// <summary>
         /// Grandeur : Largeur de l'objet céleste
@@ -91,30 +91,29 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Permet de forcer le rechargement des Slices
         /// </summary>
-        internal bool ForceUpdateSlices { get; set; }
+        internal bool ForceUpdateSlices {
+            set
+            {
+                slices.Clear();
+                hourlySlices.Clear();
+                dailySlices.Clear();
+                monthlySlices.Clear();
+                yearlySlices.Clear();
+            }
+        }
 
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
         /// </summary>
-        public List<ObjSliceTarget> Slices
+        public List<IChartSlice> Slices
         {
             get
             {
                 // On recharge les slices uniquement si nécessaire
-                if (slices.Count == 0 || ForceUpdateSlices)
+                if (slices.Count == 0)
                 {
-                    // Clear de la liste des Slices
-                    slices.Clear();
-                    for (int i = 0; i < factory.GetAppInputs().Inputs.NombreSlice; i++)
-                    {
-                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        slices.Add(new ObjSliceTarget(factory, this)
-                        {
-                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
-                        });
-                    }
+                    InitialiseMainSlices();
                 }
-                ForceUpdateSlices = false;
                 return slices;
             }
         }
@@ -123,14 +122,10 @@ namespace AstroTargetSelectorBusiness
         /// Renvoi le Scoring calculé pour la Target
         /// <para>Moyenne des <see cref="ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
         /// </summary>
-        public decimal Scoring
+        public double Scoring
         {
             get
             {
-                //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
-                //if (factory.GetAppInputs().Inputs.BougeMax != 0)
-                //    result /= factory.GetAppInputs().Inputs.BougeMax;
-
                 //// Si on a au moins 1 Slice non Exclu
                 //if (Slices.Where(t => !t.EstExclu).Count() > 0)
                 //{
@@ -140,6 +135,7 @@ namespace AstroTargetSelectorBusiness
 
                 // Retour
                 return Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());
+                //return Math.Floor(Slices.Where(t => !t.EstExclu).Select(t => t.TempsPoseCalcule).Average());
             }
         }
 
@@ -147,12 +143,12 @@ namespace AstroTargetSelectorBusiness
         /// Renvoi le Rank calculé pour la Target
         /// <para>Barême basé sur le <see cref="Scoring"/></para>
         /// </summary>
-        public decimal Rank
+        public double Rank
         {
             get
             {
                 // Le Rank est basé sur le scoring
-                decimal result;
+                double result;
                 if (Scoring > MinTempsPoseRank5)
                     result = 5;
                 else if (Scoring > MinTempsPoseRank4)
@@ -163,10 +159,6 @@ namespace AstroTargetSelectorBusiness
                     result = 2;
                 else
                     result = 1;
-
-                //// On rapporte le résultat au Bougé max. afin d'avoir une concordance des Scoring et Rank
-                //if (factory.GetAppInputs().Inputs.BougeMax != 0)
-                //    result /= factory.GetAppInputs().Inputs.BougeMax;
 
                 // Retour
                 return Math.Floor(result);
@@ -258,6 +250,133 @@ namespace AstroTargetSelectorBusiness
             }
         }
 
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Horaire</para>
+        /// </summary>
+        public List<IChartSlice> HourlySlices
+        {
+            get
+            {
+                // On recharge les slices uniquement si nécessaire
+                if (hourlySlices.Count == 0)
+                {
+                    //factory.GetLog().Log($"Accès à HourlySlices de l'objet {Nom}");
+
+                    // Clear de la liste des Slices
+                    hourlySlices.Clear();
+                    for (int i = 0; i < factory.GetAppInputs().Inputs.NombreSlice; i++)
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        hourlySlices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
+                        });
+                    }
+                }
+                return hourlySlices;
+            }
+        }
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Nuits</para>
+        /// </summary>
+        public List<IChartSlice> DailySlices
+        {
+            get
+            {
+                // On recharge les slices uniquement si nécessaire
+                if (dailySlices.Count == 0)
+                {
+                    //factory.GetLog().Log($"Accès à DailySlices de l'objet {Nom}");
+
+                    // Clear de la liste des Slices
+                    dailySlices.Clear();
+                    // On ajoute 1 intervalle toute les 30min sur 10h à partir de 19h
+                    DateTime dateDebut = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                                                        19, 0, 0);
+                    for (int i = 0; i < 20; i++)
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        dailySlices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = dateDebut.AddMinutes(i * 30)
+                        });
+                    }
+                }
+                return dailySlices;
+            }
+        }
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Nuits</para>
+        /// </summary>
+        public List<IChartSlice> MonthlySlices
+        {
+            get
+            {
+                // On recharge les slices uniquement si nécessaire
+                if (monthlySlices.Count == 0)
+                {
+                    //factory.GetLog().Log($"Accès à DailySlices de l'objet {Nom}");
+
+                    // Clear de la liste des Slices
+                    monthlySlices.Clear();
+                    // On ajoute 1 intervalle jour (contenant chacun 3 intervalles) pendant 1 mois
+                    DateTime dateEnCours = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day);
+                    while (dateEnCours <= factory.GetAppInputs().Inputs.DateHeureObservation.AddMonths(1))
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        monthlySlices.Add(new ObjDailySliceTarget(factory, this)
+                        {
+                            DateHeure = dateEnCours
+                        });
+                        dateEnCours = dateEnCours.AddDays(2);
+                    }
+                }
+                return monthlySlices;
+            }
+        }
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Annuel</para>
+        /// </summary>
+        public List<IChartSlice> YearlySlices
+        {
+            get
+            {
+                // On recharge les slices uniquement si nécessaire
+                if (yearlySlices.Count == 0)
+                {
+                    //factory.GetLog().Log($"Accès à DailySlices de l'objet {Nom}");
+
+                    // Clear de la liste des Slices
+                    yearlySlices.Clear();
+                    // On ajoute 1 intervalle mois (contenant chacun 3 intervalles) pendant 1 an
+                    DateTime dateEnCours = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        1);
+                    while (dateEnCours <= factory.GetAppInputs().Inputs.DateHeureObservation.AddYears(1))
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        yearlySlices.Add(new ObjMonthlySliceTarget(factory, this)
+                        {
+                            DateHeure = dateEnCours
+                        });
+                        dateEnCours = dateEnCours.AddMonths(1);
+                    }
+                }
+                return yearlySlices;
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -278,6 +397,110 @@ namespace AstroTargetSelectorBusiness
 
         #endregion
 
+        #region Méthodes
+
+        /// <summary>
+        /// Renvoi la série d'intervalles pour le graphique en fonction du mode de visualisation
+        /// </summary>
+        /// <param name="mode"></param>
+        /// <returns></returns>
+        public List<IChartSlice> GetCurrentChartSlice(ObjInputs.ModeVisualisation mode)
+        {
+            switch(mode)
+            {
+                case ObjInputs.ModeVisualisation.Annuel:
+                    return YearlySlices;
+
+                case ObjInputs.ModeVisualisation.Mensuel:
+                    return MonthlySlices;
+
+                case ObjInputs.ModeVisualisation.Nuits:
+                    return DailySlices;
+
+                case ObjInputs.ModeVisualisation.Horaire:
+                default:
+                    return HourlySlices;
+            }
+        }
+
+        /// <summary>
+        /// Permet l'initialisation de la collection principale de slice en fonction du mode de visualisation
+        /// </summary>
+        private void InitialiseMainSlices()
+        {
+            // Clear de la liste des Slices
+            slices.Clear();
+
+            // Mise en place des slices principaux en fonction du mode de visualisation
+            switch (factory.GetAppInputs().Inputs.Visualisation)
+            {
+                case ObjInputs.ModeVisualisation.Annuel:
+                    // On ajoute 1 intervalle toute les 60min sur 10h à partir de 19h
+                    DateTime dateAnnuel = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        1,
+                                                        0, 0, 0);
+                    while (dateAnnuel <= factory.GetAppInputs().Inputs.DateHeureObservation.AddYears(1))
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        slices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = dateAnnuel
+                        });
+                        dateAnnuel = dateAnnuel.AddMonths(1);
+                    }
+                    break;
+
+                case ObjInputs.ModeVisualisation.Mensuel:
+                    // On ajoute 1 intervalle jour (contenant chacun 3 intervalles) pendant 1 mois
+                    DateTime dateMensuel = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                                                        0, 0, 0);
+                    while (dateMensuel <= factory.GetAppInputs().Inputs.DateHeureObservation.AddMonths(1))
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        slices.Add(new ObjDailySliceTarget(factory, this)
+                        {
+                            DateHeure = dateMensuel
+                        });
+                        dateMensuel = dateMensuel.AddDays(10);
+                    }
+                    break;
+
+                case ObjInputs.ModeVisualisation.Nuits:
+                    // On ajoute 1 intervalle toute les 60min sur 10h à partir de 19h
+                    DateTime dateNuits = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                                                        19, 0, 0);
+                    for (int i = 0; i < 10; i++)
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        slices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = dateNuits.AddMinutes(i * 60)
+                        });
+                    }
+                    break;
+
+                case ObjInputs.ModeVisualisation.Horaire:
+                default:
+                    // On ajoute 1 intervalle toute les 10min sur 2h
+                    for (int i = 0; i < 12; i++)
+                    {
+                        // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
+                        slices.Add(new ObjSliceTarget(factory, this)
+                        {
+                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * 10)
+                        });
+                    }
+                    break;
+            }
+        }
+
+        #endregion
+
         #region Champs
 
         /// <summary>
@@ -288,7 +511,31 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
         /// </summary>
-        private List<ObjSliceTarget> slices = new List<ObjSliceTarget>();
+        private List<IChartSlice> slices = new List<IChartSlice>();
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Horaire</para>
+        /// </summary>
+        private List<IChartSlice> hourlySlices = new List<IChartSlice>();
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Nuits</para>
+        /// </summary>
+        private List<IChartSlice> dailySlices = new List<IChartSlice>();
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Mensuel</para>
+        /// </summary>
+        private List<IChartSlice> monthlySlices = new List<IChartSlice>();
+
+        /// <summary>
+        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <para>Intervalles du mode de visualisation Annuel</para>
+        /// </summary>
+        private List<IChartSlice> yearlySlices = new List<IChartSlice>();
 
         #endregion
     }

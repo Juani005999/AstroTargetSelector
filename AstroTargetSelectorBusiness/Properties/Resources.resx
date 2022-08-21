@@ -120,6 +120,9 @@
   <data name="ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions" xml:space="preserve">
     <value>Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ...</value>
   </data>
+  <data name="AfficherLObjetCelesteDansCartesDuCiel" xml:space="preserve">
+    <value>Afficher l'objet céleste dans Cartes du Ciel</value>
+  </data>
   <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
     <value>Afficher l'objet céleste dans Stellarium.</value>
   </data>
@@ -257,6 +260,9 @@
   </data>
   <data name="TempsDePose" xml:space="preserve">
     <value>Temps de pose</value>
+  </data>
+  <data name="TempsDePoseMax" xml:space="preserve">
+    <value>Temps de pose max.</value>
   </data>
   <data name="TempsDePoseSecondesSansRotationDeChamps" xml:space="preserve">
     <value>Temps de pose (secondes) sans rotation de champs</value>

@@ -57,10 +57,14 @@
     <Compile Include="App\AppTarget.cs" />
     <Compile Include="Business\ObjCapteur.cs" />
     <Compile Include="Business\ObjCapteurList.cs" />
+    <Compile Include="Business\ObjDailySliceTarget.cs" />
+    <Compile Include="Business\ObjGroupSliceTarget.cs" />
     <Compile Include="Business\ObjInputs.cs" />
+    <Compile Include="Business\ObjMonthlySliceTarget.cs" />
     <Compile Include="Business\ObjSliceTarget.cs" />
     <Compile Include="Business\ObjTarget.cs" />
     <Compile Include="Business\ObjTargetList.cs" />
+    <Compile Include="Interfaces\IChartSlice.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

@@ -93,7 +93,7 @@ namespace AstroTargetSelectorBusiness
         /// <param name="nomCapteur">Nom du Capteur recherché</param>
         /// <param name="largeurCapteur">Largeur en pixel du Capteur</param>
         /// <returns><see cref="ObjCapteur"/>. Null si nomCapteur est vide ou si largeurCapteur est égal à 0.</returns>
-        public ObjCapteur GetCapteur(string nomCapteur, decimal largeurCapteur)
+        public ObjCapteur GetCapteur(string nomCapteur, double largeurCapteur)
         {
             if (string.IsNullOrEmpty(nomCapteur) || largeurCapteur == 0)
                 return null;

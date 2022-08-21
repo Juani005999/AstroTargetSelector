@@ -97,7 +97,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur décimal de la coordonnée
         /// </summary>
-        public decimal Coordonnee
+        public double Coordonnee
         {
             get
             {
@@ -108,7 +108,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur du champ '°' de la coordonnée
         /// </summary>
-        public decimal Degrees
+        public double Degrees
         {
             get
             {
@@ -119,7 +119,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur du champ 'h' de la coordonnée de type RA
         /// </summary>
-        public decimal Hours
+        public double Hours
         {
             get
             {
@@ -130,7 +130,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur du champ ''' de la coordonnée
         /// </summary>
-        public decimal Minutes
+        public double Minutes
         {
             get
             {
@@ -147,7 +147,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur du champ '"' de la coordonnée
         /// </summary>
-        public decimal Seconds
+        public double Seconds
         {
             get
             {
@@ -222,7 +222,7 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="coordonnee"></param>
         /// <param name="coordinatesType"></param>
-        internal Coordinate(decimal coordonnee, CoordinatesType coordinatesType)
+        internal Coordinate(double coordonnee, CoordinatesType coordinatesType)
         {
             // Valorisation du champ interne
             this.coordonnee = coordonnee;
@@ -237,7 +237,7 @@ namespace ApplicationTools
         /// Permet de positionner une nouvelle coordonnée pour l'objet en cours
         /// </summary>
         /// <param name="coordonnee"></param>
-        public void UpdateCoordonnee(decimal coordonnee)
+        public void UpdateCoordonnee(double coordonnee)
         {
             this.coordonnee = coordonnee;
         }
@@ -263,24 +263,24 @@ namespace ApplicationTools
             }
 
             // Validation Degrés
-            decimal degreeDec;
-            if (string.IsNullOrEmpty(degree) || !decimal.TryParse(degree, NumberStyles.Number, CultureInfo.InvariantCulture, out degreeDec))
+            double degreeDec;
+            if (string.IsNullOrEmpty(degree) || !double.TryParse(degree, NumberStyles.Number, CultureInfo.InvariantCulture, out degreeDec))
             {
                 factory.GetLog().Log($"Mauvais format de degrés pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
                 return false;
             }
 
             // Validation Minutes
-            decimal minuteDec;
-            if (string.IsNullOrEmpty(minute) || !decimal.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
+            double minuteDec;
+            if (string.IsNullOrEmpty(minute) || !double.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
             {
                 factory.GetLog().Log($"Mauvais format de minutes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
                 return false;
             }
 
             // Validation Secondes
-            decimal secondeDec;
-            if (string.IsNullOrEmpty(seconde) || !decimal.TryParse(seconde, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out secondeDec))
+            double secondeDec;
+            if (string.IsNullOrEmpty(seconde) || !double.TryParse(seconde, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out secondeDec))
             {
                 factory.GetLog().Log($"Mauvais format de secondes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
                 return false;
@@ -295,7 +295,7 @@ namespace ApplicationTools
             }
 
             // Données valides, on valorise l'objet coordonnee
-            decimal valCoordonnee = degreeDec + (minuteDec / 60) + (secondeDec / 3600);
+            double valCoordonnee = degreeDec + (minuteDec / 60) + (secondeDec / 3600);
             if (coordonnee.coordinatesType == CoordinatesType.Latitude && directionDec == CoordinatesDirection.S)
                 valCoordonnee *= -1;
             else if (coordonnee.coordinatesType == CoordinatesType.Longitude && directionDec == CoordinatesDirection.O)
@@ -323,7 +323,7 @@ namespace ApplicationTools
                 return false;
 
             // Validation Degree ou Heure
-            decimal hourDec;
+            double hourDec;
             int indexSepHour = 0;
             if (inputCoordonee.IndexOf("h") != -1 || inputCoordonee.IndexOf("°") != -1)
             {
@@ -331,40 +331,40 @@ namespace ApplicationTools
                 if (indexSepHour == -1)
                     indexSepHour = inputCoordonee.IndexOf("°");
                 string hour = inputCoordonee.Substring(0, indexSepHour);
-                if (string.IsNullOrEmpty(hour) || !decimal.TryParse(hour, NumberStyles.Number, CultureInfo.InvariantCulture, out hourDec))
+                if (string.IsNullOrEmpty(hour) || !double.TryParse(hour, NumberStyles.Number, CultureInfo.InvariantCulture, out hourDec))
                     return false;
             }
             else
                 return false;
 
             // Validation Minutes
-            decimal minuteDec;
+            double minuteDec;
             int indexSepMinute = 0;
             if (inputCoordonee.IndexOf("'") != -1)
             {
                 indexSepMinute = inputCoordonee.IndexOf("'");
                 string minute = inputCoordonee.Substring(indexSepHour + 1, indexSepMinute - (indexSepHour + 1));
-                if (string.IsNullOrEmpty(minute) || !decimal.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
+                if (string.IsNullOrEmpty(minute) || !double.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
                     return false;
             }
             else
                 return false;
 
             // Validation Secondes
-            decimal secondeDec;
+            double secondeDec;
             int indexSepSeconde = 0;
             if (inputCoordonee.IndexOf("\"") != -1)
             {
                 indexSepSeconde = inputCoordonee.IndexOf("\"");
                 string seconde = inputCoordonee.Substring(indexSepMinute + 1, indexSepSeconde - (indexSepMinute + 1));
-                if (string.IsNullOrEmpty(seconde) || !decimal.TryParse(seconde, out secondeDec))
+                if (string.IsNullOrEmpty(seconde) || !double.TryParse(seconde, out secondeDec))
                     return false;
             }
             else
                 return false;
 
             // Données valides, on valorise l'objet coordonnee
-            decimal valCoordonnee = Math.Abs(hourDec) + (minuteDec / 60) + (secondeDec / 3600);
+            double valCoordonnee = Math.Abs(hourDec) + (minuteDec / 60) + (secondeDec / 3600);
             if (hourDec < 0)
                 valCoordonnee *= -1;
             coordonnee.UpdateCoordonnee(valCoordonnee);
@@ -379,7 +379,7 @@ namespace ApplicationTools
         /// <summary>
         /// Valeur de la coordonnée
         /// </summary>
-        private decimal coordonnee = 0;
+        private double coordonnee = 0;
 
         /// <summary>
         /// Type Longitude/Latitude

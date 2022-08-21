@@ -90,7 +90,7 @@ namespace ApplicationTools
         /// <param name="latitude"></param>
         /// <param name="longitude"></param>
         /// <returns></returns>
-        public Coordinates GetCoordinates(decimal latitude, decimal longitude)
+        public Coordinates GetCoordinates(double latitude, double longitude)
         {
             // Création d'un nouvel objet de type Coordinates
             return new Coordinates(latitude, longitude);
@@ -102,7 +102,7 @@ namespace ApplicationTools
         /// <param name="value"></param>
         /// <param name="type"></param>
         /// <returns></returns>
-        public Coordinate GetCoordinate(decimal value, CoordinatesType type)
+        public Coordinate GetCoordinate(double value, CoordinatesType type)
         {
             // Création d'un nouvel objet de type Coordinates
             return new Coordinate(value, type);

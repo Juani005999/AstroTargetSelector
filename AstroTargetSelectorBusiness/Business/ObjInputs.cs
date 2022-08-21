@@ -12,6 +12,36 @@ namespace AstroTargetSelectorBusiness
     /// </summary>
     public class ObjInputs
     {
+        #region Enums
+
+        /// <summary>
+        /// Mode de visualisation des données
+        /// </summary>
+        public enum ModeVisualisation
+        {
+            /// <summary>
+            /// Liste de Slice sur une tranche horaire
+            /// </summary>
+            Horaire,
+
+            /// <summary>
+            /// Liste de Slice sur une tranche horaire
+            /// </summary>
+            Nuits,
+
+            /// <summary>
+            /// Liste de Slice sur les jours d'un mois
+            /// </summary>
+            Mensuel,
+
+            /// <summary>
+            /// Liste de Slice sur les mois d'une année
+            /// </summary>
+            Annuel
+        }
+
+        #endregion
+
         #region Propriétés
 
         /// <summary>
@@ -40,15 +70,15 @@ namespace AstroTargetSelectorBusiness
                 // Si le membre privé n'existe pas, on le créer
                 if (lieuObservation == null)
                 {
-                    lieuObservation = factory.GetCoordinates(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
-                                                            Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+                    lieuObservation = factory.GetCoordinates(Convert.ToDouble(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+                                                            Convert.ToDouble(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
                     factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
                 }
                 // S'il existe déjà, on l'actualise
                 else
                 {
-                    lieuObservation.UpdateCoordonnees(Convert.ToDecimal(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
-                                                            Convert.ToDecimal(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
+                    lieuObservation.UpdateCoordonnees(Convert.ToDouble(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+                                                            Convert.ToDouble(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
                 }
                 return lieuObservation;
             }
@@ -87,7 +117,7 @@ namespace AstroTargetSelectorBusiness
 
                 // On récupère le capteur correspondant aux Settings, un nouveau capteur s'il n'existe pas déjà dans la liste des capteurs
                 capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
-                                                            Convert.ToDecimal(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
+                                                            Convert.ToDouble(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
 
                 // Retour
                 return capteur;
@@ -105,7 +135,7 @@ namespace AstroTargetSelectorBusiness
         /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
         /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 1</para>
         /// </summary>
-        public decimal BougeMax
+        public double BougeMax
         {
             get
             {
@@ -117,7 +147,7 @@ namespace AstroTargetSelectorBusiness
                     factory.GetLog().Log($"BougeMax non présent dans les Settings. Positionnement de 1 par défaut", GetType().Name);
                 }
                 //return Convert.ToInt32(Settings.Default.BougeMax);
-                return Convert.ToDecimal(Settings.Default.BougeMax, CultureInfo.InvariantCulture);
+                return Convert.ToDouble(Settings.Default.BougeMax, CultureInfo.InvariantCulture);
             }
             set
             {
@@ -131,7 +161,7 @@ namespace AstroTargetSelectorBusiness
         /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
         /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
         /// </summary>
-        public decimal HauteurMin
+        public double HauteurMin
         {
             get
             {
@@ -142,7 +172,7 @@ namespace AstroTargetSelectorBusiness
                     Settings.Default.Save();
                     factory.GetLog().Log($"HauteurMin non présent dans les Settings. Positionnement de 25 par défaut", GetType().Name);
                 }
-                return Convert.ToDecimal(Settings.Default.HauteurMin, CultureInfo.InvariantCulture);
+                return Convert.ToDouble(Settings.Default.HauteurMin, CultureInfo.InvariantCulture);
             }
             set
             {
@@ -256,6 +286,34 @@ namespace AstroTargetSelectorBusiness
                     settingValue += direction.ToString() + "|";
                 }
                 Settings.Default.ZonesExclues = settingValue;
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Mode de visualisation
+        /// <para></para>
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+        /// </summary>
+        public ModeVisualisation Visualisation
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.Visualisation))
+                {
+                    Settings.Default.Visualisation = ModeVisualisation.Horaire.ToString();
+                    Settings.Default.Save();
+                    factory.GetLog().Log($"Visualisation non présent dans les Settings. Positionnement de ModeVisualisation.Horaire par défaut", GetType().Name);
+                }
+                ModeVisualisation mode;
+                if (Enum.TryParse(Settings.Default.Visualisation, out mode))
+                    return mode;
+                return ModeVisualisation.Horaire;
+            }
+            set
+            {
+                Settings.Default.Visualisation = value.ToString();
                 Settings.Default.Save();
             }
         }
