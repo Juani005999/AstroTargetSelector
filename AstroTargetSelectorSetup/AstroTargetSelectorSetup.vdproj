@@ -255,7 +255,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=0.4.0.7, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=0.4.0.8, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_68119A56FCC92DF267E2614D1216BB8A"
@@ -306,7 +306,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=0.4.0.7, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=0.4.0.8, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C5FF19F87AA7445E1D2C77B76CC8A98E"
@@ -380,7 +380,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:0.4.0.7"
+                                    "Name" = "8:0.4.0.8"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -444,15 +444,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{6326A296-094B-4E2C-B274-C7262DBBF032}"
-        "PackageCode" = "8:{EAE60A39-F4A2-4CCC-A88C-329E295A0F90}"
+        "ProductCode" = "8:{27F3CC67-8577-4BD2-B96A-D507C99E25DB}"
+        "PackageCode" = "8:{4F14E441-DD3A-4DB8-81A8-E18CA4CDA53A}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.4.07"
+        "ProductVersion" = "8:0.4.08"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

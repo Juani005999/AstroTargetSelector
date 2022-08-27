@@ -50,6 +50,18 @@ namespace AstroTargetSelectorBusiness
         Coordinate Azimut { get; }
 
         /// <summary>
+        /// Renvoi la direction actuelle
+        /// <para>Basée sur l'Azimut</para>
+        /// </summary>
+        CoordinatesDirection Direction { get; }
+
+        /// <summary>
+        /// Renvoi le code du caractère correspondant à la Direction
+        /// <para>Police utilisée WINGDING</para>
+        /// </summary>
+        char DirectionCharacterCode { get; }
+
+        /// <summary>
         /// Renvoi l'Azimut Corrigee calculé pour la Target
         /// </summary>
         Coordinate AzimutCorrigee { get; }

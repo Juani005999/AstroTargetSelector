@@ -1,4 +1,4 @@
-0,0487	Type	Description	RA	DEC	Mag	GrandeurWidth	GrandeurHeight	Constellation	Catalogue
+Nom	Type	Description	RA	DEC	Mag	GrandeurWidth	GrandeurHeight	Constellation	Catalogue
 M 1	Rémanent de supernova	Nébuleuse du Crabe	5,58	22,01	8,4	0,13	0,07	Le Taureau	Messier
 M 2	Amas d’étoiles globulaire	NGC 7089	21,56	0,82	6,6	0,27	0,27	Le Verseau	Messier
 M 3	Amas d’étoiles globulaire	NGC 5272	13,7	28,38	6,3	0,3	0,3	Les Chiens de Chasse	Messier
@@ -175,13 +175,13 @@ NGC 3628	Galaxie	Galaxie du Hamburger	11,3377805555556	13,59175	9,48	0,176283334
 NGC 3344	Galaxie	Galaxie de l’Onion coupé	10,7249833333333	24,92475	9,86	0,07605	0,07453334	Le Petit Lion	NGC
 NGC 3432	Galaxie	Galaxie de l’Aiguille à Tricoter	10,8749416666667	36,6217777777778	11,67	0,10455	0,020916667	Le Petit Lion	NGC
 NGC 2683	Galaxie	Galaxie OVNI	8,87772222222222	33,42325	9,7	0,089716667	0,035883334	Le Lynx	NGC
-NGC 2244	Amas d’étoiles ouvert	Nébuleuse de la Rosette – Caldwell 50	6,531625	4,94322222222222	4,8	0,4	0,4	La Licorne	NGC
+NGC 2237 / 2244	Amas d’étoiles ouvert	Nébuleuse de la Rosette – Caldwell 50	6,531625	4,94322222222222	4,8	0,4	0,4	La Licorne	NGC
 NGC 2261	Nébuleuse par réflexion	Nébuleuse variable de Hubble – Caldwell 46	6,65244722222222	8,73708333333333	9	0,03334	0,016667	La Licorne	NGC
 NGC 6369	Nébuleuse planétaire	Nébuleuse du petit Fantôme	17,4892833333333	-23,7599166666667	11,4	0,007783334	0,007783334	Ophiuchus	NGC
 NGC 6572	Nébuleuse planétaire	Nébuleuse de la Racquetball bleue	18,2020611111111	6,85547222222222	8,1	0,00555	0,004116667	Ophiuchus	NGC
 NGC 6633	Amas d’étoiles ouvert	Tweedledum Cluster	18,458975	6,571805556	4,6	0,3334	0,3334	Ophiuchus	NGC
 NGC 1788	Nébuleuse par réflexion	Nébuleuse de la Chauve-souris Cosmique	5,11478055555556	-3,34027777777778	10,11	0,03334	0,03334	Orion	NGC
-NGC 1973	Nébuleuse bipolaire	Nébuleuse du Coureur	5,58441388888889	-4,73005555555556	0	0	0	Orion	NGC
+NGC 1977	Nébuleuse bipolaire	Nébuleuse du Coureur	5,58441388888889	-4,73005555555556	0	0	0	Orion	NGC
 NGC 2024	Amas associé à une nébulosité	Nébuleuse de la Flamme	5,69500833333333	-1,84038888888889	0	2	2	Orion	NGC
 NGC 2022	Nébuleuse planétaire	Nébuleuse des Croissants qui s’embrassent	5,70145833333333	9,08705555555556	11,6	0,005383334	0,005383334	Orion	NGC
 NGC 2194	Amas d’étoiles ouvert	Cr 87	6,22916666666667	12,81875	8,5	0,083334	0,083334	Orion	NGC
@@ -216,3 +216,13 @@ NGC 4567	Galaxie	Frères Siamois	12,6089	11,26025	11,31	0,06195	0,03655	La Vierg
 NGC 4699	Galaxie	Galaxie du Disque Vinyle	12,8171083333333	-8,66355555555556	11,51	0,04205	0,0328	La Vierge	NGC
 NGC 4762	Galaxie	Paper-Kite Galaxy	12,882075	11,2331944444444	10,27	0,0853334	0,022183334	La Vierge	NGC
 NGC 5746	Galaxie	Galaxie de la Lame et de la Perle	14,7489055555556	1,95641666666667	15,77	0,095383334	0,0248	La Vierge	NGC
+IC 1848	Amas d’étoiles ouvert	Nébuleuse de l’Âme – SH2-199	2,851975	60,4989444444445	6,5	0,6667	0,16667	Cassiopée	IC
+IC 1805	Amas associé à une nébulosité	Nébuleuse du Coeur – SH2-190	2,54523888888889	61,4465277777778	6,5	1	1	Cassiopée	IC
+IC 434	Région HII	Barnard 33 – Nébuleuse de la Tête de Cheval	5,67983333333333	-2,48597222222222	7,3	1	0,16667	Orion	IC
+NGC 7023	Amas associé à une nébulosité	Nébuleuse de l’Iris – Caldwell 4	21,0278416666667	68,165	6,8	0,16667	0,13334	Céphée	NGC
+NGC 6888	Nébuleuse en émission	Nébuleuse du Croissant – Caldwell 27 – SH2-105	20,2023444444444	38,3578333333333	7,4	0,3334	0,16667	Le Cygne	NGC
+NGC 7635	Région HII	Nébuleuse de la Bulle – Caldwell 11 – SH2-162	23,3474194444444	61,2007777777778	10	0,25	0,13334	Cassiopée	NGC
+SH2-101	Région HII	Nébuleuse de la Tulipe	19,9989861111111	35,2799444444444	9	0,3334	0,25	Le Cygne	Sharpless
+IC 1396	Amas associé à une nébulosité	Nébuleuse de la Trompe d’éléphant – SH2-131	21,6506583333333	57,4911944444444	3,5	0,2	0,06667	Céphée	IC
+NGC 7380	Amas associé à une nébulosité	Nébuleuse du Sorcier – SH2-142	22,7897805555556	58,1318611111111	7,2	0,416667	0,3334	Céphée	NGC
+IC 5146	Amas associé à une nébulosité	Nébuleuse du Cocon – Caldwell 19 – SH2-125	21,8905222222222	47,2681944444445	7,2	0,2	0,2	Le Cygne	IC

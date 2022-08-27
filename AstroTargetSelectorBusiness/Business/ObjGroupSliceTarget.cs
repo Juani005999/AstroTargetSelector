@@ -25,8 +25,11 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                //return Slices[0].TempsPoseCalcule;
-                return Slices.Average(t => t.TempsPoseCalcule);
+                if (!tempsPoseCalcule.HasValue)
+                {
+                    tempsPoseCalcule = Slices.Average(t => t.TempsPoseCalcule);
+                }
+                return tempsPoseCalcule.Value;
             }
         }
 
@@ -40,8 +43,9 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 // Renvoi false si au moins 1 slice n'est pas exclu
-                return !(Slices.Where(t => !t.EstExclu).Count() > 0);
-                //return !(Slices.Where(t => !t.EstExclu).Count() > 0) || Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin;
+                if (!estExclu.HasValue)
+                    estExclu = !(Slices.Where(t => !t.EstExclu).Count() > 0);
+                return estExclu.Value;
             }
         }
 
@@ -52,8 +56,8 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
-                    return Color.DarkGray;
+                //if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
+                //    return Color.DarkGray;
                 if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank5)
                     return Color.FromArgb(0, 192, 0);
                 if (TempsPoseCalcule >= ObjTarget.MinTempsPoseRank4)
@@ -108,7 +112,37 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 // Renvoi la valeur d'Azimut du premier slice
+                if (Slices.Count > 0)
+                    return Slices[1].Azimut;
                 return Slices[0].Azimut;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi la direction actuelle
+        /// <para>Basée sur l'Azimut</para>
+        /// </summary>
+        public CoordinatesDirection Direction
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].Direction;
+                return Slices[0].Direction;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi le code du caractère correspondant à la Direction
+        /// <para>Police utilisée WINGDING</para>
+        /// </summary>
+        public char DirectionCharacterCode
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].DirectionCharacterCode;
+                return Slices[0].DirectionCharacterCode;
             }
         }
 
@@ -121,7 +155,8 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Renvoi la valeur d'Azimut du premier slice
+                if (Slices.Count > 0)
+                    return Slices[1].AzimutCorrigee;
                 return Slices[0].AzimutCorrigee;
             }
         }
@@ -135,7 +170,8 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Renvoi la valeur d'Azimut du premier slice
+                if (Slices.Count > 0)
+                    return Slices[1].AzimutPrecise;
                 return Slices[0].AzimutPrecise;
             }
         }
@@ -149,7 +185,8 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                // Renvoi la valeur de la Hauteur du premier slice
+                if (Slices.Count > 0)
+                    return Slices[1].HauteurPrecise;
                 return Slices[0].HauteurPrecise;
             }
         }
@@ -185,6 +222,18 @@ namespace AstroTargetSelectorBusiness
         /// Objet céleste parent de l'objet Slice
         /// </summary>
         private readonly ObjTarget parentTarget = null;
+
+        /// <summary>
+        /// Permet de savoir si un objet céleste est exclu de la liste
+        /// <para>Fait partie d'une zone exclue du ciel</para>
+        /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+        /// </summary>
+        private bool? estExclu = null;
+
+        /// <summary>
+        /// Temps de pose calculé pour l'intervalle
+        /// </summary>
+        private double? tempsPoseCalcule = null;
 
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps du mois

@@ -284,6 +284,9 @@ namespace AstroTargetSelector
                     // On remplace le fichier de configuration par le fichier temporaire téléchargé
                     File.Copy(temporaryFullPathFile, destFullPathFile, true);
 
+                    // Trace
+                    factory.GetLog().Log($"Suppression du fichier temporaire {temporaryFullPathFile}", GetType().Name);
+
                     // On supprime le fichier temporaire
                     File.Delete(temporaryFullPathFile);
                 }

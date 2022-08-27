@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text;
 using ApplicationTools;
 using AstroTargetSelectorResources;
 
@@ -104,6 +105,65 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
+        /// Renvoi la direction actuelle
+        /// <para>Basée sur l'Azimut</para>
+        /// </summary>
+        public CoordinatesDirection Direction
+        {
+            get
+            {
+                if (Azimut.Coordonnee > 337.5 || Azimut.Coordonnee <= 22.5)
+                    return CoordinatesDirection.N;
+                if (Azimut.Coordonnee > 22.5 && Azimut.Coordonnee <= 67.5)
+                    return CoordinatesDirection.NE;
+                if (Azimut.Coordonnee > 67.5 && Azimut.Coordonnee <= 112.5)
+                    return CoordinatesDirection.E;
+                if (Azimut.Coordonnee > 112.5 && Azimut.Coordonnee <= 157.5)
+                    return CoordinatesDirection.SE;
+                if (Azimut.Coordonnee > 157.5 && Azimut.Coordonnee <= 202.5)
+                    return CoordinatesDirection.S;
+                if (Azimut.Coordonnee > 202.5 && Azimut.Coordonnee <= 247.5)
+                    return CoordinatesDirection.SO;
+                if (Azimut.Coordonnee > 247.5 && Azimut.Coordonnee <= 292.5)
+                    return CoordinatesDirection.O;
+                if (Azimut.Coordonnee > 292.5 && Azimut.Coordonnee <= 337.5)
+                    return CoordinatesDirection.NO;
+                return CoordinatesDirection.N;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi le code du caractère correspondant à la Direction
+        /// <para>Police utilisée WINGDING</para>
+        /// </summary>
+        public char DirectionCharacterCode
+        {
+            get
+            {
+                switch(Direction)
+                {
+                    case CoordinatesDirection.NE:
+                        return '\u2197';
+                    case CoordinatesDirection.E:
+                        return '\u2192';
+                    case CoordinatesDirection.SE:
+                        return '\u2198';
+                    case CoordinatesDirection.S:
+                        return '\u2193';
+                    case CoordinatesDirection.SO:
+                        return '\u2199';
+                    case CoordinatesDirection.O:
+                        return '\u2190';
+                    case CoordinatesDirection.NO:
+                        return '\u2196';
+                    case CoordinatesDirection.N:
+                    default:
+                        return '\u2191';
+                }
+            }
+        }
+
+        /// <summary>
         /// Hauteur calculé du slice
         /// </summary>
         public Coordinate Hauteur
@@ -171,45 +231,8 @@ namespace AstroTargetSelectorBusiness
                 // Parcours des zones à exclure
                 foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
                 {
-                    double coordonne = Azimut.Coordonnee;
-                    switch (direction)
-                    {
-                        case CoordinatesDirection.N:
-                            if (coordonne > 337.5 || coordonne <= 22.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.NE:
-                            if (coordonne > 22.5 && coordonne <= 67.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.E:
-                            if (coordonne > 67.5 && coordonne <= 112.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.SE:
-                            if (coordonne > 112.5 && coordonne <= 157.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.S:
-                            if (coordonne > 157.5 && coordonne <= 202.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.SO:
-                            if (coordonne > 202.5 && coordonne <= 247.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.O:
-                            if (coordonne > 247.5 && coordonne <= 292.5)
-                                return true;
-                            break;
-                        case CoordinatesDirection.NO:
-                            if (coordonne > 292.5 && coordonne <= 337.5)
-                                return true;
-                            break;
-
-                        default:
-                            break;
-                    }
+                    if (direction == Direction)
+                        return true;
                 }
 
                 // Vérif sur la Hauteur apparente du premier Slice
@@ -231,7 +254,7 @@ namespace AstroTargetSelectorBusiness
                 return $"{DateHeure.ToString("HH")}h{DateHeure.ToString("mm")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
                     + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
-                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} °";
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Direction})";
             }
         }
 

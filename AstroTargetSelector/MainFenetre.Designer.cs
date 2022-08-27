@@ -32,6 +32,7 @@ namespace AstroTargetSelector
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -50,6 +51,9 @@ namespace AstroTargetSelector
             this.toolStripStatusLabelNomTarget = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusActionEnCours = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainerGlobal = new System.Windows.Forms.SplitContainer();
+            this.comboBoxVisualisation = new System.Windows.Forms.ComboBox();
+            this.label16 = new System.Windows.Forms.Label();
+            this.labelSepInputVisualisation = new System.Windows.Forms.Label();
             this.buttonStartCalcul = new System.Windows.Forms.Button();
             this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
             this.labelSepInputsParams = new System.Windows.Forms.Label();
@@ -81,6 +85,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
             this.listViewTarget = new System.Windows.Forms.ListView();
             this.imageListRank = new System.Windows.Forms.ImageList(this.components);
+            this.checkBoxHauteur = new System.Windows.Forms.CheckBox();
             this.buttonCartesDuCiel = new System.Windows.Forms.Button();
             this.buttonStellarium = new System.Windows.Forms.Button();
             this.pictureBoxInfoTarget = new System.Windows.Forms.PictureBox();
@@ -116,7 +121,6 @@ namespace AstroTargetSelector
             this.textBoxInfoPanelNom = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.checkBoxHauteur = new System.Windows.Forms.CheckBox();
             this.chartSliceListe = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.toolTipInfoParametre = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfoActualisation = new System.Windows.Forms.ToolTip(this.components);
@@ -125,9 +129,6 @@ namespace AstroTargetSelector
             this.toolTipStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipCartesDuCiel = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorkerCartesDuCiel = new System.ComponentModel.BackgroundWorker();
-            this.labelSepInputVisualisation = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.comboBoxVisualisation = new System.Windows.Forms.ComboBox();
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainerGlobal)).BeginInit();
@@ -345,6 +346,34 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.SplitterDistance = 140;
             this.splitContainerGlobal.SplitterWidth = 3;
             this.splitContainerGlobal.TabIndex = 0;
+            // 
+            // comboBoxVisualisation
+            // 
+            this.comboBoxVisualisation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxVisualisation.FormattingEnabled = true;
+            this.comboBoxVisualisation.Location = new System.Drawing.Point(6, 25);
+            this.comboBoxVisualisation.Name = "comboBoxVisualisation";
+            this.comboBoxVisualisation.Size = new System.Drawing.Size(124, 21);
+            this.comboBoxVisualisation.TabIndex = 0;
+            this.comboBoxVisualisation.SelectedIndexChanged += new System.EventHandler(this.comboBoxVisualisation_SelectedIndexChanged);
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label16.Location = new System.Drawing.Point(3, 5);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(78, 13);
+            this.label16.TabIndex = 25;
+            this.label16.Text = "Visualisation";
+            // 
+            // labelSepInputVisualisation
+            // 
+            this.labelSepInputVisualisation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.labelSepInputVisualisation.Location = new System.Drawing.Point(150, 0);
+            this.labelSepInputVisualisation.Name = "labelSepInputVisualisation";
+            this.labelSepInputVisualisation.Size = new System.Drawing.Size(1, 80);
+            this.labelSepInputVisualisation.TabIndex = 24;
             // 
             // buttonStartCalcul
             // 
@@ -698,7 +727,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.label8);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 151;
+            this.splitContainerSecondaire.SplitterDistance = 153;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -711,7 +740,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 151);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 153);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -728,6 +757,17 @@ namespace AstroTargetSelector
             this.imageListRank.Images.SetKeyName(2, "3");
             this.imageListRank.Images.SetKeyName(3, "4");
             this.imageListRank.Images.SetKeyName(4, "5");
+            // 
+            // checkBoxHauteur
+            // 
+            this.checkBoxHauteur.AutoSize = true;
+            this.checkBoxHauteur.Location = new System.Drawing.Point(16, 221);
+            this.checkBoxHauteur.Name = "checkBoxHauteur";
+            this.checkBoxHauteur.Size = new System.Drawing.Size(112, 17);
+            this.checkBoxHauteur.TabIndex = 10;
+            this.checkBoxHauteur.Text = "Afficher la hauteur";
+            this.checkBoxHauteur.UseVisualStyleBackColor = true;
+            this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
             // 
             // buttonCartesDuCiel
             // 
@@ -1091,28 +1131,44 @@ namespace AstroTargetSelector
             this.label8.TabIndex = 8;
             this.label8.Text = "Objet céleste";
             // 
-            // checkBoxHauteur
-            // 
-            this.checkBoxHauteur.AutoSize = true;
-            this.checkBoxHauteur.Location = new System.Drawing.Point(16, 221);
-            this.checkBoxHauteur.Name = "checkBoxHauteur";
-            this.checkBoxHauteur.Size = new System.Drawing.Size(112, 17);
-            this.checkBoxHauteur.TabIndex = 10;
-            this.checkBoxHauteur.Text = "Afficher la hauteur";
-            this.checkBoxHauteur.UseVisualStyleBackColor = true;
-            this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
-            // 
             // chartSliceListe
             // 
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
             chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 83F;
+            chartArea1.Position.Width = 94F;
+            chartArea1.Position.X = 3F;
+            chartArea1.Position.Y = 10F;
+            chartArea2.AlignWithChartArea = "ChartArea1";
+            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisX.LabelStyle.Enabled = false;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.LineWidth = 0;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY.LabelStyle.Enabled = false;
+            chartArea2.AxisY.LineWidth = 0;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.MaximumAutoSize = 5F;
+            chartArea2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            chartArea2.BorderWidth = 0;
+            chartArea2.Name = "AreaDirection";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 7F;
+            chartArea2.Position.Width = 94F;
+            chartArea2.Position.X = 3F;
+            chartArea2.Position.Y = 93F;
             this.chartSliceListe.ChartAreas.Add(chartArea1);
-            this.chartSliceListe.Location = new System.Drawing.Point(50, 48);
+            this.chartSliceListe.ChartAreas.Add(chartArea2);
+            this.chartSliceListe.Location = new System.Drawing.Point(50, 44);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
-            this.chartSliceListe.Size = new System.Drawing.Size(709, 181);
+            this.chartSliceListe.Size = new System.Drawing.Size(709, 170);
             this.chartSliceListe.TabIndex = 0;
             this.chartSliceListe.TabStop = false;
             this.chartSliceListe.Text = "Intervalles de temps de pose";
@@ -1129,34 +1185,6 @@ namespace AstroTargetSelector
             // backgroundWorkerCartesDuCiel
             // 
             this.backgroundWorkerCartesDuCiel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerCartesDuCiel_DoWork);
-            // 
-            // labelSepInputVisualisation
-            // 
-            this.labelSepInputVisualisation.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.labelSepInputVisualisation.Location = new System.Drawing.Point(150, 0);
-            this.labelSepInputVisualisation.Name = "labelSepInputVisualisation";
-            this.labelSepInputVisualisation.Size = new System.Drawing.Size(1, 80);
-            this.labelSepInputVisualisation.TabIndex = 24;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label16.Location = new System.Drawing.Point(3, 5);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(78, 13);
-            this.label16.TabIndex = 25;
-            this.label16.Text = "Visualisation";
-            // 
-            // comboBoxVisualisation
-            // 
-            this.comboBoxVisualisation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxVisualisation.FormattingEnabled = true;
-            this.comboBoxVisualisation.Location = new System.Drawing.Point(6, 25);
-            this.comboBoxVisualisation.Name = "comboBoxVisualisation";
-            this.comboBoxVisualisation.Size = new System.Drawing.Size(124, 21);
-            this.comboBoxVisualisation.TabIndex = 0;
-            this.comboBoxVisualisation.SelectedIndexChanged += new System.EventHandler(this.comboBoxVisualisation_SelectedIndexChanged);
             // 
             // MainFenetre
             // 

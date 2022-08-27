@@ -751,7 +751,7 @@ namespace AstroTargetSelector
                             foreach (IChartSlice slice in listeSerie)
                             {
                                 // On positionne une police spécifique pour les Labels des Points
-                                Font font = new System.Drawing.Font("Tahoma", 8, FontStyle.Italic);
+                                Font font = new Font("Tahoma", 8, FontStyle.Italic);
                                 // On ajoute le point à la série
                                 serieHauteur.Points.Add(new DataPoint()
                                 {
@@ -759,6 +759,7 @@ namespace AstroTargetSelector
                                     YValues = new double[] { slice.Hauteur.Coordonnee },
                                     Color = slice.CouleurHauteur,
                                     IsValueShownAsLabel = true,
+                                    //Label = $"{Math.Floor(slice.Hauteur.Coordonnee)} ° ({slice.DirectionCharacterCode.ToString()})",
                                     LabelFormat = "0°",
                                     Font = font,
                                     ToolTip = slice.ToolTip,
@@ -766,6 +767,40 @@ namespace AstroTargetSelector
                                 });
                             }
                             serieHauteur.YAxisType = AxisType.Secondary;
+                        }
+
+                        // Série Slices - Direction
+                        if (SerieHauteurVisible)
+                        {
+                            // Série
+                            Series serieDirection = chartSliceListe.Series.Add(target.Nom + "D");
+                            serieDirection.ChartType = SeriesChartType.Column;
+                            serieDirection.XValueType = ChartValueType.DateTime;
+                            serieDirection.BorderWidth = 0;
+                            serieDirection.CustomProperties = "LabelStyle=Top";
+                            serieDirection.IsVisibleInLegend = false;
+                            foreach (IChartSlice slice in listeSerie)
+                            {
+                                // On positionne une police spécifique pour les Labels des Points
+                                Font font = new Font("Tahoma", 7, FontStyle.Bold);
+                                // On ajoute le point à la série
+                                serieDirection.Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { 0 },
+                                    //Color = slice.CouleurHauteur,
+                                    IsValueShownAsLabel = false,
+                                    //Label = slice.DirectionCharacterCode.ToString(),
+                                    Label = slice.Direction.ToString(),
+                                    //LabelFormat = "0°",
+                                    MarkerBorderWidth = 0,
+                                    Font = font,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
+                                });
+                            }
+                            serieDirection.YAxisType = AxisType.Primary;
+                            serieDirection.ChartArea = "AreaDirection";
                         }
 
                         // ChartArea
@@ -809,9 +844,15 @@ namespace AstroTargetSelector
                             chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
                             chartSliceListe.ChartAreas[0].AxisY2.IsStartedFromZero = chartSliceListe.ChartAreas[0].AxisY.IsStartedFromZero;
                             chartSliceListe.ChartAreas[0].AxisY2.Title = Resources.Hauteur;
+                            chartSliceListe.ChartAreas[0].Position.Height = 80;
+                            chartSliceListe.ChartAreas[1].Visible = true;
                         }
                         else
+                        {
                             chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
+                            chartSliceListe.ChartAreas[0].Position.Height = 90;
+                            chartSliceListe.ChartAreas[1].Visible = false;
+                        }
 
                         // Titre graphique
                         chartSliceListe.Titles.Clear();

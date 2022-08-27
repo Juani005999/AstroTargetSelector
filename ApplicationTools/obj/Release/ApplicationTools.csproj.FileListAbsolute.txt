@@ -13,6 +13,7 @@ C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Relea
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Release\ApplicationTools.pdb
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\bin\Release\ApplicationTools.XML
 C:\Users\VIVOJE\Documents\Visual Studio 2012\Projects\ApplicationTools\obj\Release\ApplicationTools.csprojResolveAssemblyReference.cache
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.dll.config
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.XML
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.pdb
@@ -23,4 +24,3 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\Application
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.CoreCompileInputs.cache
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.pdb
-C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\ApplicationTools.dll.config
