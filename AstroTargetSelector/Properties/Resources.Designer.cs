@@ -163,9 +163,9 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Identite {
+        internal static System.Drawing.Bitmap Identite_new {
             get {
-                object obj = ResourceManager.GetObject("Identite", resourceCulture);
+                object obj = ResourceManager.GetObject("Identite_new", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

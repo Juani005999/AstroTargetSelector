@@ -86,7 +86,7 @@
             // logoPictureBox
             // 
             this.logoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.logoPictureBox.Image = global::AstroTargetSelector.Properties.Resources.Identite;
+            this.logoPictureBox.Image = global::AstroTargetSelector.Properties.Resources.Identite_new;
             this.logoPictureBox.Location = new System.Drawing.Point(3, 3);
             this.logoPictureBox.Name = "logoPictureBox";
             this.tableLayoutPanel.SetRowSpan(this.logoPictureBox, 8);
