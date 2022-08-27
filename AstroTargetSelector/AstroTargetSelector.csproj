@@ -237,5 +237,8 @@
   <ItemGroup>
     <None Include="Ressources\cartesduciel.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\Identite.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

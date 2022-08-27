@@ -469,6 +469,18 @@
             <para>Renvoi l'Azimut du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Direction">
+            <summary>
+            Renvoi la direction actuelle
+            <para>Basée sur l'Azimut</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.DirectionCharacterCode">
+            <summary>
+            Renvoi le code du caractère correspondant à la Direction
+            <para>Police utilisée WINGDING</para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.AzimutCorrigee">
             <summary>
             Renvoi l'Azimut Corrigee calculé pour la Target
@@ -508,6 +520,18 @@
         <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.parentTarget">
             <summary>
             Objet céleste parent de l'objet Slice
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.estExclu">
+            <summary>
+            Permet de savoir si un objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.tempsPoseCalcule">
+            <summary>
+            Temps de pose calculé pour l'intervalle
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.slices">
@@ -707,6 +731,18 @@
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.Azimut">
             <summary>
             Azimut calculé du slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.Direction">
+            <summary>
+            Renvoi la direction actuelle
+            <para>Basée sur l'Azimut</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.DirectionCharacterCode">
+            <summary>
+            Renvoi le code du caractère correspondant à la Direction
+            <para>Police utilisée WINGDING</para>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.Hauteur">
@@ -1106,6 +1142,18 @@
         <member name="P:AstroTargetSelectorBusiness.IChartSlice.Azimut">
             <summary>
             Renvoi l'Azimut calculé pour la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.Direction">
+            <summary>
+            Renvoi la direction actuelle
+            <para>Basée sur l'Azimut</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.DirectionCharacterCode">
+            <summary>
+            Renvoi le code du caractère correspondant à la Direction
+            <para>Police utilisée WINGDING</para>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.IChartSlice.AzimutCorrigee">
