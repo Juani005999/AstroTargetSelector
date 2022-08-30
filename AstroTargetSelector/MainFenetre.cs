@@ -543,6 +543,7 @@ namespace AstroTargetSelector
                     if (!string.IsNullOrEmpty(selectedTarget) && selectedTarget == target.Nom)
                     {
                         item.Selected = true;
+                        item.Focused = true;
                         itemSelected = item;
                     }
                 }
@@ -922,7 +923,8 @@ namespace AstroTargetSelector
                     // Affichage des informations de l'objet céleste
                     ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                     if (target != null && !string.IsNullOrEmpty(target.Nom))
-                        StatusLabelNomTarget = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
+                        StatusLabelNomTarget = $"{target.Nom} - {target.Description}";
+                    //StatusLabelNomTarget = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
                 }
             }), null);
 

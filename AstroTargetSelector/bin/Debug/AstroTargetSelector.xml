@@ -623,11 +623,6 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
-        <member name="P:AstroTargetSelector.Properties.Resources.Identite">
-            <summary>
-              Recherche une ressource localisée de type System.Drawing.Bitmap.
-            </summary>
-        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Identite_new">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.

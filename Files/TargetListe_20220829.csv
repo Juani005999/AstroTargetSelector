@@ -175,8 +175,7 @@ NGC 3628	Galaxie	Galaxie du Hamburger	11,3377805555556	13,59175	9,48	0,176283334
 NGC 3344	Galaxie	Galaxie de l’Onion coupé	10,7249833333333	24,92475	9,86	0,07605	0,07453334	Le Petit Lion	NGC
 NGC 3432	Galaxie	Galaxie de l’Aiguille à Tricoter	10,8749416666667	36,6217777777778	11,67	0,10455	0,020916667	Le Petit Lion	NGC
 NGC 2683	Galaxie	Galaxie OVNI	8,87772222222222	33,42325	9,7	0,089716667	0,035883334	Le Lynx	NGC
-NGC 2237	Amas d’étoiles ouvert	Nébuleuse de la Rosette – Caldwell 50	6,531625	4,94322222222222	4,8	0,4	0,4	La Licorne	NGC
-NGC 2244	Amas d’étoiles ouvert	Nébuleuse de la Rosette – Caldwell 50	6,531625	4,94322222222222	4,8	0,4	0,4	La Licorne	NGC
+NGC 2237 / 2244	Amas d’étoiles ouvert	Nébuleuse de la Rosette – Caldwell 50	6,531625	4,94322222222222	4,8	0,4	0,4	La Licorne	NGC
 NGC 2261	Nébuleuse par réflexion	Nébuleuse variable de Hubble – Caldwell 46	6,65244722222222	8,73708333333333	9	0,03334	0,016667	La Licorne	NGC
 NGC 6369	Nébuleuse planétaire	Nébuleuse du petit Fantôme	17,4892833333333	-23,7599166666667	11,4	0,007783334	0,007783334	Ophiuchus	NGC
 NGC 6572	Nébuleuse planétaire	Nébuleuse de la Racquetball bleue	18,2020611111111	6,85547222222222	8,1	0,00555	0,004116667	Ophiuchus	NGC
@@ -187,8 +186,7 @@ NGC 2024	Amas associé à une nébulosité	Nébuleuse de la Flamme	5,69500833333
 NGC 2022	Nébuleuse planétaire	Nébuleuse des Croissants qui s’embrassent	5,70145833333333	9,08705555555556	11,6	0,005383334	0,005383334	Orion	NGC
 NGC 2194	Amas d’étoiles ouvert	Cr 87	6,22916666666667	12,81875	8,5	0,083334	0,083334	Orion	NGC
 NGC 7331	Galaxie	Groupe Deer Lick – Caldwell 30	22,6181861111111	34,4156111111111	9,48	0,175	0,0616667	Pégase	NGC
-NGC 869	Amas d’étoiles ouvert	Double amas – Caldwell 14	2,31671944444444	57,1242777777778	3,8	0,5	0,5	Persée	NGC
-NGC 884	Amas d’étoiles ouvert	Double amas – Caldwell 14	2,31671944444444	57,1242777777778	3,8	0,5	0,5	Persée	NGC
+NGC 869 / 884	Amas d’étoiles ouvert	Double amas – Caldwell 14	2,31671944444444	57,1242777777778	3,8	0,5	0,5	Persée	NGC
 NGC 1023	Galaxie	Galaxie lenticulaire de Persée	2,67333055555556	39,061	9,35	0,09616667	0,03655	Persée	NGC
 NGC 1491	Région HII	Nébuleuse de l’empreinte Fossile – SH2-206	4,05420833333333	51,312	0	0,15	0,1	Persée	NGC
 NGC 2438	Nébuleuse planétaire	PGC 3517755	7,69700277777778	-14,7337222222222	10,8	0,01955	0,01955	La Poupe	NGC
@@ -228,16 +226,3 @@ SH2-101	Région HII	Nébuleuse de la Tulipe	19,9989861111111	35,2799444444444	9	
 IC 1396	Amas associé à une nébulosité	Nébuleuse de la Trompe d’éléphant – SH2-131	21,6506583333333	57,4911944444444	3,5	0,2	0,06667	Céphée	IC
 NGC 7380	Amas associé à une nébulosité	Nébuleuse du Sorcier – SH2-142	22,7897805555556	58,1318611111111	7,2	0,416667	0,3334	Céphée	NGC
 IC 5146	Amas associé à une nébulosité	Nébuleuse du Cocon – Caldwell 19 – SH2-125	21,8905222222222	47,2681944444445	7,2	0,2	0,2	Le Cygne	IC
-SH2-114	Région HII	Flying Dragon Nebula	21,3537666666667	38,7024444444444	0	0,2	0,1	Le Cygne	Sharpless
-NGC 7317	Galaxie	Quintette de Stephan	22,5981638888889	33,9463888888889	13,6	0,009616667	0,00885	Pégase	NGC
-NGC 7318	Galaxie	Quintette de Stephan	22,5981638888889	33,9463888888889	13,6	0,009616667	0,00885	Pégase	NGC
-NGC 7319	Galaxie	Quintette de Stephan	22,5981638888889	33,9463888888889	13,6	0,009616667	0,00885	Pégase	NGC
-NGC 7320	Galaxie	Quintette de Stephan	22,5981638888889	33,9463888888889	13,6	0,009616667	0,00885	Pégase	NGC
-NGC 6823	Amas associé à une nébulosité	SH2-86	19,7194944444444	23,3031944444444	7,1	0,6667	0,5	Le Petit Renard	NGC
-IC 1795	Région HII	Nébuleuse de la Tête de Poisson	2,42911388888889	62,1005	0	0,2	0,2	Cassiopée	IC
-IC 59	Nébuleuse par réflexion	Nébuleuse Y Cas	0,962338888888889	61,0813611111111	13,33	0,16667	0,083334	Cassiopée	IC
-IC 63	Région HII	Nébuleuse Y Cas	0,984269444444444	60,8863611111111	13,33	0,16667	0,05	Cassiopée	IC
-IC 1318	Région HII	Nébuleuse Y Cyg	20,2804055555556	41,9603333333333	0	0,75	0,3334	Le Cygne	IC
-IC 410	Amas associé à une nébulosité	Nébuleuse des Têtards – SH2-236	5,36655555555556	33,4789166666667	0	0,6667	0,5	Le Cocher	IC
-IC 405	Nébuleuse en émission	Nébuleuse de l’Etoile Flamboyante – Caldwell 31 - SH2-229	5,28989722222222	34,3788333333333	6	0,83334	0,5	Le Cocher	IC
-NGC 7822	Région HII	SH2-171	0,019875	67,4201111111111	0	0,383334	0,383334	Céphée	NGC

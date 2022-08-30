@@ -119,7 +119,15 @@ namespace ApplicationTools
             }
             // Sinon, du texte
             else
+            {
                 compareResult = ObjectCompare.Compare(listviewX.SubItems[ColumnToSort].Text, listviewY.SubItems[ColumnToSort].Text);
+                //string stringA = listviewX.SubItems[ColumnToSort].Text as string;
+                //string stringB = listviewY.SubItems[ColumnToSort].Text as string;
+                //if (!string.IsNullOrEmpty(stringA) && !string.IsNullOrEmpty(stringB))
+                //    compareResult = ObjectCompare.Compare(stringA.Replace(" ", ""), stringB.Replace(" ", ""));
+                //else
+                //    compareResult = ObjectCompare.Compare(stringA, stringB);
+            }
 
             // Calculate correct return value based on object comparison
             if (OrderOfSort == SortOrder.Ascending)

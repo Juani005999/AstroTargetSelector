@@ -46,10 +46,13 @@ namespace AstroTargetSelectorBusiness
                 ForceUpdateSlices = false;
 
                 // Filtre sur Nom / Description / Constellation
-                if (!string.IsNullOrEmpty(FiltreNomDescription))
-                    listeObjTarget = listeObjTarget.Where(t => t.Nom.ToLower().Contains(FiltreNomDescription.ToLower())
-                                                                || t.Description.ToLower().Contains(FiltreNomDescription.ToLower())
-                                                                || t.Constellation.ToLower().Contains(FiltreNomDescription.ToLower())).ToList();
+                if (!string.IsNullOrWhiteSpace(FiltreNomDescription))
+                {
+                    string filtre = FiltreNomDescription.Replace(" ", "").ToLower();
+                    listeObjTarget = listeObjTarget.Where(t => t.Nom.Replace(" ", "").ToLower().Contains(filtre)
+                                                                || t.Description.Replace(" ", "").ToLower().Contains(filtre)
+                                                                || t.Constellation.Replace(" ", "").ToLower().Contains(filtre)).ToList();
+                }
 
                 // Filtre sur Type
                 if (!string.IsNullOrEmpty(FiltreType) && FiltreType != Resources.Tous)
