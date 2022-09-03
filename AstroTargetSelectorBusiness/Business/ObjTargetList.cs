@@ -11,7 +11,7 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant une liste d'objet <see cref="ObjTarget"/>
     /// </summary>
-    public class ObjTargetList
+    public class ObjTargetList : IObjTargetList
     {
         #region Propriétés
 
@@ -20,14 +20,14 @@ namespace AstroTargetSelectorBusiness
         /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// <para>Afin de forcer le rechargement de la liste depuis le fichier de configuration, il faut positionner la propriété <see cref="ForceUpdateListe"/> à true</para>
         /// </summary>
-        internal List<ObjTarget> ListeObjTarget
+        public List<IObjTarget> ListeObjTarget
         {
             get
             {
                 // Création du singleton si nécessaire
                 if (listeObjTarget == null)
                 {
-                    listeObjTarget = new List<ObjTarget>();
+                    listeObjTarget = new List<IObjTarget>();
                     ForceUpdateListe = true;
                 }
                 
@@ -51,28 +51,28 @@ namespace AstroTargetSelectorBusiness
         /// Force le rechargement de la liste depuis le fichier de configuration
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
         /// </summary>
-        internal bool ForceUpdateListe { get; set; }
+        public bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Permet de forcer le rechargement des Slices
         /// </summary>
-        internal bool ForceUpdateSlices { get; set; }
+        public bool ForceUpdateSlices { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        internal string TargetListeFullPathFile
+        public string TargetListeFullPathFile
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + TargetListeFileName;
+                return appToolFactory.GetAppContext().UserAppDataPath + "\\" + TargetListeFileName;
             }
         }
 
         /// <summary>
         /// Nom du fichier de configuration contenant la liste des objets céleste
         /// </summary>
-        internal string TargetListeFileName
+        public string TargetListeFileName
         {
             get
             {
@@ -87,9 +87,10 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjTargetList(AppObjFactory factory)
+        internal ObjTargetList(IAppToolFactory appToolFactory, IAppInputs appInputs)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appInputs = appInputs;
             ForceUpdateListe = false;
         }
 
@@ -105,7 +106,7 @@ namespace AstroTargetSelectorBusiness
             try
             {
                 // Trace et Chrono
-                factory.GetLog().Log($"Rechargement de la liste des targets depuis le fichier de configuration", GetType().Name);
+                appToolFactory.GetLog().Log($"Rechargement de la liste des targets depuis le fichier de configuration", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
@@ -118,7 +119,7 @@ namespace AstroTargetSelectorBusiness
                 // TODO : Si le fichier de configuration n'existe pas sur le poste, on le télécharge ?
 
                 // Lecture du fichier de configuration et ajout dans la liste
-                factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste : {TargetListeFullPathFile}", GetType().Name);
+                appToolFactory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste : {TargetListeFullPathFile}", GetType().Name);
                 if (File.Exists(TargetListeFullPathFile))
                 {
                     using (var reader = new StreamReader(TargetListeFullPathFile))
@@ -130,31 +131,31 @@ namespace AstroTargetSelectorBusiness
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
 
-                            listeObjTarget.Add(new ObjTarget(factory)
+                            listeObjTarget.Add(new ObjTarget(appToolFactory, appInputs)
                             {
                                 Nom = values[0],
                                 Type = values[1],
                                 Description = values[2],
                                 Constellation = values[8],
-                                RA = factory.GetCoordinate(Convert.ToDouble(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
-                                DEC = factory.GetCoordinate(Convert.ToDouble(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
+                                RA = appToolFactory.GetCoordinate(Convert.ToDouble(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
+                                DEC = appToolFactory.GetCoordinate(Convert.ToDouble(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
                                 Magnitude = Convert.ToDouble(values[5].Replace(',', '.'), CultureInfo.InvariantCulture),
-                                GrandeurWidth = factory.GetCoordinate(Convert.ToDouble(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
-                                GrandeurHeight = factory.GetCoordinate(Convert.ToDouble(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
+                                GrandeurWidth = appToolFactory.GetCoordinate(Convert.ToDouble(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
+                                GrandeurHeight = appToolFactory.GetCoordinate(Convert.ToDouble(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
                             });
                         }
                     }
                 }
                 else
-                    factory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, AppLog.TypeLog.Warning);
+                    appToolFactory.GetLog().Log($"Fichier de configuration contenant la liste des objets céleste manquant. Aucun objet chargé", GetType().Name, null, TypeLog.Warning);
 
                 // Trace
-                factory.GetLog().Log($"Chargement de {listeObjTarget.Count} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                appToolFactory.GetLog().Log($"Chargement de {listeObjTarget.Count} targets en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
             catch (Exception err)
             {
                 // Trace de l'erreur
-                factory.GetLog().LogException(err, GetType().Name);
+                appToolFactory.GetLog().LogException(err, GetType().Name);
             }
         }
 
@@ -163,14 +164,19 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjTarget"/>
+        /// Instance de l'objet applicatif appInputs
         /// </summary>
-        private List<ObjTarget> listeObjTarget = null;
+        private readonly IAppInputs appInputs = null;
+
+        /// <summary>
+        /// Liste d'objets <see cref="IObjTarget"/>
+        /// </summary>
+        private List<IObjTarget> listeObjTarget = null;
 
         /// <summary>
         /// Nom du fichier de configuration contenant la liste des objets céleste

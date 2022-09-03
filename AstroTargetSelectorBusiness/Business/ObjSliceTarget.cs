@@ -84,7 +84,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                if (Hauteur.Coordonnee >= factory.GetAppInputs().Inputs.HauteurMin)
+                if (Hauteur.Coordonnee >= appInputs.Inputs.HauteurMin)
                     return Color.FromArgb(0, 192, 0);
                 return Color.Red;
             }
@@ -229,14 +229,14 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 // Parcours des zones à exclure
-                foreach (CoordinatesDirection direction in factory.GetAppInputs().Inputs.ZonesExclues)
+                foreach (CoordinatesDirection direction in appInputs.Inputs.ZonesExclues)
                 {
                     if (direction == Direction)
                         return true;
                 }
 
                 // Vérif sur la Hauteur apparente du premier Slice
-                if (Hauteur.Coordonnee < factory.GetAppInputs().Inputs.HauteurMin)
+                if (Hauteur.Coordonnee < appInputs.Inputs.HauteurMin)
                     return true;
 
                 // Objet non exclu de la liste
@@ -265,9 +265,10 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjSliceTarget(AppObjFactory factory, ObjTarget parentTarget)
+        internal ObjSliceTarget(IAppToolFactory appToolFactory, IAppInputs appInputs, IObjTarget parentTarget)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appInputs = appInputs;
             this.parentTarget = parentTarget;
         }
 
@@ -314,7 +315,7 @@ namespace AstroTargetSelectorBusiness
             double greenwitchTSCorrige = greenwitchTS % (2 * Math.PI);
 
             // Temps Sideral Local
-            double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * factory.GetAppInputs().Inputs.LieuObservation.LongitudeValue)) % (2 * Math.PI))
+            double LST = ((greenwitchTSCorrige + ((Math.PI / 180) * appInputs.Inputs.LieuObservation.LongitudeValue)) % (2 * Math.PI))
                         - (((Math.PI / 180) * parentTarget.RA.Coordonnee) * 15);
             double H = LST < 0 ? LST + (2 * Math.PI) : LST > Math.PI ? LST - (2 * Math.PI) : LST;
 
@@ -322,26 +323,26 @@ namespace AstroTargetSelectorBusiness
             double sinDec = Math.Sin((Math.PI / 180) * parentTarget.DEC.Coordonnee);
             double cosDec = Math.Cos((Math.PI / 180) * parentTarget.DEC.Coordonnee);
             double tanDec = Math.Tan((Math.PI / 180) * parentTarget.DEC.Coordonnee);
-            double sinLatitude = Math.Sin((Math.PI / 180) * factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue);
-            double cosLatitude = Math.Cos((Math.PI / 180) * factory.GetAppInputs().Inputs.LieuObservation.LatitudeValue);
+            double sinLatitude = Math.Sin((Math.PI / 180) * appInputs.Inputs.LieuObservation.LatitudeValue);
+            double cosLatitude = Math.Cos((Math.PI / 180) * appInputs.Inputs.LieuObservation.LatitudeValue);
             double cosH = Math.Cos(H);
             double sinH = Math.Sin(H);
 
             // Hauteur
-            hauteurPrecise = factory.GetCoordinate(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180), CoordinatesType.Degree);
-            hauteur = factory.GetCoordinate(Math.Floor(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180)), CoordinatesType.Degree);
+            hauteurPrecise = appToolFactory.GetCoordinate(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180), CoordinatesType.Degree);
+            hauteur = appToolFactory.GetCoordinate(Math.Floor(Math.Asin((sinDec * sinLatitude) + (cosDec * cosLatitude * cosH)) / (Math.PI / 180)), CoordinatesType.Degree);
 
             // Azimut
-            azimutCorrigee = factory.GetCoordinate(Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI, CoordinatesType.Degree);
-            azimutPrecise = factory.GetCoordinate((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180), CoordinatesType.Degree);
-            azimut = factory.GetCoordinate(Math.Floor((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180)), CoordinatesType.Degree);
+            azimutCorrigee = appToolFactory.GetCoordinate(Math.Atan2(sinH, (cosH * sinLatitude) - (cosLatitude * tanDec)) - Math.PI, CoordinatesType.Degree);
+            azimutPrecise = appToolFactory.GetCoordinate((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180), CoordinatesType.Degree);
+            azimut = appToolFactory.GetCoordinate(Math.Floor((Convert.ToDouble(azimutCorrigee.Coordonnee) + (2 * Math.PI)) / (Math.PI / 180)), CoordinatesType.Degree);
             double cosAzimut = Math.Cos((Math.PI / 180) * azimut.Coordonnee);
 
             tempsPoseCalcule = Math.Abs(230
-                                    * (factory.GetAppInputs().Inputs.BougeMax
+                                    * (appInputs.Inputs.BougeMax
                                     * Math.Cos((Math.PI / 180) * hauteur.Coordonnee))
                                     / (0.5
-                                    * factory.GetAppInputs().Inputs.Capteur.Largeur
+                                    * appInputs.Inputs.Capteur.Largeur
                                     * cosLatitude
                                     * cosAzimut)
                                     * 60);
@@ -352,14 +353,19 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
+
+        /// <summary>
+        /// Instance de l'objet applicatif appInputs
+        /// </summary>
+        private readonly IAppInputs appInputs = null;
 
         /// <summary>
         /// Objet céleste parent de l'objet Slice
         /// </summary>
-        private readonly ObjTarget parentTarget = null;
+        private readonly IObjTarget parentTarget = null;
 
         /// <summary>
         /// Azimut calculé du slice

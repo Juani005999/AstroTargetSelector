@@ -24,7 +24,7 @@ namespace AstroTargetSelector
         /// Constructeur par défaut
         /// </summary>
         /// <param name="factory"></param>
-        public dlgParametres(AppObjFactory factory)
+        public dlgParametres(IAppObjFactory factory)
         {
             InitializeComponent();
             this.factory = factory;
@@ -205,11 +205,11 @@ namespace AstroTargetSelector
                 Coordinates nouveauLieu = factory.GetCoordinates(0, 0);
                 if (!Coordinates.TryParse(textBoxLongitudeDegre.Text, textBoxLongitudeMinute.Text, textBoxLongitudeSeconde.Text, comboBoxLongitudeDirection.Text,
                                         textBoxLatitudeDegre.Text, textBoxLatitudeMinute.Text, textBoxLatitudeSeconde.Text, comboBoxLatitudeDirection.Text,
-                                        ref nouveauLieu, factory))
+                                        ref nouveauLieu, factory.GetLog()))
                     throw new WarningException(Resources.FormatDuLieuDObservationIncorrect);
                 // Capteur
-                ObjCapteur capteur;
-                if (!ObjCapteur.TryParse(comboBoxCapteur.Text, textBoxCapteurLargeur.Text, out capteur, factory))
+                IObjCapteur capteur;
+                if (!ObjCapteur.TryParse(comboBoxCapteur.Text, textBoxCapteurLargeur.Text, out capteur, factory.GetLog(), factory.GetAppCapteur()))
                     throw new WarningException(Resources.FormatDuCapteurIncorrect);
                 // Bougé max.
                 double bougeMax;
@@ -269,7 +269,7 @@ namespace AstroTargetSelector
             catch (WarningException err)
             {
                 // Trace de l'erreur et information Warning à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Warning);
+                factory.GetLog().LogException(err, GetType().Name, TypeLog.Warning);
                 MessageBox.Show(err.Message
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
@@ -278,7 +278,7 @@ namespace AstroTargetSelector
             catch (Exception err)
             {
                 // Trace de l'erreur et information à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Fatal);
+                factory.GetLog().LogException(err, GetType().Name, TypeLog.Fatal);
                 MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
@@ -299,7 +299,7 @@ namespace AstroTargetSelector
                 // On recherche dans la liste des capteur
                 if (!string.IsNullOrEmpty(comboBoxCapteur.Text))
                 {
-                    ObjCapteur objEnCours = factory.GetAppCapteur().ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
+                    IObjCapteur objEnCours = factory.GetAppCapteur().ListeObjCapteur.Where(t => t.Nom == comboBoxCapteur.Text).FirstOrDefault();
                     if (objEnCours != null)
                     {
                         textBoxCapteurLargeur.Text = objEnCours.Largeur.ToString(CultureInfo.InvariantCulture);
@@ -311,7 +311,7 @@ namespace AstroTargetSelector
             catch(Exception err)
             {
                 // Trace de l'erreur
-                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Fatal);
+                factory.GetLog().LogException(err, GetType().Name, TypeLog.Fatal);
             }
         }
 
@@ -322,7 +322,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppObjFactory factory = null;
 
         #endregion
 

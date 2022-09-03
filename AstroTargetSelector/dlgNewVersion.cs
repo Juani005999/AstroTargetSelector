@@ -49,7 +49,7 @@ namespace AstroTargetSelector
         /// <param name="nom"></param>
         /// <param name="description"></param>
         /// <param name="url"></param>
-        public dlgNewVersion(AppObjFactory factory, string version, string nom, string description, string url)
+        public dlgNewVersion(IAppObjFactory factory, string version, string nom, string description, string url)
         {
             InitializeComponent();
             this.factory = factory;
@@ -71,7 +71,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppObjFactory factory = null;
 
         /// <summary>
         /// URL de la mise à jour

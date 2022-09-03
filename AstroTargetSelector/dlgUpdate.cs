@@ -120,7 +120,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public dlgUpdate(AppObjFactory factory, UpdateDialogMode dialogMode)
+        public dlgUpdate(IAppObjFactory factory, UpdateDialogMode dialogMode)
         {
             InitializeComponent();
             this.factory = factory;
@@ -317,7 +317,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppObjFactory factory = null;
 
         /// <summary>
         /// Mode d'ouverture de la boîte de dialogue

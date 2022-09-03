@@ -8,7 +8,7 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant un objet céleste
     /// </summary>
-    public class ObjTarget
+    public class ObjTarget : IObjTarget
     {
         #region Constantes
 
@@ -91,7 +91,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Permet de forcer le rechargement des Slices
         /// </summary>
-        internal bool ForceUpdateSlices {
+        public bool ForceUpdateSlices {
             set
             {
                 slices.Clear();
@@ -265,12 +265,12 @@ namespace AstroTargetSelectorBusiness
 
                     // Clear de la liste des Slices
                     hourlySlices.Clear();
-                    for (int i = 0; i < factory.GetAppInputs().Inputs.NombreSlice; i++)
+                    for (int i = 0; i < appInputs.Inputs.NombreSlice; i++)
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        hourlySlices.Add(new ObjSliceTarget(factory, this)
+                        hourlySlices.Add(new ObjSliceTarget(appToolFactory, appInputs, this)
                         {
-                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * factory.GetAppInputs().Inputs.MinuteIntervalSlice)
+                            DateHeure = appInputs.Inputs.DateHeureObservation.AddMinutes(i * appInputs.Inputs.MinuteIntervalSlice)
                         });
                     }
                 }
@@ -294,14 +294,14 @@ namespace AstroTargetSelectorBusiness
                     // Clear de la liste des Slices
                     dailySlices.Clear();
                     // On ajoute 1 intervalle toute les 30min sur 10h à partir de 19h
-                    DateTime dateDebut = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                    DateTime dateDebut = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
+                                                        appInputs.Inputs.DateHeureObservation.Day,
                                                         19, 0, 0);
                     for (int i = 0; i < 20; i++)
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        dailySlices.Add(new ObjSliceTarget(factory, this)
+                        dailySlices.Add(new ObjSliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateDebut.AddMinutes(i * 30)
                         });
@@ -327,13 +327,13 @@ namespace AstroTargetSelectorBusiness
                     // Clear de la liste des Slices
                     monthlySlices.Clear();
                     // On ajoute 1 intervalle jour (contenant chacun 3 intervalles) pendant 1 mois
-                    DateTime dateEnCours = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day);
-                    while (dateEnCours <= factory.GetAppInputs().Inputs.DateHeureObservation.AddMonths(1))
+                    DateTime dateEnCours = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
+                                                        appInputs.Inputs.DateHeureObservation.Day);
+                    while (dateEnCours <= appInputs.Inputs.DateHeureObservation.AddMonths(1))
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        monthlySlices.Add(new ObjDailySliceTarget(factory, this)
+                        monthlySlices.Add(new ObjDailySliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateEnCours
                         });
@@ -360,13 +360,13 @@ namespace AstroTargetSelectorBusiness
                     // Clear de la liste des Slices
                     yearlySlices.Clear();
                     // On ajoute 1 intervalle mois (contenant chacun 3 intervalles) pendant 1 an
-                    DateTime dateEnCours = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                    DateTime dateEnCours = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
                                                         1);
-                    while (dateEnCours <= factory.GetAppInputs().Inputs.DateHeureObservation.AddYears(1))
+                    while (dateEnCours <= appInputs.Inputs.DateHeureObservation.AddYears(1))
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        yearlySlices.Add(new ObjMonthlySliceTarget(factory, this)
+                        yearlySlices.Add(new ObjMonthlySliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateEnCours
                         });
@@ -384,15 +384,16 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjTarget(AppObjFactory factory)
+        internal ObjTarget(IAppToolFactory appToolFactory, IAppInputs appInputs)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appInputs = appInputs;
 
             // Initialisation des objets
-            RA = factory.GetCoordinate(0, CoordinatesType.RA);
-            DEC = factory.GetCoordinate(0, CoordinatesType.DEC);
-            GrandeurWidth = factory.GetCoordinate(0, CoordinatesType.Degree);
-            GrandeurHeight = factory.GetCoordinate(0, CoordinatesType.Degree);
+            RA = appToolFactory.GetCoordinate(0, CoordinatesType.RA);
+            DEC = appToolFactory.GetCoordinate(0, CoordinatesType.DEC);
+            GrandeurWidth = appToolFactory.GetCoordinate(0, CoordinatesType.Degree);
+            GrandeurHeight = appToolFactory.GetCoordinate(0, CoordinatesType.Degree);
         }
 
         #endregion
@@ -404,20 +405,20 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         /// <param name="mode"></param>
         /// <returns></returns>
-        public List<IChartSlice> GetCurrentChartSlice(ObjInputs.ModeVisualisation mode)
+        public List<IChartSlice> GetCurrentChartSlice(ModeVisualisation mode)
         {
             switch(mode)
             {
-                case ObjInputs.ModeVisualisation.Annuel:
+                case ModeVisualisation.Annuel:
                     return YearlySlices;
 
-                case ObjInputs.ModeVisualisation.Mensuel:
+                case ModeVisualisation.Mensuel:
                     return MonthlySlices;
 
-                case ObjInputs.ModeVisualisation.Nuits:
+                case ModeVisualisation.Nuits:
                     return DailySlices;
 
-                case ObjInputs.ModeVisualisation.Horaire:
+                case ModeVisualisation.Horaire:
                 default:
                     return HourlySlices;
             }
@@ -432,18 +433,18 @@ namespace AstroTargetSelectorBusiness
             slices.Clear();
 
             // Mise en place des slices principaux en fonction du mode de visualisation
-            switch (factory.GetAppInputs().Inputs.Visualisation)
+            switch (appInputs.Inputs.Visualisation)
             {
-                case ObjInputs.ModeVisualisation.Annuel:
+                case ModeVisualisation.Annuel:
                     // On ajoute 1 intervalle toute les 60min sur 10h à partir de 19h
-                    DateTime dateAnnuel = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
+                    DateTime dateAnnuel = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
                                                         1,
                                                         0, 0, 0);
-                    while (dateAnnuel <= factory.GetAppInputs().Inputs.DateHeureObservation.AddYears(1))
+                    while (dateAnnuel <= appInputs.Inputs.DateHeureObservation.AddYears(1))
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        slices.Add(new ObjSliceTarget(factory, this)
+                        slices.Add(new ObjSliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateAnnuel
                         });
@@ -451,16 +452,16 @@ namespace AstroTargetSelectorBusiness
                     }
                     break;
 
-                case ObjInputs.ModeVisualisation.Mensuel:
+                case ModeVisualisation.Mensuel:
                     // On ajoute 1 intervalle jour (contenant chacun 3 intervalles) pendant 1 mois
-                    DateTime dateMensuel = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                    DateTime dateMensuel = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
+                                                        appInputs.Inputs.DateHeureObservation.Day,
                                                         0, 0, 0);
-                    while (dateMensuel <= factory.GetAppInputs().Inputs.DateHeureObservation.AddMonths(1))
+                    while (dateMensuel <= appInputs.Inputs.DateHeureObservation.AddMonths(1))
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        slices.Add(new ObjDailySliceTarget(factory, this)
+                        slices.Add(new ObjDailySliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateMensuel
                         });
@@ -468,31 +469,31 @@ namespace AstroTargetSelectorBusiness
                     }
                     break;
 
-                case ObjInputs.ModeVisualisation.Nuits:
+                case ModeVisualisation.Nuits:
                     // On ajoute 1 intervalle toute les 60min sur 10h à partir de 19h
-                    DateTime dateNuits = new DateTime(factory.GetAppInputs().Inputs.DateHeureObservation.Year,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Month,
-                                                        factory.GetAppInputs().Inputs.DateHeureObservation.Day,
+                    DateTime dateNuits = new DateTime(appInputs.Inputs.DateHeureObservation.Year,
+                                                        appInputs.Inputs.DateHeureObservation.Month,
+                                                        appInputs.Inputs.DateHeureObservation.Day,
                                                         19, 0, 0);
                     for (int i = 0; i < 10; i++)
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        slices.Add(new ObjSliceTarget(factory, this)
+                        slices.Add(new ObjSliceTarget(appToolFactory, appInputs, this)
                         {
                             DateHeure = dateNuits.AddMinutes(i * 60)
                         });
                     }
                     break;
 
-                case ObjInputs.ModeVisualisation.Horaire:
+                case ModeVisualisation.Horaire:
                 default:
                     // On ajoute 1 intervalle toute les 10min sur 2h
                     for (int i = 0; i < 12; i++)
                     {
                         // On ajoute le nombre d'intervalles requis et on positionne la date et l'heure pour chacun des slices
-                        slices.Add(new ObjSliceTarget(factory, this)
+                        slices.Add(new ObjSliceTarget(appToolFactory, appInputs, this)
                         {
-                            DateHeure = factory.GetAppInputs().Inputs.DateHeureObservation.AddMinutes(i * 10)
+                            DateHeure = appInputs.Inputs.DateHeureObservation.AddMinutes(i * 10)
                         });
                     }
                     break;
@@ -504,9 +505,14 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
+
+        /// <summary>
+        /// Instance de l'objet applicatif appInputs
+        /// </summary>
+        private readonly IAppInputs appInputs = null;
 
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target

@@ -1,11 +1,12 @@
-﻿using System.Windows.Forms;
+﻿using System.Globalization;
+using System.Windows.Forms;
 
 namespace ApplicationTools
 {
     /// <summary>
     /// Objet permettant d'accéder au contexte d'éxecution de l'application en cours
     /// </summary>
-    public class AppContext
+    public class AppContext : IAppContext
     {
         #region Propriétés
 
@@ -75,6 +76,28 @@ namespace ApplicationTools
             }
         }
 
+        /// <summary>
+        /// Code langue d'exécution
+        /// </summary>
+        public string CodeLangue
+        {
+            get
+            {
+                return CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+            }
+        }
+
+        /// <summary>
+        /// Code pays d'exécution
+        /// </summary>
+        public string CodePays
+        {
+            get
+            {
+                return RegionInfo.CurrentRegion.TwoLetterISORegionName;
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -82,20 +105,13 @@ namespace ApplicationTools
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppContext(AppToolFactory toolFactory)
+        internal AppContext()
         {
-            this.toolFactory = toolFactory;
         }
 
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la ToolFactory en cours
-        /// </summary>
-        private readonly AppToolFactory toolFactory = null;
-
         #endregion
     }
 }

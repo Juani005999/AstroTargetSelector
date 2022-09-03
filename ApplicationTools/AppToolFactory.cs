@@ -9,7 +9,7 @@ namespace ApplicationTools
     /// <summary>
     /// Fabrique d'objets
     /// </summary>
-    public class AppToolFactory
+    public class AppToolFactory : IAppToolFactory
     {
         #region Constructeur
 
@@ -25,31 +25,31 @@ namespace ApplicationTools
         #region Méthodes
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppLog"/>
+        /// Retourne l'interface <see cref="IAppLog"/> de l'objet <see cref="AppLog"/>
         /// </summary>
         /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet Log</returns>
-        public AppLog GetLog()
+        public IAppLog GetLog()
         {
             // Création et initialisation de l'objet de log s'il n'existe pas
             if (log == null)
             {
-                log = new AppLog(this);
+                log = new AppLog(GetAppContext());
             }
             return log;
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppContext"/>
+        /// Retourne l'interface <see cref="IAppContext"/> de l'objet <see cref="AppContext"/>
         /// </summary>
         /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
-        public AppContext GetAppContext()
+        public IAppContext GetAppContext()
         {
             // Création et initialisation de l'objet AppContext s'il n'existe pas
             if (appContext == null)
             {
-                appContext = new AppContext(this);
+                appContext = new AppContext();
             }
             return appContext;
         }
@@ -59,12 +59,12 @@ namespace ApplicationTools
         /// </summary>
         /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
-        public AppStellarium GetAppStellarium()
+        public IAppProgramme GetAppStellarium()
         {
             // Création et initialisation de l'objet AppStellarium s'il n'existe pas
             if (appStellarium == null)
             {
-                appStellarium = new AppStellarium(this);
+                appStellarium = new AppStellarium(GetLog());
             }
             return appStellarium;
         }
@@ -74,12 +74,12 @@ namespace ApplicationTools
         /// </summary>
         /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
-        public AppCartesDuCiel GetAppCartesDuCiel()
+        public IAppProgramme GetAppCartesDuCiel()
         {
             // Création et initialisation de l'objet AppStellarium s'il n'existe pas
             if (appCartesDuCiel == null)
             {
-                appCartesDuCiel = new AppCartesDuCiel(this);
+                appCartesDuCiel = new AppCartesDuCiel(GetLog());
             }
             return appCartesDuCiel;
         }
@@ -113,24 +113,24 @@ namespace ApplicationTools
         #region Champs
 
         /// <summary>
-        /// Objet <see cref="AppLog"/>
+        /// Interface de l'Objet <see cref="AppLog"/>
         /// </summary>
-        private AppLog log = null;
+        private IAppLog log = null;
 
         /// <summary>
-        /// Objet <see cref="AppContext"/>
+        /// Interface de l'Objet <see cref="AppContext"/>
         /// </summary>
-        private AppContext appContext = null;
+        private IAppContext appContext = null;
 
         /// <summary>
         /// Objet <see cref="AppStellarium"/>
         /// </summary>
-        private AppStellarium appStellarium = null;
+        private IAppProgramme appStellarium = null;
 
         /// <summary>
         /// Objet <see cref="AppCartesDuCiel"/>
         /// </summary>
-        private AppCartesDuCiel appCartesDuCiel = null;
+        private IAppProgramme appCartesDuCiel = null;
 
         #endregion
     }

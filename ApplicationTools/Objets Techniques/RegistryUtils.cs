@@ -14,21 +14,21 @@ namespace ApplicationTools
         /// Permet de savoir si un programme est installé sur le poste local
         /// </summary>
         /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        internal static bool IsProgramInstalled(string programDisplayName, AppToolFactory factory)
+        internal static bool IsProgramInstalled(string programDisplayName, IAppLog appLog)
         {
             try
             {
                 // Trace
-                factory.GetLog().Log($"Vérification de l'installation du programme : {programDisplayName}", "RegistryUtils");
+                appLog.Log($"Vérification de l'installation du programme : {programDisplayName}", "RegistryUtils");
 
-                return GetUninstallProgramKey(programDisplayName, factory) != null;
+                return GetUninstallProgramKey(programDisplayName, appLog) != null;
             }
             catch (Exception err)
             {
                 // On trace l'erreur
-                factory.GetLog().LogException(err, "RegistryUtils");
+                appLog.LogException(err, "RegistryUtils");
                 return false;
             }
         }
@@ -37,30 +37,30 @@ namespace ApplicationTools
         /// Renvoi le champ DisplayVersion d'un programme installé sur le poste local
         /// </summary>
         /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        internal static string GetDisplayVersion(string programDisplayName, AppToolFactory factory)
+        internal static string GetDisplayVersion(string programDisplayName, IAppLog appLog)
         {
             try
             {
                 string version = string.Empty;
 
                 // Trace
-                factory.GetLog().Log($"Lecture du champ DisplayVersion du programme : {programDisplayName}", "RegistryUtils");
+                appLog.Log($"Lecture du champ DisplayVersion du programme : {programDisplayName}", "RegistryUtils");
 
-                RegistryKey returnKey = GetUninstallProgramKey(programDisplayName, factory);
+                RegistryKey returnKey = GetUninstallProgramKey(programDisplayName, appLog);
                 if (returnKey != null)
                     version = returnKey.GetValue("DisplayVersion") as string;
 
                 // Trace et retour
                 if (returnKey != null && !string.IsNullOrEmpty(version))
-                    factory.GetLog().Log($"Programme {programDisplayName} installé en version {version}", "RegistryUtils");
+                    appLog.Log($"Programme {programDisplayName} installé en version {version}", "RegistryUtils");
                 return version;
             }
             catch (Exception err)
             {
                 // On trace l'erreur
-                factory.GetLog().LogException(err, "RegistryUtils");
+                appLog.LogException(err, "RegistryUtils");
                 return string.Empty;
             }
         }
@@ -69,30 +69,30 @@ namespace ApplicationTools
         /// Renvoi le champ InstallLocation d'un programme installé sur le poste local
         /// </summary>
         /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        internal static string GetInstallLocation(string programDisplayName, AppToolFactory factory)
+        internal static string GetInstallLocation(string programDisplayName, IAppLog appLog)
         {
             try
             {
                 string location = string.Empty;
 
                 // Trace
-                factory.GetLog().Log($"Lecture du champ InstallLocation du programme : {programDisplayName}", "RegistryUtils");
+                appLog.Log($"Lecture du champ InstallLocation du programme : {programDisplayName}", "RegistryUtils");
 
-                RegistryKey returnKey = GetUninstallProgramKey(programDisplayName, factory);
+                RegistryKey returnKey = GetUninstallProgramKey(programDisplayName, appLog);
                 if (returnKey != null)
                     location = returnKey.GetValue("InstallLocation") as string;
 
                 // Trace et retour
                 if (returnKey != null && !string.IsNullOrEmpty(location))
-                    factory.GetLog().Log($"Programme {programDisplayName} installé dans le répertoire {location}", "RegistryUtils");
+                    appLog.Log($"Programme {programDisplayName} installé dans le répertoire {location}", "RegistryUtils");
                 return location;
             }
             catch (Exception err)
             {
                 // On trace l'erreur
-                factory.GetLog().LogException(err, "RegistryUtils");
+                appLog.LogException(err, "RegistryUtils");
                 return string.Empty;
             }
         }
@@ -102,14 +102,14 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="keyPath">Chemin de la clé dans la registry</param>
         /// <param name="keyName">Nom de la clé dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        internal static string GetCurrentUserValue(string keyPath, string keyName, AppToolFactory factory)
+        internal static string GetCurrentUserValue(string keyPath, string keyName, IAppLog appLog)
         {
             try
             {
                 // Trace
-                factory.GetLog().Log($"Lecture dans HKEY_CURRENT_USER de la valeur de la clé : {keyPath}\\{keyName}", "RegistryUtils");
+                appLog.Log($"Lecture dans HKEY_CURRENT_USER de la valeur de la clé : {keyPath}\\{keyName}", "RegistryUtils");
 
                 // Clé root HKEY_CURRENT_USER
                 RegistryKey keyCurrentUser = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
@@ -125,7 +125,7 @@ namespace ApplicationTools
             catch(Exception err)
             {
                 // On trace l'erreur
-                factory.GetLog().LogException(err, "RegistryUtils");
+                appLog.LogException(err, "RegistryUtils");
                 return string.Empty;
             }
         }
@@ -138,33 +138,33 @@ namespace ApplicationTools
         /// Renvoi la sous-clé uninstall d'un programme
         /// </summary>
         /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        private static RegistryKey GetUninstallProgramKey(string programDisplayName, AppToolFactory factory)
+        private static RegistryKey GetUninstallProgramKey(string programDisplayName, IAppLog appLog)
         {
             // Cle Retour
             RegistryKey keyRetour = null;
 
             // Trace
-            factory.GetLog().Log($"Recherche de la clé d'installation du programme : {programDisplayName}", "RegistryUtils");
+            appLog.Log($"Recherche de la clé d'installation du programme : {programDisplayName}", "RegistryUtils");
 
             // On parcours la registry sur la clé root CurrentUser
             RegistryKey keyCurrentUser = RegistryKey.OpenBaseKey(RegistryHive.CurrentUser, RegistryView.Default);
-            if ((keyRetour = GetUninstallProgramInRootKey(keyCurrentUser, programDisplayName, factory)) != null)
+            if ((keyRetour = GetUninstallProgramInRootKey(keyCurrentUser, programDisplayName, appLog)) != null)
                 return keyRetour;
 
             // On parcours la registry sur la clé root LocalMachine32
             RegistryKey keyLocalMachine32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            if ((keyRetour = GetUninstallProgramInRootKey(keyLocalMachine32, programDisplayName, factory)) != null)
+            if ((keyRetour = GetUninstallProgramInRootKey(keyLocalMachine32, programDisplayName, appLog)) != null)
                 return keyRetour;
 
             // On parcours la registry sur la clé root LocalMachine64
             RegistryKey keyLocalMachine64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-            if ((keyRetour = GetUninstallProgramInRootKey(keyLocalMachine64, programDisplayName, factory)) != null)
+            if ((keyRetour = GetUninstallProgramInRootKey(keyLocalMachine64, programDisplayName, appLog)) != null)
                 return keyRetour;
 
             // Trace et retour
-            factory.GetLog().Log($"Programme {programDisplayName} NON installé sur le poste", "RegistryUtils");
+            appLog.Log($"Programme {programDisplayName} NON installé sur le poste", "RegistryUtils");
             return keyRetour;
         }
 
@@ -173,9 +173,9 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="rootKey"></param>
         /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
         /// <returns></returns>
-        private static RegistryKey GetUninstallProgramInRootKey(RegistryKey rootKey, string programDisplayName, AppToolFactory factory)
+        private static RegistryKey GetUninstallProgramInRootKey(RegistryKey rootKey, string programDisplayName, IAppLog appLog)
         {
             // Cle Retour
             RegistryKey keyRetour = null;
@@ -188,7 +188,7 @@ namespace ApplicationTools
                 if (subKeyUninstall != null)
                 {
                     // Trace
-                    factory.GetLog().Log($"Parcours des clés de {subKeyUninstall.Name}", "RegistryUtils");
+                    appLog.Log($"Parcours des clés de {subKeyUninstall.Name}", "RegistryUtils");
 
                     // On parcours les sous-clés
                     foreach (String keyName in subKeyUninstall.GetSubKeyNames())
@@ -197,7 +197,7 @@ namespace ApplicationTools
                         string displayName = subkey.GetValue("DisplayName") as string;
                         if (!string.IsNullOrEmpty(displayName) && displayName.Contains(programDisplayName))
                         {
-                            factory.GetLog().Log($"Programme {programDisplayName} installé sur le poste.", "RegistryUtils");
+                            appLog.Log($"Programme {programDisplayName} installé sur le poste.", "RegistryUtils");
                             return subkey;
                         }
                     }

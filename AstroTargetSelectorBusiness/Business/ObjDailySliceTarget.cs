@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using ApplicationTools;
 using AstroTargetSelectorResources;
 
 namespace AstroTargetSelectorBusiness
@@ -44,19 +45,19 @@ namespace AstroTargetSelectorBusiness
                     slices.Clear();
 
                     // On ajoute le slice de 20h
-                    slices.Add(new ObjSliceTarget(factory, parentTarget)
+                    slices.Add(new ObjSliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut
                     });
 
                     // On ajoute le slice de 00h
-                    slices.Add(new ObjSliceTarget(factory, parentTarget)
+                    slices.Add(new ObjSliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut.AddHours(4)
                     });
 
                     // On ajoute le slice de 04h
-                    slices.Add(new ObjSliceTarget(factory, parentTarget)
+                    slices.Add(new ObjSliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut.AddHours(8)
                     });
@@ -72,27 +73,14 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjDailySliceTarget(AppObjFactory factory, ObjTarget parentTarget)
-            : base(factory, parentTarget)
+        internal ObjDailySliceTarget(IAppToolFactory appToolFactory, IAppInputs appInputs, IObjTarget parentTarget)
+            : base(appToolFactory, appInputs, parentTarget)
         {
-            this.factory = factory;
-            this.parentTarget = parentTarget;
         }
 
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la fabrique d'objet métier
-        /// </summary>
-        private readonly AppObjFactory factory = null;
-
-        /// <summary>
-        /// Objet céleste parent de l'objet Slice
-        /// </summary>
-        private readonly ObjTarget parentTarget = null;
-
         #endregion
     }
 }

@@ -112,7 +112,7 @@ namespace AstroTargetSelector
 
         #region Constructeur
 
-        public dlgAPropos(AppObjFactory factory)
+        public dlgAPropos(IAppObjFactory factory)
         {
             InitializeComponent();
             this.factory = factory;
@@ -165,7 +165,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Instance de la fabrique d'objet métier
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppObjFactory factory = null;
 
         #endregion
 

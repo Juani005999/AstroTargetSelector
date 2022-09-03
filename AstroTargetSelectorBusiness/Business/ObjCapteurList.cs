@@ -9,20 +9,20 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant une liste d'objet <see cref="ObjCapteur"/>
     /// </summary>
-    public class ObjCapteurList
+    public class ObjCapteurList : IObjCapteurList
     {
         #region Propriétés
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjCapteur"/>
+        /// Liste d'objets <see cref="IObjCapteur"/>
         /// </summary>
-        internal List<ObjCapteur> ListeObjCapteur
+        public List<IObjCapteur> ListeObjCapteur
         {
             get
             {
                 if (listeObjCapteur == null)
                 {
-                    listeObjCapteur = new List<ObjCapteur>();
+                    listeObjCapteur = new List<IObjCapteur>();
                     ForceUpdateListe = true;
                 }
                 if (ForceUpdateListe)
@@ -35,23 +35,23 @@ namespace AstroTargetSelectorBusiness
         /// Force le rechargement de la liste depuis le fichier de configuration
         /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjCapteur"/></para>
         /// </summary>
-        internal bool ForceUpdateListe { get; set; }
+        public bool ForceUpdateListe { get; set; }
 
         /// <summary>
         /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
         /// </summary>
-        internal string CapteurListeFullPathFile
+        public string CapteurListeFullPathFile
         {
             get
             {
-                return factory.GetAppContext().UserAppDataPath + "\\" + CapteurListeFileName;
+                return appToolFactory.GetAppContext().UserAppDataPath + "\\" + CapteurListeFileName;
             }
         }
 
         /// <summary>
         /// Nom du fichier de configuration contenant la liste des capteurs
         /// </summary>
-        internal string CapteurListeFileName
+        public string CapteurListeFileName
         {
             get
             {
@@ -66,9 +66,9 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjCapteurList(AppObjFactory factory)
+        internal ObjCapteurList(IAppToolFactory appToolFactory)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
             ForceUpdateListe = false;
         }
 
@@ -84,7 +84,7 @@ namespace AstroTargetSelectorBusiness
             try
             {
                 // Trace et Chrono
-                factory.GetLog().Log($"Rechargement de la liste des capteurs depuis le fichier de configuration", GetType().Name);
+                appToolFactory.GetLog().Log($"Rechargement de la liste des capteurs depuis le fichier de configuration", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
@@ -97,7 +97,7 @@ namespace AstroTargetSelectorBusiness
                 // TODO : Si le fichier de configuration n'existe pas sur le poste, on le télécharge ?
 
                 // Lecture du fichier de configuration et ajout dans la liste
-                factory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs : {CapteurListeFullPathFile}", GetType().Name);
+                appToolFactory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs : {CapteurListeFullPathFile}", GetType().Name);
                 if (File.Exists(CapteurListeFullPathFile))
                 {
                     using (var reader = new StreamReader(CapteurListeFullPathFile))
@@ -108,7 +108,7 @@ namespace AstroTargetSelectorBusiness
                         {
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
-                            listeObjCapteur.Add(new ObjCapteur(factory)
+                            listeObjCapteur.Add(new ObjCapteur()
                             {
                                 Nom = values[0],
                                 Largeur = Convert.ToDouble(values[1])
@@ -117,15 +117,15 @@ namespace AstroTargetSelectorBusiness
                     }
                 }
                 else
-                    factory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs manquant. Aucun capteur chargé", GetType().Name, null, AppLog.TypeLog.Warning);
+                    appToolFactory.GetLog().Log($"Fichier de configuration contenant la liste des capteurs manquant. Aucun capteur chargé", GetType().Name, null, TypeLog.Warning);
 
                 // Trace
-                factory.GetLog().Log($"Chargement de {listeObjCapteur.Count} capteurs en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                appToolFactory.GetLog().Log($"Chargement de {listeObjCapteur.Count} capteurs en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
             catch (Exception err)
             {
                 // Trace de l'erreur
-                factory.GetLog().LogException(err, GetType().Name);
+                appToolFactory.GetLog().LogException(err, GetType().Name);
             }
         }
 
@@ -134,14 +134,14 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjCapteur"/>
+        /// Liste d'objets <see cref="IObjCapteur"/>
         /// </summary>
-        private List<ObjCapteur> listeObjCapteur = null;
+        private List<IObjCapteur> listeObjCapteur = null;
 
         /// <summary>
         /// Nom du fichier de configuration contenant la liste des capteurs

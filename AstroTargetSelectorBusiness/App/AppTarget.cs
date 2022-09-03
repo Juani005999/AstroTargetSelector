@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using ApplicationTools;
 using AstroTargetSelectorResources;
 
 namespace AstroTargetSelectorBusiness
@@ -9,7 +10,7 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
     /// </summary>
-    public class AppTarget
+    public class AppTarget : IAppTarget
     {
         #region Propriétés
 
@@ -17,12 +18,12 @@ namespace AstroTargetSelectorBusiness
         /// Liste des Targets
         /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
         /// </summary>
-        internal ObjTargetList Targets
+        public IObjTargetList Targets
         {
             get
             {
                 if (targets == null)
-                    targets = new ObjTargetList(factory);
+                    targets = new ObjTargetList(appToolFactory, appInputs);
                 return targets;
             }
         }
@@ -30,7 +31,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste d'objets <see cref="ObjTarget"/>
         /// </summary>
-        public List<ObjTarget> ListeObjTarget
+        public List<IObjTarget> ListeObjTarget
         {
             get
             {
@@ -156,14 +157,15 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppTarget(AppObjFactory factory)
+        internal AppTarget(IAppToolFactory appToolFactory, IAppInputs appInputs)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appInputs = appInputs;
 
             // Positionnement des valeurs par défaut
             FiltreType = ListeType.First();
-            FiltreRank = factory.GetListeFiltreRank().First().Key;
-            FiltreMagnitude = factory.GetListeFiltreMagnitude().First().Key;
+            FiltreRank = Resources.Tous;
+            FiltreMagnitude = Resources.Tous;
         }
 
         #endregion
@@ -175,7 +177,7 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         /// <param name="nomTarget">Nom de la target recherchée</param>
         /// <returns><see cref="ObjTarget"/>. Null si non trouvé ou si nomTarget est vide.</returns>
-        public ObjTarget GetTarget(string nomTarget)
+        public IObjTarget GetTarget(string nomTarget)
         {
             if (string.IsNullOrEmpty(nomTarget))
                 return null;
@@ -187,19 +189,24 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
+
+        /// <summary>
+        /// Instance de l'objet applicatif appInputs
+        /// </summary>
+        private readonly IAppInputs appInputs = null;
 
         /// <summary>
         /// Liste des Targets
         /// </summary>
-        private ObjTargetList targets = null;
+        private IObjTargetList targets = null;
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjTarget"/>
+        /// Liste d'objets <see cref="IObjTarget"/>
         /// </summary>
-        private List<ObjTarget> listeObjTarget = null;
+        private List<IObjTarget> listeObjTarget = null;
 
         /// <summary>
         /// Liste distinctes des différents type d'objet céleste

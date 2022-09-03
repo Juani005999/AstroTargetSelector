@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using ApplicationTools;
 using AstroTargetSelectorResources;
 
 namespace AstroTargetSelectorBusiness
@@ -44,19 +45,19 @@ namespace AstroTargetSelectorBusiness
                     slices.Clear();
 
                     // On ajoute le slice du jour 1
-                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    slices.Add(new ObjDailySliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut
                     });
 
                     // On ajoute le slice du jour 10
-                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    slices.Add(new ObjDailySliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut.AddDays(10)
                     });
 
                     // On ajoute le slice du jour 20
-                    slices.Add(new ObjDailySliceTarget(factory, parentTarget)
+                    slices.Add(new ObjDailySliceTarget(appToolFactory, appInputs, parentTarget)
                     {
                         DateHeure = dateDebut.AddDays(20)
                     });
@@ -72,27 +73,14 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjMonthlySliceTarget(AppObjFactory factory, ObjTarget parentTarget)
-            : base (factory, parentTarget)
+        internal ObjMonthlySliceTarget(IAppToolFactory appToolFactory, IAppInputs appInputs, IObjTarget parentTarget)
+            : base (appToolFactory, appInputs, parentTarget)
         {
-            this.factory = factory;
-            this.parentTarget = parentTarget;
         }
 
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la fabrique d'objet métier
-        /// </summary>
-        private readonly AppObjFactory factory = null;
-
-        /// <summary>
-        /// Objet céleste parent de l'objet Slice
-        /// </summary>
-        private readonly ObjTarget parentTarget = null;
-
         #endregion
     }
 }

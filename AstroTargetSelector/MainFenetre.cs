@@ -424,7 +424,7 @@ namespace AstroTargetSelector
             comboBoxVisualisation.Items.Clear();
 
             // Rechargement depuis la liste chargée
-            foreach (ObjInputs.ModeVisualisation modeEnCours in factory.GetListeModeVisualisation())
+            foreach (ModeVisualisation modeEnCours in factory.GetListeModeVisualisation())
             {
                 comboBoxVisualisation.Items.Add(modeEnCours.ToString());
             }
@@ -687,7 +687,7 @@ namespace AstroTargetSelector
                     splitContainerSecondaire.Panel2Collapsed = false;
 
                     // Affichage des informations de l'objet céleste
-                    ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                    IObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                     if (target != null && !string.IsNullOrEmpty(target.Nom))
                     {
                         // Infos sur l'objet
@@ -807,26 +807,26 @@ namespace AstroTargetSelector
                         // ChartArea
                         switch (factory.GetAppInputs().Inputs.Visualisation)
                         {
-                            case ObjInputs.ModeVisualisation.Annuel:
+                            case ModeVisualisation.Annuel:
                                 chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
                                 chartSliceListe.ChartAreas[0].AxisX.Interval = 2;
                                 chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.YearMonthPattern;
                                 break;
 
-                            case ObjInputs.ModeVisualisation.Mensuel:
+                            case ModeVisualisation.Mensuel:
                                 chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
                                 chartSliceListe.ChartAreas[0].AxisX.Interval = 5;
                                 chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern;
                                 //chartSliceListe.ChartAreas[0].AxisX.LabelAutoFitStyle = 0;
                                 break;
 
-                            case ObjInputs.ModeVisualisation.Nuits:
+                            case ModeVisualisation.Nuits:
                                 chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
                                 chartSliceListe.ChartAreas[0].AxisX.Interval = 60;
                                 chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
                                 break;
 
-                            case ObjInputs.ModeVisualisation.Horaire:
+                            case ModeVisualisation.Horaire:
                             default:
                                 chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
                                 chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
@@ -862,12 +862,12 @@ namespace AstroTargetSelector
                         chartSliceListe.Titles[0].ShadowColor = Color.Gray;
 
                         // On masque les controles d'intervalles si nécessaire
-                        comboBoxMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
-                        labelMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
-                        labelUniteMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
-                        comboBoxTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
-                        labelTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
-                        labelUniteTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ObjInputs.ModeVisualisation.Horaire;
+                        comboBoxMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
+                        labelMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
+                        labelUniteMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
+                        comboBoxTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
+                        labelTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
+                        labelUniteTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
 
                         // Trace
                         factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -921,7 +921,7 @@ namespace AstroTargetSelector
                 if (listViewTarget.SelectedItems != null && listViewTarget.SelectedItems.Count == 1)
                 {
                     // Affichage des informations de l'objet céleste
-                    ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                    IObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                     if (target != null && !string.IsNullOrEmpty(target.Nom))
                         StatusLabelNomTarget = $"{target.Nom} - {target.Description}";
                     //StatusLabelNomTarget = $"{Resources.ObjetSelectionne} : {target.Nom} - {target.Description}";
@@ -1143,7 +1143,7 @@ namespace AstroTargetSelector
             catch (Exception err)
             {
                 // Trace de l'erreur et information à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name, AppLog.TypeLog.Warning);
+                factory.GetLog().LogException(err, GetType().Name, TypeLog.Warning);
             }
             finally
             {
@@ -1175,7 +1175,7 @@ namespace AstroTargetSelector
                     throw new WarningException($"Aucun objet sélectionné dans la liste");
 
                 // On récupère l'objet sélectionné et on lance la commande pour Stellarium
-                ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                IObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                 if (target == null)
                     throw new WarningException($"Objet sélectionné non trouvé dans la collection");
 
@@ -1183,7 +1183,7 @@ namespace AstroTargetSelector
                 if (!backgroundWorkerStellarium.IsBusy)
                     backgroundWorkerStellarium.RunWorkerAsync(target.Nom);
                 else
-                    factory.GetLog().Log($"backgroundWorkerStellarium BUSY", GetType().Name, null, AppLog.TypeLog.Warning);
+                    factory.GetLog().Log($"backgroundWorkerStellarium BUSY", GetType().Name, null, TypeLog.Warning);
 
                 // Trace
                 factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -1228,7 +1228,7 @@ namespace AstroTargetSelector
                 if (!string.IsNullOrEmpty(nomTarget))
                 {
                     // On lance la commande
-                    factory.GetAppStellarium().FocusTo(nomTarget);
+                    factory.GetAppStellarium().FocusTo(nomTarget, DateTime.Now);
 
                     // Trace
                     factory.GetLog().Log($"Exécution de la commande FocusTo de {ApplicationTools.Properties.Resources.Stellarium} pour l'objet {nomTarget} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -1236,7 +1236,7 @@ namespace AstroTargetSelector
                 else
                 {
                     // Trace
-                    factory.GetLog().Log($"Aucun objet sélectionné", GetType().Name, null, AppLog.TypeLog.Warning);
+                    factory.GetLog().Log($"Aucun objet sélectionné", GetType().Name, null, TypeLog.Warning);
                 }
 
                 // On flush le texte de la Status Text
@@ -1276,7 +1276,7 @@ namespace AstroTargetSelector
                     throw new WarningException($"Aucun objet sélectionné dans la liste");
 
                 // On récupère l'objet sélectionné et on lance la commande pour Stellarium
-                ObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                IObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
                 if (target == null)
                     throw new WarningException($"Objet sélectionné non trouvé dans la collection");
 
@@ -1284,7 +1284,7 @@ namespace AstroTargetSelector
                 if (!backgroundWorkerCartesDuCiel.IsBusy)
                     backgroundWorkerCartesDuCiel.RunWorkerAsync(target.Nom);
                 else
-                    factory.GetLog().Log($"backgroundWorkerCartesDuCiel BUSY", GetType().Name, null, AppLog.TypeLog.Warning);
+                    factory.GetLog().Log($"backgroundWorkerCartesDuCiel BUSY", GetType().Name, null, TypeLog.Warning);
 
                 // Trace
                 factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -1337,7 +1337,7 @@ namespace AstroTargetSelector
                 else
                 {
                     // Trace
-                    factory.GetLog().Log($"Aucun objet sélectionné", GetType().Name, null, AppLog.TypeLog.Warning);
+                    factory.GetLog().Log($"Aucun objet sélectionné", GetType().Name, null, TypeLog.Warning);
                 }
 
                 // On flush le texte de la Status Text
@@ -1364,7 +1364,7 @@ namespace AstroTargetSelector
         /// <summary>
         /// Instance de la fabrique d'objets
         /// </summary>
-        private AppObjFactory factory = null;
+        private IAppObjFactory factory = null;
 
         /// <summary>
         /// Flag permettant de savoir si le formulaire est en cours d'initialisation afin de stopper la transmission des events de modification des contrôles
@@ -1634,12 +1634,12 @@ namespace AstroTargetSelector
         {
             // Update de l'état par défaut de la dateTimePickerHeureObservation
             dateTimePickerHeureObservation.Enabled = true;
-            ObjInputs.ModeVisualisation mode;
+            ModeVisualisation mode;
             if (Enum.TryParse(comboBoxVisualisation.Text, out mode))
             {
                 // On met à jour le Settings et l'état de la dateTimePickerHeureObservation
                 factory.GetAppInputs().Inputs.Visualisation = mode;
-                dateTimePickerHeureObservation.Enabled = mode == ObjInputs.ModeVisualisation.Horaire;
+                dateTimePickerHeureObservation.Enabled = mode == ModeVisualisation.Horaire;
             }
         }
     }

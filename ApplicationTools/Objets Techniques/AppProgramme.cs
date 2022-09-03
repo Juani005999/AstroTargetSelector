@@ -1,11 +1,12 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 
 namespace ApplicationTools
 {
     /// <summary>
     /// Objet représentant un logiciel
     /// </summary>
-    public abstract class AppProgramme
+    public abstract class AppProgramme : IAppProgramme
     {
         #region Propriétés
 
@@ -30,6 +31,20 @@ namespace ApplicationTools
         public abstract string ProcessName { get; }
 
         /// <summary>
+        /// Serveur
+        /// <para>Get : Récupère la valeur stockée en Settings</para>
+        /// <para>Set : Positionne la valeur stockée en Settings</para>
+        /// </summary>
+        public abstract string Host { get; set; }
+
+        /// <summary>
+        /// Port du Serveur Stellarium
+        /// <para>Get : Récupère la valeur stockée en Settings</para>
+        /// <para>Set : Positionne la valeur stockée en Settings</para>
+        /// </summary>
+        public abstract string Port { get; set; }
+
+        /// <summary>
         /// Singleton permettant de savoir si le programme est installé sur le poste
         /// </summary>
         public bool IsInstalled
@@ -39,15 +54,15 @@ namespace ApplicationTools
                 if (!isInstalled.HasValue)
                 {
                     // Trace et Chrono
-                    factory.GetLog().Log($"Vérification de l'installation du logiciel {DisplayName} sur le poste", GetType().Name);
+                    appLog.Log($"Vérification de l'installation du logiciel {DisplayName} sur le poste", GetType().Name);
                     Stopwatch debutFonction = new Stopwatch();
                     debutFonction.Start();
 
                     // Lecture dans la Registry
-                    isInstalled = RegistryUtils.IsProgramInstalled(DisplayName, factory);
+                    isInstalled = RegistryUtils.IsProgramInstalled(DisplayName, appLog);
 
                     // Trace
-                    factory.GetLog().Log($"La vérification de l'installation a retourné {isInstalled} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
+                    appLog.Log($"La vérification de l'installation a retourné {isInstalled} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
                 }
                 return isInstalled.Value;
             }
@@ -73,7 +88,7 @@ namespace ApplicationTools
             {
                 if (string.IsNullOrEmpty(fileVersion))
                 {
-                    fileVersion = RegistryUtils.GetDisplayVersion(DisplayName, factory);
+                    fileVersion = RegistryUtils.GetDisplayVersion(DisplayName, appLog);
                 }
                 return fileVersion;
             }
@@ -88,7 +103,7 @@ namespace ApplicationTools
             {
                 if (string.IsNullOrEmpty(installLocation))
                 {
-                    installLocation = RegistryUtils.GetInstallLocation(DisplayName, factory);
+                    installLocation = RegistryUtils.GetInstallLocation(DisplayName, appLog);
                 }
                 return installLocation;
             }
@@ -116,19 +131,32 @@ namespace ApplicationTools
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppProgramme(AppToolFactory factory)
+        internal AppProgramme(IAppLog appLog)
         {
-            this.factory = factory;
+            this.appLog = appLog;
         }
+
+        #endregion
+
+        #region Méthodes
+
+        /// <summary>
+        /// Méthode permettant le positionnement de la sélection dans Stellarium
+        /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+        /// </summary>
+        /// <param name="nomTarget"></param>
+        /// <param name="dateObservation"></param>
+        /// <exception cref="Exception">Exception survenue lors du traitement</exception>
+        public abstract void FocusTo(string nomTarget, DateTime dateObservation);
 
         #endregion
 
         #region Champs
 
         /// <summary>
-        /// Instance de la ToolFactory en cours
+        /// Instance de l'Objet de log en cours
         /// </summary>
-        private readonly AppToolFactory factory = null;
+        protected readonly IAppLog appLog = null;
 
         /// <summary>
         /// Singleton permettant de savoir si le programme est installé sur le poste

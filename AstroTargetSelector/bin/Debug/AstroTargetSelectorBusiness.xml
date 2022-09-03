@@ -134,7 +134,7 @@
             <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.AppCapteur.ListeObjCapteur"/></para>
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.AppCapteur.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.AppCapteur.#ctor(ApplicationTools.IAppToolFactory)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -148,9 +148,9 @@
             <param name="largeurCapteur">Largeur en pixel du Capteur</param>
             <returns><see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>. Null si nomCapteur est vide ou si largeurCapteur est égal à 0.</returns>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.AppCapteur.factory">
+        <member name="F:AstroTargetSelectorBusiness.AppCapteur.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppCapteur.capteurs">
@@ -196,14 +196,19 @@
             <para>X px</para>
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppCapteur)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.AppInputs.factory">
+        <member name="F:AstroTargetSelectorBusiness.AppInputs.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppInputs.appCapteur">
+            <summary>
+            Instance de l'objet applicatif appCapteur
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppInputs.inputs">
@@ -273,7 +278,7 @@
             Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.AppTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -285,9 +290,14 @@
             <param name="nomTarget">Nom de la target recherchée</param>
             <returns><see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>. Null si non trouvé ou si nomTarget est vide.</returns>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.AppTarget.factory">
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTarget.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.targets">
@@ -297,7 +307,7 @@
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.listeObjTarget">
             <summary>
-            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjTarget"/>
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppTarget.listeType">
@@ -320,12 +330,12 @@
             Largeur en pixel
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjCapteur.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteur.#ctor">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjCapteur.TryParse(System.String,System.String,AstroTargetSelectorBusiness.ObjCapteur@,AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteur.TryParse(System.String,System.String,AstroTargetSelectorBusiness.IObjCapteur@,ApplicationTools.IAppLog,AstroTargetSelectorBusiness.IAppCapteur)">
             <summary>
             Valide une saisie au format string
             <para>L'allocation mémoire pour le paramètre ref <paramref name="capteur"/> doit être réalisé par l'appelant</para>
@@ -333,13 +343,9 @@
             <param name="nom"></param>
             <param name="largeur"></param>
             <param name="capteur"></param>
-            <param name="factory"></param>
+            <param name="appLog"></param>
+            <param name="appCapteur"></param>
             <returns></returns>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjCapteur.factory">
-            <summary>
-            Instance de la fabrique d'objet métier
-            </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjCapteurList">
             <summary>
@@ -348,7 +354,7 @@
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.ListeObjCapteur">
             <summary>
-            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjCapteurList.ForceUpdateListe">
@@ -367,7 +373,7 @@
             Nom du fichier de configuration contenant la liste des capteurs
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjCapteurList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjCapteurList.#ctor(ApplicationTools.IAppToolFactory)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -377,14 +383,14 @@
             Permet le chargement de la liste des objets céleste depuis le fichier de configuration
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.listeObjCapteur">
             <summary>
-            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/>
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjCapteurList.capteurListeFileName">
@@ -407,19 +413,9 @@
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjDailySliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+        <member name="M:AstroTargetSelectorBusiness.ObjDailySliceTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjDailySliceTarget.factory">
-            <summary>
-            Instance de la fabrique d'objet métier
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjDailySliceTarget.parentTarget">
-            <summary>
-            Objet céleste parent de l'objet Slice
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjGroupSliceTarget">
@@ -507,14 +503,19 @@
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjGroupSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+        <member name="M:AstroTargetSelectorBusiness.ObjGroupSliceTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.parentTarget">
@@ -542,31 +543,6 @@
         <member name="T:AstroTargetSelectorBusiness.ObjInputs">
             <summary>
             Objet représentant toutes les données nécessaires à l'application des règles applicatives
-            </summary>
-        </member>
-        <member name="T:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation">
-            <summary>
-            Mode de visualisation des données
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Horaire">
-            <summary>
-            Liste de Slice sur une tranche horaire
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Nuits">
-            <summary>
-            Liste de Slice sur une tranche horaire
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Mensuel">
-            <summary>
-            Liste de Slice sur les jours d'un mois
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation.Annuel">
-            <summary>
-            Liste de Slice sur les mois d'une année
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.DateHeureObservation">
@@ -632,7 +608,7 @@
             <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppCapteur)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -642,9 +618,14 @@
             Positionne les valeurs par défaut
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjInputs.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjInputs.appCapteur">
+            <summary>
+            Instance de l'objet applicatif appCapteur
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjInputs.lieuObservation">
@@ -677,19 +658,9 @@
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+        <member name="M:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.factory">
-            <summary>
-            Instance de la fabrique d'objet métier
-            </summary>
-        </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjMonthlySliceTarget.parentTarget">
-            <summary>
-            Objet céleste parent de l'objet Slice
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjSliceTarget">
@@ -777,7 +748,7 @@
             ToolTip du Slice à afficher dans le graphique
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelectorBusiness.ObjTarget)">
+        <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -787,9 +758,14 @@
             /Recalcul le Slice et mets à jour les membres
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.parentTarget">
@@ -992,12 +968,12 @@
             <para>Intervalles du mode de visualisation Annuel</para>
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjTarget.GetCurrentChartSlice(AstroTargetSelectorBusiness.ObjInputs.ModeVisualisation)">
+        <member name="M:AstroTargetSelectorBusiness.ObjTarget.GetCurrentChartSlice(AstroTargetSelectorBusiness.ModeVisualisation)">
             <summary>
             Renvoi la série d'intervalles pour le graphique en fonction du mode de visualisation
             </summary>
@@ -1009,9 +985,14 @@
             Permet l'initialisation de la collection principale de slice en fonction du mode de visualisation
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjTarget.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTarget.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjTarget.slices">
@@ -1076,7 +1057,7 @@
             Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
         </member>
-        <member name="M:AstroTargetSelectorBusiness.ObjTargetList.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelectorBusiness.ObjTargetList.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -1086,20 +1067,226 @@
             Permet le chargement de la liste des objets céleste depuis le fichier de configuration
             </summary>
         </member>
-        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.factory">
+        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.appToolFactory">
             <summary>
-            Instance de la fabrique d'objet métier
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjTargetList.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjTargetList.listeObjTarget">
             <summary>
-            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjTarget"/>
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjTargetList.targetListeFileName">
             <summary>
             Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppCapteur">
+            <summary>
+            Interface de l'Objet applicatif permettant d'accéder à la collection des Capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppCapteur.Capteurs">
+            <summary>
+            Liste des Capteurs
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppCapteur.ListeObjCapteur">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppCapteur.CapteurListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppCapteur.CapteurListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des capteurs
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppCapteur.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.IAppCapteur.ListeObjCapteur"/></para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppCapteur.GetCapteur(System.String,System.Double)">
+            <summary>
+            Renvoi le capteur <see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/> correspondant au nom passé en paramètre
+            <para>Si le capteur n'est pas présent dans la liste, il est crée et ajouté dans la liste des capteurs</para>
+            </summary>
+            <param name="nomCapteur">Nom du Capteur recherché</param>
+            <param name="largeurCapteur">Largeur en pixel du Capteur</param>
+            <returns><see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/>. Null si nomCapteur est vide ou si largeurCapteur est égal à 0.</returns>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppInputs">
+            <summary>
+            Interface de l'Objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.Inputs">
+            <summary>
+            Objet métier contenant les données nécessaires à l'application des règles applicatives
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.LieuObservation">
+            <summary>
+            Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
+            <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.CapteurFormatedString">
+            <summary>
+            Renvoi le capteur sous la forme d'une chaîne de caractères formatée (Nom - Largeur px)
+            <para>XXXX px</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.ToolTipInfosTexte">
+            <summary>
+            Renvoi le tes=xte à afficher dans l'info-bulle d'infos complémentaires sur les champs Inputs
+            <para>Lieu de l'observation</para>
+            <para>Capteur</para>
+            <para>Zones exclues</para>
+            <para>Bougé max.</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.BougeMaxString">
+            <summary>
+            Renvoi le bougé max. sous la forme d'une chaîne de caractères formatée (X px)
+            <para>X px</para>
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppObjFactory">
+            <summary>
+            Interface de la Fabrique d'objets Business (métier) et Logic (applicatif)
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppTarget">
+            <summary>
+            Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppInputs">
+            <summary>
+            Renvoi l'objet applicatif permettant la gestion des données nécessaires à l'application des règles applicatives
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppCapteur">
+            <summary>
+            Renvoi l'objet applicatif permettant d'accéder à la collection des Capteurs
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetListeMinuteIntervalle">
+            <summary>
+            Renvoi la liste des intervalles de minutes possible pour les Slices de Target
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetListeTotalTimeSlice">
+            <summary>
+            Renvoi la liste des durées totales d'observation
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetListeFiltreRank">
+            <summary>
+            Renvoi la liste des Filtres de Rank pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetListeFiltreMagnitude">
+            <summary>
+            Renvoi la liste des Filtres de Magnitude pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetListeModeVisualisation">
+            <summary>
+            Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppTarget">
+            <summary>
+            Interface de l'Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.Targets">
+            <summary>
+            Liste des Targets
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.ListeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.IAppTarget.ListeObjTarget"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.ListeType">
+            <summary>
+            Renvoi la liste distinctes des différents type d'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.FiltreNomDescription">
+            <summary>
+            Filtre sur Nom ou Description pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.FiltreType">
+            <summary>
+            Filtre sur Type pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.FiltreRank">
+            <summary>
+            Filtre sur Rank pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.FiltreMagnitude">
+            <summary>
+            Filtre sur Magnitude pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.TargetListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration des objets célestes
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTarget.TargetListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des objets céleste
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppTarget.GetTarget(System.String)">
+            <summary>
+            Renvoi l'Objet céleste <see cref="T:AstroTargetSelectorBusiness.IObjTarget"/> correspondant au nom passé en paramètre
+            </summary>
+            <param name="nomTarget">Nom de la target recherchée</param>
+            <returns><see cref="T:AstroTargetSelectorBusiness.IObjTarget"/>. Null si non trouvé ou si nomTarget est vide.</returns>
         </member>
         <member name="T:AstroTargetSelectorBusiness.IChartSlice">
             <summary>
@@ -1174,6 +1361,320 @@
         <member name="P:AstroTargetSelectorBusiness.IChartSlice.ToolTip">
             <summary>
             ToolTip du Slice à afficher dans le graphique
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjCapteur">
+            <summary>
+            Interface de l'Objet représentant un capteur
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteur.Nom">
+            <summary>
+            Nom du Capteur
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteur.Largeur">
+            <summary>
+            Largeur en pixel
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjCapteurList">
+            <summary>
+            Interface de l'Objet représentant une liste d'objet <see cref="T:AstroTargetSelectorBusiness.ObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteurList.ListeObjCapteur">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.IObjCapteur"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteurList.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.IObjCapteurList.ListeObjCapteur"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteurList.CapteurListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjCapteurList.CapteurListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des capteurs
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ModeVisualisation">
+            <summary>
+            Mode de visualisation des données
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ModeVisualisation.Horaire">
+            <summary>
+            Liste de Slice sur une tranche horaire
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ModeVisualisation.Nuits">
+            <summary>
+            Liste de Slice sur une tranche horaire
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ModeVisualisation.Mensuel">
+            <summary>
+            Liste de Slice sur les jours d'un mois
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ModeVisualisation.Annuel">
+            <summary>
+            Liste de Slice sur les mois d'une année
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjInputs">
+            <summary>
+            Interface de l'Objet représentant toutes les données nécessaires à l'application des règles applicatives
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.DateHeureObservation">
+            <summary>
+            Date et Heure de l'observation
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.LieuObservation">
+            <summary>
+            Coordonnées (Longitude et Latitude) du lieu d'observation
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.Capteur">
+            <summary>
+            Capteur
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.BougeMax">
+            <summary>
+            Bougé max.
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 1</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.HauteurMin">
+            <summary>
+            Hauteur minimale
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.NombreSlice">
+            <summary>
+            Nombre d'intervalle de temps : (<see cref="P:AstroTargetSelectorBusiness.IObjInputs.TotalTimeSlice"/> * 60) / <see cref="P:AstroTargetSelectorBusiness.IObjInputs.MinuteIntervalSlice"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.MinuteIntervalSlice">
+            <summary>
+            Nombre de minutes d'un Intervalle pour le calcul des temps de pose
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 10</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.TotalTimeSlice">
+            <summary>
+            Durée totale de l'observation pour définir le nombre de slice en fonction de l'intervalle
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 2</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.ZonesExclues">
+            <summary>
+            Liste des zones exclues
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.Visualisation">
+            <summary>
+            Mode de visualisation
+            <para></para>
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjTarget">
+            <summary>
+            Interface de l'Objet représentant un objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Nom">
+            <summary>
+            Nom de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Type">
+            <summary>
+            Type de l'objet céleste (amas globulaire, nébuleuse planétaire, galaxie spirale, ...)
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Description">
+            <summary>
+            Description de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Constellation">
+            <summary>
+            Constellation de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.RA">
+            <summary>
+            RA : Acsension droite de l'objet céleste
+            <para>Valeur exprimée en "degrés horaires" décimal</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.DEC">
+            <summary>
+            DEC : Déclinaison de l'objet céleste
+            <para>Valeur exprimée en "degrés" décimal</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Magnitude">
+            <summary>
+            Magnitude de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.GrandeurWidth">
+            <summary>
+            Grandeur : Largeur de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.GrandeurHeight">
+            <summary>
+            Grandeur : Hauteur de l'objet céleste
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Scoring">
+            <summary>
+            Renvoi le Scoring calculé pour la Target
+            <para>Moyenne des <see cref="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Rank">
+            <summary>
+            Renvoi le Rank calculé pour la Target
+            <para>Barême basé sur le <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Scoring"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Azimut">
+            <summary>
+            Renvoi l'Azimut calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut du premier <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.Hauteur">
+            <summary>
+            Renvoi la Hauteur calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/></para>
+            <para>Renvoi la Hauteur du premier <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.AzimutCorrigee">
+            <summary>
+            Renvoi l'Azimut Corrigee calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Corrigee du premier <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.AzimutPrecise">
+            <summary>
+            Renvoi l'Azimut Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/></para>
+            <para>Renvoi l'Azimut Precise du premier <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.HauteurPrecise">
+            <summary>
+            Renvoi la Hauteur Precise calculé pour la Target
+            <para>Si nécessaire, lance le calcul des <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/></para>
+            <para>Renvoi la Hauteur Precise du premier <see cref="P:AstroTargetSelectorBusiness.IObjTarget.Slices"/> de la période d'observation</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.EstExclu">
+            <summary>
+            Permet de savoir si un objet céleste est exclu de la liste
+            <para>Fait partie d'une zone exclue du ciel</para>
+            <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.HourlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Horaire</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.DailySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Nuits</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.MonthlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Nuits</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTarget.YearlySlices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            <para>Intervalles du mode de visualisation Annuel</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IObjTarget.GetCurrentChartSlice(AstroTargetSelectorBusiness.ModeVisualisation)">
+            <summary>
+            Renvoi la série d'intervalles pour le graphique en fonction du mode de visualisation
+            </summary>
+            <param name="mode"></param>
+            <returns></returns>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjTargetList">
+            <summary>
+            Interface de l'Objet représentant une liste d'objet <see cref="T:AstroTargetSelectorBusiness.IObjTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTargetList.ListeObjTarget">
+            <summary>
+            Liste d'objets <see cref="T:AstroTargetSelectorBusiness.ObjTarget"/>
+            <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
+            <para>Afin de forcer le rechargement de la liste depuis le fichier de configuration, il faut positionner la propriété <see cref="P:AstroTargetSelectorBusiness.IObjTargetList.ForceUpdateListe"/> à true</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTargetList.ForceUpdateListe">
+            <summary>
+            Force le rechargement de la liste depuis le fichier de configuration
+            <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="P:AstroTargetSelectorBusiness.IObjTargetList.ListeObjTarget"/></para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTargetList.ForceUpdateSlices">
+            <summary>
+            Permet de forcer le rechargement des Slices
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTargetList.TargetListeFullPathFile">
+            <summary>
+            Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjTargetList.TargetListeFileName">
+            <summary>
+            Nom du fichier de configuration contenant la liste des objets céleste
             </summary>
         </member>
         <member name="T:AstroTargetSelectorResources.Resources">

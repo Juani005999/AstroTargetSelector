@@ -8,36 +8,9 @@ namespace ApplicationTools
     /// <summary>
     /// Objet Log
     /// </summary>
-    public class AppLog
+    public class AppLog : IAppLog
     {
         #region Enum
-
-        /// <summary>
-        /// Type de trace
-        /// </summary>
-        public enum TypeLog
-        {
-            /// <summary>
-            /// Trace de type Infos
-            /// </summary>
-            Infos,
-
-            /// <summary>
-            /// Trace de type Warning
-            /// </summary>
-            Warning,
-
-            /// <summary>
-            /// Trace de type Error
-            /// </summary>
-            Error,
-
-            /// <summary>
-            /// Trace de type Fatal
-            /// </summary>
-            Fatal
-        }
-
         #endregion
 
         #region Propriétés
@@ -49,7 +22,7 @@ namespace ApplicationTools
         {
             get
             {
-                return toolFactory.GetAppContext().UserAppDataPath + "\\" + toolFactory.GetAppContext().LogFileName;
+                return appContext.UserAppDataPath + "\\" + appContext.LogFileName;
             }
         }
 
@@ -60,9 +33,9 @@ namespace ApplicationTools
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppLog(AppToolFactory toolFactory)
+        internal AppLog(IAppContext appContext)
         {
-            this.toolFactory = toolFactory;
+            this.appContext = appContext;
 
             // Initialisation de l'objet de log
             Initialise();
@@ -75,7 +48,7 @@ namespace ApplicationTools
         /// <summary>
         /// Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
         /// </summary>
-        public void Initialise()
+        private void Initialise()
         {
             try
             {
@@ -129,12 +102,12 @@ namespace ApplicationTools
                     callerFileName = directories[directories.Length - 1];
 
                 // Trace en console
-                Console.WriteLine(toolFactory.GetAppContext().ProductName + " (" + typeLog.ToString() + ") : " + message);
+                Console.WriteLine(appContext.ProductName + " (" + typeLog.ToString() + ") : " + message);
 
                 // Trace dans le fichier de log
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
-                string chaineFinale = toolFactory.GetAppContext().ProductName;
+                string chaineFinale = appContext.ProductName;
                 chaineFinale += ";";
                 chaineFinale += string.IsNullOrEmpty(callerModuleName) ? System.Reflection.Assembly.GetCallingAssembly().GetName().Name : callerModuleName;
                 chaineFinale += ";" + callerClassName;
@@ -229,9 +202,9 @@ namespace ApplicationTools
         #region Champs
 
         /// <summary>
-        /// Instance de la ToolFactory en cours
+        /// Instance de l'Objet IAppContext en cours
         /// </summary>
-        private readonly AppToolFactory toolFactory = null;
+        private readonly IAppContext appContext = null;
 
         #endregion
     }

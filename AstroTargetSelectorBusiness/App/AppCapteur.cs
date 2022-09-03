@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using ApplicationTools;
 using AstroTargetSelectorBusiness.Properties;
 
 namespace AstroTargetSelectorBusiness
@@ -9,7 +10,7 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet applicatif permettant d'accéder à la collection des Capteurs
     /// </summary>
-    public class AppCapteur
+    public class AppCapteur : IAppCapteur
     {
         #region Propriétés
 
@@ -17,12 +18,12 @@ namespace AstroTargetSelectorBusiness
         /// Liste des Capteurs
         /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé et la liste est chargée depuis le fichier des paramètres</para>
         /// </summary>
-        internal ObjCapteurList Capteurs
+        public IObjCapteurList Capteurs
         {
             get
             {
                 if (capteurs == null)
-                    capteurs = new ObjCapteurList(factory);
+                    capteurs = new ObjCapteurList(appToolFactory);
                 return capteurs;
             }
         }
@@ -30,7 +31,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste d'objets <see cref="ObjCapteur"/>
         /// </summary>
-        public List<ObjCapteur> ListeObjCapteur
+        public List<IObjCapteur> ListeObjCapteur
         {
             get
             {
@@ -77,9 +78,9 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppCapteur(AppObjFactory factory)
+        internal AppCapteur(IAppToolFactory appToolFactory)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
         }
 
         #endregion
@@ -93,15 +94,15 @@ namespace AstroTargetSelectorBusiness
         /// <param name="nomCapteur">Nom du Capteur recherché</param>
         /// <param name="largeurCapteur">Largeur en pixel du Capteur</param>
         /// <returns><see cref="ObjCapteur"/>. Null si nomCapteur est vide ou si largeurCapteur est égal à 0.</returns>
-        public ObjCapteur GetCapteur(string nomCapteur, double largeurCapteur)
+        public IObjCapteur GetCapteur(string nomCapteur, double largeurCapteur)
         {
             if (string.IsNullOrEmpty(nomCapteur) || largeurCapteur == 0)
                 return null;
             // Si le capteur n'existe pas, on le créer et on l'ajoute à la liste
-            ObjCapteur objEnCours = Capteurs.ListeObjCapteur.Where(t => t.Nom == nomCapteur).FirstOrDefault();
+            IObjCapteur objEnCours = Capteurs.ListeObjCapteur.Where(t => t.Nom == nomCapteur).FirstOrDefault();
             if (objEnCours == null)
             {
-                objEnCours = new ObjCapteur(factory)
+                objEnCours = new ObjCapteur()
                 {
                     Nom = nomCapteur,
                     Largeur = largeurCapteur
@@ -121,14 +122,14 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
 
         /// <summary>
         /// Liste des Capteurs
         /// </summary>
-        private ObjCapteurList capteurs = null;
+        private IObjCapteurList capteurs = null;
 
         #endregion
     }

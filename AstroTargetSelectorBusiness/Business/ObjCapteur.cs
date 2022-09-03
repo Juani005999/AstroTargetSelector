@@ -6,19 +6,19 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant un capteur
     /// </summary>
-    public class ObjCapteur
+    public class ObjCapteur : IObjCapteur
     {
         #region Propriétés
 
         /// <summary>
         /// Nom du Capteur
         /// </summary>
-        public string Nom { get; internal set; }
+        public string Nom { get; set; }
 
         /// <summary>
         /// Largeur en pixel
         /// </summary>
-        public double Largeur { get; internal set; }
+        public double Largeur { get; set; }
 
         #endregion
 
@@ -27,9 +27,8 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjCapteur(AppObjFactory factory)
+        internal ObjCapteur()
         {
-            this.factory = factory;
         }
 
         #endregion
@@ -44,19 +43,21 @@ namespace AstroTargetSelectorBusiness
         /// <param name="nom"></param>
         /// <param name="largeur"></param>
         /// <param name="capteur"></param>
-        /// <param name="factory"></param>
+        /// <param name="appLog"></param>
+        /// <param name="appCapteur"></param>
         /// <returns></returns>
         public static bool TryParse(string nom, string largeur,
-                                    out ObjCapteur capteur,
-                                    AppObjFactory factory)
+                                    out IObjCapteur capteur,
+                                    IAppLog appLog,
+                                    IAppCapteur appCapteur)
         {
             // On alloue de la mémoire pour l'objet capteur
-            capteur = new ObjCapteur(factory);
+            capteur = new ObjCapteur();
 
             // On vérifie Nom
             if (string.IsNullOrEmpty(nom))
             {
-                factory.GetLog().Log($"Nom du capteur non renseigné", "ObjCapteur", null, AppLog.TypeLog.Warning);
+                appLog.Log($"Nom du capteur non renseigné", "ObjCapteur", null, TypeLog.Warning);
                 return false;
             }
 
@@ -64,24 +65,18 @@ namespace AstroTargetSelectorBusiness
             double largeurDec;
             if (string.IsNullOrEmpty(largeur) || !double.TryParse(largeur, out largeurDec))
             {
-                factory.GetLog().Log($"TryParse pour la largeur de l'objet Capteur à renvoyer False", "ObjCapteur", null, AppLog.TypeLog.Warning);
+                appLog.Log($"TryParse pour la largeur de l'objet Capteur à renvoyer False", "ObjCapteur", null, TypeLog.Warning);
                 return false;
             }
 
             // Update de l'objet en entrée et retour
-            capteur = factory.GetAppCapteur().GetCapteur(nom, largeurDec);
+            capteur = appCapteur.GetCapteur(nom, largeurDec);
             return true;
         }
         
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la fabrique d'objet métier
-        /// </summary>
-        private readonly AppObjFactory factory = null;
-
         #endregion
     }
 }

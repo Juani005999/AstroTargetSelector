@@ -84,7 +84,7 @@ namespace ApplicationTools
         /// <para>Get : Récupère la valeur stockée en Settings</para>
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
-        public string Host
+        public override string Host
         {
             get
             {
@@ -102,6 +102,11 @@ namespace ApplicationTools
             }
         }
 
+        /// <summary>
+        /// Port du Serveur
+        /// </summary>
+        public override string Port { get; set; }
+
         #endregion
 
         #region Constructeur
@@ -109,10 +114,9 @@ namespace ApplicationTools
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppCartesDuCiel(AppToolFactory factory)
-            : base(factory)
+        internal AppCartesDuCiel(IAppLog appLog)
+            : base(appLog)
         {
-            this.factory = factory;
         }
 
         #endregion
@@ -126,7 +130,7 @@ namespace ApplicationTools
         /// <param name="nomTarget"></param>
         /// <param name="dateObservation"></param>
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
-        public void FocusTo(string nomTarget, DateTime dateObservation)
+        public override void FocusTo(string nomTarget, DateTime dateObservation)
         {
             if (string.IsNullOrEmpty(nomTarget))
                 return;
@@ -143,7 +147,7 @@ namespace ApplicationTools
                 isRunning = true;
 
                 // Trace et Chrono
-                factory.GetLog().Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
+                appLog.Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
@@ -153,7 +157,7 @@ namespace ApplicationTools
                 // On vérifie s'il n'y a pas eu un souci à la lecture du fichier exécutable Stellarium
                 if (string.IsNullOrEmpty(ExecutableFile))
                     throw new Exception(Resources.LeLogicielNAPasEteTrouve);
-                factory.GetLog().Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
+                appLog.Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
 
                 // On Try/Catch ce traitement afin de remonter une Exception avec un mesage utilisateur formaté
                 try
@@ -162,7 +166,7 @@ namespace ApplicationTools
                     if (!IsRunning)
                     {
                         // Trace
-                        factory.GetLog().Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
+                        appLog.Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
 
                         // On démarre le process
                         Process processCartesDuCiel = Process.Start(ExecutableFile);
@@ -171,20 +175,20 @@ namespace ApplicationTools
                         int timeOut = 0;
                         while (string.IsNullOrEmpty(processCartesDuCiel.MainWindowTitle) && timeOut++ < StartTimeout)
                         {
-                            factory.GetLog().Log($"IsCartesDuCielRunning false", GetType().Name);
+                            appLog.Log($"IsCartesDuCielRunning false", GetType().Name);
                             Thread.Sleep(1000);
                             processCartesDuCiel.Refresh();
                         }
-                        factory.GetLog().Log($"IsCartesDuCielRunning true : Timeout = {timeOut}", GetType().Name);
-                        factory.GetLog().Log($"Démarrage de {DisplayName} effectué", GetType().Name);
+                        appLog.Log($"IsCartesDuCielRunning true : Timeout = {timeOut}", GetType().Name);
+                        appLog.Log($"Démarrage de {DisplayName} effectué", GetType().Name);
                     }
                     else
-                        factory.GetLog().Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
+                        appLog.Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw new Exception(Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel, err);
                 }
 
@@ -192,15 +196,15 @@ namespace ApplicationTools
                 string portCdC = string.Empty;
                 try
                 {
-                    portCdC = RegistryUtils.GetCurrentUserValue(HKCUPath, HKCUKey, factory);
+                    portCdC = RegistryUtils.GetCurrentUserValue(HKCUPath, HKCUKey, appLog);
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw new Exception(Resources.VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration, err);
                 }
-                factory.GetLog().Log($"La valeur du port pour Cartes du Ciel est : {portCdC}");
+                appLog.Log($"La valeur du port pour Cartes du Ciel est : {portCdC}");
 
                 // Si le port vaut 0 : Soit CdC n'est pas démarré, soit le serveur n'est pas activé
                 int port = 0;
@@ -221,7 +225,7 @@ namespace ApplicationTools
 
                             stream.ReadTimeout = 1000;
                             // Création carte.
-                            factory.GetLog().Log($"Lancement requête : newchart {nomTarget.Replace(" ", "")}", GetType().Name);
+                            appLog.Log($"Lancement requête : newchart {nomTarget.Replace(" ", "")}", GetType().Name);
                             Byte[] data = Encoding.ASCII.GetBytes($"newchart {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -231,13 +235,13 @@ namespace ApplicationTools
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
                             if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
                                 throw new WarningException(Resources.ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint);
-                            factory.GetLog().Log($"Réponse newchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                            appLog.Log($"Réponse newchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Sélection carte.
                             debutRequete.Restart();
                             stream.Flush();
                             //data = Encoding.ASCII.GetBytes($"selectchart Marcel\r\n");
-                            factory.GetLog().Log($"Lancement requête : selectchart {nomTarget.Replace(" ", "")}", GetType().Name);
+                            appLog.Log($"Lancement requête : selectchart {nomTarget.Replace(" ", "")}", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"selectchart {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -246,14 +250,14 @@ namespace ApplicationTools
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
                             if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
-                                factory.GetLog().Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, AppLog.TypeLog.Warning);
-                            factory.GetLog().Log($"Réponse selectchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                                appLog.Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, TypeLog.Warning);
+                            appLog.Log($"Réponse selectchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Positionnement Date Observation.
                             debutRequete.Restart();
                             stream.Flush();
                             string dateObs = dateObservation.ToString("yyyy-MM-ddTHH:mm:ss");
-                            factory.GetLog().Log($"Lancement requête : setdate {dateObs}", GetType().Name);
+                            appLog.Log($"Lancement requête : setdate {dateObs}", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"setdate {dateObs}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -261,12 +265,12 @@ namespace ApplicationTools
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
-                            factory.GetLog().Log($"Réponse setdate : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                            appLog.Log($"Réponse setdate : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Redraw.
                             debutRequete.Restart();
                             stream.Flush();
-                            factory.GetLog().Log($"Lancement requête : redraw", GetType().Name);
+                            appLog.Log($"Lancement requête : redraw", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"redraw\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -275,13 +279,13 @@ namespace ApplicationTools
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
                             if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
-                                factory.GetLog().Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, AppLog.TypeLog.Warning);
-                            factory.GetLog().Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                                appLog.Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, TypeLog.Warning);
+                            appLog.Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Recherche objet.
                             debutRequete.Restart();
                             stream.Flush();
-                            factory.GetLog().Log($"Lancement requête : search {nomTarget.Replace(" ", "")}", GetType().Name);
+                            appLog.Log($"Lancement requête : search {nomTarget.Replace(" ", "")}", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"search {nomTarget.Replace(" ", "")}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -291,12 +295,12 @@ namespace ApplicationTools
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
                             if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
                                 throw new WarningException(Resources.ObjetCelesteNonTrouve);
-                            factory.GetLog().Log($"Réponse search : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                            appLog.Log($"Réponse search : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // FOV.
                             debutRequete.Restart();
                             stream.Flush();
-                            factory.GetLog().Log($"Lancement requête : setfov {CartesDuCielFovLevelAfterFocus}", GetType().Name);
+                            appLog.Log($"Lancement requête : setfov {CartesDuCielFovLevelAfterFocus}", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"setfov 3\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -304,12 +308,12 @@ namespace ApplicationTools
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
-                            factory.GetLog().Log($"Réponse setfov : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                            appLog.Log($"Réponse setfov : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Redraw.
                             debutRequete.Restart();
                             stream.Flush();
-                            factory.GetLog().Log($"Lancement requête : redraw", GetType().Name);
+                            appLog.Log($"Lancement requête : redraw", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"redraw\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
@@ -317,7 +321,7 @@ namespace ApplicationTools
                             responseData = String.Empty;
                             bytes = stream.Read(data, 0, data.Length);
                             responseData = Encoding.ASCII.GetString(data, 0, bytes);
-                            factory.GetLog().Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+                            appLog.Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
 
                             // Fermeture Stream et Socket.
                             stream.Close();
@@ -328,13 +332,13 @@ namespace ApplicationTools
                 catch (WarningException err)
                 {
                     // On trace et on remonte l'Exception
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw err;
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, err);
                 }
 
@@ -342,14 +346,14 @@ namespace ApplicationTools
                 isRunning = false;
 
                 // Trace
-                factory.GetLog().Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
+                appLog.Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
             }
             catch (Exception ex)
             {
                 // Repositionnement du flag d'action en cours
                 isRunning = false;
                 // On trace et on remonte l'Exception
-                factory.GetLog().LogException(ex, GetType().Name);
+                appLog.LogException(ex, GetType().Name);
                 throw ex;
             }
         }
@@ -357,11 +361,6 @@ namespace ApplicationTools
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la ToolFactory en cours
-        /// </summary>
-        private readonly AppToolFactory factory = null;
 
         /// <summary>
         /// Flag permettant de savoir si une action est en cours

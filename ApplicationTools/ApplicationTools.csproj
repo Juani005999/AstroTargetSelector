@@ -57,6 +57,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppToolFactory.cs" />
+    <Compile Include="Interfaces\IAppContext.cs" />
+    <Compile Include="Interfaces\IAppLog.cs" />
+    <Compile Include="Interfaces\IAppProgramme.cs" />
+    <Compile Include="Interfaces\IAppToolFactory.cs" />
     <Compile Include="Objets Techniques\AppCartesDuCiel.cs" />
     <Compile Include="Objets Techniques\AppException.cs" />
     <Compile Include="Objets Techniques\AppProgramme.cs" />

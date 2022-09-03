@@ -16,14 +16,14 @@
         </member>
         <member name="M:ApplicationTools.AppToolFactory.GetLog">
             <summary>
-            Retourne l'objet <see cref="T:ApplicationTools.AppLog"/>
+            Retourne l'interface <see cref="T:ApplicationTools.IAppLog"/> de l'objet <see cref="T:ApplicationTools.AppLog"/>
             </summary>
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet Log</returns>
         </member>
         <member name="M:ApplicationTools.AppToolFactory.GetAppContext">
             <summary>
-            Retourne l'objet <see cref="T:ApplicationTools.AppContext"/>
+            Retourne l'interface <see cref="T:ApplicationTools.IAppContext"/> de l'objet <see cref="T:ApplicationTools.AppContext"/>
             </summary>
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
@@ -60,12 +60,12 @@
         </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
-            Objet <see cref="T:ApplicationTools.AppLog"/>
+            Interface de l'Objet <see cref="T:ApplicationTools.AppLog"/>
             </summary>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.appContext">
             <summary>
-            Objet <see cref="T:ApplicationTools.AppContext"/>
+            Interface de l'Objet <see cref="T:ApplicationTools.AppContext"/>
             </summary>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.appStellarium">
@@ -77,6 +77,232 @@
             <summary>
             Objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
             </summary>
+        </member>
+        <member name="T:ApplicationTools.IAppContext">
+            <summary>
+            Interface de l'Objet permettant d'accéder au contexte d'éxecution de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.ProductName">
+            <summary>
+            ProductName de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.ProductVersion">
+            <summary>
+            ProductVersion de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.ExecutablePath">
+            <summary>
+            ExecutablePath (Path + Nom du fichier executable) de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.StartupPath">
+            <summary>
+            StartupPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.UserAppDataPath">
+            <summary>
+            UserAppDataPath de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.LogFileName">
+            <summary>
+            Nom du fichier de log de l'application en cours
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.CodeLangue">
+            <summary>
+            Code langue d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.CodePays">
+            <summary>
+            Code pays d'exécution
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.TypeLog">
+            <summary>
+            Type de trace
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.TypeLog.Infos">
+            <summary>
+            Trace de type Infos
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.TypeLog.Warning">
+            <summary>
+            Trace de type Warning
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.TypeLog.Error">
+            <summary>
+            Trace de type Error
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.TypeLog.Fatal">
+            <summary>
+            Trace de type Fatal
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.IAppLog">
+            <summary>
+            Interface de l'Objet Log
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppLog.FullPathName">
+            <summary>
+            Path complet et Nom du fichier de log
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.IAppLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.TypeLog,System.String,System.String,System.String,System.Int32)">
+            <summary>
+            Trace en console et dans le fichier de log
+            </summary>
+            <param name="message">Trace</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="millisecond">Durée en ms</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.TypeLog"/></param>
+            <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="M:ApplicationTools.IAppLog.LogException(System.Exception,System.String,ApplicationTools.TypeLog,System.String,System.String,System.Int32)">
+            <summary>
+            Trace une Exception en console et dans le fichier de log
+            </summary>
+            <param name="ex">Exception</param>
+            <param name="callerClassName">Classe appelante</param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.TypeLog"/></param>
+            <param name="callerMemberName">Fonction appelante</param>
+            <param name="callerFilePath">Fichier contenant la fonction appelante</param>
+            <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
+        </member>
+        <member name="T:ApplicationTools.IAppProgramme">
+            <summary>
+            Interface de l'Objet représentant un logiciel
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.IsInstalled">
+            <summary>
+            Singleton permettant de savoir si le programme est installé sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.IsRunning">
+            <summary>
+            Permet de savoir si le programme est en cours d'exécution sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.FileVersion">
+            <summary>
+            Version du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.InstallLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.ExecutableFile">
+            <summary>
+            Fichier exécutable du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.Host">
+            <summary>
+            Serveur
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppProgramme.Port">
+            <summary>
+            Port du Serveur Stellarium
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.IAppProgramme.FocusTo(System.String,System.DateTime)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans Stellarium
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="T:ApplicationTools.IAppToolFactory">
+            <summary>
+            Interface de la Fabrique d'objets technique
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetLog">
+            <summary>
+            Retourne l'interface <see cref="T:ApplicationTools.IAppLog"/> de l'objet <see cref="T:ApplicationTools.AppLog"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet Log</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppContext">
+            <summary>
+            Retourne l'interface <see cref="T:ApplicationTools.IAppContext"/> de l'objet <see cref="T:ApplicationTools.AppContext"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppStellarium">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppStellarium"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppCartesDuCiel">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet AppContext</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetCoordinates(System.Double,System.Double)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
+            </summary>
+            <param name="latitude"></param>
+            <param name="longitude"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetCoordinate(System.Double,ApplicationTools.CoordinatesType)">
+            <summary>
+            Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinate"/>
+            </summary>
+            <param name="value"></param>
+            <param name="type"></param>
+            <returns></returns>
         </member>
         <member name="T:ApplicationTools.AppCartesDuCiel">
             <summary>
@@ -126,7 +352,12 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppCartesDuCiel.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="P:ApplicationTools.AppCartesDuCiel.Port">
+            <summary>
+            Port du Serveur
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppCartesDuCiel.#ctor(ApplicationTools.IAppLog)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -139,11 +370,6 @@
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
-        </member>
-        <member name="F:ApplicationTools.AppCartesDuCiel.factory">
-            <summary>
-            Instance de la ToolFactory en cours
-            </summary>
         </member>
         <member name="F:ApplicationTools.AppCartesDuCiel.isRunning">
             <summary>
@@ -187,6 +413,20 @@
             Nom du Processus d'exécution
             </summary>
         </member>
+        <member name="P:ApplicationTools.AppProgramme.Host">
+            <summary>
+            Serveur
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppProgramme.Port">
+            <summary>
+            Port du Serveur Stellarium
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
         <member name="P:ApplicationTools.AppProgramme.IsInstalled">
             <summary>
             Singleton permettant de savoir si le programme est installé sur le poste
@@ -212,14 +452,23 @@
             Fichier exécutable du Logiciel sur le poste
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppProgramme.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.AppProgramme.#ctor(ApplicationTools.IAppLog)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppProgramme.factory">
+        <member name="M:ApplicationTools.AppProgramme.FocusTo(System.String,System.DateTime)">
             <summary>
-            Instance de la ToolFactory en cours
+            Méthode permettant le positionnement de la sélection dans Stellarium
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppProgramme.appLog">
+            <summary>
+            Instance de l'Objet de log en cours
             </summary>
         </member>
         <member name="F:ApplicationTools.AppProgramme.isInstalled">
@@ -293,23 +542,19 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppStellarium.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.AppStellarium.#ctor(ApplicationTools.IAppLog)">
             <summary>
             Constructeur par défaut
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppStellarium.FocusTo(System.String)">
+        <member name="M:ApplicationTools.AppStellarium.FocusTo(System.String,System.DateTime)">
             <summary>
             Méthode permettant le positionnement de la sélection dans Stellarium
             <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
             </summary>
             <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
-        </member>
-        <member name="F:ApplicationTools.AppStellarium.factory">
-            <summary>
-            Instance de la ToolFactory en cours
-            </summary>
         </member>
         <member name="F:ApplicationTools.AppStellarium.isRunning">
             <summary>
@@ -526,14 +771,19 @@
             Nom du fichier de log de l'application en cours
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppContext.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="P:ApplicationTools.AppContext.CodeLangue">
             <summary>
-            Constructeur par défaut
+            Code langue d'exécution
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppContext.toolFactory">
+        <member name="P:ApplicationTools.AppContext.CodePays">
             <summary>
-            Instance de la ToolFactory en cours
+            Code pays d'exécution
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppContext.#ctor">
+            <summary>
+            Constructeur par défaut
             </summary>
         </member>
         <member name="T:ApplicationTools.TimeSpanExtensionMethods">
@@ -591,37 +841,12 @@
             Objet Log
             </summary>
         </member>
-        <member name="T:ApplicationTools.AppLog.TypeLog">
-            <summary>
-            Type de trace
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppLog.TypeLog.Infos">
-            <summary>
-            Trace de type Infos
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppLog.TypeLog.Warning">
-            <summary>
-            Trace de type Warning
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppLog.TypeLog.Error">
-            <summary>
-            Trace de type Error
-            </summary>
-        </member>
-        <member name="F:ApplicationTools.AppLog.TypeLog.Fatal">
-            <summary>
-            Trace de type Fatal
-            </summary>
-        </member>
         <member name="P:ApplicationTools.AppLog.FullPathName">
             <summary>
             Path complet et Nom du fichier de log
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppLog.#ctor(ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.AppLog.#ctor(ApplicationTools.IAppContext)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -631,26 +856,26 @@
             Permet l'initialisation de l'objet de Log en fonction du Contexte applicatif
             </summary>
         </member>
-        <member name="M:ApplicationTools.AppLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.AppLog.TypeLog,System.String,System.String,System.String,System.Int32)">
+        <member name="M:ApplicationTools.AppLog.Log(System.String,System.String,System.Nullable{System.Double},ApplicationTools.TypeLog,System.String,System.String,System.String,System.Int32)">
             <summary>
             Trace en console et dans le fichier de log
             </summary>
             <param name="message">Trace</param>
             <param name="callerClassName">Classe appelante</param>
             <param name="millisecond">Durée en ms</param>
-            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.TypeLog"/></param>
             <param name="callerModuleName">Module appelant : par défaut System.Reflection.Assembly.GetCallingAssembly().GetName().Name</param>
             <param name="callerMemberName">Fonction appelante</param>
             <param name="callerFilePath">Fichier contenant la fonction appelante</param>
             <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
         </member>
-        <member name="M:ApplicationTools.AppLog.LogException(System.Exception,System.String,ApplicationTools.AppLog.TypeLog,System.String,System.String,System.Int32)">
+        <member name="M:ApplicationTools.AppLog.LogException(System.Exception,System.String,ApplicationTools.TypeLog,System.String,System.String,System.Int32)">
             <summary>
             Trace une Exception en console et dans le fichier de log
             </summary>
             <param name="ex">Exception</param>
             <param name="callerClassName">Classe appelante</param>
-            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.AppLog.TypeLog"/></param>
+            <param name="typeLog">Type de trace <see cref="T:ApplicationTools.TypeLog"/></param>
             <param name="callerMemberName">Fonction appelante</param>
             <param name="callerFilePath">Fichier contenant la fonction appelante</param>
             <param name="callerLineNumber">Ligne dans le fichier de l'appelant</param>
@@ -660,9 +885,9 @@
             Permet la création des entêtes de colonnes dans le fichier de log
             </summary>
         </member>
-        <member name="F:ApplicationTools.AppLog.toolFactory">
+        <member name="F:ApplicationTools.AppLog.appContext">
             <summary>
-            Instance de la ToolFactory en cours
+            Instance de l'Objet IAppContext en cours
             </summary>
         </member>
         <member name="T:ApplicationTools.ListViewColumnSorter">
@@ -790,54 +1015,54 @@
             Boîte à outil de gestion de la Registry
             </summary>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.IsProgramInstalled(System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.IsProgramInstalled(System.String,ApplicationTools.IAppLog)">
             <summary>
             Permet de savoir si un programme est installé sur le poste local
             </summary>
             <param name="programDisplayName">Champ DisplayName dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.GetDisplayVersion(System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.GetDisplayVersion(System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi le champ DisplayVersion d'un programme installé sur le poste local
             </summary>
             <param name="programDisplayName">Champ DisplayName dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.GetInstallLocation(System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.GetInstallLocation(System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi le champ InstallLocation d'un programme installé sur le poste local
             </summary>
             <param name="programDisplayName">Champ DisplayName dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.GetCurrentUserValue(System.String,System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.GetCurrentUserValue(System.String,System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi la valeur d'une clé dans la clé root HKEY_CURRENT_USER
             </summary>
             <param name="keyPath">Chemin de la clé dans la registry</param>
             <param name="keyName">Nom de la clé dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramKey(System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramKey(System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi la sous-clé uninstall d'un programme
             </summary>
             <param name="programDisplayName">Champ DisplayName dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramInRootKey(Microsoft.Win32.RegistryKey,System.String,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramInRootKey(Microsoft.Win32.RegistryKey,System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi la sous-clé uninstall d'un programme pour la clé root spécifiée
             </summary>
             <param name="rootKey"></param>
             <param name="programDisplayName">Champ DisplayName dans la registry</param>
-            <param name="factory">Instance de la fabrique d'objet technique en cours</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
         <member name="T:ApplicationTools.Properties.Resources">
@@ -1056,7 +1281,7 @@
             </summary>
             <param name="coordonnee"></param>
         </member>
-        <member name="M:ApplicationTools.Coordinate.TryParse(System.String,System.String,System.String,System.String,ApplicationTools.Coordinate@,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.Coordinate.TryParse(System.String,System.String,System.String,System.String,ApplicationTools.Coordinate@,ApplicationTools.IAppLog)">
             <summary>
             Valide une saisie au format string
             <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnee"/> doit être réalisé par l'appelant</para>
@@ -1066,7 +1291,7 @@
             <param name="seconde"></param>
             <param name="direction"></param>
             <param name="coordonnee"></param>
-            <param name="factory"></param>
+            <param name="appLog"></param>
             <returns></returns>
         </member>
         <member name="M:ApplicationTools.Coordinate.TryParseFromFormatedString(System.String,ApplicationTools.Coordinate@)">
@@ -1146,7 +1371,7 @@
             <param name="latitude"></param>
             <param name="longitude"></param>
         </member>
-        <member name="M:ApplicationTools.Coordinates.TryParse(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ApplicationTools.Coordinates@,ApplicationTools.AppToolFactory)">
+        <member name="M:ApplicationTools.Coordinates.TryParse(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,ApplicationTools.Coordinates@,ApplicationTools.IAppLog)">
             <summary>
             Valide une saisie au format string
             <para>L'allocation mémoire pour le paramètre ref <paramref name="coordonnees"/> doit être réalisé par l'appelant</para>
@@ -1160,7 +1385,7 @@
             <param name="secondeLatitude"></param>
             <param name="directionLatitude"></param>
             <param name="coordonnees"></param>
-            <param name="factory"></param>
+            <param name="appLog"></param>
             <returns></returns>
         </member>
         <member name="F:ApplicationTools.Coordinates.longitude">

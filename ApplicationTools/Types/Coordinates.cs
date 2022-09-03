@@ -138,33 +138,33 @@ namespace ApplicationTools
         /// <param name="secondeLatitude"></param>
         /// <param name="directionLatitude"></param>
         /// <param name="coordonnees"></param>
-        /// <param name="factory"></param>
+        /// <param name="appLog"></param>
         /// <returns></returns>
         public static bool TryParse(string degreeLongitude, string minuteLongitude, string secondeLongitude, string directionLongitude,
                                     string degreeLatitude, string minuteLatitude, string secondeLatitude, string directionLatitude,
                                     ref Coordinates coordonnees,
-                                    AppToolFactory factory)
+                                    IAppLog appLog)
         {
             // On vérifie la validité du paramètre ref "coordonnees"
             if (coordonnees == null)
             {
-                factory.GetLog().Log($"Paramètre ref 'coordonnees' null", "Coordinates", null, AppLog.TypeLog.Fatal);
+                appLog.Log($"Paramètre ref 'coordonnees' null", "Coordinates", null, TypeLog.Fatal);
                 return false;
             }
 
             // On TryParse Longitude
             Coordinate coordonneeLongitude = coordonnees.CoordonneeLongitude;
-            if (!Coordinate.TryParse(degreeLongitude, minuteLongitude, secondeLongitude, directionLongitude, ref coordonneeLongitude, factory))
+            if (!Coordinate.TryParse(degreeLongitude, minuteLongitude, secondeLongitude, directionLongitude, ref coordonneeLongitude, appLog))
             {
-                factory.GetLog().Log($"TryParse pour l'objet Coordinate Longitude à renvoyer False", "Coordinates", null, AppLog.TypeLog.Warning);
+                appLog.Log($"TryParse pour l'objet Coordinate Longitude à renvoyer False", "Coordinates", null, TypeLog.Warning);
                 return false;
             }
 
             // On TryParse Latitude
             Coordinate coordonneeLatitude = coordonnees.coordinateLatitude;
-            if (!Coordinate.TryParse(degreeLatitude, minuteLatitude, secondeLatitude, directionLatitude, ref coordonneeLatitude, factory))
+            if (!Coordinate.TryParse(degreeLatitude, minuteLatitude, secondeLatitude, directionLatitude, ref coordonneeLatitude, appLog))
             {
-                factory.GetLog().Log($"TryParse pour l'objet Coordinate Latitude à renvoyer False", "Coordinates", null, AppLog.TypeLog.Warning);
+                appLog.Log($"TryParse pour l'objet Coordinate Latitude à renvoyer False", "Coordinates", null, TypeLog.Warning);
                 return false;
             }
 

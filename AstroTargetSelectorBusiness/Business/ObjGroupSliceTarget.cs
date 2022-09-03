@@ -96,7 +96,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                if (Hauteur.Coordonnee >= factory.GetAppInputs().Inputs.HauteurMin)
+                if (Hauteur.Coordonnee >= appInputs.Inputs.HauteurMin)
                     return Color.FromArgb(0, 192, 0);
                 return Color.Red;
             }
@@ -203,9 +203,10 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjGroupSliceTarget(AppObjFactory factory, ObjTarget parentTarget)
+        internal ObjGroupSliceTarget(IAppToolFactory appToolFactory, IAppInputs appInputs, IObjTarget parentTarget)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appInputs = appInputs;
             this.parentTarget = parentTarget;
         }
 
@@ -214,14 +215,19 @@ namespace AstroTargetSelectorBusiness
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        protected readonly IAppToolFactory appToolFactory = null;
+
+        /// <summary>
+        /// Instance de l'objet applicatif appInputs
+        /// </summary>
+        protected readonly IAppInputs appInputs = null;
 
         /// <summary>
         /// Objet céleste parent de l'objet Slice
         /// </summary>
-        private readonly ObjTarget parentTarget = null;
+        protected readonly IObjTarget parentTarget = null;
 
         /// <summary>
         /// Permet de savoir si un objet céleste est exclu de la liste

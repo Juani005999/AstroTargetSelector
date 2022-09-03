@@ -78,7 +78,7 @@ namespace ApplicationTools
         /// <para>Get : Récupère la valeur stockée en Settings</para>
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
-        public string Host
+        public override string Host
         {
             get
             {
@@ -102,7 +102,7 @@ namespace ApplicationTools
         /// <para>Get : Récupère la valeur stockée en Settings</para>
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
-        public string Port
+        public override string Port
         {
             get
             {
@@ -127,10 +127,9 @@ namespace ApplicationTools
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal AppStellarium(AppToolFactory factory)
-            : base(factory)
+        internal AppStellarium(IAppLog appLog)
+            : base(appLog)
         {
-            this.factory = factory;
         }
 
         #endregion
@@ -142,8 +141,9 @@ namespace ApplicationTools
         /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
         /// </summary>
         /// <param name="nomTarget"></param>
+        /// <param name="dateObservation"></param>
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
-        public void FocusTo(string nomTarget)
+        public override void FocusTo(string nomTarget, DateTime dateObservation)
         {
             if (string.IsNullOrEmpty(nomTarget))
                 return;
@@ -160,7 +160,7 @@ namespace ApplicationTools
                 isRunning = true;
 
                 // Trace et Chrono
-                factory.GetLog().Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
+                appLog.Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
@@ -170,12 +170,12 @@ namespace ApplicationTools
                 // On vérifie s'il n'y a pas eu un souci à la lecture du fichier exécutable Stellarium
                 if (string.IsNullOrEmpty(ExecutableFile))
                     throw new Exception(Resources.LeLogicielNAPasEteTrouve);
-                factory.GetLog().Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
+                appLog.Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
 
                 // Fonctionnalité disable sur la version 0.22.X de Stellarium
                 if (string.IsNullOrEmpty(FileVersion) || FileVersion.StartsWith("0.22"))
                     throw new Exception(Resources.FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium);
-                factory.GetLog().Log($"{DisplayName} est installé en version : {FileVersion}", GetType().Name);
+                appLog.Log($"{DisplayName} est installé en version : {FileVersion}", GetType().Name);
 
                 // On Try/Catch ce traitement afin de remonter une Exception avec un mesage utilisateur formaté
                 try
@@ -184,7 +184,7 @@ namespace ApplicationTools
                     if (!IsRunning)
                     {
                         // Trace
-                        factory.GetLog().Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
+                        appLog.Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
 
                         // On démarre le process
                         Process processStellarium = Process.Start(ExecutableFile, "--full-screen=no");
@@ -193,23 +193,23 @@ namespace ApplicationTools
                         int timeOut = 0;
                         while (string.IsNullOrEmpty(processStellarium.MainWindowTitle) && timeOut++ < StartTimeout)
                         {
-                            factory.GetLog().Log($"IsStellariumRunning false", GetType().Name);
+                            appLog.Log($"IsStellariumRunning false", GetType().Name);
                             Thread.Sleep(1000);
                             processStellarium.Refresh();
                         }
-                        factory.GetLog().Log($"IsStellariumRunning true : Timeout = {timeOut}", GetType().Name);
+                        appLog.Log($"IsStellariumRunning true : Timeout = {timeOut}", GetType().Name);
 
                         // On attend 7s de plus le temps que le Remote Control démarre
                         Thread.Sleep(StellariumSleepForRemmoteControlStart);
-                        factory.GetLog().Log($"Démarrage de {DisplayName} effectué", GetType().Name);
+                        appLog.Log($"Démarrage de {DisplayName} effectué", GetType().Name);
                     }
                     else
-                        factory.GetLog().Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
+                        appLog.Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw new Exception(Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel, err);
                 }
 
@@ -223,25 +223,25 @@ namespace ApplicationTools
                         string urlFocus = $"http://{Host}:{Port}/api/main/focus";
                         string paramFocus = $"target={nomTarget}&zoom=center";
                         string responseFocus = Encoding.ASCII.GetString(request.UploadData(new Uri(urlFocus), "POST", Encoding.UTF8.GetBytes(paramFocus)));
-                        factory.GetLog().Log($"Retour http place le Focus : {responseFocus}");
+                        appLog.Log($"Retour http place le Focus : {responseFocus}");
                         // Si le retour est différent de "true", on trace un WARNING
                         if (string.IsNullOrEmpty(responseFocus) || responseFocus != "true")
-                            factory.GetLog().Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, AppLog.TypeLog.Warning);
+                            appLog.Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, TypeLog.Warning);
 
                         // On place le fov
                         string urlFov = $"http://{Host}:{Port}/api/main/fov";
                         string paramFov = $"fov={StellariumFovLevelAfterFocus}";
                         string responseFov = Encoding.ASCII.GetString(request.UploadData(new Uri(urlFov), "POST", Encoding.UTF8.GetBytes(paramFov)));
-                        factory.GetLog().Log($"Retour http place le Fov : {responseFov}");
+                        appLog.Log($"Retour http place le Fov : {responseFov}");
                         // Si le retour est différent de "ok", on trace un WARNING
                         if (string.IsNullOrEmpty(responseFov) || responseFov != "ok")
-                            factory.GetLog().Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, AppLog.TypeLog.Warning);
+                            appLog.Log(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, GetType().Name, null, TypeLog.Warning);
                     }
                 }
                 catch (Exception err)
                 {
                     // On trace et on remonte l'Exception formatée
-                    factory.GetLog().LogException(err, GetType().Name);
+                    appLog.LogException(err, GetType().Name);
                     throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, err);
                 }
 
@@ -249,14 +249,14 @@ namespace ApplicationTools
                 isRunning = false;
 
                 // Trace
-                factory.GetLog().Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
+                appLog.Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
             }
             catch (Exception ex)
             {
                 // Repositionnement du flag d'action en cours
                 isRunning = false;
                 // On trace et on remonte l'Exception
-                factory.GetLog().LogException(ex, GetType().Name);
+                appLog.LogException(ex, GetType().Name);
                 throw ex;
             }
         }
@@ -264,11 +264,6 @@ namespace ApplicationTools
         #endregion
 
         #region Champs
-
-        /// <summary>
-        /// Instance de la ToolFactory en cours
-        /// </summary>
-        private readonly AppToolFactory factory = null;
 
         /// <summary>
         /// Flag permettant de savoir si une action est en cours

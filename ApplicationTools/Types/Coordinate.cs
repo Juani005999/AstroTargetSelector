@@ -251,14 +251,14 @@ namespace ApplicationTools
         /// <param name="seconde"></param>
         /// <param name="direction"></param>
         /// <param name="coordonnee"></param>
-        /// <param name="factory"></param>
+        /// <param name="appLog"></param>
         /// <returns></returns>
-        public static bool TryParse(string degree, string minute, string seconde, string direction, ref Coordinate coordonnee, AppToolFactory factory)
+        public static bool TryParse(string degree, string minute, string seconde, string direction, ref Coordinate coordonnee, IAppLog appLog)
         {
             // On vérifie la validité du paramètre ref "coordonnees"
             if (coordonnee == null)
             {
-                factory.GetLog().Log($"Paramètre ref 'coordonnee' null", "Coordinate", null, AppLog.TypeLog.Fatal);
+                appLog.Log($"Paramètre ref 'coordonnee' null", "Coordinate", null, TypeLog.Fatal);
                 return false;
             }
 
@@ -266,7 +266,7 @@ namespace ApplicationTools
             double degreeDec;
             if (string.IsNullOrEmpty(degree) || !double.TryParse(degree, NumberStyles.Number, CultureInfo.InvariantCulture, out degreeDec))
             {
-                factory.GetLog().Log($"Mauvais format de degrés pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                appLog.Log($"Mauvais format de degrés pour le TryParse en Coordinate", "Coordinate", null, TypeLog.Warning);
                 return false;
             }
 
@@ -274,7 +274,7 @@ namespace ApplicationTools
             double minuteDec;
             if (string.IsNullOrEmpty(minute) || !double.TryParse(minute, NumberStyles.Number, CultureInfo.InvariantCulture, out minuteDec))
             {
-                factory.GetLog().Log($"Mauvais format de minutes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                appLog.Log($"Mauvais format de minutes pour le TryParse en Coordinate", "Coordinate", null, TypeLog.Warning);
                 return false;
             }
 
@@ -282,7 +282,7 @@ namespace ApplicationTools
             double secondeDec;
             if (string.IsNullOrEmpty(seconde) || !double.TryParse(seconde, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out secondeDec))
             {
-                factory.GetLog().Log($"Mauvais format de secondes pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                appLog.Log($"Mauvais format de secondes pour le TryParse en Coordinate", "Coordinate", null, TypeLog.Warning);
                 return false;
             }
 
@@ -290,7 +290,7 @@ namespace ApplicationTools
             CoordinatesDirection directionDec;
             if (string.IsNullOrEmpty(direction) || !Enum.TryParse(direction, out directionDec))
             {
-                factory.GetLog().Log($"Mauvais format de direction pour le TryParse en Coordinate", "Coordinate", null, AppLog.TypeLog.Warning);
+                appLog.Log($"Mauvais format de direction pour le TryParse en Coordinate", "Coordinate", null, TypeLog.Warning);
                 return false;
             }
 

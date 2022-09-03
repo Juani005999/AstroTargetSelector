@@ -10,38 +10,8 @@ namespace AstroTargetSelectorBusiness
     /// <summary>
     /// Objet représentant toutes les données nécessaires à l'application des règles applicatives
     /// </summary>
-    public class ObjInputs
+    public class ObjInputs : IObjInputs
     {
-        #region Enums
-
-        /// <summary>
-        /// Mode de visualisation des données
-        /// </summary>
-        public enum ModeVisualisation
-        {
-            /// <summary>
-            /// Liste de Slice sur une tranche horaire
-            /// </summary>
-            Horaire,
-
-            /// <summary>
-            /// Liste de Slice sur une tranche horaire
-            /// </summary>
-            Nuits,
-
-            /// <summary>
-            /// Liste de Slice sur les jours d'un mois
-            /// </summary>
-            Mensuel,
-
-            /// <summary>
-            /// Liste de Slice sur les mois d'une année
-            /// </summary>
-            Annuel
-        }
-
-        #endregion
-
         #region Propriétés
 
         /// <summary>
@@ -64,15 +34,15 @@ namespace AstroTargetSelectorBusiness
                     Settings.Default.LatitudeObs = "48.858611";
                     Settings.Default.LongitudeObs = "2.294166";
                     Settings.Default.Save();
-                    factory.GetLog().Log($"Localisation non présente dans les Settings. Positionnement de Paris par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"Localisation non présente dans les Settings. Positionnement de Paris par défaut", GetType().Name);
                 }
 
                 // Si le membre privé n'existe pas, on le créer
                 if (lieuObservation == null)
                 {
-                    lieuObservation = factory.GetCoordinates(Convert.ToDouble(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
+                    lieuObservation = appToolFactory.GetCoordinates(Convert.ToDouble(Settings.Default.LatitudeObs, CultureInfo.InvariantCulture),
                                                             Convert.ToDouble(Settings.Default.LongitudeObs, CultureInfo.InvariantCulture));
-                    factory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
+                    appToolFactory.GetLog().Log($"Lieu d'Observation : {LieuObservation.LocalisationComplete}", GetType().Name);
                 }
                 // S'il existe déjà, on l'actualise
                 else
@@ -94,17 +64,17 @@ namespace AstroTargetSelectorBusiness
         /// Capteur
         /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
         /// </summary>
-        public ObjCapteur Capteur
+        public IObjCapteur Capteur
         {
             get
             {
                 // Capteur : On charge depuis les settings. Si non présent, on positionne le premier capteur de la liste des capteurs
                 if (string.IsNullOrEmpty(Settings.Default.NomCapteur) || string.IsNullOrEmpty(Settings.Default.LargeurCapteur))
                 {
-                    if (factory.GetAppCapteur().Capteurs.ListeObjCapteur.Count > 0)
+                    if (appCapteur.Capteurs.ListeObjCapteur.Count > 0)
                     {
-                        Settings.Default.NomCapteur = factory.GetAppCapteur().Capteurs.ListeObjCapteur.FirstOrDefault().Nom;
-                        Settings.Default.LargeurCapteur = factory.GetAppCapteur().Capteurs.ListeObjCapteur.FirstOrDefault().Largeur.ToString(CultureInfo.InvariantCulture);
+                        Settings.Default.NomCapteur = appCapteur.Capteurs.ListeObjCapteur.FirstOrDefault().Nom;
+                        Settings.Default.LargeurCapteur = appCapteur.Capteurs.ListeObjCapteur.FirstOrDefault().Largeur.ToString(CultureInfo.InvariantCulture);
                     }
                     else
                     {
@@ -112,11 +82,11 @@ namespace AstroTargetSelectorBusiness
                         Settings.Default.LargeurCapteur = "1936";
                     }
                     Settings.Default.Save();
-                    factory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"Capteur non présent dans les Settings. Positionnement de IMX533 par défaut", GetType().Name);
                 }
 
                 // On récupère le capteur correspondant aux Settings, un nouveau capteur s'il n'existe pas déjà dans la liste des capteurs
-                capteur = factory.GetAppCapteur().GetCapteur(Settings.Default.NomCapteur,
+                capteur = appCapteur.GetCapteur(Settings.Default.NomCapteur,
                                                             Convert.ToDouble(Settings.Default.LargeurCapteur, CultureInfo.InvariantCulture));
 
                 // Retour
@@ -144,7 +114,7 @@ namespace AstroTargetSelectorBusiness
                 {
                     Settings.Default.BougeMax = "1";
                     Settings.Default.Save();
-                    factory.GetLog().Log($"BougeMax non présent dans les Settings. Positionnement de 1 par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"BougeMax non présent dans les Settings. Positionnement de 1 par défaut", GetType().Name);
                 }
                 //return Convert.ToInt32(Settings.Default.BougeMax);
                 return Convert.ToDouble(Settings.Default.BougeMax, CultureInfo.InvariantCulture);
@@ -170,7 +140,7 @@ namespace AstroTargetSelectorBusiness
                 {
                     Settings.Default.HauteurMin = "25";
                     Settings.Default.Save();
-                    factory.GetLog().Log($"HauteurMin non présent dans les Settings. Positionnement de 25 par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"HauteurMin non présent dans les Settings. Positionnement de 25 par défaut", GetType().Name);
                 }
                 return Convert.ToDouble(Settings.Default.HauteurMin, CultureInfo.InvariantCulture);
             }
@@ -208,7 +178,7 @@ namespace AstroTargetSelectorBusiness
                 {
                     Settings.Default.MinuteIntervalSlice = "10";
                     Settings.Default.Save();
-                    factory.GetLog().Log($"MinuteIntervalSlice non présente dans les Settings. Positionnement de 5 par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"MinuteIntervalSlice non présente dans les Settings. Positionnement de 5 par défaut", GetType().Name);
                 }
                 return Convert.ToInt32(Settings.Default.MinuteIntervalSlice);
             }
@@ -232,7 +202,7 @@ namespace AstroTargetSelectorBusiness
                 {
                     Settings.Default.TotalTimeSlice = "2";
                     Settings.Default.Save();
-                    factory.GetLog().Log($"TotalTimeSlice non présente dans les Settings. Positionnement de 2 par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"TotalTimeSlice non présente dans les Settings. Positionnement de 2 par défaut", GetType().Name);
                 }
                 return Convert.ToInt32(Settings.Default.TotalTimeSlice);
             }
@@ -254,7 +224,7 @@ namespace AstroTargetSelectorBusiness
                 if (zonesExclues == null)
                 {
                     zonesExclues = new List<CoordinatesDirection>();
-                    factory.GetLog().Log($"Création liste ZonesExclues", GetType().Name);
+                    appToolFactory.GetLog().Log($"Création liste ZonesExclues", GetType().Name);
                 }
 
                 // On vide la liste locale avant rechargement
@@ -304,7 +274,7 @@ namespace AstroTargetSelectorBusiness
                 {
                     Settings.Default.Visualisation = ModeVisualisation.Horaire.ToString();
                     Settings.Default.Save();
-                    factory.GetLog().Log($"Visualisation non présent dans les Settings. Positionnement de ModeVisualisation.Horaire par défaut", GetType().Name);
+                    appToolFactory.GetLog().Log($"Visualisation non présent dans les Settings. Positionnement de ModeVisualisation.Horaire par défaut", GetType().Name);
                 }
                 ModeVisualisation mode;
                 if (Enum.TryParse(Settings.Default.Visualisation, out mode))
@@ -325,9 +295,10 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        internal ObjInputs(AppObjFactory factory)
+        internal ObjInputs(IAppToolFactory appToolFactory, IAppCapteur appCapteur)
         {
-            this.factory = factory;
+            this.appToolFactory = appToolFactory;
+            this.appCapteur = appCapteur;
 
             // Positionnement des valeurs par défaut
             SetDefaultValue();
@@ -343,25 +314,28 @@ namespace AstroTargetSelectorBusiness
         private void SetDefaultValue()
         {
             // Trace
-            factory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
+            appToolFactory.GetLog().Log($"Positionnement des paramètres Inputs par défaut", GetType().Name);
 
             // Date et heure de l'obs. : date/heure du jour et quart d'heure suivant
             DateHeureObservation = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day,
                 DateTime.Now.Hour, DateTime.Now.Minute - (DateTime.Now.Minute % 15), 0);
             DateHeureObservation = DateHeureObservation.AddMinutes(15);
-            factory.GetLog().Log($"Date d'Observation : {DateHeureObservation}", GetType().Name);
+            appToolFactory.GetLog().Log($"Date d'Observation : {DateHeureObservation}", GetType().Name);
         }
-
-
 
         #endregion
 
         #region Champs
 
         /// <summary>
-        /// Instance de la fabrique d'objet métier
+        /// Instance de la fabrique d'objet technique
         /// </summary>
-        private readonly AppObjFactory factory = null;
+        private readonly IAppToolFactory appToolFactory = null;
+
+        /// <summary>
+        /// Instance de l'objet applicatif appCapteur
+        /// </summary>
+        private readonly IAppCapteur appCapteur = null;
 
         /// <summary>
         /// Coordonnées (Longitude et Latitude) du lieu d'observation
@@ -371,7 +345,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Capteur
         /// </summary>
-        private ObjCapteur capteur = null;
+        private IObjCapteur capteur = null;
 
         /// <summary>
         /// Liste des zones exclues

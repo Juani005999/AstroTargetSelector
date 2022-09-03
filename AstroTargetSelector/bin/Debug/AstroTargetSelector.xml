@@ -75,7 +75,7 @@
             Nom de l'Assembly
             </summary>
         </member>
-        <member name="M:AstroTargetSelector.dlgNewVersion.#ctor(AstroTargetSelectorBusiness.AppObjFactory,System.String,System.String,System.String,System.String)">
+        <member name="M:AstroTargetSelector.dlgNewVersion.#ctor(AstroTargetSelectorBusiness.IAppObjFactory,System.String,System.String,System.String,System.String)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -116,7 +116,7 @@
             Boîte de Dialogue "Paramètres de l'observation"
             </summary>
         </member>
-        <member name="M:AstroTargetSelector.dlgParametres.#ctor(AstroTargetSelectorBusiness.AppObjFactory)">
+        <member name="M:AstroTargetSelector.dlgParametres.#ctor(AstroTargetSelectorBusiness.IAppObjFactory)">
             <summary>
             Constructeur par défaut
             </summary>
@@ -240,7 +240,7 @@
             Liste des Capteurs
             </summary>
         </member>
-        <member name="M:AstroTargetSelector.dlgUpdate.#ctor(AstroTargetSelectorBusiness.AppObjFactory,AstroTargetSelector.dlgUpdate.UpdateDialogMode)">
+        <member name="M:AstroTargetSelector.dlgUpdate.#ctor(AstroTargetSelectorBusiness.IAppObjFactory,AstroTargetSelector.dlgUpdate.UpdateDialogMode)">
             <summary>
             Constructeur par défaut
             </summary>

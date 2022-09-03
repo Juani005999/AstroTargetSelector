@@ -148,7 +148,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include=".gitignore" />
     <None Include="AstroTargetSelector.pfx" />
     <None Include="AstroTargetSelector_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
