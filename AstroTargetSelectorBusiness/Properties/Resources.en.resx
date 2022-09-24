@@ -1,0 +1,438 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions" xml:space="preserve">
+    <value>Update of the list of celestial objects and recalculation of Scoring, Rank and Positions...</value>
+  </data>
+  <data name="AfficherLaHauteurEtLaDirection" xml:space="preserve">
+    <value>Show height and direction</value>
+  </data>
+  <data name="AfficherLObjetCelesteDansCartesDuCiel" xml:space="preserve">
+    <value>Display the celestial object in Cartes du Ciel.</value>
+  </data>
+  <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
+    <value>Display the celestial object in Stellarium.</value>
+  </data>
+  <data name="Annuel" xml:space="preserve">
+    <value>Annual</value>
+  </data>
+  <data name="AProposDe" xml:space="preserve">
+    <value>About</value>
+  </data>
+  <data name="Aucune" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="Azimut" xml:space="preserve">
+    <value>Azimuth</value>
+  </data>
+  <data name="BougeMax" xml:space="preserve">
+    <value>Shake max.</value>
+  </data>
+  <data name="Capteur" xml:space="preserve">
+    <value>Sensor</value>
+  </data>
+  <data name="Capteurs" xml:space="preserve">
+    <value>sensors</value>
+  </data>
+  <data name="CetteOperationPeutPrendreQuelquesInstants" xml:space="preserve">
+    <value>This operation may take a few moments</value>
+  </data>
+  <data name="Constellation" xml:space="preserve">
+    <value>Constellation</value>
+  </data>
+  <data name="Contributeurs" xml:space="preserve">
+    <value>Contributors</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="DateDeLObservation" xml:space="preserve">
+    <value>Date of sighting</value>
+  </data>
+  <data name="DateEtHeureDeLObservation" xml:space="preserve">
+    <value>Date and time of sighting</value>
+  </data>
+  <data name="DEC" xml:space="preserve">
+    <value>DEC</value>
+  </data>
+  <data name="DECJ2000" xml:space="preserve">
+    <value>DEC (J2000)</value>
+  </data>
+  <data name="Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Divers" xml:space="preserve">
+    <value>Various</value>
+  </data>
+  <data name="DureeDUnIntervalle" xml:space="preserve">
+    <value>Duration of an interval</value>
+  </data>
+  <data name="DureeTotale" xml:space="preserve">
+    <value>Total duration</value>
+  </data>
+  <data name="EffectueAvecSucces" xml:space="preserve">
+    <value>successfully completed</value>
+  </data>
+  <data name="EnvoiDeLaCommande" xml:space="preserve">
+    <value>Sending the order...</value>
+  </data>
+  <data name="FiltrerLesResultats" xml:space="preserve">
+    <value>Filter results</value>
+  </data>
+  <data name="FormatDesChampsPourLePluginStellariumIncorrect" xml:space="preserve">
+    <value>Field format for Stellarium plugin incorrect</value>
+  </data>
+  <data name="FormatDuCapteurIncorrect" xml:space="preserve">
+    <value>Wrong Sensor Format</value>
+  </data>
+  <data name="FormatDuChampBougeMaxIncorrect" xml:space="preserve">
+    <value>Format of the "Max. move" field incorrect</value>
+  </data>
+  <data name="FormatDuChampHauteurMinIncorrect" xml:space="preserve">
+    <value>Format of the "Minimum height" field incorrect</value>
+  </data>
+  <data name="FormatDuChampServeurPourCartesDuCielIncorrect" xml:space="preserve">
+    <value>Format of Server field for Cartes du Ciel incorrect</value>
+  </data>
+  <data name="FormatDuLieuDObservationIncorrect" xml:space="preserve">
+    <value>Incorrect observation location format</value>
+  </data>
+  <data name="GrandeurH" xml:space="preserve">
+    <value>Size (H)</value>
+  </data>
+  <data name="GrandeurL" xml:space="preserve">
+    <value>Size (W)</value>
+  </data>
+  <data name="Hauteur" xml:space="preserve">
+    <value>Height</value>
+  </data>
+  <data name="HauteurApparenteMinimum" xml:space="preserve">
+    <value>Minimum apparent height</value>
+  </data>
+  <data name="HauteurMin" xml:space="preserve">
+    <value>Min. height</value>
+  </data>
+  <data name="Heure" xml:space="preserve">
+    <value>Time</value>
+  </data>
+  <data name="Heures" xml:space="preserve">
+    <value>hour(s)</value>
+  </data>
+  <data name="Horaire" xml:space="preserve">
+    <value>Hourly</value>
+  </data>
+  <data name="InfoCapteur1" xml:space="preserve">
+    <value>Please select your sensor.</value>
+  </data>
+  <data name="InfoCapteur2" xml:space="preserve">
+    <value>If your sensor is not present in the list, you can manually enter the name and the width in pixels.</value>
+  </data>
+  <data name="Largeur" xml:space="preserve">
+    <value>Width</value>
+  </data>
+  <data name="LargeurPX" xml:space="preserve">
+    <value>Width (px)</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
+  <data name="LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090" xml:space="preserve">
+    <value>The port value must correspond to the one set in Stellarium, by default '8090'.</value>
+  </data>
+  <data name="LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum" xml:space="preserve">
+    <value>Gaps that appear in gray mean that the object has entered an excluded area of ​​your sky, or that its height is below the minimum height.</value>
+  </data>
+  <data name="Lieu" xml:space="preserve">
+    <value>Place</value>
+  </data>
+  <data name="LieuDeLObservation" xml:space="preserve">
+    <value>Place of sighting</value>
+  </data>
+  <data name="LieuDeLObservationLatLong" xml:space="preserve">
+    <value>Place of sighting (Lat. - Long.)</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
+  <data name="Magnitude" xml:space="preserve">
+    <value>Magnitude</value>
+  </data>
+  <data name="MagnitudeMax" xml:space="preserve">
+    <value>Magnitude max.</value>
+  </data>
+  <data name="Mensuel" xml:space="preserve">
+    <value>Monthly</value>
+  </data>
+  <data name="menuActualiserLaListeDesObjetsCelestes" xml:space="preserve">
+    <value>&amp;Refresh the list of celestial objects</value>
+  </data>
+  <data name="menuAffichage" xml:space="preserve">
+    <value>&amp;View</value>
+  </data>
+  <data name="menuAPropos" xml:space="preserve">
+    <value>&amp;About</value>
+  </data>
+  <data name="menuFichier" xml:space="preserve">
+    <value>&amp;File</value>
+  </data>
+  <data name="menuMettreAJourLeCatalogueDesObjetsCelestes" xml:space="preserve">
+    <value>Update the catalog of celestial &amp;objects</value>
+  </data>
+  <data name="menuMettreJourLeCatalogueDesCapteurs" xml:space="preserve">
+    <value>Update &amp;sensor catalog</value>
+  </data>
+  <data name="menuModeNuit" xml:space="preserve">
+    <value>&amp;Night mode</value>
+  </data>
+  <data name="menuOutils" xml:space="preserve">
+    <value>&amp;Tools</value>
+  </data>
+  <data name="menuParametresDeLObservation" xml:space="preserve">
+    <value>Observation &amp;settings</value>
+  </data>
+  <data name="menuQuitter" xml:space="preserve">
+    <value>&amp;Exit</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="MiseAJourDesFichiersDeConfiguration" xml:space="preserve">
+    <value>Updating configuration files</value>
+  </data>
+  <data name="MiseAJourDuFichierDeConfigurationDes" xml:space="preserve">
+    <value>Update configuration file</value>
+  </data>
+  <data name="Modifier" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Nom" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NouvelleVersionDisponible" xml:space="preserve">
+    <value>New version available</value>
+  </data>
+  <data name="Nuits" xml:space="preserve">
+    <value>Nights</value>
+  </data>
+  <data name="ObjetCeleste" xml:space="preserve">
+    <value>Celestial object</value>
+  </data>
+  <data name="ObjetsCelestes" xml:space="preserve">
+    <value>celestial objects</value>
+  </data>
+  <data name="ObjetSelectionne" xml:space="preserve">
+    <value>Selected object</value>
+  </data>
+  <data name="OuvrirLeFichierDesLogs" xml:space="preserve">
+    <value>Open &amp;logs file</value>
+  </data>
+  <data name="Parametres" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="ParametresDeCartesDuCiel" xml:space="preserve">
+    <value>Cartes Du Ciel settings</value>
+  </data>
+  <data name="ParametresDeLObservation" xml:space="preserve">
+    <value>Observation settings</value>
+  </data>
+  <data name="ParametresDesPlanetariumsStellariumCartesDuCiel" xml:space="preserve">
+    <value>Planetarium settings (Stellarium / Cartes du Ciel)</value>
+  </data>
+  <data name="ParametresDuPluginDeControleQDistanceDeStellarium" xml:space="preserve">
+    <value>Stellarium remote control plugin settings</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium" xml:space="preserve">
+    <value>Place here the information needed to connect to the Stellarium remote control plugin.</value>
+  </data>
+  <data name="PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001" xml:space="preserve">
+    <value>To run Cartes du Ciel directly on this computer, leave the default value '127.0.0.1'.</value>
+  </data>
+  <data name="PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost" xml:space="preserve">
+    <value>To run Stellarium directly on this computer, leave the default 'localhost'.</value>
+  </data>
+  <data name="PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur" xml:space="preserve">
+    <value>To connect to Cartes du Ciel on a server, specify the IP address of the server here.</value>
+  </data>
+  <data name="RA" xml:space="preserve">
+    <value>RA</value>
+  </data>
+  <data name="RAJ2000" xml:space="preserve">
+    <value>RA (J2000)</value>
+  </data>
+  <data name="Rank" xml:space="preserve">
+    <value>Rank</value>
+  </data>
+  <data name="RankMin" xml:space="preserve">
+    <value>Rank min.</value>
+  </data>
+  <data name="Rechercher" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="Scoring" xml:space="preserve">
+    <value>Scoring</value>
+  </data>
+  <data name="SelectionDuCapteur" xml:space="preserve">
+    <value>Sensor Selection</value>
+  </data>
+  <data name="Serveur" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="Suivant" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="TempsDePose" xml:space="preserve">
+    <value>Exposure time</value>
+  </data>
+  <data name="TempsDePoseMax" xml:space="preserve">
+    <value>Max. exposure time</value>
+  </data>
+  <data name="TempsDePoseSecondesSansRotationDeChamps" xml:space="preserve">
+    <value>Exposure time (seconds) without field rotation</value>
+  </data>
+  <data name="Terminer" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="Tous" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="Type" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent" xml:space="preserve">
+    <value>An error occurred while downloading. Downloaded file not present</value>
+  </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Visualisation" xml:space="preserve">
+    <value>Visualization</value>
+  </data>
+  <data name="VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes" xml:space="preserve">
+    <value>You will download and update the configuration file for</value>
+  </data>
+  <data name="ZonesDuCielExclues" xml:space="preserve">
+    <value>Sky areas excluded</value>
+  </data>
+  <data name="ZonesExclues" xml:space="preserve">
+    <value>Excluded areas</value>
+  </data>
+</root>

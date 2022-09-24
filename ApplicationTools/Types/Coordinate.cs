@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationTools.Properties;
+using System;
 using System.Globalization;
 
 namespace ApplicationTools
@@ -174,7 +175,7 @@ namespace ApplicationTools
                     var direction = coordinatesType == CoordinatesType.Latitude ?
                                         coordonnee < 0 ? CoordinatesDirection.S : CoordinatesDirection.N
                                         : coordonnee < 0 ? CoordinatesDirection.O : CoordinatesDirection.E;
-                    return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + direction.ToString();
+                    return Degrees + "° " + Minutes + "' " + string.Format("{0:0.00}", Seconds) + "\" " + GetDirectionString(direction);
                 }
 
                 // Coordonnée de type RA
@@ -199,13 +200,13 @@ namespace ApplicationTools
                 // Coordonnée de type Longitude
                 if (coordinatesType == CoordinatesType.Longitude)
                 {
-                    return coordonnee < 0 ? CoordinatesDirection.O.ToString() : CoordinatesDirection.E.ToString();
+                    return coordonnee < 0 ? GetDirectionString(CoordinatesDirection.O) : GetDirectionString(CoordinatesDirection.E);
                 }
 
                 // Coordonnée de type LongitLatitudeude
                 if (coordinatesType == CoordinatesType.Latitude)
                 {
-                    return coordonnee < 0 ? CoordinatesDirection.S.ToString() : CoordinatesDirection.N.ToString();
+                    return coordonnee < 0 ? GetDirectionString(CoordinatesDirection.S) : GetDirectionString(CoordinatesDirection.N);
                 }
 
                 // Pour les autres type, on renvoi une chaîne vide
@@ -287,12 +288,12 @@ namespace ApplicationTools
             }
 
             // Validation Direction
-            CoordinatesDirection directionDec;
-            if (string.IsNullOrEmpty(direction) || !Enum.TryParse(direction, out directionDec))
+            if (string.IsNullOrEmpty(direction))
             {
                 appLog.Log($"Mauvais format de direction pour le TryParse en Coordinate", "Coordinate", null, TypeLog.Warning);
                 return false;
             }
+            CoordinatesDirection directionDec = GetDirectionFromString(direction);
 
             // Données valides, on valorise l'objet coordonnee
             double valCoordonnee = degreeDec + (minuteDec / 60) + (secondeDec / 3600);
@@ -370,6 +371,59 @@ namespace ApplicationTools
             coordonnee.UpdateCoordonnee(valCoordonnee);
 
             return true;
+        }
+
+        /// <summary>
+        /// Renvoi la direction sous la forme d'une chaîne internationalisée
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public static string GetDirectionString(CoordinatesDirection direction)
+        {
+            switch(direction)
+            {
+                case CoordinatesDirection.NE:
+                    return Resources.NE;
+                case CoordinatesDirection.E:
+                    return Resources.E;
+                case CoordinatesDirection.SE:
+                    return Resources.SE;
+                case CoordinatesDirection.S:
+                    return Resources.S;
+                case CoordinatesDirection.SO:
+                    return Resources.SO;
+                case CoordinatesDirection.O:
+                    return Resources.O;
+                case CoordinatesDirection.NO:
+                    return Resources.NO;
+                case CoordinatesDirection.N:
+                default:
+                    return Resources.N;
+            }
+        }
+
+        /// <summary>
+        /// Renvoi la direction sous la forme <see cref="CoordinatesDirection"/>
+        /// </summary>
+        /// <param name="direction"></param>
+        /// <returns></returns>
+        public static CoordinatesDirection GetDirectionFromString(string direction)
+        {
+            if (direction == Resources.NE)
+                return CoordinatesDirection.NE;
+            else if (direction == Resources.E)
+                return CoordinatesDirection.E;
+            else if (direction == Resources.SE)
+                return CoordinatesDirection.SE;
+            else if (direction == Resources.S)
+                return CoordinatesDirection.S;
+            else if (direction == Resources.SO)
+                return CoordinatesDirection.SO;
+            else if (direction == Resources.O)
+                return CoordinatesDirection.O;
+            else if (direction == Resources.NO)
+                return CoordinatesDirection.NO;
+            return CoordinatesDirection.N;
         }
 
         #endregion

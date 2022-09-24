@@ -58,6 +58,12 @@
             <param name="type"></param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetConsoleQueue(System.Func{System.String,System.String,System.String,System.Boolean})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.AppToolFactory.log">
             <summary>
             Interface de l'Objet <see cref="T:ApplicationTools.AppLog"/>
@@ -77,6 +83,65 @@
             <summary>
             Objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
             </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.consoleQueue">
+            <summary>
+            Objet permettant la gestion des messages de la Console
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.ATSToolStripRenderer">
+            <summary>
+            Composant permettant de généré un rendu de contrôle en mode Jour / Nuit <see cref="P:ApplicationTools.ATSToolStripRenderer.ModeNuit"/>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ATSToolStripRenderer.ModeNuit">
+            <summary>
+            Affichage en mode Jour/Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ATSToolStripRenderer.BackColor">
+            <summary>
+            Back Color du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ATSToolStripRenderer.BackColorLight">
+            <summary>
+            Back Color Light du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ATSToolStripRenderer.ForeColor">
+            <summary>
+            Fore Color du mode Nuit
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ATSToolStripRenderer.#ctor">
+            <summary>
+            Constructeur
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ATSToolStripRenderer.OnRenderToolStripBackground(System.Windows.Forms.ToolStripRenderEventArgs)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ApplicationTools.ATSToolStripRenderer.OnRenderItemText(System.Windows.Forms.ToolStripItemTextRenderEventArgs)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ApplicationTools.ATSToolStripRenderer.OnRenderImageMargin(System.Windows.Forms.ToolStripRenderEventArgs)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="e"></param>
+        </member>
+        <member name="M:ApplicationTools.ATSToolStripRenderer.OnRenderMenuItemBackground(System.Windows.Forms.ToolStripItemRenderEventArgs)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="e"></param>
         </member>
         <member name="T:ApplicationTools.IAppContext">
             <summary>
@@ -121,6 +186,31 @@
         <member name="P:ApplicationTools.IAppContext.CodePays">
             <summary>
             Code pays d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.OSVersion">
+            <summary>
+            Version du système d'exploitation (Windows)
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.BackColor">
+            <summary>
+            Back Color du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.BackColorLight">
+            <summary>
+            Back Color Light du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.ForeColor">
+            <summary>
+            Fore Color du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.ForeColorLight">
+            <summary>
+            Fore Color Light du mode Nuit
             </summary>
         </member>
         <member name="T:ApplicationTools.TypeLog">
@@ -303,6 +393,13 @@
             <param name="value"></param>
             <param name="type"></param>
             <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetConsoleQueue(System.Func{System.String,System.String,System.String,System.Boolean})">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.IConsoleQueue"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IConsoleQueue</returns>
         </member>
         <member name="T:ApplicationTools.AppCartesDuCiel">
             <summary>
@@ -743,42 +840,67 @@
         </member>
         <member name="P:ApplicationTools.AppContext.ProductName">
             <summary>
-            ProductName de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.ProductVersion">
             <summary>
-            ProductVersion de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.ExecutablePath">
             <summary>
-            ExecutablePath (Path + Nom du fichier executable) de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.StartupPath">
             <summary>
-            StartupPath de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.UserAppDataPath">
             <summary>
-            UserAppDataPath de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.LogFileName">
             <summary>
-            Nom du fichier de log de l'application en cours
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.CodeLangue">
             <summary>
-            Code langue d'exécution
+            <inheritdoc />
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.CodePays">
             <summary>
-            Code pays d'exécution
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.OSVersion">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.BackColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.BackColorLight">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ForeColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.ForeColorLight">
+            <summary>
+            <inheritdoc />
             </summary>
         </member>
         <member name="M:ApplicationTools.AppContext.#ctor">
@@ -1081,9 +1203,19 @@
               les recherches de ressources à l'aide de cette classe de ressource fortement typée.
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.Annuler">
+            <summary>
+              Recherche une chaîne localisée semblable à Annuler.
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.CartesDuCiel">
             <summary>
               Recherche une chaîne localisée semblable à Cartes du Ciel.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.E">
+            <summary>
+              Recherche une chaîne localisée semblable à E.
             </summary>
         </member>
         <member name="P:ApplicationTools.Properties.Resources.FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium">
@@ -1111,9 +1243,49 @@
               Recherche une chaîne localisée semblable à Le serveur n&apos;est pas activé..
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.N">
+            <summary>
+              Recherche une chaîne localisée semblable à N.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.NE">
+            <summary>
+              Recherche une chaîne localisée semblable à NE.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.NO">
+            <summary>
+              Recherche une chaîne localisée semblable à NO.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.O">
+            <summary>
+              Recherche une chaîne localisée semblable à O.
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.ObjetCelesteNonTrouve">
             <summary>
               Recherche une chaîne localisée semblable à Objet céleste non trouvé..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.OK">
+            <summary>
+              Recherche une chaîne localisée semblable à OK.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.S">
+            <summary>
+              Recherche une chaîne localisée semblable à S.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.SE">
+            <summary>
+              Recherche une chaîne localisée semblable à SE.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.SO">
+            <summary>
+              Recherche une chaîne localisée semblable à SO.
             </summary>
         </member>
         <member name="P:ApplicationTools.Properties.Resources.Stellarium">
@@ -1144,6 +1316,29 @@
         <member name="P:ApplicationTools.Properties.Resources.VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration">
             <summary>
               Recherche une chaîne localisée semblable à Veuillez démarrer le logiciel au moins une fois afin de terminer sa configuration..
+            </summary>
+        </member>
+        <member name="T:ApplicationTools.ConsoleQueue">
+            <summary>
+            Objet permettant la gestion des messages de la Console
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ConsoleQueue.#ctor(System.Func{System.String,System.String,System.String,System.Boolean})">
+            <summary>
+            Constructeur
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ConsoleQueue.AddConsoleMessage(System.String,System.String,System.String)">
+            <summary>
+            Ajout d'un message à la console
+            </summary>
+            <param name="objet"></param>
+            <param name="commande"></param>
+            <param name="retour"></param>
+        </member>
+        <member name="F:ApplicationTools.ConsoleQueue.messageQueuedFunc">
+            <summary>
+            Fonction appelée sur ajout de message dans la queue
             </summary>
         </member>
         <member name="T:ApplicationTools.CoordinatesDirection">
@@ -1303,6 +1498,20 @@
             <param name="coordonnee"></param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.Coordinate.GetDirectionString(ApplicationTools.CoordinatesDirection)">
+            <summary>
+            Renvoi la direction sous la forme d'une chaîne internationalisée
+            </summary>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.Coordinate.GetDirectionFromString(System.String)">
+            <summary>
+            Renvoi la direction sous la forme <see cref="T:ApplicationTools.CoordinatesDirection"/>
+            </summary>
+            <param name="direction"></param>
+            <returns></returns>
+        </member>
         <member name="F:ApplicationTools.Coordinate.coordonnee">
             <summary>
             Valeur de la coordonnée
@@ -1407,6 +1616,19 @@
             <summary>
             Objet Latitude du Lieu <see cref="T:ApplicationTools.Coordinate"/>
             </summary>
+        </member>
+        <member name="T:ApplicationTools.IConsoleQueue">
+            <summary>
+            Interface de l'objet permettant la gestion des messages de la Console
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.IConsoleQueue.AddConsoleMessage(System.String,System.String,System.String)">
+            <summary>
+            Ajout d'un message à la console
+            </summary>
+            <param name="objet"></param>
+            <param name="commande"></param>
+            <param name="retour"></param>
         </member>
     </members>
 </doc>

@@ -22,3 +22,7 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\ApplicationTools.dll.config
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\en\AstroTargetSelectorBusiness.resources.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\AstroTargetSelectorBusiness.Properties.Resources.en.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\obj\Debug\en\AstroTargetSelectorBusiness.resources.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Debug\en\ApplicationTools.resources.dll

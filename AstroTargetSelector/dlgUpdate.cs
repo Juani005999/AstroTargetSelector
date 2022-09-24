@@ -5,6 +5,7 @@ using System.Windows.Forms;
 using AstroTargetSelectorResources;
 using AstroTargetSelectorBusiness;
 using System.Diagnostics;
+using System.Drawing;
 
 namespace AstroTargetSelector
 {
@@ -38,7 +39,7 @@ namespace AstroTargetSelector
 
         #endregion
 
-        #region Proproétés
+        #region Propriétés
 
         /// <summary>
         /// Url complète du fichier remote de configuration des objets célestes / Capteurs
@@ -126,6 +127,10 @@ namespace AstroTargetSelector
             this.factory = factory;
             this.dialogMode = dialogMode;
 
+            // Positionne les libellés et le mode Jour/Nuit
+            LoadLibelles();
+            SetAffichage();
+
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue en mode {dialogMode}", GetType().Name);
         }
@@ -192,7 +197,7 @@ namespace AstroTargetSelector
             // Boutons
             btOK.Text = Resources.Suivant;
             btOK.Visible = true;
-            btCancel.Text = Resources.Annuler;
+            btCancel.Text = ApplicationTools.Properties.Resources.Annuler;
             btCancel.Visible = true;
         }
 
@@ -308,6 +313,30 @@ namespace AstroTargetSelector
                 // Positionnement du Curseur
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        /// <summary>
+        /// Positionne l'affichage en mode Jour / Nuit
+        /// </summary>
+        private void SetAffichage()
+        {
+            bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
+            // Fenêtre
+            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+
+            // Boutons et Contrôles
+            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+        }
+
+        /// <summary>
+        /// Charge des libellés statiques
+        /// </summary>
+        private void LoadLibelles()
+        {
+            // Titre
+            this.Text = Resources.MiseAJourDesFichiersDeConfiguration;
         }
 
         #endregion

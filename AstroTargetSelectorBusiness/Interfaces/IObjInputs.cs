@@ -107,6 +107,13 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         ModeVisualisation Visualisation { get; set; }
 
+        /// <summary>
+        /// Affichag en mode nuit
+        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est false</para>
+        /// </summary>
+        bool ModeNuit { get; set; }
+
         #endregion
     }
 }

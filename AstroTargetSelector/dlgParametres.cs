@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -28,6 +29,10 @@ namespace AstroTargetSelector
         {
             InitializeComponent();
             this.factory = factory;
+
+            // Positionne les libellés et le mode Jour/Nuit
+            LoadLibelles();
+            SetAffichage();
 
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue", GetType().Name);
@@ -111,13 +116,13 @@ namespace AstroTargetSelector
 
             // Longitude
             comboBoxLongitudeDirection.Items.Clear();
-            comboBoxLongitudeDirection.Items.Add(CoordinatesDirection.E.ToString());
-            comboBoxLongitudeDirection.Items.Add(CoordinatesDirection.O.ToString());
+            comboBoxLongitudeDirection.Items.Add(Coordinate.GetDirectionString(CoordinatesDirection.E));
+            comboBoxLongitudeDirection.Items.Add(Coordinate.GetDirectionString(CoordinatesDirection.O));
 
             // Latitude
             comboBoxLatitudeDirection.Items.Clear();
-            comboBoxLatitudeDirection.Items.Add(CoordinatesDirection.N.ToString());
-            comboBoxLatitudeDirection.Items.Add(CoordinatesDirection.S.ToString());
+            comboBoxLatitudeDirection.Items.Add(Coordinate.GetDirectionString(CoordinatesDirection.N));
+            comboBoxLatitudeDirection.Items.Add(Coordinate.GetDirectionString(CoordinatesDirection.S));
 
             // Capteur
             comboBoxCapteur.Items.Clear();
@@ -150,6 +155,7 @@ namespace AstroTargetSelector
             // Capteur
             comboBoxCapteur.Text = factory.GetAppInputs().Inputs.Capteur.Nom;
             textBoxCapteurLargeur.Text = factory.GetAppInputs().Inputs.Capteur.Largeur.ToString("0", CultureInfo.InvariantCulture);
+            toolTipInfoCapteur.ToolTipTitle = Resources.SelectionDuCapteur;
             toolTipInfoCapteur.SetToolTip(pictureBoxIconInfoToolTip, Resources.InfoCapteur1 + Environment.NewLine + Resources.InfoCapteur2);
 
             // Zones Exclues
@@ -172,6 +178,7 @@ namespace AstroTargetSelector
             textBoxPortStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
             textBoxHostStellarium.Text = factory.GetAppStellarium().Host;
             textBoxPortStellarium.Text = factory.GetAppStellarium().Port;
+            toolTipInfoStellarium.ToolTipTitle = Resources.ParametresDuPluginDeControleQDistanceDeStellarium;
             toolTipInfoStellarium.SetToolTip(pictureBoxIconInfoStellarium, 
                     Resources.PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium
                     + Environment.NewLine 
@@ -182,6 +189,7 @@ namespace AstroTargetSelector
             // Cartes du Ciel
             textBoxHostCartesDuCiel.Enabled = factory.GetAppCartesDuCiel().IsInstalled;
             textBoxHostCartesDuCiel.Text = factory.GetAppCartesDuCiel().Host;
+            toolTipInfoCartesDuCiel.ToolTipTitle = Resources.ParametresDeCartesDuCiel;
             toolTipInfoCartesDuCiel.SetToolTip(pictureBoxIconInfoCartesDuCiel,
                     Resources.PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur
                     + Environment.NewLine
@@ -229,7 +237,6 @@ namespace AstroTargetSelector
                 // Cartes du Ciel.
                 if (string.IsNullOrEmpty(textBoxHostCartesDuCiel.Text))
                     throw new WarningException(Resources.FormatDuChampServeurPourCartesDuCielIncorrect);
-
 
                 // Si tous les champs valide, mise à jour des Settings applicatifs
                 factory.GetAppInputs().Inputs.LieuObservation = nouveauLieu;
@@ -315,6 +322,138 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Positionne l'affichage en mode Jour / Nuit
+        /// </summary>
+        private void SetAffichage()
+        {
+            bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
+            // Fenêtre
+            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+
+            // GroupBox
+            groupBoxLieuObservation.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            groupBoxCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            groupBoxZones.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            groupBoxDivers.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            groupBoxStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+
+            // Boutons et Contrôles
+            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            // Position
+            textBoxLongitudeDegre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLongitudeDegre.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLongitudeMinute.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLongitudeMinute.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLongitudeSeconde.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLongitudeSeconde.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeDegre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLatitudeDegre.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeMinute.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLatitudeMinute.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeSeconde.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxLatitudeSeconde.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            comboBoxLongitudeDirection.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
+            comboBoxLongitudeDirection.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            comboBoxLongitudeDirection.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            comboBoxLatitudeDirection.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
+            comboBoxLatitudeDirection.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            comboBoxLatitudeDirection.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            // Capteur
+            textBoxCapteurLargeur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxCapteurLargeur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            comboBoxCapteur.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
+            comboBoxCapteur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            comboBoxCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            toolTipInfoCapteur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
+            toolTipInfoCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            toolTipInfoCapteur.OwnerDraw = nuit;
+            // Zones
+            ckN.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckN.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckN.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckNE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckNE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckNE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckSE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckSE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckSE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckS.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckS.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckS.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckSO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckSO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckSO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            ckNO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ckNO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckNO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
+            // Divers
+            textBoxHauteurMin.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxHauteurMin.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxBougeMax.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxBougeMax.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            // Planetarium
+            textBoxHostStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxHostStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxPortStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxPortStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxHostCartesDuCiel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxHostCartesDuCiel.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            toolTipInfoStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
+            toolTipInfoStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            toolTipInfoStellarium.OwnerDraw = nuit;
+            toolTipInfoCartesDuCiel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
+            toolTipInfoCartesDuCiel.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            toolTipInfoCartesDuCiel.OwnerDraw = nuit;
+        }
+
+        /// <summary>
+        /// Charge des libellés statiques
+        /// </summary>
+        private void LoadLibelles()
+        {
+            // Titre
+            this.Text = Resources.Parametres;
+            // Lieu d'observation
+            groupBoxLieuObservation.Text = Resources.LieuDeLObservation;
+            labelLongitude.Text = Resources.Longitude;
+            labelLatitude.Text = Resources.Latitude;
+            // Capteur
+            groupBoxCapteur.Text = Resources.Capteur;
+            labelNom.Text = Resources.Nom;
+            labelLargeur.Text = Resources.LargeurPX;
+            // Zones Exclues
+            groupBoxZones.Text = Resources.ZonesDuCielExclues;
+            ckN.Text = ApplicationTools.Properties.Resources.N;
+            ckNE.Text = ApplicationTools.Properties.Resources.NE;
+            ckE.Text = ApplicationTools.Properties.Resources.E;
+            ckSE.Text = ApplicationTools.Properties.Resources.SE;
+            ckS.Text = ApplicationTools.Properties.Resources.S;
+            ckSO.Text = ApplicationTools.Properties.Resources.SO;
+            ckO.Text = ApplicationTools.Properties.Resources.O;
+            ckNO.Text = ApplicationTools.Properties.Resources.NO;
+            // Divers
+            groupBoxDivers.Text = Resources.Divers;
+            labelHauteur.Text = Resources.HauteurApparenteMinimum;
+            labelBougeMax.Text = Resources.BougeMax;
+            // Planetarium
+            groupBoxStellarium.Text = Resources.ParametresDesPlanetariumsStellariumCartesDuCiel;
+            labelServeurStellarium.Text = Resources.Serveur;
+            labelPortStellarium.Text = Resources.Port;
+            labelServeurCdC.Text = Resources.Serveur;
+            // Boutons
+            btOK.Text = ApplicationTools.Properties.Resources.OK;
+            btCancel.Text = ApplicationTools.Properties.Resources.Annuler;
+        }
+
         #endregion
 
         #region Champs
@@ -342,6 +481,126 @@ namespace AstroTargetSelector
         {
             // Met à jour le champ Largeur
             UpdateLargeur();
+        }
+
+        private void comboBoxLongitudeDirection_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                brushText = Brushes.Black;
+            }
+            else
+            {
+                e.DrawBackground();
+            }
+            //e.DrawBackground();
+            e.DrawFocusRectangle();
+            if (e.Index != -1)
+                e.Graphics.DrawString(comboBoxLongitudeDirection.Items[e.Index].ToString(), e.Font, brushText, e.Bounds);
+        }
+
+        private void comboBoxLatitudeDirection_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                brushText = Brushes.Black;
+            }
+            else
+            {
+                e.DrawBackground();
+            }
+            //e.DrawBackground();
+            e.DrawFocusRectangle();
+            if (e.Index != -1)
+                e.Graphics.DrawString(comboBoxLatitudeDirection.Items[e.Index].ToString(), e.Font, brushText, e.Bounds);
+        }
+
+        private void comboBoxCapteur_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                brushText = Brushes.Black;
+            }
+            else
+            {
+                e.DrawBackground();
+            }
+            //e.DrawBackground();
+            e.DrawFocusRectangle();
+            if (e.Index != -1)
+                e.Graphics.DrawString(comboBoxCapteur.Items[e.Index].ToString(), e.Font, brushText, e.Bounds);
+        }
+
+        private void toolTipInfoCapteur_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            // Background et Border
+            e.DrawBackground();
+            e.DrawBorder();
+            // Icon
+            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
+            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
+            // Titre
+            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            {
+                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
+                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
+                {
+                    e.Graphics.DrawString(toolTipInfoCapteur.ToolTipTitle, fontTitre, brush, rectangleTitre);
+                }
+                // Text
+                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipInfoStellarium_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            // Background et Border
+            e.DrawBackground();
+            e.DrawBorder();
+            // Icon
+            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
+            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
+            // Titre
+            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            {
+                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
+                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
+                {
+                    e.Graphics.DrawString(toolTipInfoStellarium.ToolTipTitle, fontTitre, brush, rectangleTitre);
+                }
+                // Text
+                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipInfoCartesDuCiel_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            // Background et Border
+            e.DrawBackground();
+            e.DrawBorder();
+            // Icon
+            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
+            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
+            // Titre
+            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            {
+                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
+                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
+                {
+                    e.Graphics.DrawString(toolTipInfoCartesDuCiel.ToolTipTitle, fontTitre, brush, rectangleTitre);
+                }
+                // Text
+                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
         }
     }
 }

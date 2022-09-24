@@ -1,4 +1,6 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Drawing;
+using System.Globalization;
 using System.Windows.Forms;
 
 namespace ApplicationTools
@@ -11,7 +13,7 @@ namespace ApplicationTools
         #region Propriétés
 
         /// <summary>
-        /// ProductName de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string ProductName
         {
@@ -22,7 +24,7 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// ProductVersion de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string ProductVersion
         {
@@ -33,7 +35,7 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// ExecutablePath (Path + Nom du fichier executable) de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string ExecutablePath
         {
@@ -44,7 +46,7 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// StartupPath de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string StartupPath
         {
@@ -55,7 +57,7 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// UserAppDataPath de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string UserAppDataPath
         {
@@ -66,7 +68,7 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Nom du fichier de log de l'application en cours
+        /// <inheritdoc />
         /// </summary>
         public string LogFileName
         {
@@ -77,24 +79,80 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Code langue d'exécution
+        /// <inheritdoc />
         /// </summary>
         public string CodeLangue
         {
             get
             {
-                return CultureInfo.CurrentCulture.TwoLetterISOLanguageName;
+                return CultureInfo.CurrentCulture.TwoLetterISOLanguageName.ToLower();
             }
         }
 
         /// <summary>
-        /// Code pays d'exécution
+        /// <inheritdoc />
         /// </summary>
         public string CodePays
         {
             get
             {
-                return RegionInfo.CurrentRegion.TwoLetterISORegionName;
+                return RegionInfo.CurrentRegion.TwoLetterISORegionName.ToUpper();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public string OSVersion
+        {
+            get
+            {
+                return Environment.OSVersion.VersionString;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColor
+        {
+            get
+            {
+                //return SystemColors.ControlDarkDark;
+                return Color.FromArgb(30, 30, 30);
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColorLight
+        {
+            get
+            {
+                return Color.FromArgb(70, 70, 70);
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColor
+        {
+            get
+            {
+                return Color.OrangeRed;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColorLight
+        {
+            get
+            {
+                return Color.LightYellow;
             }
         }
 

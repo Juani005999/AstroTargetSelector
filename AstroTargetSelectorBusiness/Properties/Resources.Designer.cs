@@ -70,7 +70,16 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Cartes du Ciel.
+        ///   Recherche une chaîne localisée semblable à Afficher la hauteur et la direction.
+        /// </summary>
+        public static string AfficherLaHauteurEtLaDirection {
+            get {
+                return ResourceManager.GetString("AfficherLaHauteurEtLaDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Cartes du Ciel..
         /// </summary>
         public static string AfficherLObjetCelesteDansCartesDuCiel {
             get {
@@ -88,11 +97,20 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
-        ///   Recherche une chaîne localisée semblable à Annuler.
+        ///   Recherche une chaîne localisée semblable à Annuel.
         /// </summary>
-        public static string Annuler {
+        public static string Annuel {
             get {
-                return ResourceManager.GetString("Annuler", resourceCulture);
+                return ResourceManager.GetString("Annuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à À propos de.
+        /// </summary>
+        public static string AProposDe {
+            get {
+                return ResourceManager.GetString("AProposDe", resourceCulture);
             }
         }
         
@@ -160,11 +178,38 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Contributeurs.
+        /// </summary>
+        public static string Contributeurs {
+            get {
+                return ResourceManager.GetString("Contributeurs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date.
+        /// </summary>
+        public static string Date {
+            get {
+                return ResourceManager.GetString("Date", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date de l&apos;observation.
         /// </summary>
         public static string DateDeLObservation {
             get {
                 return ResourceManager.GetString("DateDeLObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Date et heure de l&apos;observation.
+        /// </summary>
+        public static string DateEtHeureDeLObservation {
+            get {
+                return ResourceManager.GetString("DateEtHeureDeLObservation", resourceCulture);
             }
         }
         
@@ -196,6 +241,33 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Divers.
+        /// </summary>
+        public static string Divers {
+            get {
+                return ResourceManager.GetString("Divers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Durée d&apos;un intervalle.
+        /// </summary>
+        public static string DureeDUnIntervalle {
+            get {
+                return ResourceManager.GetString("DureeDUnIntervalle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Durée totale.
+        /// </summary>
+        public static string DureeTotale {
+            get {
+                return ResourceManager.GetString("DureeTotale", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à effectué avec succès.
         /// </summary>
         public static string EffectueAvecSucces {
@@ -210,6 +282,15 @@ namespace AstroTargetSelectorResources {
         public static string EnvoiDeLaCommande {
             get {
                 return ResourceManager.GetString("EnvoiDeLaCommande", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Filtrer les résultats.
+        /// </summary>
+        public static string FiltrerLesResultats {
+            get {
+                return ResourceManager.GetString("FiltrerLesResultats", resourceCulture);
             }
         }
         
@@ -295,11 +376,47 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hauteur apparente minimum.
+        /// </summary>
+        public static string HauteurApparenteMinimum {
+            get {
+                return ResourceManager.GetString("HauteurApparenteMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Hauteur min..
         /// </summary>
         public static string HauteurMin {
             get {
                 return ResourceManager.GetString("HauteurMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Heure.
+        /// </summary>
+        public static string Heure {
+            get {
+                return ResourceManager.GetString("Heure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à heure(s).
+        /// </summary>
+        public static string Heures {
+            get {
+                return ResourceManager.GetString("Heures", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Horaire.
+        /// </summary>
+        public static string Horaire {
+            get {
+                return ResourceManager.GetString("Horaire", resourceCulture);
             }
         }
         
@@ -327,6 +444,24 @@ namespace AstroTargetSelectorResources {
         public static string Largeur {
             get {
                 return ResourceManager.GetString("Largeur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Largeur (px).
+        /// </summary>
+        public static string LargeurPX {
+            get {
+                return ResourceManager.GetString("LargeurPX", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Latitude.
+        /// </summary>
+        public static string Latitude {
+            get {
+                return ResourceManager.GetString("Latitude", resourceCulture);
             }
         }
         
@@ -359,11 +494,164 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lieu de l&apos;observation.
+        /// </summary>
+        public static string LieuDeLObservation {
+            get {
+                return ResourceManager.GetString("LieuDeLObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lieu de l&apos;observation (Lat. - Long.).
+        /// </summary>
+        public static string LieuDeLObservationLatLong {
+            get {
+                return ResourceManager.GetString("LieuDeLObservationLatLong", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Longitude.
+        /// </summary>
+        public static string Longitude {
+            get {
+                return ResourceManager.GetString("Longitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Magnitude.
         /// </summary>
         public static string Magnitude {
             get {
                 return ResourceManager.GetString("Magnitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Magnitude max..
+        /// </summary>
+        public static string MagnitudeMax {
+            get {
+                return ResourceManager.GetString("MagnitudeMax", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mensuel.
+        /// </summary>
+        public static string Mensuel {
+            get {
+                return ResourceManager.GetString("Mensuel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Actualiser la liste des objets célestes.
+        /// </summary>
+        public static string menuActualiserLaListeDesObjetsCelestes {
+            get {
+                return ResourceManager.GetString("menuActualiserLaListeDesObjetsCelestes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Affichage.
+        /// </summary>
+        public static string menuAffichage {
+            get {
+                return ResourceManager.GetString("menuAffichage", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;A propos.
+        /// </summary>
+        public static string menuAPropos {
+            get {
+                return ResourceManager.GetString("menuAPropos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Fichier.
+        /// </summary>
+        public static string menuFichier {
+            get {
+                return ResourceManager.GetString("menuFichier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mettre à jour le catalogue des &amp;objets célestes.
+        /// </summary>
+        public static string menuMettreAJourLeCatalogueDesObjetsCelestes {
+            get {
+                return ResourceManager.GetString("menuMettreAJourLeCatalogueDesObjetsCelestes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mettre à jour le catalogue des &amp;capteurs.
+        /// </summary>
+        public static string menuMettreJourLeCatalogueDesCapteurs {
+            get {
+                return ResourceManager.GetString("menuMettreJourLeCatalogueDesCapteurs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mode &amp;nuit.
+        /// </summary>
+        public static string menuModeNuit {
+            get {
+                return ResourceManager.GetString("menuModeNuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Outils.
+        /// </summary>
+        public static string menuOutils {
+            get {
+                return ResourceManager.GetString("menuOutils", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Paramètres de l&apos;observation.
+        /// </summary>
+        public static string menuParametresDeLObservation {
+            get {
+                return ResourceManager.GetString("menuParametresDeLObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à &amp;Quitter.
+        /// </summary>
+        public static string menuQuitter {
+            get {
+                return ResourceManager.GetString("menuQuitter", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à minutes.
+        /// </summary>
+        public static string Minutes {
+            get {
+                return ResourceManager.GetString("Minutes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mise à jour des fichiers de configuration.
+        /// </summary>
+        public static string MiseAJourDesFichiersDeConfiguration {
+            get {
+                return ResourceManager.GetString("MiseAJourDesFichiersDeConfiguration", resourceCulture);
             }
         }
         
@@ -377,11 +665,47 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Modifier.
+        /// </summary>
+        public static string Modifier {
+            get {
+                return ResourceManager.GetString("Modifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Nom.
         /// </summary>
         public static string Nom {
             get {
                 return ResourceManager.GetString("Nom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nouvelle version disponible.
+        /// </summary>
+        public static string NouvelleVersionDisponible {
+            get {
+                return ResourceManager.GetString("NouvelleVersionDisponible", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nuits.
+        /// </summary>
+        public static string Nuits {
+            get {
+                return ResourceManager.GetString("Nuits", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Objet céleste.
+        /// </summary>
+        public static string ObjetCeleste {
+            get {
+                return ResourceManager.GetString("ObjetCeleste", resourceCulture);
             }
         }
         
@@ -400,6 +724,69 @@ namespace AstroTargetSelectorResources {
         public static string ObjetSelectionne {
             get {
                 return ResourceManager.GetString("ObjetSelectionne", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Ouvrir le fichier des &amp;logs.
+        /// </summary>
+        public static string OuvrirLeFichierDesLogs {
+            get {
+                return ResourceManager.GetString("OuvrirLeFichierDesLogs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Paramètres.
+        /// </summary>
+        public static string Parametres {
+            get {
+                return ResourceManager.GetString("Parametres", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Paramètres de Cartes Du Ciel.
+        /// </summary>
+        public static string ParametresDeCartesDuCiel {
+            get {
+                return ResourceManager.GetString("ParametresDeCartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Paramètres de l&apos;observation.
+        /// </summary>
+        public static string ParametresDeLObservation {
+            get {
+                return ResourceManager.GetString("ParametresDeLObservation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Paramètres des planétariums (Stellarium / Cartes du Ciel).
+        /// </summary>
+        public static string ParametresDesPlanetariumsStellariumCartesDuCiel {
+            get {
+                return ResourceManager.GetString("ParametresDesPlanetariumsStellariumCartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Paramètres du plugin de contrôle à distance de Stellarium.
+        /// </summary>
+        public static string ParametresDuPluginDeControleQDistanceDeStellarium {
+            get {
+                return ResourceManager.GetString("ParametresDuPluginDeControleQDistanceDeStellarium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Port.
+        /// </summary>
+        public static string Port {
+            get {
+                return ResourceManager.GetString("Port", resourceCulture);
             }
         }
         
@@ -470,11 +857,47 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rank min..
+        /// </summary>
+        public static string RankMin {
+            get {
+                return ResourceManager.GetString("RankMin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Rechercher.
+        /// </summary>
+        public static string Rechercher {
+            get {
+                return ResourceManager.GetString("Rechercher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Scoring.
         /// </summary>
         public static string Scoring {
             get {
                 return ResourceManager.GetString("Scoring", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Sélection du Capteur.
+        /// </summary>
+        public static string SelectionDuCapteur {
+            get {
+                return ResourceManager.GetString("SelectionDuCapteur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Serveur.
+        /// </summary>
+        public static string Serveur {
+            get {
+                return ResourceManager.GetString("Serveur", resourceCulture);
             }
         }
         
@@ -551,11 +974,38 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Version.
+        /// </summary>
+        public static string Version {
+            get {
+                return ResourceManager.GetString("Version", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Visualisation.
+        /// </summary>
+        public static string Visualisation {
+            get {
+                return ResourceManager.GetString("Visualisation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Vous aller télécharger et mettre à jour le fichier de configuration des.
         /// </summary>
         public static string VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes {
             get {
                 return ResourceManager.GetString("VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Zones du ciel exclues.
+        /// </summary>
+        public static string ZonesDuCielExclues {
+            get {
+                return ResourceManager.GetString("ZonesDuCielExclues", resourceCulture);
             }
         }
         

@@ -1,4 +1,5 @@
 ﻿using AstroTargetSelectorBusiness;
+using AstroTargetSelectorResources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -56,14 +57,38 @@ namespace AstroTargetSelector
             this.url = url;
 
             // Positionnement des libellés
-            this.Text = $"{AssemblyTitle} : Nouvelle version disponible";
-            this.labelNouvelleVersion.Text = $"Nouvelle version disponible";
-            this.labelVersion.Text = $"Version {version}";
+            this.Text = $"{AssemblyTitle} : {Resources.NouvelleVersionDisponible}";
+            this.labelNouvelleVersion.Text = Resources.NouvelleVersionDisponible;
+            this.labelVersion.Text = $"{Resources.Version} {version}";
             this.labelNom.Text = nom;
             this.linkLabelUpdate.Text = AssemblyTitle;
             this.textBoxDescription.Text = description.Replace("\\n", Environment.NewLine);
+            this.btOK.Text = ApplicationTools.Properties.Resources.OK;
+
+            // Positionne le mode Jour/Nuit
+            SetAffichage();
         }
 
+        #endregion
+
+        #region Méthodes
+
+        /// <summary>
+        /// Positionne l'affichage en mode Jour / Nuit
+        /// </summary>
+        private void SetAffichage()
+        {
+            bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
+            // Fenêtre
+            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+
+            // Boutons et Contrôles
+            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+        }
+        
         #endregion
 
         #region Champs

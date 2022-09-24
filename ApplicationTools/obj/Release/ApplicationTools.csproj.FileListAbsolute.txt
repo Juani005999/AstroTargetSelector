@@ -24,3 +24,6 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\Application
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.csproj.CoreCompileInputs.cache
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.pdb
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\bin\Release\en\ApplicationTools.resources.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\ApplicationTools.Properties.Resources.en.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\ApplicationTools\obj\Release\en\ApplicationTools.resources.dll

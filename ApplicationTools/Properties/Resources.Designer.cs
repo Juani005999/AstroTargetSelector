@@ -61,11 +61,29 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Annuler.
+        /// </summary>
+        public static string Annuler {
+            get {
+                return ResourceManager.GetString("Annuler", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cartes du Ciel.
         /// </summary>
         public static string CartesDuCiel {
             get {
                 return ResourceManager.GetString("CartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à E.
+        /// </summary>
+        public static string E {
+            get {
+                return ResourceManager.GetString("E", resourceCulture);
             }
         }
         
@@ -115,11 +133,83 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à N.
+        /// </summary>
+        public static string N {
+            get {
+                return ResourceManager.GetString("N", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à NE.
+        /// </summary>
+        public static string NE {
+            get {
+                return ResourceManager.GetString("NE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à NO.
+        /// </summary>
+        public static string NO {
+            get {
+                return ResourceManager.GetString("NO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à O.
+        /// </summary>
+        public static string O {
+            get {
+                return ResourceManager.GetString("O", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Objet céleste non trouvé..
         /// </summary>
         public static string ObjetCelesteNonTrouve {
             get {
                 return ResourceManager.GetString("ObjetCelesteNonTrouve", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à OK.
+        /// </summary>
+        public static string OK {
+            get {
+                return ResourceManager.GetString("OK", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à S.
+        /// </summary>
+        public static string S {
+            get {
+                return ResourceManager.GetString("S", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SE.
+        /// </summary>
+        public static string SE {
+            get {
+                return ResourceManager.GetString("SE", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à SO.
+        /// </summary>
+        public static string SO {
+            get {
+                return ResourceManager.GetString("SO", resourceCulture);
             }
         }
         

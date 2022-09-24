@@ -51,6 +51,13 @@
         /// <returns></returns>
         Coordinate GetCoordinate(double value, CoordinatesType type);
 
+        /// <summary>
+        /// Retourne l'objet <see cref="IConsoleQueue"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IConsoleQueue</returns>
+        IConsoleQueue GetConsoleQueue();
+
         #endregion
     }
 }

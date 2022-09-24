@@ -13,7 +13,7 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// ToolTip du Slice à afficher dans le graphique
+        /// <inheritdoc/>
         /// </summary>
         public string ToolTip
         {
@@ -22,12 +22,12 @@ namespace AstroTargetSelectorBusiness
                 return $"{DateHeure.ToString("d")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
                     + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
-                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Direction})";
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Coordinate.GetDirectionString(Direction)})";
             }
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <inheritdoc/>
         /// </summary>
         public override List<IChartSlice> Slices
         {

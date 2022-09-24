@@ -57,7 +57,7 @@ namespace AstroTargetSelectorBusiness
         /// Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
         /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
         /// </summary>
-        List<ModeVisualisation> GetListeModeVisualisation();
+        Dictionary<ModeVisualisation, string> GetListeModeVisualisation();
 
         #endregion
     }

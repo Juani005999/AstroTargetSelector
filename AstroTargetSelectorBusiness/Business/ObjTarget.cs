@@ -42,54 +42,52 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// Nom de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public string Nom { get; set; }
 
         /// <summary>
-        /// Type de l'objet céleste (amas globulaire, nébuleuse planétaire, galaxie spirale, ...)
+        /// <inheritdoc/>
         /// </summary>
         public string Type { get; set; }
 
         /// <summary>
-        /// Description de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public string Description { get; set; }
 
         /// <summary>
-        /// Constellation de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public string Constellation { get; set; }
 
         /// <summary>
-        /// RA : Acsension droite de l'objet céleste
-        /// <para>Valeur exprimée en "degrés horaires" décimal</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate RA { get; set; }
 
         /// <summary>
-        /// DEC : Déclinaison de l'objet céleste
-        /// <para>Valeur exprimée en "degrés" décimal</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate DEC { get; set; }
 
         /// <summary>
-        /// Magnitude de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public double Magnitude { get; set; }
 
         /// <summary>
-        /// Grandeur : Largeur de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate GrandeurWidth { get; set; }
 
         /// <summary>
-        /// Grandeur : Hauteur de l'objet céleste
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate GrandeurHeight { get; set; }
 
         /// <summary>
-        /// Permet de forcer le rechargement des Slices
+        /// <inheritdoc/>
         /// </summary>
         public bool ForceUpdateSlices {
             set
@@ -103,7 +101,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+        /// <inheritdoc/>
         /// </summary>
         public List<IChartSlice> Slices
         {
@@ -117,10 +115,9 @@ namespace AstroTargetSelectorBusiness
                 return slices;
             }
         }
-        
+
         /// <summary>
-        /// Renvoi le Scoring calculé pour la Target
-        /// <para>Moyenne des <see cref="ObjSliceTarget.TempsPoseCalcule"/> des Slices de la Target</para>
+        /// <inheritdoc/>
         /// </summary>
         public double Scoring
         {
@@ -140,8 +137,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le Rank calculé pour la Target
-        /// <para>Barême basé sur le <see cref="Scoring"/></para>
+        /// <inheritdoc/>
         /// </summary>
         public double Rank
         {
@@ -166,9 +162,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi l'Azimut calculé pour la Target
-        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
-        /// <para>Renvoi l'Azimut du premier <see cref="Slices"/> de la période d'observation</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate Azimut
         {
@@ -180,9 +174,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi la Hauteur calculé pour la Target
-        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
-        /// <para>Renvoi la Hauteur du premier <see cref="Slices"/> de la période d'observation</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate Hauteur
         {
@@ -194,9 +186,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi l'Azimut Corrigee calculé pour la Target
-        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
-        /// <para>Renvoi l'Azimut Corrigee du premier <see cref="Slices"/> de la période d'observation</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate AzimutCorrigee
         {
@@ -208,9 +198,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi l'Azimut Precise calculé pour la Target
-        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
-        /// <para>Renvoi l'Azimut Precise du premier <see cref="Slices"/> de la période d'observation</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate AzimutPrecise
         {
@@ -222,9 +210,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi la Hauteur Precise calculé pour la Target
-        /// <para>Si nécessaire, lance le calcul des <see cref="Slices"/></para>
-        /// <para>Renvoi la Hauteur Precise du premier <see cref="Slices"/> de la période d'observation</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate HauteurPrecise
         {
@@ -236,9 +222,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Permet de savoir si un objet céleste est exclu de la liste
-        /// <para>Fait partie d'une zone exclue du ciel</para>
-        /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+        /// <inheritdoc/>
         /// </summary>
         public bool EstExclu
         {
@@ -251,8 +235,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
-        /// <para>Intervalles du mode de visualisation Horaire</para>
+        /// <inheritdoc/>
         /// </summary>
         public List<IChartSlice> HourlySlices
         {
@@ -279,8 +262,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
-        /// <para>Intervalles du mode de visualisation Nuits</para>
+        /// <inheritdoc/>
         /// </summary>
         public List<IChartSlice> DailySlices
         {
@@ -312,8 +294,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
-        /// <para>Intervalles du mode de visualisation Nuits</para>
+        /// <inheritdoc/>
         /// </summary>
         public List<IChartSlice> MonthlySlices
         {
@@ -345,8 +326,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
-        /// <para>Intervalles du mode de visualisation Annuel</para>
+        /// <inheritdoc/>
         /// </summary>
         public List<IChartSlice> YearlySlices
         {
@@ -401,10 +381,8 @@ namespace AstroTargetSelectorBusiness
         #region Méthodes
 
         /// <summary>
-        /// Renvoi la série d'intervalles pour le graphique en fonction du mode de visualisation
+        /// <inheritdoc/>
         /// </summary>
-        /// <param name="mode"></param>
-        /// <returns></returns>
         public List<IChartSlice> GetCurrentChartSlice(ModeVisualisation mode)
         {
             switch(mode)

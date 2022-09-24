@@ -1,4 +1,6 @@
 ﻿
+using System.Drawing;
+
 namespace ApplicationTools
 {
     /// <summary>
@@ -47,6 +49,31 @@ namespace ApplicationTools
         /// Code pays d'exécution
         /// </summary>
         string CodePays { get; }
+
+        /// <summary>
+        /// Version du système d'exploitation (Windows)
+        /// </summary>
+        string OSVersion { get; }
+
+        /// <summary>
+        /// Back Color du mode Nuit
+        /// </summary>
+        Color BackColor { get; }
+
+        /// <summary>
+        /// Back Color Light du mode Nuit
+        /// </summary>
+        Color BackColorLight { get; }
+
+        /// <summary>
+        /// Fore Color du mode Nuit
+        /// </summary>
+        Color ForeColor { get; }
+
+        /// <summary>
+        /// Fore Color Light du mode Nuit
+        /// </summary>
+        Color ForeColorLight { get; }
 
         #endregion
     }

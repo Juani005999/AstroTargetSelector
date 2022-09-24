@@ -15,13 +15,12 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// Date et Heure de l'observation
+        /// <inheritdoc/>
         /// </summary>
         public DateTime DateHeureObservation { get; set; }
 
         /// <summary>
-        /// Coordonnées (Longitude et Latitude) du lieu d'observation
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <inheritdoc/>
         /// </summary>
         public Coordinates LieuObservation
         {
@@ -61,8 +60,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Capteur
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+        /// <inheritdoc/>
         /// </summary>
         public IObjCapteur Capteur
         {
@@ -101,9 +99,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Bougé max.
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
-        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 1</para>
+        /// <inheritdoc/>
         /// </summary>
         public double BougeMax
         {
@@ -127,9 +123,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Hauteur minimale
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
-        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+        /// <inheritdoc/>
         /// </summary>
         public double HauteurMin
         {
@@ -152,7 +146,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Nombre d'intervalle de temps : (<see cref="TotalTimeSlice"/> * 60) / <see cref="MinuteIntervalSlice"/>
+        /// <inheritdoc/>
         /// </summary>
         public int NombreSlice
         {
@@ -167,9 +161,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Nombre de minutes d'un Intervalle pour le calcul des temps de pose
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
-        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 10</para>
+        /// <inheritdoc/>
         /// </summary>
         public int MinuteIntervalSlice { 
             get
@@ -190,9 +182,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Durée totale de l'observation pour définir le nombre de slice en fonction de l'intervalle
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
-        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 2</para>
+        /// <inheritdoc/>
         /// </summary>
         public int TotalTimeSlice
         {
@@ -214,7 +204,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Liste des zones exclues
+        /// <inheritdoc/>
         /// </summary>
         public List<CoordinatesDirection> ZonesExclues
         {
@@ -261,10 +251,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Mode de visualisation
-        /// <para></para>
-        /// <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
-        /// <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est 25</para>
+        /// <inheritdoc/>
         /// </summary>
         public ModeVisualisation Visualisation
         {
@@ -284,6 +271,28 @@ namespace AstroTargetSelectorBusiness
             set
             {
                 Settings.Default.Visualisation = value.ToString();
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public bool ModeNuit
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.ModeNuit))
+                {
+                    Settings.Default.ModeNuit = "0";
+                    Settings.Default.Save();
+                    appToolFactory.GetLog().Log($"ModeNuit non présent dans les Settings. Positionnement de 0 par défaut", GetType().Name);
+                }
+                return Settings.Default.ModeNuit == "1";
+            }
+            set
+            {
+                Settings.Default.ModeNuit = value ? "1" : "0";
                 Settings.Default.Save();
             }
         }

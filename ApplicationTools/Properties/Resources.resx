@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Annuler" xml:space="preserve">
+    <value>Annuler</value>
+  </data>
   <data name="CartesDuCiel" xml:space="preserve">
     <value>Cartes du Ciel</value>
+  </data>
+  <data name="E" xml:space="preserve">
+    <value>E</value>
   </data>
   <data name="FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium" xml:space="preserve">
     <value>Fonctionnalité non disponible pour la version 0.22.X de Stellarium</value>
@@ -135,8 +141,32 @@
   <data name="LeServeurNEstPasActive" xml:space="preserve">
     <value>Le serveur n'est pas activé.</value>
   </data>
+  <data name="N" xml:space="preserve">
+    <value>N</value>
+  </data>
+  <data name="NE" xml:space="preserve">
+    <value>NE</value>
+  </data>
+  <data name="NO" xml:space="preserve">
+    <value>NO</value>
+  </data>
+  <data name="O" xml:space="preserve">
+    <value>O</value>
+  </data>
   <data name="ObjetCelesteNonTrouve" xml:space="preserve">
     <value>Objet céleste non trouvé.</value>
+  </data>
+  <data name="OK" xml:space="preserve">
+    <value>OK</value>
+  </data>
+  <data name="S" xml:space="preserve">
+    <value>S</value>
+  </data>
+  <data name="SE" xml:space="preserve">
+    <value>SE</value>
+  </data>
+  <data name="SO" xml:space="preserve">
+    <value>SO</value>
   </data>
   <data name="Stellarium" xml:space="preserve">
     <value>Stellarium</value>

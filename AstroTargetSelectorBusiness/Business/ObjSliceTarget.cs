@@ -23,12 +23,12 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// Date et Heure de l'intervalle
+        /// <inheritdoc/>
         /// </summary>
         public DateTime DateHeure { get; set; }
 
         /// <summary>
-        /// Temps de pose calculé pour l'intervalle
+        /// <inheritdoc/>
         /// </summary>
         public double TempsPoseCalcule
         {
@@ -56,7 +56,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Couleur du point dans le graphique
+        /// <inheritdoc/>
         /// </summary>
         public Color CouleurPointGraphique
         {
@@ -77,8 +77,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Couleur du point dans le graphique
-        /// <para>Vert si au dessus de la hauteur min, sinon rouge</para>
+        /// <inheritdoc/>
         /// </summary>
         public Color CouleurHauteur
         {
@@ -91,7 +90,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Azimut calculé du slice
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate Azimut
         {
@@ -105,8 +104,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi la direction actuelle
-        /// <para>Basée sur l'Azimut</para>
+        /// <inheritdoc/>
         /// </summary>
         public CoordinatesDirection Direction
         {
@@ -133,8 +131,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le code du caractère correspondant à la Direction
-        /// <para>Police utilisée WINGDING</para>
+        /// <inheritdoc/>
         /// </summary>
         public char DirectionCharacterCode
         {
@@ -164,7 +161,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Hauteur calculé du slice
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate Hauteur
         {
@@ -178,7 +175,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Azimut Precise calculé du slice
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate AzimutPrecise
         {
@@ -192,7 +189,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Azimut Corrigee calculé du slice
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate AzimutCorrigee
         {
@@ -206,7 +203,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Hauteur Precise calculé du slice
+        /// <inheritdoc/>
         /// </summary>
         public Coordinate HauteurPrecise
         {
@@ -220,9 +217,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Permet de savoir si le slice de l'objet céleste est exclu de la liste
-        /// <para>Fait partie d'une zone exclue du ciel</para>
-        /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
+        /// <inheritdoc/>
         /// </summary>
         public bool EstExclu
         {
@@ -245,7 +240,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// ToolTip du Slice à afficher dans le graphique
+        /// <inheritdoc/>
         /// </summary>
         public string ToolTip
         {
@@ -254,7 +249,7 @@ namespace AstroTargetSelectorBusiness
                 return $"{DateHeure.ToString("HH")}h{DateHeure.ToString("mm")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
                     + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
-                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Direction})";
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Coordinate.GetDirectionString(Direction)})";
             }
         }
 

@@ -16,9 +16,7 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// Liste d'objets <see cref="ObjTarget"/>
-        /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
-        /// <para>Afin de forcer le rechargement de la liste depuis le fichier de configuration, il faut positionner la propriété <see cref="ForceUpdateListe"/> à true</para>
+        /// <inheritdoc/>
         /// </summary>
         public List<IObjTarget> ListeObjTarget
         {
@@ -48,18 +46,17 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Force le rechargement de la liste depuis le fichier de configuration
-        /// <para>Le rechargement s'effectue lors du prochain accès à la propriété <see cref="ListeObjTarget"/></para>
+        /// <inheritdoc/>
         /// </summary>
         public bool ForceUpdateListe { get; set; }
 
         /// <summary>
-        /// Permet de forcer le rechargement des Slices
+        /// <inheritdoc/>
         /// </summary>
         public bool ForceUpdateSlices { get; set; }
 
         /// <summary>
-        /// Renvoi le nom complet (Path + Nom de fichier) du fichier de configuration
+        /// <inheritdoc/>
         /// </summary>
         public string TargetListeFullPathFile
         {
@@ -70,7 +67,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Nom du fichier de configuration contenant la liste des objets céleste
+        /// <inheritdoc/>
         /// </summary>
         public string TargetListeFileName
         {
@@ -130,19 +127,21 @@ namespace AstroTargetSelectorBusiness
                         {
                             var line = reader.ReadLine();
                             var values = line.Split('\t');
-
-                            listeObjTarget.Add(new ObjTarget(appToolFactory, appInputs)
+                            if (values.Length > 9)
                             {
-                                Nom = values[0],
-                                Type = values[1],
-                                Description = values[2],
-                                Constellation = values[8],
-                                RA = appToolFactory.GetCoordinate(Convert.ToDouble(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
-                                DEC = appToolFactory.GetCoordinate(Convert.ToDouble(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
-                                Magnitude = Convert.ToDouble(values[5].Replace(',', '.'), CultureInfo.InvariantCulture),
-                                GrandeurWidth = appToolFactory.GetCoordinate(Convert.ToDouble(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
-                                GrandeurHeight = appToolFactory.GetCoordinate(Convert.ToDouble(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
-                            });
+                                listeObjTarget.Add(new ObjTarget(appToolFactory, appInputs)
+                                {
+                                    Nom = values[0],
+                                    Type = values[1],
+                                    Description = values[2],
+                                    Constellation = values[8],
+                                    RA = appToolFactory.GetCoordinate(Convert.ToDouble(values[3].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
+                                    DEC = appToolFactory.GetCoordinate(Convert.ToDouble(values[4].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
+                                    Magnitude = Convert.ToDouble(values[5].Replace(',', '.'), CultureInfo.InvariantCulture),
+                                    GrandeurWidth = appToolFactory.GetCoordinate(Convert.ToDouble(values[6].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
+                                    GrandeurHeight = appToolFactory.GetCoordinate(Convert.ToDouble(values[7].Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
+                                });
+                            }
                         }
                     }
                 }

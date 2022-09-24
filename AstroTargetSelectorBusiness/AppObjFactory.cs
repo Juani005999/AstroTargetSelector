@@ -138,16 +138,16 @@ namespace AstroTargetSelectorBusiness
         /// Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
         /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
         /// </summary>
-        public List<ModeVisualisation> GetListeModeVisualisation()
+        public Dictionary<ModeVisualisation, string> GetListeModeVisualisation()
         {
             // Si la liste n'existe pas, on la créer
             if (listeModeVisualisation == null)
             {
-                listeModeVisualisation = new List<ModeVisualisation>();
-                listeModeVisualisation.Add(ModeVisualisation.Horaire);
-                listeModeVisualisation.Add(ModeVisualisation.Nuits);
-                listeModeVisualisation.Add(ModeVisualisation.Mensuel);
-                listeModeVisualisation.Add(ModeVisualisation.Annuel);
+                listeModeVisualisation = new Dictionary<ModeVisualisation, string>();
+                listeModeVisualisation.Add(ModeVisualisation.Horaire, Resources.Horaire);
+                listeModeVisualisation.Add(ModeVisualisation.Nuits, Resources.Nuits);
+                listeModeVisualisation.Add(ModeVisualisation.Mensuel, Resources.Mensuel);
+                listeModeVisualisation.Add(ModeVisualisation.Annuel, Resources.Annuel);
             }
             return listeModeVisualisation;
         }
@@ -194,7 +194,7 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Liste des Filtres de Modes de Visualisation pour l'affichage dans la liste
         /// </summary>
-        private List<ModeVisualisation> listeModeVisualisation = null;
+        private Dictionary<ModeVisualisation, string> listeModeVisualisation = null;
 
         #endregion
     }

@@ -44,6 +44,11 @@
             Ouvre le fichier de Log
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.dlgAPropos.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.dlgAPropos.factory">
             <summary>
             Instance de la fabrique d'objet métier
@@ -84,6 +89,11 @@
             <param name="nom"></param>
             <param name="description"></param>
             <param name="url"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgNewVersion.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
         </member>
         <member name="F:AstroTargetSelector.dlgNewVersion.factory">
             <summary>
@@ -150,6 +160,16 @@
         <member name="M:AstroTargetSelector.dlgParametres.UpdateLargeur">
             <summary>
             Met à jour le champ Largeur en fonction du Capteur sélectionné dans la liste
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgParametres.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
             </summary>
         </member>
         <member name="F:AstroTargetSelector.dlgParametres.factory">
@@ -274,6 +294,16 @@
         <member name="M:AstroTargetSelector.dlgUpdate.TelechargeEtUpdate">
             <summary>
             Lance le téléchargement et l'update du fichier de configuration
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgUpdate.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
             </summary>
         </member>
         <member name="F:AstroTargetSelector.dlgUpdate.factory">
@@ -509,6 +539,16 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
             Instance de la fabrique d'objets
@@ -527,6 +567,16 @@
         <member name="F:AstroTargetSelector.MainFenetre.lvwColumnSorter">
             <summary>
             IComparer permettant le tri de la listview
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.toolstripRendererMenu">
+            <summary>
+            Composant de rendu jour/Nuit pour le Menu
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.toolstripRendererStatus">
+            <summary>
+            Composant de rendu jour/Nuit pour la Status Bar
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.OnLoad(System.EventArgs)">
@@ -629,6 +679,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.InfoToolTip">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.ModeNuit">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

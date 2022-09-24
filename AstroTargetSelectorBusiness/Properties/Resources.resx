@@ -120,14 +120,20 @@
   <data name="ActualisationDeLaListeDesObjetsCelesteEtRecalculDesScoringRankEtPositions" xml:space="preserve">
     <value>Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ...</value>
   </data>
+  <data name="AfficherLaHauteurEtLaDirection" xml:space="preserve">
+    <value>Afficher la hauteur et la direction</value>
+  </data>
   <data name="AfficherLObjetCelesteDansCartesDuCiel" xml:space="preserve">
-    <value>Afficher l'objet céleste dans Cartes du Ciel</value>
+    <value>Afficher l'objet céleste dans Cartes du Ciel.</value>
   </data>
   <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
     <value>Afficher l'objet céleste dans Stellarium.</value>
   </data>
-  <data name="Annuler" xml:space="preserve">
-    <value>Annuler</value>
+  <data name="Annuel" xml:space="preserve">
+    <value>Annuel</value>
+  </data>
+  <data name="AProposDe" xml:space="preserve">
+    <value>À propos de</value>
   </data>
   <data name="Aucune" xml:space="preserve">
     <value>Aucune</value>
@@ -150,8 +156,17 @@
   <data name="Constellation" xml:space="preserve">
     <value>Constellation</value>
   </data>
+  <data name="Contributeurs" xml:space="preserve">
+    <value>Contributeurs</value>
+  </data>
+  <data name="Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
   <data name="DateDeLObservation" xml:space="preserve">
     <value>Date de l'observation</value>
+  </data>
+  <data name="DateEtHeureDeLObservation" xml:space="preserve">
+    <value>Date et heure de l'observation</value>
   </data>
   <data name="DEC" xml:space="preserve">
     <value>DEC</value>
@@ -162,11 +177,23 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="Divers" xml:space="preserve">
+    <value>Divers</value>
+  </data>
+  <data name="DureeDUnIntervalle" xml:space="preserve">
+    <value>Durée d'un intervalle</value>
+  </data>
+  <data name="DureeTotale" xml:space="preserve">
+    <value>Durée totale</value>
+  </data>
   <data name="EffectueAvecSucces" xml:space="preserve">
     <value>effectué avec succès</value>
   </data>
   <data name="EnvoiDeLaCommande" xml:space="preserve">
     <value>Envoi de la commande...</value>
+  </data>
+  <data name="FiltrerLesResultats" xml:space="preserve">
+    <value>Filtrer les résultats</value>
   </data>
   <data name="FormatDesChampsPourLePluginStellariumIncorrect" xml:space="preserve">
     <value>Format des champs pour le plugin Stellarium incorrect</value>
@@ -195,8 +222,20 @@
   <data name="Hauteur" xml:space="preserve">
     <value>Hauteur</value>
   </data>
+  <data name="HauteurApparenteMinimum" xml:space="preserve">
+    <value>Hauteur apparente minimum</value>
+  </data>
   <data name="HauteurMin" xml:space="preserve">
     <value>Hauteur min.</value>
+  </data>
+  <data name="Heure" xml:space="preserve">
+    <value>Heure</value>
+  </data>
+  <data name="Heures" xml:space="preserve">
+    <value>heure(s)</value>
+  </data>
+  <data name="Horaire" xml:space="preserve">
+    <value>Horaire</value>
   </data>
   <data name="InfoCapteur1" xml:space="preserve">
     <value>Veuillez sélectionner votre capteur.</value>
@@ -207,6 +246,12 @@
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>
   </data>
+  <data name="LargeurPX" xml:space="preserve">
+    <value>Largeur (px)</value>
+  </data>
+  <data name="Latitude" xml:space="preserve">
+    <value>Latitude</value>
+  </data>
   <data name="LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090" xml:space="preserve">
     <value>La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut '8090'.</value>
   </data>
@@ -216,20 +261,104 @@
   <data name="Lieu" xml:space="preserve">
     <value>Lieu</value>
   </data>
+  <data name="LieuDeLObservation" xml:space="preserve">
+    <value>Lieu de l'observation</value>
+  </data>
+  <data name="LieuDeLObservationLatLong" xml:space="preserve">
+    <value>Lieu de l'observation (Lat. - Long.)</value>
+  </data>
+  <data name="Longitude" xml:space="preserve">
+    <value>Longitude</value>
+  </data>
   <data name="Magnitude" xml:space="preserve">
     <value>Magnitude</value>
+  </data>
+  <data name="MagnitudeMax" xml:space="preserve">
+    <value>Magnitude max.</value>
+  </data>
+  <data name="Mensuel" xml:space="preserve">
+    <value>Mensuel</value>
+  </data>
+  <data name="menuActualiserLaListeDesObjetsCelestes" xml:space="preserve">
+    <value>&amp;Actualiser la liste des objets célestes</value>
+  </data>
+  <data name="menuAffichage" xml:space="preserve">
+    <value>&amp;Affichage</value>
+  </data>
+  <data name="menuAPropos" xml:space="preserve">
+    <value>&amp;A propos</value>
+  </data>
+  <data name="menuFichier" xml:space="preserve">
+    <value>&amp;Fichier</value>
+  </data>
+  <data name="menuMettreAJourLeCatalogueDesObjetsCelestes" xml:space="preserve">
+    <value>Mettre à jour le catalogue des &amp;objets célestes</value>
+  </data>
+  <data name="menuMettreJourLeCatalogueDesCapteurs" xml:space="preserve">
+    <value>Mettre à jour le catalogue des &amp;capteurs</value>
+  </data>
+  <data name="menuModeNuit" xml:space="preserve">
+    <value>Mode &amp;nuit</value>
+  </data>
+  <data name="menuOutils" xml:space="preserve">
+    <value>&amp;Outils</value>
+  </data>
+  <data name="menuParametresDeLObservation" xml:space="preserve">
+    <value>&amp;Paramètres de l'observation</value>
+  </data>
+  <data name="menuQuitter" xml:space="preserve">
+    <value>&amp;Quitter</value>
+  </data>
+  <data name="Minutes" xml:space="preserve">
+    <value>minutes</value>
+  </data>
+  <data name="MiseAJourDesFichiersDeConfiguration" xml:space="preserve">
+    <value>Mise à jour des fichiers de configuration</value>
   </data>
   <data name="MiseAJourDuFichierDeConfigurationDes" xml:space="preserve">
     <value>Mise à jour du fichier de configuration des</value>
   </data>
+  <data name="Modifier" xml:space="preserve">
+    <value>Modifier</value>
+  </data>
   <data name="Nom" xml:space="preserve">
     <value>Nom</value>
+  </data>
+  <data name="NouvelleVersionDisponible" xml:space="preserve">
+    <value>Nouvelle version disponible</value>
+  </data>
+  <data name="Nuits" xml:space="preserve">
+    <value>Nuits</value>
+  </data>
+  <data name="ObjetCeleste" xml:space="preserve">
+    <value>Objet céleste</value>
   </data>
   <data name="ObjetsCelestes" xml:space="preserve">
     <value>objets célestes</value>
   </data>
   <data name="ObjetSelectionne" xml:space="preserve">
     <value>Objet sélectionné</value>
+  </data>
+  <data name="OuvrirLeFichierDesLogs" xml:space="preserve">
+    <value>Ouvrir le fichier des &amp;logs</value>
+  </data>
+  <data name="Parametres" xml:space="preserve">
+    <value>Paramètres</value>
+  </data>
+  <data name="ParametresDeCartesDuCiel" xml:space="preserve">
+    <value>Paramètres de Cartes Du Ciel</value>
+  </data>
+  <data name="ParametresDeLObservation" xml:space="preserve">
+    <value>Paramètres de l'observation</value>
+  </data>
+  <data name="ParametresDesPlanetariumsStellariumCartesDuCiel" xml:space="preserve">
+    <value>Paramètres des planétariums (Stellarium / Cartes du Ciel)</value>
+  </data>
+  <data name="ParametresDuPluginDeControleQDistanceDeStellarium" xml:space="preserve">
+    <value>Paramètres du plugin de contrôle à distance de Stellarium</value>
+  </data>
+  <data name="Port" xml:space="preserve">
+    <value>Port</value>
   </data>
   <data name="PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium" xml:space="preserve">
     <value>Positionnez ici les informations nécessaires à la connexion au plugin de commande à distance de Stellarium.</value>
@@ -252,8 +381,20 @@
   <data name="Rank" xml:space="preserve">
     <value>Rank</value>
   </data>
+  <data name="RankMin" xml:space="preserve">
+    <value>Rank min.</value>
+  </data>
+  <data name="Rechercher" xml:space="preserve">
+    <value>Rechercher</value>
+  </data>
   <data name="Scoring" xml:space="preserve">
     <value>Scoring</value>
+  </data>
+  <data name="SelectionDuCapteur" xml:space="preserve">
+    <value>Sélection du Capteur</value>
+  </data>
+  <data name="Serveur" xml:space="preserve">
+    <value>Serveur</value>
   </data>
   <data name="Suivant" xml:space="preserve">
     <value>Suivant</value>
@@ -279,8 +420,17 @@
   <data name="UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent" xml:space="preserve">
     <value>Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent</value>
   </data>
+  <data name="Version" xml:space="preserve">
+    <value>Version</value>
+  </data>
+  <data name="Visualisation" xml:space="preserve">
+    <value>Visualisation</value>
+  </data>
   <data name="VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes" xml:space="preserve">
     <value>Vous aller télécharger et mettre à jour le fichier de configuration des</value>
+  </data>
+  <data name="ZonesDuCielExclues" xml:space="preserve">
+    <value>Zones du ciel exclues</value>
   </data>
   <data name="ZonesExclues" xml:space="preserve">
     <value>Zones exclues</value>

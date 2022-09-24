@@ -39,7 +39,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.textBoxLatitudeMinute = new System.Windows.Forms.TextBox();
             this.textBoxLatitudeDegre = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.labelLatitude = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.comboBoxLongitudeDirection = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,14 +47,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.textBoxLongitudeMinute = new System.Windows.Forms.TextBox();
             this.textBoxLongitudeDegre = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelLongitude = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.groupBoxCapteur = new System.Windows.Forms.GroupBox();
             this.pictureBoxIconInfoToolTip = new System.Windows.Forms.PictureBox();
-            this.label13 = new System.Windows.Forms.Label();
+            this.labelNom = new System.Windows.Forms.Label();
             this.textBoxCapteurLargeur = new System.Windows.Forms.TextBox();
             this.comboBoxCapteur = new System.Windows.Forms.ComboBox();
-            this.label12 = new System.Windows.Forms.Label();
+            this.labelLargeur = new System.Windows.Forms.Label();
             this.groupBoxZones = new System.Windows.Forms.GroupBox();
             this.ckNO = new System.Windows.Forms.CheckBox();
             this.ckO = new System.Windows.Forms.CheckBox();
@@ -64,23 +64,23 @@
             this.ckE = new System.Windows.Forms.CheckBox();
             this.ckNE = new System.Windows.Forms.CheckBox();
             this.ckN = new System.Windows.Forms.CheckBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBoxDivers = new System.Windows.Forms.GroupBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
+            this.labelHauteur = new System.Windows.Forms.Label();
             this.textBoxHauteurMin = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
+            this.labelBougeMax = new System.Windows.Forms.Label();
             this.textBoxBougeMax = new System.Windows.Forms.TextBox();
             this.toolTipInfoCapteur = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxStellarium = new System.Windows.Forms.GroupBox();
             this.pictureBoxIconInfoCartesDuCiel = new System.Windows.Forms.PictureBox();
-            this.label15 = new System.Windows.Forms.Label();
+            this.labelServeurCdC = new System.Windows.Forms.Label();
             this.textBoxHostCartesDuCiel = new System.Windows.Forms.TextBox();
             this.labelSepPlanetarium = new System.Windows.Forms.Label();
             this.pictureBoxIconInfoStellarium = new System.Windows.Forms.PictureBox();
-            this.label16 = new System.Windows.Forms.Label();
+            this.labelServeurStellarium = new System.Windows.Forms.Label();
             this.textBoxHostStellarium = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
+            this.labelPortStellarium = new System.Windows.Forms.Label();
             this.textBoxPortStellarium = new System.Windows.Forms.TextBox();
             this.toolTipInfoStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfoCartesDuCiel = new System.Windows.Forms.ToolTip(this.components);
@@ -88,7 +88,7 @@
             this.groupBoxCapteur.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).BeginInit();
             this.groupBoxZones.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.groupBoxDivers.SuspendLayout();
             this.groupBoxStellarium.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoCartesDuCiel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoStellarium)).BeginInit();
@@ -126,7 +126,7 @@
             this.groupBoxLieuObservation.Controls.Add(this.label6);
             this.groupBoxLieuObservation.Controls.Add(this.textBoxLatitudeMinute);
             this.groupBoxLieuObservation.Controls.Add(this.textBoxLatitudeDegre);
-            this.groupBoxLieuObservation.Controls.Add(this.label7);
+            this.groupBoxLieuObservation.Controls.Add(this.labelLatitude);
             this.groupBoxLieuObservation.Controls.Add(this.label8);
             this.groupBoxLieuObservation.Controls.Add(this.comboBoxLongitudeDirection);
             this.groupBoxLieuObservation.Controls.Add(this.label4);
@@ -134,7 +134,7 @@
             this.groupBoxLieuObservation.Controls.Add(this.label3);
             this.groupBoxLieuObservation.Controls.Add(this.textBoxLongitudeMinute);
             this.groupBoxLieuObservation.Controls.Add(this.textBoxLongitudeDegre);
-            this.groupBoxLieuObservation.Controls.Add(this.label1);
+            this.groupBoxLieuObservation.Controls.Add(this.labelLongitude);
             this.groupBoxLieuObservation.Controls.Add(this.label2);
             this.groupBoxLieuObservation.Location = new System.Drawing.Point(13, 13);
             this.groupBoxLieuObservation.Name = "groupBoxLieuObservation";
@@ -152,6 +152,7 @@
             this.comboBoxLatitudeDirection.Name = "comboBoxLatitudeDirection";
             this.comboBoxLatitudeDirection.Size = new System.Drawing.Size(69, 21);
             this.comboBoxLatitudeDirection.TabIndex = 8;
+            this.comboBoxLatitudeDirection.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxLatitudeDirection_DrawItem);
             // 
             // label5
             // 
@@ -197,15 +198,15 @@
             this.textBoxLatitudeDegre.Size = new System.Drawing.Size(33, 20);
             this.textBoxLatitudeDegre.TabIndex = 5;
             // 
-            // label7
+            // labelLatitude
             // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label7.Location = new System.Drawing.Point(52, 54);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(100, 17);
-            this.label7.TabIndex = 8;
-            this.label7.Text = "Latitude";
-            this.label7.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelLatitude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLatitude.Location = new System.Drawing.Point(52, 54);
+            this.labelLatitude.Name = "labelLatitude";
+            this.labelLatitude.Size = new System.Drawing.Size(100, 17);
+            this.labelLatitude.TabIndex = 8;
+            this.labelLatitude.Text = "Latitude";
+            this.labelLatitude.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label8
             // 
@@ -226,6 +227,7 @@
             this.comboBoxLongitudeDirection.Name = "comboBoxLongitudeDirection";
             this.comboBoxLongitudeDirection.Size = new System.Drawing.Size(69, 21);
             this.comboBoxLongitudeDirection.TabIndex = 4;
+            this.comboBoxLongitudeDirection.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxLongitudeDirection_DrawItem);
             // 
             // label4
             // 
@@ -271,15 +273,15 @@
             this.textBoxLongitudeDegre.Size = new System.Drawing.Size(33, 20);
             this.textBoxLongitudeDegre.TabIndex = 1;
             // 
-            // label1
+            // labelLongitude
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label1.Location = new System.Drawing.Point(52, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 18);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Longitude";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelLongitude.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLongitude.Location = new System.Drawing.Point(52, 27);
+            this.labelLongitude.Name = "labelLongitude";
+            this.labelLongitude.Size = new System.Drawing.Size(100, 18);
+            this.labelLongitude.TabIndex = 0;
+            this.labelLongitude.Text = "Longitude";
+            this.labelLongitude.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // label2
             // 
@@ -296,10 +298,10 @@
             this.groupBoxCapteur.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxCapteur.Controls.Add(this.pictureBoxIconInfoToolTip);
-            this.groupBoxCapteur.Controls.Add(this.label13);
+            this.groupBoxCapteur.Controls.Add(this.labelNom);
             this.groupBoxCapteur.Controls.Add(this.textBoxCapteurLargeur);
             this.groupBoxCapteur.Controls.Add(this.comboBoxCapteur);
-            this.groupBoxCapteur.Controls.Add(this.label12);
+            this.groupBoxCapteur.Controls.Add(this.labelLargeur);
             this.groupBoxCapteur.Location = new System.Drawing.Point(13, 97);
             this.groupBoxCapteur.Name = "groupBoxCapteur";
             this.groupBoxCapteur.Size = new System.Drawing.Size(408, 47);
@@ -318,15 +320,15 @@
             this.pictureBoxIconInfoToolTip.TabIndex = 24;
             this.pictureBoxIconInfoToolTip.TabStop = false;
             // 
-            // label13
+            // labelNom
             // 
-            this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label13.Location = new System.Drawing.Point(100, 22);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(52, 17);
-            this.label13.TabIndex = 14;
-            this.label13.Text = "Nom";
-            this.label13.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelNom.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelNom.Location = new System.Drawing.Point(100, 22);
+            this.labelNom.Name = "labelNom";
+            this.labelNom.Size = new System.Drawing.Size(52, 17);
+            this.labelNom.TabIndex = 14;
+            this.labelNom.Text = "Nom";
+            this.labelNom.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxCapteurLargeur
             // 
@@ -345,17 +347,18 @@
             this.comboBoxCapteur.Name = "comboBoxCapteur";
             this.comboBoxCapteur.Size = new System.Drawing.Size(100, 21);
             this.comboBoxCapteur.TabIndex = 9;
+            this.comboBoxCapteur.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxCapteur_DrawItem);
             this.comboBoxCapteur.SelectedIndexChanged += new System.EventHandler(this.comboBoxCapteur_SelectedIndexChanged);
             // 
-            // label12
+            // labelLargeur
             // 
-            this.label12.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label12.Location = new System.Drawing.Point(227, 22);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(100, 17);
-            this.label12.TabIndex = 13;
-            this.label12.Text = "Largeur (px)";
-            this.label12.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelLargeur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLargeur.Location = new System.Drawing.Point(260, 22);
+            this.labelLargeur.Name = "labelLargeur";
+            this.labelLargeur.Size = new System.Drawing.Size(67, 17);
+            this.labelLargeur.TabIndex = 13;
+            this.labelLargeur.Text = "Largeur (px)";
+            this.labelLargeur.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // groupBoxZones
             // 
@@ -472,22 +475,22 @@
             this.ckN.Text = "N";
             this.ckN.UseVisualStyleBackColor = true;
             // 
-            // groupBox1
+            // groupBoxDivers
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.groupBoxDivers.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.label9);
-            this.groupBox1.Controls.Add(this.label10);
-            this.groupBox1.Controls.Add(this.textBoxHauteurMin);
-            this.groupBox1.Controls.Add(this.label14);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.textBoxBougeMax);
-            this.groupBox1.Location = new System.Drawing.Point(13, 216);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(408, 72);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Divers";
+            this.groupBoxDivers.Controls.Add(this.label9);
+            this.groupBoxDivers.Controls.Add(this.labelHauteur);
+            this.groupBoxDivers.Controls.Add(this.textBoxHauteurMin);
+            this.groupBoxDivers.Controls.Add(this.label14);
+            this.groupBoxDivers.Controls.Add(this.labelBougeMax);
+            this.groupBoxDivers.Controls.Add(this.textBoxBougeMax);
+            this.groupBoxDivers.Location = new System.Drawing.Point(13, 216);
+            this.groupBoxDivers.Name = "groupBoxDivers";
+            this.groupBoxDivers.Size = new System.Drawing.Size(408, 72);
+            this.groupBoxDivers.TabIndex = 3;
+            this.groupBoxDivers.TabStop = false;
+            this.groupBoxDivers.Text = "Divers";
             // 
             // label9
             // 
@@ -499,15 +502,15 @@
             this.label9.TabIndex = 15;
             this.label9.Text = "°";
             // 
-            // label10
+            // labelHauteur
             // 
-            this.label10.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label10.Location = new System.Drawing.Point(6, 22);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(146, 21);
-            this.label10.TabIndex = 14;
-            this.label10.Text = "Hauteur apparente minimum";
-            this.label10.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelHauteur.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelHauteur.Location = new System.Drawing.Point(6, 22);
+            this.labelHauteur.Name = "labelHauteur";
+            this.labelHauteur.Size = new System.Drawing.Size(146, 21);
+            this.labelHauteur.TabIndex = 14;
+            this.labelHauteur.Text = "Hauteur apparente minimum";
+            this.labelHauteur.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxHauteurMin
             // 
@@ -527,15 +530,15 @@
             this.label14.TabIndex = 12;
             this.label14.Text = "px";
             // 
-            // label11
+            // labelBougeMax
             // 
-            this.label11.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.label11.Location = new System.Drawing.Point(29, 48);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(123, 17);
-            this.label11.TabIndex = 11;
-            this.label11.Text = "Bougé max.";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelBougeMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelBougeMax.Location = new System.Drawing.Point(29, 48);
+            this.labelBougeMax.Name = "labelBougeMax";
+            this.labelBougeMax.Size = new System.Drawing.Size(123, 17);
+            this.labelBougeMax.TabIndex = 11;
+            this.labelBougeMax.Text = "Bougé max.";
+            this.labelBougeMax.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxBougeMax
             // 
@@ -549,19 +552,20 @@
             // 
             this.toolTipInfoCapteur.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoCapteur.ToolTipTitle = "Sélection du Capteur";
+            this.toolTipInfoCapteur.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfoCapteur_Draw);
             // 
             // groupBoxStellarium
             // 
             this.groupBoxStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBoxStellarium.Controls.Add(this.pictureBoxIconInfoCartesDuCiel);
-            this.groupBoxStellarium.Controls.Add(this.label15);
+            this.groupBoxStellarium.Controls.Add(this.labelServeurCdC);
             this.groupBoxStellarium.Controls.Add(this.textBoxHostCartesDuCiel);
             this.groupBoxStellarium.Controls.Add(this.labelSepPlanetarium);
             this.groupBoxStellarium.Controls.Add(this.pictureBoxIconInfoStellarium);
-            this.groupBoxStellarium.Controls.Add(this.label16);
+            this.groupBoxStellarium.Controls.Add(this.labelServeurStellarium);
             this.groupBoxStellarium.Controls.Add(this.textBoxHostStellarium);
-            this.groupBoxStellarium.Controls.Add(this.label18);
+            this.groupBoxStellarium.Controls.Add(this.labelPortStellarium);
             this.groupBoxStellarium.Controls.Add(this.textBoxPortStellarium);
             this.groupBoxStellarium.Location = new System.Drawing.Point(13, 294);
             this.groupBoxStellarium.Name = "groupBoxStellarium";
@@ -581,15 +585,15 @@
             this.pictureBoxIconInfoCartesDuCiel.TabIndex = 29;
             this.pictureBoxIconInfoCartesDuCiel.TabStop = false;
             // 
-            // label15
+            // labelServeurCdC
             // 
-            this.label15.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label15.Location = new System.Drawing.Point(6, 89);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(146, 21);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "Serveur";
-            this.label15.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelServeurCdC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelServeurCdC.Location = new System.Drawing.Point(92, 89);
+            this.labelServeurCdC.Name = "labelServeurCdC";
+            this.labelServeurCdC.Size = new System.Drawing.Size(60, 21);
+            this.labelServeurCdC.TabIndex = 28;
+            this.labelServeurCdC.Text = "Serveur";
+            this.labelServeurCdC.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxHostCartesDuCiel
             // 
@@ -618,15 +622,15 @@
             this.pictureBoxIconInfoStellarium.TabIndex = 25;
             this.pictureBoxIconInfoStellarium.TabStop = false;
             // 
-            // label16
+            // labelServeurStellarium
             // 
-            this.label16.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label16.Location = new System.Drawing.Point(6, 22);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(146, 21);
-            this.label16.TabIndex = 14;
-            this.label16.Text = "Serveur";
-            this.label16.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelServeurStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelServeurStellarium.Location = new System.Drawing.Point(92, 22);
+            this.labelServeurStellarium.Name = "labelServeurStellarium";
+            this.labelServeurStellarium.Size = new System.Drawing.Size(60, 21);
+            this.labelServeurStellarium.TabIndex = 14;
+            this.labelServeurStellarium.Text = "Serveur";
+            this.labelServeurStellarium.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxHostStellarium
             // 
@@ -636,15 +640,15 @@
             this.textBoxHostStellarium.Size = new System.Drawing.Size(100, 20);
             this.textBoxHostStellarium.TabIndex = 0;
             // 
-            // label18
+            // labelPortStellarium
             // 
-            this.label18.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label18.Location = new System.Drawing.Point(29, 48);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(123, 17);
-            this.label18.TabIndex = 11;
-            this.label18.Text = "Port";
-            this.label18.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelPortStellarium.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelPortStellarium.Location = new System.Drawing.Point(92, 48);
+            this.labelPortStellarium.Name = "labelPortStellarium";
+            this.labelPortStellarium.Size = new System.Drawing.Size(60, 17);
+            this.labelPortStellarium.TabIndex = 11;
+            this.labelPortStellarium.Text = "Port";
+            this.labelPortStellarium.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxPortStellarium
             // 
@@ -658,11 +662,13 @@
             // 
             this.toolTipInfoStellarium.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoStellarium.ToolTipTitle = "Paramètres du plugin de contrôle à distance de Stellarium";
+            this.toolTipInfoStellarium.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfoStellarium_Draw);
             // 
             // toolTipInfoCartesDuCiel
             // 
             this.toolTipInfoCartesDuCiel.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfoCartesDuCiel.ToolTipTitle = "Paramètres de Cartes Du Ciel";
+            this.toolTipInfoCartesDuCiel.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfoCartesDuCiel_Draw);
             // 
             // dlgParametres
             // 
@@ -672,7 +678,7 @@
             this.CancelButton = this.btCancel;
             this.ClientSize = new System.Drawing.Size(433, 456);
             this.Controls.Add(this.groupBoxStellarium);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.groupBoxDivers);
             this.Controls.Add(this.groupBoxZones);
             this.Controls.Add(this.groupBoxCapteur);
             this.Controls.Add(this.groupBoxLieuObservation);
@@ -694,8 +700,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoToolTip)).EndInit();
             this.groupBoxZones.ResumeLayout(false);
             this.groupBoxZones.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.groupBoxDivers.ResumeLayout(false);
+            this.groupBoxDivers.PerformLayout();
             this.groupBoxStellarium.ResumeLayout(false);
             this.groupBoxStellarium.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoCartesDuCiel)).EndInit();
@@ -711,14 +717,14 @@
         private System.Windows.Forms.GroupBox groupBoxLieuObservation;
         private System.Windows.Forms.GroupBox groupBoxCapteur;
         private System.Windows.Forms.GroupBox groupBoxZones;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox groupBoxDivers;
         private System.Windows.Forms.ComboBox comboBoxLatitudeDirection;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxLatitudeSeconde;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox textBoxLatitudeMinute;
         private System.Windows.Forms.TextBox textBoxLatitudeDegre;
-        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label labelLatitude;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboBoxLongitudeDirection;
         private System.Windows.Forms.Label label4;
@@ -726,7 +732,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox textBoxLongitudeMinute;
         private System.Windows.Forms.TextBox textBoxLongitudeDegre;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelLongitude;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxCapteurLargeur;
         private System.Windows.Forms.ComboBox comboBoxCapteur;
@@ -738,26 +744,26 @@
         private System.Windows.Forms.CheckBox ckE;
         private System.Windows.Forms.CheckBox ckNE;
         private System.Windows.Forms.CheckBox ckN;
-        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label labelBougeMax;
         private System.Windows.Forms.TextBox textBoxBougeMax;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label labelNom;
+        private System.Windows.Forms.Label labelLargeur;
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.PictureBox pictureBoxIconInfoToolTip;
         private System.Windows.Forms.ToolTip toolTipInfoCapteur;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label labelHauteur;
         private System.Windows.Forms.TextBox textBoxHauteurMin;
         private System.Windows.Forms.GroupBox groupBoxStellarium;
-        private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.Label labelServeurStellarium;
         private System.Windows.Forms.TextBox textBoxHostStellarium;
-        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.Label labelPortStellarium;
         private System.Windows.Forms.TextBox textBoxPortStellarium;
         private System.Windows.Forms.PictureBox pictureBoxIconInfoStellarium;
         private System.Windows.Forms.ToolTip toolTipInfoStellarium;
         private System.Windows.Forms.Label labelSepPlanetarium;
         private System.Windows.Forms.PictureBox pictureBoxIconInfoCartesDuCiel;
-        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label labelServeurCdC;
         private System.Windows.Forms.TextBox textBoxHostCartesDuCiel;
         private System.Windows.Forms.ToolTip toolTipInfoCartesDuCiel;
     }

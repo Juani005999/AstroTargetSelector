@@ -255,7 +255,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.1.0.1, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.2.0.1, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_68119A56FCC92DF267E2614D1216BB8A"
@@ -306,7 +306,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.1.0.1, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.2.0.1, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C5FF19F87AA7445E1D2C77B76CC8A98E"
@@ -380,7 +380,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:1.1.0.1"
+                                    "Name" = "8:1.2.0.1"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -444,15 +444,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{88A86373-1BF9-49D2-9292-0B12C451AAFB}"
-        "PackageCode" = "8:{F1BE396B-3B88-49FC-95F3-B8085D198C29}"
+        "ProductCode" = "8:{2D24C190-4045-4D1B-8A9E-0FC88F852553}"
+        "PackageCode" = "8:{06E80E2E-8F2F-4583-94C2-54225F5B9A4B}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.1.01"
+        "ProductVersion" = "8:1.2.01"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1015,6 +1015,62 @@
             "OutputConfiguration" = "8:"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{2C7A028A-AB2A-42AD-91B2-5FB62F63907B}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_EFFAA46DD6144225943B7DE220CD3B22"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{79F9AD98-A61C-4F01-91B4-6281955F5EC4}"
+            "ShowKeyOutput" = "11:TRUE"
+                "ExcludeFilters"
+                {
+                }
+            }
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_F4EE853634C74FA9B06EB9BECF4CC9F9"
+            {
+            "SourcePath" = "8:"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            "ProjectOutputGroupRegister" = "3:1"
+            "OutputConfiguration" = "8:"
+            "OutputGroupCanonicalName" = "8:LocalizedResourceDlls"
+            "OutputProjectGuid" = "8:{0E490AF6-0286-405A-A428-29D81C83F883}"
             "ShowKeyOutput" = "11:TRUE"
                 "ExcludeFilters"
                 {

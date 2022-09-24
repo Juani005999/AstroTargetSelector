@@ -242,5 +242,32 @@
   <ItemGroup>
     <None Include="Ressources\Identite_new.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\ModeNuit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\1_white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\2_white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\3_white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\4_white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\5_white.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\5_white_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\4_white_2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\3_white_2.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

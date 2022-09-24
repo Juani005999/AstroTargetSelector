@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Drawing;
 using System.Reflection;
 using System.Windows.Forms;
 using AstroTargetSelectorBusiness;
+using AstroTargetSelectorResources;
 
 namespace AstroTargetSelector
 {
@@ -118,13 +120,16 @@ namespace AstroTargetSelector
             this.factory = factory;
 
             // Positionnement des libellés
-            this.Text = String.Format("À propos de {0}", AssemblyTitle);
+            this.Text = $"{Resources.AProposDe} {AssemblyTitle}";
             this.labelProductName.Text = AssemblyProduct;
-            this.labelVersion.Text = String.Format("Version {0}", AssemblyVersion);
+            this.labelVersion.Text = $"{Resources.Version} {AssemblyVersion}";
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.labelContributors.Text = $"Contributeurs : Xavier SCHILDKNECHT / Jean-Luc VIVO";
+            this.labelContributors.Text = $"{Resources.Contributeurs} : Xavier SCHILDKNECHT / Jean-Luc VIVO";
             this.textBoxDescription.Text = AssemblyDescription;
+
+            // Positionne le mode Jour/Nuit
+            SetAffichage();
 
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue", GetType().Name);
@@ -156,6 +161,24 @@ namespace AstroTargetSelector
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);
             }
+        }
+
+        /// <summary>
+        /// Positionne l'affichage en mode Jour / Nuit
+        /// </summary>
+        private void SetAffichage()
+        {
+            bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
+            // Fenêtre
+            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+
+            // Boutons et Contrôles
+            buttonSendLog.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            buttonSendLog.Text = Resources.OuvrirLeFichierDesLogs;
+            textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
+            textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            okButton.Text = ApplicationTools.Properties.Resources.OK;
         }
 
         #endregion

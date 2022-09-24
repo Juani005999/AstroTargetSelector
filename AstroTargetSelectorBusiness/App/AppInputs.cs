@@ -13,8 +13,7 @@ namespace AstroTargetSelectorBusiness
         #region Propriétés
 
         /// <summary>
-        /// Objet métier contenant les données nécessaires à l'application des règles applicatives
-        /// <para>Objet renvoyé sous la forme d'un singleton. S'il n'existe pas, il est créé</para>
+        /// <inheritdoc />
         /// </summary>
         public IObjInputs Inputs
         {
@@ -27,8 +26,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le lieu sous la forme d'une chaîne de caractères formatée (Latitude - Longitude)
-        /// <para>XX° XX' XX" N/S - XX° XX' XX E/O"</para>
+        /// <inheritdoc />
         /// </summary>
         public string LieuObservation
         {
@@ -39,8 +37,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le capteur sous la forme d'une chaîne de caractères formatée (Nom - Largeur px)
-        /// <para>XXXX px</para>
+        /// <inheritdoc />
         /// </summary>
         public string CapteurFormatedString
         {
@@ -51,11 +48,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le tes=xte à afficher dans l'info-bulle d'infos complémentaires sur les champs Inputs
-        /// <para>Lieu de l'observation</para>
-        /// <para>Capteur</para>
-        /// <para>Zones exclues</para>
-        /// <para>Bougé max.</para>
+        /// <inheritdoc />
         /// </summary>
         public string ToolTipInfosTexte
         {
@@ -77,7 +70,7 @@ namespace AstroTargetSelectorBusiness
                     CoordinatesDirection lastItem = Inputs.ZonesExclues.Last();
                     foreach (CoordinatesDirection direction in Inputs.ZonesExclues)
                     {
-                        zonesExclues += direction.ToString();
+                        zonesExclues += Coordinate.GetDirectionString(direction);
                         // Si ce n'est pas le dernier élément de la liste, on ajoute la séparation
                         if (direction != lastItem)
                             zonesExclues += " - ";
@@ -98,8 +91,7 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
-        /// Renvoi le bougé max. sous la forme d'une chaîne de caractères formatée (X px)
-        /// <para>X px</para>
+        /// <inheritdoc />
         /// </summary>
         public string BougeMaxString
         {

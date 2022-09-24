@@ -108,6 +108,17 @@ namespace ApplicationTools
             return new Coordinate(value, type);
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public IConsoleQueue GetConsoleQueue()
+        {
+            if (consoleQueue == null)
+                consoleQueue = new ConsoleQueue();
+            return consoleQueue;
+        }
+
         #endregion
 
         #region Champs
@@ -131,6 +142,11 @@ namespace ApplicationTools
         /// Objet <see cref="AppCartesDuCiel"/>
         /// </summary>
         private IAppProgramme appCartesDuCiel = null;
+
+        /// <summary>
+        /// Objet permettant la gestion des messages de la Console
+        /// </summary>
+        private IConsoleQueue consoleQueue = null;
 
         #endregion
     }
