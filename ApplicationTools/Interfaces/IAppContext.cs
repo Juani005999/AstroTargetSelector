@@ -75,6 +75,11 @@ namespace ApplicationTools
         /// </summary>
         Color ForeColorLight { get; }
 
+        /// <summary>
+        /// Répertoire root du Profil Utilisateur
+        /// </summary>
+        string UserProfilePath { get; }
+
         #endregion
     }
 }

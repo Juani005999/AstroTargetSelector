@@ -83,6 +83,13 @@ namespace ApplicationTools
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
         void FocusTo(string nomTarget, DateTime dateObservation);
 
+        /// <summary>
+        /// Démarre l'application
+        /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+        /// </summary>
+        /// <exception cref="Exception">Exception survenue lors du traitement</exception>
+        void Start();
+
         #endregion
     }
 }

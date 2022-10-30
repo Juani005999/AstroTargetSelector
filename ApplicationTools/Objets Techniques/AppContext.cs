@@ -70,6 +70,17 @@ namespace ApplicationTools
         /// <summary>
         /// <inheritdoc />
         /// </summary>
+        public string UserProfilePath
+        {
+            get
+            {
+                return Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
         public string LogFileName
         {
             get

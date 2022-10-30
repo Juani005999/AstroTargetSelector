@@ -149,6 +149,20 @@ namespace ApplicationTools
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
         public abstract void FocusTo(string nomTarget, DateTime dateObservation);
 
+        /// <summary>
+        /// Démarre l'application
+        /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+        /// </summary>
+        /// <exception cref="Exception">Exception survenue lors du traitement</exception>
+        public void Start()
+        {
+            if (IsInstalled && !string.IsNullOrEmpty(ExecutableFile))
+            {
+                appLog.Log($"Lancement exécution du programme {ExecutableFile}");
+                Process.Start(ExecutableFile);
+            }
+        }
+
         #endregion
 
         #region Champs

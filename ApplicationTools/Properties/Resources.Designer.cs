@@ -205,6 +205,51 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à j.
+        /// </summary>
+        public static string ShortDay {
+            get {
+                return ResourceManager.GetString("ShortDay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à h.
+        /// </summary>
+        public static string ShortHour {
+            get {
+                return ResourceManager.GetString("ShortHour", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à m.
+        /// </summary>
+        public static string ShortMinute {
+            get {
+                return ResourceManager.GetString("ShortMinute", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à s.
+        /// </summary>
+        public static string ShortSecond {
+            get {
+                return ResourceManager.GetString("ShortSecond", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à sem..
+        /// </summary>
+        public static string ShortWeek {
+            get {
+                return ResourceManager.GetString("ShortWeek", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à SO.
         /// </summary>
         public static string SO {

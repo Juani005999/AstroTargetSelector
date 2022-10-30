@@ -165,6 +165,21 @@
   <data name="SE" xml:space="preserve">
     <value>SE</value>
   </data>
+  <data name="ShortDay" xml:space="preserve">
+    <value>j</value>
+  </data>
+  <data name="ShortHour" xml:space="preserve">
+    <value>h</value>
+  </data>
+  <data name="ShortMinute" xml:space="preserve">
+    <value>m</value>
+  </data>
+  <data name="ShortSecond" xml:space="preserve">
+    <value>s</value>
+  </data>
+  <data name="ShortWeek" xml:space="preserve">
+    <value>sem.</value>
+  </data>
   <data name="SO" xml:space="preserve">
     <value>SO</value>
   </data>

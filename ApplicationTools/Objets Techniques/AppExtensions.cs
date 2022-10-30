@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ApplicationTools.Properties;
+using System;
 using System.Xml;
 
 namespace ApplicationTools
@@ -36,6 +37,34 @@ namespace ApplicationTools
                 chaineFormatee += string.Format("{0:0} secondes, ", span.Seconds);
             // Dans tous les cas on ajoute les millisecondes (nb de milliseconde dans la seconde courante)
             chaineFormatee += string.Format("{0:0} ms", span.Milliseconds);
+
+            return chaineFormatee;
+        }
+        
+        /// <summary>
+        /// Renvoi le TimeSpan sous la forme d'une chaîne formatée
+        /// </summary>
+        /// <param name="span"></param>
+        /// <returns>Chaîne formatée</returns>
+        public static string ToStandardFormatString(this TimeSpan span)
+        {
+            string chaineFormatee = string.Empty;
+
+            // Si plus d'une semaine
+            if (span.Days / 7 > 0)
+                chaineFormatee += string.Format("{0:0} {1} ", span.Days / 7, Resources.ShortWeek);
+            // Si plus d'un jour
+            if (span.Days % 7 > 0)
+                chaineFormatee += string.Format("{0:0} {1}  ", span.Days % 7, Resources.ShortDay);
+            // Si plus d'une heure
+            if (span.Hours > 0)
+                chaineFormatee += string.Format("{0:0} {1}  ", span.Hours, Resources.ShortHour);
+            // Si plus d'une minute
+            if (span.Minutes > 0)
+                chaineFormatee += string.Format("{0:0} {1}  ", span.Minutes, Resources.ShortMinute);
+            // Si plus d'une seconde
+            if (span.Seconds > 0)
+                chaineFormatee += string.Format("{0:0} {1}  ", span.Seconds, Resources.ShortSecond);
 
             return chaineFormatee;
         }

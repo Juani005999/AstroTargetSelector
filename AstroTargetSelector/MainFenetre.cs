@@ -258,9 +258,9 @@ namespace AstroTargetSelector
                 AutoScaleDimensions = new SizeF(6F, 13F);
                 AutoScaleMode = AutoScaleMode.Font;
 
-                // Création d'une instance du ListView column sorter et assignation à la liste
+                //// Création d'une instance du ListView column sorter et assignation à la liste
                 lvwColumnSorter = new ListViewColumnSorter();
-                listViewTarget.ListViewItemSorter = lvwColumnSorter;
+                listViewTarget.ListViewItemSorter = lvwColumnSorter as System.Collections.IComparer;
 
                 // Chargements des libellés statiques
                 LoadLibelles();

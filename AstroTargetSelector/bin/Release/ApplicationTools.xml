@@ -42,6 +42,13 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet AppContext</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppAstroTargetSelector">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstroTargetSelector"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Double,System.Double)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -58,7 +65,7 @@
             <param name="type"></param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.AppToolFactory.GetConsoleQueue(System.Func{System.String,System.String,System.String,System.Boolean})">
+        <member name="M:ApplicationTools.AppToolFactory.GetConsoleQueue">
             <summary>
             <inheritdoc/>
             </summary>
@@ -82,6 +89,11 @@
         <member name="F:ApplicationTools.AppToolFactory.appCartesDuCiel">
             <summary>
             Objet <see cref="T:ApplicationTools.AppCartesDuCiel"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appATS">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppAstroTargetSelector"/>
             </summary>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.consoleQueue">
@@ -142,6 +154,68 @@
             <inheritdoc/>
             </summary>
             <param name="e"></param>
+        </member>
+        <member name="T:ApplicationTools.InputBox">
+            <summary>
+            Classe InputBox permettant d'afficher un prompt pour la saisie d'une string
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.InputBox.ShowDialog(System.String,System.String,System.String@)">
+            <summary>
+            Affiche l'InputBox
+            </summary>
+            <param name="title"></param>
+            <param name="promptText"></param>
+            <param name="value"></param>
+            <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.ListItem">
+            <summary>
+            Elément de ListBox
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListItem.Name">
+            <summary>
+            Champ Text
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.ListItem.Value">
+            <summary>
+            Champ Value
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ListItem.ToString">
+            <summary>
+            Surcharge pour affichage dans les listes
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:ApplicationTools.ListViewItemComparer">
+            <summary>
+            List view IComparer
+            <para>IComparer<see cref="T:System.Windows.Forms.ListViewItem"/></para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.ListViewItemComparer.#ctor(System.Int32[])">
+            <summary>
+            
+            </summary>
+            <param name="mCols"></param>
+        </member>
+        <member name="M:ApplicationTools.ListViewItemComparer.#ctor(System.Int32[],System.Windows.Forms.SortOrder)">
+            <summary>
+            
+            </summary>
+            <param name="mCols"></param>
+            <param name="order"></param>
+        </member>
+        <member name="M:ApplicationTools.ListViewItemComparer.Compare(System.Windows.Forms.ListViewItem,System.Windows.Forms.ListViewItem)">
+            <summary>
+            
+            </summary>
+            <param name="listviewX"></param>
+            <param name="listviewY"></param>
+            <returns></returns>
         </member>
         <member name="T:ApplicationTools.IAppContext">
             <summary>
@@ -211,6 +285,11 @@
         <member name="P:ApplicationTools.IAppContext.ForeColorLight">
             <summary>
             Fore Color Light du mode Nuit
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.IAppContext.UserProfilePath">
+            <summary>
+            Répertoire root du Profil Utilisateur
             </summary>
         </member>
         <member name="T:ApplicationTools.TypeLog">
@@ -345,6 +424,13 @@
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
+        <member name="M:ApplicationTools.IAppProgramme.Start">
+            <summary>
+            Démarre l'application
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+            </summary>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
         <member name="T:ApplicationTools.IAppToolFactory">
             <summary>
             Interface de la Fabrique d'objets technique
@@ -394,12 +480,84 @@
             <param name="type"></param>
             <returns></returns>
         </member>
-        <member name="M:ApplicationTools.IAppToolFactory.GetConsoleQueue(System.Func{System.String,System.String,System.String,System.Boolean})">
+        <member name="M:ApplicationTools.IAppToolFactory.GetConsoleQueue">
             <summary>
             Retourne l'objet <see cref="T:ApplicationTools.IConsoleQueue"/>
             </summary>
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet IConsoleQueue</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppAstroTargetSelector">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstroTargetSelector"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
+        <member name="T:ApplicationTools.AppAstroTargetSelector">
+            <summary>
+            Objet de communication avec le logiciel ATS
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppAstroTargetSelector.ATSSleepForRemmoteControlStart">
+            <summary>
+            Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.Host">
+            <summary>
+            Serveur ATS
+            <para>par défaut localhost</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.Port">
+            <summary>
+            Port du Serveur ATS
+            <para>par défaut 7142</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstroTargetSelector.#ctor(ApplicationTools.IAppLog)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstroTargetSelector.FocusTo(System.String,System.DateTime)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans ATS
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande ATS</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppAstroTargetSelector.isRunning">
+            <summary>
+            Flag permettant de savoir si une action est en cours
+            </summary>
         </member>
         <member name="T:ApplicationTools.AppCartesDuCiel">
             <summary>
@@ -561,6 +719,13 @@
             </summary>
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppProgramme.Start">
+            <summary>
+            Démarre l'application
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+            </summary>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
         <member name="F:ApplicationTools.AppProgramme.appLog">
@@ -863,6 +1028,11 @@
             <inheritdoc />
             </summary>
         </member>
+        <member name="P:ApplicationTools.AppContext.UserProfilePath">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
         <member name="P:ApplicationTools.AppContext.LogFileName">
             <summary>
             <inheritdoc />
@@ -914,6 +1084,13 @@
             </summary>
         </member>
         <member name="M:ApplicationTools.TimeSpanExtensionMethods.ToReadableString(System.TimeSpan)">
+            <summary>
+            Renvoi le TimeSpan sous la forme d'une chaîne formatée
+            </summary>
+            <param name="span"></param>
+            <returns>Chaîne formatée</returns>
+        </member>
+        <member name="M:ApplicationTools.TimeSpanExtensionMethods.ToStandardFormatString(System.TimeSpan)">
             <summary>
             Renvoi le TimeSpan sous la forme d'une chaîne formatée
             </summary>
@@ -1283,6 +1460,31 @@
               Recherche une chaîne localisée semblable à SE.
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.ShortDay">
+            <summary>
+              Recherche une chaîne localisée semblable à j.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ShortHour">
+            <summary>
+              Recherche une chaîne localisée semblable à h.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ShortMinute">
+            <summary>
+              Recherche une chaîne localisée semblable à m.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ShortSecond">
+            <summary>
+              Recherche une chaîne localisée semblable à s.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.ShortWeek">
+            <summary>
+              Recherche une chaîne localisée semblable à sem..
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.SO">
             <summary>
               Recherche une chaîne localisée semblable à SO.
@@ -1323,14 +1525,20 @@
             Objet permettant la gestion des messages de la Console
             </summary>
         </member>
-        <member name="M:ApplicationTools.ConsoleQueue.#ctor(System.Func{System.String,System.String,System.String,System.Boolean})">
+        <member name="M:ApplicationTools.ConsoleQueue.#ctor">
             <summary>
             Constructeur
             </summary>
         </member>
+        <member name="M:ApplicationTools.ConsoleQueue.Initialise(System.Func{System.String,System.String,System.String,System.Boolean})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="messageQueuedFunc"></param>
+        </member>
         <member name="M:ApplicationTools.ConsoleQueue.AddConsoleMessage(System.String,System.String,System.String)">
             <summary>
-            Ajout d'un message à la console
+            <inheritdoc/>
             </summary>
             <param name="objet"></param>
             <param name="commande"></param>
@@ -1461,6 +1669,11 @@
         <member name="P:ApplicationTools.Coordinate.Direction">
             <summary>
             Renvoi la direction pour les données de type Longitude ou Latitude
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Coordinate.CoordinatesType">
+            <summary>
+            Type de coordonnées
             </summary>
         </member>
         <member name="M:ApplicationTools.Coordinate.#ctor(System.Double,ApplicationTools.CoordinatesType)">
@@ -1629,6 +1842,12 @@
             <param name="objet"></param>
             <param name="commande"></param>
             <param name="retour"></param>
+        </member>
+        <member name="M:ApplicationTools.IConsoleQueue.Initialise(System.Func{System.String,System.String,System.String,System.Boolean})">
+            <summary>
+            Initialisation de la ConsoleQueue
+            <para>Permet de définir la méthode delegate a appelé sur ajout d'un message</para>
+            </summary>
         </member>
     </members>
 </doc>

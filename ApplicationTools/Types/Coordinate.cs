@@ -214,6 +214,17 @@ namespace ApplicationTools
             }
         }
 
+        /// <summary>
+        /// Type de coordonnées
+        /// </summary>
+        public CoordinatesType CoordinatesType
+        {
+            get
+            {
+                return coordinatesType;
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -323,6 +334,11 @@ namespace ApplicationTools
             if (string.IsNullOrEmpty(inputCoordonee))
                 return false;
 
+            // On supprime les espaces et on modifie les caractères m et s si nécessaire
+            inputCoordonee = inputCoordonee.Replace(" ", "");
+            inputCoordonee = inputCoordonee.ToLower().Replace("m", "'");
+            inputCoordonee = inputCoordonee.ToLower().Replace("s", "\"");
+
             // Validation Degree ou Heure
             double hourDec;
             int indexSepHour = 0;
@@ -358,7 +374,10 @@ namespace ApplicationTools
             {
                 indexSepSeconde = inputCoordonee.IndexOf("\"");
                 string seconde = inputCoordonee.Substring(indexSepMinute + 1, indexSepSeconde - (indexSepMinute + 1));
-                if (string.IsNullOrEmpty(seconde) || !double.TryParse(seconde, out secondeDec))
+                if (string.IsNullOrEmpty(seconde)) // || !double.TryParse(seconde, out secondeDec))
+                    return false;
+                seconde = seconde.Replace(",", ".");
+                if (!double.TryParse(seconde, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out secondeDec))
                     return false;
             }
             else
@@ -366,6 +385,21 @@ namespace ApplicationTools
 
             // Données valides, on valorise l'objet coordonnee
             double valCoordonnee = Math.Abs(hourDec) + (minuteDec / 60) + (secondeDec / 3600);
+
+            //// Direction
+            //if (coordonnee.CoordinatesType == CoordinatesType.Longitude || coordonnee.CoordinatesType == CoordinatesType.Latitude)
+            //{
+            //    if (inputCoordonee.IndexOf("\"") != -1)
+            //    {
+            //        indexSepSeconde = inputCoordonee.IndexOf("\"");
+            //        string direction = inputCoordonee.Substring(indexSepSeconde + 1, inputCoordonee.Length - (indexSepSeconde + 1));
+            //        if (direction == CoordinatesDirection.S.ToString() || direction == CoordinatesDirection.O.ToString())
+            //            valCoordonnee *= -1;
+            //    }
+            //    else
+            //        return false;
+            //}
+            //else if (hourDec < 0)
             if (hourDec < 0)
                 valCoordonnee *= -1;
             coordonnee.UpdateCoordonnee(valCoordonnee);

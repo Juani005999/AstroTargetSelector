@@ -43,14 +43,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ApplicationTools.dll" size="54272">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ApplicationTools.dll" size="58880">
       <assemblyIdentity name="ApplicationTools" version="1.2.0.1" publicKeyToken="6321CF3B97D74C6F" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>jwWeCAWzl2uN8T+6h4jimTNNy03F36BNvEX49JBPcSg=</dsig:DigestValue>
+        <dsig:DigestValue>aawNY3WG8Tw/9ykSAyb/aS8Ll6TRRTLryJXAAjE7mOI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Z9juVSW27hmUCv8GGKTmLA+IbTbY/jVL0jNXum1DWj8=</dsig:DigestValue>
+        <dsig:DigestValue>240tZRvAq5nZSU2wP7qE2PSRqcixsEQhSoT4sUqxW7Q=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -74,7 +74,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>nneGZocYe6tTjMKvTMezOgVvdRfOuLOgCptE97H8ek0=</dsig:DigestValue>
+        <dsig:DigestValue>82VedRZFaF0fbYVNNu4p3Xi6IYMY2/V9+PkCbBR/byY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -98,7 +98,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Lh01FXeC6RNAdd3Dj71ngx5sfZhNoT7Jajw7nNoVYLU=</dsig:DigestValue>
+        <dsig:DigestValue>M7107Am+ltBIX71/Wl9dO4sw4NlaIDpLxN6lc4q49js=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

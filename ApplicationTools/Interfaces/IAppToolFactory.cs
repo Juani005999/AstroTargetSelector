@@ -58,6 +58,13 @@
         /// <returns>Objet IConsoleQueue</returns>
         IConsoleQueue GetConsoleQueue();
 
+        /// <summary>
+        /// Retourne l'objet <see cref="AppAstroTargetSelector"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        IAppProgramme GetAppAstroTargetSelector();
+
         #endregion
     }
 }

@@ -85,6 +85,21 @@ namespace ApplicationTools
         }
 
         /// <summary>
+        /// Retourne l'objet <see cref="AppAstroTargetSelector"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        public IAppProgramme GetAppAstroTargetSelector()
+        {
+            // Création et initialisation de l'objet AppStellarium s'il n'existe pas
+            if (appATS == null)
+            {
+                appATS = new AppAstroTargetSelector(GetLog());
+            }
+            return appATS;
+        }
+
+        /// <summary>
         /// Retourne un nouvel objet de type <see cref="Coordinates"/>
         /// </summary>
         /// <param name="latitude"></param>
@@ -142,6 +157,11 @@ namespace ApplicationTools
         /// Objet <see cref="AppCartesDuCiel"/>
         /// </summary>
         private IAppProgramme appCartesDuCiel = null;
+
+        /// <summary>
+        /// Objet <see cref="AppAstroTargetSelector"/>
+        /// </summary>
+        private IAppProgramme appATS = null;
 
         /// <summary>
         /// Objet permettant la gestion des messages de la Console
