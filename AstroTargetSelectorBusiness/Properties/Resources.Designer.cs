@@ -232,6 +232,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Démarrer l&apos;application AstroSessionOrganizer.
+        /// </summary>
+        public static string DemarrerLApplicationAstroSessionOrganizer {
+            get {
+                return ResourceManager.GetString("DemarrerLApplicationAstroSessionOrganizer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Description.
         /// </summary>
         public static string Description {
@@ -679,6 +688,15 @@ namespace AstroTargetSelectorResources {
         public static string Nom {
             get {
                 return ResourceManager.GetString("Nom", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Nombre de paramètres incorrect.
+        /// </summary>
+        public static string NombreDeParametresIncorrect {
+            get {
+                return ResourceManager.GetString("NombreDeParametresIncorrect", resourceCulture);
             }
         }
         

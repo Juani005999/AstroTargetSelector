@@ -120,11 +120,17 @@
   <data name="Annuler" xml:space="preserve">
     <value>Annuler</value>
   </data>
+  <data name="Astap" xml:space="preserve">
+    <value>ASTAP</value>
+  </data>
   <data name="CartesDuCiel" xml:space="preserve">
     <value>Cartes du Ciel</value>
   </data>
   <data name="E" xml:space="preserve">
     <value>E</value>
+  </data>
+  <data name="FonctionnaliteNonDisponible" xml:space="preserve">
+    <value>Fonctionnalité non disponible</value>
   </data>
   <data name="FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium" xml:space="preserve">
     <value>Fonctionnalité non disponible pour la version 0.22.X de Stellarium</value>
@@ -197,6 +203,12 @@
   </data>
   <data name="UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel" xml:space="preserve">
     <value>Une erreur est survenue lors de l'ouverture du logiciel.</value>
+  </data>
+  <data name="VersionActuelle" xml:space="preserve">
+    <value>Version actuelle</value>
+  </data>
+  <data name="VersionMinimaleRequise" xml:space="preserve">
+    <value>Version minimale requise</value>
   </data>
   <data name="VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration" xml:space="preserve">
     <value>Veuillez démarrer le logiciel au moins une fois afin de terminer sa configuration.</value>

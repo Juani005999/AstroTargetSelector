@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices;
 
 namespace ApplicationTools
 {
@@ -8,6 +11,13 @@ namespace ApplicationTools
     /// </summary>
     public abstract class AppProgramme : IAppProgramme
     {
+        #region Imports
+
+        [DllImport("user32.dll")]
+        static extern bool SetForegroundWindow(IntPtr hWnd);
+
+        #endregion
+
         #region Propriétés
 
         /// <summary>
@@ -97,7 +107,7 @@ namespace ApplicationTools
         /// <summary>
         /// Path d'installation du Logiciel sur le poste
         /// </summary>
-        public string InstallLocation
+        public virtual string InstallLocation
         {
             get
             {
@@ -118,7 +128,7 @@ namespace ApplicationTools
             {
                 if (string.IsNullOrEmpty(executableFile))
                 {
-                    executableFile = InstallLocation + "\\" + FileName;
+                    executableFile = Path.Combine(InstallLocation, FileName);
                 }
                 return executableFile;
             }
@@ -158,8 +168,18 @@ namespace ApplicationTools
         {
             if (IsInstalled && !string.IsNullOrEmpty(ExecutableFile))
             {
-                appLog.Log($"Lancement exécution du programme {ExecutableFile}");
-                Process.Start(ExecutableFile);
+                if (IsRunning)
+                {
+                    appLog.Log($"Activation du programme en cours d'exécution : {ExecutableFile}");
+                    Process processEnCours = Process.GetProcessesByName(ProcessName).FirstOrDefault();
+                    if (processEnCours != null)
+                        SetForegroundWindow(processEnCours.MainWindowHandle);
+                }
+                else
+                {
+                    appLog.Log($"Lancement exécution du programme : {ExecutableFile}");
+                    Process.Start(ExecutableFile);
+                }
             }
         }
 

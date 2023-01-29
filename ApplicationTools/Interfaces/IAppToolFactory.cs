@@ -65,6 +65,20 @@
         /// <returns>Objet IAppProgramme</returns>
         IAppProgramme GetAppAstroTargetSelector();
 
+        /// <summary>
+        /// Retourne l'objet <see cref="AppAstroSessionOrganizer"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        IAppProgramme GetAppAstroSessionOrganizer();
+
+        /// <summary>
+        /// Retourne l'objet <see cref="AppAstap"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        IAppProgramme GetAppAstap();
+
         #endregion
     }
 }

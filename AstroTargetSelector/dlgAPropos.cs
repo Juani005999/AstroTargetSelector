@@ -176,6 +176,10 @@ namespace AstroTargetSelector
             // Boutons et Contrôles
             buttonSendLog.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
             buttonSendLog.Text = Resources.OuvrirLeFichierDesLogs;
+            if (!nuit)
+            {
+                buttonSendLog.UseVisualStyleBackColor = true;
+            }
             textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
             textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
             okButton.Text = ApplicationTools.Properties.Resources.OK;

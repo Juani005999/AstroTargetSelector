@@ -181,7 +181,7 @@ namespace AstroTargetSelectorBusiness
         {
             if (string.IsNullOrEmpty(nomTarget))
                 return null;
-            return Targets.ListeObjTarget.Where(t => t.Nom == nomTarget).FirstOrDefault();
+            return Targets.ListeObjTarget.Where(t => t.Nom.Replace(" ", "") == nomTarget.Replace(" ", "")).FirstOrDefault();
         }
 
         #endregion

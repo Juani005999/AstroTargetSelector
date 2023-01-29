@@ -1,46 +1,104 @@
 Produit;Module;Objet;Fonction;Fichier source;Ligne;Type;Date;Heure;Durée;Message
-AstroTargetSelector;ApplicationTools;AppLog;Initialise;AppLog.cs;94;INFOS;30/07/2022;18:53:54.8438;;Initialisation de l'objet de log
-AstroTargetSelector;ApplicationTools;AppLog;Initialise;AppLog.cs;95;INFOS;30/07/2022;18:53:54.8438;;Log FullPathName : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\Log_astrotargetselector.csv
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;157;INFOS;30/07/2022;18:53:54.8438;;Fonction InitialisationFormulaire DEBUT
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;158;INFOS;30/07/2022;18:53:54.8438;;ProductName : AstroTargetSelector
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;159;INFOS;30/07/2022;18:53:54.8438;;Version : 0.0.1.4
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;160;INFOS;30/07/2022;18:53:54.8438;;Application file : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelector.exe
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;161;INFOS;30/07/2022;18:53:54.9128;;Répertoire UserAppDataPath : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\0.0.1.4
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;162;INFOS;30/07/2022;18:53:54.9128;;Répertoire StartupPath : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;SetDefaultValue;ObjInputs.cs;288;INFOS;30/07/2022;18:53:54.9284;;Positionnement des paramètres Inputs par défaut
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;SetDefaultValue;ObjInputs.cs;294;INFOS;30/07/2022;18:53:54.9284;;Date d'Observation : 30/07/2022 19:00:00
-AstroTargetSelector;AstroTargetSelector;MainFenetre;dateTimePickerDateObservation_ValueChanged;MainFenetre.cs;976;INFOS;30/07/2022;18:53:54.9284;;Modification de la Date d'observation : 30/07/2022
-AstroTargetSelector;AstroTargetSelector;MainFenetre;dateTimePickerHeureObservation_ValueChanged;MainFenetre.cs;990;INFOS;30/07/2022;18:53:54.9440;;Modification de l'Heure d'observation : 19:00
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;LieuObservation;ObjInputs.cs;45;INFOS;30/07/2022;18:53:54.9440;;Lieu d'Observation : 48° 51' 31,00" N / 2° 17' 39,00" E
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;87;INFOS;30/07/2022;18:53:54.9596;;Rechargement de la liste des capteurs depuis le fichier de configuration
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;100;INFOS;30/07/2022;18:53:54.9753;;Fichier de configuration contenant la liste des capteurs : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\0.0.1.4\CapteurListe.csv
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;123;INFOS;30/07/2022;18:53:55.0130;57;Chargement de 2 capteurs en 57 ms
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;ZonesExclues;ObjInputs.cs;227;INFOS;30/07/2022;18:53:55.0130;;Création liste ZonesExclues
-AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;670;INFOS;30/07/2022;18:53:55.0287;;Status Action Set Default Action Text
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationListeTarget;MainFenetre.cs;344;INFOS;30/07/2022;18:53:55.0599;;Initialisation de la liste des Targets OK
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboMinuteIntervalle;MainFenetre.cs;217;INFOS;30/07/2022;18:53:55.0599;;Chargement de la comboBoxMinuteIntervalle
-AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxMinuteIntervalle_SelectedIndexChanged;MainFenetre.cs;1004;INFOS;30/07/2022;18:53:55.0755;;Modification des minutes par intervalle : 5
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;107;INFOS;30/07/2022;18:53:55.0912;;Rechargement de la liste des targets depuis le fichier de configuration
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;120;INFOS;30/07/2022;18:53:55.1289;;Fichier de configuration contenant la liste des objets céleste : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\0.0.1.4\TargetListe.csv
-AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;150;INFOS;30/07/2022;18:53:55.1602;66;Chargement de 20 targets en 66 ms
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboMinuteIntervalle;MainFenetre.cs;232;INFOS;30/07/2022;18:53:55.1914;;Chargement de 4 Intervalles et sélection de l'élément : 5
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboTotalTimeSlice;MainFenetre.cs;241;INFOS;30/07/2022;18:53:55.1914;;Chargement de la comboBoxTotalTimeSlice
-AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxTotalTimeSlice_SelectedIndexChanged;MainFenetre.cs;1019;INFOS;30/07/2022;18:53:55.1914;;Modification de la durée d'observation : 3
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboTotalTimeSlice;MainFenetre.cs;256;INFOS;30/07/2022;18:53:55.2292;;Chargement de 3 Durées et sélection de l'élément : 3
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreRank;MainFenetre.cs;265;INFOS;30/07/2022;18:53:55.2292;;Chargement de la comboBoxFiltreRank
-AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreRank_SelectedIndexChanged;MainFenetre.cs;1046;INFOS;30/07/2022;18:53:55.2292;;Modification du Filtre Rank : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreRank;MainFenetre.cs;280;INFOS;30/07/2022;18:53:55.2292;;Chargement de 6 Filtre de Rank et sélection de l'élément : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreMagnitude;MainFenetre.cs;289;INFOS;30/07/2022;18:53:55.2448;;Chargement de la comboBoxFiltreMagnitude
-AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreMagnitude_SelectedIndexChanged;MainFenetre.cs;1058;INFOS;30/07/2022;18:53:55.2448;;Modification du Filtre Magnitude : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreMagnitude;MainFenetre.cs;304;INFOS;30/07/2022;18:53:55.2604;;Chargement de 7 Filtre de Magnitude et sélection de l'élément : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeFiltreType;MainFenetre.cs;501;INFOS;30/07/2022;18:53:55.2604;;Chargement de la liste des filtres sur Type
-AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreType_SelectedIndexChanged;MainFenetre.cs;1034;INFOS;30/07/2022;18:53:55.2604;;Modification du Filtre Type : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeFiltreType;MainFenetre.cs;516;INFOS;30/07/2022;18:53:55.2604;;Chargement de 6 Type de Target et sélection de l'élément : Tous
-AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;191;INFOS;30/07/2022;18:53:55.2604;427;Fonction InitialisationFormulaire FIN
-AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;537;INFOS;30/07/2022;18:53:55.2761;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
-AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;818;INFOS;30/07/2022;18:53:55.2917;;Lancement de la vérification de la présence d'une nouvelle version de l'application
-AstroTargetSelector;AstroTargetSelector;MainFenetre;SetActionStatusText;MainFenetre.cs;683;INFOS;30/07/2022;18:53:55.2917;;Status Action Set Text : Vérification de la présence d'une nouvelle version de l'application
-AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;832;INFOS;30/07/2022;18:53:55.3138;;Téléchargement du fichier ftp://ftp.byethost16.com/htdocs/AstroTargetSelector_config/Version.csv
-AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;844;INFOS;30/07/2022;18:53:55.9379;646;Téléchargement du fichier effectué en 646 ms
-AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;865;INFOS;30/07/2022;18:53:55.9866;;Nouvelle version disponible : 0.0.1.5
-AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;670;INFOS;30/07/2022;18:53:55.9876;;Status Action Set Default Action Text
+AstroTargetSelector;ApplicationTools;AppLog;Initialise;AppLog.cs;67;INFOS;22/01/2023;11:30:20.3307;;Initialisation de l'objet de log
+AstroTargetSelector;ApplicationTools;AppLog;Initialise;AppLog.cs;68;INFOS;22/01/2023;11:30:20.3387;;Log FullPathName : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\Log_astrotargetselector.csv
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;247;INFOS;22/01/2023;11:30:20.3387;;Fonction InitialisationFormulaire DEBUT
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;248;INFOS;22/01/2023;11:30:20.3387;;ProductName : AstroTargetSelector
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;249;INFOS;22/01/2023;11:30:20.3387;;Version : 1.2.0.1
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;250;INFOS;22/01/2023;11:30:20.3387;;Application file : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug\AstroTargetSelector.exe
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;251;INFOS;22/01/2023;11:30:20.4187;;Répertoire UserAppDataPath : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\1.2.0.1
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;252;INFOS;22/01/2023;11:30:20.4187;;Répertoire StartupPath : C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Debug
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;253;INFOS;22/01/2023;11:30:20.4187;;Windows Version : Microsoft Windows NT 6.2.9200.0
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;254;INFOS;22/01/2023;11:30:20.4187;;Code Langue - Code Pays : fr-FR
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;268;INFOS;22/01/2023;11:30:20.4750;;Valeur du Settings WindowMaximized : False
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;SetDefaultValue;ObjInputs.cs;326;INFOS;22/01/2023;11:30:20.4750;;Positionnement des paramètres Inputs par défaut
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;SetDefaultValue;ObjInputs.cs;332;INFOS;22/01/2023;11:30:20.4810;;Date d'Observation : 22/01/2023 11:45:00
+AstroTargetSelector;AstroTargetSelector;MainFenetre;dateTimePickerDateObservation_ValueChanged;MainFenetre.cs;1780;INFOS;22/01/2023;11:30:20.4830;;Modification de la Date d'observation : 22/01/2023
+AstroTargetSelector;AstroTargetSelector;MainFenetre;dateTimePickerHeureObservation_ValueChanged;MainFenetre.cs;1794;INFOS;22/01/2023;11:30:20.4830;;Modification de l'Heure d'observation : 11:45
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;LieuObservation;ObjInputs.cs;44;INFOS;22/01/2023;11:30:20.4992;;Lieu d'Observation : 48° 21' 35,20" N / 7° 7' 57,50" E
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;87;INFOS;22/01/2023;11:30:20.4992;;Rechargement de la liste des capteurs depuis le fichier de configuration
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;100;INFOS;22/01/2023;11:30:20.5304;;Fichier de configuration contenant la liste des capteurs : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\1.2.0.1\CapteurListe.csv
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjCapteurList;ChargementListe;ObjCapteurList.cs;123;INFOS;22/01/2023;11:30:20.5617;53;Chargement de 27 capteurs en 53 ms
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjInputs;ZonesExclues;ObjInputs.cs;217;INFOS;22/01/2023;11:30:20.5617;;Création liste ZonesExclues
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:20.5933;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;ApplicationTools;AppStellarium;IsInstalled;AppProgramme.cs;67;INFOS;22/01/2023;11:30:20.5933;;Vérification de l'installation du logiciel Stellarium sur le poste
+AstroTargetSelector;ApplicationTools;RegistryUtils;IsProgramInstalled;RegistryUtils.cs;25;INFOS;22/01/2023;11:30:20.5933;;Vérification de l'installation du programme : Stellarium
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramKey;RegistryUtils.cs;183;INFOS;22/01/2023;11:30:20.5933;;Recherche de la clé d'installation du programme : Stellarium
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.5933;;Parcours des clés de HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6090;;Parcours des clés de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6090;;Parcours des clés de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;234;INFOS;22/01/2023;11:30:20.6169;;Programme Stellarium installé sur le poste.
+AstroTargetSelector;ApplicationTools;AppStellarium;IsInstalled;AppProgramme.cs;75;INFOS;22/01/2023;11:30:20.6169;;La vérification de l'installation a retourné True en 15 ms
+AstroTargetSelector;ApplicationTools;AppCartesDuCiel;IsInstalled;AppProgramme.cs;67;INFOS;22/01/2023;11:30:20.6169;;Vérification de l'installation du logiciel Cartes du Ciel sur le poste
+AstroTargetSelector;ApplicationTools;RegistryUtils;IsProgramInstalled;RegistryUtils.cs;25;INFOS;22/01/2023;11:30:20.6169;;Vérification de l'installation du programme : Cartes du Ciel
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramKey;RegistryUtils.cs;183;INFOS;22/01/2023;11:30:20.6169;;Recherche de la clé d'installation du programme : Cartes du Ciel
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6250;;Parcours des clés de HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6250;;Parcours des clés de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6330;;Parcours des clés de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;234;INFOS;22/01/2023;11:30:20.6410;;Programme Cartes du Ciel installé sur le poste.
+AstroTargetSelector;ApplicationTools;AppCartesDuCiel;IsInstalled;AppProgramme.cs;75;INFOS;22/01/2023;11:30:20.6410;;La vérification de l'installation a retourné True en 20 ms
+AstroTargetSelector;ApplicationTools;AppAstroSessionOrganizer;IsInstalled;AppProgramme.cs;67;INFOS;22/01/2023;11:30:20.6410;;Vérification de l'installation du logiciel AstroSessionOrganizer sur le poste
+AstroTargetSelector;ApplicationTools;RegistryUtils;IsProgramInstalled;RegistryUtils.cs;25;INFOS;22/01/2023;11:30:20.6410;;Vérification de l'installation du programme : AstroSessionOrganizer
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramKey;RegistryUtils.cs;183;INFOS;22/01/2023;11:30:20.6410;;Recherche de la clé d'installation du programme : AstroSessionOrganizer
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6490;;Parcours des clés de HKEY_CURRENT_USER\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;225;INFOS;22/01/2023;11:30:20.6490;;Parcours des clés de HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetUninstallProgramInRootKey;RegistryUtils.cs;234;INFOS;22/01/2023;11:30:20.6490;;Programme AstroSessionOrganizer installé sur le poste.
+AstroTargetSelector;ApplicationTools;AppAstroSessionOrganizer;IsInstalled;AppProgramme.cs;75;INFOS;22/01/2023;11:30:20.6570;;La vérification de l'installation a retourné True en 9 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:20.6570;;Status Set Default Text
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationListeTarget;MainFenetre.cs;514;INFOS;22/01/2023;11:30:20.6972;;Initialisation de la liste des Targets OK
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboModeVisualisation;MainFenetre.cs;450;INFOS;22/01/2023;11:30:20.7445;;Chargement de la comboBoxVisualisation
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboModeVisualisation;MainFenetre.cs;473;INFOS;22/01/2023;11:30:20.8386;;Chargement de 4 Mode de Visualisation et sélection de l'élément : System.Data.DataRowView
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboMinuteIntervalle;MainFenetre.cs;354;INFOS;22/01/2023;11:30:20.8466;;Chargement de la comboBoxMinuteIntervalle
+AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxMinuteIntervalle_SelectedIndexChanged;MainFenetre.cs;1808;INFOS;22/01/2023;11:30:20.8626;;Modification des minutes par intervalle : 5
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;106;INFOS;22/01/2023;11:30:20.8814;;Rechargement de la liste des targets depuis le fichier de configuration
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;119;INFOS;22/01/2023;11:30:20.9029;;Fichier de configuration contenant la liste des objets céleste : C:\Users\miste\AppData\Roaming\AstrAuDobson\AstroTargetSelector\1.2.0.1\TargetListe.csv
+AstroTargetSelector;AstroTargetSelectorBusiness;ObjTargetList;ChargementListe;ObjTargetList.cs;152;INFOS;22/01/2023;11:30:20.9351;57;Chargement de 244 targets en 57 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboMinuteIntervalle;MainFenetre.cs;369;INFOS;22/01/2023;11:30:20.9351;;Chargement de 4 Intervalles et sélection de l'élément : 5
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboTotalTimeSlice;MainFenetre.cs;378;INFOS;22/01/2023;11:30:20.9351;;Chargement de la comboBoxTotalTimeSlice
+AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxTotalTimeSlice_SelectedIndexChanged;MainFenetre.cs;1823;INFOS;22/01/2023;11:30:20.9507;;Modification de la durée d'observation : 2
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboTotalTimeSlice;MainFenetre.cs;393;INFOS;22/01/2023;11:30:20.9663;;Chargement de 3 Durées et sélection de l'élément : 2
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreRank;MainFenetre.cs;402;INFOS;22/01/2023;11:30:20.9663;;Chargement de la comboBoxFiltreRank
+AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreRank_SelectedIndexChanged;MainFenetre.cs;1850;INFOS;22/01/2023;11:30:20.9663;;Modification du Filtre Rank : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreRank;MainFenetre.cs;417;INFOS;22/01/2023;11:30:20.9663;;Chargement de 6 Filtre de Rank et sélection de l'élément : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreMagnitude;MainFenetre.cs;426;INFOS;22/01/2023;11:30:20.9824;;Chargement de la comboBoxFiltreMagnitude
+AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreMagnitude_SelectedIndexChanged;MainFenetre.cs;1862;INFOS;22/01/2023;11:30:20.9980;;Modification du Filtre Magnitude : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationComboFiltreMagnitude;MainFenetre.cs;441;INFOS;22/01/2023;11:30:21.0136;;Chargement de 7 Filtre de Magnitude et sélection de l'élément : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;checkBoxHauteur_CheckedChanged;MainFenetre.cs;1932;INFOS;22/01/2023;11:30:21.0136;;Modification de la visibilité de la série Hauteur : True
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:21.0136;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeFiltreType;MainFenetre.cs;690;INFOS;22/01/2023;11:30:21.0293;;Chargement de la liste des filtres sur Type
+AstroTargetSelector;AstroTargetSelector;MainFenetre;comboBoxFiltreType_SelectedIndexChanged;MainFenetre.cs;1838;INFOS;22/01/2023;11:30:21.0853;;Modification du Filtre Type : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeFiltreType;MainFenetre.cs;705;INFOS;22/01/2023;11:30:21.0853;;Chargement de 14 Type de Target et sélection de l'élément : Tous
+AstroTargetSelector;AstroTargetSelector;MainFenetre;InitialisationFormulaire;MainFenetre.cs;328;INFOS;22/01/2023;11:30:21.0853;759;Fonction InitialisationFormulaire FIN
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:21.0853;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;1150;INFOS;22/01/2023;11:30:21.1578;;Lancement de la vérification de la présence d'une nouvelle version de l'application
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetActionStatusText;MainFenetre.cs;1015;INFOS;22/01/2023;11:30:21.1665;;Status Set Action Text : Vérification de la présence d'une nouvelle version de l'application
+AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;1164;INFOS;22/01/2023;11:30:21.2284;;Téléchargement du fichier Version.csv
+AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;1176;INFOS;22/01/2023;11:30:23.1846;2023;Téléchargement du fichier effectué en 2023 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;CheckIfNouvelleVersion;MainFenetre.cs;1202;INFOS;22/01/2023;11:30:23.2232;;Pas de nouvelle version disponible : 1.2.0.1 / 1.1.0.1
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:23.2232;;Status Set Default Text
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeTarget;MainFenetre.cs;542;INFOS;22/01/2023;11:30:23.2312;;Chargement de la liste des targets
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetActionStatusText;MainFenetre.cs;1015;INFOS;22/01/2023;11:30:23.2312;;Status Set Action Text : Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ...
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeTarget;MainFenetre.cs;606;INFOS;22/01/2023;11:30:24.0080;777;Chargement de la liste des 241 targets effectué en 777 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:24.0160;;Status Set Default Text
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:24.0240;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:24.0240;;Status Set Default Text
+AstroTargetSelector;AstroTargetSelector;MainFenetre;backgroundWorkerTCPServer_DoWork;MainFenetre.cs;1435;INFOS;22/01/2023;11:30:24.0320;;Exécution asynchrone de la commande Start du serveur TCP
+AstroTargetSelector;AstroTargetSelectorBusiness;AppTCPServer;Start;AppTCPServer.cs;104;INFOS;22/01/2023;11:30:24.0400;;Start du serveur TCP
+AstroTargetSelector;AstroTargetSelectorBusiness;AppTCPServer;Start;AppTCPServer.cs;113;INFOS;22/01/2023;11:30:24.0400;;[TCP] Attente de commande
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:29.0010;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetInstallLocation;RegistryUtils.cs;115;INFOS;22/01/2023;11:30:33.4490;;Lecture du champ InstallLocation du programme : AstroSessionOrganizer
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetSoftwareUninstallProgramKey;RegistryUtils.cs;256;INFOS;22/01/2023;11:30:33.4490;;Recherche de la clé d'installation du programme : AstroSessionOrganizer
+AstroTargetSelector;ApplicationTools;RegistryUtils;GetInstallLocation;RegistryUtils.cs;123;INFOS;22/01/2023;11:30:33.4490;;Programme AstroSessionOrganizer installé dans le répertoire C:\Program Files (x86)\AstrAuDobson\AstroSessionOrganizer\
+AstroTargetSelector;ApplicationTools;;Start;AppProgramme.cs;180;INFOS;22/01/2023;11:30:33.4730;;Lancement exécution du programme : C:\Program Files (x86)\AstrAuDobson\AstroSessionOrganizer\AstroSessionOrganizer.exe
+AstroTargetSelector;AstroTargetSelectorBusiness;AppTCPServer;Start;AppTCPServer.cs;122;INFOS;22/01/2023;11:30:45.4408;;[TCP] Reception message : focusto;NGC 6992;Rémanent de supernova;Le Cygne;20.9383333333333;31.7416666666667;0;60;8
+AstroTargetSelector;AstroTargetSelectorBusiness;;InterpreteCommande;AppTCPServer.cs;184;INFOS;22/01/2023;11:30:45.4488;;Interpretation commande TCP : focusto;NGC 6992;Rémanent de supernova;Le Cygne;20.9383333333333;31.7416666666667;0;60;8
+AstroTargetSelector;AstroTargetSelector;MainFenetre;FocusToObject;MainFenetre.cs;1455;INFOS;22/01/2023;11:30:45.4488;;Lancement de la commande FocusTo depuis TCP
+AstroTargetSelector;AstroTargetSelector;MainFenetre;FocusToObject;MainFenetre.cs;1478;INFOS;22/01/2023;11:30:45.4488;0;Commande FocusTo depuis TCP exécutée en 0 ms
+AstroTargetSelector;AstroTargetSelectorBusiness;AppTCPServer;Start;AppTCPServer.cs;137;INFOS;22/01/2023;11:30:45.4488;;[TCP] Envoi Acknowledge : FocusTo OK [NGC 6992]
+AstroTargetSelector;AstroTargetSelector;MainFenetre;textBoxFiltreNomDescription_TextChanged;MainFenetre.cs;1874;INFOS;22/01/2023;11:30:45.4488;;Modification du Filtre Nom/Description : NGC 6992
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeTarget;MainFenetre.cs;542;INFOS;22/01/2023;11:30:45.4568;;Chargement de la liste des targets
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetActionStatusText;MainFenetre.cs;1015;INFOS;22/01/2023;11:30:45.4568;;Status Set Action Text : Actualisation de la liste des objets célestes et recalcul des Scoring, Rank et Positions ...
+AstroTargetSelector;AstroTargetSelector;MainFenetre;RechargeListeTarget;MainFenetre.cs;606;INFOS;22/01/2023;11:30:45.5442;89;Chargement de la liste des 1 targets effectué en 89 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:45.5484;;Status Set Default Text
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;726;INFOS;22/01/2023;11:30:45.5484;;Rechargement du Panneau d'informations sur l'objet céleste sélectionné
+AstroTargetSelector;AstroTargetSelector;MainFenetre;UpdateViewPanelInfo;MainFenetre.cs;938;INFOS;22/01/2023;11:30:45.6161;66;Chargement du Panneau d'informations pour l'objet NGC 6992 en 66 ms
+AstroTargetSelector;AstroTargetSelector;MainFenetre;SetDefaultStatusText;MainFenetre.cs;1005;INFOS;22/01/2023;11:30:45.6241;;Status Set Default Text

@@ -26,6 +26,17 @@ namespace AstroTargetSelectorBusiness
         #region Méthodes
 
         /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public IAppTCPServer GetAppTCPServer()
+        {
+            if (appUDPServer == null)
+                appUDPServer = new AppTCPServer(this, GetAppTarget(), GetAppInputs());
+            return appUDPServer;
+        }
+
+        /// <summary>
         /// Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
         /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
         /// </summary>
@@ -155,6 +166,11 @@ namespace AstroTargetSelectorBusiness
         #endregion
 
         #region Champs
+
+        /// <summary>
+        /// Objet applicatif permettant la gestion du serveur UDP
+        /// </summary>
+        private IAppTCPServer appUDPServer = null;
 
         /// <summary>
         /// Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives

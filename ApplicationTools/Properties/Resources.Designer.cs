@@ -70,6 +70,15 @@ namespace ApplicationTools.Properties {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à ASTAP.
+        /// </summary>
+        public static string Astap {
+            get {
+                return ResourceManager.GetString("Astap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cartes du Ciel.
         /// </summary>
         public static string CartesDuCiel {
@@ -84,6 +93,15 @@ namespace ApplicationTools.Properties {
         public static string E {
             get {
                 return ResourceManager.GetString("E", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Fonctionnalité non disponible.
+        /// </summary>
+        public static string FonctionnaliteNonDisponible {
+            get {
+                return ResourceManager.GetString("FonctionnaliteNonDisponible", resourceCulture);
             }
         }
         
@@ -300,6 +318,24 @@ namespace ApplicationTools.Properties {
         public static string UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel {
             get {
                 return ResourceManager.GetString("UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Version actuelle.
+        /// </summary>
+        public static string VersionActuelle {
+            get {
+                return ResourceManager.GetString("VersionActuelle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Version minimale requise.
+        /// </summary>
+        public static string VersionMinimaleRequise {
+            get {
+                return ResourceManager.GetString("VersionMinimaleRequise", resourceCulture);
             }
         }
         

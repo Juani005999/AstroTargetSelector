@@ -342,6 +342,12 @@ namespace AstroTargetSelector
             // Boutons et Contrôles
             btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
             btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            if (!nuit)
+            {
+                btOK.UseVisualStyleBackColor = true;
+                btCancel.UseVisualStyleBackColor = true;
+            }
+
             // Position
             textBoxLongitudeDegre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
             textBoxLongitudeDegre.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;

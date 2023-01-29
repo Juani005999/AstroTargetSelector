@@ -269,5 +269,8 @@
   <ItemGroup>
     <None Include="Ressources\3_white_2.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\ASO.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -154,5 +154,29 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["ModeNuit"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TCPServerPort {
+            get {
+                return ((string)(this["TCPServerPort"]));
+            }
+            set {
+                this["TCPServerPort"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TCPServerIP {
+            get {
+                return ((string)(this["TCPServerIP"]));
+            }
+            set {
+                this["TCPServerIP"] = value;
+            }
+        }
     }
 }

@@ -55,6 +55,8 @@
     <Compile Include="App\AppCapteur.cs" />
     <Compile Include="App\AppInputs.cs" />
     <Compile Include="App\AppTarget.cs" />
+    <Compile Include="App\AppTCPServer.cs" />
+    <Compile Include="Interfaces\IAppTCPServer.cs" />
     <Compile Include="Business\ObjCapteur.cs" />
     <Compile Include="Business\ObjCapteurList.cs" />
     <Compile Include="Business\ObjDailySliceTarget.cs" />

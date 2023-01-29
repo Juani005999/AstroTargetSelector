@@ -1,2 +1,2 @@
-NGC 6302	Nébuleuse de l'Insecte - Caldwell 69 - SH2-6
-NGC 2174	Nébuleuse de la Tête de Singe
+NGC 6302	Nébuleuse de l'Insecte - Caldwell 69 - SH2-6		-> OK
+NGC 2174	Nébuleuse de la Tête de Singe					-> OK

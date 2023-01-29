@@ -344,6 +344,8 @@ namespace ApplicationTools
 
                 // Repositionnement du flag d'action en cours
                 isRunning = false;
+                // On passe le programme en avant plan
+                Start();
 
                 // Trace
                 appLog.Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);

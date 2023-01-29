@@ -87,8 +87,12 @@ namespace AstroTargetSelector
             btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
             textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
             textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            if (!nuit)
+            {
+                btOK.UseVisualStyleBackColor = true;
+            }
         }
-        
+
         #endregion
 
         #region Champs

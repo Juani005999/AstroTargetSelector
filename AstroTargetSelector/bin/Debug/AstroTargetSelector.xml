@@ -539,6 +539,18 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.backgroundWorkerTCPServer_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Traitement asynchrone du serveur UDP
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.FocusToObject(AstroTargetSelectorBusiness.IObjTarget)">
+            <summary>
+            Lance la commande de sélection d'un objet céleste (Réception de commande depuis TCP)
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.MainFenetre.LoadLibelles">
             <summary>
             Charge des libellés statiques
@@ -547,6 +559,11 @@
         <member name="M:AstroTargetSelector.MainFenetre.SetAffichage">
             <summary>
             Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.StartASO">
+            <summary>
+            Lance l'application AstroSessionOrganizer
             </summary>
         </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
@@ -577,6 +594,11 @@
         <member name="F:AstroTargetSelector.MainFenetre.toolstripRendererStatus">
             <summary>
             Composant de rendu jour/Nuit pour la Status Bar
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.MainFenetre.forceSelectedNom">
+            <summary>
+            Sélection forcée d'un élément dans la liste
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.OnLoad(System.EventArgs)">
@@ -649,6 +671,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Actualiser">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.ASO">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

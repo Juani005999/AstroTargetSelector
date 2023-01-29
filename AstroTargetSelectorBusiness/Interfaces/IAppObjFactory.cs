@@ -12,6 +12,12 @@ namespace AstroTargetSelectorBusiness
         #region Méthodes
 
         /// <summary>
+        /// Renvoi l'objet applicatif permettant la gestion du serveur UDP
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        IAppTCPServer GetAppTCPServer();
+
+        /// <summary>
         /// Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
         /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
         /// </summary>

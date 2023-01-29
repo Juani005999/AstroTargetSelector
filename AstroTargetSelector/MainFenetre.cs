@@ -2,6 +2,7 @@
 using System.Windows.Forms;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Windows.Forms.DataVisualization.Charting;
 using System.Drawing;
 using System.Net;
@@ -10,8 +11,6 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
-using System.Globalization;
-using System.Drawing.Drawing2D;
 
 namespace AstroTargetSelector
 {
@@ -298,8 +297,10 @@ namespace AstroTargetSelector
                 SetAffichage();
 
                 // Bouton Stellarium et Cartes du Ciel masqués si Logiciel non installé
-                buttonStellarium.Visible = factory.GetAppStellarium().IsInstalled;
-                buttonCartesDuCiel.Visible = factory.GetAppCartesDuCiel().IsInstalled;
+                buttonStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
+                buttonCartesDuCiel.Enabled = factory.GetAppCartesDuCiel().IsInstalled;
+                astroSessionOrganizerToolStripMenuItem.Enabled = factory.GetAppAstroSessionOrganizer().IsInstalled;
+                buttonAstroSessionOrganizer.Enabled = factory.GetAppAstroSessionOrganizer().IsInstalled;
 
                 // Text par défaut de la Status Bar et positionnement ToolTip fixe
                 SetDefaultStatusText();
@@ -307,6 +308,7 @@ namespace AstroTargetSelector
                 toolTipInfoTarget.SetToolTip(pictureBoxInfoTarget, Resources.LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum);
                 toolTipStellarium.SetToolTip(buttonStellarium, Resources.AfficherLObjetCelesteDansStellarium);
                 toolTipCartesDuCiel.SetToolTip(buttonCartesDuCiel, Resources.AfficherLObjetCelesteDansCartesDuCiel);
+                toolTipASO.SetToolTip(buttonAstroSessionOrganizer, Resources.DemarrerLApplicationAstroSessionOrganizer);
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
@@ -553,6 +555,11 @@ namespace AstroTargetSelector
                 string selectedTarget = string.Empty;
                 if (listViewTarget.SelectedItems.Count > 0)
                     selectedTarget = listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text;
+                if (!string.IsNullOrEmpty(forceSelectedNom))
+                {
+                    selectedTarget = forceSelectedNom;
+                    forceSelectedNom = string.Empty;
+                }
 
                 // Clear de la liste et parcours de la liste des Targets pour ajout
                 listViewTarget.Items.Clear();
@@ -1416,6 +1423,77 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
+        /// Traitement asynchrone du serveur UDP
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorkerTCPServer_DoWork(object sender, System.ComponentModel.DoWorkEventArgs e)
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Exécution asynchrone de la commande Start du serveur TCP", GetType().Name);
+
+                // Démarrage du serveur TCP
+                factory.GetAppTCPServer().Start(new Action<IObjTarget> ((objParam) => FocusToObject(objParam)));
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+            }
+        }
+
+        /// <summary>
+        /// Lance la commande de sélection d'un objet céleste (Réception de commande depuis TCP)
+        /// </summary>
+        public void FocusToObject(IObjTarget objetCeleste)
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande FocusTo depuis TCP", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                if (objetCeleste == null)
+                    throw new WarningException($"Objet sélectionné non trouvé dans la collection");
+
+                BeginInvoke(new Action(() =>
+                {
+                    // Flush des filtres en cours
+                    actualisationEnCours = true;
+                    textBoxFiltreNomDescription.Text = objetCeleste.Nom;
+                    comboBoxFiltreType.SelectedIndex = 0;
+                    comboBoxFiltreRank.SelectedIndex = 0;
+                    comboBoxFiltreMagnitude.SelectedIndex = 0;
+                    comboBoxVisualisation.SelectedValue = ModeVisualisation.Annuel.ToString();
+                    actualisationEnCours = false;
+                    // Sélection objet et actualisation de la liste
+                    forceSelectedNom = objetCeleste.Nom;
+                    UpdateListeAndPanel();
+                }), null);
+
+                // Trace
+                factory.GetLog().Log($"Commande FocusTo depuis TCP exécutée en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (WarningException err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
         /// Charge des libellés statiques
         /// </summary>
         private void LoadLibelles()
@@ -1495,8 +1573,13 @@ namespace AstroTargetSelector
             dateTimePickerHeureObservation.CalendarMonthBackground = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
             dateTimePickerHeureObservation.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
             dateTimePickerHeureObservation.CalendarTitleBackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            buttonStartCalcul.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            btModifierParametre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            buttonStartCalcul.BackColor = nuit ? factory.GetAppContext().BackColor : default(Color);
+            btModifierParametre.BackColor = nuit ? factory.GetAppContext().BackColor : default(Color);
+            if (!nuit)
+            {
+                buttonStartCalcul.UseVisualStyleBackColor = true;
+                btModifierParametre.UseVisualStyleBackColor = true;
+            }
 
             // ToolTips toolTipInfoParametre
             toolTipInfoParametre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
@@ -1571,6 +1654,26 @@ namespace AstroTargetSelector
             UpdateViewPanelInfo();
         }
 
+        /// <summary>
+        /// Lance l'application AstroSessionOrganizer
+        /// </summary>
+        private void StartASO()
+        {
+            try
+            {
+                factory.GetAppAstroSessionOrganizer().Start();
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
         #endregion
 
         #region Champs
@@ -1604,7 +1707,12 @@ namespace AstroTargetSelector
         /// Composant de rendu jour/Nuit pour la Status Bar
         /// </summary>
         private ATSToolStripRenderer toolstripRendererStatus = null;
-        
+
+        /// <summary>
+        /// Sélection forcée d'un élément dans la liste
+        /// </summary>
+        private string forceSelectedNom = string.Empty;
+
         #endregion
 
         #region Evénements
@@ -1622,11 +1730,10 @@ namespace AstroTargetSelector
 
             // Update du Panel Info
             UpdateViewPanelInfo();
+        }
 
-            // On force un update de l'affichage
-            Show();
-            Application.DoEvents();
-
+        private void MainFenetre_Shown(object sender, EventArgs e)
+        {
             // Vérification de la présence d'une nouvelle version
             string version = string.Empty;
             string nom = string.Empty;
@@ -1639,10 +1746,12 @@ namespace AstroTargetSelector
                 dialogNewVersion.ShowDialog();
             }
 
-            //// Rechargement de la ListeView et de la liste des filtres sur Type
-            //RechargeListeTarget();
-            //RechargeListeFiltreType();
+            // Rechargement de la ListeView et de la liste des filtres sur Type
             UpdateListeAndPanel();
+
+            // Lancement de la tâche de fond du serveur UDP
+            if (!backgroundWorkerTCPServer.IsBusy)
+                backgroundWorkerTCPServer.RunWorkerAsync();
         }
 
         #endregion
@@ -2039,6 +2148,16 @@ namespace AstroTargetSelector
             e.DrawFocusRectangle();
             if (e.Index != -1)
                 e.Graphics.DrawString(comboBoxTotalTimeSlice.Items[e.Index].ToString(), e.Font, brushText, e.Bounds);
+        }
+
+        private void astroSessionOrganizerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            StartASO();
+        }
+
+        private void buttonAstroSessionOrganizer_Click(object sender, EventArgs e)
+        {
+            StartASO();
         }
     }
 }

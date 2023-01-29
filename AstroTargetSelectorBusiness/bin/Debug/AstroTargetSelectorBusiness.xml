@@ -14,6 +14,12 @@
             Constructeur par défaut
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppTCPServer">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppTarget">
             <summary>
             Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -60,6 +66,11 @@
             <summary>
             Renvoi la liste des Modes de Visualisation pour l'affichage dans la liste
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appUDPServer">
+            <summary>
+            Objet applicatif permettant la gestion du serveur UDP
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appTarget">
@@ -305,6 +316,98 @@
         <member name="F:AstroTargetSelectorBusiness.AppTarget.listeType">
             <summary>
             Liste distinctes des différents type d'objet céleste
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.AppTCPServer">
+            <summary>
+            Objet applicatif permettant la gestion du serveur UDP
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTCPServer.TCPServerPort">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTCPServer.TCPServerIP">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppTCPServer.IsRunning">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTCPServer.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppTarget,AstroTargetSelectorBusiness.IAppInputs)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTCPServer.Start(System.Action{AstroTargetSelectorBusiness.IObjTarget})">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTCPServer.Abort">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppTCPServer.InterpreteCommande(System.String,AstroTargetSelectorBusiness.IObjTarget@)">
+            <summary>
+            Interpretation de la commande envoyée sur TCP
+            </summary>
+            <param name="tcpCommande"></param>
+            <param name="objet"></param>
+            <returns>messageRetour</returns>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTCPServer.appToolFactory">
+            <summary>
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTCPServer.appTarget">
+            <summary>
+            Objet applicatif permettant d'accéder à la collection des Targets
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppTCPServer.appInputs">
+            <summary>
+            Objet applicatif permettant d'accéder aux Inputs
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppTCPServer">
+            <summary>
+            Interface de l'Objet applicatif permettant la gestion du serveur UDP
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTCPServer.TCPServerPort">
+            <summary>
+            Port du server TCP
+            <para>par défaut : 7142</para>
+            <para>Les accesseurs get set positionne le paramètre applicatif</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTCPServer.TCPServerIP">
+            <summary>
+            IP du serveur TCP
+            <para>par défaut : 127.0.0.1</para>
+            <para>Les accesseurs get set positionne le paramètre applicatif</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppTCPServer.IsRunning">
+            <summary>
+            Le serveur est-il en cours d'exécution
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppTCPServer.Start(System.Action{AstroTargetSelectorBusiness.IObjTarget})">
+            <summary>
+            Démarrage du serveur TCP
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppTCPServer.Abort">
+            <summary>
+            Arrêt du serveur TCP
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjCapteur">
@@ -1125,6 +1228,12 @@
             Interface de la Fabrique d'objets Business (métier) et Logic (applicatif)
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppTCPServer">
+            <summary>
+            Renvoi l'objet applicatif permettant la gestion du serveur UDP
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppTarget">
             <summary>
             Renvoi l'objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -1749,6 +1858,11 @@
               Recherche une chaîne localisée semblable à DEC (J2000).
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.DemarrerLApplicationAstroSessionOrganizer">
+            <summary>
+              Recherche une chaîne localisée semblable à Démarrer l&apos;application AstroSessionOrganizer.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Description">
             <summary>
               Recherche une chaîne localisée semblable à Description.
@@ -1997,6 +2111,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Nom">
             <summary>
               Recherche une chaîne localisée semblable à Nom.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.NombreDeParametresIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Nombre de paramètres incorrect.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.NouvelleVersionDisponible">

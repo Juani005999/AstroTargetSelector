@@ -49,6 +49,20 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet IAppProgramme</returns>
         </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppAstroSessionOrganizer">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstroSessionOrganizer"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
+        <member name="M:ApplicationTools.AppToolFactory.GetAppAstap">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstap"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
         <member name="M:ApplicationTools.AppToolFactory.GetCoordinates(System.Double,System.Double)">
             <summary>
             Retourne un nouvel objet de type <see cref="T:ApplicationTools.Coordinates"/>
@@ -94,6 +108,16 @@
         <member name="F:ApplicationTools.AppToolFactory.appATS">
             <summary>
             Objet <see cref="T:ApplicationTools.AppAstroTargetSelector"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appASO">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppAstroSessionOrganizer"/>
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppToolFactory.appAstap">
+            <summary>
+            Objet <see cref="T:ApplicationTools.AppAstap"/>
             </summary>
         </member>
         <member name="F:ApplicationTools.AppToolFactory.consoleQueue">
@@ -287,6 +311,11 @@
             Fore Color Light du mode Nuit
             </summary>
         </member>
+        <member name="P:ApplicationTools.IAppContext.UserProfilePath">
+            <summary>
+            Répertoire root du Profil Utilisateur
+            </summary>
+        </member>
         <member name="T:ApplicationTools.TypeLog">
             <summary>
             Type de trace
@@ -419,6 +448,13 @@
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
+        <member name="M:ApplicationTools.IAppProgramme.Start">
+            <summary>
+            Démarre l'application
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+            </summary>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
         <member name="T:ApplicationTools.IAppToolFactory">
             <summary>
             Interface de la Fabrique d'objets technique
@@ -475,6 +511,157 @@
             <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
             <returns>Objet IConsoleQueue</returns>
         </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppAstroTargetSelector">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstroTargetSelector"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppAstroSessionOrganizer">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstroSessionOrganizer"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
+        <member name="M:ApplicationTools.IAppToolFactory.GetAppAstap">
+            <summary>
+            Retourne l'objet <see cref="T:ApplicationTools.AppAstap"/>
+            </summary>
+            <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+            <returns>Objet IAppProgramme</returns>
+        </member>
+        <member name="T:ApplicationTools.AppAstap">
+            <summary>
+            Objet de communication avec le logiciel ASTAP (Astrometry)
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppAstap.AstapSleepForRemmoteControlStart">
+            <summary>
+            Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.Host">
+            <summary>
+            Serveur ATS
+            <para>par défaut localhost</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstap.Port">
+            <summary>
+            Port du Serveur ATS
+            <para>par défaut 7142</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstap.#ctor(ApplicationTools.IAppLog)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstap.FocusTo(System.String,System.DateTime)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans ATS
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande ATS</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="T:ApplicationTools.AppAstroSessionOrganizer">
+            <summary>
+            Objet de communication avec le logiciel ASO
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppAstroSessionOrganizer.ASOSleepForRemmoteControlStart">
+            <summary>
+            Temps d'attente supplémentaire (en ms) pour le démarrage du Remote Plugin plugin
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.DisplayName">
+            <summary>
+            DisplayName du Logiciel dans la Registry
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.StartTimeout">
+            <summary>
+            TimeOut (en s) pour le démarage de l'application
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.FileName">
+            <summary>
+            Nom de fichier du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.ProcessName">
+            <summary>
+            Nom du Processus d'exécution
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.Host">
+            <summary>
+            Serveur ASO
+            <para>par défaut localhost</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.Port">
+            <summary>
+            Port du Serveur ASO
+            <para>par défaut 7142</para>
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppAstroSessionOrganizer.InstallLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstroSessionOrganizer.#ctor(ApplicationTools.IAppLog)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:ApplicationTools.AppAstroSessionOrganizer.FocusTo(System.String,System.DateTime)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans ATS
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande ATS</para>
+            </summary>
+            <param name="nomTarget"></param>
+            <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="F:ApplicationTools.AppAstroSessionOrganizer.installLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
         <member name="T:ApplicationTools.AppAstroTargetSelector">
             <summary>
             Objet de communication avec le logiciel ATS
@@ -521,6 +708,11 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
+        <member name="P:ApplicationTools.AppAstroTargetSelector.InstallLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
+            </summary>
+        </member>
         <member name="M:ApplicationTools.AppAstroTargetSelector.#ctor(ApplicationTools.IAppLog)">
             <summary>
             Constructeur par défaut
@@ -538,6 +730,11 @@
         <member name="F:ApplicationTools.AppAstroTargetSelector.isRunning">
             <summary>
             Flag permettant de savoir si une action est en cours
+            </summary>
+        </member>
+        <member name="F:ApplicationTools.AppAstroTargetSelector.installLocation">
+            <summary>
+            Path d'installation du Logiciel sur le poste
             </summary>
         </member>
         <member name="T:ApplicationTools.AppCartesDuCiel">
@@ -700,6 +897,13 @@
             </summary>
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppProgramme.Start">
+            <summary>
+            Démarre l'application
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
+            </summary>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
         <member name="F:ApplicationTools.AppProgramme.appLog">
@@ -998,6 +1202,11 @@
             </summary>
         </member>
         <member name="P:ApplicationTools.AppContext.UserAppDataPath">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.AppContext.UserProfilePath">
             <summary>
             <inheritdoc />
             </summary>
@@ -1307,6 +1516,15 @@
             <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetInstallLocation(System.String,System.String,ApplicationTools.IAppLog)">
+            <summary>
+            Renvoi le champ InstallLocation d'un programme installé sur le poste local
+            </summary>
+            <param name="programManufacturer">Clé Manufacturer dans la registry</param>
+            <param name="programDisplayName">Clé DisplayName dans la registry</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
+            <returns></returns>
+        </member>
         <member name="M:ApplicationTools.RegistryUtils.GetCurrentUserValue(System.String,System.String,ApplicationTools.IAppLog)">
             <summary>
             Renvoi la valeur d'une clé dans la clé root HKEY_CURRENT_USER
@@ -1333,6 +1551,25 @@
             <param name="appLog">Instance de l'objet de log en cours</param>
             <returns></returns>
         </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetSoftwareUninstallProgramKey(System.String,System.String,ApplicationTools.IAppLog)">
+            <summary>
+            Renvoi la sous-clé uninstall d'un programme
+            </summary>
+            <param name="programManufacturer">Champ DisplayName dans la registry</param>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
+            <returns></returns>
+        </member>
+        <member name="M:ApplicationTools.RegistryUtils.GetUninstallProgramInSoftwareKey(Microsoft.Win32.RegistryKey,System.String,System.String,ApplicationTools.IAppLog)">
+            <summary>
+            Renvoi la sous-clé uninstall d'un programme pour la clé root spécifiée
+            </summary>
+            <param name="rootKey"></param>
+            <param name="programManufacturer">Champ DisplayName dans la registry</param>
+            <param name="programDisplayName">Champ DisplayName dans la registry</param>
+            <param name="appLog">Instance de l'objet de log en cours</param>
+            <returns></returns>
+        </member>
         <member name="T:ApplicationTools.Properties.Resources">
             <summary>
               Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
@@ -1354,6 +1591,11 @@
               Recherche une chaîne localisée semblable à Annuler.
             </summary>
         </member>
+        <member name="P:ApplicationTools.Properties.Resources.Astap">
+            <summary>
+              Recherche une chaîne localisée semblable à ASTAP.
+            </summary>
+        </member>
         <member name="P:ApplicationTools.Properties.Resources.CartesDuCiel">
             <summary>
               Recherche une chaîne localisée semblable à Cartes du Ciel.
@@ -1362,6 +1604,11 @@
         <member name="P:ApplicationTools.Properties.Resources.E">
             <summary>
               Recherche une chaîne localisée semblable à E.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.FonctionnaliteNonDisponible">
+            <summary>
+              Recherche une chaîne localisée semblable à Fonctionnalité non disponible.
             </summary>
         </member>
         <member name="P:ApplicationTools.Properties.Resources.FonctionnaliteNonDisponiblePourLaVersion022XDeStellarium">
@@ -1482,6 +1729,16 @@
         <member name="P:ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel">
             <summary>
               Recherche une chaîne localisée semblable à Une erreur est survenue lors de l&apos;ouverture du logiciel..
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.VersionActuelle">
+            <summary>
+              Recherche une chaîne localisée semblable à Version actuelle.
+            </summary>
+        </member>
+        <member name="P:ApplicationTools.Properties.Resources.VersionMinimaleRequise">
+            <summary>
+              Recherche une chaîne localisée semblable à Version minimale requise.
             </summary>
         </member>
         <member name="P:ApplicationTools.Properties.Resources.VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration">

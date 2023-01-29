@@ -91,12 +91,42 @@ namespace ApplicationTools
         /// <returns>Objet IAppProgramme</returns>
         public IAppProgramme GetAppAstroTargetSelector()
         {
-            // Création et initialisation de l'objet AppStellarium s'il n'existe pas
+            // Création et initialisation de l'objet AppAstroTargetSelector s'il n'existe pas
             if (appATS == null)
             {
                 appATS = new AppAstroTargetSelector(GetLog());
             }
             return appATS;
+        }
+
+        /// <summary>
+        /// Retourne l'objet <see cref="AppAstroSessionOrganizer"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        public IAppProgramme GetAppAstroSessionOrganizer()
+        {
+            // Création et initialisation de l'objet AppAstroSessionOrganizer s'il n'existe pas
+            if (appASO == null)
+            {
+                appASO = new AppAstroSessionOrganizer(GetLog());
+            }
+            return appASO;
+        }
+
+        /// <summary>
+        /// Retourne l'objet <see cref="AppAstap"/>
+        /// </summary>
+        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
+        /// <returns>Objet IAppProgramme</returns>
+        public IAppProgramme GetAppAstap()
+        {
+            // Création et initialisation de l'objet AppAstap s'il n'existe pas
+            if (appAstap == null)
+            {
+                appAstap = new AppAstap(GetLog());
+            }
+            return appAstap;
         }
 
         /// <summary>
@@ -162,6 +192,16 @@ namespace ApplicationTools
         /// Objet <see cref="AppAstroTargetSelector"/>
         /// </summary>
         private IAppProgramme appATS = null;
+
+        /// <summary>
+        /// Objet <see cref="AppAstroSessionOrganizer"/>
+        /// </summary>
+        private IAppProgramme appASO = null;
+
+        /// <summary>
+        /// Objet <see cref="AppAstap"/>
+        /// </summary>
+        private IAppProgramme appAstap = null;
 
         /// <summary>
         /// Objet permettant la gestion des messages de la Console

@@ -328,6 +328,11 @@ namespace AstroTargetSelector
             // Boutons et Contrôles
             btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
             btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            if (!nuit)
+            {
+                btOK.UseVisualStyleBackColor = true;
+                btCancel.UseVisualStyleBackColor = true;
+            }
         }
 
         /// <summary>
