@@ -31,8 +31,8 @@ namespace AstroTargetSelector
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainFenetre));
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             this.menuStripGlobal = new System.Windows.Forms.MenuStrip();
             this.fichierToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mettreÀJourLaListeDesobjetsCélestesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -55,6 +55,7 @@ namespace AstroTargetSelector
             this.toolStripStatusLabelNomTarget = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolStripStatusActionEnCours = new System.Windows.Forms.ToolStripStatusLabel();
             this.splitContainerGlobal = new System.Windows.Forms.SplitContainer();
+            this.buttonAstroSessionOrganizer = new System.Windows.Forms.Button();
             this.comboBoxVisualisation = new System.Windows.Forms.ComboBox();
             this.labelVisualisation = new System.Windows.Forms.Label();
             this.labelSepInputVisualisation = new System.Windows.Forms.Label();
@@ -134,7 +135,6 @@ namespace AstroTargetSelector
             this.toolTipCartesDuCiel = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorkerCartesDuCiel = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorkerTCPServer = new System.ComponentModel.BackgroundWorker();
-            this.buttonAstroSessionOrganizer = new System.Windows.Forms.Button();
             this.toolTipASO = new System.Windows.Forms.ToolTip(this.components);
             this.menuStripGlobal.SuspendLayout();
             this.statusStripGlobal.SuspendLayout();
@@ -387,6 +387,17 @@ namespace AstroTargetSelector
             this.splitContainerGlobal.SplitterDistance = 140;
             this.splitContainerGlobal.SplitterWidth = 3;
             this.splitContainerGlobal.TabIndex = 0;
+            // 
+            // buttonAstroSessionOrganizer
+            // 
+            this.buttonAstroSessionOrganizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonAstroSessionOrganizer.Image = global::AstroTargetSelector.Properties.Resources.ASO;
+            this.buttonAstroSessionOrganizer.Location = new System.Drawing.Point(922, 0);
+            this.buttonAstroSessionOrganizer.Name = "buttonAstroSessionOrganizer";
+            this.buttonAstroSessionOrganizer.Size = new System.Drawing.Size(32, 32);
+            this.buttonAstroSessionOrganizer.TabIndex = 26;
+            this.buttonAstroSessionOrganizer.UseVisualStyleBackColor = true;
+            this.buttonAstroSessionOrganizer.Click += new System.EventHandler(this.buttonAstroSessionOrganizer_Click);
             // 
             // comboBoxVisualisation
             // 
@@ -772,7 +783,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.labelObjetCeleste);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 170;
+            this.splitContainerSecondaire.SplitterDistance = 171;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -785,7 +796,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 170);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 171);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -1176,35 +1187,35 @@ namespace AstroTargetSelector
             this.chartSliceListe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.chartSliceListe.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea3.Name = "ChartArea1";
-            chartArea3.Position.Auto = false;
-            chartArea3.Position.Height = 83F;
-            chartArea3.Position.Width = 94F;
-            chartArea3.Position.X = 3F;
-            chartArea3.Position.Y = 10F;
-            chartArea4.AlignWithChartArea = "ChartArea1";
-            chartArea4.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisX.LabelStyle.Enabled = false;
-            chartArea4.AxisX.LineColor = System.Drawing.Color.Transparent;
-            chartArea4.AxisX.LineWidth = 0;
-            chartArea4.AxisX.MajorGrid.Enabled = false;
-            chartArea4.AxisX.MajorTickMark.Enabled = false;
-            chartArea4.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
-            chartArea4.AxisY.LabelStyle.Enabled = false;
-            chartArea4.AxisY.LineWidth = 0;
-            chartArea4.AxisY.MajorGrid.Enabled = false;
-            chartArea4.AxisY.MajorTickMark.Enabled = false;
-            chartArea4.AxisY.MaximumAutoSize = 5F;
-            chartArea4.BackColor = System.Drawing.SystemColors.ButtonFace;
-            chartArea4.BorderWidth = 0;
-            chartArea4.Name = "AreaDirection";
-            chartArea4.Position.Auto = false;
-            chartArea4.Position.Height = 7F;
-            chartArea4.Position.Width = 94F;
-            chartArea4.Position.X = 3F;
-            chartArea4.Position.Y = 93F;
-            this.chartSliceListe.ChartAreas.Add(chartArea3);
-            this.chartSliceListe.ChartAreas.Add(chartArea4);
+            chartArea1.Name = "ChartArea1";
+            chartArea1.Position.Auto = false;
+            chartArea1.Position.Height = 83F;
+            chartArea1.Position.Width = 94F;
+            chartArea1.Position.X = 3F;
+            chartArea1.Position.Y = 10F;
+            chartArea2.AlignWithChartArea = "ChartArea1";
+            chartArea2.AxisX.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisX.LabelStyle.Enabled = false;
+            chartArea2.AxisX.LineColor = System.Drawing.Color.Transparent;
+            chartArea2.AxisX.LineWidth = 0;
+            chartArea2.AxisX.MajorGrid.Enabled = false;
+            chartArea2.AxisX.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.Enabled = System.Windows.Forms.DataVisualization.Charting.AxisEnabled.False;
+            chartArea2.AxisY.LabelStyle.Enabled = false;
+            chartArea2.AxisY.LineWidth = 0;
+            chartArea2.AxisY.MajorGrid.Enabled = false;
+            chartArea2.AxisY.MajorTickMark.Enabled = false;
+            chartArea2.AxisY.MaximumAutoSize = 5F;
+            chartArea2.BackColor = System.Drawing.SystemColors.ButtonFace;
+            chartArea2.BorderWidth = 0;
+            chartArea2.Name = "AreaDirection";
+            chartArea2.Position.Auto = false;
+            chartArea2.Position.Height = 7F;
+            chartArea2.Position.Width = 94F;
+            chartArea2.Position.X = 3F;
+            chartArea2.Position.Y = 93F;
+            this.chartSliceListe.ChartAreas.Add(chartArea1);
+            this.chartSliceListe.ChartAreas.Add(chartArea2);
             this.chartSliceListe.Location = new System.Drawing.Point(50, 44);
             this.chartSliceListe.Margin = new System.Windows.Forms.Padding(2);
             this.chartSliceListe.Name = "chartSliceListe";
@@ -1247,16 +1258,9 @@ namespace AstroTargetSelector
             // 
             this.backgroundWorkerTCPServer.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorkerTCPServer_DoWork);
             // 
-            // buttonAstroSessionOrganizer
+            // toolTipASO
             // 
-            this.buttonAstroSessionOrganizer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonAstroSessionOrganizer.Image = global::AstroTargetSelector.Properties.Resources.ASO;
-            this.buttonAstroSessionOrganizer.Location = new System.Drawing.Point(922, 0);
-            this.buttonAstroSessionOrganizer.Name = "buttonAstroSessionOrganizer";
-            this.buttonAstroSessionOrganizer.Size = new System.Drawing.Size(32, 32);
-            this.buttonAstroSessionOrganizer.TabIndex = 26;
-            this.buttonAstroSessionOrganizer.UseVisualStyleBackColor = true;
-            this.buttonAstroSessionOrganizer.Click += new System.EventHandler(this.buttonAstroSessionOrganizer_Click);
+            this.toolTipASO.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipASO_Draw);
             // 
             // MainFenetre
             // 

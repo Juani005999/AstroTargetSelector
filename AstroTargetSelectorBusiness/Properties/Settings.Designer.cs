@@ -178,5 +178,53 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["TCPServerIP"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BackColor {
+            get {
+                return ((string)(this["BackColor"]));
+            }
+            set {
+                this["BackColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string BackColorLight {
+            get {
+                return ((string)(this["BackColorLight"]));
+            }
+            set {
+                this["BackColorLight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ForeColor {
+            get {
+                return ((string)(this["ForeColor"]));
+            }
+            set {
+                this["ForeColor"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ForeColorLight {
+            get {
+                return ((string)(this["ForeColorLight"]));
+            }
+            set {
+                this["ForeColorLight"] = value;
+            }
+        }
     }
 }

@@ -187,6 +187,24 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Couleurs de fenêtre.
+        /// </summary>
+        public static string CouleursDeFenetre {
+            get {
+                return ResourceManager.GetString("CouleursDeFenetre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Couleurs des polices.
+        /// </summary>
+        public static string CouleursDesPolices {
+            get {
+                return ResourceManager.GetString("CouleursDesPolices", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Date.
         /// </summary>
         public static string Date {
@@ -800,6 +818,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Personnalisation de l&apos;affichage en mode nuit.
+        /// </summary>
+        public static string PersonnalisationDeLAffichageEnModeNuit {
+            get {
+                return ResourceManager.GetString("PersonnalisationDeLAffichageEnModeNuit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Port.
         /// </summary>
         public static string Port {
@@ -961,6 +988,24 @@ namespace AstroTargetSelectorResources {
         public static string Terminer {
             get {
                 return ResourceManager.GetString("Terminer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tons clairs.
+        /// </summary>
+        public static string TonsClairs {
+            get {
+                return ResourceManager.GetString("TonsClairs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Tons sombres.
+        /// </summary>
+        public static string TonsSombres {
+            get {
+                return ResourceManager.GetString("TonsSombres", resourceCulture);
             }
         }
         

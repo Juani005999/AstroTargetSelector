@@ -170,18 +170,18 @@ namespace AstroTargetSelector
         {
             bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
             // Fenêtre
-            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Boutons et Contrôles
-            buttonSendLog.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            buttonSendLog.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             buttonSendLog.Text = Resources.OuvrirLeFichierDesLogs;
             if (!nuit)
             {
                 buttonSendLog.UseVisualStyleBackColor = true;
             }
-            textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxDescription.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxDescription.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             okButton.Text = ApplicationTools.Properties.Resources.OK;
         }
 

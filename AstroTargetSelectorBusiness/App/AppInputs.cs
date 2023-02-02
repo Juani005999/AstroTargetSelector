@@ -1,6 +1,8 @@
 ﻿using ApplicationTools;
+using AstroTargetSelectorBusiness.Properties;
 using AstroTargetSelectorResources;
 using System;
+using System.Drawing;
 using System.Linq;
 
 namespace AstroTargetSelectorBusiness
@@ -98,6 +100,66 @@ namespace AstroTargetSelectorBusiness
             get
             {
                 return Inputs.BougeMax.ToString() + " px";
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColor
+        {
+            get
+            {
+                return Inputs.BackColor;
+            }
+            set
+            {
+                Inputs.BackColor = value;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColorLight
+        {
+            get
+            {
+                return Inputs.BackColorLight;
+            }
+            set
+            {
+                Inputs.BackColorLight = value;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColor
+        {
+            get
+            {
+                return Inputs.ForeColor;
+            }
+            set
+            {
+                Inputs.ForeColor = value;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColorLight
+        {
+            get
+            {
+                return Inputs.ForeColorLight;
+            }
+            set
+            {
+                Inputs.ForeColorLight = value;
             }
         }
 

@@ -199,6 +199,26 @@
             <inheritdoc />
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.BackColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.BackColorLight">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.ForeColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppInputs.ForeColorLight">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.AppInputs.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppCapteur)">
             <summary>
             Constructeur par défaut
@@ -693,6 +713,26 @@
         <member name="P:AstroTargetSelectorBusiness.ObjInputs.ModeNuit">
             <summary>
             <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.BackColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.BackColorLight">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.ForeColor">
+            <summary>
+            <inheritdoc />
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjInputs.ForeColorLight">
+            <summary>
+            <inheritdoc />
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.ObjInputs.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppCapteur)">
@@ -1223,6 +1263,34 @@
             <para>X px</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.BackColor">
+            <summary>
+            Couleur de fond des fenêttre en mode nuit
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.Black</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.BackColorLight">
+            <summary>
+            Couleur de fond des fenêttre en mode nuit (partie claire du fond)
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.DarkSlateGray</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.ForeColor">
+            <summary>
+            Couleur des polices des fenêttre en mode nuit
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.OrangeRed</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppInputs.ForeColorLight">
+            <summary>
+            Couleur des polices des fenêttre en mode nuit (composant clairs)
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.LightYellow</para>
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.IAppObjFactory">
             <summary>
             Interface de la Fabrique d'objets Business (métier) et Logic (applicatif)
@@ -1562,9 +1630,37 @@
         </member>
         <member name="P:AstroTargetSelectorBusiness.IObjInputs.ModeNuit">
             <summary>
-            Affichag en mode nuit
+            Affichage en mode nuit
             <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
             <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est false</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.BackColor">
+            <summary>
+            Couleur de fond des fenêttre en mode nuit
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.Black</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.BackColorLight">
+            <summary>
+            Couleur de fond des fenêttre en mode nuit (partie claire du fond)
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.DarkSlateGray</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.ForeColor">
+            <summary>
+            Couleur des polices des fenêttre en mode nuit
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.OrangeRed</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjInputs.ForeColorLight">
+            <summary>
+            Couleur des polices des fenêttre en mode nuit (composant clairs)
+            <para>Le paramètre est stocké dans les settings automatiquement sur set</para>
+            <para>Si le paramètre n'existe pas dans les settings, la valeur par défaut positionnée et stockée dans les settings est Color.LightYellow</para>
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.IObjTarget">
@@ -1831,6 +1927,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Contributeurs">
             <summary>
               Recherche une chaîne localisée semblable à Contributeurs.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.CouleursDeFenetre">
+            <summary>
+              Recherche une chaîne localisée semblable à Couleurs de fenêtre.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.CouleursDesPolices">
+            <summary>
+              Recherche une chaîne localisée semblable à Couleurs des polices.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Date">
@@ -2173,6 +2279,11 @@
               Recherche une chaîne localisée semblable à Paramètres du plugin de contrôle à distance de Stellarium.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.PersonnalisationDeLAffichageEnModeNuit">
+            <summary>
+              Recherche une chaîne localisée semblable à Personnalisation de l&apos;affichage en mode nuit.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Port">
             <summary>
               Recherche une chaîne localisée semblable à Port.
@@ -2261,6 +2372,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Terminer">
             <summary>
               Recherche une chaîne localisée semblable à Terminer.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TonsClairs">
+            <summary>
+              Recherche une chaîne localisée semblable à Tons clairs.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TonsSombres">
+            <summary>
+              Recherche une chaîne localisée semblable à Tons sombres.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Tous">

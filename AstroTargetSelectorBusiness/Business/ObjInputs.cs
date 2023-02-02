@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using ApplicationTools;
@@ -293,6 +294,131 @@ namespace AstroTargetSelectorBusiness
             set
             {
                 Settings.Default.ModeNuit = value ? "1" : "0";
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColor
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.BackColor))
+                {
+                    Settings.Default.BackColor = "FF303030";
+                    Settings.Default.Save();
+                    appToolFactory.GetLog().Log($"BackColor non présent dans les Settings. Positionnement de Color.Black par défaut", GetType().Name);
+                }
+                if (!string.IsNullOrEmpty(Settings.Default.BackColor) && 
+                    Settings.Default.BackColor.ToLower().StartsWith("ff") && 
+                    Settings.Default.BackColor.Length == 8)
+                {
+                    int red = int.Parse(Settings.Default.BackColor.Substring(2, 2), NumberStyles.HexNumber);
+                    int green = int.Parse(Settings.Default.BackColor.Substring(4, 2), NumberStyles.HexNumber);
+                    int blue = int.Parse(Settings.Default.BackColor.Substring(6, 2), NumberStyles.HexNumber);
+                    return Color.FromArgb(red, green, blue);
+                }
+                return Color.FromName(Settings.Default.BackColor);
+            }
+            set
+            {
+                Settings.Default.BackColor = value != null ? value.Name : Color.Black.Name;
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color BackColorLight
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.BackColorLight))
+                {
+                    //Settings.Default.BackColorLight = Color.DarkSlateGray.Name;
+                    Settings.Default.BackColorLight = "FF707070";
+                    Settings.Default.Save();
+                    appToolFactory.GetLog().Log($"BackColorLight non présent dans les Settings. Positionnement de Color.DarkSlateGray par défaut", GetType().Name);
+                }
+                if (!string.IsNullOrEmpty(Settings.Default.BackColorLight) && 
+                    Settings.Default.BackColorLight.ToLower().StartsWith("ff") && 
+                    Settings.Default.BackColorLight.Length == 8)
+                {
+                    int red = int.Parse(Settings.Default.BackColorLight.Substring(2, 2), NumberStyles.HexNumber);
+                    int green = int.Parse(Settings.Default.BackColorLight.Substring(4, 2), NumberStyles.HexNumber);
+                    int blue = int.Parse(Settings.Default.BackColorLight.Substring(6, 2), NumberStyles.HexNumber);
+                    return Color.FromArgb(red, green, blue);
+                }
+                return Color.FromName(Settings.Default.BackColorLight);
+            }
+            set
+            {
+                Settings.Default.BackColorLight = value != null ? value.Name : Color.DarkSlateGray.Name;
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColor
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.ForeColor))
+                {
+                    Settings.Default.ForeColor = Color.OrangeRed.Name;
+                    Settings.Default.Save();
+                    appToolFactory.GetLog().Log($"ForeColor non présent dans les Settings. Positionnement de Color.OrangeRed par défaut", GetType().Name);
+                }
+                if (!string.IsNullOrEmpty(Settings.Default.ForeColor) &&
+                    Settings.Default.ForeColor.ToLower().StartsWith("ff") &&
+                    Settings.Default.ForeColor.Length == 8)
+                {
+                    int red = int.Parse(Settings.Default.ForeColor.Substring(2, 2), NumberStyles.HexNumber);
+                    int green = int.Parse(Settings.Default.ForeColor.Substring(4, 2), NumberStyles.HexNumber);
+                    int blue = int.Parse(Settings.Default.ForeColor.Substring(6, 2), NumberStyles.HexNumber);
+                    return Color.FromArgb(red, green, blue);
+                }
+                return Color.FromName(Settings.Default.ForeColor);
+            }
+            set
+            {
+                Settings.Default.ForeColor = value != null ? value.Name : Color.OrangeRed.Name;
+                Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc />
+        /// </summary>
+        public Color ForeColorLight
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Settings.Default.ForeColorLight))
+                {
+                    Settings.Default.ForeColorLight = Color.LightYellow.Name;
+                    Settings.Default.Save();
+                    appToolFactory.GetLog().Log($"ForeColorLight non présent dans les Settings. Positionnement de Color.LightYellow par défaut", GetType().Name);
+                }
+                if (!string.IsNullOrEmpty(Settings.Default.ForeColorLight) &&
+                    Settings.Default.ForeColorLight.ToLower().StartsWith("ff") &&
+                    Settings.Default.ForeColorLight.Length == 8)
+                {
+                    int red = int.Parse(Settings.Default.ForeColorLight.Substring(2, 2), NumberStyles.HexNumber);
+                    int green = int.Parse(Settings.Default.ForeColorLight.Substring(4, 2), NumberStyles.HexNumber);
+                    int blue = int.Parse(Settings.Default.ForeColorLight.Substring(6, 2), NumberStyles.HexNumber);
+                    return Color.FromArgb(red, green, blue);
+                }
+                return Color.FromName(Settings.Default.ForeColorLight);
+            }
+            set
+            {
+                Settings.Default.ForeColorLight = value != null ? value.Name : Color.LightYellow.Name;
                 Settings.Default.Save();
             }
         }

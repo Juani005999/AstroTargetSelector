@@ -159,6 +159,12 @@
   <data name="Contributeurs" xml:space="preserve">
     <value>Contributeurs</value>
   </data>
+  <data name="CouleursDeFenetre" xml:space="preserve">
+    <value>Couleurs de fenêtre</value>
+  </data>
+  <data name="CouleursDesPolices" xml:space="preserve">
+    <value>Couleurs des polices</value>
+  </data>
   <data name="Date" xml:space="preserve">
     <value>Date</value>
   </data>
@@ -363,6 +369,9 @@
   <data name="ParametresDuPluginDeControleQDistanceDeStellarium" xml:space="preserve">
     <value>Paramètres du plugin de contrôle à distance de Stellarium</value>
   </data>
+  <data name="PersonnalisationDeLAffichageEnModeNuit" xml:space="preserve">
+    <value>Personnalisation de l'affichage en mode nuit</value>
+  </data>
   <data name="Port" xml:space="preserve">
     <value>Port</value>
   </data>
@@ -416,6 +425,12 @@
   </data>
   <data name="Terminer" xml:space="preserve">
     <value>Terminer</value>
+  </data>
+  <data name="TonsClairs" xml:space="preserve">
+    <value>Tons clairs</value>
+  </data>
+  <data name="TonsSombres" xml:space="preserve">
+    <value>Tons sombres</value>
   </data>
   <data name="Tous" xml:space="preserve">
     <value>Tous</value>

@@ -8,6 +8,7 @@ using System.Windows.Forms;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
 
 namespace AstroTargetSelector
 {
@@ -33,6 +34,28 @@ namespace AstroTargetSelector
             // Positionne les libellés et le mode Jour/Nuit
             LoadLibelles();
             SetAffichage();
+
+            // Bouton Custom Color Mode Nuit
+            buttonColorFenetreTonsSombre.BackColor = factory.GetAppInputs().BackColor;
+            buttonColorFenetreTonsClair.BackColor = factory.GetAppInputs().BackColorLight;
+            buttonColorPolicesTonsSombre.BackColor = factory.GetAppInputs().ForeColor;
+            buttonColorPolicesTonsClair.BackColor = factory.GetAppInputs().ForeColorLight;
+            colorDialogModeNuit.CustomColors = new int[] { ColorTranslator.ToOle(Color.FromArgb(30, 30, 30)),
+                                                            ColorTranslator.ToOle(Color.FromArgb(48, 48, 48)),
+                                                            ColorTranslator.ToOle(Color.FromArgb(70, 70, 70)),
+                                                            ColorTranslator.ToOle(Color.DarkSlateGray),
+                                                            ColorTranslator.ToOle(Color.FromArgb(112, 112, 112)),
+                                                            ColorTranslator.ToOle(Color.LightYellow),
+                                                            ColorTranslator.ToOle(Color.OrangeRed),
+                                                            ColorTranslator.ToOle(Color.Chocolate),
+                                                            ColorTranslator.ToOle(Color.Coral),
+                                                            ColorTranslator.ToOle(Color.Aquamarine),
+                                                            ColorTranslator.ToOle(Color.CornflowerBlue),
+                                                            ColorTranslator.ToOle(Color.CadetBlue),
+                                                            ColorTranslator.ToOle(Color.DarkGreen),
+                                                            ColorTranslator.ToOle(Color.DarkOliveGreen),
+                                                            ColorTranslator.ToOle(Color.IndianRed),
+                                                            ColorTranslator.ToOle(Color.Maroon)};
 
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue", GetType().Name);
@@ -266,6 +289,12 @@ namespace AstroTargetSelector
                     zones.Add(CoordinatesDirection.NO);
                 factory.GetAppInputs().Inputs.ZonesExclues = zones;
 
+                // Couleur Mode Nuit
+                factory.GetAppInputs().BackColor = buttonColorFenetreTonsSombre.BackColor;
+                factory.GetAppInputs().BackColorLight = buttonColorFenetreTonsClair.BackColor;
+                factory.GetAppInputs().ForeColor = buttonColorPolicesTonsSombre.BackColor;
+                factory.GetAppInputs().ForeColorLight = buttonColorPolicesTonsClair.BackColor;
+
                 // Trace
                 factory.GetLog().Log($"Enregistrement des Settings effectué avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
 
@@ -329,19 +358,20 @@ namespace AstroTargetSelector
         {
             bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
             // Fenêtre
-            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // GroupBox
-            groupBoxLieuObservation.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            groupBoxCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            groupBoxZones.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            groupBoxDivers.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            groupBoxStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            groupBoxLieuObservation.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxCapteur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxZones.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxDivers.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxCustomColors.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Boutons et Contrôles
-            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            btOK.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            btCancel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             if (!nuit)
             {
                 btOK.UseVisualStyleBackColor = true;
@@ -349,75 +379,75 @@ namespace AstroTargetSelector
             }
 
             // Position
-            textBoxLongitudeDegre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLongitudeDegre.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxLongitudeMinute.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLongitudeMinute.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxLongitudeSeconde.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLongitudeSeconde.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxLatitudeDegre.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLatitudeDegre.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxLatitudeMinute.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLatitudeMinute.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxLatitudeSeconde.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxLatitudeSeconde.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxLongitudeDegre.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLongitudeDegre.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxLongitudeMinute.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLongitudeMinute.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxLongitudeSeconde.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLongitudeSeconde.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeDegre.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLatitudeDegre.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeMinute.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLatitudeMinute.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxLatitudeSeconde.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxLatitudeSeconde.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             comboBoxLongitudeDirection.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
-            comboBoxLongitudeDirection.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            comboBoxLongitudeDirection.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            comboBoxLongitudeDirection.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            comboBoxLongitudeDirection.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             comboBoxLatitudeDirection.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
-            comboBoxLatitudeDirection.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            comboBoxLatitudeDirection.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            comboBoxLatitudeDirection.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            comboBoxLatitudeDirection.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             // Capteur
-            textBoxCapteurLargeur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxCapteurLargeur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxCapteurLargeur.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxCapteurLargeur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             comboBoxCapteur.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
-            comboBoxCapteur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            comboBoxCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            toolTipInfoCapteur.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
-            toolTipInfoCapteur.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            comboBoxCapteur.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            comboBoxCapteur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            toolTipInfoCapteur.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfoCapteur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipInfoCapteur.OwnerDraw = nuit;
             // Zones
-            ckN.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckN.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckN.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckN.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckN.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckNE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckNE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckNE.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckNE.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckNE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckE.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckE.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckSE.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckSE.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckSE.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckSE.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckSE.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckS.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckS.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckS.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckS.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckS.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckSO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckSO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckSO.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckSO.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckSO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckO.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckO.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
-            ckNO.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ckNO.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            ckNO.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ckNO.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             ckNO.FlatStyle = nuit ? FlatStyle.Flat : FlatStyle.Standard;
             // Divers
-            textBoxHauteurMin.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxHauteurMin.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxBougeMax.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxBougeMax.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            textBoxHauteurMin.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxHauteurMin.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxBougeMax.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxBougeMax.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             // Planetarium
-            textBoxHostStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxHostStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxPortStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxPortStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            textBoxHostCartesDuCiel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxHostCartesDuCiel.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
-            toolTipInfoStellarium.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
-            toolTipInfoStellarium.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            textBoxHostStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxHostStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxPortStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxPortStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxHostCartesDuCiel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxHostCartesDuCiel.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            toolTipInfoStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfoStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipInfoStellarium.OwnerDraw = nuit;
-            toolTipInfoCartesDuCiel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Info;
-            toolTipInfoCartesDuCiel.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.InfoText;
+            toolTipInfoCartesDuCiel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfoCartesDuCiel.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipInfoCartesDuCiel.OwnerDraw = nuit;
         }
 
@@ -455,6 +485,12 @@ namespace AstroTargetSelector
             labelServeurStellarium.Text = Resources.Serveur;
             labelPortStellarium.Text = Resources.Port;
             labelServeurCdC.Text = Resources.Serveur;
+            // Custom Colors
+            groupBoxCustomColors.Text = Resources.PersonnalisationDeLAffichageEnModeNuit;
+            labelCouleurFenetre.Text = Resources.CouleursDeFenetre;
+            labelCouleurPolices.Text = Resources.CouleursDesPolices;
+            labelTonsSombres.Text = Resources.TonsSombres;
+            labelTonsClairs.Text = Resources.TonsClairs;
             // Boutons
             btOK.Text = ApplicationTools.Properties.Resources.OK;
             btCancel.Text = ApplicationTools.Properties.Resources.Annuler;
@@ -491,10 +527,10 @@ namespace AstroTargetSelector
 
         private void comboBoxLongitudeDirection_DrawItem(object sender, DrawItemEventArgs e)
         {
-            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            Brush brushText = new SolidBrush(factory.GetAppInputs().ForeColor);
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppInputs().ForeColor), e.Bounds);
                 brushText = Brushes.Black;
             }
             else
@@ -509,10 +545,10 @@ namespace AstroTargetSelector
 
         private void comboBoxLatitudeDirection_DrawItem(object sender, DrawItemEventArgs e)
         {
-            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            Brush brushText = new SolidBrush(factory.GetAppInputs().ForeColor);
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppInputs().ForeColor), e.Bounds);
                 brushText = Brushes.Black;
             }
             else
@@ -527,10 +563,10 @@ namespace AstroTargetSelector
 
         private void comboBoxCapteur_DrawItem(object sender, DrawItemEventArgs e)
         {
-            Brush brushText = new SolidBrush(factory.GetAppContext().ForeColor);
+            Brush brushText = new SolidBrush(factory.GetAppInputs().ForeColor);
             if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
             {
-                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppContext().ForeColor), e.Bounds);
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppInputs().ForeColor), e.Bounds);
                 brushText = Brushes.Black;
             }
             else
@@ -552,7 +588,7 @@ namespace AstroTargetSelector
             Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
             e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
             // Titre
-            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
             {
                 Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
                 using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
@@ -574,7 +610,7 @@ namespace AstroTargetSelector
             Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
             e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
             // Titre
-            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
             {
                 Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
                 using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
@@ -596,7 +632,7 @@ namespace AstroTargetSelector
             Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
             e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
             // Titre
-            using (Brush brush = new SolidBrush(factory.GetAppContext().ForeColor))
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
             {
                 Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
                 using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
@@ -606,6 +642,42 @@ namespace AstroTargetSelector
                 // Text
                 Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
                 e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void buttonColorFenetreTonsSombre_Click(object sender, EventArgs e)
+        {
+            colorDialogModeNuit.Color = factory.GetAppInputs().BackColor;
+            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
+            {
+                buttonColorFenetreTonsSombre.BackColor = colorDialogModeNuit.Color;
+            }
+        }
+
+        private void buttonColorFenetreTonsClair_Click(object sender, EventArgs e)
+        {
+            colorDialogModeNuit.Color = factory.GetAppInputs().BackColor;
+            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
+            {
+                buttonColorFenetreTonsClair.BackColor = colorDialogModeNuit.Color;
+            }
+        }
+
+        private void buttonColorPolicesTonsSombre_Click(object sender, EventArgs e)
+        {
+            colorDialogModeNuit.Color = factory.GetAppInputs().ForeColor;
+            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
+            {
+                buttonColorPolicesTonsSombre.BackColor = colorDialogModeNuit.Color;
+            }
+        }
+
+        private void buttonColorPolicesTonsClair_Click(object sender, EventArgs e)
+        {
+            colorDialogModeNuit.Color = factory.GetAppInputs().ForeColorLight;
+            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
+            {
+                buttonColorPolicesTonsClair.BackColor = colorDialogModeNuit.Color;
             }
         }
     }

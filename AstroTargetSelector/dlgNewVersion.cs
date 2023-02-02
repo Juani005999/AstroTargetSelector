@@ -80,13 +80,13 @@ namespace AstroTargetSelector
         {
             bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
             // Fenêtre
-            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Boutons et Contrôles
-            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            textBoxDescription.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Window;
-            textBoxDescription.ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            btOK.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            textBoxDescription.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxDescription.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             if (!nuit)
             {
                 btOK.UseVisualStyleBackColor = true;

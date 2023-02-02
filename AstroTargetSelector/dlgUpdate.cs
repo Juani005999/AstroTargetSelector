@@ -322,12 +322,12 @@ namespace AstroTargetSelector
         {
             bool nuit = factory.GetAppInputs().Inputs.ModeNuit;
             // Fenêtre
-            BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            ForeColor = nuit ? factory.GetAppContext().ForeColor : SystemColors.ControlText;
+            BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Boutons et Contrôles
-            btOK.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
-            btCancel.BackColor = nuit ? factory.GetAppContext().BackColor : SystemColors.Control;
+            btOK.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            btCancel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             if (!nuit)
             {
                 btOK.UseVisualStyleBackColor = true;
