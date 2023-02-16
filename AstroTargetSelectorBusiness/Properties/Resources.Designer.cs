@@ -412,6 +412,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Hauteur et direction.
+        /// </summary>
+        public static string HauteurEtDirection {
+            get {
+                return ResourceManager.GetString("HauteurEtDirection", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Hauteur min..
         /// </summary>
         public static string HauteurMin {
@@ -544,6 +553,15 @@ namespace AstroTargetSelectorResources {
         public static string Longitude {
             get {
                 return ResourceManager.GetString("Longitude", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lune.
+        /// </summary>
+        public static string Lune {
+            get {
+                return ResourceManager.GetString("Lune", resourceCulture);
             }
         }
         
@@ -764,6 +782,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Options.
+        /// </summary>
+        public static string Options {
+            get {
+                return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Ouvrir le fichier des &amp;logs.
         /// </summary>
         public static string OuvrirLeFichierDesLogs {
@@ -943,6 +970,24 @@ namespace AstroTargetSelectorResources {
         public static string Serveur {
             get {
                 return ResourceManager.GetString("Serveur", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Soleil.
+        /// </summary>
+        public static string Soleil {
+            get {
+                return ResourceManager.GetString("Soleil", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Soleil et Lune.
+        /// </summary>
+        public static string SoleilEtLune {
+            get {
+                return ResourceManager.GetString("SoleilEtLune", resourceCulture);
             }
         }
         

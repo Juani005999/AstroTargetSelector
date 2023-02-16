@@ -1,0 +1,355 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>AstroMoonCalc</name>
+    </assembly>
+    <members>
+        <member name="T:AstroMoonCalc.MoonIllumination">
+            <summary>
+            Contains properties relating to the illumination of the moon
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonIllumination.Fraction">
+            <summary>
+            Illuminated fraction of the moon; varies from 0.0 (new moon) to 1.0 (full moon)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonIllumination.Phase">
+            <summary>
+            Which of the eight principal and intermediate phases the moon is currently in
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonIllumination.PhaseName">
+            <summary>
+            Internationnal naming of the Phase
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonIllumination.Angle">
+            <summary>
+            Midpoint angle in radians of the illuminated limb of the moon reckoned eastward from the north point of the disk;
+            the moon is waxing if the angle is negative, and waning if positive
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.MoonPhase">
+            <summary>
+            The eight principal and intermediate phases of the Moon
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.NewMoon">
+            <summary>
+            Completely in Sun's shadow
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.WaxingCrescent">
+            <summary>
+            Disc between 0.1% and 49.9% lit, and increasing
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.FirstQuarter">
+            <summary>
+            Disc 50% lit
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.WaxingGibbous">
+            <summary>
+            Disc between 50.1% and 99.9% lit, and increasing
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.FullMoon">
+            <summary>
+            100% illuminated
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.WaningGibbous">
+            <summary>
+            Disc between 99.9% and 50.1% lit, and decreasing
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.LastQuarter">
+            <summary>
+            50% lit
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPhase.WaningCrescent">
+            <summary>
+            Disc between 49.9% and 0.1% lit, and decreasing
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.MoonPhaseMapper">
+            <summary>
+            Maps moon phases
+            </summary>
+        </member>
+        <member name="M:AstroMoonCalc.MoonPhaseMapper.FromProgressThroughCycle(System.Double)">
+            <summary>
+            Map moon phase based on how far the moon is through the lunar cycle
+            </summary>
+            <param name="progressThroughCycle">percentage value in the range 0 to 1, defining how far the moon is through the lunar cycle</param>
+            <returns><see cref="T:AstroMoonCalc.MoonPhase"/></returns>
+        </member>
+        <member name="T:AstroMoonCalc.MoonPosition">
+            <summary>
+            Contains properties relating to the position of the moon
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPosition.Azimuth">
+            <summary>
+            Lunar azimuth in radians
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPosition.Altitude">
+            <summary>
+            Lunar altitude above the horizon in radians
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPosition.Distance">
+            <summary>
+            Distance to moon in kilometers
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonPosition.ParallacticAngle">
+            <summary>
+            Parallactic angle of the moon in radians
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.MoonTimes">
+            <summary>
+            Contains times for when the moon rises and sets each day
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonTimes.Rise">
+            <summary>
+            Time of moon rise
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonTimes.Set">
+            <summary>
+            Time of moon set
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonTimes.AlwaysUp">
+            <summary>
+            True if the moon never rises/sets and is always above the horizon during the day
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.MoonTimes.AlwaysDown">
+            <summary>
+            True if the moon is always below the horizon
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.SunPosition">
+            <summary>
+            Contains properties relating to the position of the Sun
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunPosition.Azimuth">
+            <summary>
+            Solar azimuth in radians (direction along the horizon, measured from south to west), e.g. 0 is south and Math.PI * 3/4 is northwest
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunPosition.Altitude">
+            <summary>
+            Solar altitude above the horizon in radians, e.g. 0 at the horizon and PI/2 at the zenith (straight over your head)
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.SunTimes">
+            <summary>
+            Contains times for each of the events of the sun on a given day
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Sunrise">
+            <summary>
+            sunrise (top edge of the sun appears on the horizon)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.SunriseEnd">
+            <summary>
+            sunrise ends (bottom edge of the sun touches the horizon)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.GoldenHourEnd">
+            <summary>
+            morning golden hour (soft light, best time for photography) ends
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.SolarNoon">
+            <summary>
+            solar noon (sun is in the highest position)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.GoldenHour">
+            <summary>
+            evening golden hour starts
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.SunsetStart">
+            <summary>
+            sunset starts (bottom edge of the sun touches the horizon)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Sunset">
+            <summary>
+            sunset (sun disappears below the horizon, evening civil twilight starts)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Dusk">
+            <summary>
+            dusk (evening nautical twilight starts)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.NauticalDusk">
+            <summary>
+            nautical dusk (evening astronomical twilight starts)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Night">
+            <summary>
+            night starts (dark enough for astronomical observations)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Nadir">
+            <summary>
+            nadir (darkest moment of the night, sun is in the lowest position)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.NightEnd">
+            <summary>
+            night ends (morning astronomical twilight starts)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.NauticalDawn">
+            <summary>
+            nautical dawn (morning nautical twilight starts)
+            </summary>
+        </member>
+        <member name="F:AstroMoonCalc.SunTimes.Dawn">
+            <summary>
+            dawn (morning nautical twilight ends, morning civil twilight starts)
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.MoonCalc">
+            <summary>
+            Calculate lunar movement
+            </summary>
+        </member>
+        <member name="M:AstroMoonCalc.MoonCalc.GetMoonPosition(System.DateTime,System.Double,System.Double)">
+             <summary>
+             Calculates lunar position for a given location and point in time
+            
+             based on http://aa.quae.nl/en/reken/hemelpositie.html formulas
+             </summary>
+             <param name="date">time and date calculate for</param>
+             <param name="latitude">latitude in degrees</param>
+             <param name="longitude">longitude in degrees</param>
+             <returns></returns>
+        </member>
+        <member name="M:AstroMoonCalc.MoonCalc.GetMoonIllumination(System.DateTime)">
+            <summary>
+            calculations for illumination parameters of the moon,
+            based on http://idlastro.gsfc.nasa.gov/ftp/pro/astro/mphase.pro formulas and
+            Chapter 48 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+            </summary>
+            <param name="date">time and date to calculate for</param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroMoonCalc.MoonCalc.GetMoonDayThroughCycle(System.DateTime)">
+            <summary>
+            calculations for illumination parameters of the moon,
+            based on http://idlastro.gsfc.nasa.gov/ftp/pro/astro/mphase.pro formulas and
+            Chapter 48 of "Astronomical Algorithms" 2nd edition by Jean Meeus (Willmann-Bell, Richmond) 1998.
+            </summary>
+            <param name="date">time and date to calculate for</param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroMoonCalc.MoonCalc.GetMoonTimes(System.DateTime,System.Double,System.Double)">
+            <summary>
+            Calculations for moon rise/set times are based on http://www.stargazing.net/kepler/moonrise.html
+            </summary>
+            <param name="date">date to calculate for</param>
+            <param name="latitude">latitude in degrees</param>
+            <param name="longitude">longitude in degrees</param>
+            <returns></returns>
+        </member>
+        <member name="T:AstroMoonCalc.Properties.Resource">
+            <summary>
+              Une classe de ressource fortement typée destinée, entre autres, à la consultation des chaînes localisées.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.ResourceManager">
+            <summary>
+              Retourne l'instance ResourceManager mise en cache utilisée par cette classe.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.Culture">
+            <summary>
+              Remplace la propriété CurrentUICulture du thread actuel pour toutes
+              les recherches de ressources à l'aide de cette classe de ressource fortement typée.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.FirstQuarter">
+            <summary>
+              Recherche une chaîne localisée semblable à Premier Quartier.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.FullMoon">
+            <summary>
+              Recherche une chaîne localisée semblable à Pleine Lune.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.LastQuarter">
+            <summary>
+              Recherche une chaîne localisée semblable à Dernier Quartier.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.NewMoon">
+            <summary>
+              Recherche une chaîne localisée semblable à Nouvelle Lune.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.WaningCrescent">
+            <summary>
+              Recherche une chaîne localisée semblable à Dernier Croissant.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.WaningGibbous">
+            <summary>
+              Recherche une chaîne localisée semblable à Gibbeuse décroissante.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.WaxingCrescent">
+            <summary>
+              Recherche une chaîne localisée semblable à Premier Croissant.
+            </summary>
+        </member>
+        <member name="P:AstroMoonCalc.Properties.Resource.WaxingGibbous">
+            <summary>
+              Recherche une chaîne localisée semblable à Gibbeuse croissante.
+            </summary>
+        </member>
+        <member name="T:AstroMoonCalc.SunCalc">
+            <summary>
+            Calculate Sun movement
+            </summary>
+        </member>
+        <member name="M:AstroMoonCalc.SunCalc.GetPosition(System.DateTime,System.Double,System.Double)">
+            <summary>
+            Calculates solar position for a given location and point in time
+            </summary>
+            <param name="date">time and date calculate for</param>
+            <param name="latitude">latitude in degrees</param>
+            <param name="longitude">longitude in degrees</param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroMoonCalc.SunCalc.GetTimes(System.DateTime,System.Double,System.Double,System.Double)">
+            <summary>
+            Calculates sun times for a given date, latitude/longitude, and, optionally,
+            the observer height (in meters) relative to the horizon
+            </summary>
+            <param name="date">date to calculate for</param>
+            <param name="latitude">latitude in degrees</param>
+            <param name="longitude">longitude in degrees</param>
+            <param name="height">observer height relative to the horizon in metres (optional)</param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

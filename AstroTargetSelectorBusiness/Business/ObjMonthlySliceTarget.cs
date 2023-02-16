@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using ApplicationTools;
 using AstroTargetSelectorResources;
+using AstroMoonCalc;
 
 namespace AstroTargetSelectorBusiness
 {

@@ -15,8 +15,26 @@
     {
         "Entry"
         {
+        "MsmKey" = "8:_13661CC344674E14AEC8DB44F9B5CA5E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_2C22AFC9F624A49FD36A6515EBBF90AE"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_44ADE9E3F22D4830920D9FB7E081AA80"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_46041CD932D543609489E51C4F59B194"
+        "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,6 +69,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_75A746189A8C4BF8B3588332209AB201"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_855DE8F065CD4EC399BC10FD7DA950E3"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9B34A449A57643E7BBC4C073FFF3B232"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_A48BD49C7FDE4C118523BC41A91B2114"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C5FF19F87AA7445E1D2C77B76CC8A98E"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
@@ -63,6 +105,30 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
+        "OwnerKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_DD3A1B4FE4AB47AFA7541566266B5891"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_F496753FA5AB433A921DB6E64A0EF220"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
@@ -71,6 +137,12 @@
         {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -180,6 +252,26 @@
         }
         "File"
         {
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13661CC344674E14AEC8DB44F9B5CA5E"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_WaningCrescent.png"
+            "TargetName" = "8:moon_WaningCrescent.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2C22AFC9F624A49FD36A6515EBBF90AE"
             {
             "AssemblyRegister" = "3:1"
@@ -209,6 +301,46 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_44ADE9E3F22D4830920D9FB7E081AA80"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_WaxingGibbous.png"
+            "TargetName" = "8:moon_WaxingGibbous.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_46041CD932D543609489E51C4F59B194"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_New.png"
+            "TargetName" = "8:moon_New.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_497FB74093804D8F96D5E08AEE73D7F2"
@@ -255,7 +387,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.4.0.2, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.5.4.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_68119A56FCC92DF267E2614D1216BB8A"
@@ -302,11 +434,91 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_75A746189A8C4BF8B3588332209AB201"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_WaxingCrescent.png"
+            "TargetName" = "8:moon_WaxingCrescent.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_855DE8F065CD4EC399BC10FD7DA950E3"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_LastQuarter.png"
+            "TargetName" = "8:moon_LastQuarter.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_9B34A449A57643E7BBC4C073FFF3B232"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_FirstQuarter.png"
+            "TargetName" = "8:moon_FirstQuarter.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_A48BD49C7FDE4C118523BC41A91B2114"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_WaningGibbous.png"
+            "TargetName" = "8:moon_WaningGibbous.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C5FF19F87AA7445E1D2C77B76CC8A98E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.4.0.2, Culture=neutral, PublicKeyToken=6321cf3b97d74c6f, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.5.4.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_C5FF19F87AA7445E1D2C77B76CC8A98E"
@@ -331,6 +543,77 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D3F9697A70930FA49C8AAF89D667929E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AstroMoonCalc, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_D3F9697A70930FA49C8AAF89D667929E"
+                    {
+                    "Name" = "8:AstroMoonCalc.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AstroMoonCalc.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DD3A1B4FE4AB47AFA7541566266B5891"
+            {
+            "SourcePath" = "8:..\\Files\\moon\\moon_Full.png"
+            "TargetName" = "8:moon_Full.png"
+            "Tag" = "8:"
+            "Folder" = "8:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_F496753FA5AB433A921DB6E64A0EF220"
+            {
+            "SourcePath" = "8:..\\AstroTargetSelector\\Ressources\\sun.png"
+            "TargetName" = "8:sun.png"
+            "Tag" = "8:"
+            "Folder" = "8:_39F69860324C4EC3B63EF240C0F8F17F"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -380,13 +663,24 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:1.4.0.2"
+                                    "Name" = "8:1.5.4.2"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
                                     "Property" = "8:_835E034BA07648CB8BB1677C05E6244C"
                                         "Folders"
                                         {
+                                            "{9EF0B969-E518-4E46-987F-47570745A589}:_566AF2DAFEBF4A4EA8799C02BA113D4D"
+                                            {
+                                            "Name" = "8:moon"
+                                            "AlwaysCreate" = "11:FALSE"
+                                            "Condition" = "8:"
+                                            "Transitive" = "11:FALSE"
+                                            "Property" = "8:_9AB2EBD69B464DD8A93E9480F232350A"
+                                                "Folders"
+                                                {
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -444,15 +738,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{B2E244CA-9EC3-470D-81BF-785DB1A1F58D}"
-        "PackageCode" = "8:{664BE978-8F0B-4C38-B4AE-10F4F2099165}"
+        "ProductCode" = "8:{F2605121-2A7C-4A27-85F2-EAA8BC07C001}"
+        "PackageCode" = "8:{63BFFCDB-D494-4098-B24F-0AD4592440B2}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.4.02"
+        "ProductVersion" = "8:1.5.42"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"

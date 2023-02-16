@@ -35,28 +35,6 @@ namespace AstroTargetSelector
             LoadLibelles();
             SetAffichage();
 
-            // Bouton Custom Color Mode Nuit
-            buttonColorFenetreTonsSombre.BackColor = factory.GetAppInputs().BackColor;
-            buttonColorFenetreTonsClair.BackColor = factory.GetAppInputs().BackColorLight;
-            buttonColorPolicesTonsSombre.BackColor = factory.GetAppInputs().ForeColor;
-            buttonColorPolicesTonsClair.BackColor = factory.GetAppInputs().ForeColorLight;
-            colorDialogModeNuit.CustomColors = new int[] { ColorTranslator.ToOle(Color.FromArgb(30, 30, 30)),
-                                                            ColorTranslator.ToOle(Color.FromArgb(48, 48, 48)),
-                                                            ColorTranslator.ToOle(Color.FromArgb(70, 70, 70)),
-                                                            ColorTranslator.ToOle(Color.DarkSlateGray),
-                                                            ColorTranslator.ToOle(Color.FromArgb(112, 112, 112)),
-                                                            ColorTranslator.ToOle(Color.LightYellow),
-                                                            ColorTranslator.ToOle(Color.OrangeRed),
-                                                            ColorTranslator.ToOle(Color.Chocolate),
-                                                            ColorTranslator.ToOle(Color.Coral),
-                                                            ColorTranslator.ToOle(Color.Aquamarine),
-                                                            ColorTranslator.ToOle(Color.CornflowerBlue),
-                                                            ColorTranslator.ToOle(Color.CadetBlue),
-                                                            ColorTranslator.ToOle(Color.DarkGreen),
-                                                            ColorTranslator.ToOle(Color.DarkOliveGreen),
-                                                            ColorTranslator.ToOle(Color.IndianRed),
-                                                            ColorTranslator.ToOle(Color.Maroon)};
-
             // Trace
             factory.GetLog().Log($"Ouverture de la boîte de dialogue", GetType().Name);
         }
@@ -121,10 +99,6 @@ namespace AstroTargetSelector
             // Divers
             textBoxBougeMax.Text = string.Empty;
             textBoxHauteurMin.Text = String.Empty;
-            // Stellarium & Cartes du Ciel
-            textBoxHostStellarium.Text = string.Empty;
-            textBoxPortStellarium.Text = String.Empty;
-            textBoxHostCartesDuCiel.Text = string.Empty;
 
             InitCombos();
         }
@@ -194,29 +168,6 @@ namespace AstroTargetSelector
             // Divers
             textBoxBougeMax.Text = factory.GetAppInputs().Inputs.BougeMax.ToString(CultureInfo.InvariantCulture);
             textBoxHauteurMin.Text = factory.GetAppInputs().Inputs.HauteurMin.ToString(CultureInfo.InvariantCulture);
-
-            // Stellarium
-            groupBoxStellarium.Enabled = factory.GetAppStellarium().IsInstalled || factory.GetAppCartesDuCiel().IsInstalled;
-            textBoxHostStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
-            textBoxPortStellarium.Enabled = factory.GetAppStellarium().IsInstalled;
-            textBoxHostStellarium.Text = factory.GetAppStellarium().Host;
-            textBoxPortStellarium.Text = factory.GetAppStellarium().Port;
-            toolTipInfoStellarium.ToolTipTitle = Resources.ParametresDuPluginDeControleQDistanceDeStellarium;
-            toolTipInfoStellarium.SetToolTip(pictureBoxIconInfoStellarium, 
-                    Resources.PositionnezIciLesOnformationsNecessairesALaConnexionAuPluginDeCommandeADistanceDeStellarium
-                    + Environment.NewLine 
-                    + Resources.PourExecuterStellariumDirectementSurCetOrdinateurLaissezLaValeurParDefautLocalhost
-                    + Environment.NewLine
-                    + Resources.LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090);
-
-            // Cartes du Ciel
-            textBoxHostCartesDuCiel.Enabled = factory.GetAppCartesDuCiel().IsInstalled;
-            textBoxHostCartesDuCiel.Text = factory.GetAppCartesDuCiel().Host;
-            toolTipInfoCartesDuCiel.ToolTipTitle = Resources.ParametresDeCartesDuCiel;
-            toolTipInfoCartesDuCiel.SetToolTip(pictureBoxIconInfoCartesDuCiel,
-                    Resources.PourVousConnecterACartesDuCielSurUnServeurSpecifiezIciLAdresseIPDuServeur
-                    + Environment.NewLine
-                    + Resources.PourExecuterCartesDuCielDirectementSurCetOrdinateurLaissezLaValeurParDefaut127001);
         }
 
         /// <summary>
@@ -254,21 +205,12 @@ namespace AstroTargetSelector
                     || hauteurMin <= 0
                     || hauteurMin > 80)
                     throw new WarningException(Resources.FormatDuChampHauteurMinIncorrect);
-                // Stellarium.
-                if (string.IsNullOrEmpty(textBoxHostStellarium.Text) || string.IsNullOrEmpty(textBoxPortStellarium.Text))
-                    throw new WarningException(Resources.FormatDesChampsPourLePluginStellariumIncorrect);
-                // Cartes du Ciel.
-                if (string.IsNullOrEmpty(textBoxHostCartesDuCiel.Text))
-                    throw new WarningException(Resources.FormatDuChampServeurPourCartesDuCielIncorrect);
 
                 // Si tous les champs valide, mise à jour des Settings applicatifs
                 factory.GetAppInputs().Inputs.LieuObservation = nouveauLieu;
                 factory.GetAppInputs().Inputs.Capteur = capteur;
                 factory.GetAppInputs().Inputs.BougeMax = bougeMax;
                 factory.GetAppInputs().Inputs.HauteurMin = hauteurMin;
-                factory.GetAppStellarium().Host = textBoxHostStellarium.Text;
-                factory.GetAppStellarium().Port = textBoxPortStellarium.Text;
-                factory.GetAppCartesDuCiel().Host = textBoxHostCartesDuCiel.Text;
                 // Zones Exclues
                 List<CoordinatesDirection> zones = new List<CoordinatesDirection>();
                 if (ckN.Checked)
@@ -288,12 +230,6 @@ namespace AstroTargetSelector
                 if (ckNO.Checked)
                     zones.Add(CoordinatesDirection.NO);
                 factory.GetAppInputs().Inputs.ZonesExclues = zones;
-
-                // Couleur Mode Nuit
-                factory.GetAppInputs().BackColor = buttonColorFenetreTonsSombre.BackColor;
-                factory.GetAppInputs().BackColorLight = buttonColorFenetreTonsClair.BackColor;
-                factory.GetAppInputs().ForeColor = buttonColorPolicesTonsSombre.BackColor;
-                factory.GetAppInputs().ForeColorLight = buttonColorPolicesTonsClair.BackColor;
 
                 // Trace
                 factory.GetLog().Log($"Enregistrement des Settings effectué avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
@@ -366,8 +302,6 @@ namespace AstroTargetSelector
             groupBoxCapteur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             groupBoxZones.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             groupBoxDivers.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            groupBoxStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            groupBoxCustomColors.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Boutons et Contrôles
             btOK.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
@@ -436,19 +370,6 @@ namespace AstroTargetSelector
             textBoxHauteurMin.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             textBoxBougeMax.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
             textBoxBougeMax.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            // Planetarium
-            textBoxHostStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
-            textBoxHostStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxPortStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
-            textBoxPortStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxHostCartesDuCiel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
-            textBoxHostCartesDuCiel.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            toolTipInfoStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
-            toolTipInfoStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
-            toolTipInfoStellarium.OwnerDraw = nuit;
-            toolTipInfoCartesDuCiel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
-            toolTipInfoCartesDuCiel.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
-            toolTipInfoCartesDuCiel.OwnerDraw = nuit;
         }
 
         /// <summary>
@@ -480,17 +401,6 @@ namespace AstroTargetSelector
             groupBoxDivers.Text = Resources.Divers;
             labelHauteur.Text = Resources.HauteurApparenteMinimum;
             labelBougeMax.Text = Resources.BougeMax;
-            // Planetarium
-            groupBoxStellarium.Text = Resources.ParametresDesPlanetariumsStellariumCartesDuCiel;
-            labelServeurStellarium.Text = Resources.Serveur;
-            labelPortStellarium.Text = Resources.Port;
-            labelServeurCdC.Text = Resources.Serveur;
-            // Custom Colors
-            groupBoxCustomColors.Text = Resources.PersonnalisationDeLAffichageEnModeNuit;
-            labelCouleurFenetre.Text = Resources.CouleursDeFenetre;
-            labelCouleurPolices.Text = Resources.CouleursDesPolices;
-            labelTonsSombres.Text = Resources.TonsSombres;
-            labelTonsClairs.Text = Resources.TonsClairs;
             // Boutons
             btOK.Text = ApplicationTools.Properties.Resources.OK;
             btCancel.Text = ApplicationTools.Properties.Resources.Annuler;
@@ -598,86 +508,6 @@ namespace AstroTargetSelector
                 // Text
                 Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
                 e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
-            }
-        }
-
-        private void toolTipInfoStellarium_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            // Background et Border
-            e.DrawBackground();
-            e.DrawBorder();
-            // Icon
-            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
-            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
-            // Titre
-            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
-            {
-                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
-                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
-                {
-                    e.Graphics.DrawString(toolTipInfoStellarium.ToolTipTitle, fontTitre, brush, rectangleTitre);
-                }
-                // Text
-                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
-                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
-            }
-        }
-
-        private void toolTipInfoCartesDuCiel_Draw(object sender, DrawToolTipEventArgs e)
-        {
-            // Background et Border
-            e.DrawBackground();
-            e.DrawBorder();
-            // Icon
-            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
-            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
-            // Titre
-            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
-            {
-                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
-                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
-                {
-                    e.Graphics.DrawString(toolTipInfoCartesDuCiel.ToolTipTitle, fontTitre, brush, rectangleTitre);
-                }
-                // Text
-                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
-                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
-            }
-        }
-
-        private void buttonColorFenetreTonsSombre_Click(object sender, EventArgs e)
-        {
-            colorDialogModeNuit.Color = factory.GetAppInputs().BackColor;
-            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
-            {
-                buttonColorFenetreTonsSombre.BackColor = colorDialogModeNuit.Color;
-            }
-        }
-
-        private void buttonColorFenetreTonsClair_Click(object sender, EventArgs e)
-        {
-            colorDialogModeNuit.Color = factory.GetAppInputs().BackColor;
-            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
-            {
-                buttonColorFenetreTonsClair.BackColor = colorDialogModeNuit.Color;
-            }
-        }
-
-        private void buttonColorPolicesTonsSombre_Click(object sender, EventArgs e)
-        {
-            colorDialogModeNuit.Color = factory.GetAppInputs().ForeColor;
-            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
-            {
-                buttonColorPolicesTonsSombre.BackColor = colorDialogModeNuit.Color;
-            }
-        }
-
-        private void buttonColorPolicesTonsClair_Click(object sender, EventArgs e)
-        {
-            colorDialogModeNuit.Color = factory.GetAppInputs().ForeColorLight;
-            if (colorDialogModeNuit.ShowDialog() == DialogResult.OK)
-            {
-                buttonColorPolicesTonsClair.BackColor = colorDialogModeNuit.Color;
             }
         }
     }

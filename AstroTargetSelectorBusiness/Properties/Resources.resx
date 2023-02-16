@@ -234,6 +234,9 @@
   <data name="HauteurApparenteMinimum" xml:space="preserve">
     <value>Hauteur apparente minimum</value>
   </data>
+  <data name="HauteurEtDirection" xml:space="preserve">
+    <value>Hauteur et direction</value>
+  </data>
   <data name="HauteurMin" xml:space="preserve">
     <value>Hauteur min.</value>
   </data>
@@ -278,6 +281,9 @@
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude</value>
+  </data>
+  <data name="Lune" xml:space="preserve">
+    <value>Lune</value>
   </data>
   <data name="Magnitude" xml:space="preserve">
     <value>Magnitude</value>
@@ -351,6 +357,9 @@
   <data name="ObjetSelectionne" xml:space="preserve">
     <value>Objet sélectionné</value>
   </data>
+  <data name="Options" xml:space="preserve">
+    <value>Options</value>
+  </data>
   <data name="OuvrirLeFichierDesLogs" xml:space="preserve">
     <value>Ouvrir le fichier des &amp;logs</value>
   </data>
@@ -410,6 +419,12 @@
   </data>
   <data name="Serveur" xml:space="preserve">
     <value>Serveur</value>
+  </data>
+  <data name="Soleil" xml:space="preserve">
+    <value>Soleil</value>
+  </data>
+  <data name="SoleilEtLune" xml:space="preserve">
+    <value>Soleil et Lune</value>
   </data>
   <data name="Suivant" xml:space="preserve">
     <value>Suivant</value>

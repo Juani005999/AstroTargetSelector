@@ -44,7 +44,8 @@ namespace AstroTargetSelector
             this.outilsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.actualiserLaListeDesObjetsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.optionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.parametresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionsToolStripMenuItemOptions = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionDesTélescopesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.astroSessionOrganizerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -90,6 +91,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire = new System.Windows.Forms.SplitContainer();
             this.listViewTarget = new System.Windows.Forms.ListView();
             this.imageListRank = new System.Windows.Forms.ImageList(this.components);
+            this.checkBoxLune = new System.Windows.Forms.CheckBox();
             this.checkBoxHauteur = new System.Windows.Forms.CheckBox();
             this.buttonCartesDuCiel = new System.Windows.Forms.Button();
             this.buttonStellarium = new System.Windows.Forms.Button();
@@ -235,7 +237,8 @@ namespace AstroTargetSelector
             this.outilsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.actualiserLaListeDesObjetsToolStripMenuItem,
             this.toolStripSeparator1,
-            this.optionsToolStripMenuItem,
+            this.parametresToolStripMenuItem,
+            this.optionsToolStripMenuItemOptions,
             this.gestionDesTélescopesToolStripMenuItem,
             this.toolStripSeparator2,
             this.astroSessionOrganizerToolStripMenuItem});
@@ -257,15 +260,23 @@ namespace AstroTargetSelector
             this.toolStripSeparator1.Name = "toolStripSeparator1";
             this.toolStripSeparator1.Size = new System.Drawing.Size(278, 6);
             // 
-            // optionsToolStripMenuItem
+            // parametresToolStripMenuItem
             // 
-            this.optionsToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
-            this.optionsToolStripMenuItem.Name = "optionsToolStripMenuItem";
-            this.optionsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
-            this.optionsToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
-            this.optionsToolStripMenuItem.Text = "&Paramètres de l\'observation";
-            this.optionsToolStripMenuItem.ToolTipText = "Ouvre la boîte de dialogue des options";
-            this.optionsToolStripMenuItem.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
+            this.parametresToolStripMenuItem.Image = global::AstroTargetSelector.Properties.Resources.InfoToolTip;
+            this.parametresToolStripMenuItem.Name = "parametresToolStripMenuItem";
+            this.parametresToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.P)));
+            this.parametresToolStripMenuItem.Size = new System.Drawing.Size(281, 22);
+            this.parametresToolStripMenuItem.Text = "&Paramètres de l\'observation";
+            this.parametresToolStripMenuItem.Click += new System.EventHandler(this.parametresToolStripMenuItem_Click);
+            // 
+            // optionsToolStripMenuItemOptions
+            // 
+            this.optionsToolStripMenuItemOptions.Image = global::AstroTargetSelector.Properties.Resources.icons8_paramètres_50;
+            this.optionsToolStripMenuItemOptions.Name = "optionsToolStripMenuItemOptions";
+            this.optionsToolStripMenuItemOptions.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.optionsToolStripMenuItemOptions.Size = new System.Drawing.Size(281, 22);
+            this.optionsToolStripMenuItemOptions.Text = "&Options";
+            this.optionsToolStripMenuItemOptions.Click += new System.EventHandler(this.optionsToolStripMenuItem_Click);
             // 
             // gestionDesTélescopesToolStripMenuItem
             // 
@@ -745,6 +756,7 @@ namespace AstroTargetSelector
             // 
             // splitContainerSecondaire.Panel2
             // 
+            this.splitContainerSecondaire.Panel2.Controls.Add(this.checkBoxLune);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.checkBoxHauteur);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.buttonCartesDuCiel);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.buttonStellarium);
@@ -783,7 +795,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.labelObjetCeleste);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.chartSliceListe);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 171;
+            this.splitContainerSecondaire.SplitterDistance = 164;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -796,7 +808,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 171);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 164);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -814,14 +826,25 @@ namespace AstroTargetSelector
             this.imageListRank.Images.SetKeyName(3, "4");
             this.imageListRank.Images.SetKeyName(4, "5");
             // 
+            // checkBoxLune
+            // 
+            this.checkBoxLune.AutoSize = true;
+            this.checkBoxLune.Location = new System.Drawing.Point(141, 208);
+            this.checkBoxLune.Name = "checkBoxLune";
+            this.checkBoxLune.Size = new System.Drawing.Size(90, 17);
+            this.checkBoxLune.TabIndex = 11;
+            this.checkBoxLune.Text = "Soleil et Lune";
+            this.checkBoxLune.UseVisualStyleBackColor = true;
+            this.checkBoxLune.CheckedChanged += new System.EventHandler(this.checkBoxLune_CheckedChanged);
+            // 
             // checkBoxHauteur
             // 
             this.checkBoxHauteur.AutoSize = true;
             this.checkBoxHauteur.Location = new System.Drawing.Point(16, 208);
             this.checkBoxHauteur.Name = "checkBoxHauteur";
-            this.checkBoxHauteur.Size = new System.Drawing.Size(178, 17);
+            this.checkBoxHauteur.Size = new System.Drawing.Size(119, 17);
             this.checkBoxHauteur.TabIndex = 10;
-            this.checkBoxHauteur.Text = "Afficher la hauteur et la direction";
+            this.checkBoxHauteur.Text = "Hauteur et direction";
             this.checkBoxHauteur.UseVisualStyleBackColor = true;
             this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
             // 
@@ -1055,7 +1078,7 @@ namespace AstroTargetSelector
             // labelUniteTotalTimeSlice
             // 
             this.labelUniteTotalTimeSlice.AutoSize = true;
-            this.labelUniteTotalTimeSlice.Location = new System.Drawing.Point(589, 209);
+            this.labelUniteTotalTimeSlice.Location = new System.Drawing.Point(658, 209);
             this.labelUniteTotalTimeSlice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUniteTotalTimeSlice.Name = "labelUniteTotalTimeSlice";
             this.labelUniteTotalTimeSlice.Size = new System.Drawing.Size(45, 13);
@@ -1065,7 +1088,7 @@ namespace AstroTargetSelector
             // labelUniteMinuteIntervalle
             // 
             this.labelUniteMinuteIntervalle.AutoSize = true;
-            this.labelUniteMinuteIntervalle.Location = new System.Drawing.Point(386, 209);
+            this.labelUniteMinuteIntervalle.Location = new System.Drawing.Point(455, 209);
             this.labelUniteMinuteIntervalle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUniteMinuteIntervalle.Name = "labelUniteMinuteIntervalle";
             this.labelUniteMinuteIntervalle.Size = new System.Drawing.Size(43, 13);
@@ -1076,16 +1099,16 @@ namespace AstroTargetSelector
             // 
             this.comboBoxTotalTimeSlice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTotalTimeSlice.FormattingEnabled = true;
-            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(528, 206);
+            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(597, 206);
             this.comboBoxTotalTimeSlice.Name = "comboBoxTotalTimeSlice";
             this.comboBoxTotalTimeSlice.Size = new System.Drawing.Size(56, 21);
-            this.comboBoxTotalTimeSlice.TabIndex = 12;
+            this.comboBoxTotalTimeSlice.TabIndex = 13;
             this.comboBoxTotalTimeSlice.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxTotalTimeSlice_DrawItem);
             this.comboBoxTotalTimeSlice.SelectedIndexChanged += new System.EventHandler(this.comboBoxTotalTimeSlice_SelectedIndexChanged);
             // 
             // labelTotalTimeSlice
             // 
-            this.labelTotalTimeSlice.Location = new System.Drawing.Point(433, 209);
+            this.labelTotalTimeSlice.Location = new System.Drawing.Point(502, 209);
             this.labelTotalTimeSlice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalTimeSlice.Name = "labelTotalTimeSlice";
             this.labelTotalTimeSlice.Size = new System.Drawing.Size(90, 19);
@@ -1097,16 +1120,16 @@ namespace AstroTargetSelector
             // 
             this.comboBoxMinuteIntervalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMinuteIntervalle.FormattingEnabled = true;
-            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(325, 206);
+            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(394, 206);
             this.comboBoxMinuteIntervalle.Name = "comboBoxMinuteIntervalle";
             this.comboBoxMinuteIntervalle.Size = new System.Drawing.Size(56, 21);
-            this.comboBoxMinuteIntervalle.TabIndex = 11;
+            this.comboBoxMinuteIntervalle.TabIndex = 12;
             this.comboBoxMinuteIntervalle.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxMinuteIntervalle_DrawItem);
             this.comboBoxMinuteIntervalle.SelectedIndexChanged += new System.EventHandler(this.comboBoxMinuteIntervalle_SelectedIndexChanged);
             // 
             // labelMinuteIntervalle
             // 
-            this.labelMinuteIntervalle.Location = new System.Drawing.Point(189, 209);
+            this.labelMinuteIntervalle.Location = new System.Drawing.Point(258, 209);
             this.labelMinuteIntervalle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMinuteIntervalle.Name = "labelMinuteIntervalle";
             this.labelMinuteIntervalle.Size = new System.Drawing.Size(131, 19);
@@ -1315,7 +1338,7 @@ namespace AstroTargetSelector
         private System.Windows.Forms.ToolStripMenuItem fichierToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem quitterToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem outilsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem parametresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItemAbout;
         private System.Windows.Forms.ToolStripMenuItem aProposToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStripGlobal;
@@ -1414,5 +1437,7 @@ namespace AstroTargetSelector
         private System.Windows.Forms.ToolStripMenuItem astroSessionOrganizerToolStripMenuItem;
         private System.Windows.Forms.Button buttonAstroSessionOrganizer;
         private System.Windows.Forms.ToolTip toolTipASO;
+        private System.Windows.Forms.CheckBox checkBoxLune;
+        private System.Windows.Forms.ToolStripMenuItem optionsToolStripMenuItemOptions;
     }
 }

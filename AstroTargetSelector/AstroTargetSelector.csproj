@@ -71,7 +71,7 @@
     <ApplicationIcon>Ressources\Telescope.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
@@ -103,6 +103,12 @@
     <Compile Include="dlgNewVersion.Designer.cs">
       <DependentUpon>dlgNewVersion.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgOptions.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgOptions.Designer.cs">
+      <DependentUpon>dlgOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="dlgParametres.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +134,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgNewVersion.resx">
       <DependentUpon>dlgNewVersion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgOptions.resx">
+      <DependentUpon>dlgOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dlgParametres.resx">
       <DependentUpon>dlgParametres.cs</DependentUpon>
@@ -271,6 +280,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Ressources\ASO.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\icons8-paramètres-50.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

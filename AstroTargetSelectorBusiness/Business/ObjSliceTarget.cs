@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using System.Text;
+using System.Globalization;
+using System.IO;
 using ApplicationTools;
+using AstroMoonCalc;
 using AstroTargetSelectorResources;
 
 namespace AstroTargetSelectorBusiness
@@ -110,23 +112,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                if (Azimut.Coordonnee > 337.5 || Azimut.Coordonnee <= 22.5)
-                    return CoordinatesDirection.N;
-                if (Azimut.Coordonnee > 22.5 && Azimut.Coordonnee <= 67.5)
-                    return CoordinatesDirection.NE;
-                if (Azimut.Coordonnee > 67.5 && Azimut.Coordonnee <= 112.5)
-                    return CoordinatesDirection.E;
-                if (Azimut.Coordonnee > 112.5 && Azimut.Coordonnee <= 157.5)
-                    return CoordinatesDirection.SE;
-                if (Azimut.Coordonnee > 157.5 && Azimut.Coordonnee <= 202.5)
-                    return CoordinatesDirection.S;
-                if (Azimut.Coordonnee > 202.5 && Azimut.Coordonnee <= 247.5)
-                    return CoordinatesDirection.SO;
-                if (Azimut.Coordonnee > 247.5 && Azimut.Coordonnee <= 292.5)
-                    return CoordinatesDirection.O;
-                if (Azimut.Coordonnee > 292.5 && Azimut.Coordonnee <= 337.5)
-                    return CoordinatesDirection.NO;
-                return CoordinatesDirection.N;
+                return GetDirection(Azimut.Coordonnee);
             }
         }
 
@@ -246,10 +232,317 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return $"{DateHeure.ToString("HH")}h{DateHeure.ToString("mm")}"
+                string sunAlt = SunAlt.HasValue ? SunAlt.Value.ToString("0", CultureInfo.InvariantCulture) : "0";
+                string sunAz = SunAz.HasValue ? SunAz.Value.ToString("0", CultureInfo.InvariantCulture) : "0";
+                string moonAlt = MoonAlt.HasValue ? MoonAlt.Value.ToString("0", CultureInfo.InvariantCulture) : "0";
+                string moonAz = MoonAz.HasValue ? MoonAz.Value.ToString("0", CultureInfo.InvariantCulture) : "0";
+                string sunLabel = string.Empty;
+                if (SunRise.HasValue && SunSet.HasValue)
+                {
+                    sunLabel = Environment.NewLine + $"{Resources.Soleil} : {SunRise.Value.ToString("t")} - {SunSet.Value.ToString("t")}";
+                    if (SunAlt.HasValue && SunAlt.Value > 0)
+                        sunLabel += $" / {Resources.Hauteur} : {sunAlt}° / {Resources.Azimut} : {sunAz}° ({Coordinate.GetDirectionString(GetDirection(SunAz.Value))})";
+                }
+                string moonLabel = Environment.NewLine + $"{Resources.Lune} : {MoonIlluminationPct} / {MoonPhaseName}";
+                if (MoonRise.HasValue && MoonSet.HasValue)
+                {
+                    moonLabel += $" / {MoonRise.Value.ToString("t")} - {MoonSet.Value.ToString("t")}";
+                    if (MoonAlt.HasValue && MoonAlt.Value > 0)
+                        moonLabel += $" / {Resources.Hauteur} : {moonAlt}° / {Resources.Azimut} : {moonAz}° ({Coordinate.GetDirectionString(GetDirection(MoonAz.Value))})";
+                }
+
+                return $"{DateHeure.ToString("d")} - {DateHeure.ToString("t")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
-                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
-                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Coordinate.GetDirectionString(Direction)})";
+                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)}°"
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)}° ({Coordinate.GetDirectionString(Direction)})"
+                    + sunLabel
+                    + moonLabel;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public string MoonPhaseName
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonIllumination luneApparence = MoonCalc.GetMoonIllumination(dateUtc);
+                    if (luneApparence != null)
+                        return luneApparence.PhaseName;
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? MoonAlt
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonPosition lunePosition = MoonCalc.GetMoonPosition(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (lunePosition != null)
+                        return lunePosition.Altitude * (180 / Math.PI);
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? MoonAz
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonPosition lunePosition = MoonCalc.GetMoonPosition(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (lunePosition != null)
+                        return (lunePosition.Azimuth * (180 / Math.PI)) + 180;
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public string MoonPhaseImage
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonIllumination luneApparence = MoonCalc.GetMoonIllumination(dateUtc);
+                    if (luneApparence != null)
+                    {
+                        switch (luneApparence.Phase)
+                        {
+                            case MoonPhase.NewMoon:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_New.png");
+                            case MoonPhase.WaningCrescent:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_WaningCrescent.png");
+                            case MoonPhase.FirstQuarter:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_FirstQuarter.png");
+                            case MoonPhase.WaningGibbous:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_WaningGibbous.png");
+                            case MoonPhase.FullMoon:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_Full.png");
+                            case MoonPhase.WaxingGibbous:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_WaxingGibbous.png");
+                            case MoonPhase.LastQuarter:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_LastQuarter.png");
+                            case MoonPhase.WaxingCrescent:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_WaxingCrescent.png");
+                            default:
+                                return Path.Combine(appToolFactory.GetAppContext().UserAppDataPath, "moon", "moon_New.png");
+                        }
+                    }
+                }
+                catch(Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public string MoonIlluminationPct
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonIllumination luneApparence = MoonCalc.GetMoonIllumination(dateUtc);
+                    if (luneApparence != null)
+                        return $"{(luneApparence.Fraction * 100).ToString("0.00", CultureInfo.InvariantCulture)}%";
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? MoonRise
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonTimes luneTimes = MoonCalc.GetMoonTimes(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (luneTimes != null)
+                        return new DateTime(luneTimes.Rise.Value.Ticks, DateTimeKind.Utc).ToLocalTime();
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? MoonSet
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    MoonTimes luneTimes = MoonCalc.GetMoonTimes(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (luneTimes != null)
+                        return new DateTime(luneTimes.Set.Value.Ticks, DateTimeKind.Utc).ToLocalTime();
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SunAlt
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    SunPosition soleilPosition = SunCalc.GetPosition(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (soleilPosition != null)
+                        return soleilPosition.Altitude * (180 / Math.PI);
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SunAz
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    SunPosition soleilPosition = SunCalc.GetPosition(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (soleilPosition != null)
+                        return (soleilPosition.Azimuth * (180 / Math.PI)) + 180;
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SunRise
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    SunTimes soleilTimes = SunCalc.GetTimes(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (soleilTimes != null)
+                        return new DateTime(soleilTimes.Sunrise.Value.Ticks, DateTimeKind.Utc).ToLocalTime();
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SunSet
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    SunTimes soleilTimes = SunCalc.GetTimes(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (soleilTimes != null)
+                        return new DateTime(soleilTimes.Sunset.Value.Ticks, DateTimeKind.Utc).ToLocalTime();
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SolarNoon
+        {
+            get
+            {
+                try
+                {
+                    DateTime dateUtc = DateHeure.ToUniversalTime();
+                    SunTimes soleilTimes = SunCalc.GetTimes(dateUtc, appInputs.Inputs.LieuObservation.LatitudeValue, appInputs.Inputs.LieuObservation.LongitudeValue);
+                    if (soleilTimes != null)
+                        return new DateTime(soleilTimes.SolarNoon.Value.Ticks, DateTimeKind.Utc).ToLocalTime();
+                }
+                catch (Exception err)
+                {
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                }
+                return null;
             }
         }
 
@@ -341,6 +634,32 @@ namespace AstroTargetSelectorBusiness
                                     * cosLatitude
                                     * cosAzimut)
                                     * 60);
+        }
+
+        /// <summary>
+        /// Renvoi la Direction en fonction de la coordonnée Azimut
+        /// </summary>
+        /// <param name="coordonnee"></param>
+        /// <returns></returns>
+        private CoordinatesDirection GetDirection (double coordonnee)
+        {
+            if (coordonnee > 337.5 || coordonnee <= 22.5)
+                return CoordinatesDirection.N;
+            if (coordonnee > 22.5 && coordonnee <= 67.5)
+                return CoordinatesDirection.NE;
+            if (coordonnee > 67.5 && coordonnee <= 112.5)
+                return CoordinatesDirection.E;
+            if (coordonnee > 112.5 && coordonnee <= 157.5)
+                return CoordinatesDirection.SE;
+            if (coordonnee > 157.5 && coordonnee <= 202.5)
+                return CoordinatesDirection.S;
+            if (coordonnee > 202.5 && coordonnee <= 247.5)
+                return CoordinatesDirection.SO;
+            if (coordonnee > 247.5 && coordonnee <= 292.5)
+                return CoordinatesDirection.O;
+            if (coordonnee > 292.5 && coordonnee <= 337.5)
+                return CoordinatesDirection.NO;
+            return CoordinatesDirection.N;
         }
 
         #endregion

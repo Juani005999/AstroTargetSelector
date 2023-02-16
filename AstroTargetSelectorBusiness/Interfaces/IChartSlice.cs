@@ -81,6 +81,61 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         string ToolTip { get; }
 
+        /// <summary>
+        /// Nom de la phase lunaire correspondant au Slice
+        /// </summary>
+        string MoonPhaseName { get; }
+
+        /// <summary>
+        /// Altitude la Lune correspondant au Slice
+        /// </summary>
+        double? MoonAlt { get; }
+
+        /// <summary>
+        /// Image de la phase lunaire
+        /// </summary>
+        string MoonPhaseImage { get; }
+
+        /// <summary>
+        /// Azimut la Lune correspondant au Slice
+        /// </summary>
+        double? MoonAz { get; }
+
+        /// <summary>
+        /// SunRMoonRiseise correspondant au Slice
+        /// </summary>
+        DateTime? MoonRise { get; }
+
+        /// <summary>
+        /// MoonSet correspondant au Slice
+        /// </summary>
+        DateTime? MoonSet { get; }
+
+        /// <summary>
+        /// Altitude du Soleil correspondant au Slice
+        /// </summary>
+        double? SunAlt { get; }
+
+        /// <summary>
+        /// Azimut du Soleil correspondant au Slice
+        /// </summary>
+        double? SunAz { get; }
+
+        /// <summary>
+        /// SunRise correspondant au Slice
+        /// </summary>
+        DateTime? SunRise { get; }
+
+        /// <summary>
+        /// SunSet correspondant au Slice
+        /// </summary>
+        DateTime? SunSet { get; }
+
+        /// <summary>
+        /// SolarNoon correspondant au Slice
+        /// </summary>
+        DateTime? SolarNoon { get; }
+
         #endregion
     }
 }

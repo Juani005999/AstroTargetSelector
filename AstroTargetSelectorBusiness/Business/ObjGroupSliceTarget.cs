@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using ApplicationTools;
+using AstroMoonCalc;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -188,6 +189,149 @@ namespace AstroTargetSelectorBusiness
                 if (Slices.Count > 0)
                     return Slices[1].HauteurPrecise;
                 return Slices[0].HauteurPrecise;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public string MoonPhaseName
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonPhaseName;
+                return string.Empty;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? MoonAlt
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonAlt;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? MoonAz
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonAz;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public string MoonPhaseImage
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonPhaseImage;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? MoonRise
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonRise;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? MoonSet
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].MoonSet;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SunAlt
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].SunAlt;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SunAz
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].SunAz;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SunRise
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].SunRise;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SunSet
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].SunSet;
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public DateTime? SolarNoon
+        {
+            get
+            {
+                if (Slices.Count > 0)
+                    return Slices[1].SolarNoon;
+                return null;
             }
         }
 

@@ -11,6 +11,7 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using System.Security.Policy;
 
 namespace AstroTargetSelector
 {
@@ -117,6 +118,29 @@ namespace AstroTargetSelector
             set
             {
                 Properties.Settings.Default.SerieHauteurVisible = value ? "1" : "0";
+                Properties.Settings.Default.Save();
+            }
+        }
+
+        /// <summary>
+        /// Determine si la série Lune est visible
+        /// <para>Get : Récupère la valeur stockée en Settings</para>
+        /// <para>Set : Positionne la valeur stockée en Settings</para>
+        /// </summary>
+        public bool SerieLuneVisible
+        {
+            get
+            {
+                if (string.IsNullOrEmpty(Properties.Settings.Default.SerieLuneVisible))
+                {
+                    Properties.Settings.Default.SerieLuneVisible = "1";
+                    Properties.Settings.Default.Save();
+                }
+                return Properties.Settings.Default.SerieLuneVisible == "1";
+            }
+            set
+            {
+                Properties.Settings.Default.SerieLuneVisible = value ? "1" : "0";
                 Properties.Settings.Default.Save();
             }
         }
@@ -320,6 +344,7 @@ namespace AstroTargetSelector
                 InitialisationComboFiltreRank();
                 InitialisationComboFiltreMagnitude();
                 checkBoxHauteur.Checked = SerieHauteurVisible;
+                checkBoxLune.Checked = SerieLuneVisible;
 
                 // On Précharge la liste des objets célestes depuis le fichier de configuration en rechargeant la combo des filtres
                 RechargeListeFiltreType();
@@ -807,17 +832,18 @@ namespace AstroTargetSelector
                             {
                                 // On positionne une police spécifique pour les Labels des Points
                                 Font font = new Font("Tahoma", 8, FontStyle.Italic);
+                                double valSlice = slice.Hauteur.Coordonnee > 0 ? slice.Hauteur.Coordonnee : 0;
+                                string labelSlice = valSlice > 0 ? $"{Math.Floor(valSlice)}°" : "";
                                 // On ajoute le point à la série
                                 serieHauteur.Points.Add(new DataPoint()
                                 {
                                     XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { slice.Hauteur.Coordonnee },
+                                    YValues = new double[] { valSlice },
                                     Color = slice.CouleurHauteur,
                                     IsValueShownAsLabel = true,
-                                    //Label = $"{Math.Floor(slice.Hauteur.Coordonnee)} ° ({slice.DirectionCharacterCode.ToString()})",
-                                    LabelFormat = "0°",
+                                    Label = labelSlice,
                                     Font = font,
-                                    LabelForeColor = foreColor,
+                                    LabelForeColor = string.IsNullOrEmpty(labelSlice) ? Color.Transparent : foreColor,
                                     ToolTip = slice.ToolTip,
                                     LabelToolTip = slice.ToolTip
                                 });
@@ -858,6 +884,77 @@ namespace AstroTargetSelector
                             }
                             serieDirection.YAxisType = AxisType.Primary;
                             serieDirection.ChartArea = "AreaDirection";
+                        }
+
+                        // Série Slices - Lune
+                        if (SerieLuneVisible &&
+                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
+                        {
+                            Series serieHauteurLune = chartSliceListe.Series.Add(target.Nom + "LuneH");
+                            serieHauteurLune.ChartType = SeriesChartType.SplineArea;
+                            serieHauteurLune.XValueType = ChartValueType.DateTime;
+                            serieHauteurLune.BorderWidth = 4;
+                            serieHauteurLune.IsVisibleInLegend = false;
+                            serieHauteurLune.Color = Color.FromArgb(225, Color.Yellow);
+                            serieHauteurLune.BackGradientStyle = GradientStyle.TopBottom;
+                            serieHauteurLune.BackSecondaryColor = Color.Transparent;
+                            foreach (IChartSlice slice in listeSerie)
+                            {
+                                // On positionne une police spécifique pour les Labels des Points
+                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
+                                string marker = File.Exists(slice.MoonPhaseImage)
+                                                && slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
+                                // On ajoute le point à la série
+                                serieHauteurLune.Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { slice.MoonAlt.HasValue ? slice.MoonAlt.Value > 0 ? slice.MoonAlt.Value : 0 : 0 },
+                                    Color = Color.FromArgb(225, Color.Yellow),
+                                    IsValueShownAsLabel = false,
+                                    MarkerImage = marker,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
+                                });
+                            }
+                            serieHauteurLune.YAxisType = AxisType.Secondary;
+                        }
+
+                        // Série Slices - Soleil
+                        if (SerieLuneVisible &&
+                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
+                        {
+                            Series serieHauteurSoleil = chartSliceListe.Series.Add(target.Nom + "SoleilH");
+                            serieHauteurSoleil.ChartType = SeriesChartType.SplineArea;
+                            serieHauteurSoleil.XValueType = ChartValueType.DateTime;
+                            serieHauteurSoleil.BorderWidth = 4;
+                            serieHauteurSoleil.IsVisibleInLegend = false;
+                            serieHauteurSoleil.Color = Color.FromArgb(225, Color.Yellow);
+                            serieHauteurSoleil.BackGradientStyle = GradientStyle.TopBottom;
+                            serieHauteurSoleil.BackSecondaryColor = Color.Transparent;
+                            foreach (IChartSlice slice in listeSerie)
+                            {
+                                // On positionne une police spécifique pour les Labels des Points
+                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
+                                string marker = File.Exists(Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png"))
+                                                && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ? 
+                                                    Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
+                                                    : "";
+                                // On ajoute le point à la série
+                                serieHauteurSoleil.Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { slice.SunAlt.HasValue ? slice.SunAlt.Value > 0 ? slice.SunAlt.Value : 0 : 0 },
+                                    Color = Color.FromArgb(225, Color.Yellow),
+                                    IsValueShownAsLabel = false,
+                                    MarkerImage = marker,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
+                                });
+                            }
+                            serieHauteurSoleil.YAxisType = AxisType.Secondary;
                         }
 
                         // ChartArea
@@ -911,6 +1008,7 @@ namespace AstroTargetSelector
                             chartSliceListe.ChartAreas[0].Position.Height = 80;
                             chartSliceListe.ChartAreas[1].Visible = true;
                             chartSliceListe.ChartAreas[1].BackColor = backColor;
+                            chartSliceListe.ChartAreas[1].RecalculateAxesScale();
                         }
                         else
                         {
@@ -927,6 +1025,7 @@ namespace AstroTargetSelector
                         chartSliceListe.Titles[0].ForeColor = foreColor;
 
                         // On masque les controles d'intervalles si nécessaire
+                        checkBoxLune.Enabled = factory.GetAppInputs().Inputs.Visualisation != ModeVisualisation.Annuel;
                         comboBoxMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
                         labelMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
                         labelUniteMinuteIntervalle.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
@@ -1122,6 +1221,33 @@ namespace AstroTargetSelector
                     lblLieuObservation.Text = factory.GetAppInputs().LieuObservation;
                     toolTipInfoParametre.SetToolTip(pictureBoxIconInfoToolTip, factory.GetAppInputs().ToolTipInfosTexte);
 
+                    // En mode nuit, on actualise l'affichage
+                    if (factory.GetAppInputs().Inputs.ModeNuit)
+                        SetAffichage();
+                }
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Ouvre la boîte de dialogue des Options
+        /// </summary>
+        public void OpenOptions()
+        {
+            try
+            {
+                // Ouverture de la boîte de dialogue Paramètres
+                dlgOptions dialogOptions = new dlgOptions(factory);
+                if (dialogOptions.ShowDialog() == DialogResult.OK)
+                {
                     // En mode nuit, on actualise l'affichage
                     if (factory.GetAppInputs().Inputs.ModeNuit)
                         SetAffichage();
@@ -1513,7 +1639,7 @@ namespace AstroTargetSelector
             // Menu Outils
             outilsToolStripMenuItem.Text = Resources.menuOutils;
             actualiserLaListeDesObjetsToolStripMenuItem.Text = Resources.menuActualiserLaListeDesObjetsCelestes;
-            optionsToolStripMenuItem.Text = Resources.menuParametresDeLObservation;
+            parametresToolStripMenuItem.Text = Resources.menuParametresDeLObservation;
             // Menu A Propos
             toolStripMenuItemAbout.Text = "&?";
             aProposToolStripMenuItem.Text = Resources.menuAPropos;
@@ -1546,7 +1672,8 @@ namespace AstroTargetSelector
             labelInfoMagnitude.Text = Resources.Magnitude;
             labelInfoWidth.Text = Resources.GrandeurL;
             labelInfoHeight.Text = Resources.GrandeurH;
-            checkBoxHauteur.Text = Resources.AfficherLaHauteurEtLaDirection;
+            checkBoxHauteur.Text = Resources.HauteurEtDirection;
+            checkBoxLune.Text = Resources.SoleilEtLune;
             labelMinuteIntervalle.Text = Resources.DureeDUnIntervalle;
             labelUniteMinuteIntervalle.Text = Resources.Minutes;
             labelTotalTimeSlice.Text = Resources.DureeTotale;
@@ -1913,9 +2040,14 @@ namespace AstroTargetSelector
             OpenAPropos();
         }
 
-        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void parametresToolStripMenuItem_Click(object sender, EventArgs e)
         {
             OpenParametres();
+        }
+
+        private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenOptions();
         }
 
         private void btModifierParametre_Click(object sender, EventArgs e)
@@ -2181,6 +2313,22 @@ namespace AstroTargetSelector
         private void buttonAstroSessionOrganizer_Click(object sender, EventArgs e)
         {
             StartASO();
+        }
+
+        private void checkBoxLune_CheckedChanged(object sender, EventArgs e)
+        {
+            // Trace
+            factory.GetLog().Log($"Modification de la visibilité de la série Lune : {checkBoxLune.Checked}", GetType().Name);
+
+            // Actualisation de l'input
+            SerieLuneVisible = checkBoxLune.Checked;
+
+            //// On Force le rechargement des Slices au prochain appel
+            //factory.GetAppTarget().ForceUpdateSlices = true;
+
+            // Actualisation de la liste et du panneau d'information
+            //UpdateListeAndPanel();
+            UpdateViewPanelInfo();
         }
     }
 }

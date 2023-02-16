@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using ApplicationTools;
 using AstroTargetSelectorResources;
+using AstroMoonCalc;
+using System.Globalization;
 
 namespace AstroTargetSelectorBusiness
 {
@@ -19,10 +21,23 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
+                string sunLabel = string.Empty;
+                if (SunRise.HasValue && SunSet.HasValue)
+                {
+                    sunLabel = Environment.NewLine + $"{Resources.Soleil} : {SunRise.Value.ToString("t")} - {SunSet.Value.ToString("t")}";
+                }
+                string moonLabel = Environment.NewLine + $"{Resources.Lune} : {MoonPhaseName}";
+                if (MoonRise.HasValue && MoonSet.HasValue)
+                {
+                    moonLabel += $" / {MoonRise.Value.ToString("t")} - {MoonSet.Value.ToString("t")}";
+                }
+
                 return $"{DateHeure.ToString("d")}"
                     + Environment.NewLine + $"{Resources.TempsDePoseMax} : {Math.Floor(TempsPoseCalcule)} s"
-                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)} °"
-                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)} ° ({Coordinate.GetDirectionString(Direction)})";
+                    + Environment.NewLine + $"{Resources.Hauteur} : {Math.Floor(Hauteur.Coordonnee)}°"
+                    + Environment.NewLine + $"{Resources.Azimut} : {Math.Floor(Azimut.Coordonnee)}° ({Coordinate.GetDirectionString(Direction)})"
+                    + sunLabel
+                    + moonLabel;
             }
         }
 

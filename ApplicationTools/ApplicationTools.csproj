@@ -39,7 +39,7 @@
     <DocumentationFile>bin\Release\ApplicationTools.XML</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup>
-    <SignAssembly>true</SignAssembly>
+    <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>

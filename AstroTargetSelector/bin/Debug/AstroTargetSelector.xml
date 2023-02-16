@@ -121,6 +121,74 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="T:AstroTargetSelector.dlgOptions">
+            <summary>
+            Boîte de Dialogue "Options"
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.#ctor(AstroTargetSelectorBusiness.IAppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.ChargeFormulaire">
+            <summary>
+            Permet le chargement du formulaire depuis les données stockées
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.SaveSettings">
+            <summary>
+            Lance l'enregistrement des Settings saisis
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.SetDefaultColorNuit">
+            <summary>
+            Repositionne les couleur par défaut du mode nuit
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgOptions.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgOptions.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgOptions.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.dlgParametres">
             <summary>
             Boîte de Dialogue "Paramètres de l'observation"
@@ -371,6 +439,13 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.MainFenetre.SerieLuneVisible">
+            <summary>
+            Determine si la série Lune est visible
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.MainFenetre.ftpNewVersionFullPathFile">
             <summary>
             Url complète du fichier remote des versions de l'application
@@ -503,6 +578,11 @@
         <member name="M:AstroTargetSelector.MainFenetre.OpenParametres">
             <summary>
             Ouvre la boîte de dialogue des Paramètres de l'observation
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.MainFenetre.OpenOptions">
+            <summary>
+            Ouvre la boîte de dialogue des Options
             </summary>
         </member>
         <member name="M:AstroTargetSelector.MainFenetre.CheckIfNouvelleVersion(System.String@,System.String@,System.String@,System.String@)">
@@ -696,6 +776,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Help">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.icons8_paramètres_50">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

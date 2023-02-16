@@ -613,6 +613,61 @@
             <para>Renvoi la Hauteur Precise du premier <see cref="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices"/> de la période d'observation</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonPhaseName">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonAlt">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonAz">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonPhaseImage">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonRise">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.MoonSet">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.SunAlt">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.SunAz">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.SunRise">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.SunSet">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.SolarNoon">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.Slices">
             <summary>
             Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
@@ -870,6 +925,66 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonPhaseName">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonAlt">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonAz">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonPhaseImage">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonIlluminationPct">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonRise">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.MoonSet">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.SunAlt">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.SunAz">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.SunRise">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.SunSet">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.SolarNoon">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut
@@ -879,6 +994,13 @@
             <summary>
             /Recalcul le Slice et mets à jour les membres
             </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjSliceTarget.GetDirection(System.Double)">
+            <summary>
+            Renvoi la Direction en fonction de la coordonnée Azimut
+            </summary>
+            <param name="coordonnee"></param>
+            <returns></returns>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.appToolFactory">
             <summary>
@@ -1494,6 +1616,61 @@
             ToolTip du Slice à afficher dans le graphique
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonPhaseName">
+            <summary>
+            Nom de la phase lunaire correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonAlt">
+            <summary>
+            Altitude la Lune correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonPhaseImage">
+            <summary>
+            Image de la phase lunaire
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonAz">
+            <summary>
+            Azimut la Lune correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonRise">
+            <summary>
+            SunRMoonRiseise correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.MoonSet">
+            <summary>
+            MoonSet correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.SunAlt">
+            <summary>
+            Altitude du Soleil correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.SunAz">
+            <summary>
+            Azimut du Soleil correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.SunRise">
+            <summary>
+            SunRise correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.SunSet">
+            <summary>
+            SunSet correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.SolarNoon">
+            <summary>
+            SolarNoon correspondant au Slice
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.IObjCapteur">
             <summary>
             Interface de l'Objet représentant un capteur
@@ -2054,6 +2231,11 @@
               Recherche une chaîne localisée semblable à Hauteur apparente minimum.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.HauteurEtDirection">
+            <summary>
+              Recherche une chaîne localisée semblable à Hauteur et direction.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.HauteurMin">
             <summary>
               Recherche une chaîne localisée semblable à Hauteur min..
@@ -2127,6 +2309,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Longitude">
             <summary>
               Recherche une chaîne localisée semblable à Longitude.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Lune">
+            <summary>
+              Recherche une chaîne localisée semblable à Lune.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Magnitude">
@@ -2249,6 +2436,11 @@
               Recherche une chaîne localisée semblable à Objet sélectionné.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Options">
+            <summary>
+              Recherche une chaîne localisée semblable à Options.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.OuvrirLeFichierDesLogs">
             <summary>
               Recherche une chaîne localisée semblable à Ouvrir le fichier des &amp;logs.
@@ -2347,6 +2539,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Serveur">
             <summary>
               Recherche une chaîne localisée semblable à Serveur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Soleil">
+            <summary>
+              Recherche une chaîne localisée semblable à Soleil.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.SoleilEtLune">
+            <summary>
+              Recherche une chaîne localisée semblable à Soleil et Lune.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Suivant">
