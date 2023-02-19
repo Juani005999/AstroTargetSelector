@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ApplicationTools;
 using AstroTargetSelectorResources;
 
@@ -64,6 +65,21 @@ namespace AstroTargetSelectorBusiness
         /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
         /// </summary>
         Dictionary<ModeVisualisation, string> GetListeModeVisualisation();
+
+        /// <summary>
+        /// Renvoi une nouvelle instance de l'objet <see cref="IObjSliceSpan"/>
+        /// </summary>
+        /// <param name="parentTarget"></param>
+        /// <param name="dateHeureDebut"></param>
+        /// <param name="dateHeureFin"></param>
+        /// <returns></returns>
+        IObjSliceSpan GetObjSliceSpan(IObjTarget parentTarget, DateTime dateHeureDebut, DateTime dateHeureFin);
+
+        /// <summary>
+        /// Renvoi une nouvelle instance de l'objet <see cref="IObjMosaicRect"/>
+        /// </summary>
+        /// <returns></returns>
+        IObjMosaicRect GetObjMosaicRect();
 
         #endregion
     }

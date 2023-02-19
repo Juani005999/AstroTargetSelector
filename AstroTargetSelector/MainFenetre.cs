@@ -11,7 +11,6 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
-using System.Security.Policy;
 
 namespace AstroTargetSelector
 {
@@ -333,6 +332,9 @@ namespace AstroTargetSelector
                 toolTipStellarium.SetToolTip(buttonStellarium, Resources.AfficherLObjetCelesteDansStellarium);
                 toolTipCartesDuCiel.SetToolTip(buttonCartesDuCiel, Resources.AfficherLObjetCelesteDansCartesDuCiel);
                 toolTipASO.SetToolTip(buttonAstroSessionOrganizer, Resources.DemarrerLApplicationAstroSessionOrganizer);
+                toolTipMosaicCalculator.SetToolTip(buttonMosaicCalculator, Resources.AfficherLObjetCelesteDansMosaicCalculator
+                                                                            + Environment.NewLine
+                                                                            + Resources.LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire);
 
                 // Initialisation de la ListeView
                 InitialisationListeTarget();
@@ -1712,7 +1714,6 @@ namespace AstroTargetSelector
             dateTimePickerHeureObservation.CalendarTitleBackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
             buttonStartCalcul.BackColor = nuit ? factory.GetAppInputs().BackColor : default(Color);
             btModifierParametre.BackColor = nuit ? factory.GetAppInputs().BackColor : default(Color);
-            buttonAstroSessionOrganizer.BackColor = nuit ? factory.GetAppInputs().BackColor : default(Color);
             if (!nuit)
             {
                 buttonStartCalcul.UseVisualStyleBackColor = true;
@@ -1748,6 +1749,11 @@ namespace AstroTargetSelector
             toolTipASO.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipASO.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipASO.OwnerDraw = nuit;
+
+            // ToolTips toolTipMosaicCalculator
+            toolTipMosaicCalculator.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipMosaicCalculator.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipMosaicCalculator.OwnerDraw = nuit;
 
             // Groupe Filtre
             groupBoxFiltres.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
@@ -1805,6 +1811,37 @@ namespace AstroTargetSelector
             try
             {
                 factory.GetAppAstroSessionOrganizer().Start();
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Ouvre la boîte de dialogue Mosaic Calculator
+        /// </summary>
+        public void OpenMosaicCalculator()
+        {
+            try
+            {
+                // Si un objet est sélectionné dans la liste, on lance la tâche de fond
+                if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
+                    throw new WarningException($"Aucun objet sélectionné dans la liste");
+
+                // On récupère l'objet sélectionné et on lance la commande pour Stellarium
+                IObjTarget target = factory.GetAppTarget().GetTarget(listViewTarget.SelectedItems[0].SubItems[IndexColonneNom].Text);
+                if (target == null)
+                    throw new WarningException($"Objet sélectionné non trouvé dans la collection");
+                
+                // Ouverture de la boîte de dialogue Paramètres
+                dlgMosaicCalculator dialogMosaicCalculator = new dlgMosaicCalculator(factory, target);
+                dialogMosaicCalculator.ShowDialog();
             }
             catch (Exception err)
             {
@@ -2329,6 +2366,24 @@ namespace AstroTargetSelector
             // Actualisation de la liste et du panneau d'information
             //UpdateListeAndPanel();
             UpdateViewPanelInfo();
+        }
+
+        private void buttonMosaicCalculator_Click(object sender, EventArgs e)
+        {
+            OpenMosaicCalculator();
+        }
+
+        private void toolTipMosaicCalculator_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
         }
     }
 }

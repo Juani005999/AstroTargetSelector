@@ -35,6 +35,22 @@ namespace AstroTargetSelectorBusiness
         }
 
         /// <summary>
+        /// Rotation angulaire correspondant au Slice
+        /// </summary>
+        public double RotationAngulaire
+        {
+            get
+            {
+                if (!rotationAngulaire.HasValue)
+                {
+                    rotationAngulaire = Slices.Average(t => t.RotationAngulaire);
+                }
+
+                return rotationAngulaire.Value;
+            }
+        }
+
+        /// <summary>
         /// Permet de savoir si un objet céleste est exclu de la liste
         /// <para>Fait partie d'une zone exclue du ciel</para>
         /// <para>En dessous de la hauteur apparente (Hauteur du premier Slice)</para>
@@ -384,6 +400,11 @@ namespace AstroTargetSelectorBusiness
         /// Temps de pose calculé pour l'intervalle
         /// </summary>
         private double? tempsPoseCalcule = null;
+
+        /// <summary>
+        /// Rotation angulaire pour l'intervalle
+        /// </summary>
+        private double? rotationAngulaire = null;
 
         /// <summary>
         /// Liste des objets <see cref="ObjSliceTarget"/> représentant la liste des intervalles de temps du mois

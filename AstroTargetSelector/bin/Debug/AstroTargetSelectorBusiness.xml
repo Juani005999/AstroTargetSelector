@@ -68,6 +68,21 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetObjSliceSpan(AstroTargetSelectorBusiness.IObjTarget,System.DateTime,System.DateTime)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="parentTarget"></param>
+            <param name="dateHeureDebut"></param>
+            <param name="dateHeureFin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetObjMosaicRect">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appUDPServer">
             <summary>
             Objet applicatif permettant la gestion du serveur UDP
@@ -396,6 +411,181 @@
             Objet applicatif permettant d'accéder aux Inputs
             </summary>
         </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjMosaicRect">
+            <summary>
+            Interface de l'Objet représentant un rectangle dans la Mosaïque
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.Index">
+            <summary>
+            Index du rectangle dans le panneau
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.Text">
+            <summary>
+            Texte du rectangle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.RA">
+            <summary>
+            RA du FOV correspondant
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.DEC">
+            <summary>
+            DEC du FOV correspondant
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.TopLeft">
+            <summary>
+            Coordonnées du point Top Left dans le panel
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.Dimensions">
+            <summary>
+            Dimensions du rectangle dans le panel
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.BorderColor">
+            <summary>
+            Couleur du contour
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjMosaicRect.TextColor">
+            <summary>
+            Couleur du texte
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjMosaicRect">
+            <summary>
+            Objet représentant un rectangle dans la Mosaïque
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.Index">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.Text">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.RA">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.DEC">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.TopLeft">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.Dimensions">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.BorderColor">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjMosaicRect.TextColor">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjMosaicRect.#ctor">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IObjSliceSpan">
+            <summary>
+            Interface de l'Objet représentant un intervalle regroupant des intervalles <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjSliceSpan.RotationAngulaireGlobale">
+            <summary>
+            Rotation angulaire correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjSliceSpan.Slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps de la Target
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IObjSliceSpan.RotationAngulaireGlobaleFormated">
+            <summary>
+            Rotation angulaire correspondant au Slice sous la forme d'une chaîne formatée
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.ObjSliceSpan">
+            <summary>
+            Objet représentant un intervalle regroupant des intervalles <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceSpan.RotationAngulaireGlobale">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceSpan.RotationAngulaireGlobaleFormated">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceSpan.Slices">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.ObjSliceSpan.#ctor(ApplicationTools.IAppToolFactory,AstroTargetSelectorBusiness.IAppInputs,AstroTargetSelectorBusiness.IObjTarget,System.DateTime,System.DateTime)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceSpan.appToolFactory">
+            <summary>
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceSpan.appInputs">
+            <summary>
+            Instance de l'objet applicatif appInputs
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceSpan.parentTarget">
+            <summary>
+            Objet céleste parent de l'objet Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceSpan.dateHeureDebut">
+            <summary>
+            Date et Heure du début de l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceSpan.dateHeureFin">
+            <summary>
+            Date et Heure de fin de l'intervalle
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceSpan.rotationAngulaire">
+            <summary>
+            Rotation angulaire pour l'intervalle
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceSpan.slices">
+            <summary>
+            Liste des objets <see cref="T:AstroTargetSelectorBusiness.ObjSliceTarget"/> représentant la liste des intervalles de temps du mois
+            </summary>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.IAppTCPServer">
             <summary>
             Interface de l'Objet applicatif permettant la gestion du serveur UDP
@@ -546,6 +736,11 @@
         <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.TempsPoseCalcule">
             <summary>
             Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.RotationAngulaire">
+            <summary>
+            Rotation angulaire correspondant au Slice
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjGroupSliceTarget.EstExclu">
@@ -703,6 +898,11 @@
         <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.tempsPoseCalcule">
             <summary>
             Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.rotationAngulaire">
+            <summary>
+            Rotation angulaire pour l'intervalle
             </summary>
         </member>
         <member name="F:AstroTargetSelectorBusiness.ObjGroupSliceTarget.slices">
@@ -868,6 +1068,11 @@
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.TempsPoseCalculeFormatedString">
             <summary>
             Temps de pose calculé pour l'intervalle sous la forme d'une chaîne de caractère formaté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.RotationAngulaire">
+            <summary>
+            <inheritdoc/>
             </summary>
         </member>
         <member name="P:AstroTargetSelectorBusiness.ObjSliceTarget.CouleurPointGraphique">
@@ -1045,6 +1250,11 @@
         <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.tempsPoseCalcule">
             <summary>
             Temps de pose calculé pour l'intervalle
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.ObjSliceTarget.rotationAngulaire">
+            <summary>
+            Rotation angulaire pour l'intervalle
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.ObjTarget">
@@ -1472,6 +1682,21 @@
             <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
             </summary>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetObjSliceSpan(AstroTargetSelectorBusiness.IObjTarget,System.DateTime,System.DateTime)">
+            <summary>
+            Renvoi une nouvelle instance de l'objet <see cref="T:AstroTargetSelectorBusiness.IObjSliceSpan"/>
+            </summary>
+            <param name="parentTarget"></param>
+            <param name="dateHeureDebut"></param>
+            <param name="dateHeureFin"></param>
+            <returns></returns>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetObjMosaicRect">
+            <summary>
+            Renvoi une nouvelle instance de l'objet <see cref="T:AstroTargetSelectorBusiness.IObjMosaicRect"/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.IAppTarget">
             <summary>
             Interface de l'Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -1669,6 +1894,11 @@
         <member name="P:AstroTargetSelectorBusiness.IChartSlice.SolarNoon">
             <summary>
             SolarNoon correspondant au Slice
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IChartSlice.RotationAngulaire">
+            <summary>
+            Rotation angulaire correspondant au Slice
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.IObjCapteur">
@@ -2046,9 +2276,24 @@
               Recherche une chaîne localisée semblable à Afficher la hauteur et la direction.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLePanneauSelectionneDansCartesDuCiel">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher le panneau sélectionné dans Cartes Du Ciel.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLePanneauSelectionneDansStellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher le panneau sélectionné dans Stellarium.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansCartesDuCiel">
             <summary>
               Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Cartes du Ciel..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansMosaicCalculator">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Mosaic Calculator.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.AfficherLObjetCelesteDansStellarium">
@@ -2064,6 +2309,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.AProposDe">
             <summary>
               Recherche une chaîne localisée semblable à À propos de.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AttentionLaRotationGlobaleSurLaDureeTotaleDeLaMosaiqueSembleImportante">
+            <summary>
+              Recherche une chaîne localisée semblable à Attention, la rotation globale sur la durée totale de la mosaïque semble importante..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Aucune">
@@ -2176,9 +2426,44 @@
               Recherche une chaîne localisée semblable à Envoi de la commande....
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.EstimationDeLaLargeurTotaleDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Estimation de la largeur totale de la mosaïque.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.EstimationDeLaRotationGlobaleDeLObjetSurLaSession">
+            <summary>
+              Recherche une chaîne localisée semblable à Estimation de la rotation globale de l&apos;objet sur la session.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Exporter">
+            <summary>
+              Recherche une chaîne localisée semblable à Exporter.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ExporterLesResultats">
+            <summary>
+              Recherche une chaîne localisée semblable à Exporter les résultats.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Fermer">
+            <summary>
+              Recherche une chaîne localisée semblable à Fermer.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.FiltrerLesResultats">
             <summary>
               Recherche une chaîne localisée semblable à Filtrer les résultats.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FLongueurFocale">
+            <summary>
+              Recherche une chaîne localisée semblable à F : longueur focale en mm.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Format">
+            <summary>
+              Recherche une chaîne localisée semblable à Format.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDesChampsPourLePluginStellariumIncorrect">
@@ -2209,6 +2494,21 @@
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuLieuDObservationIncorrect">
             <summary>
               Recherche une chaîne localisée semblable à Format du lieu d&apos;observation incorrect.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format incorrect :.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FOV">
+            <summary>
+              Recherche une chaîne localisée semblable à FOV.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FOVFormule">
+            <summary>
+              Recherche une chaîne localisée semblable à FOV = 57.3 * L / F.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.GrandeurH">
@@ -2256,6 +2556,11 @@
               Recherche une chaîne localisée semblable à Horaire.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.InclureLesLiensPourTelescopesUnistellar">
+            <summary>
+              Recherche une chaîne localisée semblable à Inclure les liens pour téléscopes Unistellar.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.InfoCapteur1">
             <summary>
               Recherche une chaîne localisée semblable à Veuillez sélectionner votre capteur..
@@ -2264,6 +2569,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.InfoCapteur2">
             <summary>
               Recherche une chaîne localisée semblable à Si votre capteur n&apos;est pas présent dans la liste, vous pouvez saisir manuellement le nom et la largeur en pixel..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.InformationsSurLeFOV">
+            <summary>
+              Recherche une chaîne localisée semblable à Informations sur le FOV.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire">
+            <summary>
+              Recherche une chaîne localisée semblable à La date et l&apos;heure utilisées pour la création de la mosaïque correspondent à celles utilisées pour l&apos;observation horaire..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Largeur">
@@ -2286,9 +2601,24 @@
               Recherche une chaîne localisée semblable à La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut &apos;8090&apos;..
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant">
+            <summary>
+              Recherche une chaîne localisée semblable à Le calcul de la mosaïque donne un nombre de panneaux trop important (&gt; 120)..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LesBoutonsStellariumEtCartesDuCielVousPermettentDePositionnerCesLogicielsSurLesCoordonneesDuPanneauSelectionne">
+            <summary>
+              Recherche une chaîne localisée semblable à Les boutons Stellarium et Cartes du Ciel vous permettent de positionner ces logiciels sur les coordonnées du panneau sélectionné..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum">
             <summary>
               Recherche une chaîne localisée semblable à Les intervalles qui apparaissent en gris signifient que l&apos;objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LiensUnistellar">
+            <summary>
+              Recherche une chaîne localisée semblable à Liens Unistellar.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Lieu">
@@ -2304,6 +2634,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.LieuDeLObservationLatLong">
             <summary>
               Recherche une chaîne localisée semblable à Lieu de l&apos;observation (Lat. - Long.).
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LLargeurDeVotreCapteur">
+            <summary>
+              Recherche une chaîne localisée semblable à L : largeur de votre capteur en µm.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Longitude">
@@ -2381,6 +2716,11 @@
               Recherche une chaîne localisée semblable à &amp;Quitter.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Min">
+            <summary>
+              Recherche une chaîne localisée semblable à min..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Minutes">
             <summary>
               Recherche une chaîne localisée semblable à minutes.
@@ -2401,14 +2741,39 @@
               Recherche une chaîne localisée semblable à Modifier.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.MosaicCalculator">
+            <summary>
+              Recherche une chaîne localisée semblable à Mosaic Calculator.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.NiveauDeChevauchementDesImages">
+            <summary>
+              Recherche une chaîne localisée semblable à Niveau de chevauchement des images.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Nom">
             <summary>
               Recherche une chaîne localisée semblable à Nom.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.NombreDePanneaux">
+            <summary>
+              Recherche une chaîne localisée semblable à Nombre de panneaux.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.NombreDeParametresIncorrect">
             <summary>
               Recherche une chaîne localisée semblable à Nombre de paramètres incorrect.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.NomPanneau">
+            <summary>
+              Recherche une chaîne localisée semblable à Nom panneau.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.NousVousConseillonsDePlanifierVotreMosaiqueEnPlusieursSoireesEnPrivilegiantLesMemesPlagesHoraires">
+            <summary>
+              Recherche une chaîne localisée semblable à Nous vous conseillons de planifier votre mosaïque en plusieurs soirées, en privilégiant les mêmes plages horaires..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.NouvelleVersionDisponible">
@@ -2424,6 +2789,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.ObjetCeleste">
             <summary>
               Recherche une chaîne localisée semblable à Objet céleste.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ObjetCelesteEtParametresDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Objet céleste et paramètres de la mosaïque.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.ObjetsCelestes">
@@ -2444,6 +2814,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.OuvrirLeFichierDesLogs">
             <summary>
               Recherche une chaîne localisée semblable à Ouvrir le fichier des &amp;logs.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Panneau">
+            <summary>
+              Recherche une chaîne localisée semblable à Panneau.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Parametres">
@@ -2526,6 +2901,11 @@
               Recherche une chaîne localisée semblable à Rechercher.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ResultatsDuCalculDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Résultats du calcul de la mosaïque.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Scoring">
             <summary>
               Recherche une chaîne localisée semblable à Scoring.
@@ -2534,6 +2914,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.SelectionDuCapteur">
             <summary>
               Recherche une chaîne localisée semblable à Sélection du Capteur.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.SelectionDUnElémentDansLaListe">
+            <summary>
+              Recherche une chaîne localisée semblable à Sélection d&apos;un élément dans la liste.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.SelectionnezUnPanneauDansLaListeAfinDeLAfficherDansLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Sélectionnez un panneau dans la liste afin de l&apos;afficher dans la mosaïque..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Serveur">
@@ -2566,9 +2956,19 @@
               Recherche une chaîne localisée semblable à Temps de pose max..
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseParPanneau">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose par panneau.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseSecondesSansRotationDeChamps">
             <summary>
               Recherche une chaîne localisée semblable à Temps de pose (secondes) sans rotation de champs.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseTotalPourLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose total pour la mosaïque.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Terminer">
@@ -2601,14 +3001,39 @@
               Recherche une chaîne localisée semblable à Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ValeurIncorrecte">
+            <summary>
+              Recherche une chaîne localisée semblable à Valeur incorrecte :.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Version">
             <summary>
               Recherche une chaîne localisée semblable à Version.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.VeuillezSpecifierUneValeurDecicmalePositive">
+            <summary>
+              Recherche une chaîne localisée semblable à Veuillez spécifier une valeur décicmale positive..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.VeuillezSpecifierUnNombreEntierComprisEntre1Et240">
+            <summary>
+              Recherche une chaîne localisée semblable à Veuillez spécifier un nombre entier compris entre 1 et 240..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.VeuillezSpecifierUnNombreEntierComprisEntre1Et50">
+            <summary>
+              Recherche une chaîne localisée semblable à Veuillez spécifier un nombre entier compris entre 1 et 50..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Visualisation">
             <summary>
               Recherche une chaîne localisée semblable à Visualisation.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.VoiciLaFormuleVousPermettantDeCalculerVotreChampDeVision">
+            <summary>
+              Recherche une chaîne localisée semblable à Voici la formule vous permettant de calculer votre champ de vision (FOV) :.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes">

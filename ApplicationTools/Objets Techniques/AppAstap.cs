@@ -124,6 +124,22 @@ namespace ApplicationTools
         {
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="ra"></param>
+        /// <param name="dec"></param>
+        /// <param name="dateObservation"></param>
+        /// <param name="fov"></param>
+        /// <exception cref="Exception"></exception>
+        public override void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1)
+        {
+            if (ra.Coordonnee == 0 && dec.Coordonnee == 0)
+                return;
+
+            throw new NotImplementedException();
+        }
+
         #endregion
 
         #region Champs

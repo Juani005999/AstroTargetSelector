@@ -231,8 +231,8 @@ namespace AstroTargetSelectorBusiness
                         RA = appToolFactory.GetCoordinate(Convert.ToDouble(ra.Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.RA),
                         DEC = appToolFactory.GetCoordinate(Convert.ToDouble(dec.Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.DEC),
                         Magnitude = Convert.ToDouble(magnitude.Replace(',', '.'), CultureInfo.InvariantCulture),
-                        GrandeurWidth = appToolFactory.GetCoordinate(Convert.ToDouble(width.Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree),
-                        GrandeurHeight = appToolFactory.GetCoordinate(Convert.ToDouble(height.Replace(',', '.'), CultureInfo.InvariantCulture), CoordinatesType.Degree)
+                        GrandeurWidth = appToolFactory.GetCoordinate(Convert.ToDouble(width.Replace(',', '.'), CultureInfo.InvariantCulture) / 60, CoordinatesType.Degree),
+                        GrandeurHeight = appToolFactory.GetCoordinate(Convert.ToDouble(height.Replace(',', '.'), CultureInfo.InvariantCulture) / 60, CoordinatesType.Degree)
                     });
                     appToolFactory.GetLog().Log($"Ajout nouvel objet à la liste : {objet.Nom}");
                 }

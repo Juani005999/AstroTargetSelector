@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using ApplicationTools;
 using AstroTargetSelectorResources;
 
@@ -161,6 +162,27 @@ namespace AstroTargetSelectorBusiness
                 listeModeVisualisation.Add(ModeVisualisation.Annuel, Resources.Annuel);
             }
             return listeModeVisualisation;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="parentTarget"></param>
+        /// <param name="dateHeureDebut"></param>
+        /// <param name="dateHeureFin"></param>
+        /// <returns></returns>
+        public IObjSliceSpan GetObjSliceSpan(IObjTarget parentTarget, DateTime dateHeureDebut, DateTime dateHeureFin)
+        {
+            return new ObjSliceSpan(this, GetAppInputs(), parentTarget, dateHeureDebut, dateHeureFin);
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public IObjMosaicRect GetObjMosaicRect()
+        {
+            return new ObjMosaicRect();
         }
 
         #endregion

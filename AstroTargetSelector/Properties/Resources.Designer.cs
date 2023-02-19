@@ -123,6 +123,16 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap approval {
+            get {
+                object obj = ResourceManager.GetObject("approval", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ASO {
             get {
                 object obj = ResourceManager.GetObject("ASO", resourceCulture);
@@ -173,6 +183,36 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ico16783 {
+            get {
+                object obj = ResourceManager.GetObject("ico16783", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_mosaic {
+            get {
+                object obj = ResourceManager.GetObject("icon-mosaic", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icon_mosaic_32 {
+            get {
+                object obj = ResourceManager.GetObject("icon-mosaic-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_paramètres_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8-paramètres-50", resourceCulture);
@@ -206,6 +246,16 @@ namespace AstroTargetSelector.Properties {
         internal static System.Drawing.Bitmap ModeNuit {
             get {
                 object obj = ResourceManager.GetObject("ModeNuit", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap no_entry {
+            get {
+                object obj = ResourceManager.GetObject("no-entry", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

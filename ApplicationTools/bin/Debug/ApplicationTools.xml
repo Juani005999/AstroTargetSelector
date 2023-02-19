@@ -448,6 +448,17 @@
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
+        <member name="M:ApplicationTools.IAppProgramme.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            Méthode permettant le positionnement de la sélection dans Stellarium
+            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
         <member name="M:ApplicationTools.IAppProgramme.Start">
             <summary>
             Démarre l'application
@@ -592,6 +603,16 @@
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
         </member>
+        <member name="M:ApplicationTools.AppAstap.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception"></exception>
+        </member>
         <member name="T:ApplicationTools.AppAstroSessionOrganizer">
             <summary>
             Objet de communication avec le logiciel ASO
@@ -656,6 +677,16 @@
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppAstroSessionOrganizer.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="F:ApplicationTools.AppAstroSessionOrganizer.installLocation">
             <summary>
@@ -726,6 +757,16 @@
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppAstroTargetSelector.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="F:ApplicationTools.AppAstroTargetSelector.isRunning">
             <summary>
@@ -803,6 +844,16 @@
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppCartesDuCiel.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="F:ApplicationTools.AppCartesDuCiel.isRunning">
             <summary>
@@ -892,12 +943,19 @@
         </member>
         <member name="M:ApplicationTools.AppProgramme.FocusTo(System.String,System.DateTime)">
             <summary>
-            Méthode permettant le positionnement de la sélection dans Stellarium
-            <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+            <inheritdoc/>
             </summary>
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
-            <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppProgramme.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
         </member>
         <member name="M:ApplicationTools.AppProgramme.Start">
             <summary>
@@ -995,6 +1053,16 @@
             <param name="nomTarget"></param>
             <param name="dateObservation"></param>
             <exception cref="T:System.Exception">Exception survenue lors du traitement</exception>
+        </member>
+        <member name="M:ApplicationTools.AppStellarium.FocusTo(ApplicationTools.Coordinate,ApplicationTools.Coordinate,System.DateTime,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+            <param name="dateObservation"></param>
+            <param name="fov"></param>
+            <exception cref="T:System.Exception"></exception>
         </member>
         <member name="F:ApplicationTools.AppStellarium.isRunning">
             <summary>

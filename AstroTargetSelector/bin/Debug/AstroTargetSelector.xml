@@ -70,6 +70,216 @@
             le contenu de cette méthode avec l'éditeur de code.
             </summary>
         </member>
+        <member name="T:AstroTargetSelector.dlgMosaicCalculator">
+            <summary>
+            Boîte de Dialogue "Mosaic Calculator"
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.NombreMaxPanneau1D">
+            <summary>
+            Nombre max de panneaux dans la mosaique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.WarningLevelRotationGlobale">
+            <summary>
+            Rotation totale acceptée avant Warning
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.SizePanel">
+            <summary>
+            Size du paneau de la mosaique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.RectBorderWidth">
+            <summary>
+            Size du paneau de la mosaique
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelector.dlgMosaicCalculator.ModeExport">
+            <summary>
+            Liste des mode d'export des résultats
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.ModeExport.TXT">
+            <summary>
+            Export .txt
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.ModeExport.CSV">
+            <summary>
+            Export .csv
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.MosaicFOV">
+            <summary>
+            FOV par défaut
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.TempsPanneau">
+            <summary>
+            Temps par panneau par défaut
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.PctChevauchement">
+            <summary>
+            Pct de chevauchement par défaut
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.TypeExport">
+            <summary>
+            Type d'export des résultats
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.ExportUnistellarLinks">
+            <summary>
+            Ajoute les liens unistellar lors de l'export des résultats
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.#ctor(AstroTargetSelectorBusiness.IAppObjFactory,AstroTargetSelectorBusiness.IObjTarget)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+            <param name="target"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.ChargeFormulaire">
+            <summary>
+            Permet le chargement du formulaire depuis les données stockées
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.InitialisationListeResultRect">
+            <summary>
+            Permet l'initialisation de la liste des Key/Value Fits
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.SetToolTip">
+            <summary>
+            Initialisation des infos-bulles
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.CalculMosaique">
+            <summary>
+            Lance le calcul de la mosaïque en fonction des inputs
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.panelMosaic_Paint(System.Object,System.Windows.Forms.PaintEventArgs)">
+            <summary>
+            Evénenement permettant le Draw du Panel Mosaic
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.StellariumFocusTo">
+            <summary>
+            Lance la commande de sélection dans Stellarium pour le Rect Sélectionné
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.backgroundWorkerStellarium_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Traitement asynchrone de la commande de sélection dans Stellarium
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.CdCFocusTo">
+            <summary>
+            Lance la commande de sélection dans CdC pour le Rect Sélectionné
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.backgroundWorkerCartesDuCiel_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Traitement asynchrone de la commande de sélection dans Cartes du Ciel
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.ExportResults">
+            <summary>
+            Permet d'exporter les résultats de la mosaïque
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.target">
+            <summary>
+            Objet sur lequel sera effectué le calcul de la mosaïque
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.listeRect">
+            <summary>
+            Liste des rectangle du Panel
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.listeResultRect">
+            <summary>
+            Liste servant à l'affichage des résultats des rectangle de la mosaique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.selectedRect">
+            <summary>
+            Index du rectangle actuellement sélectionné
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.chargementFormulaire">
+            <summary>
+            Flag interne permettant de savoir si l'on charge le formulaire
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.chargementListeResult">
+            <summary>
+            Flag interne permettant de savoir si la liste est en cours de chargement
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:AstroTargetSelector.dlgNewVersion">
             <summary>
             Boîte de Dialogue "Nouvelle version disponible"
@@ -646,6 +856,11 @@
             Lance l'application AstroSessionOrganizer
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.MainFenetre.OpenMosaicCalculator">
+            <summary>
+            Ouvre la boîte de dialogue Mosaic Calculator
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.MainFenetre.factory">
             <summary>
             Instance de la fabrique d'objets
@@ -755,6 +970,11 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.approval">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.ASO">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -780,6 +1000,21 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.ico16783">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.icon_mosaic">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.icon_mosaic_32">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.icons8_paramètres_50">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -796,6 +1031,11 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.ModeNuit">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.no_entry">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

@@ -60,6 +60,23 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        public double RotationAngulaire
+        {
+            get
+            {
+                if (!rotationAngulaire.HasValue)
+                {
+                    // On recalcul le slice
+                    ReCalcSlice();
+                }
+
+                return rotationAngulaire.Value;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public Color CouleurPointGraphique
         {
             get
@@ -570,21 +587,23 @@ namespace AstroTargetSelectorBusiness
         private void ReCalcSlice()
         {
             // Calcul pour Julien
-            double heureCorrige = DateHeure.Hour - 1;
-            if (TimeZoneInfo.Local.IsDaylightSavingTime(DateHeure))
-                heureCorrige -= 1;
-            heureCorrige += ((double)DateHeure.Minute / 60);
-            int moisCorrige = DateHeure.Month;
+            //double heureCorrige = DateHeure.Hour - 1;
+            //if (TimeZoneInfo.Local.IsDaylightSavingTime(DateHeure))
+            //    heureCorrige -= 1;
+            DateTime utcDateTime = DateHeure.ToUniversalTime();
+            double heureCorrige = utcDateTime.Hour;
+            heureCorrige += ((double)utcDateTime.Minute / 60);
+            int moisCorrige = utcDateTime.Month;
             if (moisCorrige < 3)
                 moisCorrige += 12;
-            int anneeCorrige = DateHeure.Year;
+            int anneeCorrige = utcDateTime.Year;
             if (moisCorrige < 3)
                 anneeCorrige -= 1;
             double A = Math.Floor((double)(anneeCorrige / 100));
             double B = 2 - A + Math.Floor((double)(A / 4));
             double C = Math.Floor((double)(365.25 * anneeCorrige));
             double D = Math.Floor((double)(30.6001 * (moisCorrige + 1)));
-            double JJ = B + C + D + DateHeure.Day + ((double)heureCorrige / 24) + 1720994.5;
+            double JJ = B + C + D + utcDateTime.Day + ((double)heureCorrige / 24) + 1720994.5;
 
             // Angle rotation de la Terre
             double rotT = JJ - 2451545;
@@ -634,6 +653,11 @@ namespace AstroTargetSelectorBusiness
                                     * cosLatitude
                                     * cosAzimut)
                                     * 60);
+
+            rotationAngulaire = Math.Abs(0.000729
+                                    * Math.Cos(appInputs.Inputs.LieuObservation.LatitudeValue)
+                                    * Math.Cos((Math.PI / 180) * azimut.Coordonnee)
+                                    / Math.Cos((Math.PI / 180) * hauteur.Coordonnee));
         }
 
         /// <summary>
@@ -710,6 +734,11 @@ namespace AstroTargetSelectorBusiness
         /// Temps de pose calculé pour l'intervalle
         /// </summary>
         private double? tempsPoseCalcule = null;
+
+        /// <summary>
+        /// Rotation angulaire pour l'intervalle
+        /// </summary>
+        private double? rotationAngulaire = null;
 
         #endregion
     }

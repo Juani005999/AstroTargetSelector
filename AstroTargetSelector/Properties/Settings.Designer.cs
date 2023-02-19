@@ -82,5 +82,65 @@ namespace AstroTargetSelector.Properties {
                 this["SerieLuneVisible"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string MosaicFOV {
+            get {
+                return ((string)(this["MosaicFOV"]));
+            }
+            set {
+                this["MosaicFOV"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TempsPanneau {
+            get {
+                return ((string)(this["TempsPanneau"]));
+            }
+            set {
+                this["TempsPanneau"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string PctChevauchement {
+            get {
+                return ((string)(this["PctChevauchement"]));
+            }
+            set {
+                this["PctChevauchement"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string TypeExport {
+            get {
+                return ((string)(this["TypeExport"]));
+            }
+            set {
+                this["TypeExport"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string ExportUnistellarLinks {
+            get {
+                return ((string)(this["ExportUnistellarLinks"]));
+            }
+            set {
+                this["ExportUnistellarLinks"] = value;
+            }
+        }
     }
 }

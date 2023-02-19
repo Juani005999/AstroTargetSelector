@@ -151,13 +151,20 @@ namespace ApplicationTools
         #region Méthodes
 
         /// <summary>
-        /// Méthode permettant le positionnement de la sélection dans Stellarium
-        /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande Stellarium</para>
+        /// <inheritdoc/>
         /// </summary>
         /// <param name="nomTarget"></param>
         /// <param name="dateObservation"></param>
-        /// <exception cref="Exception">Exception survenue lors du traitement</exception>
         public abstract void FocusTo(string nomTarget, DateTime dateObservation);
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="ra"></param>
+        /// <param name="dec"></param>
+        /// <param name="dateObservation"></param>
+        /// <param name="fov"></param>
+        public abstract void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1);
 
         /// <summary>
         /// Démarre l'application

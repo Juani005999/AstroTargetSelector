@@ -59,6 +59,10 @@
     <Compile Include="App\AppInputs.cs" />
     <Compile Include="App\AppTarget.cs" />
     <Compile Include="App\AppTCPServer.cs" />
+    <Compile Include="Interfaces\IObjMosaicRect.cs" />
+    <Compile Include="Business\ObjMosaicRect.cs" />
+    <Compile Include="Interfaces\IObjSliceSpan.cs" />
+    <Compile Include="Business\ObjSliceSpan.cs" />
     <Compile Include="Interfaces\IAppTCPServer.cs" />
     <Compile Include="Business\ObjCapteur.cs" />
     <Compile Include="Business\ObjCapteurList.cs" />

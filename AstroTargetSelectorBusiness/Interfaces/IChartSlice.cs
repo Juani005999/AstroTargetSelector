@@ -136,6 +136,11 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         DateTime? SolarNoon { get; }
 
+        /// <summary>
+        /// Rotation angulaire correspondant au Slice
+        /// </summary>
+        double RotationAngulaire { get; }
+
         #endregion
     }
 }

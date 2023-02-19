@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Ressources\Telescope.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AstroTargetSelector" version="1.5.3.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AstroTargetSelector" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
     <commandLine file="AstroTargetSelector.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -43,84 +43,84 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ApplicationTools.dll" size="65536">
-      <assemblyIdentity name="ApplicationTools" version="1.5.3.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ApplicationTools.dll" size="73216">
+      <assemblyIdentity name="ApplicationTools" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Jn2QyI/PyEczU+rk/aiRVEfsMn84nh5qSfWXzPwMISs=</dsig:DigestValue>
+        <dsig:DigestValue>PQS49AzACa6qazNA8HfI3u2jrWeRfxo37j2Xiw+2kHU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="en\ApplicationTools.resources.dll" size="5120">
-      <assemblyIdentity name="ApplicationTools.resources" version="1.5.3.1" language="en" processorArchitecture="msil" />
+      <assemblyIdentity name="ApplicationTools.resources" version="1.6.1.1" language="en" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>64sc43hjeYvxBB3BFTLK+n0JLpRaVd5H3hk+JFE5rpE=</dsig:DigestValue>
+        <dsig:DigestValue>Xd3dtmXpVqOHH9grZcKJiFVTVgCgJA5JReqeVQMbO/g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroMoonCalc.dll" size="14336">
-      <assemblyIdentity name="AstroMoonCalc" version="1.0.1.0" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="AstroMoonCalc" version="1.0.2.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>4Cg2bphvw5Otkl9kK4deCVudDhLERG/3IQjacrosdPA=</dsig:DigestValue>
+        <dsig:DigestValue>jnyoMb/fujYoGHZmV1icjF6P56oKJDNNBKWFpRTr/uY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="663464">
-      <assemblyIdentity name="AstroTargetSelector" version="1.5.3.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="719272">
+      <assemblyIdentity name="AstroTargetSelector" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X35SbauP/5mGAd4ibxYDRIFbu7DBHE97ZiV0HCRWBh4=</dsig:DigestValue>
+        <dsig:DigestValue>ucCAd8MeVuX3HdxKqMC7doOG6Mm3Uy07kKhIr5azPLw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelectorBusiness.dll" size="89088">
-      <assemblyIdentity name="AstroTargetSelectorBusiness" version="1.5.3.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelectorBusiness.dll" size="104448">
+      <assemblyIdentity name="AstroTargetSelectorBusiness" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>gsQ4CVF3zpAP9zUj3z6jvTokgCKrwW0BS6PKji5daG8=</dsig:DigestValue>
+        <dsig:DigestValue>ZqtP6Pwxpy68xySQNa3N7Sp95VvLr0ZAxrEWcblr2lo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="en\AstroTargetSelectorBusiness.resources.dll" size="12800">
-      <assemblyIdentity name="AstroTargetSelectorBusiness.resources" version="1.5.3.1" language="en" processorArchitecture="msil" />
+      <assemblyIdentity name="AstroTargetSelectorBusiness.resources" version="1.6.1.1" language="en" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dBUvnAaHHQr6dgxmDsj5xb0daWtqd3m25S0iLzKxx40=</dsig:DigestValue>
+        <dsig:DigestValue>dOTTosR+xtsmgqqQKN5ZAVjU+Y0pdfDjlr3ehAuxlGE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
-  <file name="AstroTargetSelector.exe.config" size="1407">
+  <file name="AstroTargetSelector.exe.config" size="1990">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>+VJa0CNbSFoCz12hbjfqeuwObhSJHHIahov9L+k//Y4=</dsig:DigestValue>
+      <dsig:DigestValue>QV6ImobUde8u2edZRRCw1L3DDZpj8mU1w84U/YmXm4I=</dsig:DigestValue>
     </hash>
   </file>
   <file name="Ressources\Telescope.ico" size="4286">

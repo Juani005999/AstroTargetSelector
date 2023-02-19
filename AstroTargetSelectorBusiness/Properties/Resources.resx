@@ -123,8 +123,17 @@
   <data name="AfficherLaHauteurEtLaDirection" xml:space="preserve">
     <value>Afficher la hauteur et la direction</value>
   </data>
+  <data name="AfficherLePanneauSelectionneDansCartesDuCiel" xml:space="preserve">
+    <value>Afficher le panneau sélectionné dans Cartes Du Ciel</value>
+  </data>
+  <data name="AfficherLePanneauSelectionneDansStellarium" xml:space="preserve">
+    <value>Afficher le panneau sélectionné dans Stellarium</value>
+  </data>
   <data name="AfficherLObjetCelesteDansCartesDuCiel" xml:space="preserve">
     <value>Afficher l'objet céleste dans Cartes du Ciel.</value>
+  </data>
+  <data name="AfficherLObjetCelesteDansMosaicCalculator" xml:space="preserve">
+    <value>Afficher l'objet céleste dans Mosaic Calculator</value>
   </data>
   <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
     <value>Afficher l'objet céleste dans Stellarium.</value>
@@ -134,6 +143,9 @@
   </data>
   <data name="AProposDe" xml:space="preserve">
     <value>À propos de</value>
+  </data>
+  <data name="AttentionLaRotationGlobaleSurLaDureeTotaleDeLaMosaiqueSembleImportante" xml:space="preserve">
+    <value>Attention, la rotation globale sur la durée totale de la mosaïque semble importante.</value>
   </data>
   <data name="Aucune" xml:space="preserve">
     <value>Aucune</value>
@@ -201,8 +213,29 @@
   <data name="EnvoiDeLaCommande" xml:space="preserve">
     <value>Envoi de la commande...</value>
   </data>
+  <data name="EstimationDeLaLargeurTotaleDeLaMosaique" xml:space="preserve">
+    <value>Estimation de la largeur totale de la mosaïque</value>
+  </data>
+  <data name="EstimationDeLaRotationGlobaleDeLObjetSurLaSession" xml:space="preserve">
+    <value>Estimation de la rotation globale de l'objet sur la session</value>
+  </data>
+  <data name="Exporter" xml:space="preserve">
+    <value>Exporter</value>
+  </data>
+  <data name="ExporterLesResultats" xml:space="preserve">
+    <value>Exporter les résultats</value>
+  </data>
+  <data name="Fermer" xml:space="preserve">
+    <value>Fermer</value>
+  </data>
   <data name="FiltrerLesResultats" xml:space="preserve">
     <value>Filtrer les résultats</value>
+  </data>
+  <data name="FLongueurFocale" xml:space="preserve">
+    <value>F : longueur focale en mm</value>
+  </data>
+  <data name="Format" xml:space="preserve">
+    <value>Format</value>
   </data>
   <data name="FormatDesChampsPourLePluginStellariumIncorrect" xml:space="preserve">
     <value>Format des champs pour le plugin Stellarium incorrect</value>
@@ -221,6 +254,15 @@
   </data>
   <data name="FormatDuLieuDObservationIncorrect" xml:space="preserve">
     <value>Format du lieu d'observation incorrect</value>
+  </data>
+  <data name="FormatIncorrect" xml:space="preserve">
+    <value>Format incorrect :</value>
+  </data>
+  <data name="FOV" xml:space="preserve">
+    <value>FOV</value>
+  </data>
+  <data name="FOVFormule" xml:space="preserve">
+    <value>FOV = 57.3 * L / F</value>
   </data>
   <data name="GrandeurH" xml:space="preserve">
     <value>Grandeur (H)</value>
@@ -249,11 +291,20 @@
   <data name="Horaire" xml:space="preserve">
     <value>Horaire</value>
   </data>
+  <data name="InclureLesLiensPourTelescopesUnistellar" xml:space="preserve">
+    <value>Inclure les liens pour téléscopes Unistellar</value>
+  </data>
   <data name="InfoCapteur1" xml:space="preserve">
     <value>Veuillez sélectionner votre capteur.</value>
   </data>
   <data name="InfoCapteur2" xml:space="preserve">
     <value>Si votre capteur n'est pas présent dans la liste, vous pouvez saisir manuellement le nom et la largeur en pixel.</value>
+  </data>
+  <data name="InformationsSurLeFOV" xml:space="preserve">
+    <value>Informations sur le FOV</value>
+  </data>
+  <data name="LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire" xml:space="preserve">
+    <value>La date et l'heure utilisées pour la création de la mosaïque correspondent à celles utilisées pour l'observation horaire.</value>
   </data>
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>
@@ -267,8 +318,17 @@
   <data name="LaValeurDuPortDoitCorrespondreACellePositionneeDansStellariumParDefaut8090" xml:space="preserve">
     <value>La valeur du port doit correspondre à celle positionnée dans Stellarium, par défaut '8090'.</value>
   </data>
+  <data name="LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant" xml:space="preserve">
+    <value>Le calcul de la mosaïque donne un nombre de panneaux trop important (&gt; 120).</value>
+  </data>
+  <data name="LesBoutonsStellariumEtCartesDuCielVousPermettentDePositionnerCesLogicielsSurLesCoordonneesDuPanneauSelectionne" xml:space="preserve">
+    <value>Les boutons Stellarium et Cartes du Ciel vous permettent de positionner ces logiciels sur les coordonnées du panneau sélectionné.</value>
+  </data>
   <data name="LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum" xml:space="preserve">
     <value>Les intervalles qui apparaissent en gris signifient que l'objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum.</value>
+  </data>
+  <data name="LiensUnistellar" xml:space="preserve">
+    <value>Liens Unistellar</value>
   </data>
   <data name="Lieu" xml:space="preserve">
     <value>Lieu</value>
@@ -278,6 +338,9 @@
   </data>
   <data name="LieuDeLObservationLatLong" xml:space="preserve">
     <value>Lieu de l'observation (Lat. - Long.)</value>
+  </data>
+  <data name="LLargeurDeVotreCapteur" xml:space="preserve">
+    <value>L : largeur de votre capteur en µm</value>
   </data>
   <data name="Longitude" xml:space="preserve">
     <value>Longitude</value>
@@ -324,6 +387,9 @@
   <data name="menuQuitter" xml:space="preserve">
     <value>&amp;Quitter</value>
   </data>
+  <data name="Min" xml:space="preserve">
+    <value>min.</value>
+  </data>
   <data name="Minutes" xml:space="preserve">
     <value>minutes</value>
   </data>
@@ -336,11 +402,26 @@
   <data name="Modifier" xml:space="preserve">
     <value>Modifier</value>
   </data>
+  <data name="MosaicCalculator" xml:space="preserve">
+    <value>Mosaic Calculator</value>
+  </data>
+  <data name="NiveauDeChevauchementDesImages" xml:space="preserve">
+    <value>Niveau de chevauchement des images</value>
+  </data>
   <data name="Nom" xml:space="preserve">
     <value>Nom</value>
   </data>
+  <data name="NombreDePanneaux" xml:space="preserve">
+    <value>Nombre de panneaux</value>
+  </data>
   <data name="NombreDeParametresIncorrect" xml:space="preserve">
     <value>Nombre de paramètres incorrect</value>
+  </data>
+  <data name="NomPanneau" xml:space="preserve">
+    <value>Nom panneau</value>
+  </data>
+  <data name="NousVousConseillonsDePlanifierVotreMosaiqueEnPlusieursSoireesEnPrivilegiantLesMemesPlagesHoraires" xml:space="preserve">
+    <value>Nous vous conseillons de planifier votre mosaïque en plusieurs soirées, en privilégiant les mêmes plages horaires.</value>
   </data>
   <data name="NouvelleVersionDisponible" xml:space="preserve">
     <value>Nouvelle version disponible</value>
@@ -350,6 +431,9 @@
   </data>
   <data name="ObjetCeleste" xml:space="preserve">
     <value>Objet céleste</value>
+  </data>
+  <data name="ObjetCelesteEtParametresDeLaMosaique" xml:space="preserve">
+    <value>Objet céleste et paramètres de la mosaïque</value>
   </data>
   <data name="ObjetsCelestes" xml:space="preserve">
     <value>objets célestes</value>
@@ -362,6 +446,9 @@
   </data>
   <data name="OuvrirLeFichierDesLogs" xml:space="preserve">
     <value>Ouvrir le fichier des &amp;logs</value>
+  </data>
+  <data name="Panneau" xml:space="preserve">
+    <value>Panneau</value>
   </data>
   <data name="Parametres" xml:space="preserve">
     <value>Paramètres</value>
@@ -411,11 +498,20 @@
   <data name="Rechercher" xml:space="preserve">
     <value>Rechercher</value>
   </data>
+  <data name="ResultatsDuCalculDeLaMosaique" xml:space="preserve">
+    <value>Résultats du calcul de la mosaïque</value>
+  </data>
   <data name="Scoring" xml:space="preserve">
     <value>Scoring</value>
   </data>
   <data name="SelectionDuCapteur" xml:space="preserve">
     <value>Sélection du Capteur</value>
+  </data>
+  <data name="SelectionDUnElémentDansLaListe" xml:space="preserve">
+    <value>Sélection d'un élément dans la liste</value>
+  </data>
+  <data name="SelectionnezUnPanneauDansLaListeAfinDeLAfficherDansLaMosaique" xml:space="preserve">
+    <value>Sélectionnez un panneau dans la liste afin de l'afficher dans la mosaïque.</value>
   </data>
   <data name="Serveur" xml:space="preserve">
     <value>Serveur</value>
@@ -435,8 +531,14 @@
   <data name="TempsDePoseMax" xml:space="preserve">
     <value>Temps de pose max.</value>
   </data>
+  <data name="TempsDePoseParPanneau" xml:space="preserve">
+    <value>Temps de pose par panneau</value>
+  </data>
   <data name="TempsDePoseSecondesSansRotationDeChamps" xml:space="preserve">
     <value>Temps de pose (secondes) sans rotation de champs</value>
+  </data>
+  <data name="TempsDePoseTotalPourLaMosaique" xml:space="preserve">
+    <value>Temps de pose total pour la mosaïque</value>
   </data>
   <data name="Terminer" xml:space="preserve">
     <value>Terminer</value>
@@ -456,11 +558,26 @@
   <data name="UneErreurEstSurvenueLorsDuTelechargementFichierTelechargeNonPresent" xml:space="preserve">
     <value>Une erreur est survenue lors du téléchargement. Fichier téléchargé non présent</value>
   </data>
+  <data name="ValeurIncorrecte" xml:space="preserve">
+    <value>Valeur incorrecte :</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
+  <data name="VeuillezSpecifierUneValeurDecicmalePositive" xml:space="preserve">
+    <value>Veuillez spécifier une valeur décicmale positive.</value>
+  </data>
+  <data name="VeuillezSpecifierUnNombreEntierComprisEntre1Et240" xml:space="preserve">
+    <value>Veuillez spécifier un nombre entier compris entre 1 et 240.</value>
+  </data>
+  <data name="VeuillezSpecifierUnNombreEntierComprisEntre1Et50" xml:space="preserve">
+    <value>Veuillez spécifier un nombre entier compris entre 1 et 50.</value>
+  </data>
   <data name="Visualisation" xml:space="preserve">
     <value>Visualisation</value>
+  </data>
+  <data name="VoiciLaFormuleVousPermettantDeCalculerVotreChampDeVision" xml:space="preserve">
+    <value>Voici la formule vous permettant de calculer votre champ de vision (FOV) :</value>
   </data>
   <data name="VousAllerTeléchargerEtMettreAJourLeFichierDeConfigurationDes" xml:space="preserve">
     <value>Vous aller télécharger et mettre à jour le fichier de configuration des</value>

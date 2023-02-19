@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
@@ -302,6 +303,259 @@ namespace ApplicationTools
                             stream.Flush();
                             appLog.Log($"Lancement requête : setfov {CartesDuCielFovLevelAfterFocus}", GetType().Name);
                             data = Encoding.ASCII.GetBytes($"setfov 3\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            appLog.Log($"Réponse setfov : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // Redraw.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            appLog.Log($"Lancement requête : redraw", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"redraw\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            appLog.Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // Fermeture Stream et Socket.
+                            stream.Close();
+                            client.Close();
+                        }
+                    }
+                }
+                catch (WarningException err)
+                {
+                    // On trace et on remonte l'Exception
+                    appLog.LogException(err, GetType().Name);
+                    throw err;
+                }
+                catch (Exception err)
+                {
+                    // On trace et on remonte l'Exception formatée
+                    appLog.LogException(err, GetType().Name);
+                    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande, err);
+                }
+
+                // Repositionnement du flag d'action en cours
+                isRunning = false;
+                // On passe le programme en avant plan
+                Start();
+
+                // Trace
+                appLog.Log($"Commande {DisplayName} FocusTo exécutée avec succès en {debutFonction.ElapsedMilliseconds} ms", GetType().Name);
+            }
+            catch (Exception ex)
+            {
+                // Repositionnement du flag d'action en cours
+                isRunning = false;
+                // On trace et on remonte l'Exception
+                appLog.LogException(ex, GetType().Name);
+                throw ex;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <param name="ra"></param>
+        /// <param name="dec"></param>
+        /// <param name="dateObservation"></param>
+        /// <param name="fov"></param>
+        /// <exception cref="Exception"></exception>
+        public override void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1)
+        {
+            if (ra.Coordonnee == 0 && dec.Coordonnee == 0)
+                return;
+
+            // VERROU DE SURETE : pas d'action si une autre action est en cours
+            // On est pas censé arriver dans ce cas car géré par le thread appelant
+            if (isRunning)
+                throw new Exception(Resources.UneAutreActionEstActuellementEnCours);
+
+            // On Try/Cacth uniquement afin d'être sûr du bon repositionnement du flag d'action en cours. L'exception survenue sera throw
+            try
+            {
+                // Positionnement du flag d'action en cours
+                isRunning = true;
+
+                // Trace et Chrono
+                appLog.Log($"Lancement de la commande {DisplayName} FocusTo", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // On vérifie si Cartes du Ciel est bien installé sur le poste
+                if (!IsInstalled)
+                    throw new Exception(Resources.LeLogicielNEstPasInstalleSurCePoste);
+                // On vérifie s'il n'y a pas eu un souci à la lecture du fichier exécutable Stellarium
+                if (string.IsNullOrEmpty(ExecutableFile))
+                    throw new Exception(Resources.LeLogicielNAPasEteTrouve);
+                appLog.Log($"{DisplayName} est bien installé sur le poste : {ExecutableFile}", GetType().Name);
+
+                // On Try/Catch ce traitement afin de remonter une Exception avec un mesage utilisateur formaté
+                try
+                {
+                    // On vérifie si Stellarium est bien en cours d'exécution
+                    if (!IsRunning)
+                    {
+                        // Trace
+                        appLog.Log($"{DisplayName} n'est pas cours d'exécution. On démarre l'application {ExecutableFile}", GetType().Name);
+
+                        // On démarre le process
+                        Process processCartesDuCiel = Process.Start(ExecutableFile);
+
+                        // On attend que Stellarium soit démarré
+                        int timeOut = 0;
+                        while (string.IsNullOrEmpty(processCartesDuCiel.MainWindowTitle) && timeOut++ < StartTimeout)
+                        {
+                            appLog.Log($"IsCartesDuCielRunning false", GetType().Name);
+                            Thread.Sleep(1000);
+                            processCartesDuCiel.Refresh();
+                        }
+                        appLog.Log($"IsCartesDuCielRunning true : Timeout = {timeOut}", GetType().Name);
+                        appLog.Log($"Démarrage de {DisplayName} effectué", GetType().Name);
+                    }
+                    else
+                        appLog.Log($"{DisplayName} est déjà en cours d'exécution", GetType().Name);
+                }
+                catch (Exception err)
+                {
+                    // On trace et on remonte l'Exception formatée
+                    appLog.LogException(err, GetType().Name);
+                    throw new Exception(Resources.UneErreurEstSurvenueLorsDeLOuvertureDuLogiciel, err);
+                }
+
+                // On récupère la valeur du port dans la Registry
+                string portCdC = string.Empty;
+                try
+                {
+                    portCdC = RegistryUtils.GetCurrentUserValue(HKCUPath, HKCUKey, appLog);
+                }
+                catch (Exception err)
+                {
+                    // On trace et on remonte l'Exception formatée
+                    appLog.LogException(err, GetType().Name);
+                    throw new Exception(Resources.VeuillezDemarrerLeLogicielAuMoinsUneFoisAfinDeTerminerSaConfiguration, err);
+                }
+                appLog.Log($"La valeur du port pour Cartes du Ciel est : {portCdC}");
+
+                // Si le port vaut 0 : Soit CdC n'est pas démarré, soit le serveur n'est pas activé
+                int port = 0;
+                if (string.IsNullOrEmpty(portCdC) || !int.TryParse(portCdC, out port) || port == 0)
+                    throw new Exception(Resources.LeServeurNEstPasActive);
+
+                // On Try/Catch ce traitement afin de remonter une Exception avec un mesage utilisateur formaté
+                try
+                {
+                    using (TcpClient client = new TcpClient(Host, port))
+                    {
+                        // Recup Stream du Socket
+                        using (NetworkStream stream = client.GetStream())
+                        {
+                            // Chrono spécifique pour requête
+                            Stopwatch debutRequete = new Stopwatch();
+                            debutRequete.Start();
+
+                            stream.ReadTimeout = 1000;
+                            // Création carte.
+                            appLog.Log($"Lancement requête : newchart Mosaic", GetType().Name);
+                            Byte[] data = Encoding.ASCII.GetBytes($"newchart Mosaic\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            string responseData = String.Empty;
+                            int bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
+                                throw new WarningException(Resources.ImpossibleDeCreerDeNouvelleCarteNombreMaxAtteint);
+                            appLog.Log($"Réponse newchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // Sélection carte.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            //data = Encoding.ASCII.GetBytes($"selectchart Marcel\r\n");
+                            appLog.Log($"Lancement requête : selectchart Mosaic", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"selectchart Mosaic\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
+                                appLog.Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, TypeLog.Warning);
+                            appLog.Log($"Réponse selectchart : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // Positionnement Date Observation.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            string dateObs = dateObservation.ToString("yyyy-MM-ddTHH:mm:ss");
+                            appLog.Log($"Lancement requête : setdate {dateObs}", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"setdate {dateObs}\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            appLog.Log($"Réponse setdate : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // Redraw.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            appLog.Log($"Lancement requête : redraw", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"redraw\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
+                                appLog.Log($"Une erreur est survenue lors de la sélection de la nouvelle carte.", GetType().Name, null, TypeLog.Warning);
+                            appLog.Log($"Réponse redraw : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // SETRA.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            appLog.Log($"Lancement requête : setra {ra.Coordonnee.ToString(CultureInfo.InvariantCulture)}", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"setra {ra.Coordonnee.ToString(CultureInfo.InvariantCulture)}\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
+                                throw new WarningException(Resources.ObjetCelesteNonTrouve);
+                            appLog.Log($"Réponse setra : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // SETDEC.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            appLog.Log($"Lancement requête : setdec {dec.Coordonnee.ToString(CultureInfo.InvariantCulture)}", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"setdec {dec.Coordonnee.ToString(CultureInfo.InvariantCulture)}\r\n");
+                            stream.Write(data, 0, data.Length);
+                            // Lecture réponse
+                            data = new Byte[2048];
+                            responseData = String.Empty;
+                            bytes = stream.Read(data, 0, data.Length);
+                            responseData = Encoding.ASCII.GetString(data, 0, bytes);
+                            if (string.IsNullOrEmpty(responseData) || !responseData.Contains("OK!"))
+                                throw new WarningException(Resources.ObjetCelesteNonTrouve);
+                            appLog.Log($"Réponse setdec : {responseData.Replace("\r", "").Replace("\n", "")} en {debutRequete.ElapsedMilliseconds} ms", GetType().Name);
+
+                            // FOV.
+                            debutRequete.Restart();
+                            stream.Flush();
+                            appLog.Log($"Lancement requête : setfov {fov.ToString(CultureInfo.InvariantCulture)}", GetType().Name);
+                            data = Encoding.ASCII.GetBytes($"setfov {fov.ToString(CultureInfo.InvariantCulture)}\r\n");
                             stream.Write(data, 0, data.Length);
                             // Lecture réponse
                             data = new Byte[2048];
