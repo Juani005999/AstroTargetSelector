@@ -2,17 +2,15 @@
 using System.Globalization;
 using System.Drawing;
 using System.Windows.Forms;
-using AstroTargetSelectorBusiness;
-using AstroTargetSelectorResources;
-using ApplicationTools;
 using System.Drawing.Drawing2D;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Windows.Forms.DataVisualization.Charting;
 using System.Linq;
 using System.Diagnostics;
-using static System.Collections.Specialized.BitVector32;
 using System.IO;
+using ApplicationTools;
+using AstroTargetSelectorBusiness;
+using AstroTargetSelectorResources;
 
 namespace AstroTargetSelector
 {
@@ -1105,6 +1103,8 @@ namespace AstroTargetSelector
                 // On ajoute la ligne d'en-tête
                 string valueEnTete = Resources.NomPanneau;
                 valueEnTete += $"{charSep}{Resources.RA}";
+                valueEnTete += $"{charSep}{Resources.RA}";
+                valueEnTete += $"{charSep}{Resources.DEC}";
                 valueEnTete += $"{charSep}{Resources.DEC}";
                 if (checkBoxExportUnistellarLinks.Checked)
                     valueEnTete += $"{charSep}{Resources.LiensUnistellar}";
@@ -1116,14 +1116,18 @@ namespace AstroTargetSelector
                     // On parcours les panneau de la mosaïque pour ajout dans le fichier
                     foreach (IObjMosaicRect panneau in listeRect)
                     {
+                        // Dans l'URL, RA est sur 360° ... va comprendre Charles
+                        Coordinate fauxRA = factory.GetCoordinate(panneau.RA.Coordonnee * 15, CoordinatesType.Degree);
                         string valueRect = panneau.Text;
                         valueRect += $"{charSep}{panneau.RA.Coordonnee.ToString(CultureInfo.InvariantCulture)}";
+                        valueRect += $"{charSep}{panneau.RA.FormatedString}";
                         valueRect += $"{charSep}{panneau.DEC.Coordonnee.ToString(CultureInfo.InvariantCulture)}";
+                        valueRect += $"{charSep}{panneau.DEC.FormatedString}";
                         if (checkBoxExportUnistellarLinks.Checked)
                         {
                             //string lien = $"{charSep}=HYPERLINK(\"unistellar://science/transit?ra={panneau.RA.Coordonnee.ToString(CultureInfo.InvariantCulture)}"
                             //                + $"&dec={panneau.DEC.Coordonnee.ToString(CultureInfo.InvariantCulture)}\", \"test\")";
-                            string lien = $"{charSep}unistellar://science/transit?ra={panneau.RA.Coordonnee.ToString(CultureInfo.InvariantCulture)}"
+                            string lien = $"{charSep}unistellar://science/transit?ra={fauxRA.Coordonnee.ToString(CultureInfo.InvariantCulture)}"
                                             + $"&dec={panneau.DEC.Coordonnee.ToString(CultureInfo.InvariantCulture)}";
                             valueRect += lien;
                         }

@@ -387,7 +387,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.6.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.6.1.2, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_68119A56FCC92DF267E2614D1216BB8A"
@@ -663,7 +663,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:1.6.1.1"
+                                    "Name" = "8:1.6.1.2"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -738,15 +738,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{7CABA0A1-6ECE-4701-9B58-00636B092EAF}"
-        "PackageCode" = "8:{242EF50B-815D-4BFE-8A83-384A6AA244FD}"
+        "ProductCode" = "8:{49DC7791-B09A-48B8-B39C-89C526D1D025}"
+        "PackageCode" = "8:{6AFFFC9D-3F47-4BB5-8660-36646208BEA0}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.11"
+        "ProductVersion" = "8:1.6.12"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
