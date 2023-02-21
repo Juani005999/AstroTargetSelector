@@ -103,6 +103,18 @@
     <Compile Include="dlgMosaicCalculator.Designer.cs">
       <DependentUpon>dlgMosaicCalculator.cs</DependentUpon>
     </Compile>
+    <Compile Include="dlgMosaicEditRADEC.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgMosaicEditRADEC.Designer.cs">
+      <DependentUpon>dlgMosaicEditRADEC.cs</DependentUpon>
+    </Compile>
+    <Compile Include="dlgMosaicEditWidth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="dlgMosaicEditWidth.Designer.cs">
+      <DependentUpon>dlgMosaicEditWidth.cs</DependentUpon>
+    </Compile>
     <Compile Include="dlgNewVersion.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,6 +152,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="dlgMosaicCalculator.resx">
       <DependentUpon>dlgMosaicCalculator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgMosaicEditRADEC.resx">
+      <DependentUpon>dlgMosaicEditRADEC.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="dlgMosaicEditWidth.resx">
+      <DependentUpon>dlgMosaicEditWidth.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="dlgNewVersion.resx">
       <DependentUpon>dlgNewVersion.cs</DependentUpon>
@@ -307,6 +325,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Ressources\ico16783.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\EditNom16.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\delete16.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -4,7 +4,7 @@
   <description asmv2:iconFile="Ressources\Telescope.ico" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <application />
   <entryPoint>
-    <assemblyIdentity name="AstroTargetSelector" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
+    <assemblyIdentity name="AstroTargetSelector" version="1.6.1.2" language="neutral" processorArchitecture="msil" />
     <commandLine file="AstroTargetSelector.exe" parameters="" />
   </entryPoint>
   <trustInfo>
@@ -50,7 +50,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>PQS49AzACa6qazNA8HfI3u2jrWeRfxo37j2Xiw+2kHU=</dsig:DigestValue>
+        <dsig:DigestValue>FZJSxSRJuwMh1pHp+j4g2ZAABKPNVs55wGjMyEjI0rU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -62,7 +62,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Xd3dtmXpVqOHH9grZcKJiFVTVgCgJA5JReqeVQMbO/g=</dsig:DigestValue>
+        <dsig:DigestValue>ZjOMSPswFeROzEZgjYwcV8eThnby0ADttjzu7trnq5g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -79,38 +79,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="719272">
-      <assemblyIdentity name="AstroTargetSelector" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelector.exe" size="746920">
+      <assemblyIdentity name="AstroTargetSelector" version="1.6.1.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ucCAd8MeVuX3HdxKqMC7doOG6Mm3Uy07kKhIr5azPLw=</dsig:DigestValue>
+        <dsig:DigestValue>ICnj1CScTPDmiJ4X9YKByNlChCB9p3RiEa0bCGWdBkY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelectorBusiness.dll" size="104448">
-      <assemblyIdentity name="AstroTargetSelectorBusiness" version="1.6.1.1" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="AstroTargetSelectorBusiness.dll" size="106496">
+      <assemblyIdentity name="AstroTargetSelectorBusiness" version="1.6.1.2" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>ZqtP6Pwxpy68xySQNa3N7Sp95VvLr0ZAxrEWcblr2lo=</dsig:DigestValue>
+        <dsig:DigestValue>YlrU7ewZ5QdqwPj4tw+cvWRyBJRpqEYeoFmfd8OeDa4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="en\AstroTargetSelectorBusiness.resources.dll" size="12800">
-      <assemblyIdentity name="AstroTargetSelectorBusiness.resources" version="1.6.1.1" language="en" processorArchitecture="msil" />
+      <assemblyIdentity name="AstroTargetSelectorBusiness.resources" version="1.6.1.2" language="en" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>dOTTosR+xtsmgqqQKN5ZAVjU+Y0pdfDjlr3ehAuxlGE=</dsig:DigestValue>
+        <dsig:DigestValue>5IeCfuAsa+ZFN2ARm/gimsnQp/sqOalqx0ocal0IWTs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

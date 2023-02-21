@@ -32,7 +32,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgMosaicCalculator));
             this.btCancel = new System.Windows.Forms.Button();
             this.groupBoxObjet = new System.Windows.Forms.GroupBox();
+            this.buttonWidthRestore = new System.Windows.Forms.Button();
+            this.buttonWidthModify = new System.Windows.Forms.Button();
+            this.buttonRADECRestore = new System.Windows.Forms.Button();
+            this.buttonRADECModify = new System.Windows.Forms.Button();
+            this.pictureBoxErreurPctChevauchement = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErreurTempsPanneau = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErreurFOV = new System.Windows.Forms.PictureBox();
+            this.pictureBoxInfosFOV = new System.Windows.Forms.PictureBox();
             this.labelPct = new System.Windows.Forms.Label();
+            this.pictureBoxRank5 = new System.Windows.Forms.PictureBox();
             this.textBoxPctChevauchement = new System.Windows.Forms.TextBox();
             this.textBoxGrandeurL = new System.Windows.Forms.TextBox();
             this.labelTauxChevauchement = new System.Windows.Forms.Label();
@@ -57,8 +66,19 @@
             this.labelInfoDenominations = new System.Windows.Forms.Label();
             this.textBoxNomObjet = new System.Windows.Forms.TextBox();
             this.labelInfoNomObjet = new System.Windows.Forms.Label();
+            this.pictureBoxRank1 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank2 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank3 = new System.Windows.Forms.PictureBox();
+            this.pictureBoxRank4 = new System.Windows.Forms.PictureBox();
             this.dataGridViewResultRect = new System.Windows.Forms.DataGridView();
             this.groupBoxResultat = new System.Windows.Forms.GroupBox();
+            this.pictureBoxInfosSelectionPanneau = new System.Windows.Forms.PictureBox();
+            this.pictureBoxWarningRotationGlobale = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErreurNombrePanneau = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErreurCdC = new System.Windows.Forms.PictureBox();
+            this.pictureBoxErreurStellarium = new System.Windows.Forms.PictureBox();
+            this.buttonCartesDuCiel = new System.Windows.Forms.Button();
+            this.buttonStellarium = new System.Windows.Forms.Button();
             this.textBoxResultTotalWidth = new System.Windows.Forms.TextBox();
             this.labelResultTotalWidth = new System.Windows.Forms.Label();
             this.textBoxResultTempsPanneau = new System.Windows.Forms.TextBox();
@@ -81,47 +101,34 @@
             this.toolTipErreurStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.backgroundWorkerCartesDuCiel = new System.ComponentModel.BackgroundWorker();
             this.toolTipErreurCdC = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxErreurCdC = new System.Windows.Forms.PictureBox();
-            this.pictureBoxErreurStellarium = new System.Windows.Forms.PictureBox();
-            this.buttonCartesDuCiel = new System.Windows.Forms.Button();
-            this.buttonStellarium = new System.Windows.Forms.Button();
-            this.pictureBoxInfosFOV = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRank5 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRank1 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRank2 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRank3 = new System.Windows.Forms.PictureBox();
-            this.pictureBoxRank4 = new System.Windows.Forms.PictureBox();
             this.toolTipInfosFOV = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxErreurFOV = new System.Windows.Forms.PictureBox();
             this.toolTipErreurFOV = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxErreurTempsPanneau = new System.Windows.Forms.PictureBox();
             this.toolTipErreurTempsPanneau = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxErreurPctChevauchement = new System.Windows.Forms.PictureBox();
             this.toolTipErreurPctChevauchement = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxErreurNombrePanneau = new System.Windows.Forms.PictureBox();
             this.toolTipErreurNombrePanneau = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxWarningRotationGlobale = new System.Windows.Forms.PictureBox();
             this.toolTipWarningRotationGlobale = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxInfosSelectionPanneau = new System.Windows.Forms.PictureBox();
             this.toolTipInfosSelectionPanneau = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipInfosRADECModify = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipInfosWidthModify = new System.Windows.Forms.ToolTip(this.components);
+            this.toolTipInfosRADECRestore = new System.Windows.Forms.ToolTip(this.components);
             this.groupBoxObjet.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultRect)).BeginInit();
-            this.groupBoxResultat.SuspendLayout();
-            this.groupBoxExportResult.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurCdC)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurStellarium)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurPctChevauchement)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurTempsPanneau)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfosFOV)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurFOV)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurTempsPanneau)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurPctChevauchement)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurNombrePanneau)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarningRotationGlobale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultRect)).BeginInit();
+            this.groupBoxResultat.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfosSelectionPanneau)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarningRotationGlobale)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurNombrePanneau)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurCdC)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurStellarium)).BeginInit();
+            this.groupBoxExportResult.SuspendLayout();
             this.SuspendLayout();
             // 
             // btCancel
@@ -137,6 +144,10 @@
             // 
             // groupBoxObjet
             // 
+            this.groupBoxObjet.Controls.Add(this.buttonWidthRestore);
+            this.groupBoxObjet.Controls.Add(this.buttonWidthModify);
+            this.groupBoxObjet.Controls.Add(this.buttonRADECRestore);
+            this.groupBoxObjet.Controls.Add(this.buttonRADECModify);
             this.groupBoxObjet.Controls.Add(this.pictureBoxErreurPctChevauchement);
             this.groupBoxObjet.Controls.Add(this.pictureBoxErreurTempsPanneau);
             this.groupBoxObjet.Controls.Add(this.pictureBoxErreurFOV);
@@ -178,6 +189,89 @@
             this.groupBoxObjet.TabStop = false;
             this.groupBoxObjet.Text = "Objet céleste et paramètres de la mosaïque";
             // 
+            // buttonWidthRestore
+            // 
+            this.buttonWidthRestore.Image = global::AstroTargetSelector.Properties.Resources.delete16;
+            this.buttonWidthRestore.Location = new System.Drawing.Point(537, 92);
+            this.buttonWidthRestore.Name = "buttonWidthRestore";
+            this.buttonWidthRestore.Size = new System.Drawing.Size(28, 28);
+            this.buttonWidthRestore.TabIndex = 82;
+            this.buttonWidthRestore.UseVisualStyleBackColor = true;
+            this.buttonWidthRestore.Click += new System.EventHandler(this.buttonWidthRestore_Click);
+            // 
+            // buttonWidthModify
+            // 
+            this.buttonWidthModify.Image = global::AstroTargetSelector.Properties.Resources.EditNom16;
+            this.buttonWidthModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonWidthModify.Location = new System.Drawing.Point(506, 92);
+            this.buttonWidthModify.Name = "buttonWidthModify";
+            this.buttonWidthModify.Size = new System.Drawing.Size(28, 28);
+            this.buttonWidthModify.TabIndex = 81;
+            this.buttonWidthModify.UseVisualStyleBackColor = true;
+            this.buttonWidthModify.Click += new System.EventHandler(this.buttonWidthModify_Click);
+            // 
+            // buttonRADECRestore
+            // 
+            this.buttonRADECRestore.Image = global::AstroTargetSelector.Properties.Resources.delete16;
+            this.buttonRADECRestore.Location = new System.Drawing.Point(537, 14);
+            this.buttonRADECRestore.Name = "buttonRADECRestore";
+            this.buttonRADECRestore.Size = new System.Drawing.Size(28, 28);
+            this.buttonRADECRestore.TabIndex = 80;
+            this.buttonRADECRestore.UseVisualStyleBackColor = true;
+            this.buttonRADECRestore.Click += new System.EventHandler(this.buttonRADECRestore_Click);
+            // 
+            // buttonRADECModify
+            // 
+            this.buttonRADECModify.Image = global::AstroTargetSelector.Properties.Resources.EditNom16;
+            this.buttonRADECModify.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.buttonRADECModify.Location = new System.Drawing.Point(506, 14);
+            this.buttonRADECModify.Name = "buttonRADECModify";
+            this.buttonRADECModify.Size = new System.Drawing.Size(28, 28);
+            this.buttonRADECModify.TabIndex = 79;
+            this.buttonRADECModify.UseVisualStyleBackColor = true;
+            this.buttonRADECModify.Click += new System.EventHandler(this.buttonRADECModify_Click);
+            // 
+            // pictureBoxErreurPctChevauchement
+            // 
+            this.pictureBoxErreurPctChevauchement.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurPctChevauchement.Location = new System.Drawing.Point(860, 126);
+            this.pictureBoxErreurPctChevauchement.Name = "pictureBoxErreurPctChevauchement";
+            this.pictureBoxErreurPctChevauchement.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurPctChevauchement.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurPctChevauchement.TabIndex = 76;
+            this.pictureBoxErreurPctChevauchement.TabStop = false;
+            // 
+            // pictureBoxErreurTempsPanneau
+            // 
+            this.pictureBoxErreurTempsPanneau.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurTempsPanneau.Location = new System.Drawing.Point(860, 100);
+            this.pictureBoxErreurTempsPanneau.Name = "pictureBoxErreurTempsPanneau";
+            this.pictureBoxErreurTempsPanneau.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurTempsPanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurTempsPanneau.TabIndex = 75;
+            this.pictureBoxErreurTempsPanneau.TabStop = false;
+            // 
+            // pictureBoxErreurFOV
+            // 
+            this.pictureBoxErreurFOV.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurFOV.Location = new System.Drawing.Point(860, 74);
+            this.pictureBoxErreurFOV.Name = "pictureBoxErreurFOV";
+            this.pictureBoxErreurFOV.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurFOV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurFOV.TabIndex = 74;
+            this.pictureBoxErreurFOV.TabStop = false;
+            // 
+            // pictureBoxInfosFOV
+            // 
+            this.pictureBoxInfosFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxInfosFOV.Image = global::AstroTargetSelector.Properties.Resources.ico16783;
+            this.pictureBoxInfosFOV.Location = new System.Drawing.Point(680, 71);
+            this.pictureBoxInfosFOV.Name = "pictureBoxInfosFOV";
+            this.pictureBoxInfosFOV.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxInfosFOV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxInfosFOV.TabIndex = 73;
+            this.pictureBoxInfosFOV.TabStop = false;
+            // 
             // labelPct
             // 
             this.labelPct.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -187,6 +281,16 @@
             this.labelPct.Size = new System.Drawing.Size(15, 13);
             this.labelPct.TabIndex = 34;
             this.labelPct.Text = "%";
+            // 
+            // pictureBoxRank5
+            // 
+            this.pictureBoxRank5.Image = global::AstroTargetSelector.Properties.Resources._5;
+            this.pictureBoxRank5.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxRank5.Name = "pictureBoxRank5";
+            this.pictureBoxRank5.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank5.TabIndex = 42;
+            this.pictureBoxRank5.TabStop = false;
             // 
             // textBoxPctChevauchement
             // 
@@ -199,7 +303,7 @@
             // 
             // textBoxGrandeurL
             // 
-            this.textBoxGrandeurL.Location = new System.Drawing.Point(381, 71);
+            this.textBoxGrandeurL.Location = new System.Drawing.Point(381, 97);
             this.textBoxGrandeurL.Name = "textBoxGrandeurL";
             this.textBoxGrandeurL.ReadOnly = true;
             this.textBoxGrandeurL.Size = new System.Drawing.Size(119, 20);
@@ -219,12 +323,13 @@
             // 
             // textBoxGrandeurH
             // 
-            this.textBoxGrandeurH.Location = new System.Drawing.Point(381, 97);
+            this.textBoxGrandeurH.Location = new System.Drawing.Point(381, 123);
             this.textBoxGrandeurH.Name = "textBoxGrandeurH";
             this.textBoxGrandeurH.ReadOnly = true;
             this.textBoxGrandeurH.Size = new System.Drawing.Size(119, 20);
             this.textBoxGrandeurH.TabIndex = 33;
             this.textBoxGrandeurH.TabStop = false;
+            this.textBoxGrandeurH.Visible = false;
             // 
             // labelMinutes
             // 
@@ -258,13 +363,14 @@
             // 
             // labelHeight
             // 
-            this.labelHeight.Location = new System.Drawing.Point(292, 100);
+            this.labelHeight.Location = new System.Drawing.Point(292, 126);
             this.labelHeight.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelHeight.Name = "labelHeight";
             this.labelHeight.Size = new System.Drawing.Size(84, 13);
             this.labelHeight.TabIndex = 31;
             this.labelHeight.Text = "Grandeur (H)";
             this.labelHeight.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.labelHeight.Visible = false;
             // 
             // labelTempsPose
             // 
@@ -299,12 +405,12 @@
             // 
             // labelWidth
             // 
-            this.labelWidth.Location = new System.Drawing.Point(292, 74);
+            this.labelWidth.Location = new System.Drawing.Point(225, 100);
             this.labelWidth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelWidth.Name = "labelWidth";
-            this.labelWidth.Size = new System.Drawing.Size(84, 13);
+            this.labelWidth.Size = new System.Drawing.Size(151, 13);
             this.labelWidth.TabIndex = 30;
-            this.labelWidth.Text = "Grandeur (L)";
+            this.labelWidth.Text = "Largeur de la mosaïque";
             this.labelWidth.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // textBoxFOV
@@ -424,6 +530,46 @@
             this.labelInfoNomObjet.Text = "Nom";
             this.labelInfoNomObjet.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
+            // pictureBoxRank1
+            // 
+            this.pictureBoxRank1.Image = global::AstroTargetSelector.Properties.Resources._1;
+            this.pictureBoxRank1.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxRank1.Name = "pictureBoxRank1";
+            this.pictureBoxRank1.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank1.TabIndex = 46;
+            this.pictureBoxRank1.TabStop = false;
+            // 
+            // pictureBoxRank2
+            // 
+            this.pictureBoxRank2.Image = global::AstroTargetSelector.Properties.Resources._2;
+            this.pictureBoxRank2.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxRank2.Name = "pictureBoxRank2";
+            this.pictureBoxRank2.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank2.TabIndex = 45;
+            this.pictureBoxRank2.TabStop = false;
+            // 
+            // pictureBoxRank3
+            // 
+            this.pictureBoxRank3.Image = global::AstroTargetSelector.Properties.Resources._3;
+            this.pictureBoxRank3.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxRank3.Name = "pictureBoxRank3";
+            this.pictureBoxRank3.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank3.TabIndex = 44;
+            this.pictureBoxRank3.TabStop = false;
+            // 
+            // pictureBoxRank4
+            // 
+            this.pictureBoxRank4.Image = global::AstroTargetSelector.Properties.Resources._4;
+            this.pictureBoxRank4.Location = new System.Drawing.Point(6, 19);
+            this.pictureBoxRank4.Name = "pictureBoxRank4";
+            this.pictureBoxRank4.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxRank4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxRank4.TabIndex = 43;
+            this.pictureBoxRank4.TabStop = false;
+            // 
             // dataGridViewResultRect
             // 
             this.dataGridViewResultRect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -461,6 +607,77 @@
             this.groupBoxResultat.TabIndex = 1;
             this.groupBoxResultat.TabStop = false;
             this.groupBoxResultat.Text = "Résultats du calcul de la mosaïque";
+            // 
+            // pictureBoxInfosSelectionPanneau
+            // 
+            this.pictureBoxInfosSelectionPanneau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBoxInfosSelectionPanneau.Image = global::AstroTargetSelector.Properties.Resources.ico16783;
+            this.pictureBoxInfosSelectionPanneau.Location = new System.Drawing.Point(138, 161);
+            this.pictureBoxInfosSelectionPanneau.Name = "pictureBoxInfosSelectionPanneau";
+            this.pictureBoxInfosSelectionPanneau.Size = new System.Drawing.Size(20, 20);
+            this.pictureBoxInfosSelectionPanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxInfosSelectionPanneau.TabIndex = 77;
+            this.pictureBoxInfosSelectionPanneau.TabStop = false;
+            // 
+            // pictureBoxWarningRotationGlobale
+            // 
+            this.pictureBoxWarningRotationGlobale.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxWarningRotationGlobale.Location = new System.Drawing.Point(421, 137);
+            this.pictureBoxWarningRotationGlobale.Name = "pictureBoxWarningRotationGlobale";
+            this.pictureBoxWarningRotationGlobale.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxWarningRotationGlobale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxWarningRotationGlobale.TabIndex = 76;
+            this.pictureBoxWarningRotationGlobale.TabStop = false;
+            // 
+            // pictureBoxErreurNombrePanneau
+            // 
+            this.pictureBoxErreurNombrePanneau.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurNombrePanneau.Location = new System.Drawing.Point(421, 33);
+            this.pictureBoxErreurNombrePanneau.Name = "pictureBoxErreurNombrePanneau";
+            this.pictureBoxErreurNombrePanneau.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurNombrePanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurNombrePanneau.TabIndex = 75;
+            this.pictureBoxErreurNombrePanneau.TabStop = false;
+            // 
+            // pictureBoxErreurCdC
+            // 
+            this.pictureBoxErreurCdC.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurCdC.Location = new System.Drawing.Point(452, 206);
+            this.pictureBoxErreurCdC.Name = "pictureBoxErreurCdC";
+            this.pictureBoxErreurCdC.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurCdC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurCdC.TabIndex = 53;
+            this.pictureBoxErreurCdC.TabStop = false;
+            // 
+            // pictureBoxErreurStellarium
+            // 
+            this.pictureBoxErreurStellarium.Image = global::AstroTargetSelector.Properties.Resources.Warning;
+            this.pictureBoxErreurStellarium.Location = new System.Drawing.Point(452, 168);
+            this.pictureBoxErreurStellarium.Name = "pictureBoxErreurStellarium";
+            this.pictureBoxErreurStellarium.Size = new System.Drawing.Size(16, 16);
+            this.pictureBoxErreurStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBoxErreurStellarium.TabIndex = 52;
+            this.pictureBoxErreurStellarium.TabStop = false;
+            // 
+            // buttonCartesDuCiel
+            // 
+            this.buttonCartesDuCiel.Image = global::AstroTargetSelector.Properties.Resources.cartesduciel;
+            this.buttonCartesDuCiel.Location = new System.Drawing.Point(414, 199);
+            this.buttonCartesDuCiel.Name = "buttonCartesDuCiel";
+            this.buttonCartesDuCiel.Size = new System.Drawing.Size(32, 32);
+            this.buttonCartesDuCiel.TabIndex = 2;
+            this.buttonCartesDuCiel.UseVisualStyleBackColor = true;
+            this.buttonCartesDuCiel.Click += new System.EventHandler(this.buttonCartesDuCiel_Click);
+            // 
+            // buttonStellarium
+            // 
+            this.buttonStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
+            this.buttonStellarium.Location = new System.Drawing.Point(414, 161);
+            this.buttonStellarium.Name = "buttonStellarium";
+            this.buttonStellarium.Size = new System.Drawing.Size(32, 32);
+            this.buttonStellarium.TabIndex = 1;
+            this.buttonStellarium.UseVisualStyleBackColor = true;
+            this.buttonStellarium.Click += new System.EventHandler(this.buttonStellarium_Click);
             // 
             // textBoxResultTotalWidth
             // 
@@ -646,197 +863,47 @@
             // 
             this.toolTipErreurCdC.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipErreurCdC_Draw);
             // 
-            // pictureBoxErreurCdC
-            // 
-            this.pictureBoxErreurCdC.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurCdC.Location = new System.Drawing.Point(452, 206);
-            this.pictureBoxErreurCdC.Name = "pictureBoxErreurCdC";
-            this.pictureBoxErreurCdC.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurCdC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurCdC.TabIndex = 53;
-            this.pictureBoxErreurCdC.TabStop = false;
-            // 
-            // pictureBoxErreurStellarium
-            // 
-            this.pictureBoxErreurStellarium.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurStellarium.Location = new System.Drawing.Point(452, 168);
-            this.pictureBoxErreurStellarium.Name = "pictureBoxErreurStellarium";
-            this.pictureBoxErreurStellarium.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurStellarium.TabIndex = 52;
-            this.pictureBoxErreurStellarium.TabStop = false;
-            // 
-            // buttonCartesDuCiel
-            // 
-            this.buttonCartesDuCiel.Image = global::AstroTargetSelector.Properties.Resources.cartesduciel;
-            this.buttonCartesDuCiel.Location = new System.Drawing.Point(414, 199);
-            this.buttonCartesDuCiel.Name = "buttonCartesDuCiel";
-            this.buttonCartesDuCiel.Size = new System.Drawing.Size(32, 32);
-            this.buttonCartesDuCiel.TabIndex = 2;
-            this.buttonCartesDuCiel.UseVisualStyleBackColor = true;
-            this.buttonCartesDuCiel.Click += new System.EventHandler(this.buttonCartesDuCiel_Click);
-            // 
-            // buttonStellarium
-            // 
-            this.buttonStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
-            this.buttonStellarium.Location = new System.Drawing.Point(414, 161);
-            this.buttonStellarium.Name = "buttonStellarium";
-            this.buttonStellarium.Size = new System.Drawing.Size(32, 32);
-            this.buttonStellarium.TabIndex = 1;
-            this.buttonStellarium.UseVisualStyleBackColor = true;
-            this.buttonStellarium.Click += new System.EventHandler(this.buttonStellarium_Click);
-            // 
-            // pictureBoxInfosFOV
-            // 
-            this.pictureBoxInfosFOV.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxInfosFOV.Image = global::AstroTargetSelector.Properties.Resources.ico16783;
-            this.pictureBoxInfosFOV.Location = new System.Drawing.Point(680, 71);
-            this.pictureBoxInfosFOV.Name = "pictureBoxInfosFOV";
-            this.pictureBoxInfosFOV.Size = new System.Drawing.Size(20, 20);
-            this.pictureBoxInfosFOV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxInfosFOV.TabIndex = 73;
-            this.pictureBoxInfosFOV.TabStop = false;
-            // 
-            // pictureBoxRank5
-            // 
-            this.pictureBoxRank5.Image = global::AstroTargetSelector.Properties.Resources._5;
-            this.pictureBoxRank5.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxRank5.Name = "pictureBoxRank5";
-            this.pictureBoxRank5.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxRank5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxRank5.TabIndex = 42;
-            this.pictureBoxRank5.TabStop = false;
-            // 
-            // pictureBoxRank1
-            // 
-            this.pictureBoxRank1.Image = global::AstroTargetSelector.Properties.Resources._1;
-            this.pictureBoxRank1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxRank1.Name = "pictureBoxRank1";
-            this.pictureBoxRank1.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxRank1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxRank1.TabIndex = 46;
-            this.pictureBoxRank1.TabStop = false;
-            // 
-            // pictureBoxRank2
-            // 
-            this.pictureBoxRank2.Image = global::AstroTargetSelector.Properties.Resources._2;
-            this.pictureBoxRank2.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxRank2.Name = "pictureBoxRank2";
-            this.pictureBoxRank2.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxRank2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxRank2.TabIndex = 45;
-            this.pictureBoxRank2.TabStop = false;
-            // 
-            // pictureBoxRank3
-            // 
-            this.pictureBoxRank3.Image = global::AstroTargetSelector.Properties.Resources._3;
-            this.pictureBoxRank3.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxRank3.Name = "pictureBoxRank3";
-            this.pictureBoxRank3.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxRank3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxRank3.TabIndex = 44;
-            this.pictureBoxRank3.TabStop = false;
-            // 
-            // pictureBoxRank4
-            // 
-            this.pictureBoxRank4.Image = global::AstroTargetSelector.Properties.Resources._4;
-            this.pictureBoxRank4.Location = new System.Drawing.Point(6, 19);
-            this.pictureBoxRank4.Name = "pictureBoxRank4";
-            this.pictureBoxRank4.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxRank4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxRank4.TabIndex = 43;
-            this.pictureBoxRank4.TabStop = false;
-            // 
             // toolTipInfosFOV
             // 
             this.toolTipInfosFOV.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfosFOV.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosFOV_Draw);
             // 
-            // pictureBoxErreurFOV
-            // 
-            this.pictureBoxErreurFOV.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurFOV.Location = new System.Drawing.Point(860, 74);
-            this.pictureBoxErreurFOV.Name = "pictureBoxErreurFOV";
-            this.pictureBoxErreurFOV.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurFOV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurFOV.TabIndex = 74;
-            this.pictureBoxErreurFOV.TabStop = false;
-            // 
             // toolTipErreurFOV
             // 
             this.toolTipErreurFOV.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipErreurFOV_Draw);
-            // 
-            // pictureBoxErreurTempsPanneau
-            // 
-            this.pictureBoxErreurTempsPanneau.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurTempsPanneau.Location = new System.Drawing.Point(860, 100);
-            this.pictureBoxErreurTempsPanneau.Name = "pictureBoxErreurTempsPanneau";
-            this.pictureBoxErreurTempsPanneau.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurTempsPanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurTempsPanneau.TabIndex = 75;
-            this.pictureBoxErreurTempsPanneau.TabStop = false;
             // 
             // toolTipErreurTempsPanneau
             // 
             this.toolTipErreurTempsPanneau.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipErreurTempsPanneau_Draw);
             // 
-            // pictureBoxErreurPctChevauchement
-            // 
-            this.pictureBoxErreurPctChevauchement.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurPctChevauchement.Location = new System.Drawing.Point(860, 126);
-            this.pictureBoxErreurPctChevauchement.Name = "pictureBoxErreurPctChevauchement";
-            this.pictureBoxErreurPctChevauchement.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurPctChevauchement.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurPctChevauchement.TabIndex = 76;
-            this.pictureBoxErreurPctChevauchement.TabStop = false;
-            // 
             // toolTipErreurPctChevauchement
             // 
             this.toolTipErreurPctChevauchement.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipErreurPctChevauchement_Draw);
-            // 
-            // pictureBoxErreurNombrePanneau
-            // 
-            this.pictureBoxErreurNombrePanneau.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurNombrePanneau.Location = new System.Drawing.Point(421, 33);
-            this.pictureBoxErreurNombrePanneau.Name = "pictureBoxErreurNombrePanneau";
-            this.pictureBoxErreurNombrePanneau.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxErreurNombrePanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxErreurNombrePanneau.TabIndex = 75;
-            this.pictureBoxErreurNombrePanneau.TabStop = false;
             // 
             // toolTipErreurNombrePanneau
             // 
             this.toolTipErreurNombrePanneau.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipErreurNombrePanneau_Draw);
             // 
-            // pictureBoxWarningRotationGlobale
-            // 
-            this.pictureBoxWarningRotationGlobale.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxWarningRotationGlobale.Location = new System.Drawing.Point(421, 137);
-            this.pictureBoxWarningRotationGlobale.Name = "pictureBoxWarningRotationGlobale";
-            this.pictureBoxWarningRotationGlobale.Size = new System.Drawing.Size(16, 16);
-            this.pictureBoxWarningRotationGlobale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxWarningRotationGlobale.TabIndex = 76;
-            this.pictureBoxWarningRotationGlobale.TabStop = false;
-            // 
             // toolTipWarningRotationGlobale
             // 
             this.toolTipWarningRotationGlobale.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipWarningRotationGlobale_Draw);
-            // 
-            // pictureBoxInfosSelectionPanneau
-            // 
-            this.pictureBoxInfosSelectionPanneau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBoxInfosSelectionPanneau.Image = global::AstroTargetSelector.Properties.Resources.ico16783;
-            this.pictureBoxInfosSelectionPanneau.Location = new System.Drawing.Point(138, 161);
-            this.pictureBoxInfosSelectionPanneau.Name = "pictureBoxInfosSelectionPanneau";
-            this.pictureBoxInfosSelectionPanneau.Size = new System.Drawing.Size(20, 20);
-            this.pictureBoxInfosSelectionPanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBoxInfosSelectionPanneau.TabIndex = 77;
-            this.pictureBoxInfosSelectionPanneau.TabStop = false;
             // 
             // toolTipInfosSelectionPanneau
             // 
             this.toolTipInfosSelectionPanneau.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
             this.toolTipInfosSelectionPanneau.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosSelectionPanneau_Draw);
+            // 
+            // toolTipInfosRADECModify
+            // 
+            this.toolTipInfosRADECModify.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosRADECModify_Draw);
+            // 
+            // toolTipInfosWidthModify
+            // 
+            this.toolTipInfosWidthModify.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosWidthModify_Draw);
+            // 
+            // toolTipInfosRADECRestore
+            // 
+            this.toolTipInfosRADECRestore.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosRADECRestore_Draw);
             // 
             // dlgMosaicCalculator
             // 
@@ -860,25 +927,25 @@
             this.Load += new System.EventHandler(this.dlgMosaicCalculator_Load);
             this.groupBoxObjet.ResumeLayout(false);
             this.groupBoxObjet.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultRect)).EndInit();
-            this.groupBoxResultat.ResumeLayout(false);
-            this.groupBoxResultat.PerformLayout();
-            this.groupBoxExportResult.ResumeLayout(false);
-            this.groupBoxExportResult.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurCdC)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurStellarium)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurPctChevauchement)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurTempsPanneau)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfosFOV)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxRank4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurFOV)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurTempsPanneau)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurPctChevauchement)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurNombrePanneau)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarningRotationGlobale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewResultRect)).EndInit();
+            this.groupBoxResultat.ResumeLayout(false);
+            this.groupBoxResultat.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxInfosSelectionPanneau)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxWarningRotationGlobale)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurNombrePanneau)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurCdC)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurStellarium)).EndInit();
+            this.groupBoxExportResult.ResumeLayout(false);
+            this.groupBoxExportResult.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -958,5 +1025,12 @@
         private System.Windows.Forms.ToolTip toolTipWarningRotationGlobale;
         private System.Windows.Forms.PictureBox pictureBoxInfosSelectionPanneau;
         private System.Windows.Forms.ToolTip toolTipInfosSelectionPanneau;
+        private System.Windows.Forms.ToolTip toolTipInfosRADECModify;
+        private System.Windows.Forms.ToolTip toolTipInfosWidthModify;
+        private System.Windows.Forms.Button buttonRADECModify;
+        private System.Windows.Forms.Button buttonRADECRestore;
+        private System.Windows.Forms.Button buttonWidthRestore;
+        private System.Windows.Forms.Button buttonWidthModify;
+        private System.Windows.Forms.ToolTip toolTipInfosRADECRestore;
     }
 }

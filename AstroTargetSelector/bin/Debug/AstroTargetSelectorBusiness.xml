@@ -2341,6 +2341,11 @@
               Recherche une chaîne localisée semblable à capteurs.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.CentreDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Centre de la mosaïque.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.CetteOperationPeutPrendreQuelquesInstants">
             <summary>
               Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
@@ -2481,9 +2486,24 @@
               Recherche une chaîne localisée semblable à Format du champ &quot;Bougé max.&quot; incorrect.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampDECIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format du champ DEC incorrect.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampHauteurMinIncorrect">
             <summary>
               Recherche une chaîne localisée semblable à Format du champ &quot;Hauteur minimum&quot; incorrect.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampLargeurIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format du champ Largeur incorrect.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampRAIncorrect">
+            <summary>
+              Recherche une chaîne localisée semblable à Format du champ RA incorrect.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.FormatDuChampServeurPourCartesDuCielIncorrect">
@@ -2586,6 +2606,11 @@
               Recherche une chaîne localisée semblable à Largeur.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LargeurDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Largeur de la mosaïque.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.LargeurPX">
             <summary>
               Recherche une chaîne localisée semblable à Largeur (px).
@@ -2614,6 +2639,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDeVotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum">
             <summary>
               Recherche une chaîne localisée semblable à Les intervalles qui apparaissent en gris signifient que l&apos;objet est entré dans une zone exclue de votre ciel, ou que sa hauteur est en dessous de la hauteur minimum..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Lien">
+            <summary>
+              Recherche une chaîne localisée semblable à Lien.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.LiensUnistellar">
@@ -2739,6 +2769,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Modifier">
             <summary>
               Recherche une chaîne localisée semblable à Modifier.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ModifierLaTailleDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Modifier la taille de la mosaïque.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ModifierLesCoordonneesDuCentreDeLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Modifier les coordonnées du centre de la mosaïque.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.MosaicCalculator">
@@ -2899,6 +2939,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Rechercher">
             <summary>
               Recherche une chaîne localisée semblable à Rechercher.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.RestaurerLesValeursParDefaut">
+            <summary>
+              Recherche une chaîne localisée semblable à Restaurer les valeurs par défaut.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.ResultatsDuCalculDeLaMosaique">

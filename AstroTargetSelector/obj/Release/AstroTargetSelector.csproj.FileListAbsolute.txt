@@ -32,3 +32,5 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\bin\Release\AstroMoonCalc.xml
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Release\AstroTargetSelector.dlgOptions.resources
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Release\AstroTargetSelector.dlgMosaicCalculator.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Release\AstroTargetSelector.dlgMosaicEditRADEC.resources
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelector\obj\Release\AstroTargetSelector.dlgMosaicEditWidth.resources

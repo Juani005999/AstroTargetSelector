@@ -1774,25 +1774,25 @@ namespace AstroTargetSelector
             listViewTarget.ForeColor = nuit ? factory.GetAppInputs().ForeColorLight : SystemColors.ControlText;
 
             // Panneau d'info
-            textBoxInfoPanelNom.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelNom.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelNom.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelType.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelType.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelType.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelDescription.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelDescription.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelDescription.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelRA.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelRA.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelRA.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelDEC.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelDEC.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelDEC.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelAzimut.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelAzimut.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelAzimut.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelHauteur.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelHauteur.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelHauteur.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelMagnitude.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelMagnitude.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelMagnitude.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelGrandeurL.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelGrandeurL.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelGrandeurL.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
-            textBoxInfoPanelGrandeurH.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            textBoxInfoPanelGrandeurH.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             textBoxInfoPanelGrandeurH.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             comboBoxMinuteIntervalle.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
             comboBoxMinuteIntervalle.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;

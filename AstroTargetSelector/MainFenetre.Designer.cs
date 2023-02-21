@@ -798,7 +798,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank1);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.labelInfoNom);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 167;
+            this.splitContainerSecondaire.SplitterDistance = 168;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -811,7 +811,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 167);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 168);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -835,7 +835,7 @@ namespace AstroTargetSelector
             this.buttonMosaicCalculator.Location = new System.Drawing.Point(13, 167);
             this.buttonMosaicCalculator.Name = "buttonMosaicCalculator";
             this.buttonMosaicCalculator.Size = new System.Drawing.Size(32, 32);
-            this.buttonMosaicCalculator.TabIndex = 44;
+            this.buttonMosaicCalculator.TabIndex = 6;
             this.buttonMosaicCalculator.UseVisualStyleBackColor = true;
             this.buttonMosaicCalculator.Click += new System.EventHandler(this.buttonMosaicCalculator_Click);
             // 
@@ -845,7 +845,7 @@ namespace AstroTargetSelector
             this.checkBoxLune.Location = new System.Drawing.Point(141, 208);
             this.checkBoxLune.Name = "checkBoxLune";
             this.checkBoxLune.Size = new System.Drawing.Size(90, 17);
-            this.checkBoxLune.TabIndex = 11;
+            this.checkBoxLune.TabIndex = 1;
             this.checkBoxLune.Text = "Soleil et Lune";
             this.checkBoxLune.UseVisualStyleBackColor = true;
             this.checkBoxLune.CheckedChanged += new System.EventHandler(this.checkBoxLune_CheckedChanged);
@@ -856,7 +856,7 @@ namespace AstroTargetSelector
             this.checkBoxHauteur.Location = new System.Drawing.Point(16, 208);
             this.checkBoxHauteur.Name = "checkBoxHauteur";
             this.checkBoxHauteur.Size = new System.Drawing.Size(119, 17);
-            this.checkBoxHauteur.TabIndex = 10;
+            this.checkBoxHauteur.TabIndex = 0;
             this.checkBoxHauteur.Text = "Hauteur et direction";
             this.checkBoxHauteur.UseVisualStyleBackColor = true;
             this.checkBoxHauteur.CheckedChanged += new System.EventHandler(this.checkBoxHauteur_CheckedChanged);
@@ -867,7 +867,7 @@ namespace AstroTargetSelector
             this.buttonCartesDuCiel.Location = new System.Drawing.Point(13, 97);
             this.buttonCartesDuCiel.Name = "buttonCartesDuCiel";
             this.buttonCartesDuCiel.Size = new System.Drawing.Size(32, 32);
-            this.buttonCartesDuCiel.TabIndex = 14;
+            this.buttonCartesDuCiel.TabIndex = 4;
             this.buttonCartesDuCiel.UseVisualStyleBackColor = true;
             this.buttonCartesDuCiel.Click += new System.EventHandler(this.buttonCartesDuCiel_Click);
             // 
@@ -877,7 +877,7 @@ namespace AstroTargetSelector
             this.buttonStellarium.Location = new System.Drawing.Point(13, 132);
             this.buttonStellarium.Name = "buttonStellarium";
             this.buttonStellarium.Size = new System.Drawing.Size(32, 32);
-            this.buttonStellarium.TabIndex = 13;
+            this.buttonStellarium.TabIndex = 5;
             this.buttonStellarium.UseVisualStyleBackColor = true;
             this.buttonStellarium.Click += new System.EventHandler(this.buttonStellarium_Click);
             // 
@@ -1065,7 +1065,7 @@ namespace AstroTargetSelector
             this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(597, 206);
             this.comboBoxTotalTimeSlice.Name = "comboBoxTotalTimeSlice";
             this.comboBoxTotalTimeSlice.Size = new System.Drawing.Size(56, 21);
-            this.comboBoxTotalTimeSlice.TabIndex = 13;
+            this.comboBoxTotalTimeSlice.TabIndex = 3;
             this.comboBoxTotalTimeSlice.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxTotalTimeSlice_DrawItem);
             this.comboBoxTotalTimeSlice.SelectedIndexChanged += new System.EventHandler(this.comboBoxTotalTimeSlice_SelectedIndexChanged);
             // 
@@ -1086,7 +1086,7 @@ namespace AstroTargetSelector
             this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(394, 206);
             this.comboBoxMinuteIntervalle.Name = "comboBoxMinuteIntervalle";
             this.comboBoxMinuteIntervalle.Size = new System.Drawing.Size(56, 21);
-            this.comboBoxMinuteIntervalle.TabIndex = 12;
+            this.comboBoxMinuteIntervalle.TabIndex = 2;
             this.comboBoxMinuteIntervalle.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.comboBoxMinuteIntervalle_DrawItem);
             this.comboBoxMinuteIntervalle.SelectedIndexChanged += new System.EventHandler(this.comboBoxMinuteIntervalle_SelectedIndexChanged);
             // 

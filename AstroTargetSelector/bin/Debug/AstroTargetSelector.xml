@@ -228,6 +228,26 @@
             Permet d'exporter les résultats de la mosaïque
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.EditRADEC">
+            <summary>
+            Permet la modification des coordonnées du point central de la mosaïque
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.RestoreRADEC">
+            <summary>
+            restauration des coordonnées du point central de la mosaïque
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.EditLargeur">
+            <summary>
+            Permet la modification de la largeur de la mosaïque
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.RestoreLargeur">
+            <summary>
+            Restauration de la largeur de la mosaïque
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.dlgMosaicCalculator.factory">
             <summary>
             Instance de la fabrique d'objet métier
@@ -263,6 +283,21 @@
             Flag interne permettant de savoir si la liste est en cours de chargement
             </summary>
         </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.ra">
+            <summary>
+            Coordonnées ra du point central de la mosaïque
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.dec">
+            <summary>
+            Coordonnées dec du point central de la mosaïque
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.widthMosaique">
+            <summary>
+            Largeur de la mosaïque
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.dlgMosaicCalculator.components">
             <summary>
             Required designer variable.
@@ -275,6 +310,147 @@
             <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         </member>
         <member name="M:AstroTargetSelector.dlgMosaicCalculator.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelector.dlgMosaicEditRADEC">
+            <summary>
+            Boîte de Dialogue pour l'edition du point central de la mosaïque
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicEditRADEC.RA">
+            <summary>
+            RA du point central
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicEditRADEC.DEC">
+            <summary>
+            DEC du point central
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.#ctor(AstroTargetSelectorBusiness.IAppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.ChargeFormulaire">
+            <summary>
+            Permet le chargement du formulaire depuis les données stockées
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.SaveSettings">
+            <summary>
+            Lance l'enregistrement
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicEditRADEC.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicEditRADEC.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditRADEC.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelector.dlgMosaicEditWidth">
+            <summary>
+            Boîte de Dialogue pour l'edition de la largeur de la mosaïque
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.dlgMosaicEditWidth.WidthMosaique">
+            <summary>
+            Largeur de la mosaïque
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.#ctor(AstroTargetSelectorBusiness.IAppObjFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+            <param name="factory"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.InitialisationDialog">
+            <summary>
+            Initialisation de la boîte de dialogue
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.ClearAll">
+            <summary>
+            Flush le formulaire
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.ChargeFormulaire">
+            <summary>
+            Permet le chargement du formulaire depuis les données stockées
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.SetAffichage">
+            <summary>
+            Positionne l'affichage en mode Jour / Nuit
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.LoadLibelles">
+            <summary>
+            Charge des libellés statiques
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.SaveSettings">
+            <summary>
+            Lance l'enregistrement
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicEditWidth.factory">
+            <summary>
+            Instance de la fabrique d'objet métier
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicEditWidth.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicEditWidth.InitializeComponent">
             <summary>
             Required method for Designer support - do not modify
             the contents of this method with the code editor.
@@ -986,6 +1162,16 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Delete">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.delete16">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.EditNom16">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

@@ -196,6 +196,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Centre de la mosaïque.
+        /// </summary>
+        public static string CentreDeLaMosaique {
+            get {
+                return ResourceManager.GetString("CentreDeLaMosaique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
         /// </summary>
         public static string CetteOperationPeutPrendreQuelquesInstants {
@@ -448,11 +457,38 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ DEC incorrect.
+        /// </summary>
+        public static string FormatDuChampDECIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampDECIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Format du champ &quot;Hauteur minimum&quot; incorrect.
         /// </summary>
         public static string FormatDuChampHauteurMinIncorrect {
             get {
                 return ResourceManager.GetString("FormatDuChampHauteurMinIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ Largeur incorrect.
+        /// </summary>
+        public static string FormatDuChampLargeurIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampLargeurIncorrect", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Format du champ RA incorrect.
+        /// </summary>
+        public static string FormatDuChampRAIncorrect {
+            get {
+                return ResourceManager.GetString("FormatDuChampRAIncorrect", resourceCulture);
             }
         }
         
@@ -638,6 +674,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Largeur de la mosaïque.
+        /// </summary>
+        public static string LargeurDeLaMosaique {
+            get {
+                return ResourceManager.GetString("LargeurDeLaMosaique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Largeur (px).
         /// </summary>
         public static string LargeurPX {
@@ -690,6 +735,15 @@ namespace AstroTargetSelectorResources {
             get {
                 return ResourceManager.GetString("LesIntervallesQuiApparaissentEnGrisSignifientQueLObjetEstDntreDansUneZoneExclueDe" +
                         "VotreCielOuQueSaHauteurEstEnDessousDeLaHauteurMinimum", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Lien.
+        /// </summary>
+        public static string Lien {
+            get {
+                return ResourceManager.GetString("Lien", resourceCulture);
             }
         }
         
@@ -915,6 +969,24 @@ namespace AstroTargetSelectorResources {
         public static string Modifier {
             get {
                 return ResourceManager.GetString("Modifier", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Modifier la taille de la mosaïque.
+        /// </summary>
+        public static string ModifierLaTailleDeLaMosaique {
+            get {
+                return ResourceManager.GetString("ModifierLaTailleDeLaMosaique", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Modifier les coordonnées du centre de la mosaïque.
+        /// </summary>
+        public static string ModifierLesCoordonneesDuCentreDeLaMosaique {
+            get {
+                return ResourceManager.GetString("ModifierLesCoordonneesDuCentreDeLaMosaique", resourceCulture);
             }
         }
         
@@ -1207,6 +1279,15 @@ namespace AstroTargetSelectorResources {
         public static string Rechercher {
             get {
                 return ResourceManager.GetString("Rechercher", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Restaurer les valeurs par défaut.
+        /// </summary>
+        public static string RestaurerLesValeursParDefaut {
+            get {
+                return ResourceManager.GetString("RestaurerLesValeursParDefaut", resourceCulture);
             }
         }
         

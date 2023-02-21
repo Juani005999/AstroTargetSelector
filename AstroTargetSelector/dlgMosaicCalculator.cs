@@ -317,10 +317,14 @@ namespace AstroTargetSelector
             // Objet céleste
             textBoxNomObjet.Text = target.Nom;
             textBoxDenominations.Text = target.Description;
-            textBoxRA.Text = target.RA.FormatedString;
-            textBoxDEC.Text = target.DEC.FormatedString;
-            textBoxGrandeurL.Text = target.GrandeurWidth.FormatedString;
-            textBoxGrandeurH.Text = target.GrandeurHeight.FormatedString;
+            ra = target.RA;
+            dec = target.DEC;
+            textBoxRA.Text = ra.FormatedString;
+            textBoxDEC.Text = dec.FormatedString;
+            //textBoxGrandeurL.Text = target.GrandeurWidth.FormatedString;
+            //textBoxGrandeurH.Text = target.GrandeurHeight.FormatedString;
+            widthMosaique = target.GrandeurWidth.Coordonnee > target.GrandeurHeight.Coordonnee ? target.GrandeurWidth : target.GrandeurHeight;
+            textBoxGrandeurL.Text = widthMosaique.FormatedString;
 
             // Paramètres
             textBoxDate.Text = factory.GetAppInputs().Inputs.DateHeureObservation.ToString("d");
@@ -387,6 +391,11 @@ namespace AstroTargetSelector
                                 + Environment.NewLine + Resources.FLongueurFocale;
             toolTipInfosFOV.SetToolTip(pictureBoxInfosFOV, toolTipInfosFOVValue);
 
+            toolTipInfosRADECModify.SetToolTip(buttonRADECModify, Resources.ModifierLesCoordonneesDuCentreDeLaMosaique);
+            toolTipInfosWidthModify.SetToolTip(buttonWidthModify, Resources.ModifierLaTailleDeLaMosaique);
+            toolTipInfosRADECRestore.SetToolTip(buttonRADECRestore, Resources.RestaurerLesValeursParDefaut);
+            toolTipInfosRADECRestore.SetToolTip(buttonWidthRestore, Resources.RestaurerLesValeursParDefaut);
+
             toolTipInfosSelectionPanneau.ToolTipTitle = Resources.SelectionDUnElémentDansLaListe;
             string toolTipInfosSelectionPanneauValue = Resources.SelectionnezUnPanneauDansLaListeAfinDeLAfficherDansLaMosaique
                                 + Environment.NewLine + Resources.LesBoutonsStellariumEtCartesDuCielVousPermettentDePositionnerCesLogicielsSurLesCoordonneesDuPanneauSelectionne;
@@ -430,10 +439,18 @@ namespace AstroTargetSelector
             // Boutons et Contrôles
             btCancel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             buttonExportResult.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            buttonRADECModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            buttonRADECRestore.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            buttonWidthModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            buttonWidthRestore.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             if (!nuit)
             {
                 btCancel.UseVisualStyleBackColor = true;
                 buttonExportResult.UseVisualStyleBackColor = true;
+                buttonRADECModify.UseVisualStyleBackColor = true;
+                buttonRADECRestore.UseVisualStyleBackColor = true;
+                buttonWidthModify.UseVisualStyleBackColor = true;
+                buttonWidthRestore.UseVisualStyleBackColor = true;
             }
 
             // Textbox Objet et paramètres
@@ -517,6 +534,15 @@ namespace AstroTargetSelector
             toolTipWarningRotationGlobale.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipWarningRotationGlobale.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipWarningRotationGlobale.OwnerDraw = nuit;
+            toolTipInfosRADECModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfosRADECModify.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipInfosRADECModify.OwnerDraw = nuit;
+            toolTipInfosRADECRestore.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfosRADECRestore.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipInfosRADECRestore.OwnerDraw = nuit;
+            toolTipInfosWidthModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfosWidthModify.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipInfosWidthModify.OwnerDraw = nuit;
         }
 
         /// <summary>
@@ -533,7 +559,7 @@ namespace AstroTargetSelector
             labelInfoDenominations.Text = Resources.Description;
             labelRA.Text = Resources.RA;
             labelDEC.Text = Resources.DEC;
-            labelWidth.Text = Resources.GrandeurL;
+            labelWidth.Text = Resources.LargeurDeLaMosaique;
             labelHeight.Text = Resources.GrandeurH;
             labelDate.Text = Resources.Date;
             labelHeure.Text = Resources.Heure;
@@ -630,8 +656,9 @@ namespace AstroTargetSelector
                 chargementListeResult = true;
 
                 // Taille utilsée = max de Width ou Height
-                double tailleMaxImage = target.GrandeurWidth.Coordonnee > target.GrandeurHeight.Coordonnee ?
-                                            target.GrandeurWidth.Coordonnee : target.GrandeurHeight.Coordonnee;
+                //double tailleMaxImage = target.GrandeurWidth.Coordonnee > target.GrandeurHeight.Coordonnee ?
+                //                            target.GrandeurWidth.Coordonnee : target.GrandeurHeight.Coordonnee;
+                double tailleMaxImage = widthMosaique.Coordonnee;
 
                 // On recherche le nombre minimum de panneau pour la cible
                 int nbPanneau1D = 0;
@@ -662,16 +689,16 @@ namespace AstroTargetSelector
                 int nbPanneau2D = nbPanneau1D * nbPanneau1D;
 
                 int largeurRectangleUnitaire = (int)(fov * SizePanel / tailleMaxImage);
-                Coordinate raTopLeft = factory.GetCoordinate(target.RA.Coordonnee - (tailleMaxImage * 24 / 360 / 2), CoordinatesType.RA);
-                Coordinate decTopLeft = factory.GetCoordinate(target.DEC.Coordonnee - (tailleMaxImage / 2), CoordinatesType.DEC);
+                Coordinate raTopLeft = factory.GetCoordinate(ra.Coordonnee - (tailleMaxImage * 24 / 360 / 2), CoordinatesType.RA);
+                Coordinate decTopLeft = factory.GetCoordinate(dec.Coordonnee - (tailleMaxImage / 2), CoordinatesType.DEC);
 
                 // Ajout des Rectangle à la liste
                 if (nbPanneau1D == 1)
                 {
                     int x = 0;
                     int y = 0;
-                    double ra = target.RA.Coordonnee;
-                    double dec = target.DEC.Coordonnee;
+                    double raValue = ra.Coordonnee;
+                    double decValue = dec.Coordonnee;
                     IObjMosaicRect rect = factory.GetObjMosaicRect();
                     rect.TopLeft = new Point(x, y);
                     rect.Dimensions = new Size(largeurRectangleUnitaire, largeurRectangleUnitaire);
@@ -679,8 +706,8 @@ namespace AstroTargetSelector
                     rect.Text = $"{Resources.Panneau} 1";
                     rect.BorderColor = Color.Yellow;
                     rect.TextColor = Color.Yellow;
-                    rect.RA = factory.GetCoordinate(ra, CoordinatesType.RA);
-                    rect.DEC = factory.GetCoordinate(dec, CoordinatesType.DEC);
+                    rect.RA = factory.GetCoordinate(raValue, CoordinatesType.RA);
+                    rect.DEC = factory.GetCoordinate(decValue, CoordinatesType.DEC);
                     listeRect.Add(rect);
                     listeResultRect.Add(new Tuple<string, string, string>(rect.Text, rect.RA.FormatedString, rect.DEC.FormatedString));
                 }
@@ -695,12 +722,12 @@ namespace AstroTargetSelector
                         {
                             int x = 0;
                             int y = 0;
-                            double ra = 0;
-                            double dec = 0;
+                            double raValue = 0;
+                            double decValue = 0;
                             x = (int)(j * (SizePanel - largeurRectangleUnitaire) / (nbPanneau1D - 1));
                             y = (int)(i * (SizePanel - largeurRectangleUnitaire) / (nbPanneau1D - 1));
-                            ra = raTopLeft.Coordonnee + (((j * (tailleMaxImage - fov) / (nbPanneau1D - 1)) + (fov / 2)) * 24 / 360);
-                            dec = decTopLeft.Coordonnee + (i * (tailleMaxImage - fov) / (nbPanneau1D - 1)) + (fov / 2);
+                            raValue = raTopLeft.Coordonnee + (((j * (tailleMaxImage - fov) / (nbPanneau1D - 1)) + (fov / 2)) * 24 / 360);
+                            decValue = decTopLeft.Coordonnee + (i * (tailleMaxImage - fov) / (nbPanneau1D - 1)) + (fov / 2);
                             IObjMosaicRect rect = factory.GetObjMosaicRect();
                             rect.TopLeft = new Point(x, y);
                             rect.Dimensions = new Size(largeurRectangleUnitaire, largeurRectangleUnitaire);
@@ -708,8 +735,8 @@ namespace AstroTargetSelector
                             rect.Text = $"{Resources.Panneau} {rect.Index}";
                             rect.BorderColor = indexRect % 2 == 0 ? Color.GreenYellow : Color.Yellow;
                             rect.TextColor = indexRect % 2 == 0 ? Color.GreenYellow : Color.Yellow;
-                            rect.RA = factory.GetCoordinate(ra, CoordinatesType.RA);
-                            rect.DEC = factory.GetCoordinate(dec, CoordinatesType.DEC);
+                            rect.RA = factory.GetCoordinate(raValue, CoordinatesType.RA);
+                            rect.DEC = factory.GetCoordinate(decValue, CoordinatesType.DEC);
                             listeRect.Add(rect);
                             listeResultRect.Add(new Tuple<string, string, string>(rect.Text, rect.RA.FormatedString, rect.DEC.FormatedString));
                             indexRect++;
@@ -1130,6 +1157,12 @@ namespace AstroTargetSelector
                             string lien = $"{charSep}unistellar://science/transit?ra={fauxRA.Coordonnee.ToString(CultureInfo.InvariantCulture)}"
                                             + $"&dec={panneau.DEC.Coordonnee.ToString(CultureInfo.InvariantCulture)}";
                             valueRect += lien;
+                            //if (radioButtonExportCsv.Checked)
+                            //{
+                            //    string lienAdditionnel = $"{charSep}=HYPERLINK(\"unistellar://science/transit?ra={fauxRA.Coordonnee.ToString(CultureInfo.InvariantCulture)}"
+                            //                    + $"&dec={panneau.DEC.Coordonnee.ToString(CultureInfo.InvariantCulture)}\", \"{Resources.Lien}\")";
+                            //    valueRect += lienAdditionnel;
+                            //}
                         }
                         fichierLog.WriteLine(valueRect);
                     }
@@ -1161,6 +1194,157 @@ namespace AstroTargetSelector
 
                 // Positionnement du Curseur
                 Cursor = Cursors.Default;
+            }
+        }
+
+        /// <summary>
+        /// Permet la modification des coordonnées du point central de la mosaïque
+        /// </summary>
+        private void EditRADEC()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de l'édition des RA/DEC", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                dlgMosaicEditRADEC dlgEdit = new dlgMosaicEditRADEC(factory);
+                dlgEdit.RA = ra;
+                dlgEdit.DEC = dec;
+                if (dlgEdit.ShowDialog() == DialogResult.OK)
+                {
+                    ra = dlgEdit.RA;
+                    dec = dlgEdit.DEC;
+                    textBoxRA.Text = ra.FormatedString;
+                    textBoxDEC.Text = dec.FormatedString;
+
+                    // Calcul et Refresh de la mosaïque
+                    CalculMosaique();
+                    panelMosaic.Refresh();
+                    textBoxFOV.Focus();
+                }
+
+                // Trace
+                factory.GetLog().Log($"Fin de l'édition des RA/DEC en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// restauration des coordonnées du point central de la mosaïque
+        /// </summary>
+        private void RestoreRADEC()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la restauration des RA/DEC", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                ra = target.RA;
+                dec = target.DEC;
+                textBoxRA.Text = ra.FormatedString;
+                textBoxDEC.Text = dec.FormatedString;
+
+                // Calcul et Refresh de la mosaïque
+                CalculMosaique();
+                panelMosaic.Refresh();
+                textBoxFOV.Focus();
+
+                // Trace
+                factory.GetLog().Log($"Fin de la restauration des RA/DEC en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Permet la modification de la largeur de la mosaïque
+        /// </summary>
+        private void EditLargeur()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de l'édition de la largeur de la mosaïque", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                dlgMosaicEditWidth dlgEdit = new dlgMosaicEditWidth(factory);
+                dlgEdit.WidthMosaique = widthMosaique;
+                if (dlgEdit.ShowDialog() == DialogResult.OK)
+                {
+                    widthMosaique = dlgEdit.WidthMosaique;
+                    textBoxGrandeurL.Text = widthMosaique.FormatedString;
+
+                    // Calcul et Refresh de la mosaïque
+                    CalculMosaique();
+                    panelMosaic.Refresh();
+                    textBoxFOV.Focus();
+                }
+
+                // Trace
+                factory.GetLog().Log($"Fin de l'édition de la largeur de la mosaïque en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
+            }
+        }
+
+        /// <summary>
+        /// Restauration de la largeur de la mosaïque
+        /// </summary>
+        private void RestoreLargeur()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la restauration de la largeur de la mosaïque", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                widthMosaique = target.GrandeurWidth.Coordonnee > target.GrandeurHeight.Coordonnee ? target.GrandeurWidth : target.GrandeurHeight;
+                textBoxGrandeurL.Text = widthMosaique.FormatedString;
+
+                // Calcul et Refresh de la mosaïque
+                CalculMosaique();
+                panelMosaic.Refresh();
+                textBoxFOV.Focus();
+
+                // Trace
+                factory.GetLog().Log($"Fin de la restauration de la largeur de la mosaïque en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                                , Application.ProductName
+                                , MessageBoxButtons.OK
+                                , MessageBoxIcon.Error);
             }
         }
 
@@ -1202,6 +1386,21 @@ namespace AstroTargetSelector
         /// Flag interne permettant de savoir si la liste est en cours de chargement
         /// </summary>
         private bool chargementListeResult = false;
+
+        /// <summary>
+        /// Coordonnées ra du point central de la mosaïque
+        /// </summary>
+        private Coordinate ra = null;
+
+        /// <summary>
+        /// Coordonnées dec du point central de la mosaïque
+        /// </summary>
+        private Coordinate dec = null;
+
+        /// <summary>
+        /// Largeur de la mosaïque
+        /// </summary>
+        private Coordinate widthMosaique = null;
 
         #endregion
 
@@ -1437,6 +1636,65 @@ namespace AstroTargetSelector
             using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
             {
                 Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 30, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void buttonRADECModify_Click(object sender, EventArgs e)
+        {
+            EditRADEC();
+        }
+
+        private void buttonRADECRestore_Click(object sender, EventArgs e)
+        {
+            RestoreRADEC();
+        }
+
+        private void buttonWidthModify_Click(object sender, EventArgs e)
+        {
+            EditLargeur();
+        }
+
+        private void buttonWidthRestore_Click(object sender, EventArgs e)
+        {
+            RestoreLargeur();
+        }
+
+        private void toolTipInfosRADECModify_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipInfosWidthModify_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipInfosRADECRestore_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
                 e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
             }
         }
