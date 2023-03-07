@@ -57,12 +57,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_6B310617EA0D4AB1A1D83BDBB5A7C844"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,26 +87,26 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_C5FF19F87AA7445E1D2C77B76CC8A98E"
+        "MsmKey" = "8:_BD9E5BE083E10217B8CC78CBDCADD89D"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_C5FF19F87AA7445E1D2C77B76CC8A98E"
-        "OwnerKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
+        "MsmKey" = "8:_BD9E5BE083E10217B8CC78CBDCADD89D"
+        "OwnerKey" = "8:_F52EE2DDEC28B31232E63DCCA0D838C2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
+        "MsmKey" = "8:_CE0317CAE378FB659B01FCB7BB4110CE"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
-        "OwnerKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
+        "MsmKey" = "8:_CE0317CAE378FB659B01FCB7BB4110CE"
+        "OwnerKey" = "8:_F52EE2DDEC28B31232E63DCCA0D838C2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,6 +123,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_F52EE2DDEC28B31232E63DCCA0D838C2"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
@@ -136,19 +136,19 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_68119A56FCC92DF267E2614D1216BB8A"
+        "OwnerKey" = "8:_F52EE2DDEC28B31232E63DCCA0D838C2"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_D3F9697A70930FA49C8AAF89D667929E"
+        "OwnerKey" = "8:_CE0317CAE378FB659B01FCB7BB4110CE"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_C5FF19F87AA7445E1D2C77B76CC8A98E"
+        "OwnerKey" = "8:_BD9E5BE083E10217B8CC78CBDCADD89D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -383,37 +383,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_68119A56FCC92DF267E2614D1216BB8A"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.6.3.2, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_68119A56FCC92DF267E2614D1216BB8A"
-                    {
-                    "Name" = "8:AstroTargetSelectorBusiness.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AstroTargetSelectorBusiness.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_6B310617EA0D4AB1A1D83BDBB5A7C844"
             {
             "SourcePath" = "8:..\\Files\\TargetListe.csv"
@@ -514,14 +483,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C5FF19F87AA7445E1D2C77B76CC8A98E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_BD9E5BE083E10217B8CC78CBDCADD89D"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.6.3.2, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.6.4.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_C5FF19F87AA7445E1D2C77B76CC8A98E"
+                    "_BD9E5BE083E10217B8CC78CBDCADD89D"
                     {
                     "Name" = "8:ApplicationTools.dll"
                     "Attributes" = "3:512"
@@ -545,14 +514,14 @@
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_D3F9697A70930FA49C8AAF89D667929E"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_CE0317CAE378FB659B01FCB7BB4110CE"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
             "AssemblyAsmDisplayName" = "8:AstroMoonCalc, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_D3F9697A70930FA49C8AAF89D667929E"
+                    "_CE0317CAE378FB659B01FCB7BB4110CE"
                     {
                     "Name" = "8:AstroMoonCalc.dll"
                     "Attributes" = "3:512"
@@ -616,6 +585,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F52EE2DDEC28B31232E63DCCA0D838C2"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.6.4.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_F52EE2DDEC28B31232E63DCCA0D838C2"
+                    {
+                    "Name" = "8:AstroTargetSelectorBusiness.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AstroTargetSelectorBusiness.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -663,7 +663,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:1.6.3.2"
+                                    "Name" = "8:1.6.4.1"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -738,15 +738,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{DF7E33EE-02E2-47A0-9BA8-D53B6DF35F91}"
-        "PackageCode" = "8:{0AD7AAE9-D897-4AFB-AD50-2341FBDF2FBE}"
+        "ProductCode" = "8:{62D88A60-CA7D-455F-ACBC-D53DA798F9EF}"
+        "PackageCode" = "8:{7349C030-37EE-4A67-8D15-BE6F749E4DEE}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.6.32"
+        "ProductVersion" = "8:1.6.41"
         "Manufacturer" = "8:AstrAuDobson"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -1310,7 +1310,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4BE87562488C4DF1B5C8D96ECA48B185"
             {
-            "SourcePath" = "8:..\\AstroTargetSelector\\obj\\Release\\AstroTargetSelector.exe"
+            "SourcePath" = "8:..\\AstroTargetSelector\\obj\\Debug\\AstroTargetSelector.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_117817D0EE33429988655DE983D1D422"

@@ -145,6 +145,13 @@
             <para>Set : Positionne la valeur stockée en Settings</para>
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.dlgMosaicCalculator.AddPanneauSup">
+            <summary>
+            Ajoute un panneau central supplémentaire pour les mosaïques à 4 panneaux
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.dlgMosaicCalculator.#ctor(AstroTargetSelectorBusiness.IAppObjFactory,AstroTargetSelectorBusiness.IObjTarget)">
             <summary>
             Constructeur par défaut

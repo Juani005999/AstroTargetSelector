@@ -186,6 +186,31 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Ajoute un panneau central supplémentaire pour les mosaïques à 4 panneaux
+        /// <para>Get : Récupère la valeur stockée en Settings</para>
+        /// <para>Set : Positionne la valeur stockée en Settings</para>
+        /// </summary>
+        public bool AddPanneauSup
+        {
+            get
+            {
+                // Valeur par défaut
+                if (string.IsNullOrEmpty(Properties.Settings.Default.AddPanneauSup))
+                {
+                    Properties.Settings.Default.AddPanneauSup = "0";
+                    Properties.Settings.Default.Save();
+                    factory.GetLog().Log($"AddPanneauSup non présent dans les Settings. Positionnement de 0 par défaut", GetType().Name);
+                }
+                return Properties.Settings.Default.AddPanneauSup == "1";
+            }
+            set
+            {
+                Properties.Settings.Default.AddPanneauSup = value ? "1" : "0";
+                Properties.Settings.Default.Save();
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -344,6 +369,7 @@ namespace AstroTargetSelector
             radioButtonExportText.Checked = TypeExport == ModeExport.TXT;
             radioButtonExportCsv.Checked = TypeExport == ModeExport.CSV;
             checkBoxExportUnistellarLinks.Checked = ExportUnistellarLinks;
+            checkBoxPanneauSup.Checked = AddPanneauSup;
 
             chargementFormulaire = false;
         }
@@ -671,7 +697,7 @@ namespace AstroTargetSelector
                 } while (largeurCalculee < tailleMaxImage && nbPanneau1D < NombreMaxPanneau1D);
                 tailleMaxImage = largeurCalculee;
 
-                // Si trop de panneaux dans la mosaique, on sort enb erreur
+                // Si trop de panneaux dans la mosaique, on sort en erreur
                 if (nbPanneau1D >= NombreMaxPanneau1D)
                 {
                     pictureBoxErreurNombrePanneau.Visible = true;
@@ -682,6 +708,7 @@ namespace AstroTargetSelector
                 MosaicFOV = textBoxFOV.Text;
                 TempsPanneau = textBoxTempsPanneau.Text;
                 PctChevauchement = textBoxPctChevauchement.Text;
+                AddPanneauSup = checkBoxPanneauSup.Checked;
 
                 // Par sureté, au minimum 1 panneau
                 if (nbPanneau1D == 0)
@@ -744,8 +771,33 @@ namespace AstroTargetSelector
                     }
                 }
 
+                // Pour les mosaïques à 4 panneaux, on ajoute un 5ème panneau central
+                if (AddPanneauSup && nbPanneau1D == 2)
+                {
+                    int x = (SizePanel - largeurRectangleUnitaire) / 2;
+                    int y = (SizePanel - largeurRectangleUnitaire) / 2;
+                    double raValue = ra.Coordonnee;
+                    double decValue = dec.Coordonnee;
+                    IObjMosaicRect rect = factory.GetObjMosaicRect();
+                    rect.TopLeft = new Point(x, y);
+                    rect.Dimensions = new Size(largeurRectangleUnitaire, largeurRectangleUnitaire);
+                    rect.Index = "5";
+                    rect.Text = $"{Resources.Panneau} 5";
+                    rect.BorderColor = Color.Yellow;
+                    rect.TextColor = Color.Yellow;
+                    rect.RA = factory.GetCoordinate(raValue, CoordinatesType.RA);
+                    rect.DEC = factory.GetCoordinate(decValue, CoordinatesType.DEC);
+                    listeRect.Add(rect);
+                    listeResultRect.Add(new Tuple<string, string, string>(rect.Text, rect.RA.FormatedString, rect.DEC.FormatedString));
+                }
+
+                // Valorisation des Outputs
                 textBoxResultNbPanneau.Text = nbPanneau2D.ToString();
+                if (AddPanneauSup && nbPanneau1D == 2)
+                    textBoxResultNbPanneau.Text = (nbPanneau2D + 1).ToString();
                 TimeSpan tempsTotal = new TimeSpan(0, nbPanneau2D * tempsPanneau, 0);
+                if (AddPanneauSup && nbPanneau1D == 2)
+                    tempsTotal = new TimeSpan(0, 5 * tempsPanneau, 0);
                 textBoxResultTempsGlobal.Text = tempsTotal.ToStandardFormatString();
                 TimeSpan spanTempsPanneau = new TimeSpan(0, tempsPanneau, 0);
                 textBoxResultTempsPanneau.Text = spanTempsPanneau.ToStandardFormatString();
@@ -753,6 +805,8 @@ namespace AstroTargetSelector
 
                 DateTime dateHeureDebut = factory.GetAppInputs().Inputs.DateHeureObservation;
                 DateTime dateHeureFin = dateHeureDebut.AddMinutes(nbPanneau2D * tempsPanneau);
+                if (AddPanneauSup && nbPanneau1D == 2)
+                    dateHeureFin = dateHeureDebut.AddMinutes(5 * tempsPanneau);
                 IObjSliceSpan sliceSpan = factory.GetObjSliceSpan(target, dateHeureDebut, dateHeureFin);
                 textBoxResultRotationGlobale.Text = sliceSpan.RotationAngulaireGlobaleFormated;
                 if (sliceSpan.RotationAngulaireGlobale > WarningLevelRotationGlobale)
@@ -761,6 +815,7 @@ namespace AstroTargetSelector
                 buttonStellarium.Enabled = listeResultRect.Count > 0;
                 buttonCartesDuCiel.Enabled = listeResultRect.Count > 0;
                 groupBoxExportResult.Enabled = listeResultRect.Count > 0;
+                checkBoxPanneauSup.Enabled = nbPanneau1D == 2;
 
                 factory.GetLog().Log("FIN : Calcul mosaique");
             }
@@ -1696,6 +1751,17 @@ namespace AstroTargetSelector
             {
                 Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
                 e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void checkBoxPanneauSup_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!chargementFormulaire)
+            {
+                // Calcul et Refresh de la mosaïque
+                CalculMosaique();
+                panelMosaic.Refresh();
+                //textBoxPctChevauchement.Focus();
             }
         }
     }

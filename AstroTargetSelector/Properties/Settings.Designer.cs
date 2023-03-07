@@ -142,5 +142,17 @@ namespace AstroTargetSelector.Properties {
                 this["ExportUnistellarLinks"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AddPanneauSup {
+            get {
+                return ((string)(this["AddPanneauSup"]));
+            }
+            set {
+                this["AddPanneauSup"] = value;
+            }
+        }
     }
 }

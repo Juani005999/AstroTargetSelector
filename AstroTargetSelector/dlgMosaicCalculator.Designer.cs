@@ -111,6 +111,7 @@
             this.toolTipInfosRADECModify = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfosWidthModify = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfosRADECRestore = new System.Windows.Forms.ToolTip(this.components);
+            this.checkBoxPanneauSup = new System.Windows.Forms.CheckBox();
             this.groupBoxObjet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurPctChevauchement)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxErreurTempsPanneau)).BeginInit();
@@ -135,7 +136,7 @@
             // 
             this.btCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btCancel.Location = new System.Drawing.Point(819, 597);
+            this.btCancel.Location = new System.Drawing.Point(819, 595);
             this.btCancel.Name = "btCancel";
             this.btCancel.Size = new System.Drawing.Size(75, 23);
             this.btCancel.TabIndex = 3;
@@ -184,7 +185,7 @@
             this.groupBoxObjet.Controls.Add(this.pictureBoxRank4);
             this.groupBoxObjet.Location = new System.Drawing.Point(12, 12);
             this.groupBoxObjet.Name = "groupBoxObjet";
-            this.groupBoxObjet.Size = new System.Drawing.Size(882, 156);
+            this.groupBoxObjet.Size = new System.Drawing.Size(882, 155);
             this.groupBoxObjet.TabIndex = 0;
             this.groupBoxObjet.TabStop = false;
             this.groupBoxObjet.Text = "Objet céleste et paramètres de la mosaïque";
@@ -573,16 +574,17 @@
             // dataGridViewResultRect
             // 
             this.dataGridViewResultRect.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewResultRect.Location = new System.Drawing.Point(164, 161);
+            this.dataGridViewResultRect.Location = new System.Drawing.Point(164, 177);
             this.dataGridViewResultRect.MultiSelect = false;
             this.dataGridViewResultRect.Name = "dataGridViewResultRect";
             this.dataGridViewResultRect.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridViewResultRect.Size = new System.Drawing.Size(244, 168);
+            this.dataGridViewResultRect.Size = new System.Drawing.Size(244, 152);
             this.dataGridViewResultRect.TabIndex = 0;
             this.dataGridViewResultRect.SelectionChanged += new System.EventHandler(this.dataGridViewResultRect_SelectionChanged);
             // 
             // groupBoxResultat
             // 
+            this.groupBoxResultat.Controls.Add(this.checkBoxPanneauSup);
             this.groupBoxResultat.Controls.Add(this.pictureBoxInfosSelectionPanneau);
             this.groupBoxResultat.Controls.Add(this.pictureBoxWarningRotationGlobale);
             this.groupBoxResultat.Controls.Add(this.pictureBoxErreurNombrePanneau);
@@ -601,7 +603,7 @@
             this.groupBoxResultat.Controls.Add(this.textBoxResultNbPanneau);
             this.groupBoxResultat.Controls.Add(this.labelResultNbPanneau);
             this.groupBoxResultat.Controls.Add(this.dataGridViewResultRect);
-            this.groupBoxResultat.Location = new System.Drawing.Point(12, 174);
+            this.groupBoxResultat.Location = new System.Drawing.Point(12, 173);
             this.groupBoxResultat.Name = "groupBoxResultat";
             this.groupBoxResultat.Size = new System.Drawing.Size(475, 335);
             this.groupBoxResultat.TabIndex = 1;
@@ -612,7 +614,7 @@
             // 
             this.pictureBoxInfosSelectionPanneau.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBoxInfosSelectionPanneau.Image = global::AstroTargetSelector.Properties.Resources.ico16783;
-            this.pictureBoxInfosSelectionPanneau.Location = new System.Drawing.Point(138, 161);
+            this.pictureBoxInfosSelectionPanneau.Location = new System.Drawing.Point(138, 177);
             this.pictureBoxInfosSelectionPanneau.Name = "pictureBoxInfosSelectionPanneau";
             this.pictureBoxInfosSelectionPanneau.Size = new System.Drawing.Size(20, 20);
             this.pictureBoxInfosSelectionPanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -622,7 +624,7 @@
             // pictureBoxWarningRotationGlobale
             // 
             this.pictureBoxWarningRotationGlobale.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxWarningRotationGlobale.Location = new System.Drawing.Point(421, 137);
+            this.pictureBoxWarningRotationGlobale.Location = new System.Drawing.Point(421, 153);
             this.pictureBoxWarningRotationGlobale.Name = "pictureBoxWarningRotationGlobale";
             this.pictureBoxWarningRotationGlobale.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxWarningRotationGlobale.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -632,7 +634,7 @@
             // pictureBoxErreurNombrePanneau
             // 
             this.pictureBoxErreurNombrePanneau.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurNombrePanneau.Location = new System.Drawing.Point(421, 33);
+            this.pictureBoxErreurNombrePanneau.Location = new System.Drawing.Point(421, 49);
             this.pictureBoxErreurNombrePanneau.Name = "pictureBoxErreurNombrePanneau";
             this.pictureBoxErreurNombrePanneau.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxErreurNombrePanneau.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -642,7 +644,7 @@
             // pictureBoxErreurCdC
             // 
             this.pictureBoxErreurCdC.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurCdC.Location = new System.Drawing.Point(452, 206);
+            this.pictureBoxErreurCdC.Location = new System.Drawing.Point(452, 222);
             this.pictureBoxErreurCdC.Name = "pictureBoxErreurCdC";
             this.pictureBoxErreurCdC.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxErreurCdC.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -652,7 +654,7 @@
             // pictureBoxErreurStellarium
             // 
             this.pictureBoxErreurStellarium.Image = global::AstroTargetSelector.Properties.Resources.Warning;
-            this.pictureBoxErreurStellarium.Location = new System.Drawing.Point(452, 168);
+            this.pictureBoxErreurStellarium.Location = new System.Drawing.Point(452, 184);
             this.pictureBoxErreurStellarium.Name = "pictureBoxErreurStellarium";
             this.pictureBoxErreurStellarium.Size = new System.Drawing.Size(16, 16);
             this.pictureBoxErreurStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -662,7 +664,7 @@
             // buttonCartesDuCiel
             // 
             this.buttonCartesDuCiel.Image = global::AstroTargetSelector.Properties.Resources.cartesduciel;
-            this.buttonCartesDuCiel.Location = new System.Drawing.Point(414, 199);
+            this.buttonCartesDuCiel.Location = new System.Drawing.Point(414, 215);
             this.buttonCartesDuCiel.Name = "buttonCartesDuCiel";
             this.buttonCartesDuCiel.Size = new System.Drawing.Size(32, 32);
             this.buttonCartesDuCiel.TabIndex = 2;
@@ -672,7 +674,7 @@
             // buttonStellarium
             // 
             this.buttonStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
-            this.buttonStellarium.Location = new System.Drawing.Point(414, 161);
+            this.buttonStellarium.Location = new System.Drawing.Point(414, 177);
             this.buttonStellarium.Name = "buttonStellarium";
             this.buttonStellarium.Size = new System.Drawing.Size(32, 32);
             this.buttonStellarium.TabIndex = 1;
@@ -681,7 +683,7 @@
             // 
             // textBoxResultTotalWidth
             // 
-            this.textBoxResultTotalWidth.Location = new System.Drawing.Point(328, 109);
+            this.textBoxResultTotalWidth.Location = new System.Drawing.Point(328, 125);
             this.textBoxResultTotalWidth.Name = "textBoxResultTotalWidth";
             this.textBoxResultTotalWidth.ReadOnly = true;
             this.textBoxResultTotalWidth.Size = new System.Drawing.Size(80, 20);
@@ -690,7 +692,7 @@
             // 
             // labelResultTotalWidth
             // 
-            this.labelResultTotalWidth.Location = new System.Drawing.Point(39, 112);
+            this.labelResultTotalWidth.Location = new System.Drawing.Point(39, 128);
             this.labelResultTotalWidth.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelResultTotalWidth.Name = "labelResultTotalWidth";
             this.labelResultTotalWidth.Size = new System.Drawing.Size(284, 19);
@@ -700,7 +702,7 @@
             // 
             // textBoxResultTempsPanneau
             // 
-            this.textBoxResultTempsPanneau.Location = new System.Drawing.Point(328, 83);
+            this.textBoxResultTempsPanneau.Location = new System.Drawing.Point(328, 99);
             this.textBoxResultTempsPanneau.Name = "textBoxResultTempsPanneau";
             this.textBoxResultTempsPanneau.ReadOnly = true;
             this.textBoxResultTempsPanneau.Size = new System.Drawing.Size(80, 20);
@@ -709,7 +711,7 @@
             // 
             // labelTempsPanneau
             // 
-            this.labelTempsPanneau.Location = new System.Drawing.Point(71, 86);
+            this.labelTempsPanneau.Location = new System.Drawing.Point(71, 102);
             this.labelTempsPanneau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTempsPanneau.Name = "labelTempsPanneau";
             this.labelTempsPanneau.Size = new System.Drawing.Size(252, 19);
@@ -719,7 +721,7 @@
             // 
             // textBoxResultRotationGlobale
             // 
-            this.textBoxResultRotationGlobale.Location = new System.Drawing.Point(328, 135);
+            this.textBoxResultRotationGlobale.Location = new System.Drawing.Point(328, 151);
             this.textBoxResultRotationGlobale.Name = "textBoxResultRotationGlobale";
             this.textBoxResultRotationGlobale.ReadOnly = true;
             this.textBoxResultRotationGlobale.Size = new System.Drawing.Size(80, 20);
@@ -728,7 +730,7 @@
             // 
             // labelResultRotationGlobale
             // 
-            this.labelResultRotationGlobale.Location = new System.Drawing.Point(39, 138);
+            this.labelResultRotationGlobale.Location = new System.Drawing.Point(39, 154);
             this.labelResultRotationGlobale.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelResultRotationGlobale.Name = "labelResultRotationGlobale";
             this.labelResultRotationGlobale.Size = new System.Drawing.Size(284, 19);
@@ -738,7 +740,7 @@
             // 
             // textBoxResultTempsGlobal
             // 
-            this.textBoxResultTempsGlobal.Location = new System.Drawing.Point(328, 57);
+            this.textBoxResultTempsGlobal.Location = new System.Drawing.Point(328, 73);
             this.textBoxResultTempsGlobal.Name = "textBoxResultTempsGlobal";
             this.textBoxResultTempsGlobal.ReadOnly = true;
             this.textBoxResultTempsGlobal.Size = new System.Drawing.Size(80, 20);
@@ -747,7 +749,7 @@
             // 
             // labelResultTempsGlobal
             // 
-            this.labelResultTempsGlobal.Location = new System.Drawing.Point(74, 60);
+            this.labelResultTempsGlobal.Location = new System.Drawing.Point(74, 76);
             this.labelResultTempsGlobal.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelResultTempsGlobal.Name = "labelResultTempsGlobal";
             this.labelResultTempsGlobal.Size = new System.Drawing.Size(249, 19);
@@ -757,7 +759,7 @@
             // 
             // textBoxResultNbPanneau
             // 
-            this.textBoxResultNbPanneau.Location = new System.Drawing.Point(328, 31);
+            this.textBoxResultNbPanneau.Location = new System.Drawing.Point(328, 47);
             this.textBoxResultNbPanneau.Name = "textBoxResultNbPanneau";
             this.textBoxResultNbPanneau.ReadOnly = true;
             this.textBoxResultNbPanneau.Size = new System.Drawing.Size(80, 20);
@@ -766,7 +768,7 @@
             // 
             // labelResultNbPanneau
             // 
-            this.labelResultNbPanneau.Location = new System.Drawing.Point(138, 34);
+            this.labelResultNbPanneau.Location = new System.Drawing.Point(138, 50);
             this.labelResultNbPanneau.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelResultNbPanneau.Name = "labelResultNbPanneau";
             this.labelResultNbPanneau.Size = new System.Drawing.Size(185, 19);
@@ -777,7 +779,7 @@
             // panelMosaic
             // 
             this.panelMosaic.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panelMosaic.Location = new System.Drawing.Point(494, 183);
+            this.panelMosaic.Location = new System.Drawing.Point(494, 182);
             this.panelMosaic.Name = "panelMosaic";
             this.panelMosaic.Size = new System.Drawing.Size(400, 400);
             this.panelMosaic.TabIndex = 48;
@@ -788,7 +790,7 @@
             this.groupBoxExportResult.Controls.Add(this.checkBoxExportUnistellarLinks);
             this.groupBoxExportResult.Controls.Add(this.radioButtonExportCsv);
             this.groupBoxExportResult.Controls.Add(this.radioButtonExportText);
-            this.groupBoxExportResult.Location = new System.Drawing.Point(12, 515);
+            this.groupBoxExportResult.Location = new System.Drawing.Point(12, 514);
             this.groupBoxExportResult.Name = "groupBoxExportResult";
             this.groupBoxExportResult.Size = new System.Drawing.Size(475, 68);
             this.groupBoxExportResult.TabIndex = 2;
@@ -905,12 +907,23 @@
             // 
             this.toolTipInfosRADECRestore.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfosRADECRestore_Draw);
             // 
+            // checkBoxPanneauSup
+            // 
+            this.checkBoxPanneauSup.AutoSize = true;
+            this.checkBoxPanneauSup.Location = new System.Drawing.Point(65, 23);
+            this.checkBoxPanneauSup.Name = "checkBoxPanneauSup";
+            this.checkBoxPanneauSup.Size = new System.Drawing.Size(343, 17);
+            this.checkBoxPanneauSup.TabIndex = 83;
+            this.checkBoxPanneauSup.Text = "Ajouter un panneau central supplémentaire (mosaïque 4 panneaux)";
+            this.checkBoxPanneauSup.UseVisualStyleBackColor = true;
+            this.checkBoxPanneauSup.CheckedChanged += new System.EventHandler(this.checkBoxPanneauSup_CheckedChanged);
+            // 
             // dlgMosaicCalculator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btCancel;
-            this.ClientSize = new System.Drawing.Size(906, 632);
+            this.ClientSize = new System.Drawing.Size(906, 630);
             this.Controls.Add(this.groupBoxExportResult);
             this.Controls.Add(this.panelMosaic);
             this.Controls.Add(this.groupBoxResultat);
@@ -1032,5 +1045,6 @@
         private System.Windows.Forms.Button buttonWidthRestore;
         private System.Windows.Forms.Button buttonWidthModify;
         private System.Windows.Forms.ToolTip toolTipInfosRADECRestore;
+        private System.Windows.Forms.CheckBox checkBoxPanneauSup;
     }
 }
