@@ -218,6 +218,11 @@
             <param name="sender"></param>
             <param name="e"></param>
         </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.StellariumGlobalFocusTo">
+            <summary>
+            Lance la commande de sélection dans Stellarium pour la mosaïque complète
+            </summary>
+        </member>
         <member name="M:AstroTargetSelector.dlgMosaicCalculator.CdCFocusTo">
             <summary>
             Lance la commande de sélection dans CdC pour le Rect Sélectionné
@@ -229,6 +234,11 @@
             </summary>
             <param name="sender"></param>
             <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.CdCGlobalFocusTo">
+            <summary>
+            Lance la commande de sélection dans CdC pour la mosaïque complète
+            </summary>
         </member>
         <member name="M:AstroTargetSelector.dlgMosaicCalculator.ExportResults">
             <summary>
@@ -255,6 +265,38 @@
             Restauration de la largeur de la mosaïque
             </summary>
         </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.StartStopConnection">
+            <summary>
+            Clic sur le bouton StandBy
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.InitialisationComboASCOMNom">
+            <summary>
+            Chargement des Telescope ASCOM disponible
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.backgroundWorkerTelescope_DoWork(System.Object,System.ComponentModel.DoWorkEventArgs)">
+            <summary>
+            Background Worker permettant la gestion de l'état du telescope ASCOM
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.ASCOMSlewTo">
+            <summary>
+            Clic sur le bouton SlewTO ASCOM
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.ASCOMStopSlew">
+            <summary>
+            Clic sur le bouton StopSlew ASCOM
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelector.dlgMosaicCalculator.UnloadForm">
+            <summary>
+            Traitement sur fermeture de la fenêtre
+            </summary>
+        </member>
         <member name="F:AstroTargetSelector.dlgMosaicCalculator.factory">
             <summary>
             Instance de la fabrique d'objet métier
@@ -268,6 +310,11 @@
         <member name="F:AstroTargetSelector.dlgMosaicCalculator.listeRect">
             <summary>
             Liste des rectangle du Panel
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelector.dlgMosaicCalculator.globalRect">
+            <summary>
+            <see cref="T:AstroTargetSelectorBusiness.IObjMosaicRect"/> représentant la mosaïque globale
             </summary>
         </member>
         <member name="F:AstroTargetSelector.dlgMosaicCalculator.listeResultRect">
@@ -1148,6 +1195,21 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.accuracy_16">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.accuracy_30">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.accuracy_50">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Actualiser">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -1213,6 +1275,11 @@
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>
         </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.icons8_stop_sign_color_32">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelector.Properties.Resources.Identite_new">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
@@ -1229,6 +1296,16 @@
             </summary>
         </member>
         <member name="P:AstroTargetSelector.Properties.Resources.no_entry">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.shutdown_24">
+            <summary>
+              Recherche une ressource localisée de type System.Drawing.Bitmap.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelector.Properties.Resources.shutdown_24_green">
             <summary>
               Recherche une ressource localisée de type System.Drawing.Bitmap.
             </summary>

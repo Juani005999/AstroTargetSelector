@@ -798,7 +798,7 @@ namespace AstroTargetSelector
             this.splitContainerSecondaire.Panel2.Controls.Add(this.pictureBoxRank1);
             this.splitContainerSecondaire.Panel2.Controls.Add(this.labelInfoNom);
             this.splitContainerSecondaire.Size = new System.Drawing.Size(954, 400);
-            this.splitContainerSecondaire.SplitterDistance = 168;
+            this.splitContainerSecondaire.SplitterDistance = 169;
             this.splitContainerSecondaire.SplitterWidth = 3;
             this.splitContainerSecondaire.TabIndex = 0;
             // 
@@ -811,7 +811,7 @@ namespace AstroTargetSelector
             this.listViewTarget.Margin = new System.Windows.Forms.Padding(2);
             this.listViewTarget.MultiSelect = false;
             this.listViewTarget.Name = "listViewTarget";
-            this.listViewTarget.Size = new System.Drawing.Size(954, 168);
+            this.listViewTarget.Size = new System.Drawing.Size(954, 169);
             this.listViewTarget.SmallImageList = this.imageListRank;
             this.listViewTarget.TabIndex = 0;
             this.listViewTarget.UseCompatibleStateImageBehavior = false;
@@ -842,7 +842,7 @@ namespace AstroTargetSelector
             // checkBoxLune
             // 
             this.checkBoxLune.AutoSize = true;
-            this.checkBoxLune.Location = new System.Drawing.Point(141, 208);
+            this.checkBoxLune.Location = new System.Drawing.Point(141, 205);
             this.checkBoxLune.Name = "checkBoxLune";
             this.checkBoxLune.Size = new System.Drawing.Size(90, 17);
             this.checkBoxLune.TabIndex = 1;
@@ -853,7 +853,7 @@ namespace AstroTargetSelector
             // checkBoxHauteur
             // 
             this.checkBoxHauteur.AutoSize = true;
-            this.checkBoxHauteur.Location = new System.Drawing.Point(16, 208);
+            this.checkBoxHauteur.Location = new System.Drawing.Point(16, 205);
             this.checkBoxHauteur.Name = "checkBoxHauteur";
             this.checkBoxHauteur.Size = new System.Drawing.Size(119, 17);
             this.checkBoxHauteur.TabIndex = 0;
@@ -1041,7 +1041,7 @@ namespace AstroTargetSelector
             // labelUniteTotalTimeSlice
             // 
             this.labelUniteTotalTimeSlice.AutoSize = true;
-            this.labelUniteTotalTimeSlice.Location = new System.Drawing.Point(658, 209);
+            this.labelUniteTotalTimeSlice.Location = new System.Drawing.Point(658, 205);
             this.labelUniteTotalTimeSlice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUniteTotalTimeSlice.Name = "labelUniteTotalTimeSlice";
             this.labelUniteTotalTimeSlice.Size = new System.Drawing.Size(45, 13);
@@ -1051,7 +1051,7 @@ namespace AstroTargetSelector
             // labelUniteMinuteIntervalle
             // 
             this.labelUniteMinuteIntervalle.AutoSize = true;
-            this.labelUniteMinuteIntervalle.Location = new System.Drawing.Point(455, 209);
+            this.labelUniteMinuteIntervalle.Location = new System.Drawing.Point(455, 205);
             this.labelUniteMinuteIntervalle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelUniteMinuteIntervalle.Name = "labelUniteMinuteIntervalle";
             this.labelUniteMinuteIntervalle.Size = new System.Drawing.Size(43, 13);
@@ -1062,7 +1062,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxTotalTimeSlice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxTotalTimeSlice.FormattingEnabled = true;
-            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(597, 206);
+            this.comboBoxTotalTimeSlice.Location = new System.Drawing.Point(597, 202);
             this.comboBoxTotalTimeSlice.Name = "comboBoxTotalTimeSlice";
             this.comboBoxTotalTimeSlice.Size = new System.Drawing.Size(56, 21);
             this.comboBoxTotalTimeSlice.TabIndex = 3;
@@ -1071,7 +1071,7 @@ namespace AstroTargetSelector
             // 
             // labelTotalTimeSlice
             // 
-            this.labelTotalTimeSlice.Location = new System.Drawing.Point(502, 209);
+            this.labelTotalTimeSlice.Location = new System.Drawing.Point(502, 205);
             this.labelTotalTimeSlice.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelTotalTimeSlice.Name = "labelTotalTimeSlice";
             this.labelTotalTimeSlice.Size = new System.Drawing.Size(90, 19);
@@ -1083,7 +1083,7 @@ namespace AstroTargetSelector
             // 
             this.comboBoxMinuteIntervalle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxMinuteIntervalle.FormattingEnabled = true;
-            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(394, 206);
+            this.comboBoxMinuteIntervalle.Location = new System.Drawing.Point(394, 202);
             this.comboBoxMinuteIntervalle.Name = "comboBoxMinuteIntervalle";
             this.comboBoxMinuteIntervalle.Size = new System.Drawing.Size(56, 21);
             this.comboBoxMinuteIntervalle.TabIndex = 2;
@@ -1092,7 +1092,7 @@ namespace AstroTargetSelector
             // 
             // labelMinuteIntervalle
             // 
-            this.labelMinuteIntervalle.Location = new System.Drawing.Point(258, 209);
+            this.labelMinuteIntervalle.Location = new System.Drawing.Point(258, 205);
             this.labelMinuteIntervalle.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.labelMinuteIntervalle.Name = "labelMinuteIntervalle";
             this.labelMinuteIntervalle.Size = new System.Drawing.Size(131, 19);

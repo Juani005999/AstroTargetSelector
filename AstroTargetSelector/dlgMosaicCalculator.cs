@@ -11,6 +11,7 @@ using System.IO;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using System.Threading;
 
 namespace AstroTargetSelector
 {
@@ -316,8 +317,6 @@ namespace AstroTargetSelector
             textBoxResultRotationGlobale.Text = string.Empty;
             
             // PictureBox Erreur
-            pictureBoxErreurStellarium.Visible = false;
-            pictureBoxErreurCdC.Visible = false;
             pictureBoxErreurFOV.Visible = false;
             pictureBoxErreurTempsPanneau.Visible = false;
             pictureBoxErreurPctChevauchement.Visible = false;
@@ -325,6 +324,12 @@ namespace AstroTargetSelector
             pictureBoxWarningRotationGlobale.Visible = false;
             buttonStellarium.Enabled = false;
             buttonCartesDuCiel.Enabled = false;
+            pictureBoxErreurStellarium.Visible = false;
+            pictureBoxErreurCdC.Visible = false;
+            buttonStellariumGlobal.Enabled = false;
+            buttonCartesDuCielGlobal.Enabled = false;
+            pictureBoxErreurStellariumGlobal.Visible = false;
+            pictureBoxErreurCdCGlobal.Visible = false;
 
             chargementFormulaire = false;
         }
@@ -338,6 +343,22 @@ namespace AstroTargetSelector
             factory.GetLog().Log($"Chargement du formulaire", GetType().Name);
 
             chargementFormulaire = true;
+
+            // Télescope ASCOM
+            groupBoxASCOM.Enabled = factory.GetAppASCOMTelescope().IsASCOMReady();
+            buttonASCOMStandby.Enabled = false;
+            pictureBoxErreurASCOM.Visible = false;
+            buttonASCOMMoveTo.Enabled = false;
+            pictureBoxErreurASCOMMoveTo.Visible = false;
+            comboBoxASCOMNom.Enabled = false;
+            panelSlew.Visible = factory.GetAppASCOMTelescope().IsASCOMReady();
+            if (factory.GetAppASCOMTelescope().IsASCOMReady())
+            {
+                InitialisationComboASCOMNom();
+                buttonASCOMStandby.Enabled = comboBoxASCOMNom.Items.Count > 0 && comboBoxASCOMNom.SelectedIndex != -1;
+                comboBoxASCOMNom.Enabled = comboBoxASCOMNom.Items.Count > 0 && comboBoxASCOMNom.SelectedIndex != -1;
+                buttonASCOMStop.Enabled = false;
+            }
 
             // Objet céleste
             textBoxNomObjet.Text = target.Nom;
@@ -406,9 +427,13 @@ namespace AstroTargetSelector
         private void SetToolTip()
         {
             toolTipStellarium.SetToolTip(buttonStellarium, Resources.AfficherLePanneauSelectionneDansStellarium);
+            toolTipStellariumGlobal.SetToolTip(buttonStellariumGlobal, Resources.AfficherLaMosaiqueCompleteDansStellarium);
             toolTipErreurStellarium.SetToolTip(pictureBoxErreurStellarium, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande);
+            toolTipErreurStellariumGlobal.SetToolTip(pictureBoxErreurStellariumGlobal, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande);
             toolTipCartesDuCiel.SetToolTip(buttonCartesDuCiel, Resources.AfficherLePanneauSelectionneDansCartesDuCiel);
+            toolTipCartesDuCielGlobal.SetToolTip(buttonCartesDuCielGlobal, Resources.AfficherLaMosaiqueCompleteDansCartesDuCiel);
             toolTipErreurCdC.SetToolTip(pictureBoxErreurCdC, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande);
+            toolTipErreurCdCGlobal.SetToolTip(pictureBoxErreurCdCGlobal, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande);
 
             toolTipInfosFOV.ToolTipTitle = Resources.InformationsSurLeFOV;
             string toolTipInfosFOVValue = Resources.VoiciLaFormuleVousPermettantDeCalculerVotreChampDeVision
@@ -416,6 +441,15 @@ namespace AstroTargetSelector
                                 + Environment.NewLine + Resources.LLargeurDeVotreCapteur
                                 + Environment.NewLine + Resources.FLongueurFocale;
             toolTipInfosFOV.SetToolTip(pictureBoxInfosFOV, toolTipInfosFOVValue);
+
+            toolTipASCOMStandBy.SetToolTip(buttonASCOMStandby, Resources.ConnecterDeconnecterLeTelescopeASCOM);
+            toolTipASCOMStopSlew.SetToolTip(buttonASCOMStop, Resources.ArreterLeDeplacementEnCours);
+            toolTipInfosASCOM.ToolTipTitle = Resources.InformationsSurLePilotageDuTelescopeASCOM;
+            string toolTipInfosASCOMValue = Resources.CetteFonctionnaliteNecessiteDAvoirInstalleLesPreRequisSuivant
+                                + Environment.NewLine + Resources.LaPlateformeASCOM
+                                + Environment.NewLine + Resources.LeDriverASCOMDeVotreTelescope;
+            toolTipInfosASCOM.SetToolTip(pictureBoxInfosASCOM, toolTipInfosASCOMValue);
+            toolTipASCOMMoveTo.SetToolTip(buttonASCOMMoveTo, Resources.OrienterVotreTelescopeASCOMSurLePanneauSelectionne);
 
             toolTipInfosRADECModify.SetToolTip(buttonRADECModify, Resources.ModifierLesCoordonneesDuCentreDeLaMosaique);
             toolTipInfosWidthModify.SetToolTip(buttonWidthModify, Resources.ModifierLaTailleDeLaMosaique);
@@ -459,6 +493,7 @@ namespace AstroTargetSelector
 
             // GroupBox
             groupBoxObjet.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            groupBoxASCOM.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             groupBoxResultat.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             groupBoxExportResult.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
@@ -469,6 +504,7 @@ namespace AstroTargetSelector
             buttonRADECRestore.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             buttonWidthModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             buttonWidthRestore.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            buttonASCOMStop.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
             if (!nuit)
             {
                 btCancel.UseVisualStyleBackColor = true;
@@ -477,6 +513,7 @@ namespace AstroTargetSelector
                 buttonRADECRestore.UseVisualStyleBackColor = true;
                 buttonWidthModify.UseVisualStyleBackColor = true;
                 buttonWidthRestore.UseVisualStyleBackColor = true;
+                buttonASCOMStop.UseVisualStyleBackColor = true;
             }
 
             // Textbox Objet et paramètres
@@ -502,6 +539,19 @@ namespace AstroTargetSelector
             textBoxTempsPanneau.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
             textBoxPctChevauchement.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
             textBoxPctChevauchement.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+
+            // Textbox Télescope ASCOM
+            comboBoxASCOMNom.DrawMode = nuit ? DrawMode.OwnerDrawFixed : DrawMode.Normal;
+            comboBoxASCOMNom.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Window;
+            comboBoxASCOMNom.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxASCOMRA.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            textBoxASCOMRA.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxASCOMDEC.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            textBoxASCOMDEC.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxASCOMAlt.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            textBoxASCOMAlt.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
+            textBoxASCOMAz.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
+            textBoxASCOMAz.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.ControlText;
 
             // Textbox Result
             textBoxResultNbPanneau.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Control;
@@ -530,15 +580,27 @@ namespace AstroTargetSelector
             toolTipStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipStellarium.OwnerDraw = nuit;
+            toolTipStellariumGlobal.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipStellariumGlobal.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipStellariumGlobal.OwnerDraw = nuit;
             toolTipErreurStellarium.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipErreurStellarium.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipErreurStellarium.OwnerDraw = nuit;
+            toolTipErreurStellariumGlobal.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipErreurStellariumGlobal.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipErreurStellariumGlobal.OwnerDraw = nuit;
             toolTipCartesDuCiel.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipCartesDuCiel.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipCartesDuCiel.OwnerDraw = nuit;
+            toolTipCartesDuCielGlobal.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipCartesDuCielGlobal.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipCartesDuCielGlobal.OwnerDraw = nuit;
             toolTipErreurCdC.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipErreurCdC.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipErreurCdC.OwnerDraw = nuit;
+            toolTipErreurCdCGlobal.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipErreurCdCGlobal.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipErreurCdCGlobal.OwnerDraw = nuit;
             toolTipInfosFOV.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipInfosFOV.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipInfosFOV.OwnerDraw = nuit;
@@ -569,6 +631,25 @@ namespace AstroTargetSelector
             toolTipInfosWidthModify.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
             toolTipInfosWidthModify.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
             toolTipInfosWidthModify.OwnerDraw = nuit;
+
+            toolTipASCOMStandBy.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipASCOMStandBy.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipASCOMStandBy.OwnerDraw = nuit;
+            toolTipErreurASCOM.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipErreurASCOM.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipErreurASCOM.OwnerDraw = nuit;
+            toolTipASCOMStopSlew.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipASCOMStopSlew.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipASCOMStopSlew.OwnerDraw = nuit;
+            toolTipInfosASCOM.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipInfosASCOM.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipInfosASCOM.OwnerDraw = nuit;
+            toolTipASCOMMoveTo.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipASCOMMoveTo.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipASCOMMoveTo.OwnerDraw = nuit;
+            toolTipErreurASCOMMoveTo.BackColor = nuit ? factory.GetAppInputs().BackColor : SystemColors.Info;
+            toolTipErreurASCOMMoveTo.ForeColor = nuit ? factory.GetAppInputs().ForeColor : SystemColors.InfoText;
+            toolTipErreurASCOMMoveTo.OwnerDraw = nuit;
         }
 
         /// <summary>
@@ -593,6 +674,13 @@ namespace AstroTargetSelector
             labelTempsPose.Text = Resources.TempsDePoseParPanneau;
             labelMinutes.Text = Resources.Min;
             labelTauxChevauchement.Text = Resources.NiveauDeChevauchementDesImages;
+
+            // groupBoxASCOM
+            groupBoxASCOM.Text = Resources.TelescopeASCOM;
+            labelASCOMRA.Text = Resources.RA;
+            labelASCOMDEC.Text = Resources.DEC;
+            labelASCOMAlt.Text = Resources.Alt;
+            labelASCOMAz.Text = Resources.Az;
 
             // groupBoxResultat
             groupBoxResultat.Text = Resources.ResultatsDuCalculDeLaMosaique;
@@ -638,8 +726,6 @@ namespace AstroTargetSelector
                 textBoxResultTempsPanneau.Text = string.Empty;
                 textBoxResultTotalWidth.Text = string.Empty;
                 textBoxResultRotationGlobale.Text = string.Empty;
-                pictureBoxErreurStellarium.Visible = false;
-                pictureBoxErreurCdC.Visible = false;
                 pictureBoxErreurFOV.Visible = false;
                 pictureBoxErreurTempsPanneau.Visible = false;
                 pictureBoxErreurPctChevauchement.Visible = false;
@@ -647,9 +733,15 @@ namespace AstroTargetSelector
                 pictureBoxWarningRotationGlobale.Visible = false;
                 buttonStellarium.Enabled = false;
                 buttonCartesDuCiel.Enabled = false;
+                pictureBoxErreurStellarium.Visible = false;
+                pictureBoxErreurCdC.Visible = false;
+                buttonStellariumGlobal.Enabled = false;
+                buttonCartesDuCielGlobal.Enabled = false;
+                pictureBoxErreurStellariumGlobal.Visible = false;
+                pictureBoxErreurCdCGlobal.Visible = false;
                 groupBoxExportResult.Enabled = false;
 
-                // TODO : Vérif des inputs
+                // Vérif des inputs
                 double fov = 1;
                 if (string.IsNullOrEmpty(textBoxFOV.Text)
                     || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
@@ -657,7 +749,7 @@ namespace AstroTargetSelector
                     || fov > 360)
                 {
                     pictureBoxErreurFOV.Visible = true;
-                    throw new Exception("FOV au mauvais format");
+                    throw new Exception(Resources.FOVAuMauvaisFormat);
                 }
                 int tempsPanneau = 1;
                 if (string.IsNullOrEmpty(textBoxTempsPanneau.Text)
@@ -666,7 +758,7 @@ namespace AstroTargetSelector
                     || tempsPanneau > 240)
                 {
                     pictureBoxErreurTempsPanneau.Visible = true;
-                    throw new Exception("Temps de pose par panneau au mauvais format");
+                    throw new Exception(Resources.TempsDePoseParPanneauAuMauvaisFormat);
                 }
                 double pctChevauchement = 10;
                 if (string.IsNullOrEmpty(textBoxPctChevauchement.Text)
@@ -675,7 +767,7 @@ namespace AstroTargetSelector
                     || pctChevauchement > 50)
                 {
                     pictureBoxErreurPctChevauchement.Visible = true;
-                    throw new Exception("Temps de pose par panneau au mauvais format");
+                    throw new Exception(Resources.TauxDeChevauchementAuMauvaisFormat);
                 }
 
                 Application.DoEvents();
@@ -701,7 +793,7 @@ namespace AstroTargetSelector
                 if (nbPanneau1D >= NombreMaxPanneau1D)
                 {
                     pictureBoxErreurNombrePanneau.Visible = true;
-                    throw new Exception("Trop de panneaux dans la mosaïque");
+                    throw new Exception(Resources.TropDePanneauxDansLaMosaique);
                 }
 
                 // Les paramètres sont valides, on les stock en settings
@@ -791,6 +883,18 @@ namespace AstroTargetSelector
                     listeResultRect.Add(new Tuple<string, string, string>(rect.Text, rect.RA.FormatedString, rect.DEC.FormatedString));
                 }
 
+                // Update de l'objet représentant la mosaïque globale
+                if (globalRect == null)
+                    globalRect = factory.GetObjMosaicRect();
+                globalRect.Index = "0";
+                globalRect.Text = $"{Resources.Panneau} 0";
+                globalRect.BorderColor = Color.Yellow;
+                globalRect.TextColor = Color.Yellow;
+                globalRect.RA = ra;
+                globalRect.DEC = dec;
+                globalRect.TopLeft = new Point(0, 0);
+                globalRect.Dimensions = new Size((int)tailleMaxImage, (int)tailleMaxImage);
+
                 // Valorisation des Outputs
                 textBoxResultNbPanneau.Text = nbPanneau2D.ToString();
                 if (AddPanneauSup && nbPanneau1D == 2)
@@ -812,8 +916,10 @@ namespace AstroTargetSelector
                 if (sliceSpan.RotationAngulaireGlobale > WarningLevelRotationGlobale)
                     pictureBoxWarningRotationGlobale.Visible = true;
 
-                buttonStellarium.Enabled = listeResultRect.Count > 0;
-                buttonCartesDuCiel.Enabled = listeResultRect.Count > 0;
+                buttonStellarium.Enabled = factory.GetAppStellarium().IsInstalled && listeResultRect.Count > 0;
+                buttonCartesDuCiel.Enabled = factory.GetAppCartesDuCiel().IsInstalled && listeResultRect.Count > 0;
+                buttonStellariumGlobal.Enabled = factory.GetAppStellarium().IsInstalled && tailleMaxImage > 0;
+                buttonCartesDuCielGlobal.Enabled = factory.GetAppCartesDuCiel().IsInstalled && tailleMaxImage > 0;
                 groupBoxExportResult.Enabled = listeResultRect.Count > 0;
                 checkBoxPanneauSup.Enabled = nbPanneau1D == 2;
 
@@ -823,10 +929,6 @@ namespace AstroTargetSelector
             {
                 // Trace de l'erreur et information à l'utilisateur
                 factory.GetLog().LogException(err, GetType().Name);
-                //MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
-                //                , Application.ProductName
-                //                , MessageBoxButtons.OK
-                //                , MessageBoxIcon.Error);
             }
             finally
             {
@@ -914,25 +1016,27 @@ namespace AstroTargetSelector
                 // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
                 buttonStellarium.Enabled = false;
                 pictureBoxErreurStellarium.Visible = false;
+                buttonStellariumGlobal.Enabled = false;
+                pictureBoxErreurStellariumGlobal.Visible = false;
 
                 if (dataGridViewResultRect.SelectedRows == null || dataGridViewResultRect.SelectedRows.Count == 0)
-                    throw new ApplicationTools.WarningException($"Aucun Rectangle sélectionné dans la liste");
+                    throw new Exception(Resources.AucunRectangleSelectionneDansLaListe);
 
                 // On récupère le Rect sélectionné
                 DataGridViewRow row = dataGridViewResultRect.SelectedRows[0];
                 if (row == null || row.Cells.Count == 0) 
-                    throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
                 string textSelRect = row.Cells[0].Value as string;
                 IObjMosaicRect selRect = listeRect.Where(mr => mr.Text == textSelRect).FirstOrDefault();
                 if (selRect == null) 
-                    throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
 
                 // On récupère le fov
                 double fov = 1;
                 if (string.IsNullOrEmpty(textBoxFOV.Text)
                     || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
                     || fov == 0)
-                    throw new ApplicationTools.WarningException("FOV au mauvais format");
+                    throw new Exception(Resources.FOVAuMauvaisFormat);
 
                 // Lancement de la tâche de fond si aucune autre action en cours de traitement
                 List<object> tabArgs = new List<object>();
@@ -945,21 +1049,14 @@ namespace AstroTargetSelector
                 // Trace
                 factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
-            catch (ApplicationTools.WarningException err)
-            {
-                // Sur WarningException, le background n'a pas été lancé, donc on remet le bouton Enable
-                BeginInvoke(new Action(() => buttonStellarium.Enabled = true), null);
-                // Trace de l'erreur
-                factory.GetLog().LogException(err, GetType().Name);
-            }
             catch (Exception err)
             {
                 // Trace de l'erreur et information à l'utilisateur
                 factory.GetLog().LogException(err, GetType().Name);
-                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
-                                , Application.ProductName
-                                , MessageBoxButtons.OK
-                                , MessageBoxIcon.Error);
+                // Sur Exception, le background n'a pas été lancé, donc on remet le bouton Enable
+                buttonStellarium.Enabled = true;
+                buttonStellariumGlobal.Enabled = true;
+                pictureBoxErreurStellarium.Visible = true;
             }
         }
 
@@ -970,6 +1067,7 @@ namespace AstroTargetSelector
         /// <param name="e"></param>
         private void backgroundWorkerStellarium_DoWork(object sender, DoWorkEventArgs e)
         {
+            string indexRect = "0";
             try
             {
                 // Trace et Chrono
@@ -977,24 +1075,42 @@ namespace AstroTargetSelector
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
-                // Status Text
-                //SetActionStatusText($"{ApplicationTools.Properties.Resources.Stellarium} : {Resources.EnvoiDeLaCommande}");
-
                 // Récup des paramètres
                 List<object> tabArgs = e.Argument as List<object>;
                 if (tabArgs != null && tabArgs.Count > 0)
                 {
-                    string indexRect = tabArgs[0] as string;
-                    IObjMosaicRect selRect = listeRect.Where(mr => mr.Index == indexRect).FirstOrDefault();
+                    indexRect = tabArgs[0] as string;
+                    if (string.IsNullOrEmpty(indexRect))
+                    {
+                        indexRect = "0";
+                        throw new Exception(Resources.IndexNonFourni);
+                    }
+                    IObjMosaicRect selRect = null;
+                    if (indexRect == "0")
+                        selRect = globalRect;
+                    else
+                        selRect = listeRect.Where(mr => mr.Index == indexRect).FirstOrDefault();
                     if (selRect == null)
-                        throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                        throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
 
                     // On récupère le fov
                     double fov = 1;
-                    if (string.IsNullOrEmpty(textBoxFOV.Text)
-                        || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
-                        || fov == 0)
-                        throw new ApplicationTools.WarningException("FOV au mauvais format");
+                    if (indexRect == "0")
+                    {
+                        Coordinate widthMosaic = factory.GetCoordinate(0, CoordinatesType.Degree);
+                        if (string.IsNullOrEmpty(textBoxResultTotalWidth.Text)
+                            || !Coordinate.TryParseFromFormatedString(textBoxResultTotalWidth.Text, ref widthMosaic)
+                            || widthMosaic.Coordonnee <= 0)
+                                throw new Exception(Resources.DimensionAuMauvaisFormat);
+                        fov = widthMosaic.Coordonnee;
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(textBoxFOV.Text)
+                            || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
+                            || fov == 0)
+                                throw new Exception(Resources.FOVAuMauvaisFormat);
+                    }
 
                     // On lance la commande
                     factory.GetAppStellarium().FocusTo(selRect.RA,
@@ -1005,22 +1121,69 @@ namespace AstroTargetSelector
                     // Trace
                     factory.GetLog().Log($"Exécution de la commande FocusTo de {ApplicationTools.Properties.Resources.Stellarium} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
                 }
-
-                // On flush le texte de la Status Text
-                //SetDefaultStatusText(true);
             }
             catch (Exception err)
             {
                 // Trace de l'erreur
                 factory.GetLog().LogException(err, GetType().Name);
-                // On positionne le message d'erreur retour dans la Status Text
-                BeginInvoke(new Action(() => pictureBoxErreurStellarium.Visible = true), null);
-                //SetActionStatusText($"{ApplicationTools.Properties.Resources.Stellarium} : {err.Message}");
+                // On positionne le message d'erreur retour
+                BeginInvoke(new Action(() =>
+                {
+                    pictureBoxErreurStellarium.Visible = indexRect != "0";
+                    pictureBoxErreurStellariumGlobal.Visible = indexRect == "0";
+                }), null);
             }
             finally
             {
                 // Dans tous les cas, on remet le bouton Stellarium Enable
-                BeginInvoke(new Action(() => buttonStellarium.Enabled = true), null);
+                BeginInvoke(new Action(() =>
+                {
+                    buttonStellarium.Enabled = true;
+                    buttonStellariumGlobal.Enabled = true;
+                }), null);
+            }
+        }
+
+        /// <summary>
+        /// Lance la commande de sélection dans Stellarium pour la mosaïque complète
+        /// </summary>
+        public void StellariumGlobalFocusTo()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande FocusTo de {ApplicationTools.Properties.Resources.Stellarium}", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
+                buttonStellarium.Enabled = false;
+                pictureBoxErreurStellarium.Visible = false;
+                buttonStellariumGlobal.Enabled = false;
+                pictureBoxErreurStellariumGlobal.Visible = false;
+
+                if (string.IsNullOrEmpty(textBoxResultTotalWidth.Text) || globalRect == null)
+                    throw new ApplicationTools.WarningException(Resources.MosaiqueIncorrecte);
+
+                // Lancement de la tâche de fond si aucune autre action en cours de traitement
+                List<object> tabArgs = new List<object>();
+                tabArgs.Add(globalRect.Index);
+                if (!backgroundWorkerStellarium.IsBusy)
+                    backgroundWorkerStellarium.RunWorkerAsync(tabArgs);
+                else
+                    factory.GetLog().Log($"backgroundWorkerStellarium BUSY", GetType().Name, null, TypeLog.Warning);
+
+                // Trace
+                factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                // Sur Exception, le background n'a pas été lancé, donc on remet le bouton Enable
+                buttonStellarium.Enabled = true;
+                buttonStellariumGlobal.Enabled = true;
+                pictureBoxErreurStellariumGlobal.Visible = true;
             }
         }
 
@@ -1039,25 +1202,27 @@ namespace AstroTargetSelector
                 // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
                 buttonCartesDuCiel.Enabled = false;
                 pictureBoxErreurCdC.Visible = false;
+                buttonCartesDuCielGlobal.Enabled = false;
+                pictureBoxErreurCdCGlobal.Visible = false;
 
                 if (dataGridViewResultRect.SelectedRows == null || dataGridViewResultRect.SelectedRows.Count == 0)
-                    throw new ApplicationTools.WarningException($"Aucun Rectangle sélectionné dans la liste");
+                    throw new Exception(Resources.AucunRectangleSelectionneDansLaListe);
 
                 // On récupère le Rect sélectionné
                 DataGridViewRow row = dataGridViewResultRect.SelectedRows[0];
                 if (row == null || row.Cells.Count == 0)
-                    throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
                 string textSelRect = row.Cells[0].Value as string;
                 IObjMosaicRect selRect = listeRect.Where(mr => mr.Text == textSelRect).FirstOrDefault();
                 if (selRect == null)
-                    throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
 
                 // On récupère le fov
                 double fov = 1;
                 if (string.IsNullOrEmpty(textBoxFOV.Text)
                     || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
                     || fov == 0)
-                    throw new ApplicationTools.WarningException("FOV au mauvais format");
+                    throw new Exception(Resources.FOVAuMauvaisFormat);
 
                 // Lancement de la tâche de fond si aucune autre action en cours de traitement
                 List<object> tabArgs = new List<object>();
@@ -1070,21 +1235,14 @@ namespace AstroTargetSelector
                 // Trace
                 factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
             }
-            catch (ApplicationTools.WarningException err)
-            {
-                // Sur WarningException, le background n'a pas été lancé, donc on remet le bouton Enable
-                BeginInvoke(new Action(() => buttonCartesDuCiel.Enabled = true), null);
-                // Trace de l'erreur
-                factory.GetLog().LogException(err, GetType().Name);
-            }
             catch (Exception err)
             {
                 // Trace de l'erreur et information à l'utilisateur
                 factory.GetLog().LogException(err, GetType().Name);
-                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
-                                , Application.ProductName
-                                , MessageBoxButtons.OK
-                                , MessageBoxIcon.Error);
+                // Sur Exception, le background n'a pas été lancé, donc on remet le bouton Enable
+                buttonCartesDuCiel.Enabled = true;
+                buttonCartesDuCielGlobal.Enabled = true;
+                pictureBoxErreurCdC.Visible = true;
             }
         }
 
@@ -1095,6 +1253,7 @@ namespace AstroTargetSelector
         /// <param name="e"></param>
         private void backgroundWorkerCartesDuCiel_DoWork(object sender, DoWorkEventArgs e)
         {
+            string indexRect = "0";
             try
             {
                 // Trace et Chrono
@@ -1102,24 +1261,43 @@ namespace AstroTargetSelector
                 Stopwatch debutFonction = new Stopwatch();
                 debutFonction.Start();
 
-                // Status Text
-                //SetActionStatusText($"{ApplicationTools.Properties.Resources.CartesDuCiel} : {Resources.EnvoiDeLaCommande}");
-
                 // Récup des paramètres
                 List<object> tabArgs = e.Argument as List<object>;
                 if (tabArgs != null && tabArgs.Count > 0)
                 {
-                    string indexRect = tabArgs[0] as string;
-                    IObjMosaicRect selRect = listeRect.Where(mr => mr.Index == indexRect).FirstOrDefault();
+                    indexRect = tabArgs[0] as string;
+                    if (string.IsNullOrEmpty(indexRect))
+                    {
+                        indexRect = "0";
+                        throw new Exception(Resources.IndexNonFourni);
+                    }
+
+                    IObjMosaicRect selRect = null;
+                    if (indexRect == "0")
+                        selRect = globalRect;
+                    else
+                        selRect = listeRect.Where(mr => mr.Index == indexRect).FirstOrDefault();
                     if (selRect == null)
-                        throw new ApplicationTools.WarningException(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                        throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
 
                     // On récupère le fov
                     double fov = 1;
-                    if (string.IsNullOrEmpty(textBoxFOV.Text)
-                        || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
-                        || fov == 0)
-                        throw new ApplicationTools.WarningException("FOV au mauvais format");
+                    if (indexRect == "0")
+                    {
+                        Coordinate widthMosaic = factory.GetCoordinate(0, CoordinatesType.Degree);
+                        if (string.IsNullOrEmpty(textBoxResultTotalWidth.Text)
+                            || !Coordinate.TryParseFromFormatedString(textBoxResultTotalWidth.Text, ref widthMosaic)
+                            || widthMosaic.Coordonnee <= 0)
+                            throw new Exception(Resources.DimensionAuMauvaisFormat);
+                        fov = widthMosaic.Coordonnee;
+                    }
+                    else
+                    {
+                        if (string.IsNullOrEmpty(textBoxFOV.Text)
+                            || !double.TryParse(textBoxFOV.Text, NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out fov)
+                            || fov == 0)
+                            throw new Exception(Resources.FOVAuMauvaisFormat);
+                    }
 
                     // On lance la commande
                     factory.GetAppCartesDuCiel().FocusTo(selRect.RA,
@@ -1130,22 +1308,69 @@ namespace AstroTargetSelector
                     // Trace
                     factory.GetLog().Log($"Exécution de la commande FocusTo de {ApplicationTools.Properties.Resources.CartesDuCiel} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
                 }
-
-                // On flush le texte de la Status Text
-                //SetDefaultStatusText(false, true);
             }
             catch (Exception err)
             {
                 // Trace de l'erreur
                 factory.GetLog().LogException(err, GetType().Name);
-                // On positionne le message d'erreur retour dans la Status Text
-                BeginInvoke(new Action(() => pictureBoxErreurCdC.Visible = true), null);
-                //SetActionStatusText($"{ApplicationTools.Properties.Resources.CartesDuCiel} : {err.Message}");
+                // On positionne le message d'erreur retour
+                BeginInvoke(new Action(() =>
+                {
+                    pictureBoxErreurCdC.Visible = indexRect != "0";
+                    pictureBoxErreurCdCGlobal.Visible = indexRect == "0";
+                }), null);
             }
             finally
             {
                 // Dans tous les cas, on remet le bouton Enable
-                BeginInvoke(new Action(() => buttonCartesDuCiel.Enabled = true), null);
+                BeginInvoke(new Action(() =>
+                {
+                    buttonCartesDuCiel.Enabled = true;
+                    buttonCartesDuCielGlobal.Enabled = true;
+                }), null);
+            }
+        }
+
+        /// <summary>
+        /// Lance la commande de sélection dans CdC pour la mosaïque complète
+        /// </summary>
+        public void CdCGlobalFocusTo()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande FocusTo de {ApplicationTools.Properties.Resources.CartesDuCiel}", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
+                buttonCartesDuCiel.Enabled = false;
+                pictureBoxErreurCdC.Visible = false;
+                buttonCartesDuCielGlobal.Enabled = false;
+                pictureBoxErreurCdCGlobal.Visible = false;
+
+                if (string.IsNullOrEmpty(textBoxResultTotalWidth.Text) || globalRect == null)
+                    throw new ApplicationTools.WarningException(Resources.MosaiqueIncorrecte);
+
+                // Lancement de la tâche de fond si aucune autre action en cours de traitement
+                List<object> tabArgs = new List<object>();
+                tabArgs.Add(globalRect.Index);
+                if (!backgroundWorkerCartesDuCiel.IsBusy)
+                    backgroundWorkerCartesDuCiel.RunWorkerAsync(tabArgs);
+                else
+                    factory.GetLog().Log($"backgroundWorkerCartesDuCiel BUSY", GetType().Name, null, TypeLog.Warning);
+
+                // Trace
+                factory.GetLog().Log($"Retour au process principal après {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                // Sur Exception, le background n'a pas été lancé, donc on remet le bouton Enable
+                buttonCartesDuCiel.Enabled = true;
+                buttonCartesDuCielGlobal.Enabled = true;
+                pictureBoxErreurCdCGlobal.Visible = true;
             }
         }
 
@@ -1166,7 +1391,7 @@ namespace AstroTargetSelector
 
                 // On vérifie s'il y a des éléments à exporter
                 if (listeRect.Count == 0)
-                    throw new Exception("Export impossible : aucun panneau dans la mosaïque");
+                    throw new Exception(Resources.ExportImpossibleAucunPanneauDansLaMosaique);
 
                 // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
                 buttonExportResult.Enabled = false;
@@ -1403,6 +1628,426 @@ namespace AstroTargetSelector
             }
         }
 
+        /// <summary>
+        /// Clic sur le bouton StandBy
+        /// </summary>
+        private void StartStopConnection()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Démarrage / Arrêt du background worker Telescope", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Positionnement du Curseur
+                Cursor = Cursors.WaitCursor;
+
+                // Avant tout, on disable les contrôles
+                pictureBoxErreurASCOM.Visible = false;
+                buttonASCOMStandby.Enabled = false;
+                buttonASCOMStop.Enabled = false;
+                comboBoxASCOMNom.Enabled = false;
+                buttonASCOMMoveTo.Enabled = false;
+                pictureBoxErreurASCOMMoveTo.Visible = false;
+
+                if (factory.GetAppASCOMTelescope().IsConnected)
+                {
+                    factory.GetAppASCOMTelescope().DisConnect();
+                    // On stop le BackgroundWorker
+                    if (backgroundWorkerTelescope.IsBusy)
+                        backgroundWorkerTelescope.CancelAsync();
+                    comboBoxASCOMNom.Enabled = true;
+
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(comboBoxASCOMNom.SelectedValue.ToString()))
+                    {
+                        factory.GetAppASCOMTelescope().Connect(comboBoxASCOMNom.SelectedValue.ToString());
+                        // On démarre le BackgroundWorker
+                        if (!backgroundWorkerTelescope.IsBusy)
+                            backgroundWorkerTelescope.RunWorkerAsync();
+                        comboBoxASCOMNom.Enabled = false;
+                    }
+                }
+
+                // Trace
+                factory.GetLog().Log($"Fin du Démarrage / Arrêt du background worker Telescope en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+                // On réactive les contrôles
+                buttonASCOMStop.Enabled = false;
+                comboBoxASCOMNom.Enabled = true;
+                // ToolTip Erreur et PictureBox
+                toolTipErreurASCOM.SetToolTip(pictureBoxErreurASCOM, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande
+                                                                    + Environment.NewLine + err.Message);
+                pictureBoxErreurASCOM.Visible = true;
+            }
+            finally
+            {
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
+                // On réactive le bouton StandBy
+                buttonASCOMStandby.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Chargement des Telescope ASCOM disponible
+        /// </summary>
+        private void InitialisationComboASCOMNom()
+        {
+            try
+            {
+                // Trace
+                factory.GetLog().Log("Chargement de la comboBoxASCOMNom", GetType().Name);
+
+                // CLear de la liste
+                comboBoxASCOMNom.Items.Clear();
+                ComboBoxItems comboBoxItems = new ComboBoxItems();
+
+                // Rechargement depuis la liste chargée
+                foreach (KeyValuePair<string, string> driverEnCours in factory.GetAppASCOMTelescope().ListeDriverASCOM)
+                {
+                    ComboBoxItem item = comboBoxItems.NewItem(driverEnCours.Value, driverEnCours.Key);
+                    comboBoxItems.Rows.Add(item);
+                }
+
+                comboBoxASCOMNom.DisplayMember = "Text";
+                comboBoxASCOMNom.ValueMember = "Value";
+                comboBoxASCOMNom.DataSource = comboBoxItems;
+
+                // Positionnement du Settings
+                comboBoxASCOMNom.SelectedValue = factory.GetAppASCOMTelescope().LastASCOMTelescopeId;
+
+                // Trace
+                factory.GetLog().Log($"Chargement de {comboBoxASCOMNom.Items.Count} Driver et sélection de l'élément : {comboBoxASCOMNom.SelectedItem}", GetType().Name);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                // CLear de la liste
+                comboBoxASCOMNom.DataSource = null;
+                comboBoxASCOMNom.Items.Clear();
+            }
+        }
+
+        /// <summary>
+        /// Background Worker permettant la gestion de l'état du telescope ASCOM
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void backgroundWorkerTelescope_DoWork(object sender, DoWorkEventArgs e)
+        {
+            try
+            {
+                // Trace
+                factory.GetLog().Log($"Démarrage du background worker Telescope", GetType().Name);
+
+                // On boucle tant que le backgroundWorker n'est pas cancel
+                while (!backgroundWorkerTelescope.CancellationPending)
+                {
+                    bool telescopeConnected = factory.GetAppASCOMTelescope().IsConnected;
+                    if (!telescopeConnected)
+                    {
+                        factory.GetAppASCOMTelescope().DisConnect();
+                        break;
+                    }
+
+                    // MAJ Controle
+                    BeginInvoke(new Action(() => {
+                        try
+                        {
+                            buttonASCOMStandby.Enabled = true;
+                            buttonASCOMStandby.Image = telescopeConnected ? Properties.Resources.shutdown_24_green : Properties.Resources.shutdown_24;
+                            comboBoxASCOMNom.Enabled = false;
+                        }
+                        catch (Exception err)
+                        {
+                            factory.GetLog().LogException(err, GetType().Name);
+                        }
+                    }), null);
+
+                    // RA
+                    double? ra = factory.GetAppASCOMTelescope().RightAscension;
+                    if (ra.HasValue)
+                        BeginInvoke(new Action(() => {
+                            try
+                            {
+                                textBoxASCOMRA.Text = factory.GetCoordinate(ra.Value, CoordinatesType.RA).FormatedString;
+                            }
+                            catch (Exception err)
+                            {
+                                factory.GetLog().LogException(err, GetType().Name);
+                            }
+                        }), null);
+
+                    // DEC
+                    double? dec = factory.GetAppASCOMTelescope().Declination;
+                    if (dec.HasValue)
+                        BeginInvoke(new Action(() => {
+                            try
+                            {
+                                textBoxASCOMDEC.Text = factory.GetCoordinate(dec.Value, CoordinatesType.DEC).FormatedString;
+                            }
+                            catch (Exception err)
+                            {
+                                factory.GetLog().LogException(err, GetType().Name);
+                            }
+                        }), null);
+
+                    // ALT
+                    double? alt = factory.GetAppASCOMTelescope().Altitude;
+                    if (alt.HasValue)
+                        BeginInvoke(new Action(() => {
+                            try
+                            {
+                                textBoxASCOMAlt.Text = factory.GetCoordinate(alt.Value, CoordinatesType.Degree).FormatedString;
+                            }
+                            catch (Exception err)
+                            {
+                                factory.GetLog().LogException(err, GetType().Name);
+                            }
+                        }), null);
+
+                    // AZ
+                    double? az = factory.GetAppASCOMTelescope().Azimuth;
+                    if (az.HasValue)
+                        BeginInvoke(new Action(() => {
+                            try
+                            {
+                                textBoxASCOMAz.Text = factory.GetCoordinate(az.Value, CoordinatesType.Degree).FormatedString;
+                            }
+                            catch (Exception err)
+                            {
+                                factory.GetLog().LogException(err, GetType().Name);
+                            }
+                        }), null);
+
+                    // Slew
+                    bool isSlewing = factory.GetAppASCOMTelescope().IsSlewing;
+                    BeginInvoke(new Action(() => {
+                        try
+                        {
+                            // STOP Button
+                            buttonASCOMStop.Enabled = isSlewing;
+                            // SLEW Button
+                            panelSlew.BackColor = isSlewing ? Color.Green : Color.Black;
+                            labelSlew.ForeColor = isSlewing ? Color.Yellow : Color.Yellow;
+                            // MoveTo Button
+                            buttonASCOMMoveTo.Enabled = !isSlewing && listeResultRect.Count > 0;
+                        }
+                        catch (Exception err)
+                        {
+                            factory.GetLog().LogException(err, GetType().Name);
+                        }
+                    }), null);
+
+                    Thread.Sleep(1000);
+                    //throw new DivideByZeroException();
+                }
+
+                // Trace
+                factory.GetLog().Log($"Fin du background worker Telescope", GetType().Name);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur et information à l'utilisateur
+                factory.GetLog().LogException(err, GetType().Name);
+                BeginInvoke(new Action(() => {
+                    try
+                    {
+                        // ToolTip Erreur et PictureBox
+                        toolTipErreurASCOM.SetToolTip(pictureBoxErreurASCOM, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande
+                                                                            + Environment.NewLine + err.Message);
+                        pictureBoxErreurASCOM.Visible = true;
+                    }
+                    catch (Exception ex)
+                    {
+                        factory.GetLog().LogException(ex, GetType().Name);
+                    }
+                }), null);
+            }
+            finally
+            {
+                BeginInvoke(new Action(() => {
+                    try
+                    {
+                        // Remise en état des contrôles sur sortie du Thread
+                        buttonASCOMStandby.Image = Properties.Resources.shutdown_24;
+                        comboBoxASCOMNom.Enabled = true;
+                        textBoxASCOMRA.Text = string.Empty;
+                        textBoxASCOMDEC.Text = string.Empty;
+                        textBoxASCOMAlt.Text = string.Empty;
+                        textBoxASCOMAz.Text = string.Empty;
+                        buttonASCOMStop.Enabled = false;
+                        panelSlew.BackColor = Color.Black;
+                        labelSlew.ForeColor = Color.Yellow;
+                        buttonASCOMMoveTo.Enabled = false;
+                    }
+                    catch (Exception ex)
+                    {
+                        factory.GetLog().LogException(ex, GetType().Name);
+                    }
+                }), null);
+            }
+        }
+
+        /// <summary>
+        /// Clic sur le bouton SlewTO ASCOM
+        /// </summary>
+        private void ASCOMSlewTo()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande SlewTo", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Positionnement du Curseur
+                Cursor = Cursors.WaitCursor;
+
+                // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
+                buttonASCOMMoveTo.Enabled = false;
+                pictureBoxErreurASCOMMoveTo.Visible = false;
+
+                if (dataGridViewResultRect.SelectedRows == null || dataGridViewResultRect.SelectedRows.Count == 0)
+                    throw new Exception(Resources.AucunRectangleSelectionneDansLaListe);
+
+                // On récupère le Rect sélectionné
+                DataGridViewRow row = dataGridViewResultRect.SelectedRows[0];
+                if (row == null || row.Cells.Count == 0)
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+                string textSelRect = row.Cells[0].Value as string;
+                IObjMosaicRect selRect = listeRect.Where(mr => mr.Text == textSelRect).FirstOrDefault();
+                if (selRect == null)
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+
+                // On lance la commande
+                if (!factory.GetAppASCOMTelescope().IsConnected)
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+
+                factory.GetAppASCOMTelescope().SlewTo(selRect.RA.Coordonnee, selRect.DEC.Coordonnee);
+
+                // Trace
+                factory.GetLog().Log($"Fin de la commande SlewTo en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+                // Icone Erreur
+                // ToolTip Erreur et PictureBox
+                toolTipErreurASCOMMoveTo.SetToolTip(pictureBoxErreurASCOMMoveTo, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande
+                                                                    + Environment.NewLine + err.Message);
+                pictureBoxErreurASCOMMoveTo.Visible = true;
+            }
+            finally
+            {
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
+                // On réactive les contrôles
+                //buttonASCOMMoveTo.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Clic sur le bouton StopSlew ASCOM
+        /// </summary>
+        private void ASCOMStopSlew()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Lancement de la commande AbortSlew", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Positionnement du Curseur
+                Cursor = Cursors.WaitCursor;
+
+                // Avant de lancer le traitement, on disable le bouton pour éviter les double-clic
+                buttonASCOMStop.Enabled = false;
+                pictureBoxErreurASCOM.Visible = false;
+
+                // On lance la commande
+                if (!factory.GetAppASCOMTelescope().IsConnected)
+                    throw new Exception(ApplicationTools.Properties.Resources.UneErreurEstSurvenue);
+
+                factory.GetAppASCOMTelescope().StopSlew();
+
+                // Trace
+                factory.GetLog().Log($"Fin de la commande AbortSlew en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+                // ToolTip Erreur et PictureBox
+                toolTipErreurASCOM.SetToolTip(pictureBoxErreurASCOM, ApplicationTools.Properties.Resources.UneErreurEstSurvenueLorsDeLEnvoiDeLaCommande
+                                                                    + Environment.NewLine + err.Message);
+                pictureBoxErreurASCOM.Visible = true;
+            }
+            finally
+            {
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
+                // On réactive les contrôles
+                //buttonASCOMMoveTo.Enabled = true;
+            }
+        }
+
+        /// <summary>
+        /// Traitement sur fermeture de la fenêtre
+        /// </summary>
+        private void UnloadForm()
+        {
+            try
+            {
+                // Trace et Chrono
+                factory.GetLog().Log($"Fermeture du formulaire", GetType().Name);
+                Stopwatch debutFonction = new Stopwatch();
+                debutFonction.Start();
+
+                // Positionnement du Curseur
+                Cursor = Cursors.WaitCursor;
+
+                // Fermeture du backgroundWorker Télescope si nécessaire
+                if (backgroundWorkerTelescope.IsBusy)
+                {
+                    backgroundWorkerTelescope.CancelAsync();
+                    // On attend 1s afin d'être que la tâche de fond soit terminée
+                    //Thread.Sleep(1000);
+                }
+
+                // Déconnexion du télescope si nécessaire
+                if (factory.GetAppASCOMTelescope().IsASCOMReady()
+                    && factory.GetAppASCOMTelescope().IsConnected)
+                {
+                    factory.GetAppASCOMTelescope().DisConnect();
+                }
+
+                // Trace
+                factory.GetLog().Log($"Fin de la Fermeture du formulaire en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+            }
+            catch (Exception err)
+            {
+                // Trace de l'erreur
+                factory.GetLog().LogException(err, GetType().Name);
+            }
+            finally
+            {
+                // Positionnement du Curseur
+                Cursor = Cursors.Default;
+            }
+        }
+
         #endregion
 
         #region Champs
@@ -1421,6 +2066,11 @@ namespace AstroTargetSelector
         /// Liste des rectangle du Panel
         /// </summary>
         private List<IObjMosaicRect> listeRect = new List<IObjMosaicRect>();
+
+        /// <summary>
+        /// <see cref="IObjMosaicRect"/> représentant la mosaïque globale
+        /// </summary>
+        private IObjMosaicRect globalRect = null;
 
         /// <summary>
         /// Liste servant à l'affichage des résultats des rectangle de la mosaique
@@ -1762,6 +2412,204 @@ namespace AstroTargetSelector
                 CalculMosaique();
                 panelMosaic.Refresh();
                 //textBoxPctChevauchement.Focus();
+            }
+        }
+
+        private void buttonASCOMStandby_Click(object sender, EventArgs e)
+        {
+            StartStopConnection();
+        }
+
+        private void buttonASCOMMoveTo_Click(object sender, EventArgs e)
+        {
+            ASCOMSlewTo();
+        }
+
+        private void dlgMosaicCalculator_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            UnloadForm();
+        }
+
+        private void buttonASCOMStop_Click(object sender, EventArgs e)
+        {
+            ASCOMStopSlew();
+        }
+
+        private void buttonStellariumGlobal_Click(object sender, EventArgs e)
+        {
+            StellariumGlobalFocusTo();
+        }
+
+        private void buttonCartesDuCielGlobal_Click(object sender, EventArgs e)
+        {
+            CdCGlobalFocusTo();
+        }
+
+        private void toolTipErreurASCOM_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipInfosASCOM_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            // Background et Border
+            e.DrawBackground();
+            e.DrawBorder();
+            // Icon
+            Rectangle rectangleIcon = new Rectangle(4, 4, 16, 16);
+            e.Graphics.DrawIcon(SystemIcons.Information, rectangleIcon);
+            // Titre
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleTitre = new Rectangle(20, 0, e.Bounds.Width, 16);
+                using (Font fontTitre = new Font(e.Font, FontStyle.Bold))
+                {
+                    e.Graphics.DrawString(toolTipInfosASCOM.ToolTipTitle, fontTitre, brush, rectangleTitre);
+                }
+                // Text
+                Rectangle rectangleText = new Rectangle(18, 14, e.Bounds.Width, e.Bounds.Height);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipErreurASCOMMoveTo_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipASCOMMoveTo_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipASCOMStandBy_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipASCOMStopSlew_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipStellariumGlobal_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+
+        }
+
+        private void toolTipCartesDuCielGlobal_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipErreurStellariumGlobal_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void toolTipErreurCdCGlobal_Draw(object sender, DrawToolTipEventArgs e)
+        {
+            e.DrawBackground();
+            e.DrawBorder();
+            //e.DrawText();
+            // Text
+            using (Brush brush = new SolidBrush(factory.GetAppInputs().ForeColor))
+            {
+                Rectangle rectangleText = new Rectangle(0, 0, e.Bounds.Width + 10, e.Bounds.Height + 10);
+                e.Graphics.DrawString(e.ToolTipText, e.Font, brush, rectangleText);
+            }
+        }
+
+        private void comboBoxASCOMNom_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            ComboBox combo = sender as ComboBox;
+            Brush brushText = new SolidBrush(factory.GetAppInputs().ForeColor);
+            // Background
+            if ((e.State & DrawItemState.Selected) == DrawItemState.Selected)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(factory.GetAppInputs().ForeColor), e.Bounds);
+                brushText = Brushes.Black;
+            }
+            else
+            {
+                e.DrawBackground();
+            }
+            e.DrawFocusRectangle();
+            // Texte
+            if (combo != null && e.Index != -1)
+            {
+                ComboBoxItems comboItems = combo.DataSource as ComboBoxItems;
+                if (comboItems != null)
+                {
+                    ComboBoxItem comboItem = comboItems.Rows[e.Index] as ComboBoxItem;
+                    if (comboItem != null)
+                        e.Graphics.DrawString(comboItem.Text, e.Font, brushText, e.Bounds);
+                }
             }
         }
     }

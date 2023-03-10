@@ -19,3 +19,5 @@ C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTarget
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Release\AstroMoonCalc.dll
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Release\AstroMoonCalc.pdb
 C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Release\AstroMoonCalc.xml
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Release\AstroTargetSelectorTelescope.dll
+C:\Users\miste\Documents\DepotGitHub\Juani005999\AstroTargetSelector\AstroTargetSelectorBusiness\bin\Release\AstroTargetSelectorTelescope.pdb

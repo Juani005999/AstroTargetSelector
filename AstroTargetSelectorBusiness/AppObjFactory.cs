@@ -185,6 +185,17 @@ namespace AstroTargetSelectorBusiness
             return new ObjMosaicRect();
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public IAppASCOMTelescope GetAppASCOMTelescope()
+        {
+            if (appASCOMTelescope == null)
+                appASCOMTelescope = new AppASCOMTelescope(this);
+            return appASCOMTelescope;
+        }
+
         #endregion
 
         #region Champs
@@ -233,6 +244,11 @@ namespace AstroTargetSelectorBusiness
         /// Liste des Filtres de Modes de Visualisation pour l'affichage dans la liste
         /// </summary>
         private Dictionary<ModeVisualisation, string> listeModeVisualisation = null;
+
+        /// <summary>
+        /// Interface de l'Objet applicatif permettant la gestion du Télescope ASCOM
+        /// </summary>
+        private IAppASCOMTelescope appASCOMTelescope = null;
 
         #endregion
     }

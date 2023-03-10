@@ -67,6 +67,7 @@
     <Compile Include="Interfaces\IAppLog.cs" />
     <Compile Include="Interfaces\IAppProgramme.cs" />
     <Compile Include="Interfaces\IAppToolFactory.cs" />
+    <Compile Include="Objets Techniques\AppASCOMPlateform.cs" />
     <Compile Include="Objets Techniques\AppAstap.cs" />
     <Compile Include="Objets Techniques\AppAstroSessionOrganizer.cs" />
     <Compile Include="Objets Techniques\AppAstroTargetSelector.cs" />

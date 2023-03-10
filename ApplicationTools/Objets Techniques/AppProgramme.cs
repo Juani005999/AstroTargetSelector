@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography;
 
 namespace ApplicationTools
 {
@@ -41,18 +43,23 @@ namespace ApplicationTools
         public abstract string ProcessName { get; }
 
         /// <summary>
+        /// Manufacturer
+        /// </summary>
+        public virtual string Manufacturer { get; set; }
+
+        /// <summary>
         /// Serveur
         /// <para>Get : Récupère la valeur stockée en Settings</para>
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
-        public abstract string Host { get; set; }
+        public virtual string Host { get; set; }
 
         /// <summary>
         /// Port du Serveur Stellarium
         /// <para>Get : Récupère la valeur stockée en Settings</para>
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
-        public abstract string Port { get; set; }
+        public virtual string Port { get; set; }
 
         /// <summary>
         /// Singleton permettant de savoir si le programme est installé sur le poste
@@ -134,6 +141,21 @@ namespace ApplicationTools
             }
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public virtual RegistryKey NodeProgramKey
+        {
+            get
+            {
+                if (nodeProgramKey == null)
+                {
+                    nodeProgramKey = RegistryUtils.GetNodeProgramKey(Manufacturer, DisplayName, appLog);
+                }
+                return nodeProgramKey;
+            }
+        }
+
         #endregion
 
         #region Constructeur
@@ -155,7 +177,14 @@ namespace ApplicationTools
         /// </summary>
         /// <param name="nomTarget"></param>
         /// <param name="dateObservation"></param>
-        public abstract void FocusTo(string nomTarget, DateTime dateObservation);
+        /// <exception cref="NotImplementedException"></exception>
+        public virtual void FocusTo(string nomTarget, DateTime dateObservation)
+        {
+            if (string.IsNullOrEmpty(nomTarget))
+                return;
+
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// <inheritdoc/>
@@ -164,14 +193,20 @@ namespace ApplicationTools
         /// <param name="dec"></param>
         /// <param name="dateObservation"></param>
         /// <param name="fov"></param>
-        public abstract void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1);
+        public virtual void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1)
+        {
+            if (ra.Coordonnee == 0 && dec.Coordonnee == 0)
+                return;
+
+            throw new NotImplementedException();
+        }
 
         /// <summary>
         /// Démarre l'application
         /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande</para>
         /// </summary>
         /// <exception cref="Exception">Exception survenue lors du traitement</exception>
-        public void Start()
+        public virtual void Start()
         {
             if (IsInstalled && !string.IsNullOrEmpty(ExecutableFile))
             {
@@ -218,6 +253,11 @@ namespace ApplicationTools
         /// Fichier exécutable du Logiciel sur le poste
         /// </summary>
         private string executableFile = string.Empty;
+
+        /// <summary>
+        /// Clé principale du programme dans la registry
+        /// </summary>
+        protected RegistryKey nodeProgramKey = null;
 
         #endregion
     }

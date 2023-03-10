@@ -9,29 +9,29 @@
 
         /// <summary>
         /// Retourne l'interface <see cref="IAppLog"/> de l'objet <see cref="AppLog"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet Log</returns>
         IAppLog GetLog();
 
         /// <summary>
         /// Retourne l'interface <see cref="IAppContext"/> de l'objet <see cref="AppContext"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
         IAppContext GetAppContext();
 
         /// <summary>
         /// Retourne l'objet <see cref="AppStellarium"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
         IAppProgramme GetAppStellarium();
 
         /// <summary>
         /// Retourne l'objet <see cref="AppCartesDuCiel"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet AppContext</returns>
         IAppProgramme GetAppCartesDuCiel();
 
@@ -53,31 +53,38 @@
 
         /// <summary>
         /// Retourne l'objet <see cref="IConsoleQueue"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet IConsoleQueue</returns>
         IConsoleQueue GetConsoleQueue();
 
         /// <summary>
         /// Retourne l'objet <see cref="AppAstroTargetSelector"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet IAppProgramme</returns>
         IAppProgramme GetAppAstroTargetSelector();
 
         /// <summary>
         /// Retourne l'objet <see cref="AppAstroSessionOrganizer"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet IAppProgramme</returns>
         IAppProgramme GetAppAstroSessionOrganizer();
 
         /// <summary>
         /// Retourne l'objet <see cref="AppAstap"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
         /// <returns>Objet IAppProgramme</returns>
         IAppProgramme GetAppAstap();
+
+        /// <summary>
+        /// Retourne l'objet <see cref="AppASCOMPlateform"/>
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</para>
+        /// </summary>
+        /// <returns>Objet IAppProgramme</returns>
+        IAppProgramme GetAppASCOMPlateform();
 
         #endregion
     }

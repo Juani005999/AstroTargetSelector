@@ -83,6 +83,12 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.AppObjFactory.GetAppASCOMTelescope">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appUDPServer">
             <summary>
             Objet applicatif permettant la gestion du serveur UDP
@@ -126,6 +132,120 @@
         <member name="F:AstroTargetSelectorBusiness.AppObjFactory.listeModeVisualisation">
             <summary>
             Liste des Filtres de Modes de Visualisation pour l'affichage dans la liste
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppObjFactory.appASCOMTelescope">
+            <summary>
+            Interface de l'Objet applicatif permettant la gestion du Télescope ASCOM
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.AppASCOMTelescope">
+            <summary>
+            Objet applicatif permettant la gestion du téléscope ASCOM
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.ListeDriverASCOM">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.lastASCOMTelescopeId">
+            <summary>
+            Nom du dernier téléscope ASCOM utilisé
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.LastASCOMTelescopeId">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.IsConnected">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.IsSlewing">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.RightAscension">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.Declination">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.Altitude">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.Azimuth">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.#ctor(ApplicationTools.IAppToolFactory)">
+            <summary>
+            Constructeur par défaut
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.ChargeListeDriverASCOM">
+            <summary>
+            Chargement des drivers ASCOM depuis la Registry
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.IsASCOMReady">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.Connect(System.String)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+            <param name="idAscom"></param>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.DisConnect">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.SlewTo(System.Double,System.Double)">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.AppASCOMTelescope.StopSlew">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppASCOMTelescope.appToolFactory">
+            <summary>
+            Instance de la fabrique d'objet technique
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppASCOMTelescope.telescopeFactory">
+            <summary>
+            Instance de la fabrique d'objet technique des Télescopes ASCOM
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppASCOMTelescope.listeDriverASCOM">
+            <summary>
+            Liste des drivers de télescope ASCOM
+            </summary>
+        </member>
+        <member name="F:AstroTargetSelectorBusiness.AppASCOMTelescope.isASCOMReady">
+            <summary>
+            Membre interne permettant de créer un singleton
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.AppCapteur">
@@ -409,6 +529,85 @@
         <member name="F:AstroTargetSelectorBusiness.AppTCPServer.appInputs">
             <summary>
             Objet applicatif permettant d'accéder aux Inputs
+            </summary>
+        </member>
+        <member name="T:AstroTargetSelectorBusiness.IAppASCOMTelescope">
+            <summary>
+            Interface de l'Objet applicatif permettant la gestion du téléscope ASCOM
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.LastASCOMTelescopeId">
+            <summary>
+            Nom du dernier téléscope ASCOM utilisé
+            <para>Get : Récupère la valeur stockée en Settings</para>
+            <para>Set : Positionne la valeur stockée en Settings</para>
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.ListeDriverASCOM">
+            <summary>
+            Liste des drivers de télescope ASCOM
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.IsConnected">
+            <summary>
+            Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.IsSlewing">
+            <summary>
+            Slew en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.RightAscension">
+            <summary>
+            RightAscension en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.Declination">
+            <summary>
+            Déclinaison en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.Altitude">
+            <summary>
+            Altitude en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.Azimuth">
+            <summary>
+            Azimuth en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.Connect(System.String)">
+            <summary>
+            Connexion au télescope ASCOM
+            </summary>
+            <param name="idAscom"></param>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.DisConnect">
+            <summary>
+            Déconnexion du télescope ASCOM
+            </summary>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.IsASCOMReady">
+            <summary>
+            Définit si les pré-requis ASCOM sont remplis
+            <para>Singleton</para>
+            <para>Plateforme 6.6 installée sur le poste</para>
+            <para>Driver ASCOM.Interfaces chargée dans le GAC</para>
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.SlewTo(System.Double,System.Double)">
+            <summary>
+            Envoi la commande Slew au télescope
+            </summary>
+            <param name="ra"></param>
+            <param name="dec"></param>
+        </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.StopSlew">
+            <summary>
+            Lance la commande de AbortSlew
             </summary>
         </member>
         <member name="T:AstroTargetSelectorBusiness.IObjMosaicRect">
@@ -1697,6 +1896,13 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="M:AstroTargetSelectorBusiness.IAppObjFactory.GetAppASCOMTelescope">
+            <summary>
+            Interface de l'Objet applicatif permettant la gestion du Télescope ASCOM
+            <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:AstroTargetSelectorBusiness.IAppTarget">
             <summary>
             Interface de l'Objet applicatif permettant d'accéder à la collection des Targets avec application des règles applicatives
@@ -2276,6 +2482,16 @@
               Recherche une chaîne localisée semblable à Afficher la hauteur et la direction.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLaMosaiqueCompleteDansCartesDuCiel">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher la mosaïque complète dans Cartes du Ciel.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AfficherLaMosaiqueCompleteDansStellarium">
+            <summary>
+              Recherche une chaîne localisée semblable à Afficher la mosaïque complète dans Stellarium.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.AfficherLePanneauSelectionneDansCartesDuCiel">
             <summary>
               Recherche une chaîne localisée semblable à Afficher le panneau sélectionné dans Cartes Du Ciel.
@@ -2301,6 +2517,11 @@
               Recherche une chaîne localisée semblable à Afficher l&apos;objet céleste dans Stellarium..
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Alt">
+            <summary>
+              Recherche une chaîne localisée semblable à Alt..
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Annuel">
             <summary>
               Recherche une chaîne localisée semblable à Annuel.
@@ -2311,6 +2532,11 @@
               Recherche une chaîne localisée semblable à À propos de.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ArreterLeDeplacementEnCours">
+            <summary>
+              Recherche une chaîne localisée semblable à Arrêter le déplacement en cours.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.AttentionLaRotationGlobaleSurLaDureeTotaleDeLaMosaiqueSembleImportante">
             <summary>
               Recherche une chaîne localisée semblable à Attention, la rotation globale sur la durée totale de la mosaïque semble importante..
@@ -2319,6 +2545,16 @@
         <member name="P:AstroTargetSelectorResources.Resources.Aucune">
             <summary>
               Recherche une chaîne localisée semblable à Aucune.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.AucunRectangleSelectionneDansLaListe">
+            <summary>
+              Recherche une chaîne localisée semblable à Aucun Rectangle sélectionné dans la liste.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.Az">
+            <summary>
+              Recherche une chaîne localisée semblable à Az..
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Azimut">
@@ -2346,9 +2582,19 @@
               Recherche une chaîne localisée semblable à Centre de la mosaïque.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.CetteFonctionnaliteNecessiteDAvoirInstalleLesPreRequisSuivant">
+            <summary>
+              Recherche une chaîne localisée semblable à Cette fonctionnalité nécessite d&apos;avoir installé les pré-requis suivant :.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.CetteOperationPeutPrendreQuelquesInstants">
             <summary>
               Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ConnecterDeconnecterLeTelescopeASCOM">
+            <summary>
+              Recherche une chaîne localisée semblable à Connecter/Déconnecter le télescope ASCOM.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Constellation">
@@ -2406,6 +2652,11 @@
               Recherche une chaîne localisée semblable à Description.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.DimensionAuMauvaisFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à Dimension au mauvais format.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.Divers">
             <summary>
               Recherche une chaîne localisée semblable à Divers.
@@ -2449,6 +2700,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.ExporterLesResultats">
             <summary>
               Recherche une chaîne localisée semblable à Exporter les résultats.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.ExportImpossibleAucunPanneauDansLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Export impossible : aucun panneau dans la mosaïque.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Fermer">
@@ -2526,6 +2782,11 @@
               Recherche une chaîne localisée semblable à FOV.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.FOVAuMauvaisFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à FOV au mauvais format.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.FOVFormule">
             <summary>
               Recherche une chaîne localisée semblable à FOV = 57.3 * L / F.
@@ -2581,6 +2842,11 @@
               Recherche une chaîne localisée semblable à Inclure les liens pour téléscopes Unistellar.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.IndexNonFourni">
+            <summary>
+              Recherche une chaîne localisée semblable à Index non fourni.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.InfoCapteur1">
             <summary>
               Recherche une chaîne localisée semblable à Veuillez sélectionner votre capteur..
@@ -2596,9 +2862,19 @@
               Recherche une chaîne localisée semblable à Informations sur le FOV.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.InformationsSurLePilotageDuTelescopeASCOM">
+            <summary>
+              Recherche une chaîne localisée semblable à Informations sur le pilotage du télescope ASCOM.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire">
             <summary>
               Recherche une chaîne localisée semblable à La date et l&apos;heure utilisées pour la création de la mosaïque correspondent à celles utilisées pour l&apos;observation horaire..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LaPlateformeASCOM">
+            <summary>
+              Recherche une chaîne localisée semblable à - la plateforme ASCOM 6.6.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Largeur">
@@ -2629,6 +2905,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant">
             <summary>
               Recherche une chaîne localisée semblable à Le calcul de la mosaïque donne un nombre de panneaux trop important (&gt; 120)..
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.LeDriverASCOMDeVotreTelescope">
+            <summary>
+              Recherche une chaîne localisée semblable à - le driver ASCOM de votre télescope.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.LesBoutonsStellariumEtCartesDuCielVousPermettentDePositionnerCesLogicielsSurLesCoordonneesDuPanneauSelectionne">
@@ -2786,6 +3067,11 @@
               Recherche une chaîne localisée semblable à Mosaic Calculator.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.MosaiqueIncorrecte">
+            <summary>
+              Recherche une chaîne localisée semblable à Mosaïque incorrecte.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.NiveauDeChevauchementDesImages">
             <summary>
               Recherche une chaîne localisée semblable à Niveau de chevauchement des images.
@@ -2849,6 +3135,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Options">
             <summary>
               Recherche une chaîne localisée semblable à Options.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.OrienterVotreTelescopeASCOMSurLePanneauSelectionne">
+            <summary>
+              Recherche une chaîne localisée semblable à Orienter votre télescope ASCOM sur le panneau sélectionné.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.OuvrirLeFichierDesLogs">
@@ -2991,6 +3282,16 @@
               Recherche une chaîne localisée semblable à Suivant.
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TauxDeChevauchementAuMauvaisFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à Taux de chevauchement au mauvais format.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TelescopeASCOM">
+            <summary>
+              Recherche une chaîne localisée semblable à Télescope ASCOM.
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePose">
             <summary>
               Recherche une chaîne localisée semblable à Temps de pose.
@@ -3004,6 +3305,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseParPanneau">
             <summary>
               Recherche une chaîne localisée semblable à Temps de pose par panneau.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseParPanneauAuMauvaisFormat">
+            <summary>
+              Recherche une chaîne localisée semblable à Temps de pose par panneau au mauvais format.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.TempsDePoseSecondesSansRotationDeChamps">
@@ -3034,6 +3340,11 @@
         <member name="P:AstroTargetSelectorResources.Resources.Tous">
             <summary>
               Recherche une chaîne localisée semblable à Tous.
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorResources.Resources.TropDePanneauxDansLaMosaique">
+            <summary>
+              Recherche une chaîne localisée semblable à Trop de panneaux dans la mosaïque.
             </summary>
         </member>
         <member name="P:AstroTargetSelectorResources.Resources.Type">

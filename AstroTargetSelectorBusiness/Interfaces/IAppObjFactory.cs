@@ -81,6 +81,13 @@ namespace AstroTargetSelectorBusiness
         /// <returns></returns>
         IObjMosaicRect GetObjMosaicRect();
 
+        /// <summary>
+        /// Interface de l'Objet applicatif permettant la gestion du Télescope ASCOM
+        /// <para>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas il est créé</para>
+        /// </summary>
+        /// <returns></returns>
+        IAppASCOMTelescope GetAppASCOMTelescope();
+
         #endregion
     }
 }

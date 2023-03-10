@@ -1,6 +1,5 @@
-﻿using Microsoft.Win32;
-using System;
-using System.IO;
+﻿using System;
+using Microsoft.Win32;
 
 namespace ApplicationTools
 {
@@ -114,7 +113,7 @@ namespace ApplicationTools
                 // Trace
                 appLog.Log($"Lecture du champ InstallLocation du programme : {programDisplayName}", "RegistryUtils");
 
-                RegistryKey returnKey = GetSoftwareUninstallProgramKey(programManufacturer, programDisplayName, appLog);
+                RegistryKey returnKey = GetNodeProgramKey(programManufacturer, programDisplayName, appLog);
                 if (returnKey != null)
                     location = returnKey.GetValue("InstallLocation") as string;
 
@@ -162,6 +161,36 @@ namespace ApplicationTools
                 appLog.LogException(err, "RegistryUtils");
                 return string.Empty;
             }
+        }
+
+        /// <summary>
+        /// Renvoi la sous-clé uninstall d'un programme
+        /// </summary>
+        /// <param name="programManufacturer">Champ DisplayName dans la registry</param>
+        /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
+        /// <param name="appLog">Instance de l'objet de log en cours</param>
+        /// <returns></returns>
+        internal static RegistryKey GetNodeProgramKey(string programManufacturer, string programDisplayName, IAppLog appLog)
+        {
+            // Cle Retour
+            RegistryKey keyRetour = null;
+
+            // Trace
+            appLog.Log($"Recherche de la clé d'installation du programme : {programDisplayName}", "RegistryUtils");
+
+            // On parcours la registry sur la clé root LocalMachine32
+            RegistryKey keyLocalMachine32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
+            if ((keyRetour = GetUninstallProgramInSoftwareKey(keyLocalMachine32, programManufacturer, programDisplayName, appLog)) != null)
+                return keyRetour;
+
+            // On parcours la registry sur la clé root LocalMachine64
+            RegistryKey keyLocalMachine64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
+            if ((keyRetour = GetUninstallProgramInSoftwareKey(keyLocalMachine64, programManufacturer, programDisplayName, appLog)) != null)
+                return keyRetour;
+
+            // Trace et retour
+            appLog.Log($"Programme {programManufacturer} / {programDisplayName} NON installé sur le poste", "RegistryUtils");
+            return keyRetour;
         }
 
         #endregion
@@ -241,36 +270,6 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Renvoi la sous-clé uninstall d'un programme
-        /// </summary>
-        /// <param name="programManufacturer">Champ DisplayName dans la registry</param>
-        /// <param name="programDisplayName">Champ DisplayName dans la registry</param>
-        /// <param name="appLog">Instance de l'objet de log en cours</param>
-        /// <returns></returns>
-        private static RegistryKey GetSoftwareUninstallProgramKey(string programManufacturer, string programDisplayName, IAppLog appLog)
-        {
-            // Cle Retour
-            RegistryKey keyRetour = null;
-
-            // Trace
-            appLog.Log($"Recherche de la clé d'installation du programme : {programDisplayName}", "RegistryUtils");
-
-            // On parcours la registry sur la clé root LocalMachine32
-            RegistryKey keyLocalMachine32 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry32);
-            if ((keyRetour = GetUninstallProgramInSoftwareKey(keyLocalMachine32, programManufacturer, programDisplayName, appLog)) != null)
-                return keyRetour;
-
-            // On parcours la registry sur la clé root LocalMachine64
-            RegistryKey keyLocalMachine64 = RegistryKey.OpenBaseKey(RegistryHive.LocalMachine, RegistryView.Registry64);
-            if ((keyRetour = GetUninstallProgramInSoftwareKey(keyLocalMachine64, programManufacturer, programDisplayName, appLog)) != null)
-                return keyRetour;
-
-            // Trace et retour
-            appLog.Log($"Programme {programDisplayName} NON installé sur le poste", "RegistryUtils");
-            return keyRetour;
-        }
-
-        /// <summary>
         /// Renvoi la sous-clé uninstall d'un programme pour la clé root spécifiée
         /// </summary>
         /// <param name="rootKey"></param>
@@ -287,7 +286,10 @@ namespace ApplicationTools
             if (rootKey != null)
             {
                 // On récupère la clé des uninstall
-                RegistryKey subKeyUninstall = rootKey.OpenSubKey(@"SOFTWARE\" + programManufacturer + @"\" + programDisplayName);
+                string uninstallKey = @"SOFTWARE\" + programManufacturer;
+                if (!string.IsNullOrEmpty(programDisplayName))
+                    uninstallKey += @"\" + programDisplayName;
+                RegistryKey subKeyUninstall = rootKey.OpenSubKey(uninstallKey);
                 if (subKeyUninstall != null)
                 {
                     return subKeyUninstall;

@@ -79,6 +79,24 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Afficher la mosaïque complète dans Cartes du Ciel.
+        /// </summary>
+        public static string AfficherLaMosaiqueCompleteDansCartesDuCiel {
+            get {
+                return ResourceManager.GetString("AfficherLaMosaiqueCompleteDansCartesDuCiel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Afficher la mosaïque complète dans Stellarium.
+        /// </summary>
+        public static string AfficherLaMosaiqueCompleteDansStellarium {
+            get {
+                return ResourceManager.GetString("AfficherLaMosaiqueCompleteDansStellarium", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Afficher le panneau sélectionné dans Cartes Du Ciel.
         /// </summary>
         public static string AfficherLePanneauSelectionneDansCartesDuCiel {
@@ -124,6 +142,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Alt..
+        /// </summary>
+        public static string Alt {
+            get {
+                return ResourceManager.GetString("Alt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Annuel.
         /// </summary>
         public static string Annuel {
@@ -142,6 +169,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Arrêter le déplacement en cours.
+        /// </summary>
+        public static string ArreterLeDeplacementEnCours {
+            get {
+                return ResourceManager.GetString("ArreterLeDeplacementEnCours", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Attention, la rotation globale sur la durée totale de la mosaïque semble importante..
         /// </summary>
         public static string AttentionLaRotationGlobaleSurLaDureeTotaleDeLaMosaiqueSembleImportante {
@@ -156,6 +192,24 @@ namespace AstroTargetSelectorResources {
         public static string Aucune {
             get {
                 return ResourceManager.GetString("Aucune", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Aucun Rectangle sélectionné dans la liste.
+        /// </summary>
+        public static string AucunRectangleSelectionneDansLaListe {
+            get {
+                return ResourceManager.GetString("AucunRectangleSelectionneDansLaListe", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Az..
+        /// </summary>
+        public static string Az {
+            get {
+                return ResourceManager.GetString("Az", resourceCulture);
             }
         }
         
@@ -205,11 +259,29 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Cette fonctionnalité nécessite d&apos;avoir installé les pré-requis suivant :.
+        /// </summary>
+        public static string CetteFonctionnaliteNecessiteDAvoirInstalleLesPreRequisSuivant {
+            get {
+                return ResourceManager.GetString("CetteFonctionnaliteNecessiteDAvoirInstalleLesPreRequisSuivant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Cette opération peut prendre quelques instants.
         /// </summary>
         public static string CetteOperationPeutPrendreQuelquesInstants {
             get {
                 return ResourceManager.GetString("CetteOperationPeutPrendreQuelquesInstants", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Connecter/Déconnecter le télescope ASCOM.
+        /// </summary>
+        public static string ConnecterDeconnecterLeTelescopeASCOM {
+            get {
+                return ResourceManager.GetString("ConnecterDeconnecterLeTelescopeASCOM", resourceCulture);
             }
         }
         
@@ -313,6 +385,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Dimension au mauvais format.
+        /// </summary>
+        public static string DimensionAuMauvaisFormat {
+            get {
+                return ResourceManager.GetString("DimensionAuMauvaisFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Divers.
         /// </summary>
         public static string Divers {
@@ -390,6 +471,15 @@ namespace AstroTargetSelectorResources {
         public static string ExporterLesResultats {
             get {
                 return ResourceManager.GetString("ExporterLesResultats", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Export impossible : aucun panneau dans la mosaïque.
+        /// </summary>
+        public static string ExportImpossibleAucunPanneauDansLaMosaique {
+            get {
+                return ResourceManager.GetString("ExportImpossibleAucunPanneauDansLaMosaique", resourceCulture);
             }
         }
         
@@ -529,6 +619,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à FOV au mauvais format.
+        /// </summary>
+        public static string FOVAuMauvaisFormat {
+            get {
+                return ResourceManager.GetString("FOVAuMauvaisFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à FOV = 57.3 * L / F.
         /// </summary>
         public static string FOVFormule {
@@ -628,6 +727,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Index non fourni.
+        /// </summary>
+        public static string IndexNonFourni {
+            get {
+                return ResourceManager.GetString("IndexNonFourni", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Veuillez sélectionner votre capteur..
         /// </summary>
         public static string InfoCapteur1 {
@@ -655,12 +763,30 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Informations sur le pilotage du télescope ASCOM.
+        /// </summary>
+        public static string InformationsSurLePilotageDuTelescopeASCOM {
+            get {
+                return ResourceManager.GetString("InformationsSurLePilotageDuTelescopeASCOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à La date et l&apos;heure utilisées pour la création de la mosaïque correspondent à celles utilisées pour l&apos;observation horaire..
         /// </summary>
         public static string LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire {
             get {
                 return ResourceManager.GetString("LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPou" +
                         "rLObservationHoraire", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à - la plateforme ASCOM 6.6.
+        /// </summary>
+        public static string LaPlateformeASCOM {
+            get {
+                return ResourceManager.GetString("LaPlateformeASCOM", resourceCulture);
             }
         }
         
@@ -715,6 +841,15 @@ namespace AstroTargetSelectorResources {
         public static string LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant {
             get {
                 return ResourceManager.GetString("LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à - le driver ASCOM de votre télescope.
+        /// </summary>
+        public static string LeDriverASCOMDeVotreTelescope {
+            get {
+                return ResourceManager.GetString("LeDriverASCOMDeVotreTelescope", resourceCulture);
             }
         }
         
@@ -1000,6 +1135,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Mosaïque incorrecte.
+        /// </summary>
+        public static string MosaiqueIncorrecte {
+            get {
+                return ResourceManager.GetString("MosaiqueIncorrecte", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Niveau de chevauchement des images.
         /// </summary>
         public static string NiveauDeChevauchementDesImages {
@@ -1114,6 +1258,15 @@ namespace AstroTargetSelectorResources {
         public static string Options {
             get {
                 return ResourceManager.GetString("Options", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Orienter votre télescope ASCOM sur le panneau sélectionné.
+        /// </summary>
+        public static string OrienterVotreTelescopeASCOMSurLePanneauSelectionne {
+            get {
+                return ResourceManager.GetString("OrienterVotreTelescopeASCOMSurLePanneauSelectionne", resourceCulture);
             }
         }
         
@@ -1373,6 +1526,24 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Taux de chevauchement au mauvais format.
+        /// </summary>
+        public static string TauxDeChevauchementAuMauvaisFormat {
+            get {
+                return ResourceManager.GetString("TauxDeChevauchementAuMauvaisFormat", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Télescope ASCOM.
+        /// </summary>
+        public static string TelescopeASCOM {
+            get {
+                return ResourceManager.GetString("TelescopeASCOM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Temps de pose.
         /// </summary>
         public static string TempsDePose {
@@ -1396,6 +1567,15 @@ namespace AstroTargetSelectorResources {
         public static string TempsDePoseParPanneau {
             get {
                 return ResourceManager.GetString("TempsDePoseParPanneau", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Temps de pose par panneau au mauvais format.
+        /// </summary>
+        public static string TempsDePoseParPanneauAuMauvaisFormat {
+            get {
+                return ResourceManager.GetString("TempsDePoseParPanneauAuMauvaisFormat", resourceCulture);
             }
         }
         
@@ -1450,6 +1630,15 @@ namespace AstroTargetSelectorResources {
         public static string Tous {
             get {
                 return ResourceManager.GetString("Tous", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une chaîne localisée semblable à Trop de panneaux dans la mosaïque.
+        /// </summary>
+        public static string TropDePanneauxDansLaMosaique {
+            get {
+                return ResourceManager.GetString("TropDePanneauxDansLaMosaique", resourceCulture);
             }
         }
         

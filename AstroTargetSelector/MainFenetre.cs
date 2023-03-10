@@ -219,15 +219,23 @@ namespace AstroTargetSelector
             set
             {
                 BeginInvoke(new Action(() => {
-                    if (string.IsNullOrEmpty(value))
+                    try
                     {
-                        toolStripStatusActionEnCours.Visible = false;
-                        toolStripStatusActionEnCours.Text = string.Empty;
+                        if (string.IsNullOrEmpty(value))
+                        {
+                            toolStripStatusActionEnCours.Visible = false;
+                            toolStripStatusActionEnCours.Text = string.Empty;
+                        }
+                        else
+                        {
+                            toolStripStatusActionEnCours.Visible = true;
+                            toolStripStatusActionEnCours.Text = value;
+                        }
                     }
-                    else
+                    catch (Exception err)
                     {
-                        toolStripStatusActionEnCours.Visible = true;
-                        toolStripStatusActionEnCours.Text = value;
+                        if (factory != null)
+                            factory.GetLog().LogException(err, GetType().Name);
                     }
                 }), null);
             }
@@ -1847,7 +1855,7 @@ namespace AstroTargetSelector
             {
                 // Trace de l'erreur et information à l'utilisateur
                 factory.GetLog().LogException(err, GetType().Name);
-                MessageBox.Show(ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
+                MessageBox.Show("MAIN : " + ApplicationTools.Properties.Resources.UneErreurEstSurvenue + Environment.NewLine + err.Message
                                 , Application.ProductName
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);

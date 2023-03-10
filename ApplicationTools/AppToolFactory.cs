@@ -25,10 +25,9 @@ namespace ApplicationTools
         #region Méthodes
 
         /// <summary>
-        /// Retourne l'interface <see cref="IAppLog"/> de l'objet <see cref="AppLog"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet Log</returns>
+        /// <returns></returns>
         public IAppLog GetLog()
         {
             // Création et initialisation de l'objet de log s'il n'existe pas
@@ -40,10 +39,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'interface <see cref="IAppContext"/> de l'objet <see cref="AppContext"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet AppContext</returns>
+        /// <returns></returns>
         public IAppContext GetAppContext()
         {
             // Création et initialisation de l'objet AppContext s'il n'existe pas
@@ -55,10 +53,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppStellarium"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet AppContext</returns>
+        /// <returns></returns>
         public IAppProgramme GetAppStellarium()
         {
             // Création et initialisation de l'objet AppStellarium s'il n'existe pas
@@ -70,10 +67,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppCartesDuCiel"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet AppContext</returns>
+        /// <returns></returns>
         public IAppProgramme GetAppCartesDuCiel()
         {
             // Création et initialisation de l'objet AppStellarium s'il n'existe pas
@@ -85,10 +81,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppAstroTargetSelector"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet IAppProgramme</returns>
+        /// <returns></returns>
         public IAppProgramme GetAppAstroTargetSelector()
         {
             // Création et initialisation de l'objet AppAstroTargetSelector s'il n'existe pas
@@ -100,10 +95,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppAstroSessionOrganizer"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet IAppProgramme</returns>
+        /// <returns></returns>
         public IAppProgramme GetAppAstroSessionOrganizer()
         {
             // Création et initialisation de l'objet AppAstroSessionOrganizer s'il n'existe pas
@@ -115,10 +109,9 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne l'objet <see cref="AppAstap"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <remarks>L'objet est renvoyé sous la forme d'un singleton. S'il n'existe pas, il est crée</remarks>
-        /// <returns>Objet IAppProgramme</returns>
+        /// <returns></returns>
         public IAppProgramme GetAppAstap()
         {
             // Création et initialisation de l'objet AppAstap s'il n'existe pas
@@ -130,10 +123,22 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne un nouvel objet de type <see cref="Coordinates"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <param name="latitude"></param>
-        /// <param name="longitude"></param>
+        /// <returns></returns>
+        public IAppProgramme GetAppASCOMPlateform()
+        {
+            // Création et initialisation de l'objet AppAstap s'il n'existe pas
+            if (appASCOMPlateform == null)
+            {
+                appASCOMPlateform = new AppASCOMPlateform(GetLog());
+            }
+            return appASCOMPlateform;
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         /// <returns></returns>
         public Coordinates GetCoordinates(double latitude, double longitude)
         {
@@ -142,10 +147,8 @@ namespace ApplicationTools
         }
 
         /// <summary>
-        /// Retourne un nouvel objet de type <see cref="Coordinate"/>
+        /// <inheritdoc/>
         /// </summary>
-        /// <param name="value"></param>
-        /// <param name="type"></param>
         /// <returns></returns>
         public Coordinate GetCoordinate(double value, CoordinatesType type)
         {
@@ -202,6 +205,11 @@ namespace ApplicationTools
         /// Objet <see cref="AppAstap"/>
         /// </summary>
         private IAppProgramme appAstap = null;
+
+        /// <summary>
+        /// Objet <see cref="AppASCOMPlateform"/>
+        /// </summary>
+        private IAppProgramme appASCOMPlateform = null;
 
         /// <summary>
         /// Objet permettant la gestion des messages de la Console

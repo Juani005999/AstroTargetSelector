@@ -55,10 +55,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AppObjFactory.cs" />
+    <Compile Include="App\AppASCOMTelescope.cs" />
     <Compile Include="App\AppCapteur.cs" />
     <Compile Include="App\AppInputs.cs" />
     <Compile Include="App\AppTarget.cs" />
     <Compile Include="App\AppTCPServer.cs" />
+    <Compile Include="Interfaces\IAppASCOMTelescope.cs" />
     <Compile Include="Interfaces\IObjMosaicRect.cs" />
     <Compile Include="Business\ObjMosaicRect.cs" />
     <Compile Include="Interfaces\IObjSliceSpan.cs" />
@@ -104,6 +106,10 @@
     <ProjectReference Include="..\ApplicationTools\ApplicationTools.csproj">
       <Project>{79f9ad98-a61c-4f01-91b4-6281955f5ec4}</Project>
       <Name>ApplicationTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AstroTargetSelectorTelescope\AstroTargetSelectorTelescope.csproj">
+      <Project>{BB10EECC-5AE9-4F6F-A894-19FEB610D515}</Project>
+      <Name>AstroTargetSelectorTelescope</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -63,40 +63,6 @@ namespace ApplicationTools
             }
         }
 
-        /// <summary>
-        /// Serveur ATS
-        /// <para>par défaut localhost</para>
-        /// <para>Get : Récupère la valeur stockée en Settings</para>
-        /// <para>Set : Positionne la valeur stockée en Settings</para>
-        /// </summary>
-        public override string Host
-        {
-            get
-            {
-                return string.Empty;
-            }
-            set
-            {
-            }
-        }
-
-        /// <summary>
-        /// Port du Serveur ATS
-        /// <para>par défaut 7142</para>
-        /// <para>Get : Récupère la valeur stockée en Settings</para>
-        /// <para>Set : Positionne la valeur stockée en Settings</para>
-        /// </summary>
-        public override string Port
-        {
-            get
-            {
-                return string.Empty;
-            }
-            set
-            {
-            }
-        }
-
         #endregion
 
         #region Constructeur
@@ -112,34 +78,6 @@ namespace ApplicationTools
         #endregion
 
         #region Méthodes
-
-        /// <summary>
-        /// Méthode permettant le positionnement de la sélection dans ATS
-        /// <para>Cette méthode remonte une Exception si une erreur survient lors du traitement de la commande ATS</para>
-        /// </summary>
-        /// <param name="nomTarget"></param>
-        /// <param name="dateObservation"></param>
-        /// <exception cref="Exception">Exception survenue lors du traitement</exception>
-        public override void FocusTo(string nomTarget, DateTime dateObservation)
-        {
-        }
-
-        /// <summary>
-        /// <inheritdoc/>
-        /// </summary>
-        /// <param name="ra"></param>
-        /// <param name="dec"></param>
-        /// <param name="dateObservation"></param>
-        /// <param name="fov"></param>
-        /// <exception cref="Exception"></exception>
-        public override void FocusTo(Coordinate ra, Coordinate dec, DateTime dateObservation, double fov = 1)
-        {
-            if (ra.Coordonnee == 0 && dec.Coordonnee == 0)
-                return;
-
-            throw new NotImplementedException();
-        }
-
         #endregion
 
         #region Champs

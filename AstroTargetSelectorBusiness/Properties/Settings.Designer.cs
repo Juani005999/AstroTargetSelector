@@ -226,5 +226,17 @@ namespace AstroTargetSelectorBusiness.Properties {
                 this["ForeColorLight"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string LastASCOMTelescopeName {
+            get {
+                return ((string)(this["LastASCOMTelescopeName"]));
+            }
+            set {
+                this["LastASCOMTelescopeName"] = value;
+            }
+        }
     }
 }

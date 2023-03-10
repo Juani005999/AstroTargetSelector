@@ -113,6 +113,36 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap accuracy_16 {
+            get {
+                object obj = ResourceManager.GetObject("accuracy-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap accuracy_30 {
+            get {
+                object obj = ResourceManager.GetObject("accuracy-30", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap accuracy_50 {
+            get {
+                object obj = ResourceManager.GetObject("accuracy-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Actualiser {
             get {
                 object obj = ResourceManager.GetObject("Actualiser", resourceCulture);
@@ -243,6 +273,16 @@ namespace AstroTargetSelector.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_stop_sign_color_32 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-stop-sign-color-32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Identite_new {
             get {
                 object obj = ResourceManager.GetObject("Identite_new", resourceCulture);
@@ -276,6 +316,26 @@ namespace AstroTargetSelector.Properties {
         internal static System.Drawing.Bitmap no_entry {
             get {
                 object obj = ResourceManager.GetObject("no-entry", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shutdown_24 {
+            get {
+                object obj = ResourceManager.GetObject("shutdown-24", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap shutdown_24_green {
+            get {
+                object obj = ResourceManager.GetObject("shutdown-24-green", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

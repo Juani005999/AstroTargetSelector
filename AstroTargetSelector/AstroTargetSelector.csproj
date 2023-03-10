@@ -332,5 +332,23 @@
   <ItemGroup>
     <None Include="Ressources\delete16.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\icons8-stop-sign-color-32.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\shutdown-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\accuracy-30.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\accuracy-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\shutdown-24-green.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Ressources\accuracy-50.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

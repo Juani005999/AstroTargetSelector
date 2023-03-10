@@ -103,11 +103,6 @@ namespace ApplicationTools
             }
         }
 
-        /// <summary>
-        /// Port du Serveur
-        /// </summary>
-        public override string Port { get; set; }
-
         #endregion
 
         #region Constructeur

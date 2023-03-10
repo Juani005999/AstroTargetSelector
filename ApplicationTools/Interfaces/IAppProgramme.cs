@@ -1,5 +1,6 @@
 ﻿
 using ApplicationTools.Properties;
+using Microsoft.Win32;
 using System;
 
 namespace ApplicationTools
@@ -69,6 +70,16 @@ namespace ApplicationTools
         /// <para>Set : Positionne la valeur stockée en Settings</para>
         /// </summary>
         string Port { get; set; }
+
+        /// <summary>
+        /// Noeud principale de l'application dans la Registry
+        /// </summary>
+        RegistryKey NodeProgramKey { get; }
+
+        /// <summary>
+        /// Manufacturer
+        /// </summary>
+        string Manufacturer { get; set; }
 
         #endregion
 

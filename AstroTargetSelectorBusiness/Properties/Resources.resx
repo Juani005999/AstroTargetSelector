@@ -123,6 +123,12 @@
   <data name="AfficherLaHauteurEtLaDirection" xml:space="preserve">
     <value>Afficher la hauteur et la direction</value>
   </data>
+  <data name="AfficherLaMosaiqueCompleteDansCartesDuCiel" xml:space="preserve">
+    <value>Afficher la mosaïque complète dans Cartes du Ciel</value>
+  </data>
+  <data name="AfficherLaMosaiqueCompleteDansStellarium" xml:space="preserve">
+    <value>Afficher la mosaïque complète dans Stellarium</value>
+  </data>
   <data name="AfficherLePanneauSelectionneDansCartesDuCiel" xml:space="preserve">
     <value>Afficher le panneau sélectionné dans Cartes Du Ciel</value>
   </data>
@@ -138,17 +144,29 @@
   <data name="AfficherLObjetCelesteDansStellarium" xml:space="preserve">
     <value>Afficher l'objet céleste dans Stellarium.</value>
   </data>
+  <data name="Alt" xml:space="preserve">
+    <value>Alt.</value>
+  </data>
   <data name="Annuel" xml:space="preserve">
     <value>Annuel</value>
   </data>
   <data name="AProposDe" xml:space="preserve">
     <value>À propos de</value>
   </data>
+  <data name="ArreterLeDeplacementEnCours" xml:space="preserve">
+    <value>Arrêter le déplacement en cours</value>
+  </data>
   <data name="AttentionLaRotationGlobaleSurLaDureeTotaleDeLaMosaiqueSembleImportante" xml:space="preserve">
     <value>Attention, la rotation globale sur la durée totale de la mosaïque semble importante.</value>
   </data>
   <data name="Aucune" xml:space="preserve">
     <value>Aucune</value>
+  </data>
+  <data name="AucunRectangleSelectionneDansLaListe" xml:space="preserve">
+    <value>Aucun Rectangle sélectionné dans la liste</value>
+  </data>
+  <data name="Az" xml:space="preserve">
+    <value>Az.</value>
   </data>
   <data name="Azimut" xml:space="preserve">
     <value>Azimut</value>
@@ -165,8 +183,14 @@
   <data name="CentreDeLaMosaique" xml:space="preserve">
     <value>Centre de la mosaïque</value>
   </data>
+  <data name="CetteFonctionnaliteNecessiteDAvoirInstalleLesPreRequisSuivant" xml:space="preserve">
+    <value>Cette fonctionnalité nécessite d'avoir installé les pré-requis suivant :</value>
+  </data>
   <data name="CetteOperationPeutPrendreQuelquesInstants" xml:space="preserve">
     <value>Cette opération peut prendre quelques instants</value>
+  </data>
+  <data name="ConnecterDeconnecterLeTelescopeASCOM" xml:space="preserve">
+    <value>Connecter/Déconnecter le télescope ASCOM</value>
   </data>
   <data name="Constellation" xml:space="preserve">
     <value>Constellation</value>
@@ -201,6 +225,9 @@
   <data name="Description" xml:space="preserve">
     <value>Description</value>
   </data>
+  <data name="DimensionAuMauvaisFormat" xml:space="preserve">
+    <value>Dimension au mauvais format</value>
+  </data>
   <data name="Divers" xml:space="preserve">
     <value>Divers</value>
   </data>
@@ -227,6 +254,9 @@
   </data>
   <data name="ExporterLesResultats" xml:space="preserve">
     <value>Exporter les résultats</value>
+  </data>
+  <data name="ExportImpossibleAucunPanneauDansLaMosaique" xml:space="preserve">
+    <value>Export impossible : aucun panneau dans la mosaïque</value>
   </data>
   <data name="Fermer" xml:space="preserve">
     <value>Fermer</value>
@@ -273,6 +303,9 @@
   <data name="FOV" xml:space="preserve">
     <value>FOV</value>
   </data>
+  <data name="FOVAuMauvaisFormat" xml:space="preserve">
+    <value>FOV au mauvais format</value>
+  </data>
   <data name="FOVFormule" xml:space="preserve">
     <value>FOV = 57.3 * L / F</value>
   </data>
@@ -306,6 +339,9 @@
   <data name="InclureLesLiensPourTelescopesUnistellar" xml:space="preserve">
     <value>Inclure les liens pour téléscopes Unistellar</value>
   </data>
+  <data name="IndexNonFourni" xml:space="preserve">
+    <value>Index non fourni</value>
+  </data>
   <data name="InfoCapteur1" xml:space="preserve">
     <value>Veuillez sélectionner votre capteur.</value>
   </data>
@@ -315,8 +351,14 @@
   <data name="InformationsSurLeFOV" xml:space="preserve">
     <value>Informations sur le FOV</value>
   </data>
+  <data name="InformationsSurLePilotageDuTelescopeASCOM" xml:space="preserve">
+    <value>Informations sur le pilotage du télescope ASCOM</value>
+  </data>
   <data name="LaDateEtLHeureUtiliseesPourLaCreationDeLaMosaiqueCorrespondentACellesUtiliseesPourLObservationHoraire" xml:space="preserve">
     <value>La date et l'heure utilisées pour la création de la mosaïque correspondent à celles utilisées pour l'observation horaire.</value>
+  </data>
+  <data name="LaPlateformeASCOM" xml:space="preserve">
+    <value>- la plateforme ASCOM 6.6</value>
   </data>
   <data name="Largeur" xml:space="preserve">
     <value>Largeur</value>
@@ -335,6 +377,9 @@
   </data>
   <data name="LeCalculDeLaMosaiqueDonneUnNombreDePanneauxTropImportant" xml:space="preserve">
     <value>Le calcul de la mosaïque donne un nombre de panneaux trop important (&gt; 120).</value>
+  </data>
+  <data name="LeDriverASCOMDeVotreTelescope" xml:space="preserve">
+    <value>- le driver ASCOM de votre télescope</value>
   </data>
   <data name="LesBoutonsStellariumEtCartesDuCielVousPermettentDePositionnerCesLogicielsSurLesCoordonneesDuPanneauSelectionne" xml:space="preserve">
     <value>Les boutons Stellarium et Cartes du Ciel vous permettent de positionner ces logiciels sur les coordonnées du panneau sélectionné.</value>
@@ -429,6 +474,9 @@
   <data name="MosaicCalculator" xml:space="preserve">
     <value>Mosaic Calculator</value>
   </data>
+  <data name="MosaiqueIncorrecte" xml:space="preserve">
+    <value>Mosaïque incorrecte</value>
+  </data>
   <data name="NiveauDeChevauchementDesImages" xml:space="preserve">
     <value>Niveau de chevauchement des images</value>
   </data>
@@ -467,6 +515,9 @@
   </data>
   <data name="Options" xml:space="preserve">
     <value>Options</value>
+  </data>
+  <data name="OrienterVotreTelescopeASCOMSurLePanneauSelectionne" xml:space="preserve">
+    <value>Orienter votre télescope ASCOM sur le panneau sélectionné</value>
   </data>
   <data name="OuvrirLeFichierDesLogs" xml:space="preserve">
     <value>Ouvrir le fichier des &amp;logs</value>
@@ -552,6 +603,12 @@
   <data name="Suivant" xml:space="preserve">
     <value>Suivant</value>
   </data>
+  <data name="TauxDeChevauchementAuMauvaisFormat" xml:space="preserve">
+    <value>Taux de chevauchement au mauvais format</value>
+  </data>
+  <data name="TelescopeASCOM" xml:space="preserve">
+    <value>Télescope ASCOM</value>
+  </data>
   <data name="TempsDePose" xml:space="preserve">
     <value>Temps de pose</value>
   </data>
@@ -560,6 +617,9 @@
   </data>
   <data name="TempsDePoseParPanneau" xml:space="preserve">
     <value>Temps de pose par panneau</value>
+  </data>
+  <data name="TempsDePoseParPanneauAuMauvaisFormat" xml:space="preserve">
+    <value>Temps de pose par panneau au mauvais format</value>
   </data>
   <data name="TempsDePoseSecondesSansRotationDeChamps" xml:space="preserve">
     <value>Temps de pose (secondes) sans rotation de champs</value>
@@ -578,6 +638,9 @@
   </data>
   <data name="Tous" xml:space="preserve">
     <value>Tous</value>
+  </data>
+  <data name="TropDePanneauxDansLaMosaique" xml:space="preserve">
+    <value>Trop de panneaux dans la mosaïque</value>
   </data>
   <data name="Type" xml:space="preserve">
     <value>Type</value>
