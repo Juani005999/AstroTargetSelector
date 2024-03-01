@@ -15,6 +15,26 @@ namespace AstroTargetSelector
     /// </summary>
     public partial class dlgUpdate : Form
     {
+        #region Enums
+
+        /// <summary>
+        /// Mode d'ouverture de la boîte de dialogue dlgUpdate
+        /// </summary>
+        public enum UpdateDialogMode
+        {
+            /// <summary>
+            /// Liste des objets célestes
+            /// </summary>
+            Target,
+
+            /// <summary>
+            /// Liste des Capteurs
+            /// </summary>
+            Capteur
+        }
+
+        #endregion
+
         #region Constantes
 
         /// <summary>
@@ -92,26 +112,6 @@ namespace AstroTargetSelector
                                             ? factory.GetAppCapteur().CapteurListeFullPathFile
                                             : factory.GetAppTarget().TargetListeFullPathFile;
             }
-        }
-
-        #endregion
-
-        #region Enums
-
-        /// <summary>
-        /// Mode d'ouverture de la boîte de dialogue dlgUpdate
-        /// </summary>
-        public enum UpdateDialogMode
-        {
-            /// <summary>
-            /// Liste des objets célestes
-            /// </summary>
-            Target,
-
-            /// <summary>
-            /// Liste des Capteurs
-            /// </summary>
-            Capteur
         }
 
         #endregion
