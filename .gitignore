@@ -1,9 +1,9 @@
 #Exclude Main files and directory
 /.vs
-
-#Exclude ATS files and directory
+/ApplicationTools/bin
+/ApplicationTools/obj
+/ApplicationTools/ApplicationTools.csproj.user
 /AstroTargetSelector/.vs
 /AstroTargetSelector/bin
 /AstroTargetSelector/obj
-/ApplicationTools/ApplicationTools.csproj.user
 /AstroTargetSelector/AstroTargetSelector.csproj.user
