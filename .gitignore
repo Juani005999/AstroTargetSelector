@@ -1,2 +1,4 @@
-AstroTargetSelector/bin/
-AstroTargetSelector/obj/
+#Exclude files and directory
+/.vs
+/AstroTargetSelector/bin
+/AstroTargetSelector/obj
