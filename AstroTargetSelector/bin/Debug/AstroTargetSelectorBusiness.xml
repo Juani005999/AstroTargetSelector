@@ -171,6 +171,11 @@
             <inheritdoc/>
             </summary>
         </member>
+        <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.IsTracking">
+            <summary>
+            <inheritdoc/>
+            </summary>
+        </member>
         <member name="P:AstroTargetSelectorBusiness.AppASCOMTelescope.RightAscension">
             <summary>
             <inheritdoc/>
@@ -576,6 +581,11 @@
         <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.Azimuth">
             <summary>
             Azimuth en cours sur le Télescope ASCOM connecté
+            </summary>
+        </member>
+        <member name="P:AstroTargetSelectorBusiness.IAppASCOMTelescope.IsTracking">
+            <summary>
+            Tracking en cours sur le Télescope ASCOM connecté
             </summary>
         </member>
         <member name="M:AstroTargetSelectorBusiness.IAppASCOMTelescope.Connect(System.String)">

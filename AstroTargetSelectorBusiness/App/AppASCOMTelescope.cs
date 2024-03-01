@@ -95,6 +95,17 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        public bool IsTracking
+        {
+            get
+            {
+                return telescopeFactory.GetIASCOMTelescope().IsTracking;
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public double? RightAscension
         {
             get

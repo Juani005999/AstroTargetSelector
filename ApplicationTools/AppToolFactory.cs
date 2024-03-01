@@ -167,6 +167,16 @@ namespace ApplicationTools
             return consoleQueue;
         }
 
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        /// <returns></returns>
+        public IWebP GetWebpWrapper()
+        {
+            // Création d'un nouvel objet
+            return new WebP();
+        }
+
         #endregion
 
         #region Champs

@@ -69,6 +69,32 @@ namespace AstroTargetSelectorTelescope
         /// <summary>
         /// <inheritdoc/>
         /// </summary>
+        public bool IsTracking
+        {
+            get
+            {
+                try
+                {
+                    using (new LockTelescope(lockTelescope, new TimeSpan(0, 0, 1)))
+                    {
+                        if (telescope != null)
+                            return telescope.Tracking;
+                    }
+                    return false;
+                }
+                catch (Exception err)
+                {
+                    // Trace de l'erreur
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                    DisConnect();
+                    return false;
+                }
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
         public double? RightAscension
         {
             get
@@ -157,6 +183,58 @@ namespace AstroTargetSelectorTelescope
                     {
                         if (telescope != null)
                             return telescope.Azimuth;
+                    }
+                    return null;
+                }
+                catch (Exception err)
+                {
+                    // Trace de l'erreur
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                    DisConnect();
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SiteLatitude
+        {
+            get
+            {
+                try
+                {
+                    using (new LockTelescope(lockTelescope, new TimeSpan(0, 0, 1)))
+                    {
+                        if (telescope != null)
+                            return telescope.SiteLatitude;
+                    }
+                    return null;
+                }
+                catch (Exception err)
+                {
+                    // Trace de l'erreur
+                    appToolFactory.GetLog().LogException(err, GetType().Name);
+                    DisConnect();
+                    return null;
+                }
+            }
+        }
+
+        /// <summary>
+        /// <inheritdoc/>
+        /// </summary>
+        public double? SiteLongitude
+        {
+            get
+            {
+                try
+                {
+                    using (new LockTelescope(lockTelescope, new TimeSpan(0, 0, 1)))
+                    {
+                        if (telescope != null)
+                            return telescope.SiteLongitude;
                     }
                     return null;
                 }

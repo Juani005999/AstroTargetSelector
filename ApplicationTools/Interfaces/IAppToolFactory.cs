@@ -86,6 +86,12 @@
         /// <returns>Objet IAppProgramme</returns>
         IAppProgramme GetAppASCOMPlateform();
 
+        /// <summary>
+        /// Retourne l'interface <see cref="IWebP"/> de l'objet <see cref="WebP"/>
+        /// </summary>
+        /// <returns></returns>
+        IWebP GetWebpWrapper();
+
         #endregion
     }
 }

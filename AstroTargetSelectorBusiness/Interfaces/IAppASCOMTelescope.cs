@@ -50,6 +50,11 @@ namespace AstroTargetSelectorBusiness
         double? Azimuth { get; }
 
         /// <summary>
+        /// Tracking en cours sur le Télescope ASCOM connecté
+        /// </summary>
+        bool IsTracking { get; }
+
+        /// <summary>
         /// Connexion au télescope ASCOM
         /// </summary>
         /// <param name="idAscom"></param>

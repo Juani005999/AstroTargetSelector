@@ -36,6 +36,21 @@
         double? Azimuth { get; }
 
         /// <summary>
+        /// Latitude du Site du Télescope ASCOM connecté
+        /// </summary>
+        double? SiteLatitude { get; }
+
+        /// <summary>
+        /// Longitude du Site du Télescope ASCOM connecté
+        /// </summary>
+        double? SiteLongitude { get; }
+
+        /// <summary>
+        /// Tracking en cours sur le Télescope ASCOM connecté
+        /// </summary>
+        bool IsTracking { get; }
+
+        /// <summary>
         /// Connexion au télescope ASCOM
         /// </summary>
         /// <param name="idAscom"></param>
