@@ -77,7 +77,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return telescopeFactory.GetIASCOMTelescope().IsConnected;
+                return telescopeFactory.GetIASCOMTelescope().Connected;
             }
         }
 
@@ -88,7 +88,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return telescopeFactory.GetIASCOMTelescope().IsSlewing;
+                return telescopeFactory.GetIASCOMTelescope().Slewing;
             }
         }
 
@@ -99,7 +99,7 @@ namespace AstroTargetSelectorBusiness
         {
             get
             {
-                return telescopeFactory.GetIASCOMTelescope().IsTracking;
+                return telescopeFactory.GetIASCOMTelescope().Tracking;
             }
         }
 
@@ -279,7 +279,7 @@ namespace AstroTargetSelectorBusiness
         /// </summary>
         public void StopSlew()
         {
-            telescopeFactory.GetIASCOMTelescope().StopSlew();
+            telescopeFactory.GetIASCOMTelescope().AbortSlew();
         }
 
         #endregion

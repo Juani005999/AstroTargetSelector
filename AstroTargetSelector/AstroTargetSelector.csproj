@@ -77,6 +77,10 @@
     <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApplicationTools, Version=1.7.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ApplicationTools\ApplicationTools\bin\Debug\ApplicationTools.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Windows.Forms.DataVisualization" />
@@ -203,10 +207,6 @@
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApplicationTools\ApplicationTools.csproj">
-      <Project>{79f9ad98-a61c-4f01-91b4-6281955f5ec4}</Project>
-      <Name>ApplicationTools</Name>
-    </ProjectReference>
     <ProjectReference Include="..\AstroTargetSelectorBusiness\AstroTargetSelectorBusiness.csproj">
       <Project>{0e490af6-0286-405a-a428-29d81c83f883}</Project>
       <Name>AstroTargetSelectorBusiness</Name>

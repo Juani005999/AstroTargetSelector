@@ -40,8 +40,15 @@
     <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ApplicationTools, Version=1.7.1.1, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ApplicationTools\ApplicationTools\bin\Debug\ApplicationTools.dll</HintPath>
+    </Reference>
     <Reference Include="AstroMoonCalc">
       <HintPath>..\..\AstroMoonCalc\AstroMoonCalc\AstroMoonCalc\bin\Release\AstroMoonCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="AstroToolsTelescope">
+      <HintPath>..\..\ApplicationTools\AstroTools\AstroToolsTelescope\bin\Debug\AstroToolsTelescope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -101,16 +108,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\ApplicationTools\ApplicationTools.csproj">
-      <Project>{79f9ad98-a61c-4f01-91b4-6281955f5ec4}</Project>
-      <Name>ApplicationTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AstroTargetSelectorTelescope\AstroTargetSelectorTelescope.csproj">
-      <Project>{BB10EECC-5AE9-4F6F-A894-19FEB610D515}</Project>
-      <Name>AstroTargetSelectorTelescope</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

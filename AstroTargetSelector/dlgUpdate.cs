@@ -124,6 +124,8 @@ namespace AstroTargetSelector
         public dlgUpdate(IAppObjFactory factory, UpdateDialogMode dialogMode)
         {
             InitializeComponent();
+
+            // Valorisation des membres internes
             this.factory = factory;
             this.dialogMode = dialogMode;
 

@@ -253,6 +253,7 @@ namespace AstroTargetSelector
             // Positionnement du flag d'initialisation
             initialisationFormEnCours = true;
 
+            // Initialisation composant
             InitializeComponent();
         }
 
