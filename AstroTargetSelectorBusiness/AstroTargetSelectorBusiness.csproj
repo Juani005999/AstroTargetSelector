@@ -39,16 +39,28 @@
   <PropertyGroup>
     <AssemblyOriginatorKeyFile>AstroTargetSelector_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
   </PropertyGroup>
+  <PropertyGroup>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <PlatformTarget>x86</PlatformTarget>
+    <OutputPath>bin\x86\Release\</OutputPath>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="ApplicationTools, Version=1.7.1.1, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\ApplicationTools\ApplicationTools\bin\Debug\ApplicationTools.dll</HintPath>
+      <HintPath>..\..\ApplicationTools\ApplicationTools\bin\Release\ApplicationTools.dll</HintPath>
     </Reference>
     <Reference Include="AstroMoonCalc">
       <HintPath>..\..\AstroMoonCalc\AstroMoonCalc\AstroMoonCalc\bin\Release\AstroMoonCalc.dll</HintPath>
     </Reference>
-    <Reference Include="AstroToolsTelescope">
-      <HintPath>..\..\ApplicationTools\AstroTools\AstroToolsTelescope\bin\Debug\AstroToolsTelescope.dll</HintPath>
+    <Reference Include="AstroToolsTelescope, Version=1.8.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\ApplicationTools\AstroTools\AstroToolsTelescope\bin\Release\AstroToolsTelescope.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

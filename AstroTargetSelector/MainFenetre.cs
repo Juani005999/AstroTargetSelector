@@ -950,7 +950,7 @@ namespace AstroTargetSelector
                                 // On positionne une police spécifique pour les Labels des Points
                                 Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
                                 string marker = File.Exists(Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png"))
-                                                && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ? 
+                                                && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ?
                                                     Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
                                                     : "";
                                 // On ajoute le point à la série

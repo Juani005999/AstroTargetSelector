@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Microsoft.Win32;
 using ApplicationTools;
-using AstroTargetSelectorTelescope;
+using AstroToolsTelescope;
 
 namespace AstroTargetSelectorBusiness
 {
