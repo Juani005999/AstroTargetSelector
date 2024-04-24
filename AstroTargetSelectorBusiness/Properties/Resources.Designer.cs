@@ -1670,6 +1670,15 @@ namespace AstroTargetSelectorResources {
         }
         
         /// <summary>
+        ///   Recherche une chaîne localisée semblable à Vérification de la présence d&apos;une nouvelle version de l&apos;application.
+        /// </summary>
+        public static string VerificationDeLaPresenceDUneNouvelleVersionDeLApplication {
+            get {
+                return ResourceManager.GetString("VerificationDeLaPresenceDUneNouvelleVersionDeLApplication", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Recherche une chaîne localisée semblable à Version.
         /// </summary>
         public static string Version {

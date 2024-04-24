@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using ApplicationTools;
 using AstroTargetSelectorResources;
 
@@ -10,6 +11,35 @@ namespace AstroTargetSelectorBusiness
     /// </summary>
     public class AppObjFactory : AppToolFactory, IAppObjFactory
     {
+        #region Constantes
+
+        /// <summary>
+        /// Nom du Serveur FTP de téléchargement des fichiers de configuration
+        /// </summary>
+        private const string ftpHost = "ftp.byethost9.com";
+
+        /// <summary>
+        /// Identifiant de connexion au serveur FTP
+        /// </summary>
+        private const string ftpCredentialLogin = "b9_36081231";
+
+        /// <summary>
+        /// Mot de passe de connexion au serveur FTP
+        /// </summary>
+        private const string ftpCredentialPwd = "AstrAuDobTeam";
+
+        /// <summary>
+        /// Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration
+        /// </summary>
+        private const string ftpDirectory = "htdocs";
+
+        /// <summary>
+        /// Sous Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration
+        /// </summary>
+        private const string ftpSubDirectory = "AstroTargetSelector_config";
+
+        #endregion
+
         #region Propriétés
         #endregion
 
@@ -18,7 +48,13 @@ namespace AstroTargetSelectorBusiness
         /// <summary>
         /// Constructeur par défaut
         /// </summary>
-        public AppObjFactory()
+        public AppObjFactory() : base (new FtpVersionConfiguration()
+        {
+            Host = ftpHost,
+            CredentialLogin = ftpCredentialLogin,
+            CredentialPwd = ftpCredentialPwd,
+            FtpDirectory = Path.Combine(ftpDirectory, ftpSubDirectory)
+        })
         {
         }
 

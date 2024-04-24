@@ -46,23 +46,18 @@ namespace AstroTargetSelector
         /// Constructeur par défaut
         /// </summary>
         /// <param name="factory"></param>
-        /// <param name="version"></param>
-        /// <param name="nom"></param>
-        /// <param name="description"></param>
-        /// <param name="url"></param>
-        public dlgNewVersion(IAppObjFactory factory, string version, string nom, string description, string url)
+        public dlgNewVersion(IAppObjFactory factory)
         {
             InitializeComponent();
             this.factory = factory;
-            this.url = url;
 
             // Positionnement des libellés
             this.Text = $"{AssemblyTitle} : {Resources.NouvelleVersionDisponible}";
             this.labelNouvelleVersion.Text = Resources.NouvelleVersionDisponible;
-            this.labelVersion.Text = $"{Resources.Version} {version}";
-            this.labelNom.Text = nom;
+            this.labelVersion.Text = $"{Resources.Version} {factory.GetAppFtpVersionUpdater().NewVersionDispo}";
+            this.labelNom.Text = factory.GetAppFtpVersionUpdater().NewVersionNom;
             this.linkLabelUpdate.Text = AssemblyTitle;
-            this.textBoxDescription.Text = description.Replace("\\n", Environment.NewLine);
+            this.textBoxDescription.Text = factory.GetAppFtpVersionUpdater().NewVersionDescription.Replace("\\n", Environment.NewLine);
             this.btOK.Text = ApplicationTools.Properties.Resources.OK;
 
             // Positionne le mode Jour/Nuit
@@ -102,19 +97,14 @@ namespace AstroTargetSelector
         /// </summary>
         private readonly IAppObjFactory factory = null;
 
-        /// <summary>
-        /// URL de la mise à jour
-        /// </summary>
-        private string url = string.Empty;
-
         #endregion
 
         private void linkLabelUpdate_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(url))
+            if (!string.IsNullOrEmpty(factory.GetAppFtpVersionUpdater().NewVersionUrl))
             {
                 // On ouvre URL.
-                System.Diagnostics.Process.Start(url);
+                System.Diagnostics.Process.Start(factory.GetAppFtpVersionUpdater().NewVersionUrl);
 
                 // On quitte l'application afin de na pas perturber la mise à jour
                 Application.Exit();

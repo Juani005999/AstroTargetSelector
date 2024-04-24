@@ -11,6 +11,7 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using System.Threading.Tasks;
 
 namespace AstroTargetSelector
 {
@@ -1275,6 +1276,7 @@ namespace AstroTargetSelector
             }
         }
 
+        /*
         /// <summary>
         /// Vérifie si une nouvelle version de l'application est disponible
         /// </summary>
@@ -1283,7 +1285,7 @@ namespace AstroTargetSelector
         /// <param name="description"></param>
         /// <param name="url"></param>
         /// <returns>True si une nouvelle version est dispo</returns>
-        public bool CheckIfNouvelleVersion(ref string version, ref string nom, ref string description, ref string url)
+        public async Task<bool> CheckIfNouvelleVersion(ref string version, ref string nom, ref string description, ref string url)
         {
             try
             {
@@ -1306,7 +1308,9 @@ namespace AstroTargetSelector
 
                     // Téléchargement du fichier
                     request.Credentials = new NetworkCredential(dlgUpdate.ftpCredentialLogin, dlgUpdate.ftpCredentialPwd);
-                    byte[] fileData = request.DownloadData(ftpNewVersionFullPathFile);
+                    Task<byte[]> dataAsync = request.DownloadDataTaskAsync(new Uri(ftpNewVersionFullPathFile));
+                    await dataAsync;
+                    byte[] fileData = dataAsync.Result;
                     using (FileStream file = File.Create(newVersionFullPathFile))
                     {
                         file.Write(fileData, 0, fileData.Length);
@@ -1360,6 +1364,7 @@ namespace AstroTargetSelector
             }
             return false;
         }
+        */
 
         /// <summary>
         /// Lance la commande de sélection dans Stellarium pour l'objet sélectionné
@@ -1923,16 +1928,28 @@ namespace AstroTargetSelector
 
         private void MainFenetre_Shown(object sender, EventArgs e)
         {
-            // Vérification de la présence d'une nouvelle version
-            string version = string.Empty;
-            string nom = string.Empty;
-            string description = string.Empty;
-            string url = string.Empty;
-            if (CheckIfNouvelleVersion(ref version, ref nom, ref description, ref url) && !string.IsNullOrEmpty(description))
+            // Vérification d'une nouvelle version de l'application
+            string libelleAction = Resources.VerificationDeLaPresenceDUneNouvelleVersionDeLApplication;
+            using (WaitDialog waitDownloadDlg = new WaitDialog(factory, factory.GetAppFtpVersionUpdater().LoadLastVersion, libelleAction))
             {
-                // On affiche la boîte de dialogue informant d'une nouvelle version disponible
-                dlgNewVersion dialogNewVersion = new dlgNewVersion(factory, version, nom, description, url);
+                waitDownloadDlg.ShowDialog();
+            }
+            factory.GetLog().Log($"FIN waitDownloadDlg.ShowDialog()", GetType().Name);
+
+            // Si nouvelle version dispo, on lance l'update
+            if (factory.GetAppFtpVersionUpdater().IsNewVersion())
+            {
+                // Trace
+                factory.GetLog().Log($"Nouvelle version disponible : {factory.GetAppFtpVersionUpdater().NewVersionDispo}", GetType().Name);
+
+                // Ouverture boîte de dialogue New Version
+                dlgNewVersion dialogNewVersion = new dlgNewVersion(factory);
                 dialogNewVersion.ShowDialog();
+            }
+            else
+            {
+                // Trace
+                factory.GetLog().Log($"Pas de nouvelle version disponible", GetType().Name);
             }
 
             // Rechargement de la ListeView et de la liste des filtres sur Type
