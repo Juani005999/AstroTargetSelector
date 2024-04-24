@@ -801,9 +801,16 @@ namespace AstroTargetSelector
                         Color backColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().BackColor : SystemColors.ButtonFace;
                         Color foreColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().ForeColor : SystemColors.MenuText;
                         chartSliceListe.BackColor = backColor;
-
+                        
                         // On récupère la série de Slices en cours en fonction du mode de visualisation
                         List<IChartSlice> listeSerie = target.GetCurrentChartSlice(factory.GetAppInputs().Inputs.Visualisation);
+
+                        // Préparation du graphique
+                        // On positionne une police spécifique pour les Labels des Points
+                        Font fontBold = new Font("Tahoma", 8, FontStyle.Bold);
+                        Font fontBoldSmall = new Font("Tahoma", 7, FontStyle.Bold);
+                        Font fontItalic = new Font("Tahoma", 8, FontStyle.Italic);
+                        Font fontBoldItalic = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
 
                         // Série Slices - TempsPoseCalcule
                         chartSliceListe.Series.Add(target.Nom);
@@ -811,89 +818,23 @@ namespace AstroTargetSelector
                         chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
                         chartSliceListe.Series[target.Nom].CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
                         chartSliceListe.Series[target.Nom].IsVisibleInLegend = false;
-                        foreach (IChartSlice slice in listeSerie)
-                        {
-                            // On positionne une police spécifique pour les Labels des Points
-                            Font font = new Font("Tahoma", 8, FontStyle.Bold);
-                            // On ajoute le point à la série
-                            chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
-                            {
-                                XValue = slice.DateHeure.ToOADate(),
-                                YValues = new double[] { slice.TempsPoseCalcule },
-                                Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
-                                BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
-                                IsValueShownAsLabel = true,
-                                LabelFormat = "0s",
-                                Font = font,
-                                LabelForeColor = foreColor,
-                                ToolTip = slice.ToolTip,
-                                LabelToolTip = slice.ToolTip
-                            });
-                        }
 
-                        // Série Slices - Hauteur
                         if (SerieHauteurVisible)
                         {
-                            Series serieHauteur = chartSliceListe.Series.Add(target.Nom + "H");
+                            // Série Slices - Hauteur
+                            Series serieHauteur = chartSliceListe.Series.Add($"{target.Nom}H");
                             serieHauteur.ChartType = SeriesChartType.Spline;
                             serieHauteur.XValueType = ChartValueType.DateTime;
                             serieHauteur.BorderWidth = 2;
-                            //serieHauteur.CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
-                            serieHauteur.IsVisibleInLegend = false;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic);
-                                double valSlice = slice.Hauteur.Coordonnee > 0 ? slice.Hauteur.Coordonnee : 0;
-                                string labelSlice = valSlice > 0 ? $"{Math.Floor(valSlice)}°" : "";
-                                // On ajoute le point à la série
-                                serieHauteur.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { valSlice },
-                                    Color = slice.CouleurHauteur,
-                                    IsValueShownAsLabel = true,
-                                    Label = labelSlice,
-                                    Font = font,
-                                    LabelForeColor = string.IsNullOrEmpty(labelSlice) ? Color.Transparent : foreColor,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
                             serieHauteur.YAxisType = AxisType.Secondary;
-                        }
 
-                        // Série Slices - Direction
-                        if (SerieHauteurVisible)
-                        {
-                            // Série
-                            Series serieDirection = chartSliceListe.Series.Add(target.Nom + "D");
+                            // Série Slices - Direction
+                            Series serieDirection = chartSliceListe.Series.Add($"{target.Nom}D");
                             serieDirection.ChartType = SeriesChartType.Column;
                             serieDirection.XValueType = ChartValueType.DateTime;
                             serieDirection.BorderWidth = 0;
                             serieDirection.CustomProperties = "LabelStyle=Top";
                             serieDirection.IsVisibleInLegend = false;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 7, FontStyle.Bold);
-                                // On ajoute le point à la série
-                                serieDirection.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { 0 },
-                                    //Color = slice.CouleurHauteur,
-                                    IsValueShownAsLabel = false,
-                                    //Label = slice.DirectionCharacterCode.ToString(),
-                                    Label = Coordinate.GetDirectionString(slice.Direction),
-                                    //LabelFormat = "0°",
-                                    MarkerBorderWidth = 0,
-                                    Font = font,
-                                    LabelForeColor = foreColor,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
                             serieDirection.YAxisType = AxisType.Primary;
                             serieDirection.ChartArea = "AreaDirection";
                         }
@@ -904,7 +845,7 @@ namespace AstroTargetSelector
                             || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
                             || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
                         {
-                            Series serieHauteurLune = chartSliceListe.Series.Add(target.Nom + "LuneH");
+                            Series serieHauteurLune = chartSliceListe.Series.Add($"{target.Nom}LuneH");
                             serieHauteurLune.ChartType = SeriesChartType.SplineArea;
                             serieHauteurLune.XValueType = ChartValueType.DateTime;
                             serieHauteurLune.BorderWidth = 4;
@@ -912,14 +853,88 @@ namespace AstroTargetSelector
                             serieHauteurLune.Color = Color.FromArgb(225, Color.Yellow);
                             serieHauteurLune.BackGradientStyle = GradientStyle.TopBottom;
                             serieHauteurLune.BackSecondaryColor = Color.Transparent;
-                            foreach (IChartSlice slice in listeSerie)
+                            serieHauteurLune.YAxisType = AxisType.Secondary;
+                        }
+
+                        // Série Slices - Soleil
+                        if (SerieLuneVisible &&
+                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
+                        {
+                            Series serieHauteurSoleil = chartSliceListe.Series.Add($"{target.Nom}SoleilH");
+                            serieHauteurSoleil.ChartType = SeriesChartType.SplineArea;
+                            serieHauteurSoleil.XValueType = ChartValueType.DateTime;
+                            serieHauteurSoleil.BorderWidth = 4;
+                            serieHauteurSoleil.IsVisibleInLegend = false;
+                            serieHauteurSoleil.Color = Color.FromArgb(225, Color.Yellow);
+                            serieHauteurSoleil.BackGradientStyle = GradientStyle.TopBottom;
+                            serieHauteurSoleil.BackSecondaryColor = Color.Transparent;
+                            serieHauteurSoleil.YAxisType = AxisType.Secondary;
+                        }
+
+                        // On parcours la série
+                        foreach (IChartSlice slice in listeSerie)
+                        {
+                            // Série Slices - TempsPoseCalcule
+                            chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
                             {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
-                                string marker = File.Exists(slice.MoonPhaseImage)
-                                                && slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { slice.TempsPoseCalcule },
+                                Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
+                                BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
+                                IsValueShownAsLabel = true,
+                                LabelFormat = "0s",
+                                Font = fontBold,
+                                LabelForeColor = foreColor,
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
+                            });
+
+                            if (SerieHauteurVisible)
+                            {
+                                // Série Slices - Hauteur
+                                double valSlice = slice.Hauteur.Coordonnee > 0 ? slice.Hauteur.Coordonnee : 0;
+                                string labelSlice = valSlice > 0 ? $"{Math.Floor(valSlice)}°" : "";
                                 // On ajoute le point à la série
-                                serieHauteurLune.Points.Add(new DataPoint()
+                                chartSliceListe.Series[$"{target.Nom}H"].Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { valSlice },
+                                    Color = slice.CouleurHauteur,
+                                    IsValueShownAsLabel = true,
+                                    Label = labelSlice,
+                                    Font = fontItalic,
+                                    LabelForeColor = string.IsNullOrEmpty(labelSlice) ? Color.Transparent : foreColor,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
+                                });
+
+                                // Série Slices - Direction
+                                chartSliceListe.Series[$"{target.Nom}D"].Points.Add(new DataPoint()
+                                {
+                                    XValue = slice.DateHeure.ToOADate(),
+                                    YValues = new double[] { 0 },
+                                    //Color = slice.CouleurHauteur,
+                                    IsValueShownAsLabel = false,
+                                    //Label = slice.DirectionCharacterCode.ToString(),
+                                    Label = Coordinate.GetDirectionString(slice.Direction),
+                                    //LabelFormat = "0°",
+                                    MarkerBorderWidth = 0,
+                                    Font = fontBoldSmall,
+                                    LabelForeColor = foreColor,
+                                    ToolTip = slice.ToolTip,
+                                    LabelToolTip = slice.ToolTip
+                                });
+                            }
+
+                            // Série Slices - Lune
+                            if (SerieLuneVisible &&
+                                (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                                || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
+                                || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
+                            {
+                                string marker = File.Exists(slice.MoonPhaseImage) && slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
+                                chartSliceListe.Series[$"{target.Nom}LuneH"].Points.Add(new DataPoint()
                                 {
                                     XValue = slice.DateHeure.ToOADate(),
                                     YValues = new double[] { slice.MoonAlt.HasValue ? slice.MoonAlt.Value > 0 ? slice.MoonAlt.Value : 0 : 0 },
@@ -930,32 +945,18 @@ namespace AstroTargetSelector
                                     LabelToolTip = slice.ToolTip
                                 });
                             }
-                            serieHauteurLune.YAxisType = AxisType.Secondary;
-                        }
 
-                        // Série Slices - Soleil
-                        if (SerieLuneVisible &&
-                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
-                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
-                        {
-                            Series serieHauteurSoleil = chartSliceListe.Series.Add(target.Nom + "SoleilH");
-                            serieHauteurSoleil.ChartType = SeriesChartType.SplineArea;
-                            serieHauteurSoleil.XValueType = ChartValueType.DateTime;
-                            serieHauteurSoleil.BorderWidth = 4;
-                            serieHauteurSoleil.IsVisibleInLegend = false;
-                            serieHauteurSoleil.Color = Color.FromArgb(225, Color.Yellow);
-                            serieHauteurSoleil.BackGradientStyle = GradientStyle.TopBottom;
-                            serieHauteurSoleil.BackSecondaryColor = Color.Transparent;
-                            foreach (IChartSlice slice in listeSerie)
+                            // Série Slices - Soleil
+                            if (SerieLuneVisible &&
+                                (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                                || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
                             {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
                                 string marker = File.Exists(Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png"))
                                                 && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ?
                                                     Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
                                                     : "";
                                 // On ajoute le point à la série
-                                serieHauteurSoleil.Points.Add(new DataPoint()
+                                chartSliceListe.Series[$"{target.Nom}SoleilH"].Points.Add(new DataPoint()
                                 {
                                     XValue = slice.DateHeure.ToOADate(),
                                     YValues = new double[] { slice.SunAlt.HasValue ? slice.SunAlt.Value > 0 ? slice.SunAlt.Value : 0 : 0 },
@@ -966,7 +967,6 @@ namespace AstroTargetSelector
                                     LabelToolTip = slice.ToolTip
                                 });
                             }
-                            serieHauteurSoleil.YAxisType = AxisType.Secondary;
                         }
 
                         // ChartArea

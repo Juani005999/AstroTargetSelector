@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using ApplicationTools;
 
@@ -131,8 +132,13 @@ namespace AstroTargetSelectorBusiness
                 //return 0;
 
                 // Retour
-                return Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());
+                Stopwatch chrono = Stopwatch.StartNew();
+                double retour = Math.Floor(Slices.Select(t => t.TempsPoseCalcule).Average());
                 //return Math.Floor(Slices.Where(t => !t.EstExclu).Select(t => t.TempsPoseCalcule).Average());
+
+                //appToolFactory.GetLog().Log($"Calcul scoring [{Nom} en {chrono.ElapsedMilliseconds} ms]");
+
+                return retour;
             }
         }
 
