@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(dlgOptions));
             this.groupBoxCustomColors = new System.Windows.Forms.GroupBox();
+            this.buttonRASColor = new System.Windows.Forms.Button();
             this.buttonColorPolicesTonsClair = new System.Windows.Forms.Button();
             this.buttonColorPolicesTonsSombre = new System.Windows.Forms.Button();
             this.labelCouleurPolices = new System.Windows.Forms.Label();
@@ -40,21 +41,20 @@
             this.labelTonsSombres = new System.Windows.Forms.Label();
             this.labelCouleurFenetre = new System.Windows.Forms.Label();
             this.groupBoxStellarium = new System.Windows.Forms.GroupBox();
+            this.pictureBoxIconInfoCartesDuCiel = new System.Windows.Forms.PictureBox();
             this.labelServeurCdC = new System.Windows.Forms.Label();
             this.textBoxHostCartesDuCiel = new System.Windows.Forms.TextBox();
             this.labelSepPlanetarium = new System.Windows.Forms.Label();
+            this.pictureBoxIconInfoStellarium = new System.Windows.Forms.PictureBox();
             this.labelServeurStellarium = new System.Windows.Forms.Label();
             this.textBoxHostStellarium = new System.Windows.Forms.TextBox();
             this.labelPortStellarium = new System.Windows.Forms.Label();
             this.textBoxPortStellarium = new System.Windows.Forms.TextBox();
             this.btOK = new System.Windows.Forms.Button();
             this.btCancel = new System.Windows.Forms.Button();
-            this.buttonRASColor = new System.Windows.Forms.Button();
             this.colorDialogModeNuit = new System.Windows.Forms.ColorDialog();
             this.toolTipInfoStellarium = new System.Windows.Forms.ToolTip(this.components);
             this.toolTipInfoCartesDuCiel = new System.Windows.Forms.ToolTip(this.components);
-            this.pictureBoxIconInfoCartesDuCiel = new System.Windows.Forms.PictureBox();
-            this.pictureBoxIconInfoStellarium = new System.Windows.Forms.PictureBox();
             this.groupBoxCustomColors.SuspendLayout();
             this.groupBoxStellarium.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxIconInfoCartesDuCiel)).BeginInit();
@@ -78,6 +78,17 @@
             this.groupBoxCustomColors.TabIndex = 1;
             this.groupBoxCustomColors.TabStop = false;
             this.groupBoxCustomColors.Text = "Personnalisation de l\'affichage en mode nuit";
+            // 
+            // buttonRASColor
+            // 
+            this.buttonRASColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRASColor.Location = new System.Drawing.Point(157, 94);
+            this.buttonRASColor.Name = "buttonRASColor";
+            this.buttonRASColor.Size = new System.Drawing.Size(217, 23);
+            this.buttonRASColor.TabIndex = 11;
+            this.buttonRASColor.Text = "Remettre les couleurs par défaut";
+            this.buttonRASColor.UseVisualStyleBackColor = true;
+            this.buttonRASColor.Click += new System.EventHandler(this.buttonRASColor_Click);
             // 
             // buttonColorPolicesTonsClair
             // 
@@ -169,6 +180,17 @@
             this.groupBoxStellarium.TabStop = false;
             this.groupBoxStellarium.Text = "Paramètres des planétariums (Stellarium / Cartes du Ciel)";
             // 
+            // pictureBoxIconInfoCartesDuCiel
+            // 
+            this.pictureBoxIconInfoCartesDuCiel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxIconInfoCartesDuCiel.Image = global::AstroTargetSelector.Properties.Resources.cartesduciel;
+            this.pictureBoxIconInfoCartesDuCiel.Location = new System.Drawing.Point(54, 79);
+            this.pictureBoxIconInfoCartesDuCiel.Name = "pictureBoxIconInfoCartesDuCiel";
+            this.pictureBoxIconInfoCartesDuCiel.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIconInfoCartesDuCiel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIconInfoCartesDuCiel.TabIndex = 29;
+            this.pictureBoxIconInfoCartesDuCiel.TabStop = false;
+            // 
             // labelServeurCdC
             // 
             this.labelServeurCdC.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -194,6 +216,17 @@
             this.labelSepPlanetarium.Name = "labelSepPlanetarium";
             this.labelSepPlanetarium.Size = new System.Drawing.Size(393, 2);
             this.labelSepPlanetarium.TabIndex = 26;
+            // 
+            // pictureBoxIconInfoStellarium
+            // 
+            this.pictureBoxIconInfoStellarium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.pictureBoxIconInfoStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
+            this.pictureBoxIconInfoStellarium.Location = new System.Drawing.Point(54, 26);
+            this.pictureBoxIconInfoStellarium.Name = "pictureBoxIconInfoStellarium";
+            this.pictureBoxIconInfoStellarium.Size = new System.Drawing.Size(32, 32);
+            this.pictureBoxIconInfoStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxIconInfoStellarium.TabIndex = 25;
+            this.pictureBoxIconInfoStellarium.TabStop = false;
             // 
             // labelServeurStellarium
             // 
@@ -253,17 +286,6 @@
             this.btCancel.Text = "Annuler";
             this.btCancel.UseVisualStyleBackColor = true;
             // 
-            // buttonRASColor
-            // 
-            this.buttonRASColor.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.buttonRASColor.Location = new System.Drawing.Point(157, 94);
-            this.buttonRASColor.Name = "buttonRASColor";
-            this.buttonRASColor.Size = new System.Drawing.Size(217, 23);
-            this.buttonRASColor.TabIndex = 11;
-            this.buttonRASColor.Text = "Remettre les couleurs par défaut";
-            this.buttonRASColor.UseVisualStyleBackColor = true;
-            this.buttonRASColor.Click += new System.EventHandler(this.buttonRASColor_Click);
-            // 
             // colorDialogModeNuit
             // 
             this.colorDialogModeNuit.AllowFullOpen = false;
@@ -281,28 +303,6 @@
             this.toolTipInfoCartesDuCiel.ToolTipTitle = "Paramètres de Cartes Du Ciel";
             this.toolTipInfoCartesDuCiel.Draw += new System.Windows.Forms.DrawToolTipEventHandler(this.toolTipInfoCartesDuCiel_Draw);
             // 
-            // pictureBoxIconInfoCartesDuCiel
-            // 
-            this.pictureBoxIconInfoCartesDuCiel.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxIconInfoCartesDuCiel.Image = global::AstroTargetSelector.Properties.Resources.cartesduciel;
-            this.pictureBoxIconInfoCartesDuCiel.Location = new System.Drawing.Point(54, 79);
-            this.pictureBoxIconInfoCartesDuCiel.Name = "pictureBoxIconInfoCartesDuCiel";
-            this.pictureBoxIconInfoCartesDuCiel.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxIconInfoCartesDuCiel.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxIconInfoCartesDuCiel.TabIndex = 29;
-            this.pictureBoxIconInfoCartesDuCiel.TabStop = false;
-            // 
-            // pictureBoxIconInfoStellarium
-            // 
-            this.pictureBoxIconInfoStellarium.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.pictureBoxIconInfoStellarium.Image = global::AstroTargetSelector.Properties.Resources.stellarium;
-            this.pictureBoxIconInfoStellarium.Location = new System.Drawing.Point(54, 26);
-            this.pictureBoxIconInfoStellarium.Name = "pictureBoxIconInfoStellarium";
-            this.pictureBoxIconInfoStellarium.Size = new System.Drawing.Size(32, 32);
-            this.pictureBoxIconInfoStellarium.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBoxIconInfoStellarium.TabIndex = 25;
-            this.pictureBoxIconInfoStellarium.TabStop = false;
-            // 
             // dlgOptions
             // 
             this.AcceptButton = this.btOK;
@@ -314,6 +314,7 @@
             this.Controls.Add(this.groupBoxStellarium);
             this.Controls.Add(this.btOK);
             this.Controls.Add(this.btCancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
