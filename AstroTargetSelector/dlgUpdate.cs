@@ -6,6 +6,7 @@ using AstroTargetSelectorResources;
 using AstroTargetSelectorBusiness;
 using System.Diagnostics;
 using System.Drawing;
+using System.Threading.Tasks;
 
 namespace AstroTargetSelector
 {
@@ -201,6 +202,7 @@ namespace AstroTargetSelector
             btOK.Visible = true;
             btCancel.Text = ApplicationTools.Properties.Resources.Annuler;
             btCancel.Visible = true;
+            btCancel.Enabled = true;
         }
 
         /// <summary>
@@ -224,6 +226,7 @@ namespace AstroTargetSelector
             btOK.Visible = false;
             btCancel.Text = Resources.Terminer;
             btCancel.Visible = true;
+            btCancel.Enabled = true;
             btCancel.DialogResult = DialogResult.OK;
         }
 
@@ -248,18 +251,24 @@ namespace AstroTargetSelector
             btOK.Visible = false;
             btCancel.Text = Resources.Terminer;
             btCancel.Visible = true;
+            btCancel.Enabled = true;
             btCancel.DialogResult = DialogResult.Cancel;
         }
 
         /// <summary>
         /// Lance le téléchargement et l'update du fichier de configuration
         /// </summary>
-        private void TelechargeEtUpdate()
+        private async Task TelechargeEtUpdate()
         {
             try
             {
                 // Positionnement du Curseur
-                Cursor.Current = Cursors.WaitCursor;
+                UseWaitCursor = true;
+                //Cursor.Current = Cursors.WaitCursor;
+
+                // Boutons
+                btOK.Visible = false;
+                btCancel.Enabled = false;
 
                 // Trace et Chrono
                 factory.GetLog().Log($"Lancement du processus de mise à jour du fichier de confiruration en mode {dialogMode}", GetType().Name);
@@ -274,10 +283,10 @@ namespace AstroTargetSelector
 
                     // Téléchargement du fichier
                     request.Credentials = new NetworkCredential(ftpCredentialLogin, ftpCredentialPwd);
-                    byte[] fileData = request.DownloadData(ftpFullPathFile);
+                    byte[] fileData = await request.DownloadDataTaskAsync(ftpFullPathFile);
                     using (FileStream file = File.Create(temporaryFullPathFile))
                     {
-                        file.Write(fileData, 0, fileData.Length);
+                        await file.WriteAsync(fileData, 0, fileData.Length);
                         file.Close();
                     }
 
@@ -313,7 +322,8 @@ namespace AstroTargetSelector
             finally
             {
                 // Positionnement du Curseur
-                Cursor.Current = Cursors.Default;
+                //Cursor.Current = Cursors.Default;
+                UseWaitCursor = false;
             }
         }
 
@@ -367,9 +377,10 @@ namespace AstroTargetSelector
             InitialisationDialog();
         }
 
-        private void btOK_Click(object sender, EventArgs e)
+        private async void btOK_Click(object sender, EventArgs e)
         {
-            TelechargeEtUpdate();
+            //TelechargeEtUpdate().ConfigureAwait(false).GetAwaiter().GetResult();
+            await TelechargeEtUpdate();
         }
     }
 }
