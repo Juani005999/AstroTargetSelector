@@ -125,7 +125,7 @@ namespace AstroTargetSelector
             this.labelVersion.Text = $"{Resources.Version} {AssemblyVersion}";
             this.labelCopyright.Text = AssemblyCopyright;
             this.labelCompanyName.Text = AssemblyCompany;
-            this.labelContributors.Text = $"{Resources.Contributeurs} : Xavier SCHILDKNECHT / Jean-Luc VIVO / Petri Tikkanen";
+            this.labelContributors.Text = $"{Resources.Contributeurs} : Jean-Luc VIVO";
             this.textBoxDescription.Text = AssemblyDescription;
 
             // Positionne le mode Jour/Nuit
