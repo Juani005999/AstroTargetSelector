@@ -11,6 +11,8 @@ using System.Reflection;
 using ApplicationTools;
 using AstroTargetSelectorBusiness;
 using AstroTargetSelectorResources;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace AstroTargetSelector
 {
@@ -289,7 +291,7 @@ namespace AstroTargetSelector
                 AutoScaleDimensions = new SizeF(6F, 13F);
                 AutoScaleMode = AutoScaleMode.Font;
 
-                //// Création d'une instance du ListView column sorter et assignation à la liste
+                // Création d'une instance du ListView column sorter et assignation à la liste
                 lvwColumnSorter = new ListViewColumnSorter();
                 listViewTarget.ListViewItemSorter = lvwColumnSorter as System.Collections.IComparer;
 
@@ -760,8 +762,7 @@ namespace AstroTargetSelector
             {
                 // Trace et Chrono
                 factory.GetLog().Log($"Rechargement du Panneau d'informations sur l'objet céleste sélectionné", GetType().Name);
-                Stopwatch debutFonction = new Stopwatch();
-                debutFonction.Start();
+                Stopwatch chrono = Stopwatch.StartNew();
 
                 // On masque le panneau si aucun élément sélectionné dans la liste
                 if (listViewTarget.SelectedItems == null || listViewTarget.SelectedItems.Count == 0)
@@ -793,247 +794,21 @@ namespace AstroTargetSelector
                         pictureBoxRank4.Visible = target.Rank == 4;
                         pictureBoxRank5.Visible = target.Rank == 5;
 
-                        // Graphique
-                        chartSliceListe.Series.Clear();
-
-                        // On récupère les couleurs a appliquer
-                        Color backColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().BackColor : SystemColors.ButtonFace;
-                        Color foreColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().ForeColor : SystemColors.MenuText;
-                        chartSliceListe.BackColor = backColor;
-
                         // On récupère la série de Slices en cours en fonction du mode de visualisation
+                        factory.GetLog().Log($"Chargement liste IChartSlice", GetType().Name);
                         List<IChartSlice> listeSerie = target.GetCurrentChartSlice(factory.GetAppInputs().Inputs.Visualisation);
+                        factory.GetLog().Log($"Chargement liste IChartSlice en {chrono.ElapsedMilliseconds} ms", GetType().Name, chrono.ElapsedMilliseconds);
 
-                        // Série Slices - TempsPoseCalcule
-                        chartSliceListe.Series.Add(target.Nom);
-                        chartSliceListe.Series[target.Nom].ChartType = SeriesChartType.Column;
-                        chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
-                        chartSliceListe.Series[target.Nom].CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
-                        chartSliceListe.Series[target.Nom].IsVisibleInLegend = false;
-                        foreach (IChartSlice slice in listeSerie)
+                        // Graphique
+                        //LoadGraphiqueSlices(target, listeSerie);
+                        if (tokenSource != null)
                         {
-                            // On positionne une police spécifique pour les Labels des Points
-                            Font font = new Font("Tahoma", 8, FontStyle.Bold);
-                            // On ajoute le point à la série
-                            chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
-                            {
-                                XValue = slice.DateHeure.ToOADate(),
-                                YValues = new double[] { slice.TempsPoseCalcule },
-                                Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
-                                BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
-                                IsValueShownAsLabel = true,
-                                LabelFormat = "0s",
-                                Font = font,
-                                LabelForeColor = foreColor,
-                                ToolTip = slice.ToolTip,
-                                LabelToolTip = slice.ToolTip
-                            });
+                            tokenSource.Cancel();
+                            //tokenSource.Dispose();
                         }
-
-                        // Série Slices - Hauteur
-                        if (SerieHauteurVisible)
-                        {
-                            Series serieHauteur = chartSliceListe.Series.Add(target.Nom + "H");
-                            serieHauteur.ChartType = SeriesChartType.Spline;
-                            serieHauteur.XValueType = ChartValueType.DateTime;
-                            serieHauteur.BorderWidth = 2;
-                            //serieHauteur.CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
-                            serieHauteur.IsVisibleInLegend = false;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic);
-                                double valSlice = slice.Hauteur.Coordonnee > 0 ? slice.Hauteur.Coordonnee : 0;
-                                string labelSlice = valSlice > 0 ? $"{Math.Floor(valSlice)}°" : "";
-                                // On ajoute le point à la série
-                                serieHauteur.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { valSlice },
-                                    Color = slice.CouleurHauteur,
-                                    IsValueShownAsLabel = true,
-                                    Label = labelSlice,
-                                    Font = font,
-                                    LabelForeColor = string.IsNullOrEmpty(labelSlice) ? Color.Transparent : foreColor,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
-                            serieHauteur.YAxisType = AxisType.Secondary;
-                        }
-
-                        // Série Slices - Direction
-                        if (SerieHauteurVisible)
-                        {
-                            // Série
-                            Series serieDirection = chartSliceListe.Series.Add(target.Nom + "D");
-                            serieDirection.ChartType = SeriesChartType.Column;
-                            serieDirection.XValueType = ChartValueType.DateTime;
-                            serieDirection.BorderWidth = 0;
-                            serieDirection.CustomProperties = "LabelStyle=Top";
-                            serieDirection.IsVisibleInLegend = false;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 7, FontStyle.Bold);
-                                // On ajoute le point à la série
-                                serieDirection.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { 0 },
-                                    //Color = slice.CouleurHauteur,
-                                    IsValueShownAsLabel = false,
-                                    //Label = slice.DirectionCharacterCode.ToString(),
-                                    Label = Coordinate.GetDirectionString(slice.Direction),
-                                    //LabelFormat = "0°",
-                                    MarkerBorderWidth = 0,
-                                    Font = font,
-                                    LabelForeColor = foreColor,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
-                            serieDirection.YAxisType = AxisType.Primary;
-                            serieDirection.ChartArea = "AreaDirection";
-                        }
-
-                        // Série Slices - Lune
-                        if (SerieLuneVisible &&
-                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
-                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
-                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
-                        {
-                            Series serieHauteurLune = chartSliceListe.Series.Add(target.Nom + "LuneH");
-                            serieHauteurLune.ChartType = SeriesChartType.SplineArea;
-                            serieHauteurLune.XValueType = ChartValueType.DateTime;
-                            serieHauteurLune.BorderWidth = 4;
-                            serieHauteurLune.IsVisibleInLegend = false;
-                            serieHauteurLune.Color = Color.FromArgb(225, Color.Yellow);
-                            serieHauteurLune.BackGradientStyle = GradientStyle.TopBottom;
-                            serieHauteurLune.BackSecondaryColor = Color.Transparent;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
-                                string marker = File.Exists(slice.MoonPhaseImage)
-                                                && slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
-                                // On ajoute le point à la série
-                                serieHauteurLune.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { slice.MoonAlt.HasValue ? slice.MoonAlt.Value > 0 ? slice.MoonAlt.Value : 0 : 0 },
-                                    Color = Color.FromArgb(225, Color.Yellow),
-                                    IsValueShownAsLabel = false,
-                                    MarkerImage = marker,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
-                            serieHauteurLune.YAxisType = AxisType.Secondary;
-                        }
-
-                        // Série Slices - Soleil
-                        if (SerieLuneVisible &&
-                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
-                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
-                        {
-                            Series serieHauteurSoleil = chartSliceListe.Series.Add(target.Nom + "SoleilH");
-                            serieHauteurSoleil.ChartType = SeriesChartType.SplineArea;
-                            serieHauteurSoleil.XValueType = ChartValueType.DateTime;
-                            serieHauteurSoleil.BorderWidth = 4;
-                            serieHauteurSoleil.IsVisibleInLegend = false;
-                            serieHauteurSoleil.Color = Color.FromArgb(225, Color.Yellow);
-                            serieHauteurSoleil.BackGradientStyle = GradientStyle.TopBottom;
-                            serieHauteurSoleil.BackSecondaryColor = Color.Transparent;
-                            foreach (IChartSlice slice in listeSerie)
-                            {
-                                // On positionne une police spécifique pour les Labels des Points
-                                Font font = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
-                                string marker = File.Exists(Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png"))
-                                                && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ?
-                                                    Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
-                                                    : "";
-                                // On ajoute le point à la série
-                                serieHauteurSoleil.Points.Add(new DataPoint()
-                                {
-                                    XValue = slice.DateHeure.ToOADate(),
-                                    YValues = new double[] { slice.SunAlt.HasValue ? slice.SunAlt.Value > 0 ? slice.SunAlt.Value : 0 : 0 },
-                                    Color = Color.FromArgb(225, Color.Yellow),
-                                    IsValueShownAsLabel = false,
-                                    MarkerImage = marker,
-                                    ToolTip = slice.ToolTip,
-                                    LabelToolTip = slice.ToolTip
-                                });
-                            }
-                            serieHauteurSoleil.YAxisType = AxisType.Secondary;
-                        }
-
-                        // ChartArea
-                        switch (factory.GetAppInputs().Inputs.Visualisation)
-                        {
-                            case ModeVisualisation.Annuel:
-                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
-                                chartSliceListe.ChartAreas[0].AxisX.Interval = 2;
-                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.YearMonthPattern;
-                                break;
-
-                            case ModeVisualisation.Mensuel:
-                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
-                                chartSliceListe.ChartAreas[0].AxisX.Interval = 5;
-                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern;
-                                //chartSliceListe.ChartAreas[0].AxisX.LabelAutoFitStyle = 0;
-                                break;
-
-                            case ModeVisualisation.Nuits:
-                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
-                                chartSliceListe.ChartAreas[0].AxisX.Interval = 60;
-                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
-                                break;
-
-                            case ModeVisualisation.Horaire:
-                            default:
-                                chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
-                                chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
-                                chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
-                                break;
-                        }
-                        chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
-                        chartSliceListe.ChartAreas[0].AxisY.Title = Resources.TempsDePose;
-                        chartSliceListe.ChartAreas[0].AxisX.TitleForeColor = foreColor;
-                        chartSliceListe.ChartAreas[0].AxisX.LabelStyle.ForeColor = foreColor;
-                        chartSliceListe.ChartAreas[0].BackColor = backColor;
-                        chartSliceListe.ChartAreas[0].AxisY.TitleForeColor = foreColor;
-                        chartSliceListe.ChartAreas[0].AxisY.LabelStyle.ForeColor = foreColor;
-                        chartSliceListe.ChartAreas[0].RecalculateAxesScale();
-
-                        if (SerieHauteurVisible)
-                        {
-                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-                            chartSliceListe.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
-                            chartSliceListe.ChartAreas[0].AxisY2.MajorGrid.Enabled = false;
-                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
-                            chartSliceListe.ChartAreas[0].AxisY2.IsStartedFromZero = chartSliceListe.ChartAreas[0].AxisY.IsStartedFromZero;
-                            chartSliceListe.ChartAreas[0].AxisY2.Title = Resources.Hauteur;
-                            chartSliceListe.ChartAreas[0].AxisY2.TitleForeColor = foreColor;
-                            chartSliceListe.ChartAreas[0].AxisY2.LabelStyle.ForeColor = foreColor;
-                            chartSliceListe.ChartAreas[0].Position.Height = 80;
-                            chartSliceListe.ChartAreas[1].Visible = true;
-                            chartSliceListe.ChartAreas[1].BackColor = backColor;
-                            chartSliceListe.ChartAreas[1].RecalculateAxesScale();
-                        }
-                        else
-                        {
-                            chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
-                            chartSliceListe.ChartAreas[0].Position.Height = 90;
-                            chartSliceListe.ChartAreas[1].Visible = false;
-                        }
-
-                        // Titre graphique
-                        chartSliceListe.Titles.Clear();
-                        chartSliceListe.Titles.Add($"{Resources.TempsDePoseSecondesSansRotationDeChamps} ({Resources.BougeMax} {factory.GetAppInputs().BougeMaxString})");
-                        chartSliceListe.Titles[0].TextStyle = TextStyle.Shadow;
-                        chartSliceListe.Titles[0].ShadowColor = Color.Gray;
-                        chartSliceListe.Titles[0].ForeColor = foreColor;
+                        tokenSource = new CancellationTokenSource();
+                        CancellationToken lastToken = tokenSource.Token;
+                        Task.Run(() => LoadGraphiqueSlices(lastToken, target, listeSerie), lastToken);
 
                         // On masque les controles d'intervalles si nécessaire
                         checkBoxLune.Enabled = factory.GetAppInputs().Inputs.Visualisation != ModeVisualisation.Annuel;
@@ -1045,7 +820,7 @@ namespace AstroTargetSelector
                         labelUniteTotalTimeSlice.Visible = factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire;
 
                         // Trace
-                        factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
+                        factory.GetLog().Log($"Chargement du Panneau d'informations pour l'objet {target.Nom} en {chrono.ElapsedMilliseconds} ms", GetType().Name, chrono.ElapsedMilliseconds);
                     }
                     else
                         splitContainerSecondaire.Panel2Collapsed = true;
@@ -1077,6 +852,283 @@ namespace AstroTargetSelector
                 // Update du texte de la Status Bar
                 SetDefaultStatusText();
             }
+        }
+
+        /// <summary>
+        /// Permet le chargement des slices du graphique
+        /// </summary>
+        /// <param name="token"></param>
+        /// <param name="target"></param>
+        /// <param name="slices"></param>
+        private void LoadGraphiqueSlices(CancellationToken token, IObjTarget target, List<IChartSlice> slices)
+        {
+            BeginInvoke(new Action(() =>
+            {
+                try
+                {
+                    // Vérif annulation en cours
+                    token.ThrowIfCancellationRequested();
+
+                    // Graphique
+                    chartSliceListe.Series.Clear();
+
+                    // Ajout Série Slices - TempsPoseCalcule
+                    chartSliceListe.Series.Add(target.Nom);
+                    chartSliceListe.Series[target.Nom].ChartType = SeriesChartType.Column;
+                    chartSliceListe.Series[target.Nom].XValueType = ChartValueType.DateTime;
+                    chartSliceListe.Series[target.Nom].CustomProperties = "LabelStyle=Top, DrawingStyle=LightToDark";
+                    chartSliceListe.Series[target.Nom].IsVisibleInLegend = false;
+
+                    if (SerieHauteurVisible)
+                    {
+                        // Ajout Série Slices - Hauteur
+                        Series serieHauteur = chartSliceListe.Series.Add($"{target.Nom}H");
+                        serieHauteur.ChartType = SeriesChartType.Spline;
+                        serieHauteur.XValueType = ChartValueType.DateTime;
+                        serieHauteur.BorderWidth = 2;
+                        serieHauteur.YAxisType = AxisType.Secondary;
+
+                        // Ajout Série Slices - Direction
+                        Series serieDirection = chartSliceListe.Series.Add($"{target.Nom}D");
+                        serieDirection.ChartType = SeriesChartType.Column;
+                        serieDirection.XValueType = ChartValueType.DateTime;
+                        serieDirection.BorderWidth = 0;
+                        serieDirection.CustomProperties = "LabelStyle=Top";
+                        serieDirection.IsVisibleInLegend = false;
+                        serieDirection.YAxisType = AxisType.Primary;
+                        serieDirection.ChartArea = "AreaDirection";
+                    }
+
+                    // Ajout Série Slices - Lune
+                    if (SerieLuneVisible &&
+                        (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                        || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
+                        || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
+                    {
+                        Series serieHauteurLune = chartSliceListe.Series.Add($"{target.Nom}LuneH");
+                        serieHauteurLune.ChartType = SeriesChartType.SplineArea;
+                        serieHauteurLune.XValueType = ChartValueType.DateTime;
+                        serieHauteurLune.BorderWidth = 4;
+                        serieHauteurLune.IsVisibleInLegend = false;
+                        serieHauteurLune.Color = Color.FromArgb(225, Color.Yellow);
+                        serieHauteurLune.BackGradientStyle = GradientStyle.TopBottom;
+                        serieHauteurLune.BackSecondaryColor = Color.Transparent;
+                        serieHauteurLune.YAxisType = AxisType.Secondary;
+                    }
+
+                    // Ajout Série Slices - Soleil
+                    if (SerieLuneVisible &&
+                        (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                        || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
+                    {
+                        Series serieHauteurSoleil = chartSliceListe.Series.Add($"{target.Nom}SoleilH");
+                        serieHauteurSoleil.ChartType = SeriesChartType.SplineArea;
+                        serieHauteurSoleil.XValueType = ChartValueType.DateTime;
+                        serieHauteurSoleil.BorderWidth = 4;
+                        serieHauteurSoleil.IsVisibleInLegend = false;
+                        serieHauteurSoleil.Color = Color.FromArgb(225, Color.Yellow);
+                        serieHauteurSoleil.BackGradientStyle = GradientStyle.TopBottom;
+                        serieHauteurSoleil.BackSecondaryColor = Color.Transparent;
+                        serieHauteurSoleil.YAxisType = AxisType.Secondary;
+                    }
+
+                    // On positionne une police spécifique pour les Labels des Points
+                    Font fontBold = new Font("Tahoma", 8, FontStyle.Bold);
+                    Font fontBoldSmall = new Font("Tahoma", 7, FontStyle.Bold);
+                    Font fontItalic = new Font("Tahoma", 8, FontStyle.Italic);
+                    Font fontBoldItalic = new Font("Tahoma", 8, FontStyle.Italic | FontStyle.Bold);
+
+                    // On récupère les couleurs a appliquer
+                    Color backColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().BackColor : SystemColors.ButtonFace;
+                    Color foreColor = factory.GetAppInputs().Inputs.ModeNuit ? factory.GetAppInputs().ForeColor : SystemColors.MenuText;
+                    chartSliceListe.BackColor = backColor;
+
+                    // Trace et Chrono
+                    factory.GetLog().Log($"Parcours liste IChartSlice", GetType().Name);
+                    Stopwatch chrono = Stopwatch.StartNew();
+
+                    // Parcours série et chargement graphique
+                    foreach (IChartSlice slice in slices)
+                    {
+                        // Vérif annulation en cours
+                        token.ThrowIfCancellationRequested();
+
+                        // Série Slices - TempsPoseCalcule
+                        chartSliceListe.Series[target.Nom].Points.Add(new DataPoint()
+                        {
+                            XValue = slice.DateHeure.ToOADate(),
+                            YValues = new double[] { slice.TempsPoseCalcule },
+                            Color = slice.EstExclu ? Color.DarkGray : slice.CouleurPointGraphique,
+                            BorderColor = slice.EstExclu ? Color.Red : slice.CouleurPointGraphique,
+                            IsValueShownAsLabel = true,
+                            LabelFormat = "0s",
+                            Font = fontBold,
+                            LabelForeColor = foreColor,
+                            ToolTip = slice.ToolTip,
+                            LabelToolTip = slice.ToolTip
+                        });
+
+                        if (SerieHauteurVisible)
+                        {
+                            // Série Slices - Hauteur
+                            double valSlice = slice.Hauteur.Coordonnee > 0 ? slice.Hauteur.Coordonnee : 0;
+                            string labelSlice = valSlice > 0 ? $"{Math.Floor(valSlice)}°" : "";
+                            // On ajoute le point à la série
+                            chartSliceListe.Series[$"{target.Nom}H"].Points.Add(new DataPoint()
+                            {
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { valSlice },
+                                Color = slice.CouleurHauteur,
+                                IsValueShownAsLabel = true,
+                                Label = labelSlice,
+                                Font = fontItalic,
+                                LabelForeColor = string.IsNullOrEmpty(labelSlice) ? Color.Transparent : foreColor,
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
+                            });
+
+                            // Série Slices - Direction
+                            chartSliceListe.Series[$"{target.Nom}D"].Points.Add(new DataPoint()
+                            {
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { 0 },
+                                //Color = slice.CouleurHauteur,
+                                IsValueShownAsLabel = false,
+                                //Label = slice.DirectionCharacterCode.ToString(),
+                                Label = Coordinate.GetDirectionString(slice.Direction),
+                                //LabelFormat = "0°",
+                                MarkerBorderWidth = 0,
+                                Font = fontBoldSmall,
+                                LabelForeColor = foreColor,
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
+                            });
+                        }
+
+                        // Série Slices - Lune
+                        if (SerieLuneVisible &&
+                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Mensuel))
+                        {
+                            //string marker = File.Exists(slice.MoonPhaseImage) && slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
+                            string marker = slice.MoonAlt.HasValue && slice.MoonAlt.Value > 0 ? slice.MoonPhaseImage : "";
+                            chartSliceListe.Series[$"{target.Nom}LuneH"].Points.Add(new DataPoint()
+                            {
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { slice.MoonAlt.HasValue ? slice.MoonAlt.Value > 0 ? slice.MoonAlt.Value : 0 : 0 },
+                                Color = Color.FromArgb(225, Color.Yellow),
+                                IsValueShownAsLabel = false,
+                                MarkerImage = marker,
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
+                            });
+                        }
+
+                        // Série Slices - Soleil
+                        if (SerieLuneVisible &&
+                            (factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Horaire
+                            || factory.GetAppInputs().Inputs.Visualisation == ModeVisualisation.Nuits))
+                        {
+                            //string marker = File.Exists(Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png"))
+                            //                && slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ?
+                            //                    Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
+                            //                    : "";
+                            string marker = slice.SunAlt.HasValue && slice.SunAlt.Value > 0 ?
+                                                Path.Combine(factory.GetAppContext().UserAppDataPath, "sun.png")
+                                                : "";
+                            // On ajoute le point à la série
+                            chartSliceListe.Series[$"{target.Nom}SoleilH"].Points.Add(new DataPoint()
+                            {
+                                XValue = slice.DateHeure.ToOADate(),
+                                YValues = new double[] { slice.SunAlt.HasValue ? slice.SunAlt.Value > 0 ? slice.SunAlt.Value : 0 : 0 },
+                                Color = Color.FromArgb(225, Color.Yellow),
+                                IsValueShownAsLabel = false,
+                                MarkerImage = marker,
+                                ToolTip = slice.ToolTip,
+                                LabelToolTip = slice.ToolTip
+                            });
+                        }
+                    }
+                    factory.GetLog().Log($"Parcours liste IChartSlice en {chrono.ElapsedMilliseconds} ms", GetType().Name, chrono.ElapsedMilliseconds);
+
+                    // ChartArea
+                    switch (factory.GetAppInputs().Inputs.Visualisation)
+                    {
+                        case ModeVisualisation.Annuel:
+                            chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Months;
+                            chartSliceListe.ChartAreas[0].AxisX.Interval = 2;
+                            chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.YearMonthPattern;
+                            break;
+
+                        case ModeVisualisation.Mensuel:
+                            chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Days;
+                            chartSliceListe.ChartAreas[0].AxisX.Interval = 5;
+                            chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = CultureInfo.CurrentUICulture.DateTimeFormat.ShortDatePattern;
+                            //chartSliceListe.ChartAreas[0].AxisX.LabelAutoFitStyle = 0;
+                            break;
+
+                        case ModeVisualisation.Nuits:
+                            chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+                            chartSliceListe.ChartAreas[0].AxisX.Interval = 60;
+                            chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                            break;
+
+                        case ModeVisualisation.Horaire:
+                        default:
+                            chartSliceListe.ChartAreas[0].AxisX.IntervalType = DateTimeIntervalType.Minutes;
+                            chartSliceListe.ChartAreas[0].AxisX.Interval = 30;
+                            chartSliceListe.ChartAreas[0].AxisX.LabelStyle.Format = "HH:mm";
+                            break;
+                    }
+                    chartSliceListe.ChartAreas[0].AxisX.MajorGrid.Enabled = false;
+                    chartSliceListe.ChartAreas[0].AxisY.Title = Resources.TempsDePose;
+                    chartSliceListe.ChartAreas[0].AxisX.TitleForeColor = foreColor;
+                    chartSliceListe.ChartAreas[0].AxisX.LabelStyle.ForeColor = foreColor;
+                    chartSliceListe.ChartAreas[0].BackColor = backColor;
+                    chartSliceListe.ChartAreas[0].AxisY.TitleForeColor = foreColor;
+                    chartSliceListe.ChartAreas[0].AxisY.LabelStyle.ForeColor = foreColor;
+                    chartSliceListe.ChartAreas[0].RecalculateAxesScale();
+
+                    if (SerieHauteurVisible)
+                    {
+                        chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                        chartSliceListe.ChartAreas[0].AxisY2.LineColor = Color.Transparent;
+                        chartSliceListe.ChartAreas[0].AxisY2.MajorGrid.Enabled = false;
+                        chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.True;
+                        chartSliceListe.ChartAreas[0].AxisY2.IsStartedFromZero = chartSliceListe.ChartAreas[0].AxisY.IsStartedFromZero;
+                        chartSliceListe.ChartAreas[0].AxisY2.Title = Resources.Hauteur;
+                        chartSliceListe.ChartAreas[0].AxisY2.TitleForeColor = foreColor;
+                        chartSliceListe.ChartAreas[0].AxisY2.LabelStyle.ForeColor = foreColor;
+                        chartSliceListe.ChartAreas[0].Position.Height = 80;
+                        chartSliceListe.ChartAreas[1].Visible = true;
+                        chartSliceListe.ChartAreas[1].BackColor = backColor;
+                        chartSliceListe.ChartAreas[1].RecalculateAxesScale();
+                    }
+                    else
+                    {
+                        chartSliceListe.ChartAreas[0].AxisY2.Enabled = AxisEnabled.False;
+                        chartSliceListe.ChartAreas[0].Position.Height = 90;
+                        chartSliceListe.ChartAreas[1].Visible = false;
+                    }
+
+                    // Titre graphique
+                    chartSliceListe.Titles.Clear();
+                    chartSliceListe.Titles.Add($"{Resources.TempsDePoseSecondesSansRotationDeChamps} ({Resources.BougeMax} {factory.GetAppInputs().BougeMaxString})");
+                    chartSliceListe.Titles[0].TextStyle = TextStyle.Shadow;
+                    chartSliceListe.Titles[0].ShadowColor = Color.Gray;
+                    chartSliceListe.Titles[0].ForeColor = foreColor;
+                }
+                catch (Exception err)
+                {
+                    // Trace de l'erreur et information à l'utilisateur
+                    factory.GetLog().LogException(err, GetType().Name);
+                }
+            }), null);
+
+            // Update Token en cours
+            tokenSource.Dispose();
+            tokenSource = null;
         }
 
         /// <summary>
@@ -1273,92 +1325,6 @@ namespace AstroTargetSelector
                                 , MessageBoxButtons.OK
                                 , MessageBoxIcon.Error);
             }
-        }
-
-        /// <summary>
-        /// Vérifie si une nouvelle version de l'application est disponible
-        /// </summary>
-        /// <param name="version"></param>
-        /// <param name="nom"></param>
-        /// <param name="description"></param>
-        /// <param name="url"></param>
-        /// <returns>True si une nouvelle version est dispo</returns>
-        public bool CheckIfNouvelleVersion(ref string version, ref string nom, ref string description, ref string url)
-        {
-            try
-            {
-                // Trace et Chrono
-                factory.GetLog().Log($"Lancement de la vérification de la présence d'une nouvelle version de l'application", GetType().Name);
-                Stopwatch debutFonction = new Stopwatch();
-                debutFonction.Start();
-
-                // Positionnement du Curseur
-                Cursor = Cursors.WaitCursor;
-                SetActionStatusText($"Vérification de la présence d'une nouvelle version de l'application");
-
-                //Sleep(1000);
-
-                // Lancement du téléchargement
-                using (WebClient request = new WebClient())
-                {
-                    // Trace
-                    factory.GetLog().Log($"Téléchargement du fichier {newVersionFileName}", GetType().Name);
-
-                    // Téléchargement du fichier
-                    request.Credentials = new NetworkCredential(dlgUpdate.ftpCredentialLogin, dlgUpdate.ftpCredentialPwd);
-                    byte[] fileData = request.DownloadData(ftpNewVersionFullPathFile);
-                    using (FileStream file = File.Create(newVersionFullPathFile))
-                    {
-                        file.Write(fileData, 0, fileData.Length);
-                        file.Close();
-                    }
-
-                    // Trace
-                    factory.GetLog().Log($"Téléchargement du fichier effectué en {debutFonction.ElapsedMilliseconds} ms", GetType().Name, debutFonction.ElapsedMilliseconds);
-
-                    // On vérifie la présence du fichier téléchargé
-                    if (File.Exists(newVersionFullPathFile))
-                    {
-                        using (var reader = new StreamReader(newVersionFullPathFile))
-                        {
-                            // On passe la ligne d'en-tête
-                            var lineTitre = reader.ReadLine();
-                            // On lit la ligne Version en cours
-                            var line = reader.ReadLine();
-                            var values = line.Split('\t');
-                            version = values[0];
-                            nom = values[1];
-                            description = values[2];
-                            url = values[3];
-                            // On vérifie la version par rapport à la courante
-                            Version nouvelleVersionDispo = new Version(version);
-                            if (nouvelleVersionDispo > Assembly.GetExecutingAssembly().GetName().Version)
-                            {
-                                // Une version plus récente est dispo, on affiche la boîte de dialogue
-                                factory.GetLog().Log($"Nouvelle version disponible : {nouvelleVersionDispo}", GetType().Name);
-                                return true;
-                            }
-                            else
-                            {
-                                factory.GetLog().Log($"Pas de nouvelle version disponible : {Assembly.GetExecutingAssembly().GetName().Version} / {nouvelleVersionDispo}", GetType().Name);
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception err)
-            {
-                // Trace de l'erreur et information à l'utilisateur
-                factory.GetLog().LogException(err, GetType().Name, TypeLog.Warning);
-            }
-            finally
-            {
-                // Texte de la Status
-                SetDefaultStatusText();
-                // Positionnement du Curseur
-                Cursor = Cursors.Default;
-            }
-            return false;
         }
 
         /// <summary>
@@ -1902,6 +1868,11 @@ namespace AstroTargetSelector
         /// </summary>
         private string forceSelectedNom = string.Empty;
 
+        /// <summary>
+        /// Last Token de la tâche de remplissage du graphique
+        /// </summary>
+        private CancellationTokenSource tokenSource = null;
+
         #endregion
 
         #region Evénements
@@ -1923,16 +1894,28 @@ namespace AstroTargetSelector
 
         private void MainFenetre_Shown(object sender, EventArgs e)
         {
-            // Vérification de la présence d'une nouvelle version
-            string version = string.Empty;
-            string nom = string.Empty;
-            string description = string.Empty;
-            string url = string.Empty;
-            if (CheckIfNouvelleVersion(ref version, ref nom, ref description, ref url) && !string.IsNullOrEmpty(description))
+            // Vérification d'une nouvelle version de l'application
+            string libelleAction = Resources.VerificationDeLaPresenceDUneNouvelleVersionDeLApplication;
+            using (WaitDialog waitDownloadDlg = new WaitDialog(factory, factory.GetAppFtpVersionUpdater().LoadLastVersion, libelleAction))
             {
-                // On affiche la boîte de dialogue informant d'une nouvelle version disponible
-                dlgNewVersion dialogNewVersion = new dlgNewVersion(factory, version, nom, description, url);
+                waitDownloadDlg.ShowDialog();
+            }
+            factory.GetLog().Log($"FIN waitDownloadDlg.ShowDialog()", GetType().Name);
+
+            // Si nouvelle version dispo, on lance l'update
+            if (factory.GetAppFtpVersionUpdater().IsNewVersion())
+            {
+                // Trace
+                factory.GetLog().Log($"Nouvelle version disponible : {factory.GetAppFtpVersionUpdater().NewVersionDispo}", GetType().Name);
+
+                // Ouverture boîte de dialogue New Version
+                dlgNewVersion dialogNewVersion = new dlgNewVersion(factory);
                 dialogNewVersion.ShowDialog();
+            }
+            else
+            {
+                // Trace
+                factory.GetLog().Log($"Pas de nouvelle version disponible", GetType().Name);
             }
 
             // Rechargement de la ListeView et de la liste des filtres sur Type

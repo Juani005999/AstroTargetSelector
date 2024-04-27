@@ -651,6 +651,9 @@
   <data name="ValeurIncorrecte" xml:space="preserve">
     <value>Valeur incorrecte :</value>
   </data>
+  <data name="VerificationDeLaPresenceDUneNouvelleVersionDeLApplication" xml:space="preserve">
+    <value>Vérification de la présence d'une nouvelle version de l'application</value>
+  </data>
   <data name="Version" xml:space="preserve">
     <value>Version</value>
   </data>
