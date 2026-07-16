@@ -15,18 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
-        "OwnerKey" = "8:_786EF7CA54E62726D199C2D6A8D32FC7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_13661CC344674E14AEC8DB44F9B5CA5E"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -40,7 +28,7 @@
         "Entry"
         {
         "MsmKey" = "8:_17663F1AD36A1213F96FD8238D80FAAE"
-        "OwnerKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
+        "OwnerKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,20 +39,8 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_2565363F53AC7283D2E7CC360D224251"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2565363F53AC7283D2E7CC360D224251"
-        "OwnerKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_2565363F53AC7283D2E7CC360D224251"
-        "OwnerKey" = "8:_786EF7CA54E62726D199C2D6A8D32FC7"
+        "MsmKey" = "8:_2B4AC86679FEDE28E0D80F957A65809A"
+        "OwnerKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -88,13 +64,25 @@
         "Entry"
         {
         "MsmKey" = "8:_3BDF2D31FD6DA83437F52273D53014EE"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "OwnerKey" = "8:_C0E912646A148F485116BE751C4359A6"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_3BDF2D31FD6DA83437F52273D53014EE"
-        "OwnerKey" = "8:_C0E912646A148F485116BE751C4359A6"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3DF28BA7C2EB0D4FB8ECA520D60B176E"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_3DF28BA7C2EB0D4FB8ECA520D60B176E"
+        "OwnerKey" = "8:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -129,18 +117,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_5FD0A59D38F88B40BB08A93636AE6B58"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_5FD0A59D38F88B40BB08A93636AE6B58"
-        "OwnerKey" = "8:_786EF7CA54E62726D199C2D6A8D32FC7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_65D1A63FA9614723828F2FA2FF781B78"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -154,19 +130,13 @@
         "Entry"
         {
         "MsmKey" = "8:_74163DCCE29794B54127B22D0DF7013D"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_74163DCCE29794B54127B22D0DF7013D"
         "OwnerKey" = "8:_3069C8305490438A2087CEA5CEF3B362"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_74EBF970253A9F865C501CCBA6D34328"
-        "OwnerKey" = "8:_17663F1AD36A1213F96FD8238D80FAAE"
+        "MsmKey" = "8:_74163DCCE29794B54127B22D0DF7013D"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -177,20 +147,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_786EF7CA54E62726D199C2D6A8D32FC7"
-        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_855DE8F065CD4EC399BC10FD7DA950E3"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_956C323AEF8C5AAF881D86A6D4BE6B2C"
-        "OwnerKey" = "8:_ECFDCD35211DC26816857611EB3B8200"
+        "MsmKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
+        "OwnerKey" = "8:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -207,6 +177,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_C0E912646A148F485116BE751C4359A6"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
@@ -214,19 +190,25 @@
         "Entry"
         {
         "MsmKey" = "8:_C0E912646A148F485116BE751C4359A6"
-        "OwnerKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_C3F006AC67873C855B958A7D71F3DB0C"
-        "OwnerKey" = "8:_3069C8305490438A2087CEA5CEF3B362"
+        "OwnerKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_DD3A1B4FE4AB47AFA7541566266B5891"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC3E11CD0766CBAA921DD04469EE5D65"
+        "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC3E11CD0766CBAA921DD04469EE5D65"
+        "OwnerKey" = "8:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -256,43 +238,43 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_17663F1AD36A1213F96FD8238D80FAAE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_4BE87562488C4DF1B5C8D96ECA48B185"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_74163DCCE29794B54127B22D0DF7013D"
+        "OwnerKey" = "8:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_3BDF2D31FD6DA83437F52273D53014EE"
+        "OwnerKey" = "8:_9986FB9E6667BD09227DA5FD04E4A6F1"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_786EF7CA54E62726D199C2D6A8D32FC7"
+        "OwnerKey" = "8:_2B4AC86679FEDE28E0D80F957A65809A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_00368FDFDABABDC732A7153FB65C2EC0"
+        "OwnerKey" = "8:_3DF28BA7C2EB0D4FB8ECA520D60B176E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_5FD0A59D38F88B40BB08A93636AE6B58"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2565363F53AC7283D2E7CC360D224251"
+        "OwnerKey" = "8:_EC3E11CD0766CBAA921DD04469EE5D65"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -310,19 +292,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_3BDF2D31FD6DA83437F52273D53014EE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_3069C8305490438A2087CEA5CEF3B362"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_ECFDCD35211DC26816857611EB3B8200"
+        "OwnerKey" = "8:_74163DCCE29794B54127B22D0DF7013D"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_17663F1AD36A1213F96FD8238D80FAAE"
+        "OwnerKey" = "8:_ECFDCD35211DC26816857611EB3B8200"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -420,37 +408,6 @@
         }
         "File"
         {
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_00368FDFDABABDC732A7153FB65C2EC0"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorTelescope, Version=1.7.0.2, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_00368FDFDABABDC732A7153FB65C2EC0"
-                    {
-                    "Name" = "8:AstroTargetSelectorTelescope.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AstroTargetSelectorTelescope.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_13661CC344674E14AEC8DB44F9B5CA5E"
             {
             "SourcePath" = "8:..\\Files\\moon\\moon_WaningCrescent.png"
@@ -498,17 +455,22 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2565363F53AC7283D2E7CC360D224251"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_2B4AC86679FEDE28E0D80F957A65809A"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=1.7.1.1, Culture=neutral, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_2B4AC86679FEDE28E0D80F957A65809A"
+                    {
+                    "Name" = "8:ApplicationTools.dll"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:ApplicationTools.dll"
             "TargetName" = "8:"
@@ -586,7 +548,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -617,7 +579,38 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_3DF28BA7C2EB0D4FB8ECA520D60B176E"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AstroMoonCalc, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_3DF28BA7C2EB0D4FB8ECA520D60B176E"
+                    {
+                    "Name" = "8:AstroMoonCalc.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AstroMoonCalc.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -697,37 +690,6 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:2"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5FD0A59D38F88B40BB08A93636AE6B58"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroMoonCalc, Version=1.0.2.1, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_5FD0A59D38F88B40BB08A93636AE6B58"
-                    {
-                    "Name" = "8:AstroMoonCalc.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AstroMoonCalc.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
@@ -799,26 +761,6 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_74EBF970253A9F865C501CCBA6D34328"
-            {
-            "SourcePath" = "8:ASCOM.DeviceInterfaces.tlb"
-            "TargetName" = "8:ASCOM.DeviceInterfaces.tlb"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:2"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
@@ -843,37 +785,6 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_786EF7CA54E62726D199C2D6A8D32FC7"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.7.0.2, Culture=neutral, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_786EF7CA54E62726D199C2D6A8D32FC7"
-                    {
-                    "Name" = "8:AstroTargetSelectorBusiness.dll"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:AstroTargetSelectorBusiness.dll"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_855DE8F065CD4EC399BC10FD7DA950E3"
             {
             "SourcePath" = "8:..\\Files\\moon\\moon_LastQuarter.png"
@@ -894,10 +805,21 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_956C323AEF8C5AAF881D86A6D4BE6B2C"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9986FB9E6667BD09227DA5FD04E4A6F1"
             {
-            "SourcePath" = "8:ASCOM.Exceptions.tlb"
-            "TargetName" = "8:ASCOM.Exceptions.tlb"
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AstroToolsTelescope, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9986FB9E6667BD09227DA5FD04E4A6F1"
+                    {
+                    "Name" = "8:AstroToolsTelescope.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AstroToolsTelescope.dll"
+            "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_117817D0EE33429988655DE983D1D422"
             "Condition" = "8:"
@@ -909,7 +831,7 @@
             "Permanent" = "11:FALSE"
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
-            "Register" = "3:2"
+            "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
@@ -954,6 +876,37 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:AstroTargetSelectorBusiness, Version=1.8.0.1, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_A6A07FF0B945B5E4BC39EE4D07EC1CF9"
+                    {
+                    "Name" = "8:AstroTargetSelectorBusiness.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:AstroTargetSelectorBusiness.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_C0E912646A148F485116BE751C4359A6"
             {
             "AssemblyRegister" = "3:1"
@@ -981,26 +934,6 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_C3F006AC67873C855B958A7D71F3DB0C"
-            {
-            "SourcePath" = "8:ASCOM.Utilities.tlb"
-            "TargetName" = "8:ASCOM.Utilities.tlb"
-            "Tag" = "8:"
-            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:2"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
@@ -1023,6 +956,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC3E11CD0766CBAA921DD04469EE5D65"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:ApplicationTools, Version=2.0.1.3, Culture=neutral, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_EC3E11CD0766CBAA921DD04469EE5D65"
+                    {
+                    "Name" = "8:ApplicationTools.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:ApplicationTools.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_117817D0EE33429988655DE983D1D422"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_ECFDCD35211DC26816857611EB3B8200"
@@ -1052,7 +1016,7 @@
             "SharedLegacy" = "11:FALSE"
             "PackageAs" = "3:1"
             "Register" = "3:1"
-            "Exclude" = "11:TRUE"
+            "Exclude" = "11:FALSE"
             "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
@@ -1105,7 +1069,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_9DFA57AC63B9436DAB25E4C0D1E8E5E9"
                     {
-                    "Name" = "8:AstrAuDobson"
+                    "Name" = "8:AstroTools"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -1123,7 +1087,7 @@
                                 {
                                     "{9EF0B969-E518-4E46-987F-47570745A589}:_39F69860324C4EC3B63EF240C0F8F17F"
                                     {
-                                    "Name" = "8:1.7.0.2"
+                                    "Name" = "8:1.8.0.1"
                                     "AlwaysCreate" = "11:FALSE"
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
@@ -1171,7 +1135,7 @@
                 {
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_02BEBA020FCD43F7AB0668E047F5F615"
                     {
-                    "Name" = "8:AstrAuDobson"
+                    "Name" = "8:AstroTools"
                     "AlwaysCreate" = "11:FALSE"
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
@@ -1198,21 +1162,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:AstroTargetSelector"
-        "ProductCode" = "8:{C0B0F51C-204A-4FB1-B20C-A012F3C5C5A7}"
-        "PackageCode" = "8:{09EF952D-FE31-4A8C-B69B-50A64ABD8448}"
+        "ProductCode" = "8:{F583CDAF-2BD6-44EF-BB91-9A9F6E11AC10}"
+        "PackageCode" = "8:{605A299F-D7BB-4C52-8642-A67E9C55437B}"
         "UpgradeCode" = "8:{271F0700-2350-450E-9475-52DAA737F13B}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.7.02"
-        "Manufacturer" = "8:AstrAuDobson"
+        "ProductVersion" = "8:1.8.01"
+        "Manufacturer" = "8:AstroTools"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:AstroTargetSelector"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:AstrAuDobson"
+        "ARPCONTACT" = "8:Juanito del Pepito"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ pour les montures astronomiques de type Alt./Az."
         "ARPURLINFOABOUT" = "8:"
@@ -1770,7 +1734,7 @@
         {
             "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_4BE87562488C4DF1B5C8D96ECA48B185"
             {
-            "SourcePath" = "8:..\\AstroTargetSelector\\obj\\Debug\\AstroTargetSelector.exe"
+            "SourcePath" = "8:..\\AstroTargetSelector\\obj\\Release\\AstroTargetSelector.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_117817D0EE33429988655DE983D1D422"

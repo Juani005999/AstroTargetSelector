@@ -41,17 +41,17 @@ namespace AstroTargetSelector
         /// <summary>
         /// Nom du Serveur FTP de téléchargement des fichiers de configuration
         /// </summary>
-        public const string ftpHost = "ftp.byethost9.com";
+        public const string ftpHost = "ftpupload.net";
 
         /// <summary>
         /// Identifiant de connexion au serveur FTP
         /// </summary>
-        public const string ftpCredentialLogin = "b9_36081231";
+        public const string ftpCredentialLogin = "b32_42418432";
 
         /// <summary>
         /// Mot de passe de connexion au serveur FTP
         /// </summary>
-        public const string ftpCredentialPwd = "AstrAuDobTeam";
+        public const string ftpCredentialPwd = "AstroToolsTeam";
 
         /// <summary>
         /// Répertoire sur le Serveur FTP de téléchargement contenant les fichiers de configuration

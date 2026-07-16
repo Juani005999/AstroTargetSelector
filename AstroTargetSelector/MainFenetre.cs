@@ -158,7 +158,7 @@ namespace AstroTargetSelector
         }
 
         /// <summary>
-        /// Nomdu fichier remote des versions de l'application
+        /// Nom du fichier remote des versions de l'application
         /// </summary>
         public string newVersionFileName
         {
@@ -1896,6 +1896,7 @@ namespace AstroTargetSelector
         {
             // Vérification d'une nouvelle version de l'application
             string libelleAction = Resources.VerificationDeLaPresenceDUneNouvelleVersionDeLApplication;
+            SetActionStatusText(libelleAction);
             using (WaitDialog waitDownloadDlg = new WaitDialog(factory, factory.GetAppFtpVersionUpdater().LoadLastVersion, libelleAction))
             {
                 waitDownloadDlg.ShowDialog();
@@ -1917,6 +1918,7 @@ namespace AstroTargetSelector
                 // Trace
                 factory.GetLog().Log($"Pas de nouvelle version disponible", GetType().Name);
             }
+            SetActionStatusText(string.Empty);
 
             // Rechargement de la ListeView et de la liste des filtres sur Type
             UpdateListeAndPanel();
