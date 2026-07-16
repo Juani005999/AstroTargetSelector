@@ -1,4 +1,4 @@
-# Bienvenus sur la page Github de AstroTargetSelector (ATS)
+# Bienvenue sur la page Github de AstroTargetSelector (ATS)
 Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ pour les montures astronomiques de type Alt./Az.
 
 ![AstroTargetSelector](images/ATS_graph_horaire.png)
@@ -18,7 +18,7 @@ ATS va considérer votre lieu d'observation, la date, le capteur de l'imageur et
 
 Plus besoin de perdre de longues minutes à chercher le bon temps de pose pour l'objet que vous souhaitez photographier, plus besoin de vous demander quel objet photographier ce soir, ATS se charge de cela pour vous.
 
-Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser les fameuses "30s de temps de pose max" dans de nombreuses situations. La limite sera alors celle de la qualité du suivi sidéral offert part votre monture.
+Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser les fameuses "30s de temps de pose max" dans de nombreuses situations. La limite sera alors celle de la qualité du suivi sidéral offert par votre monture.
 
 ## Installation d'ATS
 
