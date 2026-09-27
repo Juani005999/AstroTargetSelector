@@ -22,11 +22,11 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ## Installation d'ATS
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_0201.msi**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_2010.msi**.
 
 ### Confirmation de l'éditeur
-![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
-Lors de l'exécution de **AstroTargetSelector_0201.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)\
+Lors de l'exécution de **AstroTargetSelector_2010.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 ### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
