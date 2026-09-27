@@ -22,11 +22,11 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ## Installation d'ATS
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_2010.msi**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_2011.msi**.
 
 ### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)\
-Lors de l'exécution de **AstroTargetSelector_2010.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2011.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 ### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -45,6 +45,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 27/09/2026 | 2.0.1.1 | <ul><li>Maintenance : Mise à jour des librairies techniques.</li><li>Maintenance : Amélioration des traces de la vérification des mises à jour.</li></ul> |
 | 27/09/2026 | 2.0.1.0 | <ul><li>Nouvelle architecture : Refonte technique de l’application, en préparation d’une future version mobile (Android).</li><li>Paramètres : Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.</li><li>Vérification des mises à jour : La disponibilité d’une nouvelle version est de nouveau correctement détectée.</li><li>Barre des tâches : L’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.</li><li>Traduction anglaise complétée.</li></ul> |
 | 16/07/2026 | 1.8.0.1 | <ul><li>Mise à jour des Credentials FTP.</li></ul> |
 | 16/07/2023 | 1.7.0.2 | <ul><li>Mosaic Calculator : Pilotage du télescope ASCOM et envoi des coordonnées des panneaux au télescope.</li><li>Mosaic Calculator : Possibilitté d’afficher la mosaïque complète dans Stellarium et Cartes du Ciel.</li></ul> |
