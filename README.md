@@ -22,11 +22,11 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ## Installation d'ATS
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector.msi**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_0201.msi**.
 
 ### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
-Lors de l'exécution de **AstroTargetSelector.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_0201.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 ### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -40,3 +40,22 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 <p align="right"><b>Enjoy ;)</b></p>
 <p align="right"><b><i>Juanito del Pepito</i></b></p>
 
+
+## Révisions
+
+| Date | Version | Commentaires |
+| --- | --- | --- |
+| 27/09/2026 | 2.0.1.0 | <ul><li>Nouvelle architecture : Refonte technique de l’application, en préparation d’une future version mobile (Android).</li><li>Paramètres : Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.</li><li>Vérification des mises à jour : La disponibilité d’une nouvelle version est de nouveau correctement détectée.</li><li>Barre des tâches : L’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.</li><li>Traduction anglaise complétée.</li></ul> |
+| 16/07/2026 | 1.8.0.1 | <ul><li>Mise à jour des Credentials FTP.</li></ul> |
+| 16/07/2023 | 1.7.0.2 | <ul><li>Mosaic Calculator : Pilotage du télescope ASCOM et envoi des coordonnées des panneaux au télescope.</li><li>Mosaic Calculator : Possibilitté d’afficher la mosaïque complète dans Stellarium et Cartes du Ciel.</li></ul> |
+| 09/03/2023 | 1.6.4.1 | <ul><li>Mosaic Calculator : Possibilité d’ajouter un panneau central supplémentaire pour les mosaïques à 4 panneaux.</li></ul> |
+| 24/02/2023 | 1.6.3.2 | <ul><li>Mosaic Calculator : Possibilité de modifier le centre et la taille de la mosaïque afin de pouvoir la personnaliser.</li></ul> |
+| 20/02/2023 | 1.6.1.2 | <ul><li>Mosaic Calculator : Correction de la valeur du ra dans les liens Unistellar.</li></ul> |
+| 19/02/2023 | 1.6.1.1 | <ul><li>Nouvelle fonctionnalité : Le Mosaic Calculator.<br/>Dépassez votre champ de vision grâce au calculateur de mosaïque.</li></ul> |
+| 18/02/2023 | 1.5.4.2 | <ul><li>Le Soleil à rendez-vous avec la Lune : Affichage du Soleil pour les modes Horaire et Nuit, et dans l’info-bulle pour le mode Mensuel.</li></ul> |
+| 04/02/2023 | 1.5.3.1 | <ul><li>Icone la Lune : Correction des icones FirstQuarter et LastQuarter.</li><li>Infos bulle : Ajout de l’information Azimut de la Lune.</li><li>Options : Nouvelle boîte de dialogue Options.</li></ul> |
+| 02/02/2023 | 1.5.2.1 | <ul><li>Bienvenue à la Lune : Affichage de la lune pour les modes Horaire, Nuit et Mensuel.</li></ul> |
+| 29/01/2023 | 1.4.0.2 | <ul><li>Mode nuit custom colors : Personnalisation des couleurs d’affichage du mode nuit.</li></ul> |
+| 24/01/2023 | 1.4.0.1 | <ul><li>TCP Server : Ajout des dénominations de l’objet lors de l’envoi de la commande.</li><li>Ouverture dans Stellarium : Mise en avant plan de Stellarium lors de l’affichage d’un objet.</li><li>Ouverture dans Carte du Ciel : Mise en avant plan de Carte du Ciel lors de l’affichage d’un objet.</li></ul> |
+| 22/01/2023 | 1.3.0.1 | <ul><li>TCP Server : AstroTargetSelector a désormais la possibilité de recevoir des commandes depuis d’autre logiciels.</li></ul> |
+| 30/08/2022 | 1.1.0.1 | <ul><li>Version initiale.</li></ul> |
