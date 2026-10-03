@@ -22,11 +22,11 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ## Installation d'ATS
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_2011.msi**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **AstroTargetSelector_2012.msi**.
 
 ### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)\
-Lors de l'exécution de **AstroTargetSelector_2011.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2012.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 ### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -58,6 +58,7 @@ Pour mettre à jour l'application, téléchargez et installez simplement la nouv
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 03/10/2026 | 2.0.1.2 | <ul><li>Nouvelle icône de l’application, commune avec la version mobile.</li><li>AstroTargetSelector est désormais disponible sur Android (voir Installation sur Android).</li><li>Hauteur minimum par défaut fixée à 20° (nouvelles installations).</li><li>Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil.</li></ul> |
 | 03/10/2026 | 2.0.0.1 (Android) | <ul><li>Première version mobile pour Android : liste des cibles observables avec filtres, détail d’une cible avec graphes Horaire, Nuits, Mensuel et Annuel, Lune et Soleil.</li><li>Paramètres : lieu d’observation (saisie ou position GPS du téléphone), capteur (liste ou saisie d’un capteur personnalisé), bougé max., hauteur minimum, zones du ciel exclues.</li><li>Mode nuit rouge sur noir, en français et en anglais.</li></ul> |
 | 27/09/2026 | 2.0.1.1 | <ul><li>Maintenance : Mise à jour des librairies techniques.</li><li>Maintenance : Amélioration des traces de la vérification des mises à jour.</li></ul> |
 | 27/09/2026 | 2.0.1.0 | <ul><li>Nouvelle architecture : Refonte technique de l’application, en préparation d’une future version mobile (Android).</li><li>Paramètres : Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.</li><li>Vérification des mises à jour : La disponibilité d’une nouvelle version est de nouveau correctement détectée.</li><li>Barre des tâches : L’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.</li><li>Traduction anglaise complétée.</li></ul> |
