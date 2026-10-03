@@ -104,7 +104,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2001.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2001.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2002.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2002.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -502,6 +502,7 @@ L'onglet ***A propos*** affiche la version de l'application, sa description et s
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 03/10/2026 | 2.0.0.2 (Android) | <ul><li>Détail d’une cible : le graphe est recalculé lorsque les paramètres sont modifiés (capteur, bougé max., intervalle, durée…).</li><li>Paramètres : zone d’enregistrement mise en évidence.</li></ul> |
 | 03/10/2026 | 2.0.1.2 | <ul><li>Nouvelle icône de l’application, commune avec la version mobile.</li><li>AstroTargetSelector est désormais disponible sur Android (voir Installation sur Android).</li><li>Hauteur minimum par défaut fixée à 20° (nouvelles installations).</li><li>Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil.</li></ul> |
 | 03/10/2026 | 2.0.0.1 (Android) | <ul><li>Première version mobile pour Android : liste des cibles observables avec filtres, détail d’une cible avec graphes Horaire, Nuits, Mensuel et Annuel, Lune et Soleil.</li><li>Paramètres : lieu d’observation (saisie ou position GPS du téléphone), capteur (liste ou saisie d’un capteur personnalisé), bougé max., hauteur minimum, zones du ciel exclues.</li><li>Mode nuit rouge sur noir, en français et en anglais.</li></ul> |
 | 27/09/2026 | 2.0.1.1 | <ul><li>Maintenance : Mise à jour des librairies techniques.</li><li>Maintenance : Amélioration des traces de la vérification des mises à jour.</li></ul> |
