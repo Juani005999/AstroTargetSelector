@@ -1,0 +1,71 @@
+{
+  "version": "2.0.1.2",
+  "name": "AstroTargetSelector 2.0.1.2",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2012.msi",
+  "files": {
+    "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
+    "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
+  },
+  "history": [
+    {
+      "version": "2.0.1.2",
+      "notes": "Nouveautés :\n- Nouvelle icône de l’application, commune avec la version mobile.\n- AstroTargetSelector est désormais disponible sur Android : rendez-vous sur la page GitHub d’AstroTargetSelector pour l’installer sur votre téléphone.\n- Hauteur minimum par défaut fixée à 20° (nouvelles installations).\n\nCorrections :\n- Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil."
+    },
+    {
+      "version": "2.0.1.1",
+      "notes": "Maintenance :\n- Mise à jour des librairies techniques.\n- Amélioration des traces de la vérification des mises à jour."
+    },
+    {
+      "version": "2.0.1.0",
+      "notes": "Nouvelle architecture :\n- Refonte technique de l’application, en préparation d’une future version mobile (Android).\n\nParamètres :\n- Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.\n\nCorrections :\n- Vérification des mises à jour : la disponibilité d’une nouvelle version est de nouveau correctement détectée.\n- Barre des tâches : l’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.\n- Traduction anglaise complétée."
+    },
+    {
+      "version": "1.8.0.1",
+      "notes": "Mise à jour des Credentials FTP."
+    },
+    {
+      "version": "1.7.0.2",
+      "notes": "Mosaic Calculator\n- Pilotage du télescope ASCOM et envoi des coordonnées des panneaux au télescope.\n- Possibilitté d’afficher la mosaïque complète dans Stellarium et Cartes du Ciel."
+    },
+    {
+      "version": "1.6.4.1",
+      "notes": "Mosaic Calculator\nPossibilité d’ajouter un panneau central supplémentaire pour les mosaïques à 4 panneaux."
+    },
+    {
+      "version": "1.6.3.2",
+      "notes": "Mosaic Calculator\nPossibilité de modifier le centre et la taille de la mosaïque afin de pouvoir la personnaliser."
+    },
+    {
+      "version": "1.6.1.2",
+      "notes": "Mosaic Calculator\nCorrection de la valeur du ra dans les liens Unistellar."
+    },
+    {
+      "version": "1.6.1.1",
+      "notes": "Nouvelle fonctionnalité : Le Mosaic Calculator\nDépassez votre champ de vision grâce au calculateur de mosaïque."
+    },
+    {
+      "version": "1.5.4.2",
+      "notes": "Le Soleil à rendez-vous avec la Lune :\nAffichage du Soleil pour les modes Horaire et Nuit, et dans l’info-bulle pour le mode Mensuel."
+    },
+    {
+      "version": "1.5.3.1",
+      "notes": "Icone la Lune :\nCorrection des icones FirstQuarter et LastQuarter.\n\nInfos bulle :\nAjout de l’information Azimut de la Lune.\n\nOptions :\nNouvelle boîte de dialogue Options."
+    },
+    {
+      "version": "1.5.2.1",
+      "notes": "Bienvenue à la Lune :\nAffichage de la lune pour les modes Horaire, Nuit et Mensuel."
+    },
+    {
+      "version": "1.4.0.2",
+      "notes": "Mode nuit custom colors :\nPersonnalisation des couleurs d’affichage du mode nuit."
+    },
+    {
+      "version": "1.4.0.1",
+      "notes": "TCP Server :\nAjout des dénominations de l’objet lors de l’envoi de la commande.\n\nOuverture dans Stellarium :\nMise en avant plan de Stellarium lors de l’affichage d’un objet.\n\nOuverture dans Carte du Ciel :\nMise en avant plan de Carte du Ciel lors de l’affichage d’un objet."
+    },
+    {
+      "version": "1.3.0.1",
+      "notes": "TCP Server :\nAstroTargetSelector a désormais la possibilité de recevoir des commandes depuis d’autre logiciels."
+    }
+  ]
+}
