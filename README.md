@@ -3,6 +3,8 @@ Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ 
 
 ***AstroTargetSelector*** (**ATS**) est un freeware disponible sous ***Windows*** et sous ***Android***.
 
+Disponible en FR et EN.
+
 ![AstroTargetSelector](images/ATS_graph_horaire.png)
 ![AstroTargetSelector](images/ATS_graph_horaire_ModeNuit.png)
 <img src="images/Mobile_Liste.png" alt="Liste des cibles" width="300">
