@@ -1,12 +1,16 @@
 {
-  "version": "2.0.1.5",
-  "name": "AstroTargetSelector 2.0.1.5",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2015.msi",
+  "version": "2.0.1.6",
+  "name": "AstroTargetSelector 2.0.1.6",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2016.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.0.1.6",
+      "notes": "Nouveautés :\n- À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).\n\nCorrections :\n- Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit."
+    },
     {
       "version": "2.0.1.5",
       "notes": "Corrections :\n- Graphe détail : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille."

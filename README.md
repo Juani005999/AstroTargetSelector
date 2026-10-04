@@ -79,7 +79,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2015.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2015.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2016.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2016.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -88,7 +88,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2015.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2016.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -504,6 +504,7 @@ L'onglet ***A propos*** affiche la version de l'application, sa description et s
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 04/10/2026 | 2.0.1.6 | <ul><li>Nouveautés : À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).</li><li>Corrections : Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit.</li></ul> |
 | 04/10/2026 | 2.0.0.4 (Android) | <ul><li>Corrections : Détail d’une cible : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.</li></ul> |
 | 04/10/2026 | 2.0.1.5 | <ul><li>Corrections : Graphe détail : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.</li></ul> |
 | 04/10/2026 | 2.0.1.4 | <ul><li>Corrections : Lune : les jours où la Lune ne se lève pas (ou ne se couche pas), les informations de la Lune sont de nouveau affichées, l’heure manquante étant remplacée par « — ».</li></ul> |
