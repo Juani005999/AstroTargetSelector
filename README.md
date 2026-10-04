@@ -106,7 +106,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2004.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2004.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2005.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2005.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -504,6 +504,7 @@ L'onglet ***A propos*** affiche la version de l'application, sa description et s
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 04/10/2026 | 2.0.0.5 (Android) | <ul><li>Nouveautés : À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).</li></ul> |
 | 04/10/2026 | 2.0.1.6 | <ul><li>Nouveautés : À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).</li><li>Corrections : Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit.</li></ul> |
 | 04/10/2026 | 2.0.0.4 (Android) | <ul><li>Corrections : Détail d’une cible : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.</li></ul> |
 | 04/10/2026 | 2.0.1.5 | <ul><li>Corrections : Graphe détail : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.</li></ul> |
