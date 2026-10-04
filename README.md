@@ -387,6 +387,7 @@ La barre de statut affiche la date et l'heure de l'observation, l'objet céleste
 ![Boîte de dialogue A propos](images/PC_Dlg_APropos.png)
 
 Cette boîte de dialogue affiche les informations à propos d'***AstroTargetSelector*** : version, auteur et description.\
+Le lien **Page GitHub d'AstroTargetSelector** ouvre cette page dans votre navigateur : vous y trouverez les dernières versions (Windows et Android) et les nouveautés.\
 Le bouton **Ouvrir le fichier des logs** permet d'ouvrir le fichier des logs de l'application.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
@@ -493,7 +494,8 @@ Il s'active depuis le bouton **Nuit** de l'onglet ***Cibles***, ou depuis l'ongl
 #### Onglet A propos
 <img src="images/Mobile_APropos.png" alt="A propos" width="300">
 
-L'onglet ***A propos*** affiche la version de l'application, sa description et ses auteurs.
+L'onglet ***A propos*** affiche la version de l'application, sa description et ses auteurs.\
+Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone : vous y trouverez les dernières versions et les nouveautés.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
