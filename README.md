@@ -79,7 +79,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2013.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2013.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2014.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2014.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -88,7 +88,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2013.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2014.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -504,6 +504,7 @@ L'onglet ***A propos*** affiche la version de l'application, sa description et s
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 04/10/2026 | 2.0.1.4 | <ul><li>Corrections : Lune : les jours où la Lune ne se lève pas (ou ne se couche pas), les informations de la Lune sont de nouveau affichées, l’heure manquante étant remplacée par « — ».</li></ul> |
 | 04/10/2026 | 2.0.1.3 | <ul><li>Maintenance : Vérification des mises à jour et téléchargement des fichiers de configuration (objets célestes, capteurs) désormais effectués depuis GitHub.</li></ul> |
 | 03/10/2026 | 2.0.0.3 (Android) | <ul><li>L’application ne demande plus l’accès à Internet : elle fonctionne entièrement hors ligne, seule la localisation est demandée (facultative).</li></ul> |
 | 03/10/2026 | 2.0.0.2 (Android) | <ul><li>Détail d’une cible : le graphe est recalculé lorsque les paramètres sont modifiés (capteur, bougé max., intervalle, durée…).</li><li>Paramètres : zone d’enregistrement mise en évidence.</li></ul> |

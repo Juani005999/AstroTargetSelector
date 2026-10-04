@@ -1,12 +1,16 @@
 {
-  "version": "2.0.1.3",
-  "name": "AstroTargetSelector 2.0.1.3",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2013.msi",
+  "version": "2.0.1.4",
+  "name": "AstroTargetSelector 2.0.1.4",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2014.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.0.1.4",
+      "notes": "Corrections :\n- Lune : les jours où la Lune ne se lève pas (ou ne se couche pas), les informations de la Lune sont de nouveau affichées, l’heure manquante étant remplacée par « — »."
+    },
     {
       "version": "2.0.1.3",
       "notes": "Maintenance :\n- Vérification des mises à jour et téléchargement des fichiers de configuration (objets célestes, capteurs) désormais effectués depuis GitHub."
