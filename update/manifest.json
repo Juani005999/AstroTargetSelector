@@ -1,12 +1,16 @@
 {
-  "version": "2.0.1.2",
-  "name": "AstroTargetSelector 2.0.1.2",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2012.msi",
+  "version": "2.0.1.3",
+  "name": "AstroTargetSelector 2.0.1.3",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2013.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.0.1.3",
+      "notes": "Maintenance :\n- Vérification des mises à jour et téléchargement des fichiers de configuration (objets célestes, capteurs) désormais effectués depuis GitHub."
+    },
     {
       "version": "2.0.1.2",
       "notes": "Nouveautés :\n- Nouvelle icône de l’application, commune avec la version mobile.\n- AstroTargetSelector est désormais disponible sur Android : rendez-vous sur la page GitHub d’AstroTargetSelector pour l’installer sur votre téléphone.\n- Hauteur minimum par défaut fixée à 20° (nouvelles installations).\n\nCorrections :\n- Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil."
