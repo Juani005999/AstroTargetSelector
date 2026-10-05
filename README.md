@@ -3,7 +3,7 @@ Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ 
 
 ***AstroTargetSelector*** (**ATS**) est un freeware disponible sous ***Windows*** et sous ***Android***.
 
-Disponible en FR et EN.
+Disponible en FR et EN (français sur un système en français, anglais pour toutes les autres langues).
 
 ![AstroTargetSelector](images/ATS_graph_horaire.png)
 ![AstroTargetSelector](images/ATS_graph_horaire_ModeNuit.png)
@@ -79,7 +79,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2016.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2016.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2017.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2017.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -88,7 +88,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2016.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2017.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -334,6 +334,7 @@ Si votre capteur n'est pas présent dans la liste, vous pouvez saisir manuelleme
 Cette boîte de dialogue, accessible par le menu ***Outils > Options***, permet de définir :
 - **Paramètres des planétariums** : les options de communication avec les logiciels ***Stellarium*** (serveur et port du plugin de contrôle à distance, par défaut **localhost** / **8090**) et ***Cartes du Ciel*** (serveur, par défaut **127.0.0.1**).
 - **Personnalisation de l'affichage en mode nuit** : couleurs de fenêtre et couleurs des polices (tons sombres et tons clairs) utilisées en [mode nuit](#mode-nuit). Le bouton **Remettre les couleurs par défaut** restaure les couleurs d'origine.
+- **Langue** : langue de l'interface. En mode ***Automatique (langue de Windows)***, l'application s'affiche en français si Windows est en français, et en anglais pour toutes les autres langues. Vous pouvez aussi forcer ***Français*** ou ***English*** : le changement est pris en compte au prochain démarrage de l'application.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
@@ -506,6 +507,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 05/10/2026 | 2.0.1.7 | <ul><li>Nouveautés : Langue : l’application s’affiche en français sur un Windows francophone, et en anglais pour toutes les autres langues.</li><li>Nouveautés : Options : choix de la langue de l’interface (Automatique / Français / English).</li><li>Corrections : Traduction anglaise complétée : Mosaic Calculator, Options et pilotage du télescope ASCOM.</li></ul> |
 | 04/10/2026 | 2.0.0.5 (Android) | <ul><li>Nouveautés : À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).</li></ul> |
 | 04/10/2026 | 2.0.1.6 | <ul><li>Nouveautés : À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).</li><li>Corrections : Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit.</li></ul> |
 | 04/10/2026 | 2.0.0.4 (Android) | <ul><li>Corrections : Détail d’une cible : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.</li></ul> |

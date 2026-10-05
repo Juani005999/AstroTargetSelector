@@ -1,12 +1,16 @@
 {
-  "version": "2.0.1.6",
-  "name": "AstroTargetSelector 2.0.1.6",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2016.msi",
+  "version": "2.0.1.7",
+  "name": "AstroTargetSelector 2.0.1.7",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2017.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.0.1.7",
+      "notes": "Nouveautés :\n- Langue : l’application s’affiche en français sur un Windows francophone, et en anglais pour toutes les autres langues.\n- Options : choix de la langue de l’interface (Automatique / Français / English).\n\nCorrections :\n- Traduction anglaise complétée : Mosaic Calculator, Options et pilotage du télescope ASCOM."
+    },
     {
       "version": "2.0.1.6",
       "notes": "Nouveautés :\n- À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).\n\nCorrections :\n- Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit."
