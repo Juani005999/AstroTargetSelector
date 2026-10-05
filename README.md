@@ -1,4 +1,6 @@
 # Bienvenue sur la page Github de AstroTargetSelector (ATS)
+[English version](README.en.md)
+
 Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ pour les montures astronomiques de type Alt./Az.
 
 ***AstroTargetSelector*** (**ATS**) est un freeware disponible sous ***Windows*** et sous ***Android***.
