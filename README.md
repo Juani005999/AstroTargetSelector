@@ -7,6 +7,8 @@ Utilitaire permettant le calcul du temps de pose maximum sans rotation de champ 
 
 Disponible en FR et EN (français sur un système en français, anglais pour toutes les autres langues).
 
+La **version Android** fonctionne en mode **hors connexion** (ce qui est pratique pour les possesseurs de smart télescopes).
+
 ![AstroTargetSelector](images/ATS_graph_horaire.png)
 ![AstroTargetSelector](images/ATS_graph_horaire_ModeNuit.png)
 <img src="images/Mobile_Liste.png" alt="Liste des cibles" width="300">

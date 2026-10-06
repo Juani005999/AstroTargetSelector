@@ -7,6 +7,8 @@ A tool for calculating the maximum exposure time without field rotation for Alt.
 
 Available in FR and EN (French on a French-language system, English for all other languages).
 
+The **Android version** works **offline** (handy for smart telescope owners).
+
 ![AstroTargetSelector](images/ATS_graph_horaire.png)
 ![AstroTargetSelector](images/ATS_graph_horaire_ModeNuit.png)
 <img src="images/Mobile_Liste.png" alt="Target list" width="300">
