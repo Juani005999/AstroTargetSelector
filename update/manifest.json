@@ -1,12 +1,16 @@
 {
-  "version": "2.1.1.0",
-  "name": "AstroTargetSelector 2.1.1.0",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2110.msi",
+  "version": "2.2.0.1",
+  "name": "AstroTargetSelector 2.2.0.1",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2201.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.2.0.1",
+      "notes": "Nouveautés :\n- Catalogue enrichi : 2 079 objets célestes au lieu de 244, avec l’ajout des objets NGC (magnitude ≤ 12) et IC (magnitude ≤ 12, ainsi que les nébuleuses dont la magnitude n’est pas connue).\n- Magnitude inconnue : la magnitude est laissée vide ; ces objets restent affichés lors d’un filtre par magnitude et sont classés en fin de liste lors d’un tri.\n\nCorrections :\n- Coordonnées de NGC 281, NGC 884 et NGC 4725 corrigées.\n- Traduction anglaise : toutes les constellations sont désormais traduites."
+    },
     {
       "version": "2.1.1.0",
       "notes": "Performances :\n- Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide)."
