@@ -86,7 +86,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2101.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2101.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2110.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2110.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -95,7 +95,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2101.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2110.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -514,6 +514,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 09/10/2026 | 2.1.1.0 | <ul><li>Performance: Information panel: the chart is displayed about 2 times faster when moving from one celestial object to the next (smoother keyboard scrolling).</li></ul> |
 | 09/10/2026 | 2.1.0.1 | <ul><li>Performance: Celestial object list: loading and refreshing about 4 times faster, in preparation for a larger catalog.</li></ul> |
 | 05/10/2026 | 2.0.0.6 (Android) | <ul><li>Fixes: English translation: celestial object types and constellations are now translated (list, type filter, search).</li><li>Fixes: Monthly chart: the axis dates follow the phone's date format.</li></ul> |
 | 05/10/2026 | 2.0.1.8 | <ul><li>Fixes: English translation: celestial object types and constellations are now translated (list, type filter, search).</li></ul> |

@@ -83,7 +83,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2101.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2101.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2110.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2110.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -92,7 +92,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2101.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2110.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -511,6 +511,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 09/10/2026 | 2.1.1.0 | <ul><li>Performances : Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide).</li></ul> |
 | 09/10/2026 | 2.1.0.1 | <ul><li>Performances : Liste des objets célestes : chargement et actualisation environ 4 fois plus rapides, en prévision d’un catalogue plus étendu.</li></ul> |
 | 05/10/2026 | 2.0.0.6 (Android) | <ul><li>Corrections : Traduction anglaise : les types d’objets célestes et les constellations sont désormais traduits (liste, filtre par type, recherche).</li><li>Corrections : Graphe Mensuel : les dates de l’axe suivent le format de date du téléphone.</li></ul> |
 | 05/10/2026 | 2.0.1.8 | <ul><li>Corrections : Traduction anglaise : les types d’objets célestes et les constellations sont désormais traduits (liste, filtre par type, recherche).</li></ul> |

@@ -1,12 +1,16 @@
 {
-  "version": "2.1.0.1",
-  "name": "AstroTargetSelector 2.1.0.1",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2101.msi",
+  "version": "2.1.1.0",
+  "name": "AstroTargetSelector 2.1.1.0",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2110.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.1.1.0",
+      "notes": "Performances :\n- Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide)."
+    },
     {
       "version": "2.1.0.1",
       "notes": "Performances :\n- Liste des objets célestes : chargement et actualisation environ 4 fois plus rapides, en prévision d’un catalogue plus étendu."
