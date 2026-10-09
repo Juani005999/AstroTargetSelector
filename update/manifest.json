@@ -1,12 +1,16 @@
 {
-  "version": "2.0.1.8",
-  "name": "AstroTargetSelector 2.0.1.8",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2018.msi",
+  "version": "2.1.0.1",
+  "name": "AstroTargetSelector 2.1.0.1",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2101.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.1.0.1",
+      "notes": "Performances :\n- Liste des objets célestes : chargement et actualisation environ 4 fois plus rapides, en prévision d’un catalogue plus étendu."
+    },
     {
       "version": "2.0.1.8",
       "notes": "Corrections :\n- Traduction anglaise : les types d’objets célestes et les constellations sont désormais traduits (liste, filtre par type, recherche)."
