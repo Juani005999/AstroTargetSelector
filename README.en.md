@@ -86,7 +86,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2201.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2201.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2210.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2210.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -95,7 +95,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2201.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2210.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -395,7 +395,7 @@ The status bar shows the date and time of the observation, the selected celestia
 ![About dialog](images/PC_Dlg_APropos.png)
 
 This dialog shows information about ***AstroTargetSelector***: version, author and description.\
-The **AstroTargetSelector GitHub page** link opens this page in your browser: you will find the latest versions (Windows and Android) and what's new.\
+The **View on GitHub** button opens this page in your browser: you will find the latest versions (Windows and Android) and what's new.\
 The **Open logs file** button opens the application's log file.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
@@ -514,6 +514,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 10/10/2026 | 2.2.1.0 | <ul><li>New: About: redesigned window, with a more visible link to the AstroTargetSelector GitHub page.</li></ul> |
 | 09/10/2026 | 2.2.0.1 | <ul><li>New: Extended catalog: 2,079 celestial objects instead of 244, with the addition of NGC objects (magnitude ≤ 12) and IC objects (magnitude ≤ 12, plus nebulae whose magnitude is unknown).</li><li>New: Unknown magnitude: the magnitude is left empty; these objects remain displayed when filtering by magnitude and are listed last when sorting.</li><li>Fixes: Coordinates of NGC 281, NGC 884 and NGC 4725 corrected.</li><li>Fixes: English translation: all constellations are now translated.</li></ul> |
 | 09/10/2026 | 2.1.1.0 | <ul><li>Performance: Information panel: the chart is displayed about 2 times faster when moving from one celestial object to the next (smoother keyboard scrolling).</li></ul> |
 | 09/10/2026 | 2.1.0.1 | <ul><li>Performance: Celestial object list: loading and refreshing about 4 times faster, in preparation for a larger catalog.</li></ul> |
