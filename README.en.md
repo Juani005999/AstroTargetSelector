@@ -87,7 +87,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2212.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2212.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2213.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2213.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -96,7 +96,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2212.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2213.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -408,7 +408,7 @@ At startup, ***ATS*** checks whether a new version is available. If so, this dia
 - The **New version** / **Installed version** line compares the published version with the one installed on your PC.
 - The list shows what's new and the fixes of all published versions; the version installed on your PC is marked *installed version*.
 - The **Download version …** button opens the installer download link in your browser, then closes ***ATS*** so as not to disturb the installation. Then run the downloaded installer: no need to uninstall the current version, and your settings are kept.
-- The **OK** button closes the dialog without updating: ***ATS*** will offer the update again at the next startup.
+- The **Close** button closes the dialog without updating: ***ATS*** will offer the update again at the next startup.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
 
@@ -526,6 +526,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 10/10/2026 | 2.2.1.3 | <ul><li>New: New version available: release notes are now displayed in English when the application is in English.</li><li>New: About and New version available: the OK button is now Close.</li></ul> |
 | 10/10/2026 | 2.2.1.2 | <ul><li>Fixes: New version available: the window now uses the same image as the About window.</li></ul> |
 | 10/10/2026 | 2.2.1.1 | <ul><li>New: New version available: redesigned window, with a more readable version history and a download button.</li></ul> |
 | 10/10/2026 | 2.2.1.0 | <ul><li>New: About: redesigned window, with a more visible link to the AstroTargetSelector GitHub page.</li></ul> |

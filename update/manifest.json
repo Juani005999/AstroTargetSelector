@@ -1,119 +1,151 @@
 {
-  "version": "2.2.1.2",
-  "name": "AstroTargetSelector 2.2.1.2",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2212.msi",
+  "version": "2.2.1.3",
+  "name": "AstroTargetSelector 2.2.1.3",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2213.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
     {
+      "version": "2.2.1.3",
+      "notes": "Nouveautés :\n- Nouvelle version disponible : les notes de version s’affichent désormais en anglais lorsque l’application est en anglais.\n- À propos et Nouvelle version disponible : le bouton OK devient Fermer.",
+      "notes_en": "What's new:\n- New version available: release notes are now displayed in English when the application is in English.\n- About and New version available: the OK button is now Close."
+    },
+    {
       "version": "2.2.1.2",
-      "notes": "Corrections :\n- Nouvelle version disponible : la fenêtre utilise désormais la même image que la fenêtre À propos."
+      "notes": "Corrections :\n- Nouvelle version disponible : la fenêtre utilise désormais la même image que la fenêtre À propos.",
+      "notes_en": "Fixes:\n- New version available: the window now uses the same image as the About window."
     },
     {
       "version": "2.2.1.1",
-      "notes": "Nouveautés :\n- Nouvelle version disponible : nouvelle présentation de la fenêtre, avec un historique des versions plus lisible et un bouton de téléchargement."
+      "notes": "Nouveautés :\n- Nouvelle version disponible : nouvelle présentation de la fenêtre, avec un historique des versions plus lisible et un bouton de téléchargement.",
+      "notes_en": "What's new:\n- New version available: redesigned window, with a more readable version history and a download button."
     },
     {
       "version": "2.2.1.0",
-      "notes": "Nouveautés :\n- À propos : nouvelle présentation de la fenêtre, avec un lien plus visible vers la page GitHub d’AstroTargetSelector."
+      "notes": "Nouveautés :\n- À propos : nouvelle présentation de la fenêtre, avec un lien plus visible vers la page GitHub d’AstroTargetSelector.",
+      "notes_en": "What's new:\n- About: redesigned window, with a more visible link to the AstroTargetSelector GitHub page."
     },
     {
       "version": "2.2.0.1",
-      "notes": "Nouveautés :\n- Catalogue enrichi : 2 079 objets célestes au lieu de 244, avec l’ajout des objets NGC (magnitude ≤ 12) et IC (magnitude ≤ 12, ainsi que les nébuleuses dont la magnitude n’est pas connue).\n- Magnitude inconnue : la magnitude est laissée vide ; ces objets restent affichés lors d’un filtre par magnitude et sont classés en fin de liste lors d’un tri.\n\nCorrections :\n- Coordonnées de NGC 281, NGC 884 et NGC 4725 corrigées.\n- Traduction anglaise : toutes les constellations sont désormais traduites."
+      "notes": "Nouveautés :\n- Catalogue enrichi : 2 079 objets célestes au lieu de 244, avec l’ajout des objets NGC (magnitude ≤ 12) et IC (magnitude ≤ 12, ainsi que les nébuleuses dont la magnitude n’est pas connue).\n- Magnitude inconnue : la magnitude est laissée vide ; ces objets restent affichés lors d’un filtre par magnitude et sont classés en fin de liste lors d’un tri.\n\nCorrections :\n- Coordonnées de NGC 281, NGC 884 et NGC 4725 corrigées.\n- Traduction anglaise : toutes les constellations sont désormais traduites.",
+      "notes_en": "What's new:\n- Extended catalog: 2,079 celestial objects instead of 244, with the addition of NGC objects (magnitude ≤ 12) and IC objects (magnitude ≤ 12, plus nebulae whose magnitude is unknown).\n- Unknown magnitude: the magnitude is left empty; these objects remain displayed when filtering by magnitude and are listed last when sorting.\n\nFixes:\n- Coordinates of NGC 281, NGC 884 and NGC 4725 corrected.\n- English translation: all constellations are now translated."
     },
     {
       "version": "2.1.1.0",
-      "notes": "Performances :\n- Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide)."
+      "notes": "Performances :\n- Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide).",
+      "notes_en": "Performance:\n- Information panel: the chart is displayed about 2 times faster when moving from one celestial object to the next (smoother keyboard scrolling)."
     },
     {
       "version": "2.1.0.1",
-      "notes": "Performances :\n- Liste des objets célestes : chargement et actualisation environ 4 fois plus rapides, en prévision d’un catalogue plus étendu."
+      "notes": "Performances :\n- Liste des objets célestes : chargement et actualisation environ 4 fois plus rapides, en prévision d’un catalogue plus étendu.",
+      "notes_en": "Performance:\n- Celestial object list: loading and refreshing about 4 times faster, in preparation for a larger catalog."
     },
     {
       "version": "2.0.1.8",
-      "notes": "Corrections :\n- Traduction anglaise : les types d’objets célestes et les constellations sont désormais traduits (liste, filtre par type, recherche)."
+      "notes": "Corrections :\n- Traduction anglaise : les types d’objets célestes et les constellations sont désormais traduits (liste, filtre par type, recherche).",
+      "notes_en": "Fixes:\n- English translation: celestial object types and constellations are now translated (list, type filter, search)."
     },
     {
       "version": "2.0.1.7",
-      "notes": "Nouveautés :\n- Langue : l’application s’affiche en français sur un Windows francophone, et en anglais pour toutes les autres langues.\n- Options : choix de la langue de l’interface (Automatique / Français / English).\n\nCorrections :\n- Traduction anglaise complétée : Mosaic Calculator, Options et pilotage du télescope ASCOM."
+      "notes": "Nouveautés :\n- Langue : l’application s’affiche en français sur un Windows francophone, et en anglais pour toutes les autres langues.\n- Options : choix de la langue de l’interface (Automatique / Français / English).\n\nCorrections :\n- Traduction anglaise complétée : Mosaic Calculator, Options et pilotage du télescope ASCOM.",
+      "notes_en": "What's new:\n- Language: the application is displayed in French on a French-language Windows, and in English for all other languages.\n- Options: choice of the interface language (Automatic / Français / English).\n\nFixes:\n- English translation completed: Mosaic Calculator, Options and ASCOM telescope control."
     },
     {
       "version": "2.0.1.6",
-      "notes": "Nouveautés :\n- À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).\n\nCorrections :\n- Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit."
+      "notes": "Nouveautés :\n- À propos : lien vers la page GitHub d’AstroTargetSelector (installeurs Windows et Android, nouveautés).\n\nCorrections :\n- Mode nuit : le lien de téléchargement de la fenêtre de nouvelle version suit désormais les couleurs du mode nuit.",
+      "notes_en": "What's new:\n- About: link to the AstroTargetSelector GitHub page (Windows and Android installers, what's new).\n\nFixes:\n- Night mode: the download link of the new version window now follows the night mode colors."
     },
     {
       "version": "2.0.1.5",
-      "notes": "Corrections :\n- Graphe détail : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille."
+      "notes": "Corrections :\n- Graphe détail : entre minuit et 2h du matin, les heures de lever et de coucher du Soleil et de la Lune étaient celles de la veille.",
+      "notes_en": "Fixes:\n- Detail chart: between midnight and 2 am, the Sun and Moon rise and set times were those of the previous day."
     },
     {
       "version": "2.0.1.4",
-      "notes": "Corrections :\n- Lune : les jours où la Lune ne se lève pas (ou ne se couche pas), les informations de la Lune sont de nouveau affichées, l’heure manquante étant remplacée par « — »."
+      "notes": "Corrections :\n- Lune : les jours où la Lune ne se lève pas (ou ne se couche pas), les informations de la Lune sont de nouveau affichées, l’heure manquante étant remplacée par « — ».",
+      "notes_en": "Fixes:\n- Moon: on days when the Moon does not rise (or does not set), the Moon information is displayed again, the missing time being replaced by a dash (—)."
     },
     {
       "version": "2.0.1.3",
-      "notes": "Maintenance :\n- Vérification des mises à jour et téléchargement des fichiers de configuration (objets célestes, capteurs) désormais effectués depuis GitHub."
+      "notes": "Maintenance :\n- Vérification des mises à jour et téléchargement des fichiers de configuration (objets célestes, capteurs) désormais effectués depuis GitHub.",
+      "notes_en": "Maintenance:\n- Update check and configuration file downloads (celestial objects, sensors) are now done from GitHub."
     },
     {
       "version": "2.0.1.2",
-      "notes": "Nouveautés :\n- Nouvelle icône de l’application, commune avec la version mobile.\n- AstroTargetSelector est désormais disponible sur Android : rendez-vous sur la page GitHub d’AstroTargetSelector pour l’installer sur votre téléphone.\n- Hauteur minimum par défaut fixée à 20° (nouvelles installations).\n\nCorrections :\n- Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil."
+      "notes": "Nouveautés :\n- Nouvelle icône de l’application, commune avec la version mobile.\n- AstroTargetSelector est désormais disponible sur Android : rendez-vous sur la page GitHub d’AstroTargetSelector pour l’installer sur votre téléphone.\n- Hauteur minimum par défaut fixée à 20° (nouvelles installations).\n\nCorrections :\n- Traduction anglaise : noms des phases de la Lune et libellés Lune / Soleil.",
+      "notes_en": "What's new:\n- New application icon, shared with the mobile version.\n- AstroTargetSelector is now available on Android: visit the AstroTargetSelector GitHub page to install it on your phone.\n- Default minimum height set to 20° (new installations).\n\nFixes:\n- English translation: Moon phase names and Moon / Sun labels."
     },
     {
       "version": "2.0.1.1",
-      "notes": "Maintenance :\n- Mise à jour des librairies techniques.\n- Amélioration des traces de la vérification des mises à jour."
+      "notes": "Maintenance :\n- Mise à jour des librairies techniques.\n- Amélioration des traces de la vérification des mises à jour.",
+      "notes_en": "Maintenance:\n- Technical libraries updated.\n- Improved logging of the update check."
     },
     {
       "version": "2.0.1.0",
-      "notes": "Nouvelle architecture :\n- Refonte technique de l’application, en préparation d’une future version mobile (Android).\n\nParamètres :\n- Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.\n\nCorrections :\n- Vérification des mises à jour : la disponibilité d’une nouvelle version est de nouveau correctement détectée.\n- Barre des tâches : l’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.\n- Traduction anglaise complétée."
+      "notes": "Nouvelle architecture :\n- Refonte technique de l’application, en préparation d’une future version mobile (Android).\n\nParamètres :\n- Vos paramètres (lieu d’observation, capteur, couleurs, options…) sont désormais conservés lors des mises à jour.\n\nCorrections :\n- Vérification des mises à jour : la disponibilité d’une nouvelle version est de nouveau correctement détectée.\n- Barre des tâches : l’icône d’AstroTargetSelector s’affiche correctement lorsque l’application démarre en plein écran.\n- Traduction anglaise complétée.",
+      "notes_en": "New architecture:\n- Technical overhaul of the application, in preparation for a future mobile version (Android).\n\nSettings:\n- Your settings (observation site, sensor, colors, options…) are now kept during updates.\n\nFixes:\n- Update check: the availability of a new version is correctly detected again.\n- Taskbar: the AstroTargetSelector icon is displayed correctly when the application starts in full screen.\n- English translation completed."
     },
     {
       "version": "1.8.0.1",
-      "notes": "Mise à jour des Credentials FTP."
+      "notes": "Mise à jour des Credentials FTP.",
+      "notes_en": "FTP credentials update."
     },
     {
       "version": "1.7.0.2",
-      "notes": "Mosaic Calculator\n- Pilotage du télescope ASCOM et envoi des coordonnées des panneaux au télescope.\n- Possibilitté d’afficher la mosaïque complète dans Stellarium et Cartes du Ciel."
+      "notes": "Mosaic Calculator\n- Pilotage du télescope ASCOM et envoi des coordonnées des panneaux au télescope.\n- Possibilitté d’afficher la mosaïque complète dans Stellarium et Cartes du Ciel.",
+      "notes_en": "Mosaic Calculator\n- ASCOM telescope control and sending of the panel coordinates to the telescope.\n- Ability to display the whole mosaic in Stellarium and Cartes du Ciel."
     },
     {
       "version": "1.6.4.1",
-      "notes": "Mosaic Calculator\nPossibilité d’ajouter un panneau central supplémentaire pour les mosaïques à 4 panneaux."
+      "notes": "Mosaic Calculator\nPossibilité d’ajouter un panneau central supplémentaire pour les mosaïques à 4 panneaux.",
+      "notes_en": "Mosaic Calculator\nAbility to add an extra central panel for 4-panel mosaics."
     },
     {
       "version": "1.6.3.2",
-      "notes": "Mosaic Calculator\nPossibilité de modifier le centre et la taille de la mosaïque afin de pouvoir la personnaliser."
+      "notes": "Mosaic Calculator\nPossibilité de modifier le centre et la taille de la mosaïque afin de pouvoir la personnaliser.",
+      "notes_en": "Mosaic Calculator\nAbility to edit the center and size of the mosaic in order to customize it."
     },
     {
       "version": "1.6.1.2",
-      "notes": "Mosaic Calculator\nCorrection de la valeur du ra dans les liens Unistellar."
+      "notes": "Mosaic Calculator\nCorrection de la valeur du ra dans les liens Unistellar.",
+      "notes_en": "Mosaic Calculator\nFixed the RA value in Unistellar links."
     },
     {
       "version": "1.6.1.1",
-      "notes": "Nouvelle fonctionnalité : Le Mosaic Calculator\nDépassez votre champ de vision grâce au calculateur de mosaïque."
+      "notes": "Nouvelle fonctionnalité : Le Mosaic Calculator\nDépassez votre champ de vision grâce au calculateur de mosaïque.",
+      "notes_en": "New feature: the Mosaic Calculator\nGo beyond your field of view with the mosaic calculator."
     },
     {
       "version": "1.5.4.2",
-      "notes": "Le Soleil à rendez-vous avec la Lune :\nAffichage du Soleil pour les modes Horaire et Nuit, et dans l’info-bulle pour le mode Mensuel."
+      "notes": "Le Soleil à rendez-vous avec la Lune :\nAffichage du Soleil pour les modes Horaire et Nuit, et dans l’info-bulle pour le mode Mensuel.",
+      "notes_en": "The Sun meets the Moon:\nSun displayed in Hourly and Nights modes, and in the tooltip in Monthly mode."
     },
     {
       "version": "1.5.3.1",
-      "notes": "Icone la Lune :\nCorrection des icones FirstQuarter et LastQuarter.\n\nInfos bulle :\nAjout de l’information Azimut de la Lune.\n\nOptions :\nNouvelle boîte de dialogue Options."
+      "notes": "Icone la Lune :\nCorrection des icones FirstQuarter et LastQuarter.\n\nInfos bulle :\nAjout de l’information Azimut de la Lune.\n\nOptions :\nNouvelle boîte de dialogue Options.",
+      "notes_en": "Moon icon:\nFixed the FirstQuarter and LastQuarter icons.\n\nTooltip:\nMoon azimuth added.\n\nOptions:\nNew Options dialog."
     },
     {
       "version": "1.5.2.1",
-      "notes": "Bienvenue à la Lune :\nAffichage de la lune pour les modes Horaire, Nuit et Mensuel."
+      "notes": "Bienvenue à la Lune :\nAffichage de la lune pour les modes Horaire, Nuit et Mensuel.",
+      "notes_en": "Welcome to the Moon:\nMoon displayed in Hourly, Nights and Monthly modes."
     },
     {
       "version": "1.4.0.2",
-      "notes": "Mode nuit custom colors :\nPersonnalisation des couleurs d’affichage du mode nuit."
+      "notes": "Mode nuit custom colors :\nPersonnalisation des couleurs d’affichage du mode nuit.",
+      "notes_en": "Night mode custom colors:\nCustomization of the night mode display colors."
     },
     {
       "version": "1.4.0.1",
-      "notes": "TCP Server :\nAjout des dénominations de l’objet lors de l’envoi de la commande.\n\nOuverture dans Stellarium :\nMise en avant plan de Stellarium lors de l’affichage d’un objet.\n\nOuverture dans Carte du Ciel :\nMise en avant plan de Carte du Ciel lors de l’affichage d’un objet."
+      "notes": "TCP Server :\nAjout des dénominations de l’objet lors de l’envoi de la commande.\n\nOuverture dans Stellarium :\nMise en avant plan de Stellarium lors de l’affichage d’un objet.\n\nOuverture dans Carte du Ciel :\nMise en avant plan de Carte du Ciel lors de l’affichage d’un objet.",
+      "notes_en": "TCP Server:\nObject names added when sending the command.\n\nOpen in Stellarium:\nStellarium brought to the foreground when displaying an object.\n\nOpen in Cartes du Ciel:\nCartes du Ciel brought to the foreground when displaying an object."
     },
     {
       "version": "1.3.0.1",
-      "notes": "TCP Server :\nAstroTargetSelector a désormais la possibilité de recevoir des commandes depuis d’autre logiciels."
+      "notes": "TCP Server :\nAstroTargetSelector a désormais la possibilité de recevoir des commandes depuis d’autre logiciels.",
+      "notes_en": "TCP Server:\nAstroTargetSelector can now receive commands from other software."
     }
   ]
 }
