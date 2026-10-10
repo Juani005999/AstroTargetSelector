@@ -87,7 +87,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2211.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2211.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2212.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2212.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -96,7 +96,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2211.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2212.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -526,6 +526,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 10/10/2026 | 2.2.1.2 | <ul><li>Fixes: New version available: the window now uses the same image as the About window.</li></ul> |
 | 10/10/2026 | 2.2.1.1 | <ul><li>New: New version available: redesigned window, with a more readable version history and a download button.</li></ul> |
 | 10/10/2026 | 2.2.1.0 | <ul><li>New: About: redesigned window, with a more visible link to the AstroTargetSelector GitHub page.</li></ul> |
 | 09/10/2026 | 2.2.0.1 | <ul><li>New: Extended catalog: 2,079 celestial objects instead of 244, with the addition of NGC objects (magnitude ≤ 12) and IC objects (magnitude ≤ 12, plus nebulae whose magnitude is unknown).</li><li>New: Unknown magnitude: the magnitude is left empty; these objects remain displayed when filtering by magnitude and are listed last when sorting.</li><li>Fixes: Coordinates of NGC 281, NGC 884 and NGC 4725 corrected.</li><li>Fixes: English translation: all constellations are now translated.</li></ul> |

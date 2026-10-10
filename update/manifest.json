@@ -1,12 +1,16 @@
 {
-  "version": "2.2.1.1",
-  "name": "AstroTargetSelector 2.2.1.1",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2211.msi",
+  "version": "2.2.1.2",
+  "name": "AstroTargetSelector 2.2.1.2",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2212.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.2.1.2",
+      "notes": "Corrections :\n- Nouvelle version disponible : la fenêtre utilise désormais la même image que la fenêtre À propos."
+    },
     {
       "version": "2.2.1.1",
       "notes": "Nouveautés :\n- Nouvelle version disponible : nouvelle présentation de la fenêtre, avec un historique des versions plus lisible et un bouton de téléchargement."
