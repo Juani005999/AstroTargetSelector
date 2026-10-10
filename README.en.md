@@ -47,6 +47,7 @@ The **Android version** works **offline** (handy for smart telescope owners).
         - [Night mode](#night-mode)
         - [Status bar](#status-bar)
         - [About dialog](#about-dialog)
+        - [New version available dialog](#new-version-available-dialog)
     - [Mobile application](#mobile-application)
         - [Targets tab](#targets-tab)
         - [List filters](#list-filters)
@@ -86,7 +87,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2210.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2210.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2211.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2211.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -95,7 +96,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2210.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2211.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -400,6 +401,17 @@ The **Open logs file** button opens the application's log file.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
 
+#### New version available dialog
+![New version available dialog](images/PC_Dlg_NouvelleVersion.png)
+
+At startup, ***ATS*** checks whether a new version is available. If so, this dialog opens:
+- The **New version** / **Installed version** line compares the published version with the one installed on your PC.
+- The list shows what's new and the fixes of all published versions; the version installed on your PC is marked *installed version*.
+- The **Download version …** button opens the installer download link in your browser, then closes ***ATS*** so as not to disturb the installation. Then run the downloaded installer: no need to uninstall the current version, and your settings are kept.
+- The **OK** button closes the dialog without updating: ***ATS*** will offer the update again at the next startup.
+
+<p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
+
 ### Mobile application
 The mobile application is organized in three tabs: **Targets**, **Settings** and **About**.\
 It is available in French and English, depending on the language of your phone.
@@ -514,6 +526,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 10/10/2026 | 2.2.1.1 | <ul><li>New: New version available: redesigned window, with a more readable version history and a download button.</li></ul> |
 | 10/10/2026 | 2.2.1.0 | <ul><li>New: About: redesigned window, with a more visible link to the AstroTargetSelector GitHub page.</li></ul> |
 | 09/10/2026 | 2.2.0.1 | <ul><li>New: Extended catalog: 2,079 celestial objects instead of 244, with the addition of NGC objects (magnitude ≤ 12) and IC objects (magnitude ≤ 12, plus nebulae whose magnitude is unknown).</li><li>New: Unknown magnitude: the magnitude is left empty; these objects remain displayed when filtering by magnitude and are listed last when sorting.</li><li>Fixes: Coordinates of NGC 281, NGC 884 and NGC 4725 corrected.</li><li>Fixes: English translation: all constellations are now translated.</li></ul> |
 | 09/10/2026 | 2.1.1.0 | <ul><li>Performance: Information panel: the chart is displayed about 2 times faster when moving from one celestial object to the next (smoother keyboard scrolling).</li></ul> |

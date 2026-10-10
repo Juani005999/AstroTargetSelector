@@ -44,6 +44,7 @@ La **version Android** fonctionne en mode **hors connexion** (ce qui est pratiqu
         - [Mode nuit](#mode-nuit)
         - [Barre de statut](#barre-de-statut)
         - [Boîte de dialogue A propos](#boîte-de-dialogue-a-propos)
+        - [Boîte de dialogue Nouvelle version disponible](#boîte-de-dialogue-nouvelle-version-disponible)
     - [Application Mobile](#application-mobile)
         - [Onglet Cibles](#onglet-cibles)
         - [Filtres de la liste](#filtres-de-la-liste)
@@ -83,7 +84,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2210.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2210.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2211.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2211.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -92,7 +93,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2210.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2211.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -397,6 +398,17 @@ Le bouton **Ouvrir le fichier des logs** permet d'ouvrir le fichier des logs de 
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
+#### Boîte de dialogue Nouvelle version disponible
+![Boîte de dialogue Nouvelle version disponible](images/PC_Dlg_NouvelleVersion.png)
+
+Au démarrage, ***ATS*** vérifie si une nouvelle version est disponible. Si c'est le cas, cette boîte de dialogue s'ouvre :
+- La ligne **Nouvelle version** / **Version installée** compare la version publiée à celle installée sur votre PC.
+- La liste présente les nouveautés et les corrections de toutes les versions publiées ; la version installée sur votre PC est repérée par la mention *version installée*.
+- Le bouton **Télécharger la version …** ouvre le lien de téléchargement de l'installeur dans votre navigateur, puis ferme ***ATS*** afin de ne pas perturber l'installation. Lancez ensuite l'installeur téléchargé : pas besoin de désinstaller la version actuelle, et vos paramètres sont conservés.
+- Le bouton **OK** ferme la boîte de dialogue sans mettre à jour : ***ATS*** vous proposera de nouveau la mise à jour au prochain démarrage.
+
+<p align="right"><a href="#sommaire">Retour au sommaire</a></p>
+
 ### Application Mobile
 L'application mobile est organisée en trois onglets : **Cibles**, **Paramètres** et **A propos**.\
 Elle est disponible en français et en anglais, selon la langue de votre téléphone.
@@ -511,6 +523,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 10/10/2026 | 2.2.1.1 | <ul><li>Nouveautés : Nouvelle version disponible : nouvelle présentation de la fenêtre, avec un historique des versions plus lisible et un bouton de téléchargement.</li></ul> |
 | 10/10/2026 | 2.2.1.0 | <ul><li>Nouveautés : À propos : nouvelle présentation de la fenêtre, avec un lien plus visible vers la page GitHub d’AstroTargetSelector.</li></ul> |
 | 09/10/2026 | 2.2.0.1 | <ul><li>Nouveautés : Catalogue enrichi : 2 079 objets célestes au lieu de 244, avec l’ajout des objets NGC (magnitude ≤ 12) et IC (magnitude ≤ 12, ainsi que les nébuleuses dont la magnitude n’est pas connue).</li><li>Nouveautés : Magnitude inconnue : la magnitude est laissée vide ; ces objets restent affichés lors d’un filtre par magnitude et sont classés en fin de liste lors d’un tri.</li><li>Corrections : Coordonnées de NGC 281, NGC 884 et NGC 4725 corrigées.</li><li>Corrections : Traduction anglaise : toutes les constellations sont désormais traduites.</li></ul> |
 | 09/10/2026 | 2.1.1.0 | <ul><li>Performances : Panneau d’information : affichage du graphique environ 2 fois plus rapide lors du passage d’un objet céleste à l’autre (défilement au clavier plus fluide).</li></ul> |
