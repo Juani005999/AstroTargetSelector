@@ -111,7 +111,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2111.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2111.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2121.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2121.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -523,6 +523,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Corrections : Détails d’une cible : l’icône de la Lune n’apparaît plus pixélisée ; elle est désormais dessinée selon la phase exacte, et sa taille est réduite.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Corrections : Liste des cibles : une seule icône de chargement s’affiche désormais lorsque l’on tire la liste vers le bas pour la recalculer.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>Nouveautés : Catalogue enrichi : 2 080 objets célestes au lieu de 244, comme dans la version Windows, avec l’ajout des objets NGC et IC.</li><li>Nouveautés : Magnitude inconnue : affichée « Mag - » ; ces objets restent affichés lors d’un filtre par magnitude.</li></ul> |
 | 10/10/2026 | 2.2.1.3 | <ul><li>Nouveautés : Nouvelle version disponible : les notes de version s’affichent désormais en anglais lorsque l’application est en anglais.</li><li>Nouveautés : À propos et Nouvelle version disponible : le bouton OK devient Fermer.</li></ul> |

@@ -114,7 +114,7 @@ To install ATS, follow the steps of the wizard.
 Requirements: Android 7.0 or later, on a 64-bit phone.
 
 To install ***AstroTargetSelector*** on your phone:
-1. From your phone, download the file **[AstroTargetSelector_Android_2111.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2111.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2121.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2121.apk)**.
 2. Open the downloaded file. As the application is not distributed through the Play Store, Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -526,6 +526,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Fixes: Target details: the Moon icon no longer looks pixelated; it is now drawn according to the exact phase, and its size is reduced.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Fixes: Target list: only one loading icon is now shown when you pull the list down to recalculate it.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>New: Extended catalog: 2,080 celestial objects instead of 244, as in the Windows version, with the addition of NGC and IC objects.</li><li>New: Unknown magnitude: shown as "Mag -"; these objects remain displayed when filtering by magnitude.</li></ul> |
 | 10/10/2026 | 2.2.1.3 | <ul><li>New: New version available: release notes are now displayed in English when the application is in English.</li><li>New: About and New version available: the OK button is now Close.</li></ul> |
