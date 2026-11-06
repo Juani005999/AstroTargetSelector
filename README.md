@@ -547,8 +547,8 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
-| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>Nouveautés : Liste des cibles : bouton « Tri » pour classer la liste par score, nom, magnitude, hauteur, azimut, constellation ou type, dans les deux sens ; le tri choisi est conservé d’un lancement à l’autre.</li><li>Merci à Raphael de Labarthe.</li><li>Merci à Lucien Nicolai.</li></ul> |
-| 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Corrections : Détails d’une cible : l’icône de la Lune n’apparaît plus pixélisée ; elle est désormais dessinée selon la phase exacte, et sa taille est réduite.</li><li>Merci à Raphael de Labarthe.</li></ul> |
+| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>Nouveautés : Liste des cibles : bouton « Tri » pour classer la liste par score, nom, magnitude, hauteur, azimut, constellation ou type, dans les deux sens ; le tri choisi est conservé d’un lancement à l’autre.</li><li>Merci à Raphaël de Labarthe.</li><li>Merci à Lucien Nicolai.</li></ul> |
+| 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Corrections : Détails d’une cible : l’icône de la Lune n’apparaît plus pixélisée ; elle est désormais dessinée selon la phase exacte, et sa taille est réduite.</li><li>Merci à Raphaël de Labarthe.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Corrections : Liste des cibles : une seule icône de chargement s’affiche désormais lorsque l’on tire la liste vers le bas pour la recalculer.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>Nouveautés : Catalogue enrichi : 2 080 objets célestes au lieu de 244, comme dans la version Windows, avec l’ajout des objets NGC et IC.</li><li>Nouveautés : Magnitude inconnue : affichée « Mag - » ; ces objets restent affichés lors d’un filtre par magnitude.</li></ul> |
 | 10/10/2026 | 2.2.1.3 | <ul><li>Nouveautés : Nouvelle version disponible : les notes de version s’affichent désormais en anglais lorsque l’application est en anglais.</li><li>Nouveautés : À propos et Nouvelle version disponible : le bouton OK devient Fermer.</li></ul> |
