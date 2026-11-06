@@ -51,6 +51,7 @@ The **Android version** works **offline** (handy for smart telescope owners).
     - [Mobile application](#mobile-application)
         - [Targets tab](#targets-tab)
         - [List filters](#list-filters)
+        - [List sorting](#list-sorting)
         - [Target details](#target-details)
         - [Settings tab](#settings-tab)
         - [Night mode on mobile](#night-mode-on-mobile)
@@ -114,7 +115,7 @@ To install ATS, follow the steps of the wizard.
 Requirements: Android 7.0 or later, on a 64-bit phone.
 
 To install ***AstroTargetSelector*** on your phone:
-1. From your phone, download the file **[AstroTargetSelector_Android_2121.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2121.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2131.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2131.apk)**.
 2. Open the downloaded file. As the application is not distributed through the Play Store, Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -421,14 +422,15 @@ It is available in French and English, depending on the language of your phone.
 #### Targets tab
 <img src="images/Mobile_Liste.png" alt="Target list" width="300">
 
-The ***Targets*** tab shows the list of observable targets, sorted from best to worst.
+The ***Targets*** tab shows the list of observable targets, sorted by default from best to worst.
 
 At the top of the screen:
 - the **date** and **time** of the observation, which you can change by tapping them,
 - the **Now** button, which sets the current date and time,
 - the **Filters** button, which shows or hides the [list filters](#list-filters),
+- the **Sort** button, which lets you choose the [list sorting](#list-sorting),
 - the **Night** / **Day** button, which turns [night mode](#night-mode-on-mobile) on or off,
-- the observation site and the number of observable targets, with the calculation period (for example *from 22:00 to 00:00*).
+- the observation site, the active sort and the number of observable targets, with the calculation period (for example *from 22:00 to 00:00*).
 
 For each target, the list shows:
 - its name and rank (from 1 to 5 stars), and a color bar matching the rank,
@@ -457,6 +459,28 @@ Filters let you narrow down the list of targets displayed:
 - maximum **magnitude**.
 
 The **Clear** button resets all the filters.
+
+<p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
+
+#### List sorting
+<img src="images/Mobile_Tri.png" alt="List sorting" width="300">
+
+The **Sort** button opens the ***Sort by*** window, which lets you choose the display order of the list:
+- **Score**: from the best to the worst target (default sort),
+- **Name**: catalog numbers are ordered numerically (M 2 before M 10),
+- **Magnitude**: from the brightest to the faintest target,
+- **Height**: from the highest to the lowest target in the sky,
+- **Azimuth**: from 0° to 360°,
+- **Constellation** and **Type**: in alphabetical order.
+
+The **Reverse order** button reverses the direction of the current sort.\
+The active sort is shown to the right of the observation site, for example *Sort: Score ↓* (↓ for descending order, ↑ for ascending order).
+
+> [!NOTE]
+> Targets with an unknown magnitude always stay at the end of the list, whatever the sort direction.
+
+> [!TIP]
+> The chosen sort is kept the next time you launch the application. The filters' **Clear** button does not change it.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
 
@@ -526,6 +550,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>New: Target list: “Sort” button to order the list by score, name, magnitude, height, azimuth, constellation or type, in either direction; the chosen sort is kept between launches.</li></ul> |
 | 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Fixes: Target details: the Moon icon no longer looks pixelated; it is now drawn according to the exact phase, and its size is reduced.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Fixes: Target list: only one loading icon is now shown when you pull the list down to recalculate it.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>New: Extended catalog: 2,080 celestial objects instead of 244, as in the Windows version, with the addition of NGC and IC objects.</li><li>New: Unknown magnitude: shown as "Mag -"; these objects remain displayed when filtering by magnitude.</li></ul> |

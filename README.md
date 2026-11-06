@@ -48,6 +48,7 @@ La **version Android** fonctionne en mode **hors connexion** (ce qui est pratiqu
     - [Application Mobile](#application-mobile)
         - [Onglet Cibles](#onglet-cibles)
         - [Filtres de la liste](#filtres-de-la-liste)
+        - [Tri de la liste](#tri-de-la-liste)
         - [Détail d'une cible](#détail-dune-cible)
         - [Onglet Paramètres](#onglet-paramètres)
         - [Mode nuit sur mobile](#mode-nuit-sur-mobile)
@@ -111,7 +112,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2121.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2121.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2131.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2131.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -418,14 +419,15 @@ Elle est disponible en français et en anglais, selon la langue de votre télép
 #### Onglet Cibles
 <img src="images/Mobile_Liste.png" alt="Liste des cibles" width="300">
 
-L'onglet ***Cibles*** affiche la liste des cibles observables, triées de la meilleure à la moins bonne.
+L'onglet ***Cibles*** affiche la liste des cibles observables, triées par défaut de la meilleure à la moins bonne.
 
 En haut de l'écran :
 - la **date** et l'**heure** de l'observation, modifiables en les touchant,
 - le bouton **Maintenant**, qui positionne la date et l'heure actuelles,
 - le bouton **Filtres**, qui affiche ou masque les [filtres de la liste](#filtres-de-la-liste),
+- le bouton **Tri**, qui permet de choisir le [tri de la liste](#tri-de-la-liste),
 - le bouton **Nuit** / **Jour**, qui active ou désactive le [mode nuit](#mode-nuit-sur-mobile),
-- le lieu d'observation et le nombre de cibles observables, avec la période de calcul (par exemple *de 22:00 à 00:00*).
+- le lieu d'observation, le tri actif et le nombre de cibles observables, avec la période de calcul (par exemple *de 22:00 à 00:00*).
 
 Pour chaque cible, la liste affiche :
 - son nom et son rang (de 1 à 5 étoiles), ainsi qu'une barre de couleur correspondant au rang,
@@ -454,6 +456,28 @@ Les filtres permettent de restreindre la liste des cibles affichées :
 - **magnitude** maximum.
 
 Le bouton **Effacer** réinitialise tous les filtres.
+
+<p align="right"><a href="#sommaire">Retour au sommaire</a></p>
+
+#### Tri de la liste
+<img src="images/Mobile_Tri.png" alt="Tri de la liste" width="300">
+
+Le bouton **Tri** ouvre la fenêtre ***Trier par***, qui permet de choisir l'ordre d'affichage de la liste :
+- **Score** : de la meilleure à la moins bonne cible (tri par défaut),
+- **Nom** : les numéros de catalogue sont classés dans l'ordre numérique (M 2 avant M 10),
+- **Magnitude** : de la cible la plus brillante à la moins brillante,
+- **Hauteur** : de la cible la plus haute à la plus basse dans le ciel,
+- **Azimut** : de 0° à 360°,
+- **Constellation** et **Type** : par ordre alphabétique.
+
+Le bouton **Inverser l'ordre** inverse le sens du tri en cours.\
+Le tri actif est rappelé à droite du lieu d'observation, par exemple *Tri : Score ↓* (↓ pour un ordre décroissant, ↑ pour un ordre croissant).
+
+> [!NOTE]
+> Les cibles dont la magnitude est inconnue restent toujours en fin de liste, quel que soit le sens du tri.
+
+> [!TIP]
+> Le tri choisi est conservé au prochain lancement de l'application. Le bouton **Effacer** des filtres ne le modifie pas.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
@@ -523,6 +547,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>Nouveautés : Liste des cibles : bouton « Tri » pour classer la liste par score, nom, magnitude, hauteur, azimut, constellation ou type, dans les deux sens ; le tri choisi est conservé d’un lancement à l’autre.</li></ul> |
 | 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Corrections : Détails d’une cible : l’icône de la Lune n’apparaît plus pixélisée ; elle est désormais dessinée selon la phase exacte, et sa taille est réduite.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Corrections : Liste des cibles : une seule icône de chargement s’affiche désormais lorsque l’on tire la liste vers le bas pour la recalculer.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>Nouveautés : Catalogue enrichi : 2 080 objets célestes au lieu de 244, comme dans la version Windows, avec l’ajout des objets NGC et IC.</li><li>Nouveautés : Magnitude inconnue : affichée « Mag - » ; ces objets restent affichés lors d’un filtre par magnitude.</li></ul> |
