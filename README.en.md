@@ -550,7 +550,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
-| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>New: Target list: “Sort” button to order the list by score, name, magnitude, height, azimuth, constellation or type, in either direction; the chosen sort is kept between launches.</li></ul> |
+| 06/11/2026 | 2.1.3.1 (Android) | <ul><li>New: Target list: “Sort” button to order the list by score, name, magnitude, height, azimuth, constellation or type, in either direction; the chosen sort is kept between launches.</li><li>Thanks to Raphael de Labarthe (issues #2 and #3).</li><li>Thanks to Lucien Nicolai (issue #3).</li></ul> |
 | 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Fixes: Target details: the Moon icon no longer looks pixelated; it is now drawn according to the exact phase, and its size is reduced.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Fixes: Target list: only one loading icon is now shown when you pull the list down to recalculate it.</li></ul> |
 | 17/10/2026 | 2.1.0.1 (Android) | <ul><li>New: Extended catalog: 2,080 celestial objects instead of 244, as in the Windows version, with the addition of NGC and IC objects.</li><li>New: Unknown magnitude: shown as "Mag -"; these objects remain displayed when filtering by magnitude.</li></ul> |
