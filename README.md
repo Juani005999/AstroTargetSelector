@@ -85,7 +85,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2214.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2214.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2221.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2221.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -94,7 +94,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2214.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2221.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -112,7 +112,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2151.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2151.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -230,7 +230,7 @@ Cette partie affiche le lieu de l'observation (latitude et longitude).
 
 La zone '***Filtrer les résultats***' permet de restreindre la liste des objets célestes affichés :
 - **Rechercher** : recherche dans le nom, la description et la constellation des objets (ex : *M 31*, *Andromède*, *Crabe*).
-- **Type** : type d'objet céleste (galaxie, nébuleuse planétaire, amas d'étoiles ouvert...).
+- **Type** : type d'objet céleste (galaxie, nébuleuse planétaire, amas d'étoiles ouvert...). Le clic sur le champ ouvre une liste à cocher : vous pouvez sélectionner un ou plusieurs types, le bouton **Tous** / **Aucun** coche ou décoche tous les types.
 - **Rank min.** : rang minimum des objets affichés (de 1 à 5).
 - **Magnitude max.** : magnitude maximum des objets affichés (les objets dont la magnitude n’est pas connue restent affichés).
 
@@ -451,7 +451,7 @@ Touchez une cible pour afficher son [détail](#détail-dune-cible).
 
 Les filtres permettent de restreindre la liste des cibles affichées :
 - **recherche** dans le nom, la description ou la constellation,
-- **type** de cible,
+- **type** de cible : un ou plusieurs types, à cocher dans la boîte de dialogue (le bouton **Tous** / **Aucun** coche ou décoche tous les types),
 - **rang** minimum,
 - **magnitude** maximum.
 
@@ -547,6 +547,8 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 07/11/2026 | 2.1.6.1 (Android) | <ul><li>Nouveautés : Filtre sur le type d’objet : vous pouvez désormais sélectionner plusieurs types, avec des cases à cocher et un bouton Tous / Aucun.</li><li>Nouveautés : Filtre sur le type d’objet : les types sont triés par ordre alphabétique.</li><li>Merci à Lucien Nicolai.</li></ul> |
+| 07/11/2026 | 2.2.2.1 | <ul><li>Nouveautés : Filtre sur le type d’objet : vous pouvez désormais sélectionner plusieurs types, avec des cases à cocher et un bouton Tous / Aucun.</li><li>Nouveautés : Filtre sur le type d’objet : les types sont triés par ordre alphabétique.</li><li>Merci à Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.1.5.1 (Android) | <ul><li>Nouveautés : Tri de la liste : la fenêtre « Trier par » adopte le même aspect que le filtre par type, avec le critère actif coché.</li></ul> |
 | 07/11/2026 | 2.1.4.1 (Android) | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li><li>Merci à Raphaël de Labarthe.</li></ul> |
 | 07/11/2026 | 2.2.1.4 | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li></ul> |

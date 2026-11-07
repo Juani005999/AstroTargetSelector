@@ -88,7 +88,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2214.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2214.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2221.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2221.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -97,7 +97,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2214.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2221.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -115,7 +115,7 @@ To install ATS, follow the steps of the wizard.
 Requirements: Android 7.0 or later, on a 64-bit phone.
 
 To install ***AstroTargetSelector*** on your phone:
-1. From your phone, download the file **[AstroTargetSelector_Android_2151.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2151.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
 2. Open the downloaded file. As the application is not distributed through the Play Store, Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -233,7 +233,7 @@ This part shows the observation site (latitude and longitude).
 
 The '***Filter results***' area lets you narrow down the list of celestial objects displayed:
 - **Search**: searches the name, description and constellation of objects (e.g. *M 31*, *Andromeda*, *Crab*).
-- **Type**: type of celestial object (galaxy, planetary nebula, open cluster...).
+- **Type**: type of celestial object (galaxy, planetary nebula, open cluster...). Clicking the field opens a list of checkboxes: you can select one or more types, and the **All** / **None** button checks or unchecks all of them.
 - **Rank min.**: minimum rank of the objects displayed (from 1 to 5).
 - **Magnitude max.**: maximum magnitude of the objects displayed (objects whose magnitude is unknown remain displayed).
 
@@ -454,7 +454,7 @@ Tap a target to show its [details](#target-details).
 
 Filters let you narrow down the list of targets displayed:
 - **search** in the name, description or constellation,
-- target **type**,
+- target **type**: one or more types, checked in the dialog (the **All** / **None** button checks or unchecks all of them),
 - minimum **rank**,
 - maximum **magnitude**.
 
@@ -550,6 +550,8 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 07/11/2026 | 2.1.6.1 (Android) | <ul><li>New: Object type filter: you can now select several types, with checkboxes and an All / None button.</li><li>New: Object type filter: types are sorted alphabetically.</li><li>Thanks to Lucien Nicolai.</li></ul> |
+| 07/11/2026 | 2.2.2.1 | <ul><li>New: Object type filter: you can now select several types, with checkboxes and an All / None button.</li><li>New: Object type filter: types are sorted alphabetically.</li><li>Thanks to Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.1.5.1 (Android) | <ul><li>New: List sorting: the “Sort by” window now looks like the type filter, with the active criterion checked.</li></ul> |
 | 07/11/2026 | 2.1.4.1 (Android) | <ul><li>New: Sensors: added the IMX415 sensor.</li><li>Thanks to Raphaël de Labarthe.</li></ul> |
 | 07/11/2026 | 2.2.1.4 | <ul><li>New: Sensors: added the IMX415 sensor.</li></ul> |

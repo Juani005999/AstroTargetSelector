@@ -1,12 +1,17 @@
 {
-  "version": "2.2.1.4",
-  "name": "AstroTargetSelector 2.2.1.4",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2214.msi",
+  "version": "2.2.2.1",
+  "name": "AstroTargetSelector 2.2.2.1",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2221.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.2.2.1",
+      "notes": "Nouveautés :\n- Filtre sur le type d’objet : vous pouvez désormais sélectionner plusieurs types, avec des cases à cocher et un bouton Tous / Aucun.\n- Filtre sur le type d’objet : les types sont triés par ordre alphabétique.",
+      "notes_en": "What's new:\n- Object type filter: you can now select several types, with checkboxes and an All / None button.\n- Object type filter: types are sorted alphabetically."
+    },
     {
       "version": "2.2.1.4",
       "notes": "Nouveautés :\n- Capteurs : ajout du capteur IMX415.",
