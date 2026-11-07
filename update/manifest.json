@@ -1,12 +1,17 @@
 {
-  "version": "2.2.1.3",
-  "name": "AstroTargetSelector 2.2.1.3",
-  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2213.msi",
+  "version": "2.2.1.4",
+  "name": "AstroTargetSelector 2.2.1.4",
+  "url": "https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2214.msi",
   "files": {
     "TargetListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/TargetListe.csv",
     "CapteurListe.csv": "https://raw.githubusercontent.com/Juani005999/AstroTargetSelector/main/update/CapteurListe.csv"
   },
   "history": [
+    {
+      "version": "2.2.1.4",
+      "notes": "Nouveautés :\n- Capteurs : ajout du capteur IMX415.",
+      "notes_en": "What's new:\n- Sensors: added the IMX415 sensor."
+    },
     {
       "version": "2.2.1.3",
       "notes": "Nouveautés :\n- Nouvelle version disponible : les notes de version s’affichent désormais en anglais lorsque l’application est en anglais.\n- À propos et Nouvelle version disponible : le bouton OK devient Fermer.",

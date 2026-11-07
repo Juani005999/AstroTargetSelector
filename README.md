@@ -85,7 +85,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2213.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2213.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2214.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2214.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -94,7 +94,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2213.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2214.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -112,7 +112,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2131.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2131.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2141.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2141.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -547,6 +547,8 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 07/11/2026 | 2.1.4.1 (Android) | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li><li>Merci à Raphaël de Labarthe.</li></ul> |
+| 07/11/2026 | 2.2.1.4 | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li></ul> |
 | 06/11/2026 | 2.1.3.1 (Android) | <ul><li>Nouveautés : Liste des cibles : bouton « Tri » pour classer la liste par score, nom, magnitude, hauteur, azimut, constellation ou type, dans les deux sens ; le tri choisi est conservé d’un lancement à l’autre.</li><li>Merci à Raphaël de Labarthe.</li><li>Merci à Lucien Nicolai.</li></ul> |
 | 05/11/2026 | 2.1.2.1 (Android) | <ul><li>Corrections : Détails d’une cible : l’icône de la Lune n’apparaît plus pixélisée ; elle est désormais dessinée selon la phase exacte, et sa taille est réduite.</li><li>Merci à Raphaël de Labarthe.</li></ul> |
 | 17/10/2026 | 2.1.1.1 (Android) | <ul><li>Corrections : Liste des cibles : une seule icône de chargement s’affiche désormais lorsque l’on tire la liste vers le bas pour la recalculer.</li></ul> |
