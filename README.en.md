@@ -115,7 +115,7 @@ To install ATS, follow the steps of the wizard.
 Requirements: Android 7.0 or later, on a 64-bit phone.
 
 To install ***AstroTargetSelector*** on your phone:
-1. From your phone, download the file **[AstroTargetSelector_Android_2141.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2141.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2151.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2151.apk)**.
 2. Open the downloaded file. As the application is not distributed through the Play Store, Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -550,6 +550,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 07/11/2026 | 2.1.5.1 (Android) | <ul><li>New: List sorting: the “Sort by” window now looks like the type filter, with the active criterion checked.</li></ul> |
 | 07/11/2026 | 2.1.4.1 (Android) | <ul><li>New: Sensors: added the IMX415 sensor.</li><li>Thanks to Raphaël de Labarthe.</li></ul> |
 | 07/11/2026 | 2.2.1.4 | <ul><li>New: Sensors: added the IMX415 sensor.</li></ul> |
 | 06/11/2026 | 2.1.3.1 (Android) | <ul><li>New: Target list: “Sort” button to order the list by score, name, magnitude, height, azimuth, constellation or type, in either direction; the chosen sort is kept between launches.</li><li>Thanks to Raphaël de Labarthe.</li><li>Thanks to Lucien Nicolai.</li></ul> |

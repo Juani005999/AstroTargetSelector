@@ -112,7 +112,7 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
 Pour installer ***AstroTargetSelector*** sur votre téléphone :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2141.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2141.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2151.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2151.apk)**.
 2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -547,6 +547,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 07/11/2026 | 2.1.5.1 (Android) | <ul><li>Nouveautés : Tri de la liste : la fenêtre « Trier par » adopte le même aspect que le filtre par type, avec le critère actif coché.</li></ul> |
 | 07/11/2026 | 2.1.4.1 (Android) | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li><li>Merci à Raphaël de Labarthe.</li></ul> |
 | 07/11/2026 | 2.2.1.4 | <ul><li>Nouveautés : Capteurs : ajout du capteur IMX415.</li></ul> |
 | 06/11/2026 | 2.1.3.1 (Android) | <ul><li>Nouveautés : Liste des cibles : bouton « Tri » pour classer la liste par score, nom, magnitude, hauteur, azimut, constellation ou type, dans les deux sens ; le tri choisi est conservé d’un lancement à l’autre.</li><li>Merci à Raphaël de Labarthe.</li><li>Merci à Lucien Nicolai.</li></ul> |
