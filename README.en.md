@@ -114,14 +114,23 @@ To install ATS, follow the steps of the wizard.
 
 Requirements: Android 7.0 or later, on a 64-bit phone.
 
-To install ***AstroTargetSelector*** on your phone:
+#### Google Play (recommended)
+
+Install ***AstroTargetSelector*** from the **[Google Play Store](https://play.google.com/store/apps/details?id=com.astrotools.astrotargetselector)**. Updates are then offered automatically by the Play Store.
+
+#### APK file
+
+You can also install the application without the Play Store:
 1. From your phone, download the file **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
-2. Open the downloaded file. As the application is not distributed through the Play Store, Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
+2. Open the downloaded file. Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
 > [!NOTE]
-> To update the application, simply download and install the new version: your settings are kept.\
-> The mobile application does not check for new versions by itself: check this page and the [Revisions](#revisions) table.
+> To update an application installed from the APK, simply download and install the new version: your settings are kept.\
+> This version does not check for new versions by itself: check this page and the [Revisions](#revisions) table.
+
+> [!IMPORTANT]
+> The Play Store and APK versions are not signed the same way: Android refuses to install one over the other. To switch from the APK to the Play Store (or the other way round), uninstall the application first; your settings (observation site, sensor…) will have to be entered again.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
 

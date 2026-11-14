@@ -111,14 +111,23 @@ Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
 
 Prérequis : Android 7.0 ou plus récent, sur un téléphone 64 bits.
 
-Pour installer ***AstroTargetSelector*** sur votre téléphone :
+#### Google Play (recommandé)
+
+Installez ***AstroTargetSelector*** depuis le **[Google Play Store](https://play.google.com/store/apps/details?id=com.astrotools.astrotargetselector)**. Les mises à jour sont ensuite proposées automatiquement par le Play Store.
+
+#### Fichier APK
+
+Vous pouvez aussi installer l'application sans passer par le Play Store :
 1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
-2. Ouvrez le fichier téléchargé. L'application n'étant pas distribuée par le Play Store, Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
+2. Ouvrez le fichier téléchargé. Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
 > [!NOTE]
-> Pour mettre à jour l'application, téléchargez et installez simplement la nouvelle version : vos paramètres sont conservés.\
-> L'application mobile ne vérifie pas elle-même la disponibilité d'une nouvelle version : consultez cette page et le tableau des [Révisions](#révisions).
+> Pour mettre à jour une application installée par l'APK, téléchargez et installez simplement la nouvelle version : vos paramètres sont conservés.\
+> Cette version ne vérifie pas elle-même la disponibilité d'une nouvelle version : consultez cette page et le tableau des [Révisions](#révisions).
+
+> [!IMPORTANT]
+> Les versions Play Store et APK ne sont pas signées de la même façon : Android refuse d'installer l'une par-dessus l'autre. Pour passer de l'APK au Play Store (ou l'inverse), désinstallez d'abord l'application ; vos paramètres (lieu d'observation, capteur…) seront à ressaisir.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
