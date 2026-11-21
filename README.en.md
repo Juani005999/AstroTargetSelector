@@ -121,7 +121,7 @@ Install ***AstroTargetSelector*** from the **[Google Play Store](https://play.go
 #### APK file
 
 You can also install the application without the Play Store:
-1. From your phone, download the file **[AstroTargetSelector_Android_2171.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2171.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2211.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2211.apk)**.
 2. Open the downloaded file. Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -562,6 +562,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 21/11/2026 | 2.2.1.1 (Android) | <ul><li>Maintenance: App code optimization required by Google Play (shrinking and obfuscation); lighter app.</li><li>Maintenance: Technical libraries update.</li></ul> |
 | 21/11/2026 | 2.1.7.1 (Android) | <ul><li>New: Object size filter: minimum and maximum size, in arcminutes, based on the object's largest dimension; each list only offers sizes compatible with the other one.</li><li>New: List sorting: new Size criterion, from the largest to the smallest target.</li><li>New: List: the size of each target is shown to the right of its description.</li><li>New: List sorting: tapping the criterion that is already active reverses the sort order.</li><li>Thanks to David SF.</li></ul> |
 | 21/11/2026 | 2.2.3.1 | <ul><li>New: Object size filter: you can now choose a minimum and a maximum size, in arcminutes, based on the object's largest dimension.</li><li>New: Object size filter: each list only offers sizes compatible with the other one.</li><li>Thanks to David SF.</li></ul> |
 | 07/11/2026 | 2.1.6.1 (Android) | <ul><li>New: Object type filter: you can now select several types, with checkboxes and an All / None button.</li><li>New: Object type filter: types are sorted alphabetically.</li><li>Thanks to Lucien Nicolai.</li></ul> |
