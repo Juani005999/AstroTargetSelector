@@ -88,7 +88,7 @@ You will even find that it is quite possible to go beyond the famous "30 s maxim
 
 ### PC (Windows)
 
-To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2221.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2221.msi)**.
+To install ***AstroTargetSelector*** on your PC, download and run the file **[AstroTargetSelector_2231.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2231.msi)**.
 
 > [!NOTE]
 > A previous installation does not need to be uninstalled: the installer replaces it automatically, and your settings are kept.\
@@ -97,7 +97,7 @@ To install ***AstroTargetSelector*** on your PC, download and run the file **[As
 #### Publisher confirmation
 ![ATS installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-When you run **AstroTargetSelector_2221.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
+When you run **AstroTargetSelector_2231.msi** on your PC, the ***Microsoft Defender SmartScreen*** window appears. Click ***Run anyway*** to start the installer.
 
 #### ATS setup wizard
 To install ATS, follow the steps of the wizard.
@@ -121,7 +121,7 @@ Install ***AstroTargetSelector*** from the **[Google Play Store](https://play.go
 #### APK file
 
 You can also install the application without the Play Store:
-1. From your phone, download the file **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2171.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2171.apk)**.
 2. Open the downloaded file. Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -245,6 +245,7 @@ The '***Filter results***' area lets you narrow down the list of celestial objec
 - **Type**: type of celestial object (galaxy, planetary nebula, open cluster...). Clicking the field opens a list of checkboxes: you can select one or more types, and the **All** / **None** button checks or unchecks all of them.
 - **Rank min.**: minimum rank of the objects displayed (from 1 to 5).
 - **Magnitude max.**: maximum magnitude of the objects displayed (objects whose magnitude is unknown remain displayed).
+- **Size min.** and **Size max.**: minimum and maximum size of the objects displayed, in arcminutes, based on the object's largest dimension (from 2' to 120'). Each list only offers sizes compatible with the other one, and objects whose size is unknown remain displayed.
 
 <p align="right"><a href="#table-of-contents">Back to table of contents</a></p>
 
@@ -443,7 +444,7 @@ At the top of the screen:
 
 For each target, the list shows:
 - its name and rank (from 1 to 5 stars), and a color bar matching the rank,
-- its description and type,
+- its description and type, and its size (largest dimension, in arcminutes),
 - its constellation and magnitude,
 - its height, direction and azimuth at the date and time of the observation.
 
@@ -465,7 +466,8 @@ Filters let you narrow down the list of targets displayed:
 - **search** in the name, description or constellation,
 - target **type**: one or more types, checked in the dialog (the **All** / **None** button checks or unchecks all of them),
 - minimum **rank**,
-- maximum **magnitude**.
+- maximum **magnitude**,
+- minimum and maximum **size**, in arcminutes, based on the target's largest dimension (each list only offers sizes compatible with the other one; targets whose size is unknown remain displayed).
 
 The **Clear** button resets all the filters.
 
@@ -478,15 +480,16 @@ The **Sort** button opens the ***Sort by*** window, which lets you choose the di
 - **Score**: from the best to the worst target (default sort),
 - **Name**: catalog numbers are ordered numerically (M 2 before M 10),
 - **Magnitude**: from the brightest to the faintest target,
+- **Size**: from the largest to the smallest target,
 - **Height**: from the highest to the lowest target in the sky,
 - **Azimuth**: from 0° to 360°,
 - **Constellation** and **Type**: in alphabetical order.
 
-The **Reverse order** button reverses the direction of the current sort.\
+The **Reverse order** button, or a tap on the criterion that is already active, reverses the direction of the current sort.\
 The active sort is shown to the right of the observation site, for example *Sort: Score ↓* (↓ for descending order, ↑ for ascending order).
 
 > [!NOTE]
-> Targets with an unknown magnitude always stay at the end of the list, whatever the sort direction.
+> Targets with an unknown magnitude or size always stay at the end of the list, whatever the sort direction.
 
 > [!TIP]
 > The chosen sort is kept the next time you launch the application. The filters' **Clear** button does not change it.
@@ -559,6 +562,8 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 21/11/2026 | 2.1.7.1 (Android) | <ul><li>New: Object size filter: minimum and maximum size, in arcminutes, based on the object's largest dimension; each list only offers sizes compatible with the other one.</li><li>New: List sorting: new Size criterion, from the largest to the smallest target.</li><li>New: List: the size of each target is shown to the right of its description.</li><li>New: List sorting: tapping the criterion that is already active reverses the sort order.</li><li>Thanks to David SF.</li></ul> |
+| 21/11/2026 | 2.2.3.1 | <ul><li>New: Object size filter: you can now choose a minimum and a maximum size, in arcminutes, based on the object's largest dimension.</li><li>New: Object size filter: each list only offers sizes compatible with the other one.</li><li>Thanks to David SF.</li></ul> |
 | 07/11/2026 | 2.1.6.1 (Android) | <ul><li>New: Object type filter: you can now select several types, with checkboxes and an All / None button.</li><li>New: Object type filter: types are sorted alphabetically.</li><li>Thanks to Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.2.2.1 | <ul><li>New: Object type filter: you can now select several types, with checkboxes and an All / None button.</li><li>New: Object type filter: types are sorted alphabetically.</li><li>Thanks to Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.1.5.1 (Android) | <ul><li>New: List sorting: the “Sort by” window now looks like the type filter, with the active criterion checked.</li></ul> |

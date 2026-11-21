@@ -85,7 +85,7 @@ Vous allez même vous apercevoir qu'il est tout à fait possible de dépasser le
 
 ### PC (Windows)
 
-Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2221.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2221.msi)**.
+Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez le fichier **[AstroTargetSelector_2231.msi](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_2231.msi)**.
 
 > [!NOTE]
 > Une installation précédente n'a pas besoin d'être désinstallée : l'installeur la remplace automatiquement, et vos paramètres sont conservés.\
@@ -94,7 +94,7 @@ Pour installer ***AstroTargetSelector*** sur votre PC, téléchargez et lancez l
 #### Confirmation de l'éditeur
 ![ATS Installation confirmation](images/ATS_Install_Execute_Confirm.png)
 
-Lors de l'exécution de **AstroTargetSelector_2221.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
+Lors de l'exécution de **AstroTargetSelector_2231.msi** sur votre PC, l'écran de ***Microsoft Defender SmartScreen*** apparait. Vous pouvez cliquer sur ***Exécuter quand même*** afin de lancer l'installeur.
 
 #### Assistant d'installation d'ATS
 Afin d'installer le logiciel ATS, veuillez suivre les étapes de l'assistant.
@@ -118,7 +118,7 @@ Installez ***AstroTargetSelector*** depuis le **[Google Play Store](https://play
 #### Fichier APK
 
 Vous pouvez aussi installer l'application sans passer par le Play Store :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2161.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2161.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2171.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2171.apk)**.
 2. Ouvrez le fichier téléchargé. Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -242,6 +242,7 @@ La zone '***Filtrer les résultats***' permet de restreindre la liste des objets
 - **Type** : type d'objet céleste (galaxie, nébuleuse planétaire, amas d'étoiles ouvert...). Le clic sur le champ ouvre une liste à cocher : vous pouvez sélectionner un ou plusieurs types, le bouton **Tous** / **Aucun** coche ou décoche tous les types.
 - **Rank min.** : rang minimum des objets affichés (de 1 à 5).
 - **Magnitude max.** : magnitude maximum des objets affichés (les objets dont la magnitude n’est pas connue restent affichés).
+- **Taille min.** et **Taille max.** : taille minimum et maximum des objets affichés, en minutes d’arc, sur la plus grande dimension de l’objet (de 2' à 120'). Chaque liste ne propose que les tailles compatibles avec l’autre, et les objets dont la taille n’est pas connue restent affichés.
 
 <p align="right"><a href="#sommaire">Retour au sommaire</a></p>
 
@@ -440,7 +441,7 @@ En haut de l'écran :
 
 Pour chaque cible, la liste affiche :
 - son nom et son rang (de 1 à 5 étoiles), ainsi qu'une barre de couleur correspondant au rang,
-- sa description et son type,
+- sa description et son type, ainsi que sa taille (plus grande dimension, en minutes d’arc),
 - sa constellation et sa magnitude,
 - sa hauteur, sa direction et son azimut à la date et à l'heure de l'observation.
 
@@ -462,7 +463,8 @@ Les filtres permettent de restreindre la liste des cibles affichées :
 - **recherche** dans le nom, la description ou la constellation,
 - **type** de cible : un ou plusieurs types, à cocher dans la boîte de dialogue (le bouton **Tous** / **Aucun** coche ou décoche tous les types),
 - **rang** minimum,
-- **magnitude** maximum.
+- **magnitude** maximum,
+- **taille** minimum et maximum, en minutes d’arc, sur la plus grande dimension de la cible (chaque liste ne propose que les tailles compatibles avec l’autre ; les cibles dont la taille n’est pas connue restent affichées).
 
 Le bouton **Effacer** réinitialise tous les filtres.
 
@@ -475,15 +477,16 @@ Le bouton **Tri** ouvre la fenêtre ***Trier par***, qui permet de choisir l'ord
 - **Score** : de la meilleure à la moins bonne cible (tri par défaut),
 - **Nom** : les numéros de catalogue sont classés dans l'ordre numérique (M 2 avant M 10),
 - **Magnitude** : de la cible la plus brillante à la moins brillante,
+- **Taille** : de la cible la plus grande à la plus petite,
 - **Hauteur** : de la cible la plus haute à la plus basse dans le ciel,
 - **Azimut** : de 0° à 360°,
 - **Constellation** et **Type** : par ordre alphabétique.
 
-Le bouton **Inverser l'ordre** inverse le sens du tri en cours.\
+Le bouton **Inverser l'ordre**, ou un toucher sur le critère déjà actif, inverse le sens du tri en cours.\
 Le tri actif est rappelé à droite du lieu d'observation, par exemple *Tri : Score ↓* (↓ pour un ordre décroissant, ↑ pour un ordre croissant).
 
 > [!NOTE]
-> Les cibles dont la magnitude est inconnue restent toujours en fin de liste, quel que soit le sens du tri.
+> Les cibles dont la magnitude ou la taille est inconnue restent toujours en fin de liste, quel que soit le sens du tri.
 
 > [!TIP]
 > Le tri choisi est conservé au prochain lancement de l'application. Le bouton **Effacer** des filtres ne le modifie pas.
@@ -556,6 +559,8 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 21/11/2026 | 2.1.7.1 (Android) | <ul><li>Nouveautés : Filtre sur la taille des objets : taille minimum et maximum, en minutes d’arc, sur la plus grande dimension de l’objet ; chaque liste ne propose que les tailles compatibles avec l’autre.</li><li>Nouveautés : Tri de la liste : nouveau critère Taille, de la cible la plus grande à la plus petite.</li><li>Nouveautés : Liste : la taille de chaque cible est affichée à droite de sa description.</li><li>Nouveautés : Tri de la liste : toucher le critère déjà actif inverse l’ordre du tri.</li><li>Merci à David SF.</li></ul> |
+| 21/11/2026 | 2.2.3.1 | <ul><li>Nouveautés : Filtre sur la taille des objets : vous pouvez désormais choisir une taille minimum et une taille maximum, en minutes d’arc, sur la plus grande dimension de l’objet.</li><li>Nouveautés : Filtre sur la taille des objets : chaque liste ne propose que les tailles compatibles avec l’autre.</li><li>Merci à David SF.</li></ul> |
 | 07/11/2026 | 2.1.6.1 (Android) | <ul><li>Nouveautés : Filtre sur le type d’objet : vous pouvez désormais sélectionner plusieurs types, avec des cases à cocher et un bouton Tous / Aucun.</li><li>Nouveautés : Filtre sur le type d’objet : les types sont triés par ordre alphabétique.</li><li>Merci à Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.2.2.1 | <ul><li>Nouveautés : Filtre sur le type d’objet : vous pouvez désormais sélectionner plusieurs types, avec des cases à cocher et un bouton Tous / Aucun.</li><li>Nouveautés : Filtre sur le type d’objet : les types sont triés par ordre alphabétique.</li><li>Merci à Lucien Nicolai.</li></ul> |
 | 07/11/2026 | 2.1.5.1 (Android) | <ul><li>Nouveautés : Tri de la liste : la fenêtre « Trier par » adopte le même aspect que le filtre par type, avec le critère actif coché.</li></ul> |
