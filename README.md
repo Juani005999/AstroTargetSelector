@@ -118,7 +118,7 @@ Installez ***AstroTargetSelector*** depuis le **[Google Play Store](https://play
 #### Fichier APK
 
 Vous pouvez aussi installer l'application sans passer par le Play Store :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2211.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2211.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2212.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2212.apk)**.
 2. Ouvrez le fichier téléchargé. Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -559,6 +559,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 22/11/2026 | 2.2.1.2 (Android) | <ul><li>Maintenance : Affichage bord à bord sur toutes les versions d’Android, comme le recommande Google Play : les zones de la barre d’état et de la barre de navigation prolongent les couleurs de l’application (bleu clair le jour, noir en mode nuit).</li><li>Corrections : Mode nuit : sur Android 15 et versions ultérieures, la zone de la barre d’état n’est plus bleu vif.</li><li>Corrections : Mode nuit : le soulignement des zones de saisie et la loupe de la recherche ne sont plus blancs lorsque l’application démarre en mode nuit.</li><li>Nouveautés : Détails d’une cible : le nom de l’objet est affiché en gras.</li></ul> |
 | 21/11/2026 | 2.2.1.1 (Android) | <ul><li>Maintenance : Optimisation du code de l’application demandée par Google Play (réduction et obscurcissement) ; application plus légère.</li><li>Maintenance : Mise à jour des librairies techniques.</li></ul> |
 | 21/11/2026 | 2.1.7.1 (Android) | <ul><li>Nouveautés : Filtre sur la taille des objets : taille minimum et maximum, en minutes d’arc, sur la plus grande dimension de l’objet ; chaque liste ne propose que les tailles compatibles avec l’autre.</li><li>Nouveautés : Tri de la liste : nouveau critère Taille, de la cible la plus grande à la plus petite.</li><li>Nouveautés : Liste : la taille de chaque cible est affichée à droite de sa description.</li><li>Nouveautés : Tri de la liste : toucher le critère déjà actif inverse l’ordre du tri.</li><li>Merci à David SF.</li></ul> |
 | 21/11/2026 | 2.2.3.1 | <ul><li>Nouveautés : Filtre sur la taille des objets : vous pouvez désormais choisir une taille minimum et une taille maximum, en minutes d’arc, sur la plus grande dimension de l’objet.</li><li>Nouveautés : Filtre sur la taille des objets : chaque liste ne propose que les tailles compatibles avec l’autre.</li><li>Merci à David SF.</li></ul> |
