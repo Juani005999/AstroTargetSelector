@@ -121,7 +121,7 @@ Install ***AstroTargetSelector*** from the **[Google Play Store](https://play.go
 #### APK file
 
 You can also install the application without the Play Store:
-1. From your phone, download the file **[AstroTargetSelector_Android_2212.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2212.apk)**.
+1. From your phone, download the file **[AstroTargetSelector_Android_2213.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2213.apk)**.
 2. Open the downloaded file. Android asks you to allow the installation of unknown apps for your browser (or your file manager): allow it, then go back to the installation.
 3. If ***Google Play Protect*** shows a warning, choose ***More details***, then ***Install anyway***.
 
@@ -562,6 +562,7 @@ The **View on GitHub** button opens this page in the phone's browser: you will f
 
 | Date | Version | Comments |
 | --- | --- | --- |
+| 22/11/2026 | 2.2.1.3 (Android) | <ul><li>Maintenance: Removed system bar display functions deprecated since Android 15, as recommended by Google Play; display unchanged.</li></ul> |
 | 22/11/2026 | 2.2.1.2 (Android) | <ul><li>Maintenance: Edge-to-edge display on all Android versions, as recommended by Google Play: the status bar and navigation bar areas extend the app colors (light blue by day, black in night mode).</li><li>Fixes: Night mode: on Android 15 and later, the status bar area is no longer bright blue.</li><li>Fixes: Night mode: input field underlines and the search magnifier are no longer white when the app starts in night mode.</li><li>New: Target details: the object name is shown in bold.</li></ul> |
 | 21/11/2026 | 2.2.1.1 (Android) | <ul><li>Maintenance: App code optimization required by Google Play (shrinking and obfuscation); lighter app.</li><li>Maintenance: Technical libraries update.</li></ul> |
 | 21/11/2026 | 2.1.7.1 (Android) | <ul><li>New: Object size filter: minimum and maximum size, in arcminutes, based on the object's largest dimension; each list only offers sizes compatible with the other one.</li><li>New: List sorting: new Size criterion, from the largest to the smallest target.</li><li>New: List: the size of each target is shown to the right of its description.</li><li>New: List sorting: tapping the criterion that is already active reverses the sort order.</li><li>Thanks to David SF.</li></ul> |
