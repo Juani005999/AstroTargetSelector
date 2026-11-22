@@ -118,7 +118,7 @@ Installez ***AstroTargetSelector*** depuis le **[Google Play Store](https://play
 #### Fichier APK
 
 Vous pouvez aussi installer l'application sans passer par le Play Store :
-1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2213.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2213.apk)**.
+1. Depuis votre téléphone, téléchargez le fichier **[AstroTargetSelector_Android_2214.apk](https://github.com/Juani005999/AstroTargetSelector/raw/main/AstroTargetSelector_Android_2214.apk)**.
 2. Ouvrez le fichier téléchargé. Android vous demande d'autoriser l'installation d'applications inconnues pour votre navigateur (ou votre gestionnaire de fichiers) : autorisez-la, puis revenez à l'installation.
 3. Si ***Google Play Protect*** affiche un avertissement, choisissez ***Plus de détails***, puis ***Installer quand même***.
 
@@ -559,6 +559,7 @@ Le bouton **Voir sur GitHub** ouvre cette page dans le navigateur du téléphone
 
 | Date | Version | Commentaires |
 | --- | --- | --- |
+| 22/11/2026 | 2.2.1.4 (Android) | <ul><li>Maintenance : Optimisation renforcée du code de l’application demandée par Google Play (obscurcissement de davantage d’éléments du code).</li></ul> |
 | 22/11/2026 | 2.2.1.3 (Android) | <ul><li>Maintenance : Suppression des fonctions d’affichage des barres système devenues obsolètes depuis Android 15, comme le recommande Google Play ; affichage inchangé.</li></ul> |
 | 22/11/2026 | 2.2.1.2 (Android) | <ul><li>Maintenance : Affichage bord à bord sur toutes les versions d’Android, comme le recommande Google Play : les zones de la barre d’état et de la barre de navigation prolongent les couleurs de l’application (bleu clair le jour, noir en mode nuit).</li><li>Corrections : Mode nuit : sur Android 15 et versions ultérieures, la zone de la barre d’état n’est plus bleu vif.</li><li>Corrections : Mode nuit : le soulignement des zones de saisie et la loupe de la recherche ne sont plus blancs lorsque l’application démarre en mode nuit.</li><li>Nouveautés : Détails d’une cible : le nom de l’objet est affiché en gras.</li></ul> |
 | 21/11/2026 | 2.2.1.1 (Android) | <ul><li>Maintenance : Optimisation du code de l’application demandée par Google Play (réduction et obscurcissement) ; application plus légère.</li><li>Maintenance : Mise à jour des librairies techniques.</li></ul> |
